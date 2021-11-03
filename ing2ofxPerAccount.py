@@ -33,7 +33,6 @@ import csv
 import argparse
 import datetime
 import os
-import re
 
 """ Read the csv file into a list, which is mapped to ofx fields """
 
@@ -46,9 +45,6 @@ class CsvFile:
                   'OV': 'xx', 'VZ': 'xx', 'IC': 'DIRECTDEBIT', 'ST': 'DIRECTDEP'}
         self.transactions = list()
         args = args
-        
-        # Keep track of used IDs to prevent double IDs
-        idslist = []
 
         with open(args.csvfile, 'r') as csvfile:
         #with open(args.csvfile, 'rb') as csvfile:
@@ -89,6 +85,10 @@ class CsvFile:
                 else:
                     trnamt = "-" + row['Bedrag (EUR)']
 
+                # the FITID is composed of the date and amount
+                fitid = dtposted + \
+                    trnamt.replace(",", "").replace("-", "").replace(".", "")
+
                 # NAME maps to "Naam / Omschrijving", the while loop removes
                 # any double spaces.
                 while row['Naam / Omschrijving'].strip().find("  ") > 0:
@@ -108,31 +108,16 @@ class CsvFile:
                 # Replace & symbol with &amp to make xml compliant
                 memo = str(row['Mededelingen']).replace("&", "&amp")
 
-                # Extract time from "Mededelingen"
-                time = ""
-                matches = re.search("\s([0-9]{2}:[0-9]{2})\s", memo)
-                if matches:
-                    time = matches.group(1).replace(":", "")
-
-                # the FITID is composed of the date and amount
-                fitid = dtposted + \
-                    trnamt.replace(",", "").replace("-", "").replace(".", "")
-
-                # Check if we already used a certain ID
-                idcount = 0
-                uniqueid = fitid
-                
-                # Make unique by adding time and sequence nr.
-                while uniqueid in idslist:
-                    idcount = idcount + 1
-                    uniqueid = fitid + time + str(idcount)
-
-                # Append ID to list with IDs
-                idslist.append(uniqueid)
+                # MEMO maps to "Mededelingen", the while loop removes any
+                # double spaces.
+                while row['Saldo na mutatie'].strip().find("  ") > 0:
+                    row['Saldo na mutatie'] = row[
+                        'Saldo na mutatie'].strip().replace("  ", " ")
+                saldonamutatie = str(row['Saldo na mutatie']).replace("&", "&amp")
 
                 self.transactions.append(
                     {'account': account, 'trntype': trntype, 'dtposted': dtposted,
-                     'trnamt': trnamt, 'fitid': uniqueid, 'name': name, 'accountto': accountto,
+                     'trnamt': trnamt, 'fitid': fitid, 'name': name, 'accountto': accountto,
                      'memo': memo})
 
 
@@ -191,6 +176,8 @@ class OfxWriter:
         accounts = set()
         mindate = 999999999
         maxdate = 0
+        saldonatran = "0"
+        maxdatestr = "199910291120"
 
         for trns in csv.transactions:
             accounts.add(trns['account'])
@@ -198,12 +185,16 @@ class OfxWriter:
                 mindate = int(trns['dtposted'])
             if int(trns['dtposted']) > maxdate:
                 maxdate = int(trns['dtposted'])
+                maxdatestr = trns['dtposted']
+                saldonatran= """%(trns['trnamt'])s"""
 
         # open ofx file, if file exists, gets overwritten
-        with open(filepath, 'w') as ofxfile:
-            ofxfile.write(message_header)
-
-            for account in accounts:
+        for account in accounts:
+            filepath = os.path.join(args.dir, account + '_' + filename)
+           
+            with open(filepath, 'w') as ofxfile:
+                ofxfile.write(message_header)
+  
                 message_begin = """
          <STMTRS>                         <!-- Begin statement response -->
             <CURDEF>EUR</CURDEF>
@@ -238,18 +229,18 @@ class OfxWriter:
                 message_end = """
             </BANKTRANLIST>                   <!-- End list of statement trans. -->
             <LEDGERBAL>                       <!-- Ledger balance aggregate -->
-               <BALAMT>0</BALAMT>
-               <DTASOF>199910291120</DTASOF>  <!-- Bal date: 10/29/99, 11:20 am -->
+               <BALAMT>""" + saldonatran + """</BALAMT>
+               <DTASOF>""" + maxdatestr + """</DTASOF><!-- Bal date: 10/29/99, 11:20 am -->
             </LEDGERBAL>                      <!-- End ledger balance -->
          </STMTRS>"""
                 ofxfile.write(message_end)
 
-            message_footer = """
+                message_footer = """
       </STMTTRNRS>                        <!-- End of transaction -->
    </BANKMSGSRSV1>
 </OFX>
       """
-            ofxfile.write(message_footer)
+                ofxfile.write(message_footer)
 
         if not gui:
             # print some statistics:
