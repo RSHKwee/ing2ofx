@@ -1,3 +1,6 @@
 ofx
 input
 .DS_Store
+*.pydevproject
+*.project
+*.prefs
