@@ -198,7 +198,9 @@ class OfxWriter:
                 mindate = int(trns['dtposted'])
             if int(trns['dtposted']) > maxdate:
                 maxdate = int(trns['dtposted'])
-
+                maxdatestr = trns['dtposted']
+                saldonatran= """%(trns['trnamt'])s"""
+				
         # open ofx file, if file exists, gets overwritten
         with open(filepath, 'w') as ofxfile:
             ofxfile.write(message_header)
@@ -238,8 +240,8 @@ class OfxWriter:
                 message_end = """
             </BANKTRANLIST>                   <!-- End list of statement trans. -->
             <LEDGERBAL>                       <!-- Ledger balance aggregate -->
-               <BALAMT>0</BALAMT>
-               <DTASOF>199910291120</DTASOF>  <!-- Bal date: 10/29/99, 11:20 am -->
+               <BALAMT>""" + saldonatran + """</BALAMT>
+               <DTASOF>""" + maxdatestr + """</DTASOF><!-- Bal date: 10/29/99, 11:20 am -->
             </LEDGERBAL>                      <!-- End ledger balance -->
          </STMTRS>"""
                 ofxfile.write(message_end)

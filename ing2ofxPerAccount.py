@@ -85,10 +85,6 @@ class CsvFile:
                 else:
                     trnamt = "-" + row['Bedrag (EUR)']
 
-                # the FITID is composed of the date and amount
-                fitid = dtposted + \
-                    trnamt.replace(",", "").replace("-", "").replace(".", "")
-
                 # NAME maps to "Naam / Omschrijving", the while loop removes
                 # any double spaces.
                 while row['Naam / Omschrijving'].strip().find("  ") > 0:
@@ -108,7 +104,29 @@ class CsvFile:
                 # Replace & symbol with &amp to make xml compliant
                 memo = str(row['Mededelingen']).replace("&", "&amp")
 
-                # MEMO maps to "Mededelingen", the while loop removes any
+                # Extract time from "Mededelingen"
+                time = ""
+                matches = re.search("\s([0-9]{2}:[0-9]{2})\s", memo)
+                if matches:
+                    time = matches.group(1).replace(":", "")
+
+                # the FITID is composed of the date and amount
+                fitid = dtposted + \
+                    trnamt.replace(",", "").replace("-", "").replace(".", "")
+
+                # Check if we already used a certain ID
+                idcount = 0
+                uniqueid = fitid
+                
+                # Make unique by adding time and sequence nr.
+                while uniqueid in idslist:
+                    idcount = idcount + 1
+                    uniqueid = fitid + time + str(idcount)
+
+                # Append ID to list with IDs
+                idslist.append(uniqueid)
+
+                # SaldoNaMutatie maps to "Saldo na mutatie", the while loop removes any
                 # double spaces.
                 while row['Saldo na mutatie'].strip().find("  ") > 0:
                     row['Saldo na mutatie'] = row[
@@ -117,7 +135,7 @@ class CsvFile:
 
                 self.transactions.append(
                     {'account': account, 'trntype': trntype, 'dtposted': dtposted,
-                     'trnamt': trnamt, 'fitid': fitid, 'name': name, 'accountto': accountto,
+                     'trnamt': trnamt, 'fitid': uniqueid, 'name': name, 'accountto': accountto,
                      'memo': memo})
 
 
