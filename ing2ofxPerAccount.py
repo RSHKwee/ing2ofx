@@ -33,6 +33,7 @@ import csv
 import argparse
 import datetime
 import os
+import re
 
 """ Read the csv file into a list, which is mapped to ofx fields """
 
@@ -45,10 +46,13 @@ class CsvFile:
                   'OV': 'xx', 'VZ': 'xx', 'IC': 'DIRECTDEBIT', 'ST': 'DIRECTDEP'}
         self.transactions = list()
         args = args
+        
+        # Keep track of used IDs to prevent double IDs
+        idslist = []
 
         with open(args.csvfile, 'r') as csvfile:
         #with open(args.csvfile, 'rb') as csvfile:
-            # Open the csvfile as a Dictreader
+            # Open the csvfile as a Dictreader, ";" separated
             csvreader = csv.DictReader(csvfile, delimiter=';', quotechar='"')
             for row in csvreader:
                 # Map ACCOUNT to "Rekening"
@@ -136,7 +140,7 @@ class CsvFile:
                 self.transactions.append(
                     {'account': account, 'trntype': trntype, 'dtposted': dtposted,
                      'trnamt': trnamt, 'fitid': uniqueid, 'name': name, 'accountto': accountto,
-                     'memo': memo})
+                     'memo': memo, 'saldonamutatie' : saldonamutatie, 'time' : time})
 
 
 class OfxWriter:
@@ -190,12 +194,11 @@ class OfxWriter:
         # Initiate a csv object that contains all the data in a set.
         csv = CsvFile(args)
 
-        # Determine unique accounts and start and end dates
+        # Determine unique accounts and start and end dates and amount on account for end date
         accounts = set()
         mindate = 999999999
         maxdate = 0
         saldonatran = "0"
-        maxdatestr = "199910291120"
 
         for trns in csv.transactions:
             accounts.add(trns['account'])
@@ -203,10 +206,9 @@ class OfxWriter:
                 mindate = int(trns['dtposted'])
             if int(trns['dtposted']) > maxdate:
                 maxdate = int(trns['dtposted'])
-                maxdatestr = trns['dtposted']
-                saldonatran= """%(trns['trnamt'])s"""
+                saldonatran= trns['saldonamutatie']
 
-        # open ofx file, if file exists, gets overwritten
+        # open ofx file, if file exists, gets overwritten, each account in own ofx file.
         for account in accounts:
             filepath = os.path.join(args.dir, account + '_' + filename)
            
@@ -248,9 +250,9 @@ class OfxWriter:
             </BANKTRANLIST>                   <!-- End list of statement trans. -->
             <LEDGERBAL>                       <!-- Ledger balance aggregate -->
                <BALAMT>""" + saldonatran + """</BALAMT>
-               <DTASOF>""" + maxdatestr + """</DTASOF><!-- Bal date: 10/29/99, 11:20 am -->
+               <DTASOF>%(maxdate)s2359</DTASOF>  <!-- Bal date: Last date in transactions, 11:59 pm -->
             </LEDGERBAL>                      <!-- End ledger balance -->
-         </STMTRS>"""
+         </STMTRS>""" % {"maxdate": maxdate}
                 ofxfile.write(message_end)
 
                 message_footer = """

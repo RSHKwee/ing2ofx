@@ -16,7 +16,7 @@
 #       GNU General Public License for more details.
 #
 #       You should have received a copy of the GNU General Public License
-#       along with this program.  If not, see <http://www.gnu.org/licenses/>. 
+#       along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 """
 The intent of this script is to convert ing (www.ing.nl) csv files to ofx files
@@ -130,11 +130,17 @@ class CsvFile:
                 # Append ID to list with IDs
                 idslist.append(uniqueid)
 
+                # SaldoNaMutatie maps to "Saldo na mutatie", the while loop removes any
+                # double spaces.
+                while row['Saldo na mutatie'].strip().find("  ") > 0:
+                    row['Saldo na mutatie'] = row[
+                        'Saldo na mutatie'].strip().replace("  ", " ")
+                saldonamutatie = str(row['Saldo na mutatie']).replace("&", "&amp")
+
                 self.transactions.append(
                     {'account': account, 'trntype': trntype, 'dtposted': dtposted,
                      'trnamt': trnamt, 'fitid': uniqueid, 'name': name, 'accountto': accountto,
-                     'memo': memo})
-
+                     'memo': memo, 'saldonamutatie' : saldonamutatie, 'time' : time})
 
 class OfxWriter:
 
@@ -191,6 +197,7 @@ class OfxWriter:
         accounts = set()
         mindate = 999999999
         maxdate = 0
+        saldonatran = "0"
 
         for trns in csv.transactions:
             accounts.add(trns['account'])
@@ -198,9 +205,8 @@ class OfxWriter:
                 mindate = int(trns['dtposted'])
             if int(trns['dtposted']) > maxdate:
                 maxdate = int(trns['dtposted'])
-                maxdatestr = trns['dtposted']
-                saldonatran= """%(trns['trnamt'])s"""
-				
+                saldonatran= trns['saldonamutatie']
+                
         # open ofx file, if file exists, gets overwritten
         with open(filepath, 'w') as ofxfile:
             ofxfile.write(message_header)
@@ -241,9 +247,9 @@ class OfxWriter:
             </BANKTRANLIST>                   <!-- End list of statement trans. -->
             <LEDGERBAL>                       <!-- Ledger balance aggregate -->
                <BALAMT>""" + saldonatran + """</BALAMT>
-               <DTASOF>""" + maxdatestr + """</DTASOF><!-- Bal date: 10/29/99, 11:20 am -->
+               <DTASOF>%(maxdate)s2359</DTASOF>  <!-- Bal date: Last date in transactions, 11:59 pm -->
             </LEDGERBAL>                      <!-- End ledger balance -->
-         </STMTRS>"""
+         </STMTRS>""" % {"maxdate": maxdate}
                 ofxfile.write(message_end)
 
             message_footer = """
