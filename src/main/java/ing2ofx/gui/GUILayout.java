@@ -4,57 +4,36 @@ package ing2ofx.gui;
  * ING 2 OFX Convertor GUI
  */
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.event.KeyEvent;
+
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.SortedSet;
-import java.util.TreeSet;
+
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JProgressBar;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
-import javax.swing.ListSelectionModel;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import net.miginfocom.swing.MigLayout;
 import logger.MyLogger;
 import logger.TextAreaHandler;
 
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import javax.swing.JTextField;
 
 public class GUILayout extends JPanel implements ItemListener {
@@ -72,18 +51,14 @@ public class GUILayout extends JPanel implements ItemListener {
 
   private Level m_Level = Level.INFO;
   private Boolean m_toDisk = false;
-  private Boolean m_DelFolderContents = false;
-  private StringBuffer choices;
 
   // Variables
   private String m_RootDir = "c:\\";
-  private String m_SceDirPrefix = "gen";
-  private String m_SceDirJenkinsPrefix = "Jenkins";
+  private String m_GnuCashExecutable = "";
   private String newline = "\n";
 
   private JTextArea output;
 
-  @SuppressWarnings("rawtypes")
   private final JCheckBox chckbxConvertDateFormat = new JCheckBox("Convert dates with dd-mm-yyyy to yyyymmdd");
   private JTextField OutputFilenameField;
   private JTextField OPutputFolderField;
@@ -92,7 +67,6 @@ public class GUILayout extends JPanel implements ItemListener {
   /**
    * Defineer GUI layout
    */
-  @SuppressWarnings({ "unchecked", "rawtypes" })
   public GUILayout() {
 
     setLayout(new BorderLayout(0, 0));
@@ -139,15 +113,10 @@ public class GUILayout extends JPanel implements ItemListener {
         if (option == JFileChooser.APPROVE_OPTION) {
           File file = fileChooser.getSelectedFile();
           mntmGnuCashExe.setText("File Selected: " + file.getName());
+          m_GnuCashExecutable = file.getName();         
         } else {
           mntmGnuCashExe.setText("Command canceled");
         }
-
-        frame.setSize(560, 200);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-
-        m_SceDirPrefix = JOptionPane.showInputDialog(frame, "Scenario prefix?", m_SceDirPrefix);
       }
     });
 
@@ -222,7 +191,6 @@ public class GUILayout extends JPanel implements ItemListener {
     // output = new JTextArea(12, 10);
     output.setEditable(false);
     output.setTabSize(4);
-
   }
 
   @Override
