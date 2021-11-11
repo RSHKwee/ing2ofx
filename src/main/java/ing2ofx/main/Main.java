@@ -1,4 +1,4 @@
-package post21.sceGenerator;
+package ing2ofx.main;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -7,8 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
-import algemeen.JarInfo;
-import post21.sceGenerator.gui.GUILayout;
+import library.JarInfo;
+import ing2ofx.gui.GUILayout;
 
 /**
  * Dit package bevat het hoofdprogramma (main) voor het starten van de GUI van
@@ -19,8 +19,7 @@ import post21.sceGenerator.gui.GUILayout;
 
 public class Main {
 	private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
-	static String m_MenuTitel = "Post21 Werkbank Scenario generator";
-	static String m_Configbestand = "";
+	static String m_MenuTitel = "ING csv to ofx convertor";
 	static public String m_creationtime;
 
 	// "Metal", "Nimbus", "CDE/Motif", "Windows", "Windows Classic"
@@ -39,7 +38,7 @@ public class Main {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// Create and set up the content pane.
-		GUILayout scenGUI = new GUILayout(m_Configbestand);
+		GUILayout scenGUI = new GUILayout();
 		// GUILayout scenGUI = new GUILayout(m_Configbestand);
 		scenGUI.setOpaque(true);
 		frame.setContentPane(scenGUI);
@@ -83,16 +82,16 @@ public class Main {
 
 		switch (argv.length) {
 			case 1: {
-				m_Configbestand = argv[0];
+		//		m_Configbestand = argv[0];
 				break;
 			}
 			case 2: {
-				m_LookAndFeel = argv[1];
+			//	m_LookAndFeel = argv[1];
 				break;
 			}
 
 			default: {
-				m_Configbestand = "J:\\CARE\\BS\\test\\Regressietest\\ScePosten_Regressie.txt";
+			//	m_Configbestand = "J:\\CARE\\BS\\test\\Regressietest\\ScePosten_Regressie.txt";
 			}
 				;
 		}
