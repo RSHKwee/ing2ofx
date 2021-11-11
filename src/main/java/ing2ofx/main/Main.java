@@ -1,20 +1,109 @@
-package ing2ofx.main;
+package post21.sceGenerator;
 
-import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import library.TxtBestand;
+import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
+
+import algemeen.JarInfo;
+import post21.sceGenerator.gui.GUILayout;
+
+/**
+ * Dit package bevat het hoofdprogramma (main) voor het starten van de GUI van
+ * de Werkbank Post21 Scenario generator.
+ *
+ * @author kweers1
+ */
 
 public class Main {
+	private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+	static String m_MenuTitel = "Post21 Werkbank Scenario generator";
+	static String m_Configbestand = "";
+	static public String m_creationtime;
 
-  public static void main(String[] args) {
-    String v_Rootdir = "D:\\Users\\René\\OneDrive\\Documenten\\Auto\\Garmin\\";
-//    Summary v_sum = new Summary(v_Rootdir + "Tracks\\2019\\Archive\\270.gpx");
-//    ArrayList<String> v_Regels = v_sum.TripsSummary();
+	// "Metal", "Nimbus", "CDE/Motif", "Windows", "Windows Classic"
+	static String m_LookAndFeel = "Nimbus";
 
-    for (int i = 271; i <= 298; i++) {
-//      v_Regels.addAll(v_sum.TripsSummary(v_Rootdir + "Tracks\\2019\\Archive\\" + i + ".gpx"));
-    }
-//    TxtBestand.DumpBestand(v_Rootdir + "current_2019_3.csv", v_Regels);
+	/**
+	 * Create the GUI and show it. For thread safety, this method should be invoked
+	 * from the event-dispatching thread.
+	 */
+	private static void createAndShowGUI() {
+		// Set the look and feel.
+		initLookAndFeel();
 
-  }
+		// Create and set up the window.
+		JFrame frame = new JFrame(m_MenuTitel + " (" + m_creationtime + ")");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		// Create and set up the content pane.
+		GUILayout scenGUI = new GUILayout(m_Configbestand);
+		// GUILayout scenGUI = new GUILayout(m_Configbestand);
+		scenGUI.setOpaque(true);
+		frame.setContentPane(scenGUI);
+
+		// Display the window.
+		frame.pack();
+		frame.setSize(900, 700);
+		frame.setLocation(50, 50);
+		frame.setVisible(true);
+
+		LOGGER.log(Level.INFO, " Build time Scenario Generator : " + m_creationtime);
+	}
+
+	/**
+	 * Initialiseer Look and Feel
+	 */
+	private static void initLookAndFeel() {
+		try {
+			for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+				LOGGER.fine(" Look And Feel :" + info.getName());
+				if (m_LookAndFeel.equals(info.getName())) {
+					UIManager.setLookAndFeel(info.getClassName());
+					break;
+				}
+			}
+		} catch (Exception e) {
+			// If Nimbus is not available, you can set the GUI to another look and feel.
+		}
+	}
+
+	/**
+	 * Main start de GUI
+	 *
+	 * @param args
+	 *          0 Configuratie bestand of posten directory
+	 * @param args
+	 *          1 Look and feel, "Nimbus" of "Metal"
+	 */
+	public static void main(String[] argv) {
+		m_creationtime = JarInfo.getTimeStr(GUILayout.class);
+
+		switch (argv.length) {
+			case 1: {
+				m_Configbestand = argv[0];
+				break;
+			}
+			case 2: {
+				m_LookAndFeel = argv[1];
+				break;
+			}
+
+			default: {
+				m_Configbestand = "J:\\CARE\\BS\\test\\Regressietest\\ScePosten_Regressie.txt";
+			}
+				;
+		}
+
+		// Schedule a job for the event-dispatching thread:
+		// creating and showing this application's GUI.
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				createAndShowGUI();
+			}
+		});
+	}
 }
