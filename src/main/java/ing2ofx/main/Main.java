@@ -9,7 +9,7 @@ import javax.swing.UIManager.LookAndFeelInfo;
 
 import library.JarInfo;
 import ing2ofx.gui.GUILayout;
-import javafx.scene.image.Image;
+import java.awt.Image;
 
 /**
  * Dit package bevat het hoofdprogramma (main) voor het starten van de GUI van
@@ -35,9 +35,9 @@ public class Main {
     initLookAndFeel();
 
     // Create and set up the window.
-    // Image ing_logo = new Image("inglogo.png");
+//    Image ing_logo =         new Image("images.png");
     JFrame frame = new JFrame(m_MenuTitel + " (" + m_creationtime + ")");
-    // frame.setIconImage(ing_logo);
+//    frame.setIconImage(ing_logo);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     // Create and set up the content pane.

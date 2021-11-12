@@ -41,179 +41,192 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
 public class GUILayout extends JPanel implements ItemListener {
-  /**
-   *
-   */
+	/**
+	 *
+	 */
 
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
-  private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+	private static final long serialVersionUID = 1L;
 
-  // * -3 Loglevel: OFF SEVERE WARNING INFO CONFIG FINE FINER FINEST ALL <br>
-  static final String[] c_levels = { "OFF", "SEVERE", "WARNING", "INFO", "CONFIG", "FINE", "FINER", "FINEST", "ALL" };
-  static final String[] c_DelFolderContents = { "Ja", "Nee" };
-  static final String[] c_LogToDisk = { "Ja", "Nee" };
+	// * -3 Loglevel: OFF SEVERE WARNING INFO CONFIG FINE FINER FINEST ALL <br>
+	static final String[] c_levels = { "OFF", "SEVERE", "WARNING", "INFO", "CONFIG", "FINE", "FINER", "FINEST", "ALL" };
+	static final String[] c_DelFolderContents = { "Ja", "Nee" };
+	static final String[] c_LogToDisk = { "Ja", "Nee" };
 
-  private Level m_Level = Level.INFO;
-  private Boolean m_toDisk = false;
+	private Level m_Level = Level.INFO;
+	private Boolean m_toDisk = false;
 
-  // Variables
-  private String m_RootDir = "c:\\";
-  private File m_GnuCashExecutable = new File("C:\\Program Files (x86)\\gnucash\\bin\\gnucash.exe");
-  private String newline = "\n";
+	// Variables
+	private String m_RootDir = "c:\\";
+	private File m_GnuCashExecutable = new File("C:\\Program Files (x86)\\gnucash\\bin\\gnucash.exe");
+	private String newline = "\n";
 
-  private JTextArea output;
+	private JTextArea output;
 
-  private JTextField OutputFilenameField;
-  private JTextField OPutputFolderField;
-  private JTextField CSVFileField;
-  private JTextField txtOutputFilename;
+	private JTextField OutputFilenameField;
+	private JTextField OPutputFolderField;
+	private JTextField CSVFileField;
+	private JTextField txtOutputFilename;
 
-  /**
-   * Defineer GUI layout
-   */
-  public GUILayout() {
+	/**
+	 * Defineer GUI layout
+	 */
+	public GUILayout() {
 
-    setLayout(new BorderLayout(0, 0));
+		setLayout(new BorderLayout(0, 0));
 
-    JMenuBar menuBar = new JMenuBar();
-    add(menuBar, BorderLayout.NORTH);
+		JMenuBar menuBar = new JMenuBar();
+		add(menuBar, BorderLayout.NORTH);
 
-    // Defineren Setting menu in menubalk:
-    JMenu mnSettings = new JMenu("Settings");
-    menuBar.add(mnSettings);
+		// Defineren Setting menu in menubalk:
+		JMenu mnSettings = new JMenu("Settings");
+		menuBar.add(mnSettings);
 
-    // Add Look and Feel
-    JMenu menuLookFeel = new JMenu("Look and Feel");
-    mnSettings.add(menuLookFeel);
+		// Add Look and Feel
+		JMenu menuLookFeel = new JMenu("Look and Feel");
+		mnSettings.add(menuLookFeel);
 
-    // Get all the available look and feel that we are going to use for
-    // creating the JMenuItem and assign the action listener to handle
-    // the selection of menu item to change the look and feel.
-    UIManager.LookAndFeelInfo[] lookAndFeels = UIManager.getInstalledLookAndFeels();
-    for (UIManager.LookAndFeelInfo lookAndFeelInfo : lookAndFeels) {
-      JMenuItem item = new JMenuItem(lookAndFeelInfo.getName());
-      item.addActionListener(event -> {
-        try {
-          // Set the look and feel for the frame and update the UI
-          // to use a new selected look and feel.
-          UIManager.setLookAndFeel(lookAndFeelInfo.getClassName());
-          SwingUtilities.updateComponentTreeUI(this);
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
-      });
-      menuLookFeel.add(item);
-    }
+		// Get all the available look and feel that we are going to use for
+		// creating the JMenuItem and assign the action listener to handle
+		// the selection of menu item to change the look and feel.
+		UIManager.LookAndFeelInfo[] lookAndFeels = UIManager.getInstalledLookAndFeels();
+		for (UIManager.LookAndFeelInfo lookAndFeelInfo : lookAndFeels) {
+			JMenuItem item = new JMenuItem(lookAndFeelInfo.getName());
+			item.addActionListener(event -> {
+				try {
+					// Set the look and feel for the frame and update the UI
+					// to use a new selected look and feel.
+					UIManager.setLookAndFeel(lookAndFeelInfo.getClassName());
+					SwingUtilities.updateComponentTreeUI(this);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			});
+			menuLookFeel.add(item);
+		}
 
-    // Option Location GnuCash exe
-    JMenuItem mntmGnuCashExe = new JMenuItem("GnuCash executable");
-    mntmGnuCashExe.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        JFileChooser fileChooser = new JFileChooser();
-        int option = fileChooser.showOpenDialog(GUILayout.this);
-        if (option == JFileChooser.APPROVE_OPTION) {
-          File file = fileChooser.getSelectedFile();
-          // mntmGnuCashExe.setText("GnuCash executable: " + file.getName());
-          LOGGER.log(Level.INFO, "GnuCash executable: " + file.getName());
-          m_GnuCashExecutable = file;
-        } else {
-          mntmGnuCashExe.setText("Command canceled");
-        }
-      }
-    });
-    mnSettings.add(mntmGnuCashExe);
+		// Option Location GnuCash exe
+		JMenuItem mntmGnuCashExe = new JMenuItem("GnuCash executable");
+		mntmGnuCashExe.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser fileChooser = new JFileChooser();
+				int option = fileChooser.showOpenDialog(GUILayout.this);
+				if (option == JFileChooser.APPROVE_OPTION) {
+					File file = fileChooser.getSelectedFile();
+					// mntmGnuCashExe.setText("GnuCash executable: " + file.getName());
+					LOGGER.log(Level.INFO, "GnuCash executable: " + file.getName());
+					m_GnuCashExecutable = file;
+				} else {
+					mntmGnuCashExe.setText("Command canceled");
+				}
+			}
+		});
+		mnSettings.add(mntmGnuCashExe);
 
-    // Do the layout.
-    JPanel panel = new JPanel();
-    add(panel, BorderLayout.CENTER);
-    panel.setLayout(new MigLayout("", "[46px,grow][][grow][205px,grow]", "[23px][23px][][][][][][][][grow][][][]"));
+		// Do the layout.
+		JScrollPane outputPane = new JScrollPane(output, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		// add(outputPane, BorderLayout.CENTER);
+		add(outputPane);
+//		outputPane.setMinimumSize(new Dimension(300, 350));
+//		outputPane.setPreferredSize(new Dimension(200, 350));
+		// outputPane.setVisible(true);
 
-    panel.setMinimumSize(new Dimension(300, 200));
-    panel.setPreferredSize(new Dimension(130, 110));
+		// Build output area.
+		try {
+			MyLogger.setup(m_Level, m_RootDir, m_toDisk);
+		} catch (IOException es) {
+			LOGGER.log(Level.SEVERE, Class.class.getName() + ": " + es.toString());
+			es.printStackTrace();
+		}
+		Logger rootLogger = Logger.getLogger("");
+		for (Handler handler : rootLogger.getHandlers()) {
+			if (handler instanceof TextAreaHandler) {
+				TextAreaHandler textAreaHandler = (TextAreaHandler) handler;
+				output = textAreaHandler.getTextArea();
+			}
+		}
 
-    JCheckBox chckbxConvertDecimalSeparator = new JCheckBox("Convert decimnal separator to dots (.)");
-    chckbxConvertDecimalSeparator.setHorizontalAlignment(SwingConstants.LEFT);
-    panel.add(chckbxConvertDecimalSeparator, "cell 0 0,alignx left,aligny top");
+		output.setEditable(false);
+		output.setTabSize(4);
+		output.setVisible(true);
 
-    JCheckBox chckbxAcountSeparateOFX = new JCheckBox("Accoounts in seperate OFX files");
-    chckbxAcountSeparateOFX.setSelected(true);
-    panel.add(chckbxAcountSeparateOFX, "cell 1 0");
+		JPanel panel = new JPanel();
+		outputPane.setColumnHeaderView(panel);
 
-    JCheckBox chckbxConvertDateFormat = new JCheckBox("Convert dates with dd-mm-yyyy to yyyymmdd");
-    chckbxConvertDateFormat.setHorizontalAlignment(SwingConstants.LEFT);
-    panel.add(chckbxConvertDateFormat, "cell 0 1,alignx center,aligny center");
+//    add(panel, BorderLayout.CENTER);
+		panel.setLayout(new MigLayout("", "[46px,grow][][grow][205px,grow]", "[23px][23px][23px][23px][23px][23px][][][]"));
 
-    JCheckBox chckbxSeperatorComma = new JCheckBox("Seperator comma (\",\")");
-    panel.add(chckbxSeperatorComma, "cell 0 2");
+		panel.setMinimumSize(new Dimension(350, 300));
+		panel.setPreferredSize(new Dimension(350, 290));
 
-    JCheckBox chckbxOutputFileSameAsInput = new JCheckBox("Output filename same as input");
-    chckbxOutputFileSameAsInput.setSelected(true);
-    panel.add(chckbxOutputFileSameAsInput, "cell 0 5");
+		JCheckBox chckbxConvertDecimalSeparator = new JCheckBox("Convert decimnal separator to dots (.)");
+		chckbxConvertDecimalSeparator.setHorizontalAlignment(SwingConstants.LEFT);
+		panel.add(chckbxConvertDecimalSeparator, "cell 0 0,alignx left,aligny top");
 
-    txtOutputFilename = new JTextField();
-    txtOutputFilename.setText("Output filename");
-    panel.add(txtOutputFilename, "cell 1 5,growx");
-    txtOutputFilename.setColumns(10);
+		JCheckBox chckbxAcountSeparateOFX = new JCheckBox("Accoounts in seperate OFX files");
+		chckbxAcountSeparateOFX.setHorizontalAlignment(SwingConstants.LEFT);
+		chckbxAcountSeparateOFX.setSelected(true);
+		panel.add(chckbxAcountSeparateOFX, "cell 1 0");
 
-    JButton btnOutputFolder = new JButton("Output folder");
-    btnOutputFolder.setHorizontalAlignment(SwingConstants.RIGHT);
-    panel.add(btnOutputFolder, "cell 0 7");
+		JCheckBox chckbxConvertDateFormat = new JCheckBox("Convert dates with dd-mm-yyyy to yyyymmdd");
+		chckbxConvertDateFormat.setHorizontalAlignment(SwingConstants.LEFT);
+		panel.add(chckbxConvertDateFormat, "cell 0 1,alignx left,aligny center");
 
-    JLabel lblOutputFolder = new JLabel("");
-    lblOutputFolder.setHorizontalAlignment(SwingConstants.LEFT);
-    panel.add(lblOutputFolder, "cell 1 7,alignx trailing");
+		JCheckBox chckbxSeperatorComma = new JCheckBox("Seperator comma (\",\")");
+		chckbxSeperatorComma.setHorizontalAlignment(SwingConstants.LEFT);
+		panel.add(chckbxSeperatorComma, "cell 0 2");
 
-    JButton btnCSVFile = new JButton("CSV File");
-    panel.add(btnCSVFile, "cell 0 8");
+		JCheckBox chckbxOutputFileSameAsInput = new JCheckBox("Output filename same as input");
+		chckbxOutputFileSameAsInput.setHorizontalAlignment(SwingConstants.RIGHT);
+		chckbxOutputFileSameAsInput.setSelected(true);
+		panel.add(chckbxOutputFileSameAsInput, "cell 0 3");
 
-    JLabel lblCSVFile = new JLabel("");
-    lblCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
-    panel.add(lblCSVFile, "cell 1 8,alignx trailing");
+		txtOutputFilename = new JTextField();
+		txtOutputFilename.setHorizontalAlignment(SwingConstants.LEFT);
+		txtOutputFilename.setText("Output filename");
+		panel.add(txtOutputFilename, "cell 1 3,growx");
+		txtOutputFilename.setColumns(10);
 
-    JButton btnConvert = new JButton("Convert");
-    panel.add(btnConvert, "cell 1 9");
+		JButton btnOutputFolder = new JButton("Output folder");
+		btnOutputFolder.setHorizontalAlignment(SwingConstants.RIGHT);
+		panel.add(btnOutputFolder, "cell 0 4,alignx right,aligny center");
 
-    JButton btnGNUCash = new JButton("GnuCash");
-    panel.add(btnGNUCash, "cell 0 11");
+		JLabel lblOutputFolder = new JLabel("");
+		lblOutputFolder.setHorizontalAlignment(SwingConstants.LEFT);
+		panel.add(lblOutputFolder, "cell 1 4,alignx left,aligny center");
 
-    JButton btnExit = new JButton("Exit");
-    btnExit.setHorizontalAlignment(SwingConstants.RIGHT);
-    panel.add(btnExit, "cell 1 11");
+		JButton btnCSVFile = new JButton("CSV File");
+		btnCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
+		panel.add(btnCSVFile, "cell 0 5,alignx right");
 
-    JPanel Outputpanel = new JPanel();
-    add(Outputpanel, BorderLayout.SOUTH);
+		JLabel lblCSVFile = new JLabel("");
+		lblCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
+		panel.add(lblCSVFile, "cell 1 5,alignx left,aligny center");
 
-    JScrollPane outputPane = new JScrollPane(output, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
-        ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		JButton btnConvert = new JButton("Convert");
+		panel.add(btnConvert, "flowx,cell 1 6,alignx left");
 
-    // Build output area.
-    try {
-      MyLogger.setup(m_Level, m_RootDir, m_toDisk);
-    } catch (IOException es) {
-      LOGGER.log(Level.SEVERE, Class.class.getName() + ": " + es.toString());
-      es.printStackTrace();
-    }
-    Logger rootLogger = Logger.getLogger("");
-    for (Handler handler : rootLogger.getHandlers()) {
-      if (handler instanceof TextAreaHandler) {
-        TextAreaHandler textAreaHandler = (TextAreaHandler) handler;
-        output = textAreaHandler.getTextArea();
-      }
-    }
+		JButton btnGNUCash = new JButton("GnuCash");
+		btnGNUCash.setHorizontalAlignment(SwingConstants.RIGHT);
+		panel.add(btnGNUCash, "cell 1 6,alignx right");
 
-    output.setEditable(false);
-    output.setTabSize(4);
-    output.setVisible(true);
+		JButton btnExit = new JButton("Exit");
+		btnExit.setHorizontalAlignment(SwingConstants.RIGHT);
+		panel.add(btnExit, "cell 1 7,alignx right");
 
-    Outputpanel.add(outputPane);
-    outputPane.setVisible(true);
-  }
+		// JPanel Outputpanel = new JPanel();
+		// add(Outputpanel, BorderLayout.SOUTH);
 
-  @Override
-  public void itemStateChanged(ItemEvent e) {
-    // TODO Auto-generated method stub
+//    Outputpanel.add(outputPane);
+		outputPane.setVisible(true);
+	}
 
-  }
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		// TODO Auto-generated method stub
+
+	}
 
 }
