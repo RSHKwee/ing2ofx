@@ -67,6 +67,11 @@ public class GUILayout extends JPanel implements ItemListener {
 	private JTextField OPutputFolderField;
 	private JTextField CSVFileField;
 	private JTextField txtOutputFilename;
+	private final JTextArea textArea = new JTextArea();
+	/**
+	 * @wbp.nonvisual location=10,319
+	 */
+	private final JPanel panel_1 = new JPanel();
 
 	/**
 	 * Defineer GUI layout
@@ -129,9 +134,10 @@ public class GUILayout extends JPanel implements ItemListener {
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		// add(outputPane, BorderLayout.CENTER);
 		add(outputPane);
-//		outputPane.setMinimumSize(new Dimension(300, 350));
-//		outputPane.setPreferredSize(new Dimension(200, 350));
-		// outputPane.setVisible(true);
+		outputPane.setMinimumSize(new Dimension(500, 350));
+		outputPane.setPreferredSize(new Dimension(500, 350));
+		outputPane.setVisible(true);
+		// panel_1.add(outputPane);
 
 		// Build output area.
 		try {
@@ -156,7 +162,8 @@ public class GUILayout extends JPanel implements ItemListener {
 		outputPane.setColumnHeaderView(panel);
 
 //    add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[46px,grow][][grow][205px,grow]", "[23px][23px][23px][23px][23px][23px][][][]"));
+		panel.setLayout(
+				new MigLayout("", "[46px,grow][][grow][205px,grow]", "[23px][23px][23px][23px][23px][23px][][][][]"));
 
 		panel.setMinimumSize(new Dimension(350, 300));
 		panel.setPreferredSize(new Dimension(350, 290));
