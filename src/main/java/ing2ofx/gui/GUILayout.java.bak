@@ -4,7 +4,6 @@ package ing2ofx.gui;
  * ING 2 OFX Convertor GUI
  */
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -17,17 +16,15 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
@@ -38,7 +35,6 @@ import logger.MyLogger;
 import logger.TextAreaHandler;
 
 import javax.swing.JTextField;
-import javax.swing.ScrollPaneConstants;
 
 public class GUILayout extends JPanel implements ItemListener {
   /**
@@ -58,15 +54,15 @@ public class GUILayout extends JPanel implements ItemListener {
 
   // Variables
   private String m_RootDir = "c:\\";
-  private File m_GnuCashExecutable = new File("C:\\Program Files (x86)\\gnucash\\bin\\gnucash.exe");
+  private File m_GnuCashExecutable;
   private String newline = "\n";
 
   private JTextArea output;
 
+  private final JCheckBox chckbxConvertDateFormat = new JCheckBox("Convert dates with dd-mm-yyyy to yyyymmdd");
   private JTextField OutputFilenameField;
   private JTextField OPutputFolderField;
   private JTextField CSVFileField;
-  private JTextField txtOutputFilename;
 
   /**
    * Defineer GUI layout
@@ -114,8 +110,7 @@ public class GUILayout extends JPanel implements ItemListener {
         int option = fileChooser.showOpenDialog(GUILayout.this);
         if (option == JFileChooser.APPROVE_OPTION) {
           File file = fileChooser.getSelectedFile();
-          // mntmGnuCashExe.setText("GnuCash executable: " + file.getName());
-          LOGGER.log(Level.INFO, "GnuCash executable: " + file.getName());
+          mntmGnuCashExe.setText("GnuCash executable: " + file.getName());
           m_GnuCashExecutable = file;
         } else {
           mntmGnuCashExe.setText("Command canceled");
@@ -124,68 +119,56 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     mnSettings.add(mntmGnuCashExe);
 
-    // Do the layout.
     JPanel panel = new JPanel();
     add(panel, BorderLayout.CENTER);
-    panel.setLayout(new MigLayout("", "[46px,grow][][grow][205px,grow]", "[23px][23px][][][][][][][][grow][][][]"));
-
-    panel.setMinimumSize(new Dimension(300, 200));
-    panel.setPreferredSize(new Dimension(130, 110));
+    panel.setLayout(new MigLayout("", "[46px][][grow][205px,grow]", "[23px][23px][][][][][][][][][]"));
 
     JCheckBox chckbxConvertDecimalSeparator = new JCheckBox("Convert decimnal separator to dots (.)");
     chckbxConvertDecimalSeparator.setHorizontalAlignment(SwingConstants.LEFT);
     panel.add(chckbxConvertDecimalSeparator, "cell 0 0,alignx left,aligny top");
-
-    JCheckBox chckbxAcountSeparateOFX = new JCheckBox("Accoounts in seperate OFX files");
-    chckbxAcountSeparateOFX.setSelected(true);
-    panel.add(chckbxAcountSeparateOFX, "cell 1 0");
-
-    JCheckBox chckbxConvertDateFormat = new JCheckBox("Convert dates with dd-mm-yyyy to yyyymmdd");
     chckbxConvertDateFormat.setHorizontalAlignment(SwingConstants.LEFT);
     panel.add(chckbxConvertDateFormat, "cell 0 1,alignx center,aligny center");
 
-    JCheckBox chckbxSeperatorComma = new JCheckBox("Seperator comma (\",\")");
-    panel.add(chckbxSeperatorComma, "cell 0 2");
-
     JCheckBox chckbxOutputFileSameAsInput = new JCheckBox("Output filename same as input");
     chckbxOutputFileSameAsInput.setSelected(true);
-    panel.add(chckbxOutputFileSameAsInput, "cell 0 5");
+    panel.add(chckbxOutputFileSameAsInput, "cell 0 2");
 
-    txtOutputFilename = new JTextField();
-    txtOutputFilename.setText("Output filename");
-    panel.add(txtOutputFilename, "cell 1 5,growx");
-    txtOutputFilename.setColumns(10);
+    JLabel lblOutputFileName = new JLabel("Output filename:");
+    lblOutputFileName.setHorizontalAlignment(SwingConstants.CENTER);
+    panel.add(lblOutputFileName, "cell 0 3,alignx trailing,aligny top");
 
-    JButton btnOutputFolder = new JButton("Output folder");
-    btnOutputFolder.setHorizontalAlignment(SwingConstants.RIGHT);
-    panel.add(btnOutputFolder, "cell 0 7");
+    OutputFilenameField = new JTextField();
+    panel.add(OutputFilenameField, "cell 2 3,growx");
+    OutputFilenameField.setColumns(10);
 
-    JLabel lblOutputFolder = new JLabel("");
-    lblOutputFolder.setHorizontalAlignment(SwingConstants.LEFT);
-    panel.add(lblOutputFolder, "cell 1 7,alignx trailing");
+    JCheckBox chckbxAcountSeparateOFX = new JCheckBox("Accoounts in seperate OFX files");
+    chckbxAcountSeparateOFX.setSelected(true);
+    panel.add(chckbxAcountSeparateOFX, "cell 0 4");
 
-    JButton btnCSVFile = new JButton("CSV File");
-    panel.add(btnCSVFile, "cell 0 8");
+    JLabel lblOutputFolder = new JLabel("Output folder:");
+    lblOutputFolder.setHorizontalAlignment(SwingConstants.RIGHT);
+    panel.add(lblOutputFolder, "cell 0 5,alignx trailing");
 
-    JLabel lblCSVFile = new JLabel("");
+    OPutputFolderField = new JTextField();
+    panel.add(OPutputFolderField, "cell 2 5,growx");
+    OPutputFolderField.setColumns(10);
+
+    JLabel lblCSVFile = new JLabel("CSV file:");
     lblCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
-    panel.add(lblCSVFile, "cell 1 8,alignx trailing");
+    panel.add(lblCSVFile, "cell 0 6,alignx trailing");
+
+    CSVFileField = new JTextField();
+    panel.add(CSVFileField, "cell 2 6,growx");
+    CSVFileField.setColumns(10);
 
     JButton btnConvert = new JButton("Convert");
-    panel.add(btnConvert, "cell 1 9");
+    panel.add(btnConvert, "cell 2 7");
 
     JButton btnGNUCash = new JButton("GnuCash");
-    panel.add(btnGNUCash, "cell 0 11");
+    panel.add(btnGNUCash, "cell 3 7");
 
     JButton btnExit = new JButton("Exit");
-    btnExit.setHorizontalAlignment(SwingConstants.RIGHT);
-    panel.add(btnExit, "cell 1 11");
-
-    JPanel Outputpanel = new JPanel();
-    add(Outputpanel, BorderLayout.SOUTH);
-
-    JScrollPane outputPane = new JScrollPane(output, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
-        ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+    panel.add(btnExit, "cell 3 9");
 
     // Build output area.
     try {
@@ -202,12 +185,9 @@ public class GUILayout extends JPanel implements ItemListener {
       }
     }
 
+    // output = new JTextArea(12, 10);
     output.setEditable(false);
     output.setTabSize(4);
-    output.setVisible(true);
-
-    Outputpanel.add(outputPane);
-    outputPane.setVisible(true);
   }
 
   @Override
