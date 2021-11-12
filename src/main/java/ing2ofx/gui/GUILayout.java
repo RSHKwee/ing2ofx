@@ -111,7 +111,7 @@ public class GUILayout extends JPanel implements ItemListener {
       @Override
       public void actionPerformed(ActionEvent e) {
         JFileChooser fileChooser = new JFileChooser();
-        int option = fileChooser.showOpenDialog(GUILayout.this);
+        int option = fileChooser.showOpenDialog(getParent());
         if (option == JFileChooser.APPROVE_OPTION) {
           File file = fileChooser.getSelectedFile();
           // mntmGnuCashExe.setText("GnuCash executable: " + file.getName());
@@ -136,7 +136,7 @@ public class GUILayout extends JPanel implements ItemListener {
     chckbxConvertDecimalSeparator.setHorizontalAlignment(SwingConstants.LEFT);
     panel.add(chckbxConvertDecimalSeparator, "cell 0 0,alignx left,aligny top");
 
-    JCheckBox chckbxAcountSeparateOFX = new JCheckBox("Accoounts in seperate OFX files");
+    JCheckBox chckbxAcountSeparateOFX = new JCheckBox("Accounts in seperate OFX files");
     chckbxAcountSeparateOFX.setSelected(true);
     panel.add(chckbxAcountSeparateOFX, "cell 1 0");
 
@@ -207,7 +207,6 @@ public class GUILayout extends JPanel implements ItemListener {
     output.setVisible(true);
 
     Outputpanel.add(outputPane);
-    outputPane.setVisible(true);
   }
 
   @Override
