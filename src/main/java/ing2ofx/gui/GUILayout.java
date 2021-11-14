@@ -86,7 +86,7 @@ public class GUILayout extends JPanel implements ItemListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fileChooser = new JFileChooser(m_GnuCashExecutable);
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+				fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 				int option = fileChooser.showOpenDialog(GUILayout.this);
 				if (option == JFileChooser.APPROVE_OPTION) {
 					File file = fileChooser.getSelectedFile();
@@ -265,7 +265,7 @@ public class GUILayout extends JPanel implements ItemListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fileChooser = new JFileChooser(m_GnuCashExecutable);
-        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 				int option = fileChooser.showOpenDialog(GUILayout.this);
 				if (option == JFileChooser.APPROVE_OPTION) {
 					File file = fileChooser.getSelectedFile();
@@ -296,7 +296,7 @@ public class GUILayout extends JPanel implements ItemListener {
 					m_CsvFile = file.getAbsolutePath();
 					if (chckbxOutputFileSameAsInput.isSelected()) {
 						String l_filename;
-						l_filename = library.FileUtils.getFileNameWithoutExtension(file);
+						l_filename = library.FileUtils.getFileNameWithoutExtension(file) + ".ofx";
 						txtOutputFilename.setText(l_filename);
 					}
 					lblOutputFolder.setText(file.getParent());
@@ -307,6 +307,9 @@ public class GUILayout extends JPanel implements ItemListener {
 
 		JButton btnConvert = new JButton("Convert to OFX");
 		panel.add(btnConvert, "cell 1 6");
+
+		JLabel lblNewLabel = new JLabel("    ");
+		panel.add(lblNewLabel, "cell 0 7");
 
 		panel.add(lblGNUCashExe, "cell 0 8");
 
