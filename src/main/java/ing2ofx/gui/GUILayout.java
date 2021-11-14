@@ -31,14 +31,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import logger.MyLogger;
 import logger.TextAreaHandler;
@@ -61,6 +57,7 @@ public class GUILayout extends JPanel implements ItemListener {
 	private String newline = "\n";
 	private File m_GnuCashExecutable = new File("C:\\Program Files (x86)\\gnucash\\bin\\gnucash.exe");
 	private String m_OutputFolder;
+	private String m_CsvFile;
 
 	private JTextArea output;
 
@@ -72,7 +69,6 @@ public class GUILayout extends JPanel implements ItemListener {
 	 * 
 	 * @param ActionEvent
 	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public GUILayout() {
 		setLayout(new BorderLayout(0, 0));
 
@@ -170,7 +166,6 @@ public class GUILayout extends JPanel implements ItemListener {
 			}
 		}
 
-		// output = new JTextArea(12, 10);
 		output.setEditable(false);
 		output.setTabSize(4);
 		JScrollPane outputPane = new JScrollPane(output, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
@@ -232,7 +227,7 @@ public class GUILayout extends JPanel implements ItemListener {
 				LOGGER.log(Level.CONFIG, "Seperator comma (\",\") Default semicolon (\";\") :" + Boolean.toString(selected));
 			}
 		});
-		panel.add(chckbxSeperatorComma, "cell 0 2");
+		panel.add(chckbxSeperatorComma, "cell 1 1");
 
 		txtOutputFilename = new JTextField();
 		JCheckBox chckbxOutputFileSameAsInput = new JCheckBox("Output filename same as input");
@@ -250,18 +245,18 @@ public class GUILayout extends JPanel implements ItemListener {
 				}
 			}
 		});
-		panel.add(chckbxOutputFileSameAsInput, "cell 0 3");
+		panel.add(chckbxOutputFileSameAsInput, "cell 0 4");
 
 		txtOutputFilename.setHorizontalAlignment(SwingConstants.LEFT);
 		txtOutputFilename.setText("Output filename");
 		txtOutputFilename.setEnabled(false);
 
-		panel.add(txtOutputFilename, "cell 1 3");
-		txtOutputFilename.setColumns(10);
+		panel.add(txtOutputFilename, "cell 1 4");
+		txtOutputFilename.setColumns(100);
 
 		JLabel lblOutputFolder = new JLabel("");
 		lblOutputFolder.setHorizontalAlignment(SwingConstants.LEFT);
-		panel.add(lblOutputFolder, "cell 1 4");
+		panel.add(lblOutputFolder, "cell 1 5");
 
 		JButton btnOutputFolder = new JButton("Output folder");
 		btnOutputFolder.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -275,38 +270,45 @@ public class GUILayout extends JPanel implements ItemListener {
 					LOGGER.log(Level.INFO, "Output folder: " + file.getAbsolutePath());
 					lblOutputFolder.setText(file.getAbsolutePath());
 					m_OutputFolder = file.getAbsolutePath();
-				} else {
-					mntmGnuCashExe.setText("Command canceled");
 				}
 			}
 		});
-		panel.add(btnOutputFolder, "cell 0 4");
+		panel.add(btnOutputFolder, "cell 0 5");
 
 		JLabel lblCSVFile = new JLabel("");
 		lblCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
-		panel.add(lblCSVFile, "cell 1 5");
+		panel.add(lblCSVFile, "cell 1 3");
 
 		JButton btnCSVFile = new JButton("CSV File");
 		btnCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
-		panel.add(btnCSVFile, "cell 0 5");
+		btnCSVFile.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser fileChooser = new JFileChooser();
+				int option = fileChooser.showOpenDialog(GUILayout.this);
+				if (option == JFileChooser.APPROVE_OPTION) {
+					File file = fileChooser.getSelectedFile();
+					LOGGER.log(Level.INFO, "CSV File: " + file.getAbsolutePath());
+					lblCSVFile.setText(file.getAbsolutePath());
+					m_CsvFile = file.getAbsolutePath();
+					if (chckbxOutputFileSameAsInput.isSelected()) {
+						String l_filename = file.getName();
+						txtOutputFilename.setText(l_filename);
+					}
+					lblOutputFolder.setText(file.getParent());
+				}
+			}
+		});
+		panel.add(btnCSVFile, "cell 0 3");
 
 		JButton btnConvert = new JButton("Convert to OFX");
 		panel.add(btnConvert, "cell 1 6");
 
-		panel.add(lblGNUCashExe, "cell 0 7");
+		panel.add(lblGNUCashExe, "cell 0 8");
 
 		JButton btnGNUCash = new JButton("Start GnuCash");
 		btnGNUCash.setHorizontalAlignment(SwingConstants.RIGHT);
-		panel.add(btnGNUCash, "cell 1 7");
-
-		JButton btnExit = new JButton("Exit");
-		btnExit.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnExit.setHorizontalAlignment(SwingConstants.RIGHT);
-		panel.add(btnExit, "cell 1 8");
+		panel.add(btnGNUCash, "cell 1 8");
 
 		bottomHalf.setMinimumSize(new Dimension(500, 100));
 		bottomHalf.setPreferredSize(new Dimension(500, 400));
