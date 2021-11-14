@@ -1,11 +1,10 @@
 package ing2ofx.gui;
 
 /**
- * Post 21 Scenario generator
+ * ING 2 OFX Convertor GUI
  */
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -13,11 +12,11 @@ import java.awt.event.ItemListener;
 
 import java.io.File;
 import java.io.IOException;
+
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -34,47 +33,17 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
+import net.miginfocom.swing.MigLayout;
 import logger.MyLogger;
 import logger.TextAreaHandler;
 
-public class GUILayout extends JPanel implements ItemListener {
-  /**
-  static final String[] c_levels = { "OFF", "SEVERE", "WARNING", "INFO", "CONFIG", "FINE", "FINER", "FINEST", "ALL" };
-  static final String[] c_DelFolderContents = { "Ja", "Nee" };
-  static final String[] c_LogToDisk = { "Ja", "Nee" };
+import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 
-  private Level m_Level = Level.INFO;
-  private Boolean m_toDisk = false;
+public class GUILayout extends JPanel implements ItemListener {
 	/**
 	 *
 	 */
-	class SharedListSelectionHandler implements ListSelectionListener {
-		@Override
-		/**
-		 *
-		 * @param e
-		 */
-		public void valueChanged(ListSelectionEvent e) {
-			ListSelectionModel lsm = (ListSelectionModel) e.getSource();
-
-			if (lsm.isSelectionEmpty()) {
-				btnGenereerScenarios.setEnabled(false);
-				btnAnalInpOutpButton.setEnabled(false);
-			} else {
-				// Find out which indexes are selected.
-				int minIndex = lsm.getMinSelectionIndex();
-				int maxIndex = lsm.getMaxSelectionIndex();
-				selected.clear();
-				for (int i = minIndex; i <= maxIndex; i++) {
-					if (lsm.isSelectedIndex(i)) {
-						selected.add(i);
-					}
-				}
-				btnGenereerScenarios.setEnabled(true);
-				btnAnalInpOutpButton.setEnabled(true);
-			}
-		}
-	}
 
 	private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 	private static final long serialVersionUID = 1L;
@@ -86,51 +55,25 @@ public class GUILayout extends JPanel implements ItemListener {
 
 	private Level m_Level = Level.INFO;
 	private Boolean m_toDisk = false;
-	private StringBuffer choices;
 
 	// Variables
 	private String m_RootDir = "c:\\";
-	private String newline = "\n";
 	private File m_GnuCashExecutable = new File("C:\\Program Files (x86)\\gnucash\\bin\\gnucash.exe");
-
-	private ArrayList<Integer> selected = new ArrayList<Integer>();
-
-	private JCheckBox perPostButton;
-	private JCheckBox jenkinsScenButton;
-	private JCheckBox jenkRegressButton;
-	private JCheckBox jenkCopyButton;
-
-	private final JButton btnGenereerScenarios = new JButton("Genereer scenario's");
-	private final JButton btnOpenCnfFile = new JButton("Open configuratie bestand");
-	private final JButton btnAnalInpOutpButton = new JButton("Analyse inp/outp best");
+	private String newline = "\n";
 
 	private JTextArea output;
-	@SuppressWarnings("rawtypes")
-	private JList list;
-	@SuppressWarnings("rawtypes")
-	private DefaultListModel listModel;
-	@SuppressWarnings("rawtypes")
-	private DefaultListModel listModel2;
-	private ListSelectionModel listSelectionModel;
-
-	private JLabel lblGNUCashExe = new JLabel("");
 
 	private JTextField OutputFilenameField;
 	private JTextField OPutputFolderField;
 	private JTextField CSVFileField;
 	private JTextField txtOutputFilename;
+	private final JTextArea textArea = new JTextArea();
 
 	/**
 	 * Defineer GUI layout
 	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public GUILayout() {
-		listModel = new DefaultListModel();
-		listModel2 = new DefaultListModel();
-		list = new JList(listModel);
 
-		listSelectionModel = list.getSelectionModel();
-		listSelectionModel.addListSelectionListener(new SharedListSelectionHandler());
 		setLayout(new BorderLayout(0, 0));
 
 		JMenuBar menuBar = new JMenuBar();
@@ -140,26 +83,9 @@ public class GUILayout extends JPanel implements ItemListener {
 		JMenu mnSettings = new JMenu("Settings");
 		menuBar.add(mnSettings);
 
-		lblGNUCashExe.setText("GnuCash executable: " + m_GnuCashExecutable.getAbsolutePath());
-		// Option Location GnuCash exe
-		JMenuItem mntmGnuCashExe = new JMenuItem("GnuCash executable");
-		mntmGnuCashExe.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JFileChooser fileChooser = new JFileChooser();
-				int option = fileChooser.showOpenDialog(GUILayout.this);
-				if (option == JFileChooser.APPROVE_OPTION) {
-					File file = fileChooser.getSelectedFile();
-					// mntmGnuCashExe.setText("GnuCash executable: " + file.getName());
-					LOGGER.log(Level.INFO, "GnuCash executable: " + file.getAbsolutePath());
-					lblGNUCashExe.setText("GnuCash executable: " + file.getAbsolutePath());
-					m_GnuCashExecutable = file;
-		});
-		mnSettings.add(mntmGnuCashExe);
-
-		// Toevoegen Look and Feel
-		JMenu menu = new JMenu("Look and Feel");
-		mnSettings.add(menu);
+		// Add Look and Feel
+		JMenu menuLookFeel = new JMenu("Look and Feel");
+		mnSettings.add(menuLookFeel);
 
 		// Get all the available look and feel that we are going to use for
 		// creating the JMenuItem and assign the action listener to handle
@@ -177,22 +103,37 @@ public class GUILayout extends JPanel implements ItemListener {
 					e.printStackTrace();
 				}
 			});
-			menu.add(item);
+			menuLookFeel.add(item);
 		}
 
+		// Option Location GnuCash exe
+		JMenuItem mntmGnuCashExe = new JMenuItem("GnuCash executable");
+		mntmGnuCashExe.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser fileChooser = new JFileChooser();
+				int option = fileChooser.showOpenDialog(GUILayout.this);
+				if (option == JFileChooser.APPROVE_OPTION) {
+					File file = fileChooser.getSelectedFile();
+					// mntmGnuCashExe.setText("GnuCash executable: " + file.getName());
+					LOGGER.log(Level.INFO, "GnuCash executable: " + file.getName());
+					m_GnuCashExecutable = file;
+				} else {
+					mntmGnuCashExe.setText("Command canceled");
+				}
+			}
+		});
+		mnSettings.add(mntmGnuCashExe);
+
 		// Do the layout.
-		JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		add(splitPane);
-
-		JPanel topHalf = new JPanel();
-		topHalf.setLayout(new BoxLayout(topHalf, BoxLayout.LINE_AXIS));
-
-		topHalf.setMinimumSize(new Dimension(1, 1));
-		topHalf.setPreferredSize(new Dimension(1, 1));
-		splitPane.add(topHalf);
-
-		JPanel bottomHalf = new JPanel();
-		bottomHalf.setLayout(new BoxLayout(bottomHalf, BoxLayout.X_AXIS));
+		JScrollPane outputPane = new JScrollPane(output, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		// add(outputPane, BorderLayout.CENTER);
+		add(outputPane);
+		outputPane.setMinimumSize(new Dimension(500, 350));
+		outputPane.setPreferredSize(new Dimension(500, 350));
+		outputPane.setVisible(true);
+		// panel_1.add(outputPane);
 
 		// Build output area.
 		try {
@@ -208,18 +149,12 @@ public class GUILayout extends JPanel implements ItemListener {
 				output = textAreaHandler.getTextArea();
 			}
 		}
-
-		// output = new JTextArea(12, 10);
+		output.setPreferredSize(new Dimension(1000, 1000));
 		output.setEditable(false);
 		output.setTabSize(4);
-		JScrollPane outputPane = new JScrollPane(output, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
-				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		bottomHalf.add(outputPane);
+		output.setVisible(true);
 
 		JPanel panel = new JPanel();
-		outputPane.setColumnHeaderView(panel);
-		panel.setLayout(new MigLayout("", "[129px][65px,grow][111px,grow][105px][87px][76px]", "[23px][][][]"));
-//		JPanel panel = new JPanel();
 		outputPane.setColumnHeaderView(panel);
 		outputPane.setSize(300, 500);
 
@@ -232,7 +167,7 @@ public class GUILayout extends JPanel implements ItemListener {
 
 		JCheckBox chckbxConvertDecimalSeparator = new JCheckBox("Convert decimnal separator to dots (.)");
 		chckbxConvertDecimalSeparator.setHorizontalAlignment(SwingConstants.LEFT);
-		panel.add(chckbxConvertDecimalSeparator, "cell 0 0");
+		panel.add(chckbxConvertDecimalSeparator, "cell 0 0,alignx left,aligny top");
 
 		JCheckBox chckbxAcountSeparateOFX = new JCheckBox("Accoounts in seperate OFX files");
 		chckbxAcountSeparateOFX.setHorizontalAlignment(SwingConstants.LEFT);
@@ -241,7 +176,7 @@ public class GUILayout extends JPanel implements ItemListener {
 
 		JCheckBox chckbxConvertDateFormat = new JCheckBox("Convert dates with dd-mm-yyyy to yyyymmdd");
 		chckbxConvertDateFormat.setHorizontalAlignment(SwingConstants.LEFT);
-		panel.add(chckbxConvertDateFormat, "cell 0 1");
+		panel.add(chckbxConvertDateFormat, "cell 0 1,alignx left,aligny center");
 
 		JCheckBox chckbxSeperatorComma = new JCheckBox("Seperator comma (\",\")");
 		chckbxSeperatorComma.setHorizontalAlignment(SwingConstants.LEFT);
@@ -255,52 +190,47 @@ public class GUILayout extends JPanel implements ItemListener {
 		txtOutputFilename = new JTextField();
 		txtOutputFilename.setHorizontalAlignment(SwingConstants.LEFT);
 		txtOutputFilename.setText("Output filename");
-		panel.add(txtOutputFilename, "cell 1 3");
+		panel.add(txtOutputFilename, "cell 1 3,growx");
 		txtOutputFilename.setColumns(10);
 
 		JButton btnOutputFolder = new JButton("Output folder");
 		btnOutputFolder.setHorizontalAlignment(SwingConstants.RIGHT);
-		panel.add(btnOutputFolder, "cell 0 4");
+		panel.add(btnOutputFolder, "cell 0 4,alignx right,aligny center");
 
 		JLabel lblOutputFolder = new JLabel("");
 		lblOutputFolder.setHorizontalAlignment(SwingConstants.LEFT);
-		panel.add(lblOutputFolder, "cell 1 4");
+		panel.add(lblOutputFolder, "cell 1 4,alignx left,aligny center");
 
 		JButton btnCSVFile = new JButton("CSV File");
 		btnCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
-		panel.add(btnCSVFile, "cell 0 5");
+		panel.add(btnCSVFile, "cell 0 5,alignx right");
 
 		JLabel lblCSVFile = new JLabel("");
 		lblCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
-		panel.add(lblCSVFile, "cell 1 5");
+		panel.add(lblCSVFile, "cell 1 5,alignx left,aligny center");
 
 		JButton btnConvert = new JButton("Convert");
-		panel.add(btnConvert, "cell 1 6");
-
-		panel.add(lblGNUCashExe, "cell 0 7");
-
-		JButton btnExit = new JButton("Exit");
-		btnExit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		panel.add(btnConvert, "flowx,cell 1 6,alignx left");
 
 		JButton btnGNUCash = new JButton("GnuCash");
 		btnGNUCash.setHorizontalAlignment(SwingConstants.RIGHT);
-		panel.add(btnGNUCash, "cell 1 7");
+		panel.add(btnGNUCash, "cell 1 6,alignx right");
+
+		JButton btnExit = new JButton("Exit");
 		btnExit.setHorizontalAlignment(SwingConstants.RIGHT);
-		panel.add(btnExit, "cell 1 8");
+		panel.add(btnExit, "cell 1 7,alignx right");
 
-		bottomHalf.setMinimumSize(new Dimension(500, 100));
-		bottomHalf.setPreferredSize(new Dimension(500, 400));
-		splitPane.add(bottomHalf);
+		// JPanel Outputpanel = new JPanel();
+		// add(Outputpanel, BorderLayout.SOUTH);
 
+//    Outputpanel.add(outputPane);
+		outputPane.setVisible(true);
 	}
 
-  @Override
-  public void itemStateChanged(ItemEvent e) {
-    // TODO Auto-generated method stub
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		// TODO Auto-generated method stub
 
-  }
+	}
 
 }
