@@ -11,21 +11,16 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.swing.AbstractButton;
 import javax.swing.BoxLayout;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
-
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -79,27 +74,17 @@ public class GUILayout extends JPanel implements ItemListener {
 	static final String[] c_DelFolderContents = { "Ja", "Nee" };
 	static final String[] c_LogToDisk = { "Ja", "Nee" };
 
-	private Level m_Level = Level.INFO;
+	private Level m_Level = Level.CONFIG;
 	private Boolean m_toDisk = false;
-	private StringBuffer choices;
 
 	// Variables
 	private String m_RootDir = "c:\\";
 	private String newline = "\n";
 	private File m_GnuCashExecutable = new File("C:\\Program Files (x86)\\gnucash\\bin\\gnucash.exe");
 
-	private JCheckBox perPostButton;
-	private JCheckBox jenkinsScenButton;
-	private JCheckBox jenkRegressButton;
-	private JCheckBox jenkCopyButton;
-
 	private JTextArea output;
 
 	private JLabel lblGNUCashExe = new JLabel("");
-
-	private JTextField OutputFilenameField;
-	private JTextField OPutputFolderField;
-	private JTextField CSVFileField;
 	private JTextField txtOutputFilename;
 
 	/**
@@ -229,34 +214,67 @@ public class GUILayout extends JPanel implements ItemListener {
 		chckbxConvertDecimalSeparator.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AbstractButton abstractButton = (AbstractButton) e.getSource();
-				boolean selected = abstractButton.getModel().isSelected();
-				LOGGER.log(Level.INFO, "Convert decimal to dots:" + Boolean.toString(selected));
+				boolean selected = chckbxConvertDecimalSeparator.isSelected();
+				LOGGER.log(Level.CONFIG, "Convert decimal to dots:" + Boolean.toString(selected));
 			}
 		});
 		panel.add(chckbxConvertDecimalSeparator, "cell 0 0");
 
-		JCheckBox chckbxAcountSeparateOFX = new JCheckBox("Accoounts in seperate OFX files");
+		JCheckBox chckbxAcountSeparateOFX = new JCheckBox("Accounts in seperate OFX files");
 		chckbxAcountSeparateOFX.setHorizontalAlignment(SwingConstants.LEFT);
 		chckbxAcountSeparateOFX.setSelected(true);
+		chckbxAcountSeparateOFX.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        boolean selected = chckbxAcountSeparateOFX.isSelected();
+        LOGGER.log(Level.CONFIG, "Accounts in separate OFX files :" + Boolean.toString(selected));
+      }
+    });
 		panel.add(chckbxAcountSeparateOFX, "cell 1 0");
 
 		JCheckBox chckbxConvertDateFormat = new JCheckBox("Convert dates with dd-mm-yyyy to yyyymmdd");
 		chckbxConvertDateFormat.setHorizontalAlignment(SwingConstants.LEFT);
+		chckbxConvertDateFormat.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        boolean selected = chckbxConvertDateFormat.isSelected();
+        LOGGER.log(Level.CONFIG, "Convert dates with dd-mm-yyyy to yyyymmdd :" + Boolean.toString(selected));
+      }
+    });		
 		panel.add(chckbxConvertDateFormat, "cell 0 1");
 
-		JCheckBox chckbxSeperatorComma = new JCheckBox("Seperator comma (\",\")");
+		JCheckBox chckbxSeperatorComma = new JCheckBox("Seperator comma (\",\") Default semicolon (\";\")");
 		chckbxSeperatorComma.setHorizontalAlignment(SwingConstants.LEFT);
+		chckbxSeperatorComma.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        boolean selected = chckbxSeperatorComma.isSelected();
+        LOGGER.log(Level.CONFIG, "Seperator comma (\",\") Default semicolon (\";\") :" + Boolean.toString(selected));
+      }
+    });
 		panel.add(chckbxSeperatorComma, "cell 0 2");
 
+    txtOutputFilename = new JTextField();
 		JCheckBox chckbxOutputFileSameAsInput = new JCheckBox("Output filename same as input");
 		chckbxOutputFileSameAsInput.setHorizontalAlignment(SwingConstants.RIGHT);
 		chckbxOutputFileSameAsInput.setSelected(true);
+		chckbxOutputFileSameAsInput.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        boolean selected = chckbxOutputFileSameAsInput.isSelected();
+        LOGGER.log(Level.CONFIG, "Output filename same as input : " + Boolean.toString(selected));
+        if (selected) {
+          txtOutputFilename.setEnabled(false);
+        } else {
+          txtOutputFilename.setEnabled(true);
+        }
+      }
+    });		
 		panel.add(chckbxOutputFileSameAsInput, "cell 0 3");
 
-		txtOutputFilename = new JTextField();
 		txtOutputFilename.setHorizontalAlignment(SwingConstants.LEFT);
 		txtOutputFilename.setText("Output filename");
+    txtOutputFilename.setEnabled(false);
 		panel.add(txtOutputFilename, "cell 1 3");
 		txtOutputFilename.setColumns(10);
 
@@ -300,37 +318,10 @@ public class GUILayout extends JPanel implements ItemListener {
 
 	}
 
-	@Override
-	/**
-	 * Nagaan welke boxes zijn geselecteerd.
-	 *
-	 * @param e GUI Event
-	 */
-	public void itemStateChanged(ItemEvent e) {
-		int index = 0;
-		char c = '-';
-		Object source = e.getItemSelectable();
+  @Override
+  public void itemStateChanged(ItemEvent e) {
+    // TODO Auto-generated method stub
+    
+  }
 
-		if (source == perPostButton) {
-			index = 0;
-			c = 'p';
-		} else if (source == jenkinsScenButton) {
-			index = 1;
-			c = 's';
-		} else if (source == jenkRegressButton) {
-			index = 2;
-			c = 'r';
-		} else if (source == jenkCopyButton) {
-			index = 3;
-			c = 'c';
-		}
-
-		// Now that we know which button was pushed, find out
-		// whether it was selected or deselected.
-		if (e.getStateChange() == ItemEvent.DESELECTED) {
-			c = '-';
-		}
-		// Apply the change to the string.
-		choices.setCharAt(index, c);
-	}
 }
