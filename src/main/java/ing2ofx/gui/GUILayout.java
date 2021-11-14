@@ -86,6 +86,7 @@ public class GUILayout extends JPanel implements ItemListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fileChooser = new JFileChooser(m_GnuCashExecutable);
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 				int option = fileChooser.showOpenDialog(GUILayout.this);
 				if (option == JFileChooser.APPROVE_OPTION) {
 					File file = fileChooser.getSelectedFile();
@@ -264,6 +265,7 @@ public class GUILayout extends JPanel implements ItemListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fileChooser = new JFileChooser(m_GnuCashExecutable);
+        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 				int option = fileChooser.showOpenDialog(GUILayout.this);
 				if (option == JFileChooser.APPROVE_OPTION) {
 					File file = fileChooser.getSelectedFile();
@@ -285,6 +287,7 @@ public class GUILayout extends JPanel implements ItemListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fileChooser = new JFileChooser();
+				fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 				int option = fileChooser.showOpenDialog(GUILayout.this);
 				if (option == JFileChooser.APPROVE_OPTION) {
 					File file = fileChooser.getSelectedFile();
@@ -292,7 +295,8 @@ public class GUILayout extends JPanel implements ItemListener {
 					lblCSVFile.setText(file.getAbsolutePath());
 					m_CsvFile = file.getAbsolutePath();
 					if (chckbxOutputFileSameAsInput.isSelected()) {
-						String l_filename = file.getName();
+						String l_filename;
+						l_filename = library.FileUtils.getFileNameWithoutExtension(file);
 						txtOutputFilename.setText(l_filename);
 					}
 					lblOutputFolder.setText(file.getParent());
