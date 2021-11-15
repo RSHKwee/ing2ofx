@@ -35,6 +35,8 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import logger.MyLogger;
 import logger.TextAreaHandler;
@@ -87,6 +89,8 @@ public class GUILayout extends JPanel implements ItemListener {
       public void actionPerformed(ActionEvent e) {
         JFileChooser fileChooser = new JFileChooser(m_GnuCashExecutable);
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        FileFilter filter = new FileNameExtensionFilter("EXE File", "exe");
+        fileChooser.setFileFilter(filter);
         int option = fileChooser.showOpenDialog(GUILayout.this);
         if (option == JFileChooser.APPROVE_OPTION) {
           File file = fileChooser.getSelectedFile();
@@ -265,7 +269,7 @@ public class GUILayout extends JPanel implements ItemListener {
     btnOutputFolder.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        JFileChooser fileChooser = new JFileChooser(m_GnuCashExecutable);
+        JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         int option = fileChooser.showOpenDialog(GUILayout.this);
         if (option == JFileChooser.APPROVE_OPTION) {
@@ -289,6 +293,8 @@ public class GUILayout extends JPanel implements ItemListener {
       public void actionPerformed(ActionEvent e) {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        FileFilter filter = new FileNameExtensionFilter("CSV File", "csv");
+        fileChooser.setFileFilter(filter);
         int option = fileChooser.showOpenDialog(GUILayout.this);
         if (option == JFileChooser.APPROVE_OPTION) {
           File file = fileChooser.getSelectedFile();

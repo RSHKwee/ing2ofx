@@ -34,9 +34,10 @@ public class Main {
     initLookAndFeel();
 
     // Create and set up the window.
-//    Image ing_logo =         new Image("images.png");
+//    Image ing_logo;
+
     JFrame frame = new JFrame(m_MenuTitel + " (" + m_creationtime + ")");
-//    frame.setIconImage(ing_logo);
+    // frame.setIconImage(ing_logo);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     // Create and set up the content pane.
