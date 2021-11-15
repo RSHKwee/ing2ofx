@@ -311,8 +311,48 @@ public class GUILayout extends JPanel implements ItemListener {
       }
     });
     panel.add(btnCSVFile, "cell 0 3");
+    btnCSVFile.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        // Run OFX Python script
 
+        // Run a java app in a separate system process
+        /*
+         * usage: ing2ofx [-h] [-o, --outfile OUTFILE] [-d, --directory DIR] [-c,
+         * --convert] [-b, --convert-date] csvfile
+         * 
+         * This program converts ING (www.ing.nl) CSV files to OFX format. The default
+         * output filename is the input filename.
+         * 
+         * positional arguments: csvfile A csvfile to process
+         * 
+         * optional arguments: -h, --help show this help message and exit -o, --outfile
+         * OUTFILE Output filename -d, --directory DIR Directory to store output,
+         * default is ./ofx -c, --convert Convert decimal separator to dots (.), default
+         * is false -b, --convert-date Convert dates with dd-mm-yyyy notation to
+         * yyyymmdd
+         */
+        try {
+          Process ps = Runtime.getRuntime()
+              .exec(new String[] { "python", "resources/ing2ofx.py", diffHelperJar.get().toString(),
+                  jenkinsRootDirectory.get().toString() + "\\" + newValue, v_gitdir,
+                  winmergeExecutable.get().toString() });
+          // ps.waitFor();
+          java.io.InputStream is = ps.getInputStream();
+          byte b[] = new byte[is.available()];
+          is.read(b, 0, b.length);
+          System.out.println(new String(b));
+
+          System.out.println("java" + ";" + "-jar" + ";" + diffHelperJar.get().toString() + ";"
+              + jenkinsRootDirectory.get().toString() + "\\" + newValue + ";" + v_gitdir);
+        } catch (IOException /* | InterruptedException */ e) {
+          e.printStackTrace();
+        }
+
+      }
+    });
     JButton btnConvert = new JButton("Convert to OFX");
+
     panel.add(btnConvert, "cell 1 6");
 
     JLabel lblNewLabel = new JLabel("    ");
