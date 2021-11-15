@@ -16,7 +16,7 @@
 #       GNU General Public License for more details.
 #
 #       You should have received a copy of the GNU General Public License
-#       along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#       along with this program.  If not, see <http://www.gnu.org/licenses/>. 
 
 """
 The intent of this script is to convert ing (www.ing.nl) csv files to ofx files
@@ -52,7 +52,7 @@ class CsvFile:
 
         with open(args.csvfile, 'r') as csvfile:
         #with open(args.csvfile, 'rb') as csvfile:
-            # Open the csvfile as a Dictreader
+            # Open the csvfile as a Dictreader, ";" separated
             csvreader = csv.DictReader(csvfile, delimiter=';', quotechar='"')
             for row in csvreader:
                 # Map ACCOUNT to "Rekening"
@@ -142,6 +142,7 @@ class CsvFile:
                      'trnamt': trnamt, 'fitid': uniqueid, 'name': name, 'accountto': accountto,
                      'memo': memo, 'saldonamutatie' : saldonamutatie, 'time' : time})
 
+
 class OfxWriter:
 
     def __init__(self, args, gui=True):
@@ -193,7 +194,7 @@ class OfxWriter:
         # Initiate a csv object that contains all the data in a set.
         csv = CsvFile(args)
 
-        # Determine unique accounts and start and end dates
+        # Determine unique accounts and start and end dates and amount on account for end date
         accounts = set()
         mindate = 999999999
         maxdate = 0
@@ -206,12 +207,14 @@ class OfxWriter:
             if int(trns['dtposted']) > maxdate:
                 maxdate = int(trns['dtposted'])
                 saldonatran= trns['saldonamutatie']
-                
-        # open ofx file, if file exists, gets overwritten
-        with open(filepath, 'w') as ofxfile:
-            ofxfile.write(message_header)
 
-            for account in accounts:
+        # open ofx file, if file exists, gets overwritten, each account in own ofx file.
+        for account in accounts:
+            filepath = os.path.join(args.dir, account + '_' + filename)
+           
+            with open(filepath, 'w') as ofxfile:
+                ofxfile.write(message_header)
+  
                 message_begin = """
          <STMTRS>                         <!-- Begin statement response -->
             <CURDEF>EUR</CURDEF>
@@ -252,12 +255,12 @@ class OfxWriter:
          </STMTRS>""" % {"maxdate": maxdate}
                 ofxfile.write(message_end)
 
-            message_footer = """
+                message_footer = """
       </STMTTRNRS>                        <!-- End of transaction -->
    </BANKMSGSRSV1>
 </OFX>
       """
-            ofxfile.write(message_footer)
+                ofxfile.write(message_footer)
 
         if not gui:
             # print some statistics:
