@@ -371,7 +371,7 @@ public class GUILayout extends JPanel implements ItemListener {
           is.read(b, 0, b.length);
           System.out.println(new String(b));
 
-          System.out.println("java" + ";" + "-jar" + ";" + diffHelperJar.get().toString() + ";"
+          System.out.println("python" + ";" + "-jar" + ";" + diffHelperJar.get().toString() + ";"
               + jenkinsRootDirectory.get().toString() + "\\" + newValue + ";" + v_gitdir);
         } catch (IOException /* | InterruptedException */ e) {
           e.printStackTrace();
