@@ -317,24 +317,52 @@ public class GUILayout extends JPanel implements ItemListener {
         // Run OFX Python script
 
         // Run a java app in a separate system process
+     // @formatter:off
         /*
          * usage: ing2ofx [-h] [-o, --outfile OUTFILE] [-d, --directory DIR] [-c,
          * --convert] [-b, --convert-date] csvfile
          * 
-         * This program converts ING (www.ing.nl) CSV files to OFX format. The default
-         * output filename is the input filename.
+         * This program converts ING (www.ing.nl) CSV files to OFX format. 
+         * The default output filename is the input filename.
          * 
          * positional arguments: csvfile A csvfile to process
          * 
-         * optional arguments: -h, --help show this help message and exit -o, --outfile
-         * OUTFILE Output filename -d, --directory DIR Directory to store output,
-         * default is ./ofx -c, --convert Convert decimal separator to dots (.), default
-         * is false -b, --convert-date Convert dates with dd-mm-yyyy notation to
-         * yyyymmdd
+         * optional arguments: 
+         * -h, --help show this help message and exit 
+         * -o, --outfile OUTFILE Output filename 
+         * -d, --directory DIR Directory to store output, default is ./ofx 
+         * -c, --convert Convert decimal separator to dots (.), default is false 
+         * -b, --convert-date Convert dates with dd-mm-yyyy notation to yyyymmdd
          */
+     // @formatter:on
+        String a_OptionOutputfile = "";
+        if (!txtOutputFilename.getText().equalsIgnoreCase("Output filename")) {
+          a_OptionOutputfile = "-o " + txtOutputFilename.getText() + " ";
+        }
+
+        String a_OptionOutputdirectory = "";
+        if (btnOutputFolder.isSelected()) {
+          a_OptionOutputdirectory = "-d " + lblOutputFolder.getText() + " ";
+        }
+        
+        String a_ConvertDecimalSeparator = "";
+        if (chckbxConvertDecimalSeparator.isSelected()) {
+          a_ConvertDecimalSeparator = "-c ";
+        }
+        
+        String a_ConvertDate = "";
+        if (chckbxConvertDateFormat.isSelected()) {
+          a_ConvertDate = "-b ";
+        }        
+        
+        String a_Script = "resources/ing2ofx.py";
+        if (chckbxAcountSeparateOFX.isSelected()) {
+          a_Script = "resources/ing2ofxPerAccount.py";
+        }
+        
         try {
           Process ps = Runtime.getRuntime()
-              .exec(new String[] { "python", "resources/ing2ofx.py", diffHelperJar.get().toString(),
+              .exec(new String[] { "python", a_Script, diffHelperJar.get().toString(),
                   jenkinsRootDirectory.get().toString() + "\\" + newValue, v_gitdir,
                   winmergeExecutable.get().toString() });
           // ps.waitFor();
