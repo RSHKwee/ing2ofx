@@ -2,3 +2,9 @@ ofx
 input
 .DS_Store
 /target/
+.class
+.prefs
+/bin/
+*.pydevproject
+*.project
+*.prefs
