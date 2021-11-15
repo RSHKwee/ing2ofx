@@ -49,7 +49,7 @@ public class GUILayout extends JPanel implements ItemListener {
 	static final String[] c_DelFolderContents = { "Ja", "Nee" };
 	static final String[] c_LogToDisk = { "Ja", "Nee" };
 
-	private Level m_Level = Level.CONFIG;
+	private Level m_Level = Level.INFO;
 	private Boolean m_toDisk = false;
 
 	// Variables
