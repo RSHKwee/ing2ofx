@@ -38,6 +38,7 @@ import javax.swing.UIManager;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import library.OutputToLoggerReader;
 import logger.MyLogger;
 import logger.TextAreaHandler;
 import net.miginfocom.swing.MigLayout;
@@ -286,6 +287,9 @@ public class GUILayout extends JPanel implements ItemListener {
     lblCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
     panel.add(lblCSVFile, "cell 1 3");
 
+    JButton btnConvert = new JButton("Convert to OFX");
+    btnConvert.setEnabled(false);
+
     JButton btnCSVFile = new JButton("CSV File");
     btnCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
     btnCSVFile.addActionListener(new ActionListener() {
@@ -305,19 +309,19 @@ public class GUILayout extends JPanel implements ItemListener {
             String l_filename;
             l_filename = library.FileUtils.getFileNameWithoutExtension(file) + ".ofx";
             txtOutputFilename.setText(l_filename);
+            btnConvert.setEnabled(true);
           }
           lblOutputFolder.setText(file.getParent());
         }
       }
     });
     panel.add(btnCSVFile, "cell 0 3");
-    btnCSVFile.addActionListener(new ActionListener() {
+
+    btnConvert.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         // Run OFX Python script
-
-        // Run a java app in a separate system process
-     // @formatter:off
+        // @formatter:off
         /*
          * usage: ing2ofx [-h] [-o, --outfile OUTFILE] [-d, --directory DIR] [-c,
          * --convert] [-b, --convert-date] csvfile
@@ -334,53 +338,54 @@ public class GUILayout extends JPanel implements ItemListener {
          * -c, --convert Convert decimal separator to dots (.), default is false 
          * -b, --convert-date Convert dates with dd-mm-yyyy notation to yyyymmdd
          */
-     // @formatter:on
-        String a_OptionOutputfile = "";
+        // @formatter:on
+        String[] l_options = new String[4];
+        l_options[0] = lblCSVFile.getText();
+        int idx = 0;
+
         if (!txtOutputFilename.getText().equalsIgnoreCase("Output filename")) {
-          a_OptionOutputfile = "-o " + txtOutputFilename.getText() + " ";
+          idx++;
+          l_options[idx] = "-o " + txtOutputFilename.getText();
         }
 
-        String a_OptionOutputdirectory = "";
-        if (btnOutputFolder.isSelected()) {
-          a_OptionOutputdirectory = "-d " + lblOutputFolder.getText() + " ";
+        if (!lblOutputFolder.getText().isBlank()) {
+          idx++;
+          l_options[idx] = "-d " + lblOutputFolder.getText();
         }
-        
-        String a_ConvertDecimalSeparator = "";
+
         if (chckbxConvertDecimalSeparator.isSelected()) {
-          a_ConvertDecimalSeparator = "-c ";
+          idx++;
+          l_options[idx] = "-c";
         }
-        
-        String a_ConvertDate = "";
-        if (chckbxConvertDateFormat.isSelected()) {
-          a_ConvertDate = "-b ";
-        }        
-        
-        String a_Script = "resources/ing2ofx.py";
-        if (chckbxAcountSeparateOFX.isSelected()) {
-          a_Script = "resources/ing2ofxPerAccount.py";
-        }
-        
-        try {
-          Process ps = Runtime.getRuntime()
-              .exec(new String[] { "python", a_Script, diffHelperJar.get().toString(),
-                  jenkinsRootDirectory.get().toString() + "\\" + newValue, v_gitdir,
-                  winmergeExecutable.get().toString() });
-          // ps.waitFor();
-          java.io.InputStream is = ps.getInputStream();
-          byte b[] = new byte[is.available()];
-          is.read(b, 0, b.length);
-          System.out.println(new String(b));
 
-          System.out.println("python" + ";" + "-jar" + ";" + diffHelperJar.get().toString() + ";"
-              + jenkinsRootDirectory.get().toString() + "\\" + newValue + ";" + v_gitdir);
-        } catch (IOException /* | InterruptedException */ e) {
-          e.printStackTrace();
+        if (chckbxConvertDateFormat.isSelected()) {
+          idx++;
+          l_options[idx] = "-b";
+        }
+
+        String l_Script = "python D:\\git\\ing2ofx\\src\\main\\resources\\ing2ofx.py";
+        if (chckbxAcountSeparateOFX.isSelected()) {
+          l_Script = "python D:\\git\\ing2ofx\\src\\main\\resources\\ing2ofxPerAccount.py";
+        }
+
+        String l_optionsResize = "";
+        l_optionsResize = l_Script;
+        for (int i = 1; i <= idx + 1; i++) {
+          l_optionsResize = l_optionsResize + " " + l_options[i - 1];
+        }
+
+        try {
+          OutputToLoggerReader l_reader = new OutputToLoggerReader();
+          String l_logging = l_reader.getReadOut(l_optionsResize);
+          String[] ll_log = l_logging.split("\n");
+          System.out.println(ll_log.toString());
+          LOGGER.log(Level.INFO, l_logging);
+        } catch (IOException | InterruptedException es) {
+          es.printStackTrace();
         }
 
       }
     });
-    JButton btnConvert = new JButton("Convert to OFX");
-
     panel.add(btnConvert, "cell 1 6");
 
     JLabel lblNewLabel = new JLabel("    ");
