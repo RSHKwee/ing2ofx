@@ -283,7 +283,8 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     panel.add(btnOutputFolder, "cell 0 5");
 
-    JLabel lblCSVFile = new JLabel("");
+    JLabel lblCSVFile = new JLabel("Select a ING CSV file");
+    lblCSVFile.setEnabled(false);
     lblCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
     panel.add(lblCSVFile, "cell 1 3");
 
@@ -310,6 +311,7 @@ public class GUILayout extends JPanel implements ItemListener {
             l_filename = library.FileUtils.getFileNameWithoutExtension(file) + ".ofx";
             txtOutputFilename.setText(l_filename);
             btnConvert.setEnabled(true);
+            lblCSVFile.setEnabled(true);
           }
           lblOutputFolder.setText(file.getParent());
         }
