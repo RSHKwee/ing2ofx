@@ -216,14 +216,14 @@ class OfxWriter:
                 ofxfile.write(message_header)
   
                 message_begin = """
-         <STMTRS>                         <!-- Begin statement response -->
+         <STMTRS>                            <!-- Begin statement response -->
             <CURDEF>EUR</CURDEF>
-            <BANKACCTFROM>                <!-- Identify the account -->
-               <BANKID>121099999</BANKID> <!-- Routing transit or other FI ID -->
-               <ACCTID>%(account)s</ACCTID> <!-- Account number -->
-               <ACCTTYPE>CHECKING</ACCTTYPE><!-- Account type -->
-            </BANKACCTFROM>               <!-- End of account ID -->
-            <BANKTRANLIST>                <!-- Begin list of statement trans. -->
+            <BANKACCTFROM>                   <!-- Identify the account -->
+               <BANKID>INGBNL2A</BANKID>     <!-- Routing transit or other FI ID -->
+               <ACCTID>%(account)s</ACCTID>  <!-- Account number -->
+               <ACCTTYPE>CHECKING</ACCTTYPE> <!-- Account type -->
+            </BANKACCTFROM>                  <!-- End of account ID -->
+            <BANKTRANLIST>                   <!-- Begin list of statement trans. -->
                <DTSTART>%(mindate)s</DTSTART>
                <DTEND>%(maxdate)s</DTEND>""" % {"account": account, "mindate": mindate, "maxdate": maxdate}
                 ofxfile.write(message_begin)
