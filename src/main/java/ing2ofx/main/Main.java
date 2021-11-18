@@ -13,9 +13,8 @@ import ing2ofx.gui.GUILayout;
 import java.awt.Image;
 
 /**
- * Dit package bevat het hoofdprogramma (main) voor het starten van de GUI van
- * de Werkbank Post21 Scenario generator.
- *
+ * Main program for ING csv to OFX convertor
+ * 
  * @author kweers1
  */
 
@@ -89,7 +88,6 @@ public class Main {
 
       default: {
       }
-        ;
     }
 
     // Schedule a job for the event-dispatching thread:

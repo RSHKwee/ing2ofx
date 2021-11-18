@@ -385,7 +385,6 @@ public class GUILayout extends JPanel implements ItemListener {
         } catch (IOException | InterruptedException es) {
           es.printStackTrace();
         }
-
       }
     });
     panel.add(btnConvert, "cell 1 6");
