@@ -365,13 +365,13 @@ public class GUILayout extends JPanel implements ItemListener {
           l_options[idx] = "-b";
         }
 
-        String l_Script = "python D:\\git\\ing2ofx\\src\\main\\resources\\ing2ofx.py";
+        String l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofx.py");
         if (chckbxAcountSeparateOFX.isSelected()) {
-          l_Script = "python D:\\git\\ing2ofx\\src\\main\\resources\\ing2ofxPerAccount.py";
+          l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofxPerAccount.py");
         }
 
-        String l_optionsResize = "";
-        l_optionsResize = l_Script;
+        String l_optionsResize = "python";
+        l_optionsResize = l_optionsResize + " " + l_Script;
         for (int i = 1; i <= idx + 1; i++) {
           l_optionsResize = l_optionsResize + " " + l_options[i - 1];
         }
