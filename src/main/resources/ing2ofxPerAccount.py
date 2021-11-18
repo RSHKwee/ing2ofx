@@ -36,7 +36,70 @@ import os
 import re
 
 """ Read the csv file into a list, which is mapped to ofx fields """
+"""
+    These are the first two lines of an ING Netherlands CSV file:
 
+    "Datum","Naam / Omschrijving","Rekening","Tegenrekening","Code",\
+"Af Bij","Bedrag (EUR)","MutatieSoort",\
+"Mededelingen"
+    "20200213","Kosten OranjePakket met korting","NL42INGB0001085276","","DV",\
+"Af","1,25","Diversen",\
+"1 jan t/m 31 jan 2020 ING BANK N.V. Valutadatum: 13-02-2020"
+
+     or ";" seperated:
+     "Datum";"Naam / Omschrijving";"Rekening";"Tegenrekening";"Code";\
+     "Af Bij";"Bedrag (EUR)";"Mutatiesoort";"Mededelingen";"Saldo na mutatie";"Tag"
+"20210911";"Kosten OranjePakket";"NL12INGB0000123456";"";"DV";"Af";"1,95";"Diversen";"1 aug t/m 31 aug 2021 ING BANK N.V. Valutadatum: 11-09-2021";"5185,32";""
+
+    These fields are from the Statement class:
+
+    id = ""
+
+    # Date transaction was posted to account (booking date)
+    date = datetime.now()                          # "Datum"
+
+    memo = ""                                      # "Mededelingen"
+
+    # Amount of transaction
+    amount = D(0)
+
+    # additional fields
+    payee = ""
+
+    # Date user initiated transaction, if known (transaction date)
+    date_user = datetime.now()
+
+    # Check (or other reference) number
+    check_no = ""
+
+    # Reference number that uniquely identifies the transaction. Can be used in
+    # addition to or instead of a check_no           # fitid
+    refnum = ""
+
+    # Transaction type, must be one of TRANSACTION_TYPES # "Code"
+    "CREDIT",       # Generic credit
+    "DEBIT",        # Generic debit
+    "INT",          # Interest earned or paid
+    "DIV",          # Dividend
+    "FEE",          # FI fee
+    "SRVCHG",       # Service charge
+    "DEP",          # Deposit
+    "ATM",          # ATM debit or credit             # GM
+    "POS",          # Point of sale debit or credit   # BA
+    "XFER",         # Transfer
+    "CHECK",        # Check
+    "PAYMENT",      # Electronic payment              # GT
+    "CASH",         # Cash withdrawal
+    "DIRECTDEP",    # Direct deposit                  # ST
+    "DIRECTDEBIT",  # Merchant initiated debit        # IC
+    "REPEATPMT",    # Repeating payment/standing order
+    "OTHER"         # Other                           # DV OV VZ 
+
+    trntype = "CHECK"
+
+    # Optional BankAccount instance                   # "Tegenrekening"
+    bank_account_to = None
+"""
 
 class CsvFile:
 
