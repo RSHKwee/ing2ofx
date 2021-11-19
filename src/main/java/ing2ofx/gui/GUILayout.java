@@ -11,7 +11,11 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.IOException;
-
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -380,8 +384,16 @@ public class GUILayout extends JPanel implements ItemListener {
           OutputToLoggerReader l_reader = new OutputToLoggerReader();
           String l_logging = l_reader.getReadOut(l_optionsResize);
           String[] ll_log = l_logging.split("\n");
+          List<String> l_logList = Arrays.asList(ll_log);
+          Set<String> l_uniLog = new LinkedHashSet<String>(l_logList);
+          LOGGER.log(Level.INFO, " ");
           System.out.println(ll_log.toString());
-          LOGGER.log(Level.INFO, l_logging);
+          l_uniLog.forEach(ll -> {
+            // System.out.println("Script: " + ll);
+            LOGGER.log(Level.INFO, " " + ll);
+          });
+
+          // LOGGER.log(Level.INFO, l_logging);
         } catch (IOException | InterruptedException es) {
           es.printStackTrace();
         }
