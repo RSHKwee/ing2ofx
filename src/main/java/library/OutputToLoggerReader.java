@@ -1,10 +1,5 @@
 package library;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,7 +16,8 @@ public class OutputToLoggerReader {
     p = rt.exec(a_cmd);
 
     BufferedReader processOutput = new BufferedReader(new InputStreamReader(p.getInputStream()), 500000);
-    BufferedWriter processInput = new BufferedWriter(new OutputStreamWriter(p.getOutputStream()));
+    // BufferedWriter processInput = new BufferedWriter(new
+    // OutputStreamWriter(p.getOutputStream()));
     ReadThread r = new ReadThread(processOutput);
     Thread th = new Thread(r);
     th.start();
@@ -38,7 +34,8 @@ public class OutputToLoggerReader {
     Process p = Runtime.getRuntime().exec(params);
 
     BufferedReader processOutput = new BufferedReader(new InputStreamReader(p.getInputStream()), 500000);
-    BufferedWriter processInput = new BufferedWriter(new OutputStreamWriter(p.getOutputStream()));
+    // BufferedWriter processInput = new BufferedWriter(new
+    // OutputStreamWriter(p.getOutputStream()));
     ReadThread r = new ReadThread(processOutput);
     Thread th = new Thread(r);
     th.start();
@@ -52,7 +49,6 @@ public class OutputToLoggerReader {
   }
 
   public class ReadThread implements Runnable {
-
     BufferedReader reader;
     char[] buf = new char[100000];
     String res = "";

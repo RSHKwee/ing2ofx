@@ -11,7 +11,11 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.IOException;
-
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -283,7 +287,8 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     panel.add(btnOutputFolder, "cell 0 5");
 
-    JLabel lblCSVFile = new JLabel("");
+    JLabel lblCSVFile = new JLabel("Select a ING CSV file");
+    lblCSVFile.setEnabled(false);
     lblCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
     panel.add(lblCSVFile, "cell 1 3");
 
@@ -310,6 +315,7 @@ public class GUILayout extends JPanel implements ItemListener {
             l_filename = library.FileUtils.getFileNameWithoutExtension(file) + ".ofx";
             txtOutputFilename.setText(l_filename);
             btnConvert.setEnabled(true);
+            lblCSVFile.setEnabled(true);
           }
           lblOutputFolder.setText(file.getParent());
         }
@@ -363,13 +369,13 @@ public class GUILayout extends JPanel implements ItemListener {
           l_options[idx] = "-b";
         }
 
-        String l_Script = "python D:\\git\\ing2ofx\\src\\main\\resources\\ing2ofx.py";
+        String l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofx.py");
         if (chckbxAcountSeparateOFX.isSelected()) {
-          l_Script = "python D:\\git\\ing2ofx\\src\\main\\resources\\ing2ofxPerAccount.py";
+          l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofxPerAccount.py");
         }
 
-        String l_optionsResize = "";
-        l_optionsResize = l_Script;
+        String l_optionsResize = "python";
+        l_optionsResize = l_optionsResize + " " + l_Script;
         for (int i = 1; i <= idx + 1; i++) {
           l_optionsResize = l_optionsResize + " " + l_options[i - 1];
         }
@@ -378,12 +384,19 @@ public class GUILayout extends JPanel implements ItemListener {
           OutputToLoggerReader l_reader = new OutputToLoggerReader();
           String l_logging = l_reader.getReadOut(l_optionsResize);
           String[] ll_log = l_logging.split("\n");
+          List<String> l_logList = Arrays.asList(ll_log);
+          Set<String> l_uniLog = new LinkedHashSet<String>(l_logList);
+          LOGGER.log(Level.INFO, " ");
           System.out.println(ll_log.toString());
-          LOGGER.log(Level.INFO, l_logging);
+          l_uniLog.forEach(ll -> {
+            // System.out.println("Script: " + ll);
+            LOGGER.log(Level.INFO, " " + ll);
+          });
+
+          // LOGGER.log(Level.INFO, l_logging);
         } catch (IOException | InterruptedException es) {
           es.printStackTrace();
         }
-
       }
     });
     panel.add(btnConvert, "cell 1 6");

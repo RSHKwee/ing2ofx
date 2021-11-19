@@ -3,6 +3,7 @@ package ing2ofx.main;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
@@ -10,12 +11,11 @@ import javax.swing.UIManager.LookAndFeelInfo;
 import library.JarInfo;
 import ing2ofx.gui.GUILayout;
 
-import java.awt.Image;
+import java.net.URL;
 
 /**
- * Dit package bevat het hoofdprogramma (main) voor het starten van de GUI van
- * de Werkbank Post21 Scenario generator.
- *
+ * Main program for ING csv to OFX convertor
+ * 
  * @author kweers1
  */
 
@@ -34,15 +34,21 @@ public class Main {
     initLookAndFeel();
 
     // Create and set up the window.
-//    Image ing_logo;
-
+    // Image ing_logo;
     JFrame frame = new JFrame(m_MenuTitel + " (" + m_creationtime + ")");
-    // frame.setIconImage(ing_logo);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    try {
+      URL iconURL = Main.class.getClassLoader().getResource("ingLogo.png");
+      // iconURL is null when not found
+      ImageIcon icon = new ImageIcon(iconURL);
+      frame.setIconImage(icon.getImage());
+    } catch (Exception e) {
+      LOGGER.log(Level.FINE, "ING Logo niet gevonden.");
+    }
 
     // Create and set up the content pane.
     GUILayout scenGUI = new GUILayout();
-    // GUILayoutExp scenGUI = new GUILayoutExp("");
     scenGUI.setOpaque(true);
     frame.setContentPane(scenGUI);
 
@@ -89,7 +95,6 @@ public class Main {
 
       default: {
       }
-        ;
     }
 
     // Schedule a job for the event-dispatching thread:
