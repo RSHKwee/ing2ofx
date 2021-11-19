@@ -44,7 +44,7 @@ public class Main {
       ImageIcon icon = new ImageIcon(iconURL);
       frame.setIconImage(icon.getImage());
     } catch (Exception e) {
-      LOGGER.log(Level.FINE, "ING Logo niet gevonden.");
+      LOGGER.log(Level.FINE, "ING Logo not found.");
     }
 
     // Create and set up the content pane.
