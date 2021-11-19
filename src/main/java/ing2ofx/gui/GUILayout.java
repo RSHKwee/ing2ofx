@@ -99,7 +99,6 @@ public class GUILayout extends JPanel implements ItemListener {
         int option = fileChooser.showOpenDialog(GUILayout.this);
         if (option == JFileChooser.APPROVE_OPTION) {
           File file = fileChooser.getSelectedFile();
-          // mntmGnuCashExe.setText("GnuCash executable: " + file.getName());
           LOGGER.log(Level.INFO, "GnuCash executable: " + file.getAbsolutePath());
           lblGNUCashExe.setText("GnuCash executable: " + file.getAbsolutePath());
           m_GnuCashExecutable = file;
@@ -413,13 +412,11 @@ public class GUILayout extends JPanel implements ItemListener {
     bottomHalf.setMinimumSize(new Dimension(500, 100));
     bottomHalf.setPreferredSize(new Dimension(500, 400));
     splitPane.add(bottomHalf);
-
   }
 
   @Override
   public void itemStateChanged(ItemEvent e) {
     // TODO Auto-generated method stub
-
   }
 
 }
