@@ -78,7 +78,7 @@
               <archive>
                  <manifest>
 				   <addClasspath>true</addClasspath>
-				   <mainClass>ing2ofx.main.Main</mainClass>
+				   <mainClass>ing2ofx.main.Main.main</mainClass>
 				 </manifest>
               </archive>
               <descriptorRefs>
