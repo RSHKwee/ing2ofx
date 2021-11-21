@@ -9,10 +9,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+
 import java.io.File;
 import java.io.IOException;
+
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -53,8 +54,8 @@ public class GUILayout extends JPanel implements ItemListener {
 
   // * -3 Loglevel: OFF SEVERE WARNING INFO CONFIG FINE FINER FINEST ALL <br>
   static final String[] c_levels = { "OFF", "SEVERE", "WARNING", "INFO", "CONFIG", "FINE", "FINER", "FINEST", "ALL" };
-  static final String[] c_DelFolderContents = { "Ja", "Nee" };
-  static final String[] c_LogToDisk = { "Ja", "Nee" };
+  // static final String[] c_DelFolderContents = { "Ja", "Nee" };
+  // static final String[] c_LogToDisk = { "Ja", "Nee" };
 
   private Level m_Level = Level.INFO;
   private Boolean m_toDisk = false;
@@ -86,9 +87,78 @@ public class GUILayout extends JPanel implements ItemListener {
     JMenu mnSettings = new JMenu("Settings");
     menuBar.add(mnSettings);
 
+    JCheckBox chckbxAcountSeparateOFX = new JCheckBox("Accounts in seperate OFX files");
+    chckbxAcountSeparateOFX.setHorizontalAlignment(SwingConstants.LEFT);
+    chckbxAcountSeparateOFX.setSelected(true);
+    chckbxAcountSeparateOFX.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        boolean selected = chckbxAcountSeparateOFX.isSelected();
+        LOGGER.log(Level.CONFIG, "Accounts in separate OFX files :" + Boolean.toString(selected));
+      }
+    });
+    // panel.add(chckbxAcountSeparateOFX, "cell 1 0");
+    mnSettings.add(chckbxAcountSeparateOFX);
+
+    JCheckBox chckbxConvertDecimalSeparator = new JCheckBox("Convert decimnal separator to dots (.)");
+    chckbxConvertDecimalSeparator.setHorizontalAlignment(SwingConstants.LEFT);
+    chckbxConvertDecimalSeparator.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        boolean selected = chckbxConvertDecimalSeparator.isSelected();
+        LOGGER.log(Level.CONFIG, "Convert decimal to dots:" + Boolean.toString(selected));
+      }
+    });
+    // panel.add(chckbxConvertDecimalSeparator, "cell 0 0");
+    mnSettings.add(chckbxConvertDecimalSeparator);
+
+    JCheckBox chckbxConvertDateFormat = new JCheckBox("Convert dates with dd-mm-yyyy to yyyymmdd");
+    chckbxConvertDateFormat.setHorizontalAlignment(SwingConstants.LEFT);
+    chckbxConvertDateFormat.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        boolean selected = chckbxConvertDateFormat.isSelected();
+        LOGGER.log(Level.CONFIG, "Convert dates with dd-mm-yyyy to yyyymmdd :" + Boolean.toString(selected));
+      }
+    });
+    // panel.add(chckbxConvertDateFormat, "cell 0 1");
+    mnSettings.add(chckbxConvertDateFormat);
+
+    JCheckBox chckbxSeperatorComma = new JCheckBox("Seperator comma (\",\") Default semicolon (\";\")");
+    chckbxSeperatorComma.setHorizontalAlignment(SwingConstants.LEFT);
+    chckbxSeperatorComma.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        boolean selected = chckbxSeperatorComma.isSelected();
+        LOGGER.log(Level.CONFIG, "Seperator comma (\",\") Default semicolon (\";\") :" + Boolean.toString(selected));
+      }
+    });
+    // panel.add(chckbxSeperatorComma, "cell 1 1");
+    mnSettings.add(chckbxSeperatorComma);
+
+    txtOutputFilename = new JTextField();
+    JCheckBox chckbxOutputFileSameAsInput = new JCheckBox("Output filename same as input");
+    chckbxOutputFileSameAsInput.setHorizontalAlignment(SwingConstants.RIGHT);
+    chckbxOutputFileSameAsInput.setSelected(true);
+    chckbxOutputFileSameAsInput.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        boolean selected = chckbxOutputFileSameAsInput.isSelected();
+        LOGGER.log(Level.CONFIG, "Output filename same as input : " + Boolean.toString(selected));
+        if (selected) {
+          txtOutputFilename.setEnabled(false);
+        } else {
+          txtOutputFilename.setEnabled(true);
+        }
+      }
+    });
+    // panel.add(chckbxOutputFileSameAsInput, "cell 0 4");
+    mnSettings.add(chckbxOutputFileSameAsInput);
+
     lblGNUCashExe.setText("GnuCash executable: " + m_GnuCashExecutable.getAbsolutePath());
     // Option Location GnuCash exe
     JMenuItem mntmGnuCashExe = new JMenuItem("GnuCash executable");
+    mntmGnuCashExe.setHorizontalAlignment(SwingConstants.LEFT);
     mntmGnuCashExe.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -111,6 +181,7 @@ public class GUILayout extends JPanel implements ItemListener {
 
     // Optie log level
     JMenuItem mntmLoglevel = new JMenuItem("Loglevel");
+    mntmLoglevel.setHorizontalAlignment(SwingConstants.LEFT);
     mntmLoglevel.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -126,6 +197,7 @@ public class GUILayout extends JPanel implements ItemListener {
 
     // Toevoegen Look and Feel
     JMenu menu = new JMenu("Look and Feel");
+    menu.setHorizontalAlignment(SwingConstants.LEFT);
     mnSettings.add(menu);
 
     // Get all the available look and feel that we are going to use for
@@ -193,106 +265,10 @@ public class GUILayout extends JPanel implements ItemListener {
 
     panel.setMinimumSize(new Dimension(350, 300));
     panel.setPreferredSize(new Dimension(350, 290));
-
-    JCheckBox chckbxConvertDecimalSeparator = new JCheckBox("Convert decimnal separator to dots (.)");
-    chckbxConvertDecimalSeparator.setHorizontalAlignment(SwingConstants.LEFT);
-    chckbxConvertDecimalSeparator.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        boolean selected = chckbxConvertDecimalSeparator.isSelected();
-        LOGGER.log(Level.CONFIG, "Convert decimal to dots:" + Boolean.toString(selected));
-      }
-    });
-    panel.add(chckbxConvertDecimalSeparator, "cell 0 0");
-
-    JCheckBox chckbxAcountSeparateOFX = new JCheckBox("Accounts in seperate OFX files");
-    chckbxAcountSeparateOFX.setHorizontalAlignment(SwingConstants.LEFT);
-    chckbxAcountSeparateOFX.setSelected(true);
-    chckbxAcountSeparateOFX.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        boolean selected = chckbxAcountSeparateOFX.isSelected();
-        LOGGER.log(Level.CONFIG, "Accounts in separate OFX files :" + Boolean.toString(selected));
-      }
-    });
-    panel.add(chckbxAcountSeparateOFX, "cell 1 0");
-
-    JCheckBox chckbxConvertDateFormat = new JCheckBox("Convert dates with dd-mm-yyyy to yyyymmdd");
-    chckbxConvertDateFormat.setHorizontalAlignment(SwingConstants.LEFT);
-    chckbxConvertDateFormat.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        boolean selected = chckbxConvertDateFormat.isSelected();
-        LOGGER.log(Level.CONFIG, "Convert dates with dd-mm-yyyy to yyyymmdd :" + Boolean.toString(selected));
-      }
-    });
-    panel.add(chckbxConvertDateFormat, "cell 0 1");
-
-    JCheckBox chckbxSeperatorComma = new JCheckBox("Seperator comma (\",\") Default semicolon (\";\")");
-    chckbxSeperatorComma.setHorizontalAlignment(SwingConstants.LEFT);
-    chckbxSeperatorComma.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        boolean selected = chckbxSeperatorComma.isSelected();
-        LOGGER.log(Level.CONFIG, "Seperator comma (\",\") Default semicolon (\";\") :" + Boolean.toString(selected));
-      }
-    });
-    panel.add(chckbxSeperatorComma, "cell 1 1");
-
-    txtOutputFilename = new JTextField();
-    JCheckBox chckbxOutputFileSameAsInput = new JCheckBox("Output filename same as input");
-    chckbxOutputFileSameAsInput.setHorizontalAlignment(SwingConstants.RIGHT);
-    chckbxOutputFileSameAsInput.setSelected(true);
-    chckbxOutputFileSameAsInput.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        boolean selected = chckbxOutputFileSameAsInput.isSelected();
-        LOGGER.log(Level.CONFIG, "Output filename same as input : " + Boolean.toString(selected));
-        if (selected) {
-          txtOutputFilename.setEnabled(false);
-        } else {
-          txtOutputFilename.setEnabled(true);
-        }
-      }
-    });
-    panel.add(chckbxOutputFileSameAsInput, "cell 0 4");
-
-    txtOutputFilename.setHorizontalAlignment(SwingConstants.LEFT);
-    txtOutputFilename.setText("Output filename");
-    txtOutputFilename.setEnabled(false);
-
-    panel.add(txtOutputFilename, "cell 1 4");
-    txtOutputFilename.setColumns(100);
-
-    JLabel lblOutputFolder = new JLabel("");
-    lblOutputFolder.setHorizontalAlignment(SwingConstants.LEFT);
-    panel.add(lblOutputFolder, "cell 1 5");
-
-    JButton btnOutputFolder = new JButton("Output folder");
-    btnOutputFolder.setHorizontalAlignment(SwingConstants.RIGHT);
-    btnOutputFolder.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int option = fileChooser.showOpenDialog(GUILayout.this);
-        if (option == JFileChooser.APPROVE_OPTION) {
-          File file = fileChooser.getSelectedFile();
-          LOGGER.log(Level.INFO, "Output folder: " + file.getAbsolutePath());
-          lblOutputFolder.setText(file.getAbsolutePath());
-          m_OutputFolder = file.getAbsolutePath();
-        }
-      }
-    });
-    panel.add(btnOutputFolder, "cell 0 5");
-
     JLabel lblCSVFile = new JLabel("Select a ING CSV file");
-    lblCSVFile.setEnabled(false);
-    lblCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
-    panel.add(lblCSVFile, "cell 1 3");
+    JLabel lblOutputFolder = new JLabel("");
 
     JButton btnConvert = new JButton("Convert to OFX");
-    btnConvert.setEnabled(false);
 
     JButton btnCSVFile = new JButton("CSV File");
     btnCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -320,7 +296,41 @@ public class GUILayout extends JPanel implements ItemListener {
         }
       }
     });
-    panel.add(btnCSVFile, "cell 0 3");
+    panel.add(btnCSVFile, "cell 0 0");
+
+    lblCSVFile.setEnabled(false);
+    lblCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
+    panel.add(lblCSVFile, "cell 1 0");
+    
+    txtOutputFilename.setHorizontalAlignment(SwingConstants.LEFT);
+    txtOutputFilename.setText("Output filename");
+    txtOutputFilename.setEnabled(false);
+
+    panel.add(txtOutputFilename, "cell 1 1");
+    txtOutputFilename.setColumns(100);
+
+    JButton btnOutputFolder = new JButton("Output folder");
+    btnOutputFolder.setHorizontalAlignment(SwingConstants.RIGHT);
+    btnOutputFolder.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int option = fileChooser.showOpenDialog(GUILayout.this);
+        if (option == JFileChooser.APPROVE_OPTION) {
+          File file = fileChooser.getSelectedFile();
+          LOGGER.log(Level.INFO, "Output folder: " + file.getAbsolutePath());
+          lblOutputFolder.setText(file.getAbsolutePath());
+          m_OutputFolder = file.getAbsolutePath();
+        }
+      }
+    });
+    panel.add(btnOutputFolder, "cell 0 2");
+
+    lblOutputFolder.setHorizontalAlignment(SwingConstants.LEFT);
+    panel.add(lblOutputFolder, "");
+
+    btnConvert.setEnabled(false);
 
     btnConvert.addActionListener(new ActionListener() {
       @Override
@@ -398,16 +408,16 @@ public class GUILayout extends JPanel implements ItemListener {
         }
       }
     });
-    panel.add(btnConvert, "cell 1 6");
+    panel.add(btnConvert, "cell 1 3");
 
     JLabel lblNewLabel = new JLabel("    ");
-    panel.add(lblNewLabel, "cell 0 7");
+    panel.add(lblNewLabel, "cell 0 4");
 
-    panel.add(lblGNUCashExe, "cell 0 8");
+    panel.add(lblGNUCashExe, "cell 0 5");
 
     JButton btnGNUCash = new JButton("Start GnuCash");
     btnGNUCash.setHorizontalAlignment(SwingConstants.RIGHT);
-    panel.add(btnGNUCash, "cell 1 8");
+    panel.add(btnGNUCash, "cell 1 5");
 
     bottomHalf.setMinimumSize(new Dimension(500, 100));
     bottomHalf.setPreferredSize(new Dimension(500, 400));
