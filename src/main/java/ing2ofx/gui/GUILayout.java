@@ -70,7 +70,7 @@ public class GUILayout extends JPanel implements ItemListener {
   private JTextArea output;
 
   private JLabel lblGNUCashExe = new JLabel("");
-  private JTextField txtOutputFilename;
+  private JTextField txtOutputFilename = new JTextField();
 
   /**
    * Defineer GUI layout
@@ -97,7 +97,6 @@ public class GUILayout extends JPanel implements ItemListener {
         LOGGER.log(Level.CONFIG, "Accounts in separate OFX files :" + Boolean.toString(selected));
       }
     });
-    // panel.add(chckbxAcountSeparateOFX, "cell 1 0");
     mnSettings.add(chckbxAcountSeparateOFX);
 
     JCheckBox chckbxConvertDecimalSeparator = new JCheckBox("Convert decimnal separator to dots (.)");
@@ -109,7 +108,6 @@ public class GUILayout extends JPanel implements ItemListener {
         LOGGER.log(Level.CONFIG, "Convert decimal to dots:" + Boolean.toString(selected));
       }
     });
-    // panel.add(chckbxConvertDecimalSeparator, "cell 0 0");
     mnSettings.add(chckbxConvertDecimalSeparator);
 
     JCheckBox chckbxConvertDateFormat = new JCheckBox("Convert dates with dd-mm-yyyy to yyyymmdd");
@@ -121,7 +119,6 @@ public class GUILayout extends JPanel implements ItemListener {
         LOGGER.log(Level.CONFIG, "Convert dates with dd-mm-yyyy to yyyymmdd :" + Boolean.toString(selected));
       }
     });
-    // panel.add(chckbxConvertDateFormat, "cell 0 1");
     mnSettings.add(chckbxConvertDateFormat);
 
     JCheckBox chckbxSeperatorComma = new JCheckBox("Seperator comma (\",\") Default semicolon (\";\")");
@@ -133,30 +130,10 @@ public class GUILayout extends JPanel implements ItemListener {
         LOGGER.log(Level.CONFIG, "Seperator comma (\",\") Default semicolon (\";\") :" + Boolean.toString(selected));
       }
     });
-    // panel.add(chckbxSeperatorComma, "cell 1 1");
     mnSettings.add(chckbxSeperatorComma);
 
-    txtOutputFilename = new JTextField();
-    JCheckBox chckbxOutputFileSameAsInput = new JCheckBox("Output filename same as input");
-    chckbxOutputFileSameAsInput.setHorizontalAlignment(SwingConstants.RIGHT);
-    chckbxOutputFileSameAsInput.setSelected(true);
-    chckbxOutputFileSameAsInput.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        boolean selected = chckbxOutputFileSameAsInput.isSelected();
-        LOGGER.log(Level.CONFIG, "Output filename same as input : " + Boolean.toString(selected));
-        if (selected) {
-          txtOutputFilename.setEnabled(false);
-        } else {
-          txtOutputFilename.setEnabled(true);
-        }
-      }
-    });
-    // panel.add(chckbxOutputFileSameAsInput, "cell 0 4");
-    mnSettings.add(chckbxOutputFileSameAsInput);
-
-    lblGNUCashExe.setText("GnuCash executable: " + m_GnuCashExecutable.getAbsolutePath());
     // Option Location GnuCash exe
+    lblGNUCashExe.setText("GnuCash executable: " + m_GnuCashExecutable.getAbsolutePath());
     JMenuItem mntmGnuCashExe = new JMenuItem("GnuCash executable");
     mntmGnuCashExe.setHorizontalAlignment(SwingConstants.LEFT);
     mntmGnuCashExe.addActionListener(new ActionListener() {
@@ -285,13 +262,14 @@ public class GUILayout extends JPanel implements ItemListener {
           LOGGER.log(Level.INFO, "CSV File: " + file.getAbsolutePath());
           lblCSVFile.setText(file.getAbsolutePath());
           m_CsvFile = file.getAbsolutePath();
-          if (chckbxOutputFileSameAsInput.isSelected()) {
-            String l_filename;
-            l_filename = library.FileUtils.getFileNameWithoutExtension(file) + ".ofx";
-            txtOutputFilename.setText(l_filename);
-            btnConvert.setEnabled(true);
-            lblCSVFile.setEnabled(true);
-          }
+
+          String l_filename;
+          l_filename = library.FileUtils.getFileNameWithoutExtension(file) + ".ofx";
+          txtOutputFilename.setText(l_filename);
+          txtOutputFilename.setEnabled(true);
+
+          btnConvert.setEnabled(true);
+          lblCSVFile.setEnabled(true);
           lblOutputFolder.setText(file.getParent());
         }
       }
@@ -301,7 +279,7 @@ public class GUILayout extends JPanel implements ItemListener {
     lblCSVFile.setEnabled(false);
     lblCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
     panel.add(lblCSVFile, "cell 1 0");
-    
+
     txtOutputFilename.setHorizontalAlignment(SwingConstants.LEFT);
     txtOutputFilename.setText("Output filename");
     txtOutputFilename.setEnabled(false);
