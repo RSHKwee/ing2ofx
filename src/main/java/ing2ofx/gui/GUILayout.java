@@ -140,7 +140,11 @@ public class GUILayout extends JPanel implements ItemListener {
     JMenu mnGnuCashExe = new JMenu("GnuCash executable");
     mnSettings.add(mnGnuCashExe);
 
-    JMenuItem mntmGnuCashExe = new JMenuItem(m_GnuCashExecutable.getAbsolutePath());
+    String l_GnuCashExecutable = "Install GnuCash?";
+    if (m_GnuCashExecutable.exists()) {
+      l_GnuCashExecutable = m_GnuCashExecutable.getAbsolutePath();
+    }
+    JMenuItem mntmGnuCashExe = new JMenuItem(l_GnuCashExecutable);
     mntmGnuCashExe.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -154,8 +158,7 @@ public class GUILayout extends JPanel implements ItemListener {
           File file = fileChooser.getSelectedFile();
           LOGGER.log(Level.INFO, "GnuCash executable: " + file.getAbsolutePath());
           m_GnuCashExecutable = file;
-        } else {
-          mntmGnuCashExe.setText("Command canceled");
+          mntmGnuCashExe.setText(m_GnuCashExecutable.getAbsolutePath());
         }
       }
     });
