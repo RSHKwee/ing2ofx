@@ -47,6 +47,7 @@ import library.OutputToLoggerReader;
 import logger.MyLogger;
 import logger.TextAreaHandler;
 import net.miginfocom.swing.MigLayout;
+import javax.swing.JCheckBoxMenuItem;
 
 public class GUILayout extends JPanel implements ItemListener {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
@@ -90,7 +91,7 @@ public class GUILayout extends JPanel implements ItemListener {
     JMenu mnSettings = new JMenu("Settings");
     menuBar.add(mnSettings);
 
-    JCheckBox chckbxAcountSeparateOFX = new JCheckBox("Accounts in seperate OFX files");
+    JCheckBoxMenuItem chckbxAcountSeparateOFX = new JCheckBoxMenuItem("Accounts in seperate OFX files");
     chckbxAcountSeparateOFX.setHorizontalAlignment(SwingConstants.LEFT);
     chckbxAcountSeparateOFX.setSelected(true);
     chckbxAcountSeparateOFX.addActionListener(new ActionListener() {
@@ -102,7 +103,7 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     mnSettings.add(chckbxAcountSeparateOFX);
 
-    JCheckBox chckbxConvertDecimalSeparator = new JCheckBox("Convert decimnal separator to dots (.)");
+    JCheckBoxMenuItem chckbxConvertDecimalSeparator = new JCheckBoxMenuItem("Convert decimnal separator to dots (.)");
     chckbxConvertDecimalSeparator.setHorizontalAlignment(SwingConstants.LEFT);
     chckbxConvertDecimalSeparator.addActionListener(new ActionListener() {
       @Override
@@ -113,7 +114,7 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     mnSettings.add(chckbxConvertDecimalSeparator);
 
-    JCheckBox chckbxConvertDateFormat = new JCheckBox("Convert dates with dd-mm-yyyy to yyyymmdd");
+    JCheckBoxMenuItem chckbxConvertDateFormat = new JCheckBoxMenuItem("Convert dates with dd-mm-yyyy to yyyymmdd");
     chckbxConvertDateFormat.setHorizontalAlignment(SwingConstants.LEFT);
     chckbxConvertDateFormat.addActionListener(new ActionListener() {
       @Override
@@ -124,7 +125,7 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     mnSettings.add(chckbxConvertDateFormat);
 
-    JCheckBox chckbxSeperatorComma = new JCheckBox("Seperator comma (\",\") Default semicolon (\";\")");
+    JCheckBoxMenuItem chckbxSeperatorComma = new JCheckBoxMenuItem("Seperator comma (\",\") Default semicolon (\";\")");
     chckbxSeperatorComma.setHorizontalAlignment(SwingConstants.LEFT);
     chckbxSeperatorComma.addActionListener(new ActionListener() {
       @Override
