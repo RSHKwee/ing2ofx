@@ -69,8 +69,11 @@ public class GUILayout extends JPanel implements ItemListener {
 
   private JTextArea output;
 
-  private JLabel lblGNUCashExe = new JLabel("");
+  // private JLabel lblGNUCashExe = new JLabel("");
   private JTextField txtOutputFilename = new JTextField();
+
+  JLabel lblOutputFolder = new JLabel("");
+  JButton btnConvert = new JButton("Convert to OFX");
 
   /**
    * Defineer GUI layout
@@ -133,28 +136,29 @@ public class GUILayout extends JPanel implements ItemListener {
     mnSettings.add(chckbxSeperatorComma);
 
     // Option Location GnuCash exe
-    lblGNUCashExe.setText("GnuCash executable: " + m_GnuCashExecutable.getAbsolutePath());
-    JMenuItem mntmGnuCashExe = new JMenuItem("GnuCash executable");
-    mntmGnuCashExe.setHorizontalAlignment(SwingConstants.LEFT);
+    JMenu mnGnuCashExe = new JMenu("GnuCash executable");
+    mnSettings.add(mnGnuCashExe);
+
+    JMenuItem mntmGnuCashExe = new JMenuItem(m_GnuCashExecutable.getAbsolutePath());
     mntmGnuCashExe.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         JFileChooser fileChooser = new JFileChooser(m_GnuCashExecutable);
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser.setSelectedFile(m_GnuCashExecutable);
         FileFilter filter = new FileNameExtensionFilter("EXE File", "exe");
         fileChooser.setFileFilter(filter);
         int option = fileChooser.showOpenDialog(GUILayout.this);
         if (option == JFileChooser.APPROVE_OPTION) {
           File file = fileChooser.getSelectedFile();
           LOGGER.log(Level.INFO, "GnuCash executable: " + file.getAbsolutePath());
-          lblGNUCashExe.setText("GnuCash executable: " + file.getAbsolutePath());
           m_GnuCashExecutable = file;
         } else {
           mntmGnuCashExe.setText("Command canceled");
         }
       }
     });
-    mnSettings.add(mntmGnuCashExe);
+    mnGnuCashExe.add(mntmGnuCashExe);
 
     // Optie log level
     JMenuItem mntmLoglevel = new JMenuItem("Loglevel");
@@ -233,7 +237,7 @@ public class GUILayout extends JPanel implements ItemListener {
 
     JPanel panel = new JPanel();
     outputPane.setColumnHeaderView(panel);
-    panel.setLayout(new MigLayout("", "[129px][65px,grow][111px,grow][105px][87px][76px]", "[23px][][][]"));
+    panel.setLayout(new MigLayout("", "[129px][65px,grow][111px,grow][105px]", "[23px][][][][][][][][][][]"));
     outputPane.setColumnHeaderView(panel);
     outputPane.setSize(300, 500);
 
@@ -243,9 +247,9 @@ public class GUILayout extends JPanel implements ItemListener {
     panel.setMinimumSize(new Dimension(350, 300));
     panel.setPreferredSize(new Dimension(350, 290));
     JLabel lblCSVFile = new JLabel("Select a ING CSV file");
-    JLabel lblOutputFolder = new JLabel("");
-
-    JButton btnConvert = new JButton("Convert to OFX");
+    lblCSVFile.setEnabled(false);
+    lblCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
+    panel.add(lblCSVFile, "cell 1 0");
 
     JButton btnCSVFile = new JButton("CSV File");
     btnCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -276,17 +280,6 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     panel.add(btnCSVFile, "cell 0 0");
 
-    lblCSVFile.setEnabled(false);
-    lblCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
-    panel.add(lblCSVFile, "cell 1 0");
-
-    txtOutputFilename.setHorizontalAlignment(SwingConstants.LEFT);
-    txtOutputFilename.setText("Output filename");
-    txtOutputFilename.setEnabled(false);
-
-    panel.add(txtOutputFilename, "cell 1 1");
-    txtOutputFilename.setColumns(100);
-
     JButton btnOutputFolder = new JButton("Output folder");
     btnOutputFolder.setHorizontalAlignment(SwingConstants.RIGHT);
     btnOutputFolder.addActionListener(new ActionListener() {
@@ -294,6 +287,7 @@ public class GUILayout extends JPanel implements ItemListener {
       public void actionPerformed(ActionEvent e) {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        fileChooser.setSelectedFile(new File(lblOutputFolder.getText()));
         int option = fileChooser.showOpenDialog(GUILayout.this);
         if (option == JFileChooser.APPROVE_OPTION) {
           File file = fileChooser.getSelectedFile();
@@ -305,11 +299,16 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     panel.add(btnOutputFolder, "cell 0 2");
 
+    txtOutputFilename.setHorizontalAlignment(SwingConstants.LEFT);
+    txtOutputFilename.setText("Output filename");
+    txtOutputFilename.setEnabled(false);
+    txtOutputFilename.setColumns(100);
+    panel.add(txtOutputFilename, "cell 1 3");
+
     lblOutputFolder.setHorizontalAlignment(SwingConstants.LEFT);
-    panel.add(lblOutputFolder, "");
+    panel.add(lblOutputFolder, "cell 1 2");
 
     btnConvert.setEnabled(false);
-
     btnConvert.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -330,9 +329,10 @@ public class GUILayout extends JPanel implements ItemListener {
          * -d, --directory DIR Directory to store output, default is ./ofx 
          * -c, --convert Convert decimal separator to dots (.), default is false 
          * -b, --convert-date Convert dates with dd-mm-yyyy notation to yyyymmdd
+         * -s, --separator' Separator semicolon is default (true) otherwise comma (false)", action='store_true')
          */
         // @formatter:on
-        String[] l_options = new String[4];
+        String[] l_options = new String[5];
         l_options[0] = lblCSVFile.getText();
         int idx = 0;
 
@@ -354,6 +354,11 @@ public class GUILayout extends JPanel implements ItemListener {
         if (chckbxConvertDateFormat.isSelected()) {
           idx++;
           l_options[idx] = "-b";
+        }
+
+        if (!chckbxSeperatorComma.isSelected()) {
+          idx++;
+          l_options[idx] = "-s";
         }
 
         String l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofx.py");
@@ -386,16 +391,14 @@ public class GUILayout extends JPanel implements ItemListener {
         }
       }
     });
-    panel.add(btnConvert, "cell 1 3");
+    panel.add(btnConvert, "cell 1 4");
 
     JLabel lblNewLabel = new JLabel("    ");
-    panel.add(lblNewLabel, "cell 0 4");
-
-    panel.add(lblGNUCashExe, "cell 0 5");
+    panel.add(lblNewLabel, "cell 0 5");
 
     JButton btnGNUCash = new JButton("Start GnuCash");
     btnGNUCash.setHorizontalAlignment(SwingConstants.RIGHT);
-    panel.add(btnGNUCash, "cell 1 5");
+    panel.add(btnGNUCash, "cell 1 6");
 
     bottomHalf.setMinimumSize(new Dimension(500, 100));
     bottomHalf.setPreferredSize(new Dimension(500, 400));

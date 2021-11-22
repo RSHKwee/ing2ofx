@@ -109,6 +109,10 @@ class CsvFile:
                   'OV': 'xx', 'VZ': 'xx', 'IC': 'DIRECTDEBIT', 'ST': 'DIRECTDEP'}
         self.transactions = list()
         args = args
+        if args.delimiter:
+            delim = ';'
+        else:
+            delim = ','
         
         # Keep track of used IDs to prevent double IDs
         idslist = []
@@ -116,7 +120,7 @@ class CsvFile:
         with open(args.csvfile, 'r') as csvfile:
         #with open(args.csvfile, 'rb') as csvfile:
             # Open the csvfile as a Dictreader, ";" separated
-            csvreader = csv.DictReader(csvfile, delimiter=';', quotechar='"')
+            csvreader = csv.DictReader(csvfile, delimiter=delim, quotechar='"')
             for row in csvreader:
                 # Map ACCOUNT to "Rekening"
                 account = row['Rekening'].replace(" ", "")
@@ -352,6 +356,10 @@ if __name__ == "__main__":
                         help="Convert decimal separator to dots (.), default is false", action='store_true')
     parser.add_argument('-b, --convert_date', dest='convert_date',
                         help="Convert dates with dd-mm-yyyy notation to yyyymmdd", action='store_true')
+    parser.add_argument('-s, --separator', dest='delimiter',
+                        help="Separator semicolon is default (true) otherwise comma (false)", action='store_true')
+    
     args = parser.parse_args()
-
+    print ("Start conversion")
     ofx = OfxWriter(args, gui=False)
+    print ("End conversion")
