@@ -325,16 +325,17 @@ class OfxWriter:
       """
                 ofxfile.write(message_footer)
 
-        if not gui:
+            if not gui:
             # print some statistics:
-            print ("TRANSACTIONS: " + str(len(csv.transactions)))
-            print ("IN:           " + args.csvfile)
-            print ("OUT:          " + filename)
-        else:
-            self.stats_transactions = "TRANSACTIONS: " + \
-                str(len(csv.transactions))
-            self.stats_in = "IN:           " + args.csvfile
-            self.stats_out = "OUT:          " + filepath
+                print ("Account:      " + account)
+                print ("Transactions: " + str(len(csv.transactions)))
+                print ("In:           " + args.csvfile)
+                print ("Out:          " + account + '_' + filename)
+            else:
+                self.stats_transactions = "TRANSACTIONS: " + \
+                    str(len(csv.transactions))
+                self.stats_in = "IN:           " + args.csvfile
+                self.stats_out = "OUT:          " + filepath
 
 if __name__ == "__main__":
     """ First parse the command line arguments. """
