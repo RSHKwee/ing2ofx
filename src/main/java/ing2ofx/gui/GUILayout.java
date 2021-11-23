@@ -85,12 +85,31 @@ public class GUILayout extends JPanel implements ItemListener {
    * @param ActionEvent
    */
   public GUILayout() {
-    setLayout(new BorderLayout(0, 0));
+    // Initialise
+    Parameters l_param = new Parameters();
+    m_GnuCashExecutable = new File(l_param.get_GnuCashExecutable());
 
+    if (!l_param.get_OutputFolder().isBlank()) {
+      m_OutputFolder = new File(l_param.get_OutputFolder());
+      lblOutputFolder.setText(m_OutputFolder.getAbsolutePath());
+    }
+    if (!l_param.get_CsvFile().isBlank()) {
+      m_CsvFile = new File(l_param.get_CsvFile());
+    }
+
+    m_Level = l_param.get_Level();
+    m_toDisk = l_param.is_toDisk();
+    m_AcountSeparateOFX = l_param.is_AcountSeparateOFX();
+    m_ConvertDecimalSeparator = l_param.is_ConvertDecimalSeparator();
+    m_ConvertDateFormat = l_param.is_ConvertDateFormat();
+    m_SeperatorComma = l_param.is_SeperatorComma();
+
+    // Define Layout
+    setLayout(new BorderLayout(0, 0));
     JMenuBar menuBar = new JMenuBar();
     add(menuBar, BorderLayout.NORTH);
 
-    // Defineren Setting menu in menubalk:
+    // DefineSetting menu in menubalk:
     JMenu mnSettings = new JMenu("Settings");
     menuBar.add(mnSettings);
 
@@ -102,6 +121,7 @@ public class GUILayout extends JPanel implements ItemListener {
       public void actionPerformed(ActionEvent e) {
         boolean selected = chckbxAcountSeparateOFX.isSelected();
         m_AcountSeparateOFX = selected;
+        l_param.set_AcountSeparateOFX(selected);
         LOGGER.log(Level.CONFIG, "Accounts in separate OFX files :" + Boolean.toString(selected));
       }
     });
@@ -297,6 +317,7 @@ public class GUILayout extends JPanel implements ItemListener {
           btnConvert.setEnabled(true);
           lblCSVFile.setEnabled(true);
           lblOutputFolder.setText(file.getParent());
+          m_OutputFolder = new File(file.getParent());
         }
       }
     });
@@ -328,7 +349,7 @@ public class GUILayout extends JPanel implements ItemListener {
           File file = fileChooser.getSelectedFile();
           LOGGER.log(Level.INFO, "Output folder: " + file.getAbsolutePath());
           lblOutputFolder.setText(file.getAbsolutePath());
-          m_OutputFolder = file;
+          m_OutputFolder = new File(file.getAbsolutePath());
         }
       }
     });
