@@ -125,17 +125,6 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     mnSettings.add(chckbxConvertDateFormat);
 
-    JCheckBoxMenuItem chckbxSeperatorComma = new JCheckBoxMenuItem("Seperator comma (\",\") Default semicolon (\";\")");
-    chckbxSeperatorComma.setHorizontalAlignment(SwingConstants.LEFT);
-    chckbxSeperatorComma.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        boolean selected = chckbxSeperatorComma.isSelected();
-        LOGGER.log(Level.CONFIG, "Seperator comma (\",\") Default semicolon (\";\") :" + Boolean.toString(selected));
-      }
-    });
-    mnSettings.add(chckbxSeperatorComma);
-
     // Option Location GnuCash exe
     JMenu mnGnuCashExe = new JMenu("GnuCash executable");
     mnSettings.add(mnGnuCashExe);
@@ -174,8 +163,10 @@ public class GUILayout extends JPanel implements ItemListener {
         String level = "";
         level = (String) JOptionPane.showInputDialog(frame, "Loglevel?", "INFO", JOptionPane.QUESTION_MESSAGE, null,
             c_levels, m_Level.toString());
-        m_Level = Level.parse(level.toUpperCase());
-        MyLogger.changeLogLevel(m_Level);
+        if (level != null) {
+          m_Level = Level.parse(level.toUpperCase());
+          MyLogger.changeLogLevel(m_Level);
+        }
       }
     });
     mnSettings.add(mntmLoglevel);
@@ -284,6 +275,17 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     panel.add(btnCSVFile, "cell 0 0");
 
+    JCheckBox chckbxSeperatorComma = new JCheckBox("Seperator comma (\",\") Default semicolon (\";\")");
+    chckbxSeperatorComma.setHorizontalAlignment(SwingConstants.LEFT);
+    chckbxSeperatorComma.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        boolean selected = chckbxSeperatorComma.isSelected();
+        LOGGER.log(Level.CONFIG, "Seperator comma (\",\") Default semicolon (\";\") :" + Boolean.toString(selected));
+      }
+    });
+    panel.add(chckbxSeperatorComma, "cell 1 1");
+
     JButton btnOutputFolder = new JButton("Output folder");
     btnOutputFolder.setHorizontalAlignment(SwingConstants.RIGHT);
     btnOutputFolder.addActionListener(new ActionListener() {
@@ -301,16 +303,16 @@ public class GUILayout extends JPanel implements ItemListener {
         }
       }
     });
-    panel.add(btnOutputFolder, "cell 0 2");
+    panel.add(btnOutputFolder, "cell 0 3");
+
+    lblOutputFolder.setHorizontalAlignment(SwingConstants.LEFT);
+    panel.add(lblOutputFolder, "cell 1 3");
 
     txtOutputFilename.setHorizontalAlignment(SwingConstants.LEFT);
     txtOutputFilename.setText("Output filename");
     txtOutputFilename.setEnabled(false);
     txtOutputFilename.setColumns(100);
-    panel.add(txtOutputFilename, "cell 1 3");
-
-    lblOutputFolder.setHorizontalAlignment(SwingConstants.LEFT);
-    panel.add(lblOutputFolder, "cell 1 2");
+    panel.add(txtOutputFilename, "cell 1 4");
 
     btnConvert.setEnabled(false);
     btnConvert.addActionListener(new ActionListener() {
@@ -395,14 +397,14 @@ public class GUILayout extends JPanel implements ItemListener {
         }
       }
     });
-    panel.add(btnConvert, "cell 1 4");
+    panel.add(btnConvert, "cell 1 5");
 
     JLabel lblNewLabel = new JLabel("    ");
-    panel.add(lblNewLabel, "cell 0 5");
+    panel.add(lblNewLabel, "cell 0 6");
 
     JButton btnGNUCash = new JButton("Start GnuCash");
     btnGNUCash.setHorizontalAlignment(SwingConstants.RIGHT);
-    panel.add(btnGNUCash, "cell 1 6");
+    panel.add(btnGNUCash, "cell 1 7");
 
     bottomHalf.setMinimumSize(new Dimension(500, 100));
     bottomHalf.setPreferredSize(new Dimension(500, 400));
