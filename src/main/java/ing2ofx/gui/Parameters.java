@@ -56,6 +56,7 @@ public class Parameters {
 
   public void set_GnuCashExecutable(File a_GnuCashExecutable) {
     pref.put(c_GnuCashExe, a_GnuCashExecutable.getAbsolutePath());
+    save();
   }
 
   public String get_OutputFolder() {
@@ -64,6 +65,7 @@ public class Parameters {
 
   public void set_OutputFolder(File a_OutputFolder) {
     pref.put(m_OutputFolder, a_OutputFolder.getAbsolutePath());
+    save();
   }
 
   public String get_CsvFile() {
@@ -72,6 +74,7 @@ public class Parameters {
 
   public void set_CsvFile(File a_CsvFile) {
     pref.put(c_CsvFile, a_CsvFile.getAbsolutePath());
+    save();
   }
 
   public boolean is_toDisk() {
@@ -80,6 +83,7 @@ public class Parameters {
 
   public void set_toDisk(boolean m_toDisk) {
     this.m_toDisk = m_toDisk;
+    save();
   }
 
   public Level get_Level() {
@@ -88,6 +92,7 @@ public class Parameters {
 
   public void set_Level(Level a_Level) {
     this.m_Level = a_Level.toString();
+    save();
   }
 
   public boolean is_AcountSeparateOFX() {
@@ -96,6 +101,7 @@ public class Parameters {
 
   public void set_AcountSeparateOFX(boolean a_AcountSeparateOFX) {
     this.m_AcountSeparateOFX = a_AcountSeparateOFX;
+    save();
   }
 
   public boolean is_ConvertDecimalSeparator() {
@@ -104,6 +110,7 @@ public class Parameters {
 
   public void set_ConvertDecimalSeparator(boolean a_ConvertDecimalSeparator) {
     this.m_ConvertDecimalSeparator = a_ConvertDecimalSeparator;
+    save();
   }
 
   public boolean is_ConvertDateFormat() {
@@ -112,6 +119,7 @@ public class Parameters {
 
   public void set_ConvertDateFormat(boolean a_ConvertDateFormat) {
     this.m_ConvertDateFormat = a_ConvertDateFormat;
+    save();
   }
 
   public boolean is_SeperatorComma() {
@@ -120,6 +128,7 @@ public class Parameters {
 
   public void set_SeperatorComma(boolean a_SeperatorComma) {
     this.m_SeperatorComma = a_SeperatorComma;
+    save();
   }
 
   public void save() {

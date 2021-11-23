@@ -135,6 +135,7 @@ public class GUILayout extends JPanel implements ItemListener {
       public void actionPerformed(ActionEvent e) {
         boolean selected = chckbxConvertDecimalSeparator.isSelected();
         m_ConvertDecimalSeparator = selected;
+        l_param.set_ConvertDecimalSeparator(selected);
         LOGGER.log(Level.CONFIG, "Convert decimal to dots:" + Boolean.toString(selected));
       }
     });
@@ -148,6 +149,7 @@ public class GUILayout extends JPanel implements ItemListener {
       public void actionPerformed(ActionEvent e) {
         boolean selected = chckbxConvertDateFormat.isSelected();
         m_ConvertDateFormat = selected;
+        l_param.set_ConvertDateFormat(selected);
         LOGGER.log(Level.CONFIG, "Convert dates with dd-mm-yyyy to yyyymmdd :" + Boolean.toString(selected));
       }
     });
@@ -175,6 +177,7 @@ public class GUILayout extends JPanel implements ItemListener {
           File file = fileChooser.getSelectedFile();
           LOGGER.log(Level.INFO, "GnuCash executable: " + file.getAbsolutePath());
           m_GnuCashExecutable = file;
+          l_param.set_GnuCashExecutable(m_GnuCashExecutable);
           mntmGnuCashExe.setText(m_GnuCashExecutable.getAbsolutePath());
         }
       }
@@ -193,6 +196,7 @@ public class GUILayout extends JPanel implements ItemListener {
             c_levels, m_Level.toString());
         if (level != null) {
           m_Level = Level.parse(level.toUpperCase());
+          l_param.set_Level(m_Level);
           MyLogger.changeLogLevel(m_Level);
         }
       }
@@ -237,6 +241,7 @@ public class GUILayout extends JPanel implements ItemListener {
         } else {
           m_toDisk = false;
         }
+        l_param.set_toDisk(m_toDisk);
       }
     });
     mnSettings.add(mntmLogToDisk);
@@ -308,6 +313,7 @@ public class GUILayout extends JPanel implements ItemListener {
           LOGGER.log(Level.INFO, "CSV File: " + file.getAbsolutePath());
           lblCSVFile.setText(file.getAbsolutePath());
           m_CsvFile = file;
+          l_param.set_CsvFile(file);
 
           String l_filename;
           l_filename = library.FileUtils.getFileNameWithoutExtension(file) + ".ofx";
@@ -318,6 +324,7 @@ public class GUILayout extends JPanel implements ItemListener {
           lblCSVFile.setEnabled(true);
           lblOutputFolder.setText(file.getParent());
           m_OutputFolder = new File(file.getParent());
+          l_param.set_OutputFolder(m_OutputFolder);
         }
       }
     });
@@ -331,6 +338,7 @@ public class GUILayout extends JPanel implements ItemListener {
       public void actionPerformed(ActionEvent e) {
         boolean selected = chckbxSeperatorComma.isSelected();
         m_SeperatorComma = selected;
+        l_param.set_SeperatorComma(selected);
         LOGGER.log(Level.CONFIG, "Seperator comma (\",\") Default semicolon (\";\") :" + Boolean.toString(selected));
       }
     });
@@ -350,6 +358,7 @@ public class GUILayout extends JPanel implements ItemListener {
           LOGGER.log(Level.INFO, "Output folder: " + file.getAbsolutePath());
           lblOutputFolder.setText(file.getAbsolutePath());
           m_OutputFolder = new File(file.getAbsolutePath());
+          l_param.set_OutputFolder(m_OutputFolder);
         }
       }
     });
@@ -437,11 +446,8 @@ public class GUILayout extends JPanel implements ItemListener {
           LOGGER.log(Level.INFO, " ");
           System.out.println(ll_log.toString());
           l_uniLog.forEach(ll -> {
-            // System.out.println("Script: " + ll);
             LOGGER.log(Level.INFO, " " + ll);
           });
-
-          // LOGGER.log(Level.INFO, l_logging);
         } catch (IOException | InterruptedException es) {
           es.printStackTrace();
         }
@@ -454,6 +460,19 @@ public class GUILayout extends JPanel implements ItemListener {
 
     JButton btnGNUCash = new JButton("Start GnuCash");
     btnGNUCash.setHorizontalAlignment(SwingConstants.RIGHT);
+    btnGNUCash.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        OutputToLoggerReader l_reader = new OutputToLoggerReader();
+        try {
+          String l_logging = l_reader.getReadOut(m_GnuCashExecutable.getAbsolutePath());
+          LOGGER.log(Level.INFO, l_logging);
+        } catch (IOException | InterruptedException e1) {
+          e1.printStackTrace();
+        }
+
+      }
+    });
     panel.add(btnGNUCash, "cell 1 7");
 
     bottomHalf.setMinimumSize(new Dimension(500, 100));
