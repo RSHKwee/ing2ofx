@@ -43,6 +43,7 @@ import javax.swing.UIManager;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import ing2ofx.main.Parameters;
 import library.OutputToLoggerReader;
 import logger.MyLogger;
 import logger.TextAreaHandler;
@@ -220,6 +221,7 @@ public class GUILayout extends JPanel implements ItemListener {
           // to use a new selected look and feel.
           UIManager.setLookAndFeel(lookAndFeelInfo.getClassName());
           SwingUtilities.updateComponentTreeUI(this);
+          l_param.set_LookAndFeel(lookAndFeelInfo.getClassName());
         } catch (Exception e) {
           e.printStackTrace();
         }

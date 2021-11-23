@@ -1,4 +1,4 @@
-package ing2ofx.gui;
+package ing2ofx.main;
 
 import java.io.File;
 import java.util.logging.Level;
@@ -22,8 +22,11 @@ public class Parameters {
   private String c_SeperatorComma = "SeperatorComma";
   private String c_OutputFolder = "OutputFolder";
   private String c_CsvFile = "CsvFile";
+  private String c_LookAndFeel = "LookAndFeel";
+  private String c_LookAndFeelVal = "Nimbus";
 
   private String m_Level;
+  private String m_LookAndFeel;
   private String m_GnuCashExecutable;
   private String m_OutputFolder;
   private String m_CsvFile;
@@ -44,6 +47,7 @@ public class Parameters {
     m_ConvertDateFormat = pref.getBoolean(c_ConvertDateFormat, false);
     m_SeperatorComma = pref.getBoolean(c_SeperatorComma, false);
 
+    m_LookAndFeel = pref.get(c_LookAndFeel, c_LookAndFeelVal);
     m_GnuCashExecutable = pref.get(c_GnuCashExe, c_GnuCashExeValue);
     m_OutputFolder = pref.get(c_OutputFolder, "");
     m_CsvFile = pref.get(c_CsvFile, "");
@@ -138,6 +142,15 @@ public class Parameters {
     pref.putBoolean(c_SeperatorComma, a_SeperatorComma);
     this.m_SeperatorComma = a_SeperatorComma;
     save();
+  }
+
+  public String get_LookAndFeel() {
+    return m_LookAndFeel;
+  }
+
+  public void set_LookAndFeel(String a_LookAndFeel) {
+    pref.put(c_LookAndFeel, a_LookAndFeel);
+    this.m_LookAndFeel = a_LookAndFeel;
   }
 
   public void save() {

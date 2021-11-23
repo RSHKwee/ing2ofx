@@ -85,6 +85,8 @@ public class Main {
    * @param args 0 Look and feel, "Nimbus" of "Metal"
    */
   public static void main(String[] argv) {
+    Parameters l_param = new Parameters();
+    m_LookAndFeel = l_param.get_LookAndFeel();
     m_creationtime = JarInfo.getTimeStr(GUILayout.class);
 
     switch (argv.length) {
