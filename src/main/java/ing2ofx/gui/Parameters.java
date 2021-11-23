@@ -56,6 +56,7 @@ public class Parameters {
 
   public void set_GnuCashExecutable(File a_GnuCashExecutable) {
     pref.put(c_GnuCashExe, a_GnuCashExecutable.getAbsolutePath());
+    m_GnuCashExecutable = a_GnuCashExecutable.getAbsolutePath();
     save();
   }
 
@@ -64,7 +65,8 @@ public class Parameters {
   }
 
   public void set_OutputFolder(File a_OutputFolder) {
-    pref.put(m_OutputFolder, a_OutputFolder.getAbsolutePath());
+    pref.put(c_OutputFolder, a_OutputFolder.getAbsolutePath());
+    m_OutputFolder = a_OutputFolder.getAbsolutePath();
     save();
   }
 
@@ -74,6 +76,7 @@ public class Parameters {
 
   public void set_CsvFile(File a_CsvFile) {
     pref.put(c_CsvFile, a_CsvFile.getAbsolutePath());
+    m_CsvFile = a_CsvFile.getAbsolutePath();
     save();
   }
 
@@ -81,8 +84,9 @@ public class Parameters {
     return m_toDisk;
   }
 
-  public void set_toDisk(boolean m_toDisk) {
-    this.m_toDisk = m_toDisk;
+  public void set_toDisk(boolean a_toDisk) {
+    pref.putBoolean(c_toDisk, a_toDisk);
+    this.m_toDisk = a_toDisk;
     save();
   }
 
@@ -91,6 +95,7 @@ public class Parameters {
   }
 
   public void set_Level(Level a_Level) {
+    pref.put(c_Level, a_Level.toString());
     this.m_Level = a_Level.toString();
     save();
   }
@@ -100,6 +105,7 @@ public class Parameters {
   }
 
   public void set_AcountSeparateOFX(boolean a_AcountSeparateOFX) {
+    pref.putBoolean(c_AccountSepOfx, a_AcountSeparateOFX);
     this.m_AcountSeparateOFX = a_AcountSeparateOFX;
     save();
   }
@@ -109,6 +115,7 @@ public class Parameters {
   }
 
   public void set_ConvertDecimalSeparator(boolean a_ConvertDecimalSeparator) {
+    pref.putBoolean(c_ConvertDecimalSeparator, a_ConvertDecimalSeparator);
     this.m_ConvertDecimalSeparator = a_ConvertDecimalSeparator;
     save();
   }
@@ -118,6 +125,7 @@ public class Parameters {
   }
 
   public void set_ConvertDateFormat(boolean a_ConvertDateFormat) {
+    pref.putBoolean(c_ConvertDateFormat, a_ConvertDateFormat);
     this.m_ConvertDateFormat = a_ConvertDateFormat;
     save();
   }
@@ -127,6 +135,7 @@ public class Parameters {
   }
 
   public void set_SeperatorComma(boolean a_SeperatorComma) {
+    pref.putBoolean(c_SeperatorComma, a_SeperatorComma);
     this.m_SeperatorComma = a_SeperatorComma;
     save();
   }
@@ -134,6 +143,7 @@ public class Parameters {
   public void save() {
     try {
       pref.sync();
+      pref.flush();
     } catch (BackingStoreException e) {
       LOGGER.log(Level.INFO, e.getMessage());
     }
