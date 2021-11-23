@@ -110,11 +110,12 @@ public class GUILayout extends JPanel implements ItemListener {
     JMenuBar menuBar = new JMenuBar();
     add(menuBar, BorderLayout.NORTH);
 
-    // DefineSetting menu in menubalk:
+    // Define Setting menu in menubalk:
     JMenu mnSettings = new JMenu("Settings");
     menuBar.add(mnSettings);
 
-    JCheckBoxMenuItem chckbxAcountSeparateOFX = new JCheckBoxMenuItem("Accounts in seperate OFX files");
+    // Checkbox Separate OFX files
+    JCheckBoxMenuItem chckbxAcountSeparateOFX = new JCheckBoxMenuItem("Accounts in separate OFX files");
     chckbxAcountSeparateOFX.setHorizontalAlignment(SwingConstants.LEFT);
     chckbxAcountSeparateOFX.setSelected(m_AcountSeparateOFX);
     chckbxAcountSeparateOFX.addActionListener(new ActionListener() {
@@ -128,6 +129,7 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     mnSettings.add(chckbxAcountSeparateOFX);
 
+    // Checkbox decimal separator
     JCheckBoxMenuItem chckbxConvertDecimalSeparator = new JCheckBoxMenuItem("Convert decimnal separator to dots (.)");
     chckbxConvertDecimalSeparator.setHorizontalAlignment(SwingConstants.LEFT);
     chckbxConvertDecimalSeparator.setSelected(m_ConvertDecimalSeparator);
@@ -142,6 +144,7 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     mnSettings.add(chckbxConvertDecimalSeparator);
 
+    // Checkbox convert date
     JCheckBoxMenuItem chckbxConvertDateFormat = new JCheckBoxMenuItem("Convert dates with dd-mm-yyyy to yyyymmdd");
     chckbxConvertDateFormat.setHorizontalAlignment(SwingConstants.LEFT);
     chckbxConvertDateFormat.setSelected(m_ConvertDateFormat);
@@ -185,7 +188,7 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     mnGnuCashExe.add(mntmGnuCashExe);
 
-    // Optie log level
+    // Option log level
     JMenuItem mntmLoglevel = new JMenuItem("Loglevel");
     mntmLoglevel.setHorizontalAlignment(SwingConstants.LEFT);
     mntmLoglevel.addActionListener(new ActionListener() {
@@ -204,7 +207,7 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     mnSettings.add(mntmLoglevel);
 
-    // Toevoegen Look and Feel
+    // Add item Look and Feel
     JMenu menu = new JMenu("Look and Feel");
     menu.setHorizontalAlignment(SwingConstants.LEFT);
     mnSettings.add(menu);
@@ -276,7 +279,6 @@ public class GUILayout extends JPanel implements ItemListener {
         output = textAreaHandler.getTextArea();
       }
     }
-
     output.setEditable(false);
     output.setTabSize(4);
     JScrollPane outputPane = new JScrollPane(output, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
@@ -402,37 +404,30 @@ public class GUILayout extends JPanel implements ItemListener {
         String[] l_options = new String[5];
         l_options[0] = lblCSVFile.getText();
         int idx = 0;
-
         if (!txtOutputFilename.getText().equalsIgnoreCase("Output filename")) {
           idx++;
           l_options[idx] = "-o " + txtOutputFilename.getText();
         }
-
         if (!lblOutputFolder.getText().isBlank()) {
           idx++;
           l_options[idx] = "-d " + lblOutputFolder.getText();
         }
-
         if (chckbxConvertDecimalSeparator.isSelected()) {
           idx++;
           l_options[idx] = "-c";
         }
-
         if (chckbxConvertDateFormat.isSelected()) {
           idx++;
           l_options[idx] = "-b";
         }
-
         if (!chckbxSeperatorComma.isSelected()) {
           idx++;
           l_options[idx] = "-s";
         }
-
         String l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofx.py");
         if (chckbxAcountSeparateOFX.isSelected()) {
           l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofxPerAccount.py");
         }
-
         String l_optionsResize = "python";
         l_optionsResize = l_optionsResize + " " + l_Script;
         for (int i = 1; i <= idx + 1; i++) {
@@ -460,6 +455,7 @@ public class GUILayout extends JPanel implements ItemListener {
     JLabel lblNewLabel = new JLabel("    ");
     panel.add(lblNewLabel, "cell 0 6");
 
+    // Start GnuCash
     JButton btnGNUCash = new JButton("Start GnuCash");
     btnGNUCash.setHorizontalAlignment(SwingConstants.RIGHT);
     btnGNUCash.addActionListener(new ActionListener() {
@@ -467,8 +463,10 @@ public class GUILayout extends JPanel implements ItemListener {
       public void actionPerformed(ActionEvent e) {
         OutputToLoggerReader l_reader = new OutputToLoggerReader();
         try {
+          LOGGER.log(Level.INFO, "Start GNUCash");
           String l_logging = l_reader.getReadOut(m_GnuCashExecutable.getAbsolutePath());
           LOGGER.log(Level.INFO, l_logging);
+          LOGGER.log(Level.INFO, "Stop GNUCash");
         } catch (IOException | InterruptedException e1) {
           e1.printStackTrace();
         }
@@ -484,7 +482,7 @@ public class GUILayout extends JPanel implements ItemListener {
 
   @Override
   public void itemStateChanged(ItemEvent e) {
-    // TODO Auto-generated method stub
+    LOGGER.log(Level.INFO, "itemStateChanged");
   }
 
 }
