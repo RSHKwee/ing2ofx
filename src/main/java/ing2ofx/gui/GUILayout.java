@@ -55,26 +55,29 @@ public class GUILayout extends JPanel implements ItemListener {
 
   // * -3 Loglevel: OFF SEVERE WARNING INFO CONFIG FINE FINER FINEST ALL <br>
   static final String[] c_levels = { "OFF", "SEVERE", "WARNING", "INFO", "CONFIG", "FINE", "FINER", "FINEST", "ALL" };
-  // static final String[] c_DelFolderContents = { "Ja", "Nee" };
-  // static final String[] c_LogToDisk = { "Ja", "Nee" };
-
-  private Level m_Level = Level.INFO;
-  private Boolean m_toDisk = false;
+  static final String[] c_LogToDisk = { "Yes", "No" };
 
   // Variables
   private String m_RootDir = "c:\\";
-  private String newline = "\n";
+  // private String newline = "\n";
+
+  // Preferences
   private File m_GnuCashExecutable = new File("C:\\Program Files (x86)\\gnucash\\bin\\gnucash.exe");
-  private String m_OutputFolder;
-  private String m_CsvFile;
+  private File m_OutputFolder;
+  private File m_CsvFile;
 
+  private boolean m_toDisk = false;
+  private Level m_Level = Level.INFO;
+  private boolean m_AcountSeparateOFX = true;
+  private boolean m_ConvertDecimalSeparator = false;
+  private boolean m_ConvertDateFormat = false;
+  private boolean m_SeperatorComma = false;
+
+  // GUI items
   private JTextArea output;
-
-  // private JLabel lblGNUCashExe = new JLabel("");
   private JTextField txtOutputFilename = new JTextField();
-
-  JLabel lblOutputFolder = new JLabel("");
-  JButton btnConvert = new JButton("Convert to OFX");
+  private JLabel lblOutputFolder = new JLabel("");
+  private JButton btnConvert = new JButton("Convert to OFX");
 
   /**
    * Defineer GUI layout
@@ -93,11 +96,12 @@ public class GUILayout extends JPanel implements ItemListener {
 
     JCheckBoxMenuItem chckbxAcountSeparateOFX = new JCheckBoxMenuItem("Accounts in seperate OFX files");
     chckbxAcountSeparateOFX.setHorizontalAlignment(SwingConstants.LEFT);
-    chckbxAcountSeparateOFX.setSelected(true);
+    chckbxAcountSeparateOFX.setSelected(m_AcountSeparateOFX);
     chckbxAcountSeparateOFX.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         boolean selected = chckbxAcountSeparateOFX.isSelected();
+        m_AcountSeparateOFX = selected;
         LOGGER.log(Level.CONFIG, "Accounts in separate OFX files :" + Boolean.toString(selected));
       }
     });
@@ -105,10 +109,12 @@ public class GUILayout extends JPanel implements ItemListener {
 
     JCheckBoxMenuItem chckbxConvertDecimalSeparator = new JCheckBoxMenuItem("Convert decimnal separator to dots (.)");
     chckbxConvertDecimalSeparator.setHorizontalAlignment(SwingConstants.LEFT);
+    chckbxConvertDecimalSeparator.setSelected(m_ConvertDecimalSeparator);
     chckbxConvertDecimalSeparator.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         boolean selected = chckbxConvertDecimalSeparator.isSelected();
+        m_ConvertDecimalSeparator = selected;
         LOGGER.log(Level.CONFIG, "Convert decimal to dots:" + Boolean.toString(selected));
       }
     });
@@ -116,10 +122,12 @@ public class GUILayout extends JPanel implements ItemListener {
 
     JCheckBoxMenuItem chckbxConvertDateFormat = new JCheckBoxMenuItem("Convert dates with dd-mm-yyyy to yyyymmdd");
     chckbxConvertDateFormat.setHorizontalAlignment(SwingConstants.LEFT);
+    chckbxConvertDateFormat.setSelected(m_ConvertDateFormat);
     chckbxConvertDateFormat.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         boolean selected = chckbxConvertDateFormat.isSelected();
+        m_ConvertDateFormat = selected;
         LOGGER.log(Level.CONFIG, "Convert dates with dd-mm-yyyy to yyyymmdd :" + Boolean.toString(selected));
       }
     });
@@ -195,6 +203,24 @@ public class GUILayout extends JPanel implements ItemListener {
       menu.add(item);
     }
 
+    // Option Logging to Disk
+    JMenuItem mntmLogToDisk = new JMenuItem("Create logfiles");
+    mntmLogToDisk.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        JFrame frame = new JFrame("Create Logfiles");
+        String ToDisk = "";
+        ToDisk = (String) JOptionPane.showInputDialog(frame, "Create logfiles?", "No", JOptionPane.QUESTION_MESSAGE,
+            null, c_LogToDisk, m_toDisk);
+        if (ToDisk == "Yes") {
+          m_toDisk = true;
+        } else {
+          m_toDisk = false;
+        }
+      }
+    });
+    mnSettings.add(mntmLogToDisk);
+
     // Do the layout.
     JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
     add(splitPane);
@@ -255,12 +281,13 @@ public class GUILayout extends JPanel implements ItemListener {
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         FileFilter filter = new FileNameExtensionFilter("CSV File", "csv");
         fileChooser.setFileFilter(filter);
+        fileChooser.setSelectedFile(m_CsvFile);
         int option = fileChooser.showOpenDialog(GUILayout.this);
         if (option == JFileChooser.APPROVE_OPTION) {
           File file = fileChooser.getSelectedFile();
           LOGGER.log(Level.INFO, "CSV File: " + file.getAbsolutePath());
           lblCSVFile.setText(file.getAbsolutePath());
-          m_CsvFile = file.getAbsolutePath();
+          m_CsvFile = file;
 
           String l_filename;
           l_filename = library.FileUtils.getFileNameWithoutExtension(file) + ".ofx";
@@ -277,10 +304,12 @@ public class GUILayout extends JPanel implements ItemListener {
 
     JCheckBox chckbxSeperatorComma = new JCheckBox("Seperator comma (\",\") Default semicolon (\";\")");
     chckbxSeperatorComma.setHorizontalAlignment(SwingConstants.LEFT);
+    chckbxSeperatorComma.setSelected(m_SeperatorComma);
     chckbxSeperatorComma.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         boolean selected = chckbxSeperatorComma.isSelected();
+        m_SeperatorComma = selected;
         LOGGER.log(Level.CONFIG, "Seperator comma (\",\") Default semicolon (\";\") :" + Boolean.toString(selected));
       }
     });
@@ -299,7 +328,7 @@ public class GUILayout extends JPanel implements ItemListener {
           File file = fileChooser.getSelectedFile();
           LOGGER.log(Level.INFO, "Output folder: " + file.getAbsolutePath());
           lblOutputFolder.setText(file.getAbsolutePath());
-          m_OutputFolder = file.getAbsolutePath();
+          m_OutputFolder = file;
         }
       }
     });
