@@ -1,8 +1,13 @@
 package ing2ofx.gui;
 
 /**
- * Post 21 Scenario generator
+ * ing2ofx GUI
  */
+import logger.MyLogger;
+import logger.TextAreaHandler;
+
+import net.miginfocom.swing.MigLayout;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -42,13 +47,10 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
-import ing2ofx.main.Parameters;
-import library.OutputToLoggerReader;
-import logger.MyLogger;
-import logger.TextAreaHandler;
-import net.miginfocom.swing.MigLayout;
 import javax.swing.JCheckBoxMenuItem;
+
+import ing2ofx.main.UserSetting;
+import library.OutputToLoggerReader;
 
 public class GUILayout extends JPanel implements ItemListener {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
@@ -81,13 +83,12 @@ public class GUILayout extends JPanel implements ItemListener {
   private JButton btnConvert = new JButton("Convert to OFX");
 
   /**
-   * Defineer GUI layout
+   * Define GUI layout
    * 
-   * @param ActionEvent
    */
   public GUILayout() {
-    // Initialise
-    Parameters l_param = new Parameters();
+    // Initialize
+    UserSetting l_param = new UserSetting();
     m_GnuCashExecutable = new File(l_param.get_GnuCashExecutable());
 
     if (!l_param.get_OutputFolder().isBlank()) {

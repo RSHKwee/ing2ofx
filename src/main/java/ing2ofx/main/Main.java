@@ -5,12 +5,15 @@ import java.util.logging.Logger;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
 import library.JarInfo;
 import ing2ofx.gui.GUILayout;
 
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.net.URL;
 
 /**
@@ -24,6 +27,7 @@ public class Main {
   static String m_MenuTitel = "ING csv to ofx convertor";
   static public String m_creationtime;
   static String m_LookAndFeel = "Nimbus";
+  static UserSetting m_param = new UserSetting();
 
   /**
    * Create the GUI and show it. For thread safety, this method should be invoked
@@ -34,10 +38,50 @@ public class Main {
     initLookAndFeel();
 
     // Create and set up the window.
-    // Image ing_logo;
     JFrame frame = new JFrame(m_MenuTitel + " (" + m_creationtime + ")");
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
+    frame.addWindowListener(new WindowListener() {
+      @Override
+      public void windowClosing(WindowEvent e) {
+        JFrame frame = (JFrame) e.getSource();
+
+        int result = JOptionPane.showConfirmDialog(frame, "Are you sure you want to exit the application?",
+            "Exit Application", JOptionPane.YES_NO_OPTION);
+
+        if (result == JOptionPane.YES_OPTION) {
+          m_param.save();
+          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        }
+      }
+
+      @Override
+      public void windowOpened(WindowEvent e) {
+      }
+
+      @Override
+      public void windowClosed(WindowEvent e) {
+      }
+
+      @Override
+      public void windowIconified(WindowEvent e) {
+      }
+
+      @Override
+      public void windowDeiconified(WindowEvent e) {
+      }
+
+      @Override
+      public void windowActivated(WindowEvent e) {
+      }
+
+      @Override
+      public void windowDeactivated(WindowEvent e) {
+      }
+    });
+    frame.setVisible(true);
+
+    // Image ING logo;
     try {
       URL iconURL = Main.class.getClassLoader().getResource("ingLogo.png");
       // iconURL is null when not found
@@ -85,8 +129,7 @@ public class Main {
    * @param args 0 Look and feel, "Nimbus" of "Metal"
    */
   public static void main(String[] argv) {
-    Parameters l_param = new Parameters();
-    m_LookAndFeel = l_param.get_LookAndFeel();
+    m_LookAndFeel = m_param.get_LookAndFeel();
     m_creationtime = JarInfo.getTimeStr(GUILayout.class);
 
     switch (argv.length) {

@@ -6,7 +6,13 @@ import java.util.logging.Logger;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
-public class Parameters {
+/**
+ * User setting persistence.
+ * 
+ * @author rshkw
+ *
+ */
+public class UserSetting {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 
   private String c_GnuCashExe = "GnuCashExe";
@@ -25,11 +31,11 @@ public class Parameters {
   private String c_LookAndFeel = "LookAndFeel";
   private String c_LookAndFeelVal = "Nimbus";
 
-  private String m_Level;
+  private String m_Level = c_LevelValue;
   private String m_LookAndFeel;
-  private String m_GnuCashExecutable;
-  private String m_OutputFolder;
-  private String m_CsvFile;
+  private String m_GnuCashExecutable = c_LookAndFeelVal;
+  private String m_OutputFolder = "";
+  private String m_CsvFile = "";
 
   private boolean m_toDisk = false;
   private boolean m_AcountSeparateOFX = true;
@@ -39,7 +45,10 @@ public class Parameters {
 
   private Preferences pref = Preferences.userRoot();
 
-  public Parameters() {
+  /**
+   * Constructor Initialize settings
+   */
+  public UserSetting() {
     m_toDisk = pref.getBoolean(c_toDisk, false);
 
     m_AcountSeparateOFX = pref.getBoolean(c_AccountSepOfx, true);
@@ -54,6 +63,10 @@ public class Parameters {
     m_Level = pref.get(c_Level, c_LevelValue);
   }
 
+  /**
+   * 
+   * @return
+   */
   public String get_GnuCashExecutable() {
     return m_GnuCashExecutable;
   }
@@ -61,7 +74,6 @@ public class Parameters {
   public void set_GnuCashExecutable(File a_GnuCashExecutable) {
     pref.put(c_GnuCashExe, a_GnuCashExecutable.getAbsolutePath());
     m_GnuCashExecutable = a_GnuCashExecutable.getAbsolutePath();
-    save();
   }
 
   public String get_OutputFolder() {
@@ -71,7 +83,6 @@ public class Parameters {
   public void set_OutputFolder(File a_OutputFolder) {
     pref.put(c_OutputFolder, a_OutputFolder.getAbsolutePath());
     m_OutputFolder = a_OutputFolder.getAbsolutePath();
-    save();
   }
 
   public String get_CsvFile() {
@@ -81,7 +92,6 @@ public class Parameters {
   public void set_CsvFile(File a_CsvFile) {
     pref.put(c_CsvFile, a_CsvFile.getAbsolutePath());
     m_CsvFile = a_CsvFile.getAbsolutePath();
-    save();
   }
 
   public boolean is_toDisk() {
@@ -91,7 +101,6 @@ public class Parameters {
   public void set_toDisk(boolean a_toDisk) {
     pref.putBoolean(c_toDisk, a_toDisk);
     this.m_toDisk = a_toDisk;
-    save();
   }
 
   public Level get_Level() {
@@ -101,7 +110,6 @@ public class Parameters {
   public void set_Level(Level a_Level) {
     pref.put(c_Level, a_Level.toString());
     this.m_Level = a_Level.toString();
-    save();
   }
 
   public boolean is_AcountSeparateOFX() {
@@ -111,7 +119,6 @@ public class Parameters {
   public void set_AcountSeparateOFX(boolean a_AcountSeparateOFX) {
     pref.putBoolean(c_AccountSepOfx, a_AcountSeparateOFX);
     this.m_AcountSeparateOFX = a_AcountSeparateOFX;
-    save();
   }
 
   public boolean is_ConvertDecimalSeparator() {
@@ -121,7 +128,6 @@ public class Parameters {
   public void set_ConvertDecimalSeparator(boolean a_ConvertDecimalSeparator) {
     pref.putBoolean(c_ConvertDecimalSeparator, a_ConvertDecimalSeparator);
     this.m_ConvertDecimalSeparator = a_ConvertDecimalSeparator;
-    save();
   }
 
   public boolean is_ConvertDateFormat() {
@@ -131,7 +137,6 @@ public class Parameters {
   public void set_ConvertDateFormat(boolean a_ConvertDateFormat) {
     pref.putBoolean(c_ConvertDateFormat, a_ConvertDateFormat);
     this.m_ConvertDateFormat = a_ConvertDateFormat;
-    save();
   }
 
   public boolean is_SeperatorComma() {
@@ -141,7 +146,6 @@ public class Parameters {
   public void set_SeperatorComma(boolean a_SeperatorComma) {
     pref.putBoolean(c_SeperatorComma, a_SeperatorComma);
     this.m_SeperatorComma = a_SeperatorComma;
-    save();
   }
 
   public String get_LookAndFeel() {
@@ -153,9 +157,24 @@ public class Parameters {
     this.m_LookAndFeel = a_LookAndFeel;
   }
 
+  /**
+   * Save all settings
+   */
   public void save() {
     try {
-      pref.sync();
+      pref.putBoolean(c_toDisk, m_toDisk);
+
+      pref.putBoolean(c_AccountSepOfx, m_AcountSeparateOFX);
+      pref.putBoolean(c_ConvertDecimalSeparator, m_ConvertDecimalSeparator);
+      pref.putBoolean(c_ConvertDateFormat, m_ConvertDateFormat);
+      pref.putBoolean(c_SeperatorComma, m_SeperatorComma);
+
+      pref.put(c_LookAndFeel, m_LookAndFeel);
+      pref.put(c_GnuCashExe, m_GnuCashExecutable);
+      pref.put(c_OutputFolder, m_OutputFolder);
+      pref.put(c_CsvFile, m_CsvFile);
+      pref.put(c_Level, m_Level);
+
       pref.flush();
     } catch (BackingStoreException e) {
       LOGGER.log(Level.INFO, e.getMessage());
