@@ -433,7 +433,7 @@ public class GUILayout extends JPanel implements ItemListener {
         for (int i = 1; i <= idx + 1; i++) {
           l_optionsResize = l_optionsResize + " " + l_options[i - 1];
         }
-
+        LOGGER.log(Level.INFO, "Start python script: " + l_Script);
         try {
           OutputToLoggerReader l_reader = new OutputToLoggerReader();
           String l_logging = l_reader.getReadOut(l_optionsResize);
@@ -446,6 +446,7 @@ public class GUILayout extends JPanel implements ItemListener {
             LOGGER.log(Level.INFO, " " + ll);
           });
         } catch (IOException | InterruptedException es) {
+          LOGGER.log(Level.INFO, es.getMessage());
           es.printStackTrace();
         }
       }
@@ -461,16 +462,15 @@ public class GUILayout extends JPanel implements ItemListener {
     btnGNUCash.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
+        LOGGER.log(Level.INFO, "Start GNUCash: " + m_GnuCashExecutable.getAbsolutePath());
         OutputToLoggerReader l_reader = new OutputToLoggerReader();
         try {
-          LOGGER.log(Level.INFO, "Start GNUCash");
           String l_logging = l_reader.getReadOut(m_GnuCashExecutable.getAbsolutePath());
           LOGGER.log(Level.INFO, l_logging);
-          LOGGER.log(Level.INFO, "Stop GNUCash");
         } catch (IOException | InterruptedException e1) {
           e1.printStackTrace();
         }
-
+        LOGGER.log(Level.INFO, "Stop GNUCash");
       }
     });
     panel.add(btnGNUCash, "cell 1 7");
