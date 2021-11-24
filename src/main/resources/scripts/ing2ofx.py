@@ -16,7 +16,7 @@
 #       GNU General Public License for more details.
 #
 #       You should have received a copy of the GNU General Public License
-#       along with this program.  If not, see <http://www.gnu.org/licenses/>. 
+#       along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 """
 The intent of this script is to convert ing (www.ing.nl) csv files to ofx files
@@ -46,14 +46,18 @@ class CsvFile:
                   'OV': 'xx', 'VZ': 'xx', 'IC': 'DIRECTDEBIT', 'ST': 'DIRECTDEP'}
         self.transactions = list()
         args = args
+        if args.delimiter:
+            delim = ';'
+        else:
+            delim = ','
         
         # Keep track of used IDs to prevent double IDs
         idslist = []
 
         with open(args.csvfile, 'r') as csvfile:
         #with open(args.csvfile, 'rb') as csvfile:
-            # Open the csvfile as a Dictreader, ";" separated
-            csvreader = csv.DictReader(csvfile, delimiter=';', quotechar='"')
+            # Open the csvfile as a Dictreader
+            csvreader = csv.DictReader(csvfile, delimiter=delim, quotechar='"')
             for row in csvreader:
                 # Map ACCOUNT to "Rekening"
                 account = row['Rekening'].replace(" ", "")
@@ -142,7 +146,6 @@ class CsvFile:
                      'trnamt': trnamt, 'fitid': uniqueid, 'name': name, 'accountto': accountto,
                      'memo': memo, 'saldonamutatie' : saldonamutatie, 'time' : time})
 
-
 class OfxWriter:
 
     def __init__(self, args, gui=True):
@@ -194,7 +197,7 @@ class OfxWriter:
         # Initiate a csv object that contains all the data in a set.
         csv = CsvFile(args)
 
-        # Determine unique accounts and start and end dates and amount on account for end date
+        # Determine unique accounts and start and end dates
         accounts = set()
         mindate = 999999999
         maxdate = 0
@@ -207,23 +210,21 @@ class OfxWriter:
             if int(trns['dtposted']) > maxdate:
                 maxdate = int(trns['dtposted'])
                 saldonatran= trns['saldonamutatie']
+                
+        # open ofx file, if file exists, gets overwritten
+        with open(filepath, 'w') as ofxfile:
+            ofxfile.write(message_header)
 
-        # open ofx file, if file exists, gets overwritten, each account in own ofx file.
-        for account in accounts:
-            filepath = os.path.join(args.dir, account + '_' + filename)
-           
-            with open(filepath, 'w') as ofxfile:
-                ofxfile.write(message_header)
-  
+            for account in accounts:
                 message_begin = """
-         <STMTRS>                         <!-- Begin statement response -->
+         <STMTRS>                            <!-- Begin statement response -->
             <CURDEF>EUR</CURDEF>
-            <BANKACCTFROM>                <!-- Identify the account -->
-               <BANKID>121099999</BANKID> <!-- Routing transit or other FI ID -->
-               <ACCTID>%(account)s</ACCTID> <!-- Account number -->
-               <ACCTTYPE>CHECKING</ACCTTYPE><!-- Account type -->
-            </BANKACCTFROM>               <!-- End of account ID -->
-            <BANKTRANLIST>                <!-- Begin list of statement trans. -->
+            <BANKACCTFROM>                   <!-- Identify the account -->
+               <BANKID>INGBNL2A</BANKID>     <!-- Routing transit or other FI ID -->
+               <ACCTID>%(account)s</ACCTID>  <!-- Account number -->
+               <ACCTTYPE>CHECKING</ACCTTYPE> <!-- Account type -->
+            </BANKACCTFROM>                  <!-- End of account ID -->
+            <BANKTRANLIST>                   <!-- Begin list of statement trans. -->
                <DTSTART>%(mindate)s</DTSTART>
                <DTEND>%(maxdate)s</DTEND>""" % {"account": account, "mindate": mindate, "maxdate": maxdate}
                 ofxfile.write(message_begin)
@@ -255,12 +256,12 @@ class OfxWriter:
          </STMTRS>""" % {"maxdate": maxdate}
                 ofxfile.write(message_end)
 
-                message_footer = """
+            message_footer = """
       </STMTTRNRS>                        <!-- End of transaction -->
    </BANKMSGSRSV1>
 </OFX>
       """
-                ofxfile.write(message_footer)
+            ofxfile.write(message_footer)
 
         if not gui:
             # print some statistics:
@@ -288,6 +289,11 @@ if __name__ == "__main__":
                         help="Convert decimal separator to dots (.), default is false", action='store_true')
     parser.add_argument('-b, --convert_date', dest='convert_date',
                         help="Convert dates with dd-mm-yyyy notation to yyyymmdd", action='store_true')
+    parser.add_argument('-s, --separator', dest='delimiter',
+                        help="Separator semicolon is default (true) otherwise comma (false)", action='store_true')
+    
     args = parser.parse_args()
 
+    print ("Start conversion")
     ofx = OfxWriter(args, gui=False)
+    print ("End conversion")
