@@ -1,4 +1,4 @@
-package ing2ofx.main;
+package library;
 
 import java.io.File;
 import java.util.logging.Level;

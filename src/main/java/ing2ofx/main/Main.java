@@ -3,18 +3,20 @@ package ing2ofx.main;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
-import library.JarInfo;
-import ing2ofx.gui.GUILayout;
-
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.net.URL;
+
+import library.JarInfo;
+import library.UserSetting;
+import ing2ofx.gui.GUILayout;
 
 /**
  * Main program for ING csv to OFX convertor

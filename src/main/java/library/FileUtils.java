@@ -1,8 +1,7 @@
 package library;
 
 import java.io.*;
-import java.net.URISyntaxException;
-import java.net.URL;
+
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
@@ -180,15 +179,9 @@ public class FileUtils {
   public static String getResourceFileName(String a_resourceName) {
     String l_filename = "";
     ClassLoader loader = Thread.currentThread().getContextClassLoader();
-    URL res = loader.getResource(a_resourceName);
-    try {
-      File file;
-      file = new File(res.toURI());
-      l_filename = file.getPath();
-    } catch (URISyntaxException e) {
-      LOGGER.info(e.getMessage());
-      // e.printStackTrace();
-    }
+    File file = new File(loader.getResource(a_resourceName).getFile());
+    l_filename = file.getPath();
+
     return l_filename;
   }
 

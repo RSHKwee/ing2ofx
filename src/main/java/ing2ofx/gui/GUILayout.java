@@ -49,7 +49,7 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JCheckBoxMenuItem;
 
-import ing2ofx.main.UserSetting;
+import library.UserSetting;
 import library.OutputToLoggerReader;
 
 public class GUILayout extends JPanel implements ItemListener {
@@ -430,11 +430,12 @@ public class GUILayout extends JPanel implements ItemListener {
           l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofxPerAccount.py");
         }
         String l_optionsResize = "python";
+        l_optionsResize = library.FileUtils.getResourceFileName("python.exe");
         l_optionsResize = l_optionsResize + " " + l_Script;
         for (int i = 1; i <= idx + 1; i++) {
           l_optionsResize = l_optionsResize + " " + l_options[i - 1];
         }
-        LOGGER.log(Level.INFO, "Start python script: " + l_Script);
+        LOGGER.log(Level.INFO, "Start: " + l_optionsResize);
         try {
           OutputToLoggerReader l_reader = new OutputToLoggerReader();
           String l_logging = l_reader.getReadOut(l_optionsResize);
@@ -450,6 +451,7 @@ public class GUILayout extends JPanel implements ItemListener {
           LOGGER.log(Level.INFO, es.getMessage());
           es.printStackTrace();
         }
+        LOGGER.log(Level.INFO, "Script ended.");
       }
     });
     panel.add(btnConvert, "cell 1 5");
