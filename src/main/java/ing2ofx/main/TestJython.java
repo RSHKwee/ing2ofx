@@ -8,8 +8,8 @@ import org.python.core.*;
 
 public class TestJython {
   public static void main(String[] args) throws PyException {
-    PythonInterpreter interp = new PythonInterpreter();
-    System.out.println("Hello, world from Java");
+//    PythonInterpreter interp = new PythonInterpreter();
+    // System.out.println("Hello, world from Java");
 
     // interp.set("args.csvfile",
     // "D:/WorkspaceGnuCash/csv/Alle_rekeningen_01-01-2021_28-02-2021-puntkomma.csv");
@@ -18,20 +18,30 @@ public class TestJython {
     // interp.set("args.dir", "D:/WorkspaceGnuCash/csv");
     // interp.set("args.delimiter", "true");
 
-    String[] arguments = { "ing2ofxPerAccount.py "
-        + " -o Alle_rekeningen_01-01-2021_28-02-2021-puntkomma.ofx -d D:/WorkspaceGnuCash/csv -s "
-        + "D:/WorkspaceGnuCash/csv/Alle_rekeningen_01-01-2021_28-02-2021-puntkomma.csv" };
-    for (int i = 0; i > arguments.length; ++i) {
-      arguments[i] = arguments[i].intern();
-    }
+    String[] arguments = { "ing2ofxPerAccount.py", "-o", "Alle_rekeningen_01-01-2021_28-02-2021-puntkomma.ofx", "-d",
+        "D:/WorkspaceGnuCash/csv", "-s",
+        "D:/WorkspaceGnuCash/csv/Alle_rekeningen_01-01-2021_28-02-2021-puntkomma.csv" };
+    // for (int i = 0; i > arguments.length; ++i) {
+    // arguments[i] = arguments[i].intern();
+    // }
+    // PythonInterpreter.initialize(System.getProperties(), System.getProperties(),
+    // arguments);
+
     PythonInterpreter.initialize(System.getProperties(), System.getProperties(), arguments);
-    try (PythonInterpreter python = new PythonInterpreter()) {
-      StringWriter out = new StringWriter();
-      python.setOut(out);
-      python.execfile("ing2ofxPerAccount.py");
-      String outputStr = out.toString();
-      System.out.println(outputStr);
-    }
+    org.python.util.PythonInterpreter python = new org.python.util.PythonInterpreter();
+    StringWriter out = new StringWriter();
+    python.setOut(out);
+    python.execfile("ing2ofxPerAccount.py");
+    String outputStr = out.toString();
+    System.out.println(outputStr);
+
+    // try (PythonInterpreter python = new PythonInterpreter()) {
+    // StringWriter out = new StringWriter();
+    // python.setOut(out);
+    // python.execfile("ing2ofxPerAccount.py");
+    // String outputStr = out.toString();
+    // System.out.println(outputStr);
+    // }
 
 //    interp.execfile("ing2ofxPerAccount.py");
     // D:/WorkspaceGnuCash/csv/Alle_rekeningen_01-01-2021_28-02-2021-puntkomma.csv
@@ -46,11 +56,6 @@ public class TestJython {
 //        + " \"D:/WorkspaceGnuCash/csv/Alle_rekeningen_01-01-2021_28-02-2021-puntkomma.csv\" +"
 //        + " \"-o Alle_rekeningen_01-01-2021_28-02-2021-puntkomma.ofx\"" + " \"-d D:/WorkspaceGnuCash/csv\"" + "\"-s\"");
 
-    interp.set("a", new PyInteger(42));
-    interp.exec("print a");
-    interp.exec("x = 2+2");
-    PyObject x = interp.get("x");
-    System.out.println("x: " + x);
     System.out.println("Goodbye ");
   }
 }
