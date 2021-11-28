@@ -8,3 +8,5 @@ input
 *.pydevproject
 *.project
 *.prefs
+*.class
+*.pkc
