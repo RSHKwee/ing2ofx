@@ -439,7 +439,11 @@ public class GUILayout extends JPanel implements ItemListener {
           l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofxPerAccount.py");
         }
         String l_optionsResize = "python";
-        l_optionsResize = library.FileUtils.getResourceFileName("python.exe");
+        try {
+          l_optionsResize = library.FileUtils.getResourceFileName("python.exe");
+        } catch (Exception e2) {
+
+        }
         l_optionsResize = l_optionsResize + " " + l_Script;
         for (int i = 1; i <= idx + 1; i++) {
           l_optionsResize = l_optionsResize + " " + l_options[i - 1];
