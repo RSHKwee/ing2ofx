@@ -30,6 +30,8 @@ public class UserSetting {
   private String c_CsvFile = "CsvFile";
   private String c_LookAndFeel = "LookAndFeel";
   private String c_LookAndFeelVal = "Nimbus";
+  private String c_Interest = "Interest";
+  private String c_Savings = "Savings";
 
   private String m_Level = c_LevelValue;
   private String m_LookAndFeel;
@@ -42,6 +44,8 @@ public class UserSetting {
   private boolean m_ConvertDecimalSeparator = false;
   private boolean m_ConvertDateFormat = false;
   private boolean m_SeperatorComma = false;
+  private boolean m_Interest = true;
+  private boolean m_Savings = false;
 
   private Preferences pref = Preferences.userRoot();
 
@@ -55,6 +59,8 @@ public class UserSetting {
     m_ConvertDecimalSeparator = pref.getBoolean(c_ConvertDecimalSeparator, false);
     m_ConvertDateFormat = pref.getBoolean(c_ConvertDateFormat, false);
     m_SeperatorComma = pref.getBoolean(c_SeperatorComma, false);
+    m_Interest = pref.getBoolean(c_Interest, true);
+    m_Savings = pref.getBoolean(c_Savings, false);
 
     m_LookAndFeel = pref.get(c_LookAndFeel, c_LookAndFeelVal);
     m_GnuCashExecutable = pref.get(c_GnuCashExe, c_GnuCashExeValue);
@@ -157,6 +163,24 @@ public class UserSetting {
     this.m_LookAndFeel = a_LookAndFeel;
   }
 
+  public boolean is_Interest() {
+    return m_Interest;
+  }
+
+  public void set_Interest(boolean a_Interest) {
+    pref.putBoolean(c_Interest, a_Interest);
+    this.m_Interest = a_Interest;
+  }
+
+  public boolean is_Savings() {
+    return m_Savings;
+  }
+
+  public void set_Savings(boolean a_Savings) {
+    pref.putBoolean(c_Savings, a_Savings);
+    this.m_Savings = a_Savings;
+  }
+
   /**
    * Save all settings
    */
@@ -168,6 +192,8 @@ public class UserSetting {
       pref.putBoolean(c_ConvertDecimalSeparator, m_ConvertDecimalSeparator);
       pref.putBoolean(c_ConvertDateFormat, m_ConvertDateFormat);
       pref.putBoolean(c_SeperatorComma, m_SeperatorComma);
+      pref.putBoolean(c_Interest, m_Interest);
+      pref.putBoolean(c_Savings, m_Savings);
 
       pref.put(c_LookAndFeel, m_LookAndFeel);
       pref.put(c_GnuCashExe, m_GnuCashExecutable);

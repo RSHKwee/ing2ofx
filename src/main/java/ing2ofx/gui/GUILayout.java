@@ -75,6 +75,8 @@ public class GUILayout extends JPanel implements ItemListener {
   private boolean m_ConvertDecimalSeparator = false;
   private boolean m_ConvertDateFormat = false;
   private boolean m_SeperatorComma = false;
+  private boolean m_Interest = true;
+  private boolean m_Savings = false;
 
   // GUI items
   private JTextArea output;
@@ -105,6 +107,8 @@ public class GUILayout extends JPanel implements ItemListener {
     m_ConvertDecimalSeparator = l_param.is_ConvertDecimalSeparator();
     m_ConvertDateFormat = l_param.is_ConvertDateFormat();
     m_SeperatorComma = l_param.is_SeperatorComma();
+    m_Interest = l_param.is_Interest();
+    m_Savings = l_param.is_Savings();
 
     // Define Layout
     setLayout(new BorderLayout(0, 0));
@@ -370,11 +374,30 @@ public class GUILayout extends JPanel implements ItemListener {
 
     JCheckBox chckbxInterest = new JCheckBox("Only interest transaction");
     chckbxInterest.setSelected(true);
-
+    chckbxInterest.setHorizontalAlignment(SwingConstants.RIGHT);
+    chckbxInterest.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        boolean selected = chckbxInterest.isSelected();
+        m_Interest = selected;
+        l_param.set_Interest(selected);
+        LOGGER.log(Level.CONFIG, "Save only interest :" + Boolean.toString(selected));
+      }
+    });
     panel.add(chckbxInterest, "cell 1 2");
 
     JCheckBox chckbxSavings = new JCheckBox("Savings transactions");
-
+    chckbxSavings.setSelected(false);
+    chckbxSavings.setHorizontalAlignment(SwingConstants.RIGHT);
+    chckbxSavings.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        boolean selected = chckbxSavings.isSelected();
+        m_Savings = selected;
+        l_param.set_Savings(selected);
+        LOGGER.log(Level.CONFIG, "Savings transaction :" + Boolean.toString(selected));
+      }
+    });
     panel.add(chckbxSavings, "flowx,cell 1 2");
 
     panel.add(btnOutputFolder, "cell 0 3");
@@ -408,10 +431,11 @@ public class GUILayout extends JPanel implements ItemListener {
          * -d, --directory DIR Directory to store output, default is ./ofx 
          * -c, --convert Convert decimal separator to dots (.), default is false 
          * -b, --convert-date Convert dates with dd-mm-yyyy notation to yyyymmdd
-         * -s, --separator' Separator semicolon is default (true) otherwise comma (false)", action='store_true')
+         * -s, --separator Separator semicolon is default (true) otherwise comma (false)", action='store_true')
+         * -r, --rente Only savings transactions (true) otherwise all transactions default (false)
          */
         // @formatter:on
-        String[] l_options = new String[5];
+        String[] l_options = new String[6];
         l_options[0] = lblCSVFile.getText();
         int idx = 0;
         if (!txtOutputFilename.getText().equalsIgnoreCase("Output filename")) {
@@ -434,15 +458,29 @@ public class GUILayout extends JPanel implements ItemListener {
           idx++;
           l_options[idx] = "-s";
         }
+        if (!chckbxInterest.isSelected()) {
+          idx++;
+          l_options[idx] = "-r";
+        }
         String l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofx.py");
-        if (chckbxAcountSeparateOFX.isSelected()) {
-          l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofxPerAccount.py");
+        if (chckbxSavings.isSelected()) {
+          if (chckbxAcountSeparateOFX.isSelected()) {
+            l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofxSpaarPerAccount.py");
+          } else {
+            l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofxSpaar.py");
+          }
+        } else {
+          if (chckbxAcountSeparateOFX.isSelected()) {
+            l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofxPerAccount.py");
+          } else {
+            l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofx.py");
+          }
         }
         String l_optionsResize = "python";
         try {
           l_optionsResize = library.FileUtils.getResourceFileName("python.exe");
         } catch (Exception e2) {
-
+          // Do nothing
         }
         l_optionsResize = l_optionsResize + " " + l_Script;
         for (int i = 1; i <= idx + 1; i++) {

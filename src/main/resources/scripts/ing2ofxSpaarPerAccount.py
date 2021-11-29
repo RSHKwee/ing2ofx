@@ -373,7 +373,7 @@ if __name__ == "__main__":
     parser.add_argument('-s, --separator', dest='delimiter',
                         help="Separator semicolon is default (true) otherwise comma (false)", action='store_true')
     parser.add_argument('-r, --rente', dest='rente',
-                        help="Only rente transactoins (true) otherwise all transactions default (false)", action='store_true')
+                        help="Only savings transactoins (true) otherwise all transactions default (false)", action='store_true')
     
     args = parser.parse_args()
     print ("Start conversion")
