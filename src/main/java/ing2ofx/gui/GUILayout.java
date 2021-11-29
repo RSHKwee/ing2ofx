@@ -367,8 +367,17 @@ public class GUILayout extends JPanel implements ItemListener {
         }
       }
     });
-    panel.add(btnOutputFolder, "cell 0 3");
 
+    JCheckBox chckbxInterest = new JCheckBox("Only interest transaction");
+    chckbxInterest.setSelected(true);
+
+    panel.add(chckbxInterest, "cell 1 2");
+
+    JCheckBox chckbxSavings = new JCheckBox("Savings transactions");
+
+    panel.add(chckbxSavings, "flowx,cell 1 2");
+
+    panel.add(btnOutputFolder, "cell 0 3");
     lblOutputFolder.setHorizontalAlignment(SwingConstants.LEFT);
     panel.add(lblOutputFolder, "cell 1 3");
 
