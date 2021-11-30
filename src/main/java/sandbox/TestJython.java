@@ -1,4 +1,4 @@
-package ing2ofx.main;
+package sandbox;
 
 import org.python.util.PythonInterpreter;
 
@@ -21,20 +21,30 @@ public class TestJython {
     String[] arguments = { "ing2ofxPerAccount.py", "-o", "Alle_rekeningen_01-01-2021_28-02-2021-puntkomma.ofx", "-d",
         "D:/WorkspaceGnuCash/csv", "-s",
         "D:/WorkspaceGnuCash/csv/Alle_rekeningen_01-01-2021_28-02-2021-puntkomma.csv" };
+
+    String[] arguments1 = { "ing2ofxPerAccount.py", "-o", "Alle_rekeningen_01-01-2021_28-02-2021.ofx", "-d", "F:/data",
+        "-s", "F:/data/Alle_rekeningen_01-01-2021_28-02-2021.csv" };
+
+    String[] arguments2 = { "ing2ofxPerAccount.py", "-o", "Alle_rekeningen_01-03-2021_20-10-2021.ofx", "-d", "F:/data",
+        "-s", "F:/data/Alle_rekeningen_01-03-2021_20-10-2021.csv" };
+
     // for (int i = 0; i > arguments.length; ++i) {
     // arguments[i] = arguments[i].intern();
     // }
     // PythonInterpreter.initialize(System.getProperties(), System.getProperties(),
     // arguments);
 
-    PythonInterpreter.initialize(System.getProperties(), System.getProperties(), arguments);
-    org.python.util.PythonInterpreter python = new org.python.util.PythonInterpreter();
-    StringWriter out = new StringWriter();
-    python.setOut(out);
-    python.execfile("ing2ofxPerAccount.py");
-    String outputStr = out.toString();
-    System.out.println(outputStr);
+    StartPythonScript pyscr = new StartPythonScript("ing2ofxPerAccount.py", arguments1);
 
+    StartPythonScript pyscr2 = new StartPythonScript("ing2ofxPerAccount.py", arguments2);
+
+    /*
+     * PythonInterpreter.initialize(System.getProperties(), System.getProperties(),
+     * arguments); org.python.util.PythonInterpreter python = new
+     * org.python.util.PythonInterpreter(); StringWriter out = new StringWriter();
+     * python.setOut(out); python.execfile("ing2ofxPerAccount.py"); String outputStr
+     * = out.toString(); System.out.println(outputStr);
+     */
     // try (PythonInterpreter python = new PythonInterpreter()) {
     // StringWriter out = new StringWriter();
     // python.setOut(out);
