@@ -255,18 +255,25 @@ class OfxWriter:
 
         # Determine unique accounts and start and end dates and amount on account for end date
         accounts = set()
+        mainaccount = set()
         mindate = 999999999
         maxdate = 0
         saldonatran = "0"
 
         for trns in csv.transactions:
             accounts.add(trns['account'])
+            mainaccount.add(trns['accountto'] + ' ' + trns['account'])
             if int(trns['dtposted']) < mindate:
                 mindate = int(trns['dtposted'])
             if int(trns['dtposted']) > maxdate:
                 maxdate = int(trns['dtposted'])
                 saldonatran= trns['saldonamutatie']
-
+                
+        mapfilepath =  os.path.join(args.dir, '_mapping_saving_accounts.txt')
+        with open(mapfilepath, 'w') as mapfile:
+            for laccount in mainaccount:
+                mapfile.write(laccount + '\n')
+            
         # open ofx file, if file exists, gets overwritten, each account in own ofx file.
         for account in accounts:
             if args.interest:            
@@ -344,10 +351,11 @@ class OfxWriter:
 
             if not gui:
             # print some statistics:
+                print ("Mapping:      " + mapfilepath)
                 print ("Account:      " + account)
                 print ("Transactions: " + str(len(csv.transactions)))
                 print ("In:           " + args.csvfile)
-                print ("Out:          " + account + '_' + filename)
+                print ("Out:          " + filepath)
             else:
                 self.stats_transactions = "TRANSACTIONS: " + \
                     str(len(csv.transactions))
