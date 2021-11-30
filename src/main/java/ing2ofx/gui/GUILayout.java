@@ -74,7 +74,7 @@ public class GUILayout extends JPanel implements ItemListener {
   private boolean m_AcountSeparateOFX = true;
   private boolean m_ConvertDecimalSeparator = false;
   private boolean m_ConvertDateFormat = false;
-  private boolean m_SeperatorComma = false;
+  private boolean m_SeparatorComma = false;
   private boolean m_Interest = true;
   private boolean m_Savings = false;
 
@@ -106,7 +106,7 @@ public class GUILayout extends JPanel implements ItemListener {
     m_AcountSeparateOFX = l_param.is_AcountSeparateOFX();
     m_ConvertDecimalSeparator = l_param.is_ConvertDecimalSeparator();
     m_ConvertDateFormat = l_param.is_ConvertDateFormat();
-    m_SeperatorComma = l_param.is_SeperatorComma();
+    m_SeparatorComma = l_param.is_SeparatorComma();
     m_Interest = l_param.is_Interest();
     m_Savings = l_param.is_Savings();
 
@@ -301,6 +301,8 @@ public class GUILayout extends JPanel implements ItemListener {
 
     panel.setMinimumSize(new Dimension(350, 300));
     panel.setPreferredSize(new Dimension(350, 290));
+
+    // Choose CSV File
     JLabel lblCSVFile = new JLabel("Select a ING CSV file");
     lblCSVFile.setEnabled(false);
     lblCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -339,20 +341,7 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     panel.add(btnCSVFile, "cell 0 0");
 
-    JCheckBox chckbxSeperatorComma = new JCheckBox("Seperator comma (\",\") Default semicolon (\";\")");
-    chckbxSeperatorComma.setHorizontalAlignment(SwingConstants.LEFT);
-    chckbxSeperatorComma.setSelected(m_SeperatorComma);
-    chckbxSeperatorComma.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        boolean selected = chckbxSeperatorComma.isSelected();
-        m_SeperatorComma = selected;
-        l_param.set_SeperatorComma(selected);
-        LOGGER.log(Level.CONFIG, "Seperator comma (\",\") Default semicolon (\";\") :" + Boolean.toString(selected));
-      }
-    });
-    panel.add(chckbxSeperatorComma, "cell 1 1");
-
+    // Define output folder
     JButton btnOutputFolder = new JButton("Output folder");
     btnOutputFolder.setHorizontalAlignment(SwingConstants.RIGHT);
     btnOutputFolder.addActionListener(new ActionListener() {
@@ -372,43 +361,65 @@ public class GUILayout extends JPanel implements ItemListener {
       }
     });
 
+    // Savings transactions
     JCheckBox chckbxInterest = new JCheckBox("Only interest transaction");
-    chckbxInterest.setSelected(true);
+    chckbxInterest.setSelected(m_Interest);
     chckbxInterest.setHorizontalAlignment(SwingConstants.RIGHT);
+    chckbxInterest.setEnabled(m_Savings);
     chckbxInterest.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         boolean selected = chckbxInterest.isSelected();
         m_Interest = selected;
-        l_param.set_Interest(selected);
+        l_param.set_Interest(m_Interest);
         LOGGER.log(Level.CONFIG, "Save only interest :" + Boolean.toString(selected));
       }
     });
-    panel.add(chckbxInterest, "cell 1 2");
 
     JCheckBox chckbxSavings = new JCheckBox("Savings transactions");
-    chckbxSavings.setSelected(false);
-    chckbxSavings.setHorizontalAlignment(SwingConstants.RIGHT);
+    chckbxSavings.setSelected(m_Savings);
+    chckbxSavings.setHorizontalAlignment(SwingConstants.LEFT);
     chckbxSavings.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         boolean selected = chckbxSavings.isSelected();
         m_Savings = selected;
+        if (selected) {
+          chckbxInterest.setEnabled(true);
+        } else {
+          chckbxInterest.setEnabled(false);
+        }
         l_param.set_Savings(selected);
         LOGGER.log(Level.CONFIG, "Savings transaction :" + Boolean.toString(selected));
       }
     });
-    panel.add(chckbxSavings, "flowx,cell 1 2");
+    panel.add(chckbxSavings, "cell 1 1");
+    panel.add(chckbxInterest, "cell 1 1");
 
-    panel.add(btnOutputFolder, "cell 0 3");
+    // Separation
+    JCheckBox chckbxSeparatorComma = new JCheckBox("Seperator comma (\",\") Default semicolon (\";\")");
+    chckbxSeparatorComma.setHorizontalAlignment(SwingConstants.LEFT);
+    chckbxSeparatorComma.setSelected(m_SeparatorComma);
+    chckbxSeparatorComma.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        boolean selected = chckbxSeparatorComma.isSelected();
+        m_SeparatorComma = selected;
+        l_param.set_SeparatorComma(selected);
+        LOGGER.log(Level.CONFIG, "Seperator comma (\",\") Default semicolon (\";\") :" + Boolean.toString(selected));
+      }
+    });
+    panel.add(chckbxSeparatorComma, "cell 1 2");
+
+    panel.add(btnOutputFolder, "cell 0 4");
     lblOutputFolder.setHorizontalAlignment(SwingConstants.LEFT);
-    panel.add(lblOutputFolder, "cell 1 3");
+    panel.add(lblOutputFolder, "cell 1 4");
 
     txtOutputFilename.setHorizontalAlignment(SwingConstants.LEFT);
     txtOutputFilename.setText("Output filename");
     txtOutputFilename.setEnabled(false);
     txtOutputFilename.setColumns(100);
-    panel.add(txtOutputFilename, "cell 1 4");
+    panel.add(txtOutputFilename, "cell 1 5");
 
     btnConvert.setEnabled(false);
     btnConvert.addActionListener(new ActionListener() {
@@ -432,10 +443,10 @@ public class GUILayout extends JPanel implements ItemListener {
          * -c, --convert Convert decimal separator to dots (.), default is false 
          * -b, --convert-date Convert dates with dd-mm-yyyy notation to yyyymmdd
          * -s, --separator Separator semicolon is default (true) otherwise comma (false)", action='store_true')
-         * -r, --rente Only savings transactions (true) otherwise all transactions default (false)
+         * -i, --interest Only interest savings transactions (true) otherwise all savings transactions default (false)
          */
         // @formatter:on
-        String[] l_options = new String[6];
+        String[] l_options = new String[8];
         l_options[0] = lblCSVFile.getText();
         int idx = 0;
         if (!txtOutputFilename.getText().equalsIgnoreCase("Output filename")) {
@@ -454,22 +465,24 @@ public class GUILayout extends JPanel implements ItemListener {
           idx++;
           l_options[idx] = "-b";
         }
-        if (!chckbxSeperatorComma.isSelected()) {
+        if (!chckbxSeparatorComma.isSelected()) {
           idx++;
           l_options[idx] = "-s";
         }
-        if (!chckbxInterest.isSelected()) {
+        if (chckbxInterest.isSelected()) {
           idx++;
-          l_options[idx] = "-r";
+          l_options[idx] = "-i";
         }
         String l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofx.py");
         if (chckbxSavings.isSelected()) {
+          // Handling saving transactions
           if (chckbxAcountSeparateOFX.isSelected()) {
             l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofxSpaarPerAccount.py");
           } else {
             l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofxSpaar.py");
           }
         } else {
+          // Handling "normal" transactions
           if (chckbxAcountSeparateOFX.isSelected()) {
             l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofxPerAccount.py");
           } else {
@@ -479,7 +492,7 @@ public class GUILayout extends JPanel implements ItemListener {
         String l_optionsResize = "python";
         try {
           l_optionsResize = library.FileUtils.getResourceFileName("python.exe");
-        } catch (Exception e2) {
+        } catch (Exception ep) {
           // Do nothing
         }
         l_optionsResize = l_optionsResize + " " + l_Script;
@@ -505,10 +518,10 @@ public class GUILayout extends JPanel implements ItemListener {
         LOGGER.log(Level.INFO, "Script ended.");
       }
     });
-    panel.add(btnConvert, "cell 1 5");
+    panel.add(btnConvert, "cell 1 6");
 
     JLabel lblNewLabel = new JLabel("    ");
-    panel.add(lblNewLabel, "cell 0 6");
+    panel.add(lblNewLabel, "cell 0 7");
 
     // Start GnuCash
     JButton btnGNUCash = new JButton("Start GnuCash");
@@ -527,7 +540,7 @@ public class GUILayout extends JPanel implements ItemListener {
         LOGGER.log(Level.INFO, "Stop GNUCash");
       }
     });
-    panel.add(btnGNUCash, "cell 1 7");
+    panel.add(btnGNUCash, "cell 1 8");
 
     bottomHalf.setMinimumSize(new Dimension(500, 100));
     bottomHalf.setPreferredSize(new Dimension(500, 400));

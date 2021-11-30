@@ -343,7 +343,7 @@ class OfxWriter:
 
 if __name__ == "__main__":
     """ First parse the command line arguments. """
-    parser = argparse.ArgumentParser(prog='ing2ofx', description="""
+    parser = argparse.ArgumentParser(prog='ing2ofxPerAccount', description="""
                                      This program converts ING (www.ing.nl) CSV files to OFX format.
                                      The default output filename is the input filename.
                                      """)

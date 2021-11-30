@@ -1,4 +1,4 @@
-package ing2ofx.main;
+package sandbox;
 
 import java.io.*;
 import java.net.URISyntaxException;

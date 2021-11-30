@@ -25,7 +25,7 @@ public class UserSetting {
   private String c_AccountSepOfx = "AccountSepOfx";
   private String c_ConvertDecimalSeparator = "ConvertDecimalSeperator";
   private String c_ConvertDateFormat = "ConvertDateFormat";
-  private String c_SeperatorComma = "SeperatorComma";
+  private String c_SeparatorComma = "SeparatorComma";
   private String c_OutputFolder = "OutputFolder";
   private String c_CsvFile = "CsvFile";
   private String c_LookAndFeel = "LookAndFeel";
@@ -43,7 +43,7 @@ public class UserSetting {
   private boolean m_AcountSeparateOFX = true;
   private boolean m_ConvertDecimalSeparator = false;
   private boolean m_ConvertDateFormat = false;
-  private boolean m_SeperatorComma = false;
+  private boolean m_SeparatorComma = false;
   private boolean m_Interest = true;
   private boolean m_Savings = false;
 
@@ -58,7 +58,7 @@ public class UserSetting {
     m_AcountSeparateOFX = pref.getBoolean(c_AccountSepOfx, true);
     m_ConvertDecimalSeparator = pref.getBoolean(c_ConvertDecimalSeparator, false);
     m_ConvertDateFormat = pref.getBoolean(c_ConvertDateFormat, false);
-    m_SeperatorComma = pref.getBoolean(c_SeperatorComma, false);
+    m_SeparatorComma = pref.getBoolean(c_SeparatorComma, false);
     m_Interest = pref.getBoolean(c_Interest, true);
     m_Savings = pref.getBoolean(c_Savings, false);
 
@@ -145,13 +145,13 @@ public class UserSetting {
     this.m_ConvertDateFormat = a_ConvertDateFormat;
   }
 
-  public boolean is_SeperatorComma() {
-    return m_SeperatorComma;
+  public boolean is_SeparatorComma() {
+    return m_SeparatorComma;
   }
 
-  public void set_SeperatorComma(boolean a_SeperatorComma) {
-    pref.putBoolean(c_SeperatorComma, a_SeperatorComma);
-    this.m_SeperatorComma = a_SeperatorComma;
+  public void set_SeparatorComma(boolean a_SeperatorComma) {
+    pref.putBoolean(c_SeparatorComma, a_SeperatorComma);
+    this.m_SeparatorComma = a_SeperatorComma;
   }
 
   public String get_LookAndFeel() {
@@ -191,7 +191,7 @@ public class UserSetting {
       pref.putBoolean(c_AccountSepOfx, m_AcountSeparateOFX);
       pref.putBoolean(c_ConvertDecimalSeparator, m_ConvertDecimalSeparator);
       pref.putBoolean(c_ConvertDateFormat, m_ConvertDateFormat);
-      pref.putBoolean(c_SeperatorComma, m_SeperatorComma);
+      pref.putBoolean(c_SeparatorComma, m_SeparatorComma);
       pref.putBoolean(c_Interest, m_Interest);
       pref.putBoolean(c_Savings, m_Savings);
 

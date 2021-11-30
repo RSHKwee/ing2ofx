@@ -36,14 +36,74 @@ import os
 import re
 
 """ Read the csv file into a list, which is mapped to ofx fields """
+"""
+    These are the first two lines of an ING Netherlands CSV file:
 
+    "Datum","Naam / Omschrijving","Rekening","Tegenrekening","Code",\
+"Af Bij","Bedrag (EUR)","MutatieSoort",\
+"Mededelingen"
+    "20200213","Kosten OranjePakket met korting","NL42INGB0001085276","","DV",\
+"Af","1,25","Diversen",\
+"1 jan t/m 31 jan 2020 ING BANK N.V. Valutadatum: 13-02-2020"
+
+     or ";" seperated:
+     "Datum";"Naam / Omschrijving";"Rekening";"Tegenrekening";"Code";\
+     "Af Bij";"Bedrag (EUR)";"Mutatiesoort";"Mededelingen";"Saldo na mutatie";"Tag"
+"20210911";"Kosten OranjePakket";"NL12INGB0000123456";"";"DV";"Af";"1,95";"Diversen";"1 aug t/m 31 aug 2021 ING BANK N.V. Valutadatum: 11-09-2021";"5185,32";""
+
+    These fields are from the Statement class:
+
+    id = ""
+
+    # Date transaction was posted to account (booking date)
+    date = datetime.now()                          # "Datum"
+
+    memo = ""                                      # "Mededelingen"
+
+    # Amount of transaction
+    amount = D(0)
+
+    # additional fields
+    payee = ""
+
+    # Date user initiated transaction, if known (transaction date)
+    date_user = datetime.now()
+
+    # Check (or other reference) number
+    check_no = ""
+
+    # Reference number that uniquely identifies the transaction. Can be used in
+    # addition to or instead of a check_no           # fitid
+    refnum = ""
+
+    # Transaction type, must be one of TRANSACTION_TYPES # "Code"
+    "CREDIT",       # Generic credit
+    "DEBIT",        # Generic debit
+    "INT",          # Interest earned or paid
+    "DIV",          # Dividend
+    "FEE",          # FI fee
+    "SRVCHG",       # Service charge
+    "DEP",          # Deposit
+    "ATM",          # ATM debit or credit             # GM
+    "POS",          # Point of sale debit or credit   # BA
+    "XFER",         # Transfer
+    "CHECK",        # Check
+    "PAYMENT",      # Electronic payment              # GT
+    "CASH",         # Cash withdrawal
+    "DIRECTDEP",    # Direct deposit                  # ST
+    "DIRECTDEBIT",  # Merchant initiated debit        # IC
+    "REPEATPMT",    # Repeating payment/standing order
+    "OTHER"         # Other                           # DV OV VZ 
+
+    trntype = "CHECK"
+
+    # Optional BankAccount instance                   # "Tegenrekening"
+    bank_account_to = None
+"""
 
 class CsvFile:
 
     def __init__(self, args):
-        # Mapping of codes to TRNTYPE
-        codesx = {'GT': 'PAYMENT', 'BA': 'POS', 'GM': 'ATM', 'DV': 'xx',
-                  'OV': 'xx', 'VZ': 'xx', 'IC': 'DIRECTDEBIT', 'ST': 'DIRECTDEP'}
         self.transactions = list()
         args = args
         if args.delimiter:
@@ -56,23 +116,19 @@ class CsvFile:
 
         with open(args.csvfile, 'r') as csvfile:
         #with open(args.csvfile, 'rb') as csvfile:
-            # Open the csvfile as a Dictreader
+            # Open the csvfile as a Dictreader, ";" separated
             csvreader = csv.DictReader(csvfile, delimiter=delim, quotechar='"')
             for row in csvreader:
                 # Map ACCOUNT to "Rekening"
                 account = row['Rekening'].replace(" ", "")
 
                 # Map the code into ofx TRNTYPE
-                if row['Code'] in codesx:
-                    if codesx[row['Code']] == 'xx':
-                        if row['Af Bij'] == 'Bij':
-                            trntype = 'CREDIT'
-                        else:
-                            trntype = 'DEBIT'
-                    else:
-                        trntype = codesx[row['Code']]
+
+                if row['Af Bij'] == 'Bij':
+                    trntype = 'CREDIT'
                 else:
-                    trntype = 'OTHER'
+                    trntype = 'DEBIT'
+
 
                 # The DTPOSTED is in yyyymmdd format, which is compatible with ofx
                 # If convert_date is true, first convert dd-mm-yyyy to yyyymmdd
@@ -81,25 +137,25 @@ class CsvFile:
                     datevar.reverse()
                     dtposted = ''.join(datevar)
                 else:
-                    dtposted = row['Datum']
+                    dtposted = row['Datum'].replace("-", "")
 
                 # The TRNAMT needs to be converted to negative if applicable,
                 # When convert is set, comma decimal separator is replaced with
                 # dot.
                 if args.convert:
-                    row['Bedrag (EUR)'] = row['Bedrag (EUR)'].replace(",", ".")
+                    row['Bedrag'] = row['Bedrag'].replace(",", ".")
                 if row['Af Bij'] == 'Bij':
-                    trnamt = row['Bedrag (EUR)']
+                    trnamt = row['Bedrag']
                 else:
-                    trnamt = "-" + row['Bedrag (EUR)']
+                    trnamt = "-" + row['Bedrag']
 
                 # NAME maps to "Naam / Omschrijving", the while loop removes
                 # any double spaces.
-                while row['Naam / Omschrijving'].strip().find("  ") > 0:
-                    row['Naam / Omschrijving'] = row[
-                        'Naam / Omschrijving'].strip().replace("  ", " ")
+                while row['Omschrijving'].strip().find("  ") > 0:
+                    row['Omschrijving'] = row[
+                        'Omschrijving'].strip().replace("  ", " ")
                 # Replace & symbol with &amp to make xml compliant
-                name = row['Naam / Omschrijving'].replace("&", "&amp")
+                name = row['Omschrijving'].replace("&", "&amp")
 
                 # BANKACCTTO maps to "Tegenrekening"
                 accountto = row['Tegenrekening']
@@ -197,7 +253,7 @@ class OfxWriter:
         # Initiate a csv object that contains all the data in a set.
         csv = CsvFile(args)
 
-        # Determine unique accounts and start and end dates
+        # Determine unique accounts and start and end dates and amount on account for end date
         accounts = set()
         mindate = 999999999
         maxdate = 0
@@ -231,7 +287,9 @@ class OfxWriter:
 
                 for trns in csv.transactions:
                     if trns['account'] == account:
-                        message_transaction = """
+                        if args.interest:
+                            if trns['name'] == "Rente":                        
+                                message_transaction = """
                <STMTTRN>
                   <TRNTYPE>%(trntype)s</TRNTYPE>
                   <DTPOSTED>%(dtposted)s</DTPOSTED>
@@ -245,8 +303,24 @@ class OfxWriter:
                   </BANKACCTTO>
                   <MEMO>%(memo)s</MEMO>
                </STMTTRN>""" % trns
-                        ofxfile.write(message_transaction)
-
+                                ofxfile.write(message_transaction)
+                        else:
+                            message_transaction = """
+               <STMTTRN>
+                  <TRNTYPE>%(trntype)s</TRNTYPE>
+                  <DTPOSTED>%(dtposted)s</DTPOSTED>
+                  <TRNAMT>%(trnamt)s</TRNAMT>
+                  <FITID>%(fitid)s</FITID>
+                  <NAME>%(name)s</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>%(accountto)s</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>%(memo)s</MEMO>
+               </STMTTRN>""" % trns
+                            ofxfile.write(message_transaction)
+                             
                 message_end = """
             </BANKTRANLIST>                   <!-- End list of statement trans. -->
             <LEDGERBAL>                       <!-- Ledger balance aggregate -->
@@ -291,6 +365,8 @@ if __name__ == "__main__":
                         help="Convert dates with dd-mm-yyyy notation to yyyymmdd", action='store_true')
     parser.add_argument('-s, --separator', dest='delimiter',
                         help="Separator semicolon is default (true) otherwise comma (false)", action='store_true')
+    parser.add_argument('-i, --interest', dest='interest',
+                        help="Only interest transactoins (true) otherwise all transactions default (false)", action='store_true')
     
     args = parser.parse_args()
 

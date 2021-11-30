@@ -16,7 +16,7 @@
 #       GNU General Public License for more details.
 #
 #       You should have received a copy of the GNU General Public License
-#       along with this program.  If not, see <http://www.gnu.org/licenses/>. 
+#       along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 """
 The intent of this script is to convert ing (www.ing.nl) csv files to ofx files
@@ -202,7 +202,6 @@ class CsvFile:
                      'trnamt': trnamt, 'fitid': uniqueid, 'name': name, 'accountto': accountto,
                      'memo': memo, 'saldonamutatie' : saldonamutatie, 'time' : time})
 
-
 class OfxWriter:
 
     def __init__(self, args, gui=True):
@@ -270,7 +269,7 @@ class OfxWriter:
 
         # open ofx file, if file exists, gets overwritten, each account in own ofx file.
         for account in accounts:
-            if args.rente:            
+            if args.interest:            
                 filepath = os.path.join(args.dir, account + '_rente_' + filename)
             else:
                 filepath = os.path.join(args.dir, account + '_' + filename)
@@ -293,7 +292,7 @@ class OfxWriter:
 
                 for trns in csv.transactions:
                     if trns['account'] == account:
-                        if args.rente:
+                        if args.interest:
                             if trns['name'] == "Rente":                        
                                 message_transaction = """
                <STMTTRN>
@@ -372,10 +371,11 @@ if __name__ == "__main__":
                         help="Convert dates with dd-mm-yyyy notation to yyyymmdd", action='store_true')
     parser.add_argument('-s, --separator', dest='delimiter',
                         help="Separator semicolon is default (true) otherwise comma (false)", action='store_true')
-    parser.add_argument('-r, --rente', dest='rente',
-                        help="Only savings transactoins (true) otherwise all transactions default (false)", action='store_true')
+    parser.add_argument('-i, --interest', dest='interest',
+                        help="Only interest transactoins (true) otherwise all transactions default (false)", action='store_true')
     
     args = parser.parse_args()
+
     print ("Start conversion")
     ofx = OfxWriter(args, gui=False)
     print ("End conversion")
