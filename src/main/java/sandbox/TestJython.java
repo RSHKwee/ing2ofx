@@ -2,11 +2,47 @@ package sandbox;
 
 import org.python.util.PythonInterpreter;
 
+import library.OutputToLoggerReader;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringWriter;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 import org.python.core.*;
 
 public class TestJython {
+
+  public static File getResourceAsFile(String resourcePath) {
+    try {
+      InputStream in = ClassLoader.getSystemClassLoader().getResourceAsStream(resourcePath);
+      if (in == null) {
+        return null;
+      }
+
+      File tempFile = File.createTempFile(String.valueOf(in.hashCode()), ".tmp");
+      tempFile.deleteOnExit();
+
+      try (FileOutputStream out = new FileOutputStream(tempFile)) {
+        // copy stream
+        byte[] buffer = new byte[1024];
+        int bytesRead;
+        while ((bytesRead = in.read(buffer)) != -1) {
+          out.write(buffer, 0, bytesRead);
+        }
+      }
+      return tempFile;
+    } catch (IOException e) {
+      e.printStackTrace();
+      return null;
+    }
+  }
+
   public static void main(String[] args) throws PyException {
 //    PythonInterpreter interp = new PythonInterpreter();
     // System.out.println("Hello, world from Java");
@@ -25,18 +61,39 @@ public class TestJython {
     String[] arguments1 = { "ing2ofxPerAccount.py", "-o", "Alle_rekeningen_01-01-2021_28-02-2021.ofx", "-d", "F:/data",
         "-s", "F:/data/Alle_rekeningen_01-01-2021_28-02-2021.csv" };
 
-    String[] arguments2 = { "ing2ofxPerAccount.py", "-o", "Alle_rekeningen_01-03-2021_20-10-2021.ofx", "-d", "F:/data",
-        "-s", "F:/data/Alle_rekeningen_01-03-2021_20-10-2021.csv" };
+    String[] arguments2 = {
+        "C:\\Users\\rshkw\\.m2\\repository\\org\\python\\jython-standalone\\2.7.2\\jython-standalone-2.7.2.jar",
+        "ing2ofxPerAccount.py", "-o", "Alle_rekeningen_01-03-2021_20-10-2021.ofx", "-d", "D:\\WorkspaceGnuCash\\csv",
+        "-s", "D:\\WorkspaceGnuCash\\csv\\Alle_rekeningen_01-03-2021_20-10-2021.csv" };
 
+    File scriptfile = getResourceAsFile("scripts/ing2ofxPerAccount.py");
+    String cmd = "java -jar C:\\Users\\rshkw\\.m2\\repository\\org\\python\\jython-standalone\\2.7.2\\jython-standalone-2.7.2.jar"
+        + " " + scriptfile.getAbsolutePath() + " " + "-o" + " " + "Alle_rekeningen_01-03-2021_20-10-2021.ofx" + " "
+        + "-d" + " " + "D:\\WorkspaceGnuCash\\csv" + " " + "-s" + " "
+        + "D:\\WorkspaceGnuCash\\csv\\Alle_rekeningen_01-03-2021_20-10-2021.csv";
     // for (int i = 0; i > arguments.length; ++i) {
     // arguments[i] = arguments[i].intern();
     // }
     // PythonInterpreter.initialize(System.getProperties(), System.getProperties(),
     // arguments);
 
-    StartPythonScript pyscr = new StartPythonScript("ing2ofxPerAccount.py", arguments1);
+    // StartPythonScript pyscr = new StartPythonScript("ing2ofxPerAccount.py",
+    // arguments1);
 
-    StartPythonScript pyscr2 = new StartPythonScript("ing2ofxPerAccount.py", arguments2);
+//    StartPythonScript pyscr2 = new StartPythonScript("ing2ofxPerAccount.py", arguments2);
+
+    OutputToLoggerReader l_reader = new OutputToLoggerReader();
+    String l_logging;
+    try {
+      l_logging = l_reader.getReadOut(cmd);
+//      l_logging = l_reader.getReadOut(arguments2);
+      String[] ll_log = l_logging.split("\n");
+      List<String> l_logList = Arrays.asList(ll_log);
+      Set<String> l_uniLog = new LinkedHashSet<String>(l_logList);
+    } catch (IOException | InterruptedException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
 
     /*
      * PythonInterpreter.initialize(System.getProperties(), System.getProperties(),
