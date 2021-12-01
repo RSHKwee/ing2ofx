@@ -16,14 +16,19 @@ public class OutputToLoggerReader {
     p = rt.exec(a_cmd);
 
     BufferedReader processOutput = new BufferedReader(new InputStreamReader(p.getInputStream()), 500000);
-    // BufferedWriter processInput = new BufferedWriter(new
-    // OutputStreamWriter(p.getOutputStream()));
+    BufferedReader errorOutput = new BufferedReader(new InputStreamReader(p.getErrorStream()), 500000);
+
     ReadThread r = new ReadThread(processOutput);
     Thread th = new Thread(r);
     th.start();
+    ReadThread e = new ReadThread(errorOutput);
+    Thread the = new Thread(r);
+    the.start();
+
     p.waitFor();
     r.stop();
-    String s = r.res;
+    e.stop();
+    String s = r.res + "\n" + e.res;
 
     p.destroy();
     th.join();
@@ -34,14 +39,19 @@ public class OutputToLoggerReader {
     Process p = Runtime.getRuntime().exec(params);
 
     BufferedReader processOutput = new BufferedReader(new InputStreamReader(p.getInputStream()), 500000);
-    // BufferedWriter processInput = new BufferedWriter(new
-    // OutputStreamWriter(p.getOutputStream()));
+    BufferedReader errorOutput = new BufferedReader(new InputStreamReader(p.getErrorStream()), 500000);
+
     ReadThread r = new ReadThread(processOutput);
     Thread th = new Thread(r);
     th.start();
+    ReadThread e = new ReadThread(errorOutput);
+    Thread the = new Thread(r);
+    the.start();
+
     p.waitFor();
     r.stop();
-    String s = r.res;
+    e.stop();
+    String s = r.res + "\n" + e.res;
 
     p.destroy();
     th.join();

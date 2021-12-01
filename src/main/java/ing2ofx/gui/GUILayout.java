@@ -18,10 +18,6 @@ import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.IOException;
 
-import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -425,97 +421,12 @@ public class GUILayout extends JPanel implements ItemListener {
     btnConvert.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        // Run OFX Python script
-        // @formatter:off
-        /*
-         * usage: ing2ofx [-h] [-o, --outfile OUTFILE] [-d, --directory DIR] [-c,
-         * --convert] [-b, --convert-date] csvfile
-         * 
-         * This program converts ING (www.ing.nl) CSV files to OFX format. 
-         * The default output filename is the input filename.
-         * 
-         * positional arguments: csvfile A csvfile to process
-         * 
-         * optional arguments: 
-         * -h, --help show this help message and exit 
-         * -o, --outfile OUTFILE Output filename 
-         * -d, --directory DIR Directory to store output, default is ./ofx 
-         * -c, --convert Convert decimal separator to dots (.), default is false 
-         * -b, --convert-date Convert dates with dd-mm-yyyy notation to yyyymmdd
-         * -s, --separator Separator semicolon is default (true) otherwise comma (false)", action='store_true')
-         * -i, --interest Only interest savings transactions (true) otherwise all savings transactions default (false)
-         */
-        // @formatter:on
-        String[] l_options = new String[8];
-        l_options[0] = lblCSVFile.getText();
-        int idx = 0;
-        if (!txtOutputFilename.getText().equalsIgnoreCase("Output filename")) {
-          idx++;
-          l_options[idx] = "-o " + txtOutputFilename.getText();
-        }
-        if (!lblOutputFolder.getText().isBlank()) {
-          idx++;
-          l_options[idx] = "-d " + lblOutputFolder.getText();
-        }
-        if (chckbxConvertDecimalSeparator.isSelected()) {
-          idx++;
-          l_options[idx] = "-c";
-        }
-        if (chckbxConvertDateFormat.isSelected()) {
-          idx++;
-          l_options[idx] = "-b";
-        }
-        if (!chckbxSeparatorComma.isSelected()) {
-          idx++;
-          l_options[idx] = "-s";
-        }
-        if (chckbxInterest.isSelected()) {
-          idx++;
-          l_options[idx] = "-i";
-        }
-        String l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofx.py");
-        if (chckbxSavings.isSelected()) {
-          // Handling saving transactions
-          if (chckbxAcountSeparateOFX.isSelected()) {
-            l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofxSpaarPerAccount.py");
-          } else {
-            l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofxSpaar.py");
-          }
-        } else {
-          // Handling "normal" transactions
-          if (chckbxAcountSeparateOFX.isSelected()) {
-            l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofxPerAccount.py");
-          } else {
-            l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofx.py");
-          }
-        }
-        String l_optionsResize = "python";
-        try {
-          l_optionsResize = library.FileUtils.getResourceFileName("python.exe");
-        } catch (Exception ep) {
-          // Do nothing
-        }
-        l_optionsResize = l_optionsResize + " " + l_Script;
-        for (int i = 1; i <= idx + 1; i++) {
-          l_optionsResize = l_optionsResize + " " + l_options[i - 1];
-        }
-        LOGGER.log(Level.INFO, "Start: " + l_optionsResize);
-        try {
-          OutputToLoggerReader l_reader = new OutputToLoggerReader();
-          String l_logging = l_reader.getReadOut(l_optionsResize);
-          String[] ll_log = l_logging.split("\n");
-          List<String> l_logList = Arrays.asList(ll_log);
-          Set<String> l_uniLog = new LinkedHashSet<String>(l_logList);
-          LOGGER.log(Level.INFO, " ");
-          System.out.println(ll_log.toString());
-          l_uniLog.forEach(ll -> {
-            LOGGER.log(Level.INFO, " " + ll);
-          });
-        } catch (IOException | InterruptedException es) {
-          LOGGER.log(Level.INFO, es.getMessage());
-          es.printStackTrace();
-        }
-        LOGGER.log(Level.INFO, "Script ended.");
+        l_param.save();
+        ActionPerformScript l_action = new ActionPerformScript(lblCSVFile.getText(), txtOutputFilename.getText(),
+            lblOutputFolder.getText(), chckbxAcountSeparateOFX.isSelected(), chckbxConvertDecimalSeparator.isSelected(),
+            chckbxConvertDecimalSeparator.isSelected(), chckbxSeparatorComma.isSelected(), chckbxSavings.isSelected(),
+            chckbxInterest.isSelected());
+        l_action.execute();
       }
     });
     panel.add(btnConvert, "cell 1 6");
