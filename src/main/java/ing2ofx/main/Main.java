@@ -29,7 +29,7 @@ public class Main {
   static String m_MenuTitel = "ING csv to ofx convertor";
   static public String m_creationtime;
   static String m_LookAndFeel = "Nimbus";
-  static UserSetting m_param = new UserSetting();
+  public static UserSetting m_param = new UserSetting();
   static boolean m_ConfirmOnExit = false;
 
   /**
@@ -110,7 +110,7 @@ public class Main {
     frame.setLocation(50, 50);
     frame.setVisible(true);
 
-    LOGGER.log(Level.INFO, " Build time ING Csv to OFX convertor : " + m_creationtime);
+    LOGGER.log(Level.INFO, " ING Csv to OFX convertor versie : " + m_creationtime);
   }
 
   /**
@@ -139,7 +139,7 @@ public class Main {
    */
   public static void main(String[] argv) {
     m_LookAndFeel = m_param.get_LookAndFeel();
-    m_creationtime = JarInfo.getTimeStr(GUILayout.class);
+    m_creationtime = JarInfo.getProjectVersion(GUILayout.class);
     m_ConfirmOnExit = m_param.is_ConfirmOnExit();
 
     switch (argv.length) {

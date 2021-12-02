@@ -43,6 +43,9 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import ing2ofx.main.Main;
+
 import javax.swing.JCheckBoxMenuItem;
 
 import library.UserSetting;
@@ -61,6 +64,8 @@ public class GUILayout extends JPanel implements ItemListener {
   // private String newline = "\n";
 
   // Preferences
+  private UserSetting m_param = Main.m_param;
+
   private File m_GnuCashExecutable = new File("C:\\Program Files (x86)\\gnucash\\bin\\gnucash.exe");
   private File m_OutputFolder;
   private File m_CsvFile;
@@ -86,25 +91,24 @@ public class GUILayout extends JPanel implements ItemListener {
    */
   public GUILayout() {
     // Initialize
-    UserSetting l_param = new UserSetting();
-    m_GnuCashExecutable = new File(l_param.get_GnuCashExecutable());
+    m_GnuCashExecutable = new File(m_param.get_GnuCashExecutable());
 
-    if (!l_param.get_OutputFolder().isBlank()) {
-      m_OutputFolder = new File(l_param.get_OutputFolder());
+    if (!m_param.get_OutputFolder().isBlank()) {
+      m_OutputFolder = new File(m_param.get_OutputFolder());
       lblOutputFolder.setText(m_OutputFolder.getAbsolutePath());
     }
-    if (!l_param.get_CsvFile().isBlank()) {
-      m_CsvFile = new File(l_param.get_CsvFile());
+    if (!m_param.get_CsvFile().isBlank()) {
+      m_CsvFile = new File(m_param.get_CsvFile());
     }
 
-    m_Level = l_param.get_Level();
-    m_toDisk = l_param.is_toDisk();
-    m_AcountSeparateOFX = l_param.is_AcountSeparateOFX();
-    m_ConvertDecimalSeparator = l_param.is_ConvertDecimalSeparator();
-    m_ConvertDateFormat = l_param.is_ConvertDateFormat();
-    m_SeparatorComma = l_param.is_SeparatorComma();
-    m_Interest = l_param.is_Interest();
-    m_Savings = l_param.is_Savings();
+    m_Level = m_param.get_Level();
+    m_toDisk = m_param.is_toDisk();
+    m_AcountSeparateOFX = m_param.is_AcountSeparateOFX();
+    m_ConvertDecimalSeparator = m_param.is_ConvertDecimalSeparator();
+    m_ConvertDateFormat = m_param.is_ConvertDateFormat();
+    m_SeparatorComma = m_param.is_SeparatorComma();
+    m_Interest = m_param.is_Interest();
+    m_Savings = m_param.is_Savings();
 
     // Define Layout
     setLayout(new BorderLayout(0, 0));
@@ -124,7 +128,7 @@ public class GUILayout extends JPanel implements ItemListener {
       public void actionPerformed(ActionEvent e) {
         boolean selected = chckbxAcountSeparateOFX.isSelected();
         m_AcountSeparateOFX = selected;
-        l_param.set_AcountSeparateOFX(selected);
+        m_param.set_AcountSeparateOFX(selected);
         LOGGER.log(Level.CONFIG, "Accounts in separate OFX files :" + Boolean.toString(selected));
       }
     });
@@ -139,7 +143,7 @@ public class GUILayout extends JPanel implements ItemListener {
       public void actionPerformed(ActionEvent e) {
         boolean selected = chckbxConvertDecimalSeparator.isSelected();
         m_ConvertDecimalSeparator = selected;
-        l_param.set_ConvertDecimalSeparator(selected);
+        m_param.set_ConvertDecimalSeparator(selected);
         LOGGER.log(Level.CONFIG, "Convert decimal to dots:" + Boolean.toString(selected));
       }
     });
@@ -154,7 +158,7 @@ public class GUILayout extends JPanel implements ItemListener {
       public void actionPerformed(ActionEvent e) {
         boolean selected = chckbxConvertDateFormat.isSelected();
         m_ConvertDateFormat = selected;
-        l_param.set_ConvertDateFormat(selected);
+        m_param.set_ConvertDateFormat(selected);
         LOGGER.log(Level.CONFIG, "Convert dates with dd-mm-yyyy to yyyymmdd :" + Boolean.toString(selected));
       }
     });
@@ -182,7 +186,7 @@ public class GUILayout extends JPanel implements ItemListener {
           File file = fileChooser.getSelectedFile();
           LOGGER.log(Level.INFO, "GnuCash executable: " + file.getAbsolutePath());
           m_GnuCashExecutable = file;
-          l_param.set_GnuCashExecutable(m_GnuCashExecutable);
+          m_param.set_GnuCashExecutable(m_GnuCashExecutable);
           mntmGnuCashExe.setText(m_GnuCashExecutable.getAbsolutePath());
         }
       }
@@ -201,7 +205,7 @@ public class GUILayout extends JPanel implements ItemListener {
             c_levels, m_Level.toString());
         if (level != null) {
           m_Level = Level.parse(level.toUpperCase());
-          l_param.set_Level(m_Level);
+          m_param.set_Level(m_Level);
           MyLogger.changeLogLevel(m_Level);
         }
       }
@@ -225,7 +229,7 @@ public class GUILayout extends JPanel implements ItemListener {
           // to use a new selected look and feel.
           UIManager.setLookAndFeel(lookAndFeelInfo.getClassName());
           SwingUtilities.updateComponentTreeUI(this);
-          l_param.set_LookAndFeel(lookAndFeelInfo.getClassName());
+          m_param.set_LookAndFeel(lookAndFeelInfo.getClassName());
         } catch (Exception e) {
           e.printStackTrace();
         }
@@ -247,7 +251,7 @@ public class GUILayout extends JPanel implements ItemListener {
         } else {
           m_toDisk = false;
         }
-        l_param.set_toDisk(m_toDisk);
+        m_param.set_toDisk(m_toDisk);
       }
     });
     mnSettings.add(mntmLogToDisk);
@@ -320,7 +324,7 @@ public class GUILayout extends JPanel implements ItemListener {
           LOGGER.log(Level.INFO, "CSV File: " + file.getAbsolutePath());
           lblCSVFile.setText(file.getAbsolutePath());
           m_CsvFile = file;
-          l_param.set_CsvFile(file);
+          m_param.set_CsvFile(file);
 
           String l_filename;
           l_filename = library.FileUtils.getFileNameWithoutExtension(file) + ".ofx";
@@ -331,7 +335,7 @@ public class GUILayout extends JPanel implements ItemListener {
           lblCSVFile.setEnabled(true);
           lblOutputFolder.setText(file.getParent());
           m_OutputFolder = new File(file.getParent());
-          l_param.set_OutputFolder(m_OutputFolder);
+          m_param.set_OutputFolder(m_OutputFolder);
         }
       }
     });
@@ -352,7 +356,7 @@ public class GUILayout extends JPanel implements ItemListener {
           LOGGER.log(Level.INFO, "Output folder: " + file.getAbsolutePath());
           lblOutputFolder.setText(file.getAbsolutePath());
           m_OutputFolder = new File(file.getAbsolutePath());
-          l_param.set_OutputFolder(m_OutputFolder);
+          m_param.set_OutputFolder(m_OutputFolder);
         }
       }
     });
@@ -367,7 +371,7 @@ public class GUILayout extends JPanel implements ItemListener {
       public void actionPerformed(ActionEvent e) {
         boolean selected = chckbxInterest.isSelected();
         m_Interest = selected;
-        l_param.set_Interest(m_Interest);
+        m_param.set_Interest(m_Interest);
         LOGGER.log(Level.CONFIG, "Save only interest :" + Boolean.toString(selected));
       }
     });
@@ -385,7 +389,7 @@ public class GUILayout extends JPanel implements ItemListener {
         } else {
           chckbxInterest.setEnabled(false);
         }
-        l_param.set_Savings(selected);
+        m_param.set_Savings(selected);
         LOGGER.log(Level.CONFIG, "Savings transaction :" + Boolean.toString(selected));
       }
     });
@@ -401,7 +405,7 @@ public class GUILayout extends JPanel implements ItemListener {
       public void actionPerformed(ActionEvent e) {
         boolean selected = chckbxSeparatorComma.isSelected();
         m_SeparatorComma = selected;
-        l_param.set_SeparatorComma(selected);
+        m_param.set_SeparatorComma(selected);
         LOGGER.log(Level.CONFIG, "Seperator comma (\",\") Default semicolon (\";\") :" + Boolean.toString(selected));
       }
     });
@@ -421,7 +425,7 @@ public class GUILayout extends JPanel implements ItemListener {
     btnConvert.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        l_param.save();
+        m_param.save();
         ActionPerformScript l_action = new ActionPerformScript(lblCSVFile.getText(), txtOutputFilename.getText(),
             lblOutputFolder.getText(), chckbxAcountSeparateOFX.isSelected(), chckbxConvertDecimalSeparator.isSelected(),
             chckbxConvertDecimalSeparator.isSelected(), chckbxSeparatorComma.isSelected(), chckbxSavings.isSelected(),
