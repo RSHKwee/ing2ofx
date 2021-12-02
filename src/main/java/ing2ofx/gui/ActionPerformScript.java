@@ -1,6 +1,8 @@
 package ing2ofx.gui;
 
+import java.io.File;
 import java.io.IOException;
+
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -90,7 +92,7 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
       l_options[idx] = "-s";
     }
 
-    String l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofx.py");
+    File l_Script = library.FileUtils.getResourceAsFile("scripts/ing2ofx.py");
     if (m_SavingTransactions) {
       // Handling saving transactions
       if (m_Interrest) {
@@ -98,25 +100,25 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
         l_options[idx] = "-i";
       }
       if (m_SeparateOFX) {
-        l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofxSpaarPerAccount.py");
+        l_Script = library.FileUtils.getResourceAsFile("scripts/ing2ofxSpaarPerAccount.py");
       } else {
-        l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofxSpaar.py");
+        l_Script = library.FileUtils.getResourceAsFile("scripts/ing2ofxSpaar.py");
       }
     } else {
       // Handling "normal" transactions
       if (m_SeparateOFX) {
-        l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofxPerAccount.py");
+        l_Script = library.FileUtils.getResourceAsFile("scripts/ing2ofxPerAccount.py");
       } else {
-        l_Script = library.FileUtils.getResourceFileName("scripts/ing2ofx.py");
+        l_Script = library.FileUtils.getResourceAsFile("scripts/ing2ofx.py");
       }
     }
     String l_optionsResize = "python";
     try {
-      l_optionsResize = library.FileUtils.getResourceFileName("python.exe");
+      l_optionsResize = library.FileUtils.getResourceAsFile("python.exe").getAbsolutePath();
     } catch (Exception ep) {
       // Do nothing
     }
-    l_optionsResize = l_optionsResize + " " + l_Script;
+    l_optionsResize = l_optionsResize + " " + l_Script.getAbsolutePath();
     for (int i = 1; i <= idx + 1; i++) {
       l_optionsResize = l_optionsResize + " " + l_options[i - 1];
     }

@@ -65,36 +65,6 @@ public class FileUtils {
   }
 
   /**
-   * 
-   * @param a_Directory TODO
-   * @param a_filenaam  Filenaam met _1 voor bepaling hoogste versie
-   * @return Filenaam met hoogste versie
-   */
-  static public String GeefFileMetHoogsteVersie(String a_Directory, String a_filenaam) {
-    String v_filenaam = a_Directory + "\\" + a_filenaam;
-    // your directory
-    File f = new File(a_Directory);
-    String v_filternaam = a_filenaam.replace("_1.xml", "_");
-
-    File[] matchingFiles = f.listFiles(new FilenameFilter() {
-      @Override
-      public boolean accept(File dir, String name) {
-        return name.startsWith(v_filternaam) && name.endsWith("xml");
-      }
-    });
-
-    // TODO echt de hoogste versie bepalen, nu wordt een willekeurige maar bestaand
-    // bestand teruggegeven.
-    if (matchingFiles.length > 0) {
-      for (int i = 0; i < matchingFiles.length; i++) {
-        LOGGER.fine(" Gevonden file :" + matchingFiles[i]);
-      }
-      v_filenaam = matchingFiles[matchingFiles.length - 1].toString();
-    }
-    return v_filenaam;
-  }
-
-  /**
    * Copieer een file van source naar destination
    * 
    * @param a_source      Filenaam inc. directory pad.
@@ -176,6 +146,12 @@ public class FileUtils {
     return ext.matcher(file.getName()).replaceAll("");
   }
 
+  /**
+   * Returns a filename of a resource
+   * 
+   * @param a_resourceName Name of the resource
+   * @return
+   */
   public static String getResourceFileName(String a_resourceName) {
     String l_filename = "";
     ClassLoader loader = Thread.currentThread().getContextClassLoader();
@@ -183,6 +159,38 @@ public class FileUtils {
     l_filename = file.getPath();
 
     return l_filename;
+  }
+
+  /**
+   * Returns a File of a resource
+   * 
+   * @param resourcePath Resource
+   * @return null if resoruce not found or the resource file
+   */
+  public static File getResourceAsFile(String resourcePath) {
+    try {
+      InputStream in = ClassLoader.getSystemClassLoader().getResourceAsStream(resourcePath);
+      if (in == null) {
+        LOGGER.info(resourcePath.toString() + " File is empty.");
+        return null;
+      }
+
+      File tempFile = File.createTempFile(String.valueOf(in.hashCode()), ".tmp");
+      tempFile.deleteOnExit();
+
+      try (FileOutputStream out = new FileOutputStream(tempFile)) {
+        // copy stream
+        byte[] buffer = new byte[1024];
+        int bytesRead;
+        while ((bytesRead = in.read(buffer)) != -1) {
+          out.write(buffer, 0, bytesRead);
+        }
+      }
+      return tempFile;
+    } catch (IOException e) {
+      LOGGER.info(resourcePath.toString() + " " + e.getMessage());
+      return null;
+    }
   }
 
 }

@@ -30,6 +30,7 @@ public class Main {
   static public String m_creationtime;
   static String m_LookAndFeel = "Nimbus";
   static UserSetting m_param = new UserSetting();
+  static boolean m_ConfirmOnExit = false;
 
   /**
    * Create the GUI and show it. For thread safety, this method should be invoked
@@ -47,11 +48,15 @@ public class Main {
       @Override
       public void windowClosing(WindowEvent e) {
         JFrame frame = (JFrame) e.getSource();
+        if (m_ConfirmOnExit) {
+          int result = JOptionPane.showConfirmDialog(frame, "Are you sure you want to exit the application?",
+              "Exit Application", JOptionPane.YES_NO_OPTION);
 
-        int result = JOptionPane.showConfirmDialog(frame, "Are you sure you want to exit the application?",
-            "Exit Application", JOptionPane.YES_NO_OPTION);
-
-        if (result == JOptionPane.YES_OPTION) {
+          if (result == JOptionPane.YES_OPTION) {
+            m_param.save();
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+          }
+        } else {
           m_param.save();
           frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         }
@@ -126,20 +131,39 @@ public class Main {
   }
 
   /**
+   * @formatter:off
    * Main start de GUI
-   *
-   * @param args 0 Look and feel, "Nimbus" of "Metal"
+   * @param args 0 Confirm on exit "true" or "false" (d)
+   *        args 1 Look and feel,  "Nimbus" (d) or "Metal", etc.
+   * @formatter:on
    */
   public static void main(String[] argv) {
     m_LookAndFeel = m_param.get_LookAndFeel();
     m_creationtime = JarInfo.getTimeStr(GUILayout.class);
+    m_ConfirmOnExit = m_param.is_ConfirmOnExit();
 
     switch (argv.length) {
       case 1: {
-        m_LookAndFeel = argv[1];
+        if (argv[0].toLowerCase().startsWith("t")) {
+          m_ConfirmOnExit = true;
+          m_param.set_ConfirmOnExit(m_ConfirmOnExit);
+        } else {
+          m_ConfirmOnExit = false;
+          m_param.set_ConfirmOnExit(m_ConfirmOnExit);
+        }
         break;
       }
-
+      case 2: {
+        if (argv[0].toLowerCase().startsWith("t")) {
+          m_ConfirmOnExit = true;
+          m_param.set_ConfirmOnExit(true);
+        } else {
+          m_ConfirmOnExit = false;
+          m_param.set_ConfirmOnExit(false);
+        }
+        m_LookAndFeel = argv[1];
+        m_param.set_LookAndFeel(m_LookAndFeel);
+      }
       default: {
       }
     }

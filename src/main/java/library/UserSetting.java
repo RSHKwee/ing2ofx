@@ -21,6 +21,7 @@ public class UserSetting {
   private String c_Level = "Level";
   private String c_LevelValue = "INFO";
 
+  private String c_ConfirmOnExit = "ConfirmOnExit";
   private String c_toDisk = "ToDisk";
   private String c_AccountSepOfx = "AccountSepOfx";
   private String c_ConvertDecimalSeparator = "ConvertDecimalSeperator";
@@ -39,6 +40,7 @@ public class UserSetting {
   private String m_OutputFolder = "";
   private String m_CsvFile = "";
 
+  private boolean m_ConfirmOnExit = false;
   private boolean m_toDisk = false;
   private boolean m_AcountSeparateOFX = true;
   private boolean m_ConvertDecimalSeparator = false;
@@ -55,6 +57,7 @@ public class UserSetting {
   public UserSetting() {
     m_toDisk = pref.getBoolean(c_toDisk, false);
 
+    m_ConfirmOnExit = pref.getBoolean(c_ConfirmOnExit, false);
     m_AcountSeparateOFX = pref.getBoolean(c_AccountSepOfx, true);
     m_ConvertDecimalSeparator = pref.getBoolean(c_ConvertDecimalSeparator, false);
     m_ConvertDateFormat = pref.getBoolean(c_ConvertDateFormat, false);
@@ -77,13 +80,57 @@ public class UserSetting {
     return m_GnuCashExecutable;
   }
 
+  public String get_OutputFolder() {
+    return m_OutputFolder;
+  }
+
+  public String get_CsvFile() {
+    return m_CsvFile;
+  }
+
+  public Level get_Level() {
+    return Level.parse(m_Level);
+  }
+
+  public String get_LookAndFeel() {
+    return m_LookAndFeel;
+  }
+
+  public boolean is_toDisk() {
+    return m_toDisk;
+  }
+
+  public boolean is_AcountSeparateOFX() {
+    return m_AcountSeparateOFX;
+  }
+
+  public boolean is_ConfirmOnExit() {
+    return m_ConfirmOnExit;
+  }
+
+  public boolean is_ConvertDateFormat() {
+    return m_ConvertDateFormat;
+  }
+
+  public boolean is_ConvertDecimalSeparator() {
+    return m_ConvertDecimalSeparator;
+  }
+
+  public boolean is_Interest() {
+    return m_Interest;
+  }
+
+  public boolean is_Savings() {
+    return m_Savings;
+  }
+
+  public boolean is_SeparatorComma() {
+    return m_SeparatorComma;
+  }
+
   public void set_GnuCashExecutable(File a_GnuCashExecutable) {
     pref.put(c_GnuCashExe, a_GnuCashExecutable.getAbsolutePath());
     m_GnuCashExecutable = a_GnuCashExecutable.getAbsolutePath();
-  }
-
-  public String get_OutputFolder() {
-    return m_OutputFolder;
   }
 
   public void set_OutputFolder(File a_OutputFolder) {
@@ -91,17 +138,9 @@ public class UserSetting {
     m_OutputFolder = a_OutputFolder.getAbsolutePath();
   }
 
-  public String get_CsvFile() {
-    return m_CsvFile;
-  }
-
   public void set_CsvFile(File a_CsvFile) {
     pref.put(c_CsvFile, a_CsvFile.getAbsolutePath());
     m_CsvFile = a_CsvFile.getAbsolutePath();
-  }
-
-  public boolean is_toDisk() {
-    return m_toDisk;
   }
 
   public void set_toDisk(boolean a_toDisk) {
@@ -109,17 +148,9 @@ public class UserSetting {
     this.m_toDisk = a_toDisk;
   }
 
-  public Level get_Level() {
-    return Level.parse(m_Level);
-  }
-
   public void set_Level(Level a_Level) {
     pref.put(c_Level, a_Level.toString());
     this.m_Level = a_Level.toString();
-  }
-
-  public boolean is_AcountSeparateOFX() {
-    return m_AcountSeparateOFX;
   }
 
   public void set_AcountSeparateOFX(boolean a_AcountSeparateOFX) {
@@ -127,17 +158,9 @@ public class UserSetting {
     this.m_AcountSeparateOFX = a_AcountSeparateOFX;
   }
 
-  public boolean is_ConvertDecimalSeparator() {
-    return m_ConvertDecimalSeparator;
-  }
-
   public void set_ConvertDecimalSeparator(boolean a_ConvertDecimalSeparator) {
     pref.putBoolean(c_ConvertDecimalSeparator, a_ConvertDecimalSeparator);
     this.m_ConvertDecimalSeparator = a_ConvertDecimalSeparator;
-  }
-
-  public boolean is_ConvertDateFormat() {
-    return m_ConvertDateFormat;
   }
 
   public void set_ConvertDateFormat(boolean a_ConvertDateFormat) {
@@ -145,17 +168,9 @@ public class UserSetting {
     this.m_ConvertDateFormat = a_ConvertDateFormat;
   }
 
-  public boolean is_SeparatorComma() {
-    return m_SeparatorComma;
-  }
-
   public void set_SeparatorComma(boolean a_SeperatorComma) {
     pref.putBoolean(c_SeparatorComma, a_SeperatorComma);
     this.m_SeparatorComma = a_SeperatorComma;
-  }
-
-  public String get_LookAndFeel() {
-    return m_LookAndFeel;
   }
 
   public void set_LookAndFeel(String a_LookAndFeel) {
@@ -163,22 +178,19 @@ public class UserSetting {
     this.m_LookAndFeel = a_LookAndFeel;
   }
 
-  public boolean is_Interest() {
-    return m_Interest;
-  }
-
   public void set_Interest(boolean a_Interest) {
     pref.putBoolean(c_Interest, a_Interest);
     this.m_Interest = a_Interest;
   }
 
-  public boolean is_Savings() {
-    return m_Savings;
-  }
-
   public void set_Savings(boolean a_Savings) {
     pref.putBoolean(c_Savings, a_Savings);
     this.m_Savings = a_Savings;
+  }
+
+  public void set_ConfirmOnExit(boolean a_ConfirmOnExit) {
+    pref.putBoolean(c_ConfirmOnExit, a_ConfirmOnExit);
+    this.m_ConfirmOnExit = a_ConfirmOnExit;
   }
 
   /**
@@ -194,6 +206,7 @@ public class UserSetting {
       pref.putBoolean(c_SeparatorComma, m_SeparatorComma);
       pref.putBoolean(c_Interest, m_Interest);
       pref.putBoolean(c_Savings, m_Savings);
+      pref.putBoolean(c_ConfirmOnExit, m_ConfirmOnExit);
 
       pref.put(c_LookAndFeel, m_LookAndFeel);
       pref.put(c_GnuCashExe, m_GnuCashExecutable);
