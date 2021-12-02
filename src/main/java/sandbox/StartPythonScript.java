@@ -1,13 +1,12 @@
 package sandbox;
 
 import java.io.StringWriter;
-
 import org.python.util.PythonInterpreter;
 
 public class StartPythonScript {
-
-  public StartPythonScript(String a_Script, String[] arguments) {
-    PythonInterpreter.initialize(System.getProperties(), System.getProperties(), arguments);
+  public static void main(String[] args) {
+    String a_Script = args[0];
+    PythonInterpreter.initialize(System.getProperties(), System.getProperties(), args);
     org.python.util.PythonInterpreter python = new org.python.util.PythonInterpreter();
     StringWriter out = new StringWriter();
     python.setOut(out);
