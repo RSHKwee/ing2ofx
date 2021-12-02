@@ -90,7 +90,47 @@
               </descriptorRefs>
               <finalName>ing2ofx</finalName>
            </configuration>
-        </plugin>	
+        </plugin>
+                    <plugin>
+                <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                <artifactId>launch4j-maven-plugin</artifactId>
+                <version>1.5.1</version>
+                <executions>
+                    <!-- Command-line exe -->
+                    <execution>
+                        <id>l4j-cli</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>launch4j</goal>
+                        </goals>
+                        <configuration>
+                            <headerType>console</headerType>
+                            <outfile>target/ing2ofx.exe</outfile>
+                            <jar>target/${artifactId}-${version}.jar</jar>
+                            <errTitle>App Err</errTitle>
+                            <classPath>
+                                <mainClass>ing2ofx.main.Main</mainClass>
+                            </classPath>
+                            <icon>src/main/resources/ingLogo.png</icon>
+                            <jre>
+                                <minVersion>1.5.0</minVersion>
+                            </jre>
+                            <versionInfo>
+                               <fileVersion>1.0.0.0</fileVersion>
+                               <txtFileVersion>${project.version}</txtFileVersion>
+                               <fileDescription>${project.name}</fileDescription>
+                               <copyright>2014 envision.com</copyright>
+                               <productVersion>1.0.0.0</productVersion>
+                               <txtProductVersion>1.0.0.0</txtProductVersion>
+                               <productName>${project.name}</productName>
+                               <companyName></companyName>
+                               <internalName>ing2ofx</internalName>
+                               <originalFilename>ing2ofx.exe</originalFilename>
+                            </versionInfo>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>	
      </plugins>
   </build>
 </project>
