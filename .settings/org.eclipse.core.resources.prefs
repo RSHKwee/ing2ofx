@@ -2,6 +2,7 @@ eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
 encoding//src/main/resources=UTF-8
 encoding//src/main/resources/scripts/ing2ofx.py=utf-8
+encoding//src/main/resources/scripts/ing2ofxPerAccount.py=utf-8
 encoding//src/main/resources/scripts/ing2ofxSpaarPerAccount.py=utf-8
 encoding//src/test/java=UTF-8
 encoding/<project>=UTF-8

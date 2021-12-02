@@ -18,31 +18,6 @@ import org.python.core.*;
 
 public class TestJython {
 
-  public static File getResourceAsFile(String resourcePath) {
-    try {
-      InputStream in = ClassLoader.getSystemClassLoader().getResourceAsStream(resourcePath);
-      if (in == null) {
-        return null;
-      }
-
-      File tempFile = File.createTempFile(String.valueOf(in.hashCode()), ".tmp");
-      tempFile.deleteOnExit();
-
-      try (FileOutputStream out = new FileOutputStream(tempFile)) {
-        // copy stream
-        byte[] buffer = new byte[1024];
-        int bytesRead;
-        while ((bytesRead = in.read(buffer)) != -1) {
-          out.write(buffer, 0, bytesRead);
-        }
-      }
-      return tempFile;
-    } catch (IOException e) {
-      e.printStackTrace();
-      return null;
-    }
-  }
-
   public static void main(String[] args) throws PyException {
 //    PythonInterpreter interp = new PythonInterpreter();
     // System.out.println("Hello, world from Java");
@@ -66,7 +41,7 @@ public class TestJython {
         "ing2ofxPerAccount.py", "-o", "Alle_rekeningen_01-03-2021_20-10-2021.ofx", "-d", "D:\\WorkspaceGnuCash\\csv",
         "-s", "D:\\WorkspaceGnuCash\\csv\\Alle_rekeningen_01-03-2021_20-10-2021.csv" };
 
-    File scriptfile = getResourceAsFile("scripts/ing2ofxPerAccount.py");
+    File scriptfile = library.FileUtils.getResourceAsFile("scripts/ing2ofxPerAccount.py");
     String cmd = "java -jar C:\\Users\\rshkw\\.m2\\repository\\org\\python\\jython-standalone\\2.7.2\\jython-standalone-2.7.2.jar"
         + " " + scriptfile.getAbsolutePath() + " " + "-o" + " " + "Alle_rekeningen_01-03-2021_20-10-2021.ofx" + " "
         + "-d" + " " + "D:\\WorkspaceGnuCash\\csv" + " " + "-s" + " "
