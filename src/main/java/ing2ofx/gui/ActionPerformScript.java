@@ -130,7 +130,7 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
 
     }
     LOGGER.log(Level.FINE, "Start: " + l_optionsResize);
-    LOGGER.log(Level.INFO, "Start: " + l_logmsg);
+    LOGGER.log(Level.INFO, l_logmsg);
     try {
       OutputToLoggerReader l_reader = new OutputToLoggerReader();
       String l_logging = l_reader.getReadOut(l_optionsResize);
