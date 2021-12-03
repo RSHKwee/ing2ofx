@@ -2,9 +2,11 @@ package ing2ofx.gui;
 
 import java.io.File;
 import java.io.IOException;
+
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
+
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -18,6 +20,7 @@ import javax.swing.JTextArea;
 import javax.swing.SwingWorker;
 
 import library.OutputToLoggerReader;
+import library.JarClassLoader;
 
 public class ActionPerformScript extends SwingWorker<Void, String> implements MyAppendable {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
@@ -261,15 +264,31 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
     try {
       final String mainClass;
       final JarFile jarFile = new JarFile(exe);
+      final JarClassLoader jcl = new JarClassLoader(exe.toURI().toURL());
+
       try {
         final Manifest manifest = jarFile.getManifest();
         mainClass = manifest.getMainAttributes().getValue("Main-Class");
       } finally {
         jarFile.close();
       }
-      final URLClassLoader child = new URLClassLoader(new URL[] { exe.toURI().toURL() }, c.getClassLoader());
-      final Class<?> classToLoad = Class.forName(mainClass, true, child);
-      final Method method = classToLoad.getDeclaredMethod("main", String[].class);
+//      final URLClassLoader child = new URLClassLoader(new URL[] { exe.toURI().toURL() }, c.getClassLoader());
+
+      /*
+       * @formatter:off
+          Don't execute the jar like a command. Load the class you want from the jar using the classloader and then instantiate it.
+
+          http://docs.oracle.com/javase/tutorial/deployment/jar/jarclassloader.html
+
+          Load the jar by constructing a new JarClassLoader("url goes here").
+          Call .invokeClass("MyMainClassName", new String[] { "Args", "Go", "Here" }) on the JarClassLoader.
+          
+          Uitzoeken hoe......
+       * @formatter:on
+       */
+
+      // final Class<?> classToLoad = Class.forName(mainClass, true, jcl);
+      // final Method method = classToLoad.getDeclaredMethod("main", String[].class);
       // final Object[] arguments1 = { new String[0] };
       // ing2ofxPerAccount.py F:\data\Alle_rekeningen_01-03-2021_20-10-2021.csv
       // -o Alle_rekeningen_01-03-2021_20-10-2021.ofx -d F:\data -s
@@ -277,7 +296,9 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
           "Alle_rekeningen_01-03-2021_20-10-2021.ofx", "-d", "F:\\data", "-s" };
       // {args.stream().toArray(String[]::new))} };
 
-      Object invoke = method.invoke(null, args1);
+      jcl.invokeClass("main", args);
+
+      // Object invoke = method.invoke(null, args1);
 
     } catch (Exception ex) {
       LOGGER.info(ex.getMessage());
