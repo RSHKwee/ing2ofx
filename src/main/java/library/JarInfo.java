@@ -83,8 +83,8 @@ public class JarInfo {
 
   public static String getProjectVersion(Class<?> cl) {
     String l_version = "";
-    ApplicationProperties l_properties = new ApplicationProperties();
     try {
+      ApplicationProperties l_properties = new ApplicationProperties();
       l_version = l_properties.readProperty("version") + " (" + getTimeStr(cl) + ")";
     } catch (Exception e) {
       l_version = getTimeStr(cl);

@@ -2,11 +2,15 @@ package ing2ofx.gui;
 
 import java.io.File;
 import java.io.IOException;
-
+import java.lang.reflect.Method;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.jar.JarFile;
+import java.util.jar.Manifest;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -45,8 +49,8 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
     m_Interrest = a_Interrest;
   }
 
-  @Override
-  protected Void doInBackground() throws Exception {
+  // @Override
+  protected Void doInBackground_org() throws Exception {
     // Run OFX Python script
     // @formatter:off
     /*
@@ -150,6 +154,97 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
   }
 
   @Override
+  protected Void doInBackground() throws Exception {
+    // @formatter:off
+    /*
+     * usage: ing2ofx [-h] [-o, --outfile OUTFILE] [-d, --directory DIR] [-c,
+     * --convert] [-b, --convert-date] csvfile
+     * 
+     * This program converts ING (www.ing.nl) CSV files to OFX format. 
+     * The default output filename is the input filename.
+     * 
+     * positional arguments: csvfile A csvfile to process
+     * 
+     * optional arguments: 
+     * -h, --help show this help message and exit 
+     * -o, --outfile OUTFILE Output filename 
+     * -d, --directory DIR Directory to store output, default is ./ofx 
+     * -c, --convert Convert decimal separator to dots (.), default is false 
+     * -b, --convert-date Convert dates with dd-mm-yyyy notation to yyyymmdd
+     * -s, --separator Separator semicolon is default (true) otherwise comma (false)", action='store_true')
+     * -i, --interest Only interest savings transactions (true) otherwise all savings transactions default (false)
+     */
+    // @formatter:on
+    String[] l_options = new String[20];
+    l_options[0] = m_CSVFile;
+    int idx = 0;
+    if (!m_OutputFile.equalsIgnoreCase("Output filename")) {
+      idx++;
+      l_options[idx] = "-o";
+      idx++;
+      l_options[idx] = m_OutputFile;
+    }
+    if (!m_OutputFolder.isBlank()) {
+      idx++;
+      l_options[idx] = "-d";
+      idx++;
+      l_options[idx] = m_OutputFolder;
+    }
+    if (m_ConvertDecimalSep) {
+      idx++;
+      l_options[idx] = "-c";
+    }
+    if (m_ConvertDate) {
+      idx++;
+      l_options[idx] = "-b";
+    }
+    if (!m_SeparatorComma) {
+      idx++;
+      l_options[idx] = "-s";
+    }
+
+    String l_logmsg = "python";
+    File l_Script = library.FileUtils.getResourceAsFile("scripts/ing2ofx.py");
+    if (m_SavingTransactions) {
+      // Handling saving transactions
+      if (m_Interrest) {
+        idx++;
+        l_options[idx] = "-i";
+      }
+      if (m_SeparateOFX) {
+        l_Script = library.FileUtils.getResourceAsFile("scripts/ing2ofxSpaarPerAccount.py");
+        l_logmsg = l_logmsg + " " + "ing2ofxSpaarPerAccount.py";
+      } else {
+        l_Script = library.FileUtils.getResourceAsFile("scripts/ing2ofxSpaar.py");
+        l_logmsg = l_logmsg + " " + "ing2ofxSpaar.py";
+      }
+    } else {
+      // Handling "normal" transactions
+      if (m_SeparateOFX) {
+        l_Script = library.FileUtils.getResourceAsFile("scripts/ing2ofxPerAccount.py");
+        l_logmsg = l_logmsg + " " + "ing2ofxPerAccount.py";
+      } else {
+        l_Script = library.FileUtils.getResourceAsFile("scripts/ing2ofx.py");
+        l_logmsg = l_logmsg + " " + "ing2ofx.py";
+      }
+    }
+    String[] l_optionsResize = new String[idx + 2];
+
+    l_optionsResize[0] = l_Script.getAbsolutePath();
+    for (int i = 1; i <= idx + 1; i++) {
+      l_optionsResize[i] = l_options[i - 1];
+      l_logmsg = l_logmsg + " " + l_options[i - 1];
+    }
+
+    LOGGER.log(Level.FINE, "Start: " + l_optionsResize);
+    LOGGER.log(Level.INFO, l_logmsg);
+
+    File file = new File("D:\\git\\ing2ofx\\src\\main\\resources\\runPythonScript.jar");
+    startExternalJAR(getClass(), file, l_optionsResize);
+    return null;
+  }
+
+  @Override
   public void append(String text) {
     area.append(text);
   }
@@ -159,6 +254,30 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
     LOGGER.log(Level.INFO, "");
     LOGGER.log(Level.INFO, "Done.");
   }
+
+  private static void startExternalJAR(Class<?> c, File exe, String[] args) {
+    try {
+      final String mainClass;
+      final JarFile jarFile = new JarFile(exe);
+      try {
+        final Manifest manifest = jarFile.getManifest();
+        mainClass = manifest.getMainAttributes().getValue("Main-Class");
+      } finally {
+        jarFile.close();
+      }
+      final URLClassLoader child = new URLClassLoader(new URL[] { exe.toURI().toURL() }, c.getClassLoader());
+      final Class<?> classToLoad = Class.forName(mainClass, true, child);
+      final Method method = classToLoad.getDeclaredMethod("main", String[].class);
+      //final Object[] arguments1 = { new String[0] };
+      final Object[] arguments1 = { new String[args.length-1] {args.stream().toArray(String[]::new))} };
+      
+      method.invoke(null, arguments1);
+      
+    } catch (Exception ex) {
+      ex.printStackTrace();
+    }
+  }
+
 }
 
 interface MyAppendable {
