@@ -239,7 +239,9 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
     LOGGER.log(Level.FINE, "Start: " + l_optionsResize);
     LOGGER.log(Level.INFO, l_logmsg);
 
-    File file = new File("D:\\git\\ing2ofx\\src\\main\\resources\\runPythonScript.jar");
+    // File file = new
+    // File("D:\\git\\ing2ofx\\src\\main\\resources\\runPythonScript.jar");
+    File file = new File("F:\\dev\\GitHub\\ing2ofx\\src\\main\\resources\\runPythonScript.jar");
     startExternalJAR(getClass(), file, l_optionsResize);
     return null;
   }
@@ -268,12 +270,17 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
       final URLClassLoader child = new URLClassLoader(new URL[] { exe.toURI().toURL() }, c.getClassLoader());
       final Class<?> classToLoad = Class.forName(mainClass, true, child);
       final Method method = classToLoad.getDeclaredMethod("main", String[].class);
-      //final Object[] arguments1 = { new String[0] };
-      final Object[] arguments1 = { new String[args.length-1] {args.stream().toArray(String[]::new))} };
-      
-      method.invoke(null, arguments1);
-      
+      // final Object[] arguments1 = { new String[0] };
+      // ing2ofxPerAccount.py F:\data\Alle_rekeningen_01-03-2021_20-10-2021.csv
+      // -o Alle_rekeningen_01-03-2021_20-10-2021.ofx -d F:\data -s
+      final Object[] args1 = { "ing2ofxPerAccount.py", "F:\\data\\Alle_rekeningen_01-03-2021_20-10-2021.csv", "-o",
+          "Alle_rekeningen_01-03-2021_20-10-2021.ofx", "-d", "F:\\data", "-s" };
+      // {args.stream().toArray(String[]::new))} };
+
+      Object invoke = method.invoke(null, args1);
+
     } catch (Exception ex) {
+      LOGGER.info(ex.getMessage());
       ex.printStackTrace();
     }
   }
