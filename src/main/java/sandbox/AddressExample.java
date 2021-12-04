@@ -2,6 +2,7 @@ package sandbox;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
+import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -28,6 +29,8 @@ public class AddressExample {
   private static final String ADDRESS_FILE = "f:/data/Alle_rekeningen_01-01-2021_28-02-2021.csv";
 
   public static void main(String[] args) throws IOException {
+
+    HeaderColumnNameMappingStrategy<Transaction> beanStrategy = new HeaderColumnNameMappingStrategy<Transaction>();
 
     CSVReader reader = new CSVReader(new FileReader(ADDRESS_FILE), ';');
     List<String[]> transactions = reader.readAll();
