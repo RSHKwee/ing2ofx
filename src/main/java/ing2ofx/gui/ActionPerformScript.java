@@ -272,40 +272,14 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
       } finally {
         jarFile.close();
       }
-//      final URLClassLoader child = new URLClassLoader(new URL[] { exe.toURI().toURL() }, c.getClassLoader());
 
-      /*
-       * @formatter:off
-          Don't execute the jar like a command. Load the class you want from the jar using the classloader and then instantiate it.
-
-          http://docs.oracle.com/javase/tutorial/deployment/jar/jarclassloader.html
-
-          Load the jar by constructing a new JarClassLoader("url goes here").
-          Call .invokeClass("MyMainClassName", new String[] { "Args", "Go", "Here" }) on the JarClassLoader.
-          
-          Uitzoeken hoe......
-       * @formatter:on
-       */
-
-      // final Class<?> classToLoad = Class.forName(mainClass, true, jcl);
-      // final Method method = classToLoad.getDeclaredMethod("main", String[].class);
-      // final Object[] arguments1 = { new String[0] };
-      // ing2ofxPerAccount.py F:\data\Alle_rekeningen_01-03-2021_20-10-2021.csv
-      // -o Alle_rekeningen_01-03-2021_20-10-2021.ofx -d F:\data -s
-      final Object[] args1 = { "ing2ofxPerAccount.py", "F:\\data\\Alle_rekeningen_01-03-2021_20-10-2021.csv", "-o",
-          "Alle_rekeningen_01-03-2021_20-10-2021.ofx", "-d", "F:\\data", "-s" };
-      // {args.stream().toArray(String[]::new))} };
-
-      jcl.invokeClass("main", args);
-
-      // Object invoke = method.invoke(null, args1);
+      jcl.invokeClass(mainClass, args);
 
     } catch (Exception ex) {
       LOGGER.info(ex.getMessage());
       ex.printStackTrace();
     }
   }
-
 }
 
 interface MyAppendable {
