@@ -1,18 +1,14 @@
-package sandbox;
+package convertor;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBean;
 
-public class Transaction extends CsvToBean<Object> {
+public class IngTransaction extends CsvToBean<Object> {
   /*
  * @formatter:off
  * "Datum","Naam / Omschrijving","Rekening","Tegenrekening","Code","Af Bij","Bedrag (EUR)","MutatieSoort","Mededelingen"
  * "Datum";"Naam / Omschrijving";"Rekening";"Tegenrekening";"Code";"Af Bij";"Bedrag (EUR)";"Mutatiesoort";"Mededelingen";"Saldo na mutatie";"Tag"
- * 
- * Spaarrekening 
- * "Datum";"Omschrijving";"Rekening";"Rekening naam";"Tegenrekening";"Af Bij";"Bedrag";"Valuta";"Mutatiesoort";"Mededelingen";"Saldo na mutatie"
- *
-   *     These are the first two lines of an ING Netherlands CSV file:
+ *     These are the first two lines of an ING Netherlands CSV file:
 
     "Datum","Naam / Omschrijving","Rekening","Tegenrekening","Code",\
 "Af Bij","Bedrag (EUR)","MutatieSoort",\
@@ -30,45 +26,38 @@ public class Transaction extends CsvToBean<Object> {
    * @formatter:on
    */
 
-  /*
-   * "Datum"; "Omschrijving"; "Rekening"; "Rekening naam"; "Tegenrekening";
-   * "Af Bij"; "Bedrag"; "Valuta"; "Mutatiesoort"; "Mededelingen";
-   * "Saldo na mutatie"
-   * 
-   */
-
   @CsvBindByName(column = "Datum")
-  String Datum;
+  private String Datum;
 
   @CsvBindByName(column = "Naam / Omschrijving")
-  String Omschrijving;
+  private String Omschrijving;
 
   @CsvBindByName(column = "Rekening")
-  String Rekening;
+  private String Rekening;
 
   @CsvBindByName(column = "Tegenrekening")
-  String Tegenrekening;
+  private String Tegenrekening;
 
   @CsvBindByName(column = "Code")
-  String Code;
+  private String Code;
 
   @CsvBindByName(column = "Af Bij")
-  String Af_Bij;
+  private String Af_Bij;
 
   @CsvBindByName(column = "Bedrag (EUR)")
-  String Bedrag;
+  private String Bedrag;
 
   @CsvBindByName(column = "Mutatiesoort")
-  String Mutatiesoort;
+  private String Mutatiesoort;
 
   @CsvBindByName(column = "Mededelingen")
-  String Mededelingen;
+  private String Mededelingen;
 
   @CsvBindByName(column = "Saldo na mutatie")
-  String Saldo_na_mutatie;
+  private String Saldo_na_mutatie;
 
   @CsvBindByName(column = "Tag")
-  String Tag;
+  private String Tag;
 
   public String getDatum() {
     return Datum;
