@@ -1,4 +1,4 @@
-package convertor;
+package ing2ofx.convertor;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBean;

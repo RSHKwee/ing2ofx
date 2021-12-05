@@ -1,4 +1,4 @@
-package convertor;
+package ing2ofx.convertor;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -6,9 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Ing2ofx {
+public class IngCommon {
 
-  public Ing2ofx() {
+  public IngCommon() {
 
   }
 
