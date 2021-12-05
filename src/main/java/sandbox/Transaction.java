@@ -3,7 +3,9 @@ package sandbox;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBean;
 
-public class Transaction extends CsvToBean {
+import com.opencsv.bean.CsvToBean;
+
+public class Transaction extends CsvToBean<Object> {
   /*
  * @formatter:off
  * "Datum","Naam / Omschrijving","Rekening","Tegenrekening","Code","Af Bij","Bedrag (EUR)","MutatieSoort","Mededelingen"
@@ -26,140 +28,136 @@ public class Transaction extends CsvToBean {
      "Af Bij";"Bedrag (EUR)";"Mutatiesoort";"Mededelingen";"Saldo na mutatie";"Tag"
 "20210911";"Kosten OranjePakket";"NL12INGB0000123456";"";"DV";"Af";"1,95";"Diversen";"1 aug t/m 31 aug 2021 ING BANK N.V. Valutadatum: 11-09-2021";"5185,32";""
 
-    These fields are from the Statement class:
-
-    id = ""
-
-    # Date transaction was posted to account (booking date)
-    date = datetime.now()                          # "Datum"
-
-    memo = ""                                      # "Mededelingen"
-
-    # Amount of transaction
-    amount = D(0)
-
-    # additional fields
-    payee = ""
-
-    # Date user initiated transaction, if known (transaction date)
-    date_user = datetime.now()
-
-    # Check (or other reference) number
-    check_no = ""
-
-    # Reference number that uniquely identifies the transaction. Can be used in
-    # addition to or instead of a check_no           # fitid
-    refnum = ""
-
-    # Transaction type, must be one of TRANSACTION_TYPES # "Code"
-    "CREDIT",       # Generic credit
-    "DEBIT",        # Generic debit
-    "INT",          # Interest earned or paid
-    "DIV",          # Dividend
-    "FEE",          # FI fee
-    "SRVCHG",       # Service charge
-    "DEP",          # Deposit
-    "ATM",          # ATM debit or credit             # GM
-    "POS",          # Point of sale debit or credit   # BA
-    "XFER",         # Transfer
-    "CHECK",        # Check
-    "PAYMENT",      # Electronic payment              # GT
-    "CASH",         # Cash withdrawal
-    "DIRECTDEP",    # Direct deposit                  # ST
-    "DIRECTDEBIT",  # Merchant initiated debit        # IC
-    "REPEATPMT",    # Repeating payment/standing order
-    "OTHER"         # Other                           # DV OV VZ 
-
-    trntype = "CHECK"
-
-    # Optional BankAccount instance                   # "Tegenrekening"
-    bank_account_to = None
     
    * @formatter:on
    */
 
-  String id = "";
-  String memo = "";
-  String amount = "0";
-  String payee = "";
+  /*
+   * "Datum"; "Omschrijving"; "Rekening"; "Rekening naam"; "Tegenrekening";
+   * "Af Bij"; "Bedrag"; "Valuta"; "Mutatiesoort"; "Mededelingen";
+   * "Saldo na mutatie"
+   * 
+   */
 
   @CsvBindByName(column = "Datum")
-  String date_user = "";
-  String check_no = "";
-  String refnum = "";
-  String trntype = "CHECK";
-  String bank_account_to = "";
+  String Datum;
 
-  public String getId() {
-    return id;
+  @CsvBindByName(column = "Naam / Omschrijving")
+  String Naam_Omschrijving;
+
+  @CsvBindByName(column = "Rekening")
+  String Rekening;
+
+  @CsvBindByName(column = "Tegenrekening")
+  String Tegenrekening;
+
+  @CsvBindByName(column = "Code")
+  String Code;
+
+  @CsvBindByName(column = "Af Bij")
+  String Af_Bij;
+
+  @CsvBindByName(column = "Bedrag (EUR)")
+  String Bedrag;
+
+  @CsvBindByName(column = "Mutatiesoort")
+  String Mutatiesoort;
+
+  @CsvBindByName(column = "Mededelingen")
+  String Mededelingen;
+
+  @CsvBindByName(column = "Saldo na mutatie")
+  String Saldo_na_mutatie;
+
+  @CsvBindByName(column = "Tag")
+  String Tag;
+
+  public String getDatum() {
+    return Datum;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public String getNaam_Omschrijving() {
+    return Naam_Omschrijving;
   }
 
-  public String getMemo() {
-    return memo;
+  public String getRekening() {
+    return Rekening;
   }
 
-  public void setMemo(String memo) {
-    this.memo = memo;
+  public String getTegenrekening() {
+    return Tegenrekening;
   }
 
-  public String getAmount() {
-    return amount;
+  public String getCode() {
+    return Code;
   }
 
-  public void setAmount(String amount) {
-    this.amount = amount;
+  public String getAf_Bij() {
+    return Af_Bij;
   }
 
-  public String getPayee() {
-    return payee;
+  public String getBedrag() {
+    return Bedrag;
   }
 
-  public void setPayee(String payee) {
-    this.payee = payee;
+  public String getMutatiesoort() {
+    return Mutatiesoort;
   }
 
-  public String getDate_user() {
-    return date_user;
+  public String getMededelingen() {
+    return Mededelingen;
   }
 
-  public void setDate_user(String date_user) {
-    this.date_user = date_user;
+  public String getSaldo_na_mutatie() {
+    return Saldo_na_mutatie;
   }
 
-  public String getCheck_no() {
-    return check_no;
+  public String getTag() {
+    return Tag;
   }
 
-  public void setCheck_no(String check_no) {
-    this.check_no = check_no;
+  public void setDatum(String datum) {
+    Datum = datum;
   }
 
-  public String getRefnum() {
-    return refnum;
+  public void setNaam_Omschrijving(String naam_Omschrijving) {
+    Naam_Omschrijving = naam_Omschrijving;
   }
 
-  public void setRefnum(String refnum) {
-    this.refnum = refnum;
+  public void setRekening(String rekening) {
+    Rekening = rekening;
   }
 
-  public String getTrntype() {
-    return trntype;
+  public void setTegenrekening(String tegenrekening) {
+    Tegenrekening = tegenrekening;
   }
 
-  public void setTrntype(String trntype) {
-    this.trntype = trntype;
+  public void setCode(String code) {
+    Code = code;
   }
 
-  public String getBank_account_to() {
-    return bank_account_to;
+  public void setAf_Bij(String af_Bij) {
+    Af_Bij = af_Bij;
   }
 
-  public void setBank_account_to(String bank_account_to) {
-    this.bank_account_to = bank_account_to;
+  public void setBedrag(String bedrag) {
+    Bedrag = bedrag;
+  }
+
+  public void setMutatiesoort(String mutatiesoort) {
+    Mutatiesoort = mutatiesoort;
+  }
+
+  public void setMededelingen(String mededelingen) {
+    Mededelingen = mededelingen;
+  }
+
+  public void setSaldo_na_mutatie(String saldo_na_mutatie) {
+    Saldo_na_mutatie = saldo_na_mutatie;
+  }
+
+  public void setTag(String tag) {
+    Tag = tag;
   }
 
 }

@@ -2,6 +2,7 @@ package sandbox;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
+import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 
 import java.io.FileReader;
@@ -31,6 +32,9 @@ public class AddressExample {
   public static void main(String[] args) throws IOException {
 
     HeaderColumnNameMappingStrategy<Transaction> beanStrategy = new HeaderColumnNameMappingStrategy<Transaction>();
+    beanStrategy.setType(Transaction.class);
+    List<Transaction> beans = new CsvToBeanBuilder(new FileReader(ADDRESS_FILE)).withSeparator(';')
+        .withMappingStrategy(beanStrategy).build().parse();
 
     CSVReader reader = new CSVReader(new FileReader(ADDRESS_FILE), ';');
     List<String[]> transactions = reader.readAll();
