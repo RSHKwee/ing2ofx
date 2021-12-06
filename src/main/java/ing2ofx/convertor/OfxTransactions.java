@@ -1,7 +1,6 @@
 package ing2ofx.convertor;
 
-public class OfxTransactions {
-  /*
+/*
    * @formatter:off
    * for each account:
       <STMTTRNRS>                        <!-- Begin response -->
@@ -43,4 +42,6 @@ public class OfxTransactions {
   
    * @formatter:on
    */
+public class OfxTransactions {
+
 }

@@ -61,7 +61,7 @@ import re
     memo = ""                                      # "Mededelingen"
 
     # Amount of transaction
-    amount = D(0)
+    amount = D(0)                                  # Bedrag (EUR)
 
     # additional fields
     payee = ""

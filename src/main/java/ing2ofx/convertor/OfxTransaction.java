@@ -1,6 +1,8 @@
 package ing2ofx.convertor;
 
-public class OfxTransaction {
+import com.opencsv.bean.CsvToBean;
+
+public class OfxTransaction extends CsvToBean<Object> {
   /*
  * @formatter:off
  *          
@@ -28,4 +30,76 @@ public class OfxTransaction {
 
  * @formatter:on
  */
+  private String account;
+  private String trntype;
+  private String dtposted;
+  private String trnamt;
+  private String fitid;
+  private String name;
+  private String accountto;
+  private String memo;
+
+  public String getAccount() {
+    return account;
+  }
+
+  public String getTrntype() {
+    return trntype;
+  }
+
+  public String getDtposted() {
+    return dtposted;
+  }
+
+  public String getTrnamt() {
+    return trnamt;
+  }
+
+  public String getFitid() {
+    return fitid;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getAccountto() {
+    return accountto;
+  }
+
+  public String getMemo() {
+    return memo;
+  }
+
+  public void setAccount(String account) {
+    this.account = account;
+  }
+
+  public void setTrntype(String trntype) {
+    this.trntype = trntype;
+  }
+
+  public void setDtposted(String dtposted) {
+    this.dtposted = dtposted;
+  }
+
+  public void setTrnamt(String trnamt) {
+    this.trnamt = trnamt;
+  }
+
+  public void setFitid(String fitid) {
+    this.fitid = fitid;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setAccountto(String accountto) {
+    this.accountto = accountto;
+  }
+
+  public void setMemo(String memo) {
+    this.memo = memo;
+  }
 }

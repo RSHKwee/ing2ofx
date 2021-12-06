@@ -1,9 +1,12 @@
 package ing2ofx.convertor;
 
+import java.util.logging.Logger;
+
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBean;
 
 public class IngTransaction extends CsvToBean<Object> {
+  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   /*
  * @formatter:off
  * "Datum","Naam / Omschrijving","Rekening","Tegenrekening","Code","Af Bij","Bedrag (EUR)","MutatieSoort","Mededelingen"

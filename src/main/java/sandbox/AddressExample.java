@@ -49,7 +49,7 @@ public class AddressExample {
 
     HeaderColumnNameMappingStrategy<Transaction> beanStrategy = new HeaderColumnNameMappingStrategy<Transaction>();
     beanStrategy.setType(Transaction.class);
-    List<Transaction> beans = new CsvToBeanBuilder(new FileReader(ADDRESS_FILE)).withSeparator(';')
+    List<Transaction> beans = new CsvToBeanBuilder<Transaction>(new FileReader(ADDRESS_FILE)).withSeparator(';')
         .withMappingStrategy(beanStrategy).build().parse();
 
     List<String[]> transactions = reader.readAll();

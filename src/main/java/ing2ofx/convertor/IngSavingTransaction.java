@@ -1,9 +1,12 @@
 package ing2ofx.convertor;
 
+import java.util.logging.Logger;
+
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBean;
 
 public class IngSavingTransaction extends CsvToBean<Object> {
+  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   /*
    * @formatter:off
    * Spaarrekening 
@@ -47,6 +50,10 @@ public class IngSavingTransaction extends CsvToBean<Object> {
 
   @CsvBindByName(column = "Saldo na mutatie")
   private String Saldo_na_mutatie;
+
+  public String getCode() {
+    return "xx";
+  }
 
   public String getDatum() {
     return Datum;
