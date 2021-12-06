@@ -7,6 +7,9 @@ import com.opencsv.CSVWriter;
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 
+import ing2ofx.convertor.IngTransactions;
+
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringWriter;
@@ -33,6 +36,9 @@ public class AddressExample {
   private static final String ADDRESS_FILE = "f:/data/Alle_spaarrekeningen_31-12-2020_27-11-2021.csv";
 
   public static void main(String[] args) throws IOException {
+
+    IngTransactions l_ingtrns = new IngTransactions(new File(ADDRESS_FILE1));
+
     CSVReader reader5 = new CSVReader(new FileReader(ADDRESS_FILE), ';');
     CSVReader reader1 = new CSVReader(new FileReader(ADDRESS_FILE1), ';');
     CSVReader reader2 = new CSVReader(new FileReader(ADDRESS_FILE1), ',');
