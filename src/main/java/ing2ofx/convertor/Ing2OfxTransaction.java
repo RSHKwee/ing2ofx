@@ -1,10 +1,10 @@
 package ing2ofx.convertor;
 
 import java.util.Map;
-import java.util.logging.Logger;
+//import java.util.logging.Logger;
 
 public class Ing2OfxTransaction {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+//  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 
   static public OfxTransaction convertSavingToOfx(IngSavingTransaction a_trans) {
     OfxTransaction l_ofxtrans = new OfxTransaction();

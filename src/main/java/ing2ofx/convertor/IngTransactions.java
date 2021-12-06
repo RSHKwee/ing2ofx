@@ -21,7 +21,6 @@ import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 public class IngTransactions {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 
-  private FileReader m_ingReader;
   private CSVReader m_reader;
 
   private boolean m_saving = false;
@@ -34,14 +33,13 @@ public class IngTransactions {
 
   public IngTransactions(File a_file) {
     try {
-      m_ingReader = new FileReader(a_file);
-      m_reader = new CSVReaderBuilder(m_ingReader)
+      m_reader = new CSVReaderBuilder(new FileReader(a_file))
           .withCSVParser(new CSVParserBuilder().withSeparator(m_separator).build()).build();
       String[] nextLine;
       nextLine = m_reader.readNext();
       if (nextLine.length <= 1) {
         m_separator = ',';
-        m_reader = new CSVReaderBuilder(m_ingReader)
+        m_reader = new CSVReaderBuilder(new FileReader(a_file))
             .withCSVParser(new CSVParserBuilder().withSeparator(m_separator).build()).build();
         nextLine = m_reader.readNext();
         if (nextLine.length <= 1) {
@@ -77,11 +75,11 @@ public class IngTransactions {
         m_Transactions.forEach(l_trans -> {
           OfxTransaction l_ofxtrans;
           l_ofxtrans = Ing2OfxTransaction.convertToOfx(l_trans);
-
           l_ofxtrans.setFitid(createUniqueId(l_ofxtrans));
           m_OfxTransactions.add(l_ofxtrans);
         });
       }
+      LOGGER.log(Level.FINE, "");
     } catch (IOException e) {
       LOGGER.log(Level.INFO, e.getMessage());
     }

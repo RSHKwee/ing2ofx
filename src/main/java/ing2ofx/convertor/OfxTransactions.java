@@ -1,5 +1,9 @@
 package ing2ofx.convertor;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.logging.Logger;
+
 /*
    * @formatter:off
    * for each account:
@@ -43,5 +47,11 @@ package ing2ofx.convertor;
    * @formatter:on
    */
 public class OfxTransactions {
+  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 
+  private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
+
+  public OfxTransactions() {
+
+  }
 }
