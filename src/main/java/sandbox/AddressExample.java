@@ -40,6 +40,7 @@ public class AddressExample {
   public static void main(String[] args) throws IOException {
 
     IngTransactions l_ingtrns = new IngTransactions(new File(ADDRESS_FILE2));
+    l_ingtrns.Load();
     List<OfxTransaction> l_ofxtrns = l_ingtrns.getOfxTransactions();
     /*
      * CSVReader reader5 = new CSVReader(new FileReader(ADDRESS_FILE), ';');
@@ -72,6 +73,7 @@ public class AddressExample {
     StringWriter sw = new StringWriter();
     CSVWriter writer = new CSVWriter(sw);
     writer.writeAll(allElements);
+    // writer.writeAll(l_ofxtrns);
 
     System.out.println("\n\nGenerated CSV File:\n\n");
     System.out.println(sw.toString());

@@ -22,7 +22,7 @@ public class IngTransactions {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 
   private CSVReader m_reader;
-
+  private File m_File;
   private boolean m_saving = false;
   private char m_separator = ';';
   private Set<String> m_UniqueId = new LinkedHashSet<>();
@@ -32,18 +32,22 @@ public class IngTransactions {
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
 
   public IngTransactions(File a_file) {
+    m_File = a_file;
+  }
+
+  public void Load() {
     try {
-      m_reader = new CSVReaderBuilder(new FileReader(a_file))
+      m_reader = new CSVReaderBuilder(new FileReader(m_File))
           .withCSVParser(new CSVParserBuilder().withSeparator(m_separator).build()).build();
       String[] nextLine;
       nextLine = m_reader.readNext();
       if (nextLine.length <= 1) {
         m_separator = ',';
-        m_reader = new CSVReaderBuilder(new FileReader(a_file))
+        m_reader = new CSVReaderBuilder(new FileReader(m_File))
             .withCSVParser(new CSVParserBuilder().withSeparator(m_separator).build()).build();
         nextLine = m_reader.readNext();
         if (nextLine.length <= 1) {
-          LOGGER.log(Level.INFO, "Unknown separator in file " + a_file.getAbsolutePath());
+          LOGGER.log(Level.INFO, "Unknown separator in file " + m_File.getAbsolutePath());
         }
       }
       if (nextLine[nextLine.length - 1].equalsIgnoreCase("Tag")) {
@@ -55,7 +59,7 @@ public class IngTransactions {
       if (m_saving) {
         HeaderColumnNameMappingStrategy<IngSavingTransaction> beanStrategy = new HeaderColumnNameMappingStrategy<IngSavingTransaction>();
         beanStrategy.setType(IngSavingTransaction.class);
-        m_SavingTransactions = new CsvToBeanBuilder<IngSavingTransaction>(new FileReader(a_file))
+        m_SavingTransactions = new CsvToBeanBuilder<IngSavingTransaction>(new FileReader(m_File))
             .withSeparator(m_separator).withMappingStrategy(beanStrategy).build().parse();
         m_Transactions = null;
 
@@ -68,7 +72,7 @@ public class IngTransactions {
       } else {
         HeaderColumnNameMappingStrategy<IngTransaction> beanStrategy = new HeaderColumnNameMappingStrategy<IngTransaction>();
         beanStrategy.setType(IngTransaction.class);
-        m_Transactions = new CsvToBeanBuilder<IngTransaction>(new FileReader(a_file)).withSeparator(m_separator)
+        m_Transactions = new CsvToBeanBuilder<IngTransaction>(new FileReader(m_File)).withSeparator(m_separator)
             .withMappingStrategy(beanStrategy).build().parse();
         m_SavingTransactions = null;
 
