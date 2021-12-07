@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -19,6 +21,16 @@ public class TestRun {
   }
 
   public String getReadOut(String a_cmd) throws IOException, InterruptedException {
+    String time = "";
+    String memo = "Naam: xxxxxxxxxl via zzzzz yyyyy Omschrijving: 2824 12343453212 aaaaaaaa 2824 IBAN: NL499INGB0754560123 Kenmerk: 18-01-2021 19:37 0050005178820576 Valutadatum: 18-01-2021";
+    Pattern patt = Pattern.compile("([0-9]{2}:[0-9]{2})");
+    Matcher matcher = patt.matcher(memo);
+    if (matcher.find()) {
+      time = matcher.group(1).replace(":", ""); // you can get it from desired index as well
+    }
+
+    System.out.println("Found: " + time);
+
     Runtime rt = Runtime.getRuntime();
 
     Process p;

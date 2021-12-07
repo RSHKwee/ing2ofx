@@ -3,9 +3,11 @@ package ing2ofx.convertor;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,6 +32,8 @@ public class IngTransactions {
   private List<IngTransaction> m_Transactions;
   private List<IngSavingTransaction> m_SavingTransactions;
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
+
+  private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
 
   public IngTransactions(File a_file) {
     m_File = a_file;
@@ -67,6 +71,40 @@ public class IngTransactions {
           OfxTransaction l_ofxtrans;
           l_ofxtrans = Ing2OfxTransaction.convertSavingToOfx(l_trans);
           l_ofxtrans.setFitid(createUniqueId(l_ofxtrans));
+          if (m_metainfo.containsKey(l_ofxtrans.getAccount())) {
+            OfxMetaInfo l_meta = m_metainfo.get(l_ofxtrans.getAccount());
+            try {
+              int iDtPosted = Integer.parseInt(l_ofxtrans.getDtposted());
+              l_meta.setMaxDate(iDtPosted);
+              if (l_meta.getMaxDate() == iDtPosted) {
+                l_meta.setBalanceAfterTransaction(l_trans.getSaldo_na_mutatie());
+              }
+              l_meta.setMaxDate(iDtPosted);
+              l_meta.setMinDate(iDtPosted);
+              if (l_meta.getPrefix().isBlank()) {
+                l_meta.setPrefix(l_ofxtrans.getAccountto());
+              }
+              m_metainfo.put(l_ofxtrans.getAccount(), l_meta);
+            } catch (Exception e) {
+            }
+          } else {
+            OfxMetaInfo l_meta = new OfxMetaInfo();
+            int iDtPosted = 0;
+            try {
+              iDtPosted = Integer.parseInt(l_ofxtrans.getDtposted());
+            } catch (Exception e) {
+            }
+            l_meta.setAccount(l_ofxtrans.getAccount());
+            l_meta.setMaxDate(iDtPosted);
+            l_meta.setBalanceAfterTransaction(l_trans.getSaldo_na_mutatie());
+            l_meta.setMaxDate(iDtPosted);
+            l_meta.setMinDate(iDtPosted);
+            if (l_meta.getPrefix().isBlank()) {
+              l_meta.setPrefix(l_ofxtrans.getAccountto());
+            }
+            m_metainfo.put(l_ofxtrans.getAccount(), l_meta);
+          }
+
           m_OfxTransactions.add(l_ofxtrans);
         });
       } else {
@@ -80,6 +118,34 @@ public class IngTransactions {
           OfxTransaction l_ofxtrans;
           l_ofxtrans = Ing2OfxTransaction.convertToOfx(l_trans);
           l_ofxtrans.setFitid(createUniqueId(l_ofxtrans));
+          if (m_metainfo.containsKey(l_ofxtrans.getAccount())) {
+            OfxMetaInfo l_meta = m_metainfo.get(l_ofxtrans.getAccount());
+            try {
+              int iDtPosted = Integer.parseInt(l_ofxtrans.getDtposted());
+              l_meta.setMaxDate(iDtPosted);
+              if (l_meta.getMaxDate() == iDtPosted) {
+                l_meta.setBalanceAfterTransaction(l_trans.getSaldo_na_mutatie());
+              }
+              l_meta.setMaxDate(iDtPosted);
+              l_meta.setMinDate(iDtPosted);
+              m_metainfo.put(l_ofxtrans.getAccount(), l_meta);
+            } catch (Exception e) {
+            }
+          } else {
+            OfxMetaInfo l_meta = new OfxMetaInfo();
+            int iDtPosted = 0;
+            try {
+              iDtPosted = Integer.parseInt(l_ofxtrans.getDtposted());
+            } catch (Exception e) {
+            }
+            l_meta.setAccount(l_ofxtrans.getAccount());
+            l_meta.setMaxDate(iDtPosted);
+            l_meta.setBalanceAfterTransaction(l_trans.getSaldo_na_mutatie());
+            l_meta.setMaxDate(iDtPosted);
+            l_meta.setMinDate(iDtPosted);
+            m_metainfo.put(l_ofxtrans.getAccount(), l_meta);
+          }
+
           m_OfxTransactions.add(l_ofxtrans);
         });
       }
@@ -103,6 +169,10 @@ public class IngTransactions {
 
   public List<OfxTransaction> getOfxTransactions() {
     return m_OfxTransactions;
+  }
+
+  public Map<String, OfxMetaInfo> getOfxMetaInfo() {
+    return m_metainfo;
   }
 
   private String createUniqueId(OfxTransaction l_ofxtrans) {
