@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 import javax.swing.JTextArea;
 import javax.swing.SwingWorker;
 
+import ing2ofx.convertor.OfxCommon;
 import library.OutputToLoggerReader;
 import library.JarClassLoader;
 
@@ -35,11 +36,11 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
   private boolean m_SeparatorComma;
   private boolean m_SavingTransactions;
   private boolean m_Interrest;
+  private boolean m_Java = false;
 
   public ActionPerformScript(String a_CSVFile, String a_OutputFile, String a_OutputFolder, boolean a_SeparateOFX,
       boolean a_ConvertDecimalSep, boolean a_ConvertDate, boolean a_SeparatorComma, boolean a_SavingTransactions,
       boolean a_Interrest) {
-
     m_CSVFile = a_CSVFile;
     m_OutputFile = a_OutputFile;
     m_OutputFolder = a_OutputFolder;
@@ -52,8 +53,35 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
     m_Interrest = a_Interrest;
   }
 
-  // @Override
-  protected Void doInBackground_org() throws Exception {
+  public ActionPerformScript(String a_CSVFile, String a_OutputFile, String a_OutputFolder, boolean a_SeparateOFX,
+      boolean a_ConvertDecimalSep, boolean a_ConvertDate, boolean a_SeparatorComma, boolean a_SavingTransactions,
+      boolean a_Interrest, boolean a_Java) {
+    m_CSVFile = a_CSVFile;
+    m_OutputFile = a_OutputFile;
+    m_OutputFolder = a_OutputFolder;
+
+    m_SeparateOFX = a_SeparateOFX;
+    m_ConvertDecimalSep = a_ConvertDecimalSep;
+    m_ConvertDate = a_ConvertDate;
+    m_SeparatorComma = a_SeparatorComma;
+    m_SavingTransactions = a_SavingTransactions;
+    m_Interrest = a_Interrest;
+    m_Java = a_Java;
+  }
+
+  @Override
+  protected Void doInBackground() throws Exception {
+    if (m_Java) {
+      LOGGER.log(Level.INFO, "Use Java implementation.");
+      doInBackgroundJava();
+    } else {
+      LOGGER.log(Level.INFO, "Use Python scripts.");
+      doInBackground_python();
+    }
+    return null;
+  }
+
+  protected Void doInBackground_python() throws Exception {
     // Run OFX Python script
     // @formatter:off
     /*
@@ -156,96 +184,19 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
     return null;
   }
 
-  @Override
-  protected Void doInBackground() throws Exception {
-    // @formatter:off
-    /*
-     * usage: ing2ofx [-h] [-o, --outfile OUTFILE] [-d, --directory DIR] [-c,
-     * --convert] [-b, --convert-date] csvfile
-     * 
-     * This program converts ING (www.ing.nl) CSV files to OFX format. 
-     * The default output filename is the input filename.
-     * 
-     * positional arguments: csvfile A csvfile to process
-     * 
-     * optional arguments: 
-     * -h, --help show this help message and exit 
-     * -o, --outfile OUTFILE Output filename 
-     * -d, --directory DIR Directory to store output, default is ./ofx 
-     * -c, --convert Convert decimal separator to dots (.), default is false 
-     * -b, --convert-date Convert dates with dd-mm-yyyy notation to yyyymmdd
-     * -s, --separator Separator semicolon is default (true) otherwise comma (false)", action='store_true')
-     * -i, --interest Only interest savings transactions (true) otherwise all savings transactions default (false)
-     */
-    // @formatter:on
-    String[] l_options = new String[20];
-    l_options[0] = m_CSVFile;
-    int idx = 0;
-    if (!m_OutputFile.equalsIgnoreCase("Output filename")) {
-      idx++;
-      l_options[idx] = "-o";
-      idx++;
-      l_options[idx] = m_OutputFile;
-    }
-    if (!m_OutputFolder.isBlank()) {
-      idx++;
-      l_options[idx] = "-d";
-      idx++;
-      l_options[idx] = m_OutputFolder;
-    }
-    if (m_ConvertDecimalSep) {
-      idx++;
-      l_options[idx] = "-c";
-    }
-    if (m_ConvertDate) {
-      idx++;
-      l_options[idx] = "-b";
-    }
-    if (!m_SeparatorComma) {
-      idx++;
-      l_options[idx] = "-s";
-    }
-
-    String l_logmsg = "python";
-    File l_Script = library.FileUtils.getResourceAsFile("scripts/ing2ofx.py");
-    if (m_SavingTransactions) {
-      // Handling saving transactions
-      if (m_Interrest) {
-        idx++;
-        l_options[idx] = "-i";
-      }
-      if (m_SeparateOFX) {
-        l_Script = library.FileUtils.getResourceAsFile("scripts/ing2ofxSpaarPerAccount.py");
-        l_logmsg = l_logmsg + " " + "ing2ofxSpaarPerAccount.py";
-      } else {
-        l_Script = library.FileUtils.getResourceAsFile("scripts/ing2ofxSpaar.py");
-        l_logmsg = l_logmsg + " " + "ing2ofxSpaar.py";
-      }
+  protected Void doInBackgroundJava() throws Exception {
+    OfxCommon l_ingtrns = new OfxCommon(new File(m_CSVFile), m_SeparateOFX);
+    if (m_Interrest) {
+      l_ingtrns.load("Rente");
     } else {
-      // Handling "normal" transactions
-      if (m_SeparateOFX) {
-        l_Script = library.FileUtils.getResourceAsFile("scripts/ing2ofxPerAccount.py");
-        l_logmsg = l_logmsg + " " + "ing2ofxPerAccount.py";
-      } else {
-        l_Script = library.FileUtils.getResourceAsFile("scripts/ing2ofx.py");
-        l_logmsg = l_logmsg + " " + "ing2ofx.py";
-      }
-    }
-    String[] l_optionsResize = new String[idx + 2];
-
-    l_optionsResize[0] = l_Script.getAbsolutePath();
-    for (int i = 1; i <= idx + 1; i++) {
-      l_optionsResize[i] = l_options[i - 1];
-      l_logmsg = l_logmsg + " " + l_options[i - 1];
+      l_ingtrns.load();
     }
 
-    LOGGER.log(Level.FINE, "Start: " + l_optionsResize);
-    LOGGER.log(Level.INFO, l_logmsg);
-
-    // File file = new
-    // File("D:\\git\\ing2ofx\\src\\main\\resources\\runPythonScript.jar");
-    File file = new File("F:\\dev\\GitHub\\ing2ofx\\src\\main\\resources\\runPythonScript.jar");
-    startExternalJAR(getClass(), file, l_optionsResize);
+    if (m_OutputFile.equalsIgnoreCase("Output filename")) {
+      l_ingtrns.CreateOfxDocument();
+    } else {
+      l_ingtrns.CreateOfxDocument(m_OutputFile);
+    }
     return null;
   }
 

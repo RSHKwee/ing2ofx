@@ -78,6 +78,7 @@ public class GUILayout extends JPanel implements ItemListener {
   private boolean m_SeparatorComma = false;
   private boolean m_Interest = true;
   private boolean m_Savings = false;
+  private boolean m_Java = true;
 
   // GUI items
   private JTextArea output;
@@ -256,6 +257,23 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     mnSettings.add(mntmLogToDisk);
 
+    JCheckBoxMenuItem chckbxJavaImplementation = new JCheckBoxMenuItem("Use Java implementation");
+    chckbxJavaImplementation.setSelected(true);
+    chckbxJavaImplementation.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        boolean selected = chckbxJavaImplementation.isSelected();
+        m_Java = selected;
+        m_param.set_Java(selected);
+        if (m_Java) {
+          LOGGER.log(Level.CONFIG, "Use Java implementation :" + Boolean.toString(selected));
+        } else {
+          LOGGER.log(Level.CONFIG, "Use Python scripts :" + Boolean.toString(selected));
+        }
+      }
+    });
+    mnSettings.add(chckbxJavaImplementation);
+
     // Do the layout.
     JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
     add(splitPane);
@@ -429,7 +447,7 @@ public class GUILayout extends JPanel implements ItemListener {
         ActionPerformScript l_action = new ActionPerformScript(lblCSVFile.getText(), txtOutputFilename.getText(),
             lblOutputFolder.getText(), chckbxAcountSeparateOFX.isSelected(), chckbxConvertDecimalSeparator.isSelected(),
             chckbxConvertDecimalSeparator.isSelected(), chckbxSeparatorComma.isSelected(), chckbxSavings.isSelected(),
-            chckbxInterest.isSelected());
+            chckbxInterest.isSelected(), chckbxJavaImplementation.isSelected());
         l_action.execute();
       }
     });

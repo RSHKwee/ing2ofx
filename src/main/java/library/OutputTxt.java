@@ -19,7 +19,8 @@ public class OutputTxt {
   private String m_Header = "";
   private String m_Footer = "";
   private BufferedWriter m_writer;
-  private String m_comment = "#";
+  private String m_commentStart = "#";
+  private String m_commentEnd = "";
 
   public OutputTxt(String a_OutputFile) throws IOException {
     Path outpath = Paths.get(a_OutputFile);
@@ -28,22 +29,24 @@ public class OutputTxt {
   }
 
   public void SetFooter(String a_Footer) {
-    m_Footer = m_comment + a_Footer;
+    m_Footer = m_commentStart + a_Footer + m_commentEnd;
   }
 
-  public void SetComment(String a_Comment) {
-    m_comment = a_Comment;
+  public void SetComment(String a_CommentStart, String a_CommentEnd) {
+    m_commentStart = a_CommentStart;
+    m_commentEnd = a_CommentEnd;
   }
 
   public void SetHeader(String a_Header) {
-    m_Header = m_comment + a_Header;
+    m_Header = m_commentStart + a_Header + m_commentEnd;
   }
 
   public void Close() throws IOException {
     LocalDate today = LocalDate.now();
     LocalTime time = LocalTime.now();
     m_writer.write(m_Footer + "\r\n");
-    m_writer.write(m_comment + " Gegenereerd op " + today.toString() + " " + time.toString() + "\r\n");
+    m_writer
+        .write(m_commentStart + " Gegenereerd op " + today.toString() + " " + time.toString() + m_commentEnd + "\r\n");
 
     m_writer.close();
   }

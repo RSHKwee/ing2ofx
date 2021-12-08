@@ -52,17 +52,28 @@ public class OfxTransactions {
   private String C_BankCode = "INGBNL2A";
 
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
-  private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
-  private Map<String, ArrayList<String>> m_OfxAcounts = new LinkedHashMap<String, ArrayList<String>>();
+  public Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
+  public Map<String, ArrayList<String>> m_OfxAcounts = new LinkedHashMap<String, ArrayList<String>>();
 
-  public OfxTransactions() {
+  private File m_file;
+
+  public OfxTransactions(File a_file) {
+    m_file = a_file;
   }
 
-  public void load(File a_file) {
-    IngTransactions l_transactions = new IngTransactions(a_file);
-    l_transactions.Load();
+  public void load() {
+    IngTransactions l_transactions = new IngTransactions(m_file);
+    l_transactions.load();
     m_OfxTransactions = l_transactions.getOfxTransactions();
     m_metainfo = l_transactions.getOfxMetaInfo();
+  }
+
+  public Map<String, OfxMetaInfo> getOfxMetaInfo() {
+    return m_metainfo;
+  }
+
+  public Map<String, ArrayList<String>> getAccountTransactions() {
+    return m_OfxAcounts;
   }
 
   public ArrayList<String> OfxXmlTransactionsHeader(String account, String mindate, String maxdate) {
@@ -93,26 +104,30 @@ public class OfxTransactions {
   }
 
   public void OfxXmlTransactionsForAccounts() {
+    OfxXmlTransactionsForAccounts("");
+  }
+
+  public void OfxXmlTransactionsForAccounts(String a_FilterName) {
     Set<String> accounts = m_metainfo.keySet();
     accounts.forEach(account -> {
       OfxMetaInfo l_metainfo = m_metainfo.get(account);
       ArrayList<String> l_regelshead = new ArrayList<String>();
-      l_regelshead = OfxXmlTransactionsHeader(account, Integer.toString(l_metainfo.getMinDate()),
-          Integer.toString(l_metainfo.getMaxDate()));
+      l_regelshead = OfxXmlTransactionsHeader(account, l_metainfo.getMinDate(), l_metainfo.getMaxDate());
 
       m_OfxAcounts.put(account, l_regelshead);
 
       m_OfxTransactions.forEach(transaction -> {
         ArrayList<String> l_regelstrans = new ArrayList<String>();
-        l_regelstrans = transaction.OfxXmlTransaction();
-        ArrayList<String> prevregels = m_OfxAcounts.get(account);
-        prevregels.addAll(l_regelstrans);
-        m_OfxAcounts.put(account, prevregels);
+        if ((transaction.getName().equalsIgnoreCase(a_FilterName)) || (a_FilterName.isBlank())) {
+          l_regelstrans = transaction.OfxXmlTransaction();
+          ArrayList<String> prevregels = m_OfxAcounts.get(account);
+          prevregels.addAll(l_regelstrans);
+          m_OfxAcounts.put(account, prevregels);
+        }
       });
 
       ArrayList<String> l_regelsfoot = new ArrayList<String>();
-      l_regelsfoot = OfxXmlTransactionsFooter(l_metainfo.getBalanceAfterTransaction(),
-          Integer.toString(l_metainfo.getMaxDate()));
+      l_regelsfoot = OfxXmlTransactionsFooter(l_metainfo.getBalanceAfterTransaction(), l_metainfo.getMaxDate());
 
       ArrayList<String> prevregels = m_OfxAcounts.get(account);
       prevregels.addAll(l_regelsfoot);

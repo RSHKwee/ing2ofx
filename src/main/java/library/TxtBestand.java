@@ -24,11 +24,23 @@ public class TxtBestand {
     }
   }
 
+  public static void DumpXmlBestand(String a_OutputFile, ArrayList<String> a_Regels) {
+    try {
+      OutputTxt logbestand = new OutputTxt(a_OutputFile);
+      logbestand.SetComment("<!-- ", " -->");
+      logbestand.SetFooter(a_OutputFile);
+      logbestand.Schrijf(a_Regels);
+      logbestand.Close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
   public void DumpBestand(String a_Comment) {
     try {
       OutputTxt logbestand = new OutputTxt(m_Filenaam);
-      logbestand.SetFooter(a_Comment + " " + m_Filenaam);
-      logbestand.SetComment(a_Comment);
+      logbestand.SetFooter(m_Filenaam);
+      logbestand.SetComment(a_Comment, "");
       logbestand.Schrijf(m_Regels);
       logbestand.Close();
     } catch (IOException e) {

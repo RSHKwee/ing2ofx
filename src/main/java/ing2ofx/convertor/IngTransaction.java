@@ -30,37 +30,37 @@ public class IngTransaction extends CsvToBean<Object> {
    */
 
   @CsvBindByName(column = "Datum")
-  private String Datum;
+  private String Datum = "";
 
   @CsvBindByName(column = "Naam / Omschrijving")
-  private String Omschrijving;
+  private String Omschrijving = "";
 
   @CsvBindByName(column = "Rekening")
-  private String Rekening;
+  private String Rekening = "";
 
   @CsvBindByName(column = "Tegenrekening")
-  private String Tegenrekening;
+  private String Tegenrekening = "";
 
   @CsvBindByName(column = "Code")
-  private String Code;
+  private String Code = "";
 
   @CsvBindByName(column = "Af Bij")
-  private String Af_Bij;
+  private String Af_Bij = "";
 
   @CsvBindByName(column = "Bedrag (EUR)")
-  private String Bedrag;
+  private String Bedrag = "";
 
   @CsvBindByName(column = "Mutatiesoort")
-  private String Mutatiesoort;
+  private String Mutatiesoort = "";
 
   @CsvBindByName(column = "Mededelingen")
-  private String Mededelingen;
+  private String Mededelingen = "";
 
   @CsvBindByName(column = "Saldo na mutatie")
-  private String Saldo_na_mutatie;
+  private String Saldo_na_mutatie = "";
 
   @CsvBindByName(column = "Tag")
-  private String Tag;
+  private String Tag = "";
 
   public String getDatum() {
     return Datum;

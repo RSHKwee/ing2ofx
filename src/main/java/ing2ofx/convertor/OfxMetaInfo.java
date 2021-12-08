@@ -3,10 +3,10 @@ package ing2ofx.convertor;
 import java.util.logging.Logger;
 
 public class OfxMetaInfo {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  // private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private String account = "";
   private String prefix = "";
-  private int minDate = 9999999;
+  private int minDate = 999999999;
   private int maxDate = -1;
   private String balanceAfterTransaction = "";
 
@@ -18,12 +18,12 @@ public class OfxMetaInfo {
     return prefix;
   }
 
-  public int getMinDate() {
-    return minDate;
+  public String getMinDate() {
+    return Integer.toString(minDate);
   }
 
-  public int getMaxDate() {
-    return maxDate;
+  public String getMaxDate() {
+    return Integer.toString(maxDate);
   }
 
   public String getBalanceAfterTransaction() {
@@ -38,15 +38,25 @@ public class OfxMetaInfo {
     this.prefix = prefix;
   }
 
-  public void setMinDate(int minDate) {
-    if (minDate < this.minDate) {
-      this.minDate = minDate;
+  public void setMinDate(String minDate) {
+    int i_minDate = 999999999;
+    try {
+      i_minDate = Integer.parseInt(minDate);
+    } catch (Exception e) {
+    }
+    if (i_minDate < this.minDate) {
+      this.minDate = i_minDate;
     }
   }
 
-  public void setMaxDate(int maxDate) {
-    if (maxDate > this.maxDate) {
-      this.maxDate = maxDate;
+  public void setMaxDate(String maxDate) {
+    int i_maxDate = -1;
+    try {
+      i_maxDate = Integer.parseInt(maxDate);
+    } catch (Exception e) {
+    }
+    if (i_maxDate > this.maxDate) {
+      this.maxDate = i_maxDate;
     }
   }
 

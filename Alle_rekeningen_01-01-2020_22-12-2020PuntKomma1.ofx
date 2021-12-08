@@ -1,0 +1,2555 @@
+   <OFX>
+     <SIGNONMSGSRSV1>
+       <SONRS>                            <!-- Begin signon -->
+         <STATUS>                        <!-- Begin status aggregate -->
+            <CODE>0</CODE>               <!-- OK -->
+            <SEVERITY>INFO</SEVERITY>
+         </STATUS>
+         <DTSERVER>20211208</DTSERVER>   <!-- Oct. 29, 1999, 10:10:03 am -->
+         <LANGUAGE>ENG</LANGUAGE>        <!-- Language used in response -->
+         <DTPROFUP>20211208</DTPROFUP>   <!-- Last update to profile-->
+         <DTACCTUP>20211208</DTACCTUP>   <!-- Last account update -->
+         <FI>                            <!-- ID of receiving institution -->
+            <ORG>NCH</ORG>               <!-- Name of ID owner -->
+            <FID>1001</FID>              <!-- Actual ID -->
+         </FI>
+       </SONRS>                           <!-- End of signon -->
+     </SIGNONMSGSRSV1>
+     <BANKMSGSRSV1>
+      <STMTTRNRS>                        <!-- Begin response -->
+         <TRNUID>1001</TRNUID>           <!-- Client ID sent in request -->
+         <STATUS>                     <!-- Start status aggregate -->
+            <CODE>0</CODE>            <!-- OK -->
+            <SEVERITY>INFO</SEVERITY>
+
+         </STATUS>
+         <STMTRS>                            <!-- Begin statement response -->
+            <CURDEF>EUR</CURDEF>
+            <BANKACCTFROM>                   <!-- Identify the account -->
+               <BANKID>INGBNL2A</BANKID>     <!-- Routing transit or other FI ID -->
+               <ACCTID>NL30INGB0702367362</ACCTID>  <!-- Account number -->
+               <ACCTTYPE>CHECKING</ACCTTYPE> <!-- Account type -->
+            </BANKACCTFROM>                  <!-- End of account ID -->
+            <BANKTRANLIST>                   <!-- Begin list of statement trans. -->
+               <DTSTART>9999999</DTSTART>
+               <DTEND>20210223</DTEND>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210223</DTPOSTED>
+                  <TRNAMT>-999,76</TRNAMT>
+                  <FITID>2021022399976</FITID>
+                  <NAME>Mw CYM Kwee</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naar Oranje spaarrekening L28544288 Valutadatum: 23-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210223</DTPOSTED>
+                  <TRNAMT>1096,10</TRNAMT>
+                  <FITID>20210223109610</FITID>
+                  <NAME>UWV</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL58INGB0702712760</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: UWV Omschrijving: P0000100000000000231148665210223 PWJ 01-02-21/28-02-21 Kwee ASS DK 13 IBAN: NL58INGB0702712760 Kenmerk: DK13 110520EA-0145923904 Valutadatum: 23-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210222</DTPOSTED>
+                  <TRNAMT>-24,40</TRNAMT>
+                  <FITID>202102222440</FITID>
+                  <NAME>CAK</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL19ABNA0435928112</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: CAK Omschrijving: ARNL26366346 20016367140 IBAN: NL19ABNA0435928112 Kenmerk: ARNL26366346 Machtiging ID: CAK-WLZ-0227732 Incassant ID: NL23ZZZ568067870000 Doorlopende incasso Valutadatum: 22-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210222</DTPOSTED>
+                  <TRNAMT>107,00</TRNAMT>
+                  <FITID>2021022210700</FITID>
+                  <NAME>BELASTINGDIENST</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL86INGB0002445588</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: BELASTINGDIENST Omschrijving: MAAND MRT. NR. 231148665T100013 VOORSCHOT ZORGTOESLAG 2021 (KWEE ) MEER INFO OP WWW.TOESLAGEN.NL IBAN: NL86INGB0002445588 Kenmerk: GVSXX20210217025075553 Valutadatum: 22-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DEBIT</TRNTYPE>
+                  <DTPOSTED>20210210</DTPOSTED>
+                  <TRNAMT>-2,00</TRNAMT>
+                  <FITID>20210210200</FITID>
+                  <NAME>Kosten Betaalpas gemachtigde</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>1 jan t/m 31 jan 2021 ING BANK N.V. Valutadatum: 10-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DEBIT</TRNTYPE>
+                  <DTPOSTED>20210210</DTPOSTED>
+                  <TRNAMT>-1,70</TRNAMT>
+                  <FITID>20210210170</FITID>
+                  <NAME>Kosten OranjePakket</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>1 jan t/m 31 jan 2021 ING BANK N.V. Valutadatum: 10-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210208</DTPOSTED>
+                  <TRNAMT>200,00</TRNAMT>
+                  <FITID>2021020820000</FITID>
+                  <NAME>Mw CYM Kwee</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Van Oranje spaarrekening L28544288 Valutadatum: 08-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210208</DTPOSTED>
+                  <TRNAMT>-200,00</TRNAMT>
+                  <FITID>20210208200001</FITID>
+                  <NAME>Mw CYM Kwee</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naar Oranje spaarrekening L28544288 Valutadatum: 08-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210201</DTPOSTED>
+                  <TRNAMT>-170,14</TRNAMT>
+                  <FITID>2021020117014</FITID>
+                  <NAME>CZ Groep Zorgverzekeraar</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL85INGB0668339063</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: CZ Groep Zorgverzekeraar Omschrijving: kenmerk 4002201213761841 Rel.nr. 428330940 Periode 01-02-2021/28-02-2021 CZ Zorgverzekering - - IBAN: NL85INGB0668339063 Kenmerk: SDD0176550184 Machtiging ID: 428330940001001001 Incassant ID: NL18ZZZ410952220000 Doorlopende incasso Valutadatum: 01-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210122</DTPOSTED>
+                  <TRNAMT>-1000,00</TRNAMT>
+                  <FITID>20210122100000</FITID>
+                  <NAME>Mw CYM Kwee</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naar Oranje spaarrekening L28544288 Valutadatum: 22-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210122</DTPOSTED>
+                  <TRNAMT>1096,10</TRNAMT>
+                  <FITID>20210122109610</FITID>
+                  <NAME>UWV</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL58INGB0702712760</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: UWV Omschrijving: P0000100000000000231148665210122 PWJ 01-01-21/31-01-21 Kwee ASS DK 13 IBAN: NL58INGB0702712760 Kenmerk: DK13 110520EA-0143265646 Valutadatum: 22-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210120</DTPOSTED>
+                  <TRNAMT>-23,80</TRNAMT>
+                  <FITID>202101202380</FITID>
+                  <NAME>CAK</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL19ABNA0435928112</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: CAK Omschrijving: ARNL26305882 20016074966 IBAN: NL19ABNA0435928112 Kenmerk: ARNL26305882 Machtiging ID: CAK-WLZ-0227732 Incassant ID: NL23ZZZ568067870000 Doorlopende incasso Valutadatum: 20-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210120</DTPOSTED>
+                  <TRNAMT>107,00</TRNAMT>
+                  <FITID>2021012010700</FITID>
+                  <NAME>BELASTINGDIENST</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL86INGB0002445588</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: BELASTINGDIENST Omschrijving: MAAND FEB. NR. 231148665T100013 VOORSCHOT ZORGTOESLAG 2021 (KWEE ) MEER INFO OP WWW.TOESLAGEN.NL IBAN: NL86INGB0002445588 Kenmerk: GVSXX20210115007061702 Valutadatum: 20-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20210118</DTPOSTED>
+                  <TRNAMT>-535,88</TRNAMT>
+                  <FITID>2021011853588</FITID>
+                  <NAME>Adjustforyou.nl via Stichting Sisow</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL40INGB0654880735</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Adjustforyou.nl via Stichting Sisow Omschrijving: 2824 0050005178820576 Adjustforyou 2824 IBAN: NL40INGB0654880735 Kenmerk: 18-01-2021 19:37 0050005178820576 Valutadatum: 18-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210118</DTPOSTED>
+                  <TRNAMT>250,23</TRNAMT>
+                  <FITID>2021011825023</FITID>
+                  <NAME>Mw CYM Kwee</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Van Oranje spaarrekening L28544288 Valutadatum: 18-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210118</DTPOSTED>
+                  <TRNAMT>250,00</TRNAMT>
+                  <FITID>2021011825000</FITID>
+                  <NAME>Mw CYM Kwee</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Van Oranje spaarrekening L28544288 Valutadatum: 18-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DEBIT</TRNTYPE>
+                  <DTPOSTED>20210112</DTPOSTED>
+                  <TRNAMT>-1,70</TRNAMT>
+                  <FITID>20210112170</FITID>
+                  <NAME>Kosten OranjePakket</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>1 dec t/m 31 dec 2020 ING BANK N.V. Valutadatum: 12-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DEBIT</TRNTYPE>
+                  <DTPOSTED>20210112</DTPOSTED>
+                  <TRNAMT>-2,00</TRNAMT>
+                  <FITID>20210112200</FITID>
+                  <NAME>Kosten Betaalpas gemachtigde</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>1 dec t/m 31 dec 2020 ING BANK N.V. Valutadatum: 12-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210104</DTPOSTED>
+                  <TRNAMT>-170,14</TRNAMT>
+                  <FITID>2021010417014</FITID>
+                  <NAME>CZ Groep Zorgverzekeraar</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL85INGB0668339063</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: CZ Groep Zorgverzekeraar Omschrijving: kenmerk 7002512201187231 Rel.nr. 428330940 Periode 01-01-2021/31-01-2021 CZ Zorgverzekering - - IBAN: NL85INGB0668339063 Kenmerk: SDD0174300193 Machtiging ID: 428330940001001001 Incassant ID: NL18ZZZ410952220000 Doorlopende incasso Valutadatum: 04-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210226</DTPOSTED>
+                  <TRNAMT>-95,00</TRNAMT>
+                  <FITID>202102269500</FITID>
+                  <NAME>Mw W J M Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL08INGB0000263328</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Mw W J M Kwee-Zuiderwijk Omschrijving: Marktboidschappen IBAN: NL08INGB0000263328 Datum/Tijd: 26-02-2021 09:43:00 Valutadatum: 26-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210226</DTPOSTED>
+                  <TRNAMT>-38,84</TRNAMT>
+                  <FITID>202102263884</FITID>
+                  <NAME>Lidl 343 Hoevelaken HOEVELAKEN</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 25-02-2021 12:21 Transactie: A3G1J3 Term: 3TMW01 Valutadatum: 26-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210225</DTPOSTED>
+                  <TRNAMT>-29,20</TRNAMT>
+                  <FITID>202102252920</FITID>
+                  <NAME>Jumbo van Altena HOEVELAKEN NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 25-02-2021 12:00 Transactie: A208U2 Term: ZF2709 Valutadatum: 25-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210223</DTPOSTED>
+                  <TRNAMT>-15,00</TRNAMT>
+                  <FITID>202102231500</FITID>
+                  <NAME>Staatsloterij B.V.</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL25INGB0653573251</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Staatsloterij B.V. Omschrijving: Staatsloterij .Incasso trekking 10-03-2021 .15310631/349/1 IBAN: NL25INGB0653573251 Kenmerk: 15310631-349-1 Machtiging ID: ABO15310631 Incassant ID: NL40CON271397880000 Doorlopende incasso Valutadatum: 23-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210222</DTPOSTED>
+                  <TRNAMT>-500,00</TRNAMT>
+                  <FITID>2021022250000</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naar Oranje spaarrekening F86672054 Valutadatum: 22-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210222</DTPOSTED>
+                  <TRNAMT>-35,00</TRNAMT>
+                  <FITID>202102223500</FITID>
+                  <NAME>TINQ HOEVELAKEN WESTER</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 21-02-2021 12:16 Transactie: Y5E5P7 Term: 21825652 Valutadatum: 22-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210222</DTPOSTED>
+                  <TRNAMT>-100,00</TRNAMT>
+                  <FITID>2021022210000</FITID>
+                  <NAME>RSH Kwee</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL02ZWLB8828137371</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: RSH Kwee Omschrijving: Sparen Corianne IBAN: NL02ZWLB8828137371 Valutadatum: 22-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210222</DTPOSTED>
+                  <TRNAMT>1300,00</TRNAMT>
+                  <FITID>20210222130000</FITID>
+                  <NAME>Hr ir RSH Kwee</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL65INGB0001845439</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Hr ir RSH Kwee Omschrijving: Huishoudgeld IBAN: NL65INGB0001845439 Valutadatum: 22-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210222</DTPOSTED>
+                  <TRNAMT>-1326,00</TRNAMT>
+                  <FITID>20210222132600</FITID>
+                  <NAME>BELASTINGDIENST</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL86INGB0002445588</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: BELASTINGDIENST Omschrijving: 0098485167010001 IBAN: NL86INGB0002445588 Valutadatum: 22-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210222</DTPOSTED>
+                  <TRNAMT>-3516,00</TRNAMT>
+                  <FITID>20210222351600</FITID>
+                  <NAME>BELASTINGDIENST</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL86INGB0002445588</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: BELASTINGDIENST Omschrijving: 4123738957010001 IBAN: NL86INGB0002445588 Valutadatum: 22-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210222</DTPOSTED>
+                  <TRNAMT>-245,00</TRNAMT>
+                  <FITID>2021022224500</FITID>
+                  <NAME>Vandebron Energie B.V.</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL97RABO0140917969</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Vandebron Energie B.V. Omschrijving: 2147698/21700346715 NOTA ENERGIELEVERING / WINDENERGIE VAN TWO TOWERS / ADRES: 3871TD13 IBAN: NL97RABO0140917969 Kenmerk: 19005486461 Machtiging ID: 2147698001 Incassant ID: NL45ZZZ593942180000 Doorlopende incasso Overige partij: Kwee, R.S.H. (Rene) Valutadatum: 22-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210222</DTPOSTED>
+                  <TRNAMT>-30,00</TRNAMT>
+                  <FITID>202102223000</FITID>
+                  <NAME>NEDERLANDSE LOTERIJ BY BUCKAROO</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL93DEUT0265252393</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: NEDERLANDSE LOTERIJ BY BUCKAROO Omschrijving: Kenmerk LTT-27073428. Betreft inleg Lotto voor periode 1-3-2021 tm 31-3-2021 IBAN: NL93DEUT0265252393 Kenmerk: 649F020AC0DC449D8855F7EBD880C6DE Machtiging ID: 1H966A08681FD2A473E898D539023AC30C8 Incassant ID: NL39ZZZ302317620000 Doorlopende incasso Valutadatum: 22-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210221</DTPOSTED>
+                  <TRNAMT>4842,00</TRNAMT>
+                  <FITID>20210221484200</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Van Oranje spaarrekening T54577882 Valutadatum: 21-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20210220</DTPOSTED>
+                  <TRNAMT>-52,60</TRNAMT>
+                  <FITID>202102205260</FITID>
+                  <NAME>VenteExclusive by Adyen</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL51ABNA0565668625</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: VenteExclusive by Adyen Omschrijving: 1316138128596786 0030006175174988 14089914-20210220102057 IBAN: NL51ABNA0565668625 Kenmerk: 20-02-2021 10:21 0030006175174988 Valutadatum: 20-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210220</DTPOSTED>
+                  <TRNAMT>-19,00</TRNAMT>
+                  <FITID>202102201900</FITID>
+                  <NAME>CCVMarkthandel R Hop</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 19-02-2021 09:43 Transactie: R2W1H3 Term: CT689163 Valutadatum: 20-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210220</DTPOSTED>
+                  <TRNAMT>-7,50</TRNAMT>
+                  <FITID>20210220750</FITID>
+                  <NAME>CCVVan den Bruinhorst VEENENDAAL</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 19-02-2021 09:52 Transactie: R3K0J7 Term: CT699564 Valutadatum: 20-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210219</DTPOSTED>
+                  <TRNAMT>-14,45</TRNAMT>
+                  <FITID>202102191445</FITID>
+                  <NAME>Bloemenhuis Vink VOORTHUIZEN NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 19-02-2021 09:47 Transactie: R2W640 Term: FHD1FV Valutadatum: 19-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210219</DTPOSTED>
+                  <TRNAMT>-50,85</TRNAMT>
+                  <FITID>202102195085</FITID>
+                  <NAME>Groente Fruit NIJKERK GLD NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 19-02-2021 10:03 Transactie: R3I2D2 Term: N4YYZ9 Valutadatum: 19-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210219</DTPOSTED>
+                  <TRNAMT>400,03</TRNAMT>
+                  <FITID>2021021940003</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Van Oranje spaarrekening F86672054 Valutadatum: 19-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210219</DTPOSTED>
+                  <TRNAMT>-13,00</TRNAMT>
+                  <FITID>202102191300</FITID>
+                  <NAME>CCVMARKTHANDEL VAN DE ZWANENBURG</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 18-02-2021 10:57 Transactie: O7H2L9 Term: CT424221 Valutadatum: 19-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210219</DTPOSTED>
+                  <TRNAMT>-53,20</TRNAMT>
+                  <FITID>202102195320</FITID>
+                  <NAME>CCVVan Beek Kaas BV VEENENDAAL</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 18-02-2021 10:50 Transactie: O6S838 Term: CT689416 Valutadatum: 19-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210219</DTPOSTED>
+                  <TRNAMT>-96,38</TRNAMT>
+                  <FITID>202102199638</FITID>
+                  <NAME>KPN B.V.</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL41INGB0000467598</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: KPN B.V. Omschrijving: Factuur 16-02-2021 incl. 16,73 BTW, klantnummer 9010800182, kpn.com/thuisfactuur. IBAN: NL41INGB0000467598 Kenmerk: 000011175481740 Machtiging ID: M10001507394 Incassant ID: NL39KPN271247010001 Doorlopende incasso Valutadatum: 19-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210218</DTPOSTED>
+                  <TRNAMT>-20,64</TRNAMT>
+                  <FITID>202102182064</FITID>
+                  <NAME>Lidl 343 Hoevelaken HOEVELAKEN</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 18-02-2021 09:58 Transactie: O57612 Term: 3TMW04 Valutadatum: 18-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210218</DTPOSTED>
+                  <TRNAMT>-59,15</TRNAMT>
+                  <FITID>202102185915</FITID>
+                  <NAME>vof Toko Tjin AMERSFOORT NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 18-02-2021 11:10 Transactie: O7Q7X9 Term: 1NKW01 Valutadatum: 18-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210218</DTPOSTED>
+                  <TRNAMT>-25,04</TRNAMT>
+                  <FITID>202102182504</FITID>
+                  <NAME>Jumbo van Altena HOEVELAKEN NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 18-02-2021 09:37 Transactie: O4L4S5 Term: ZF2709 Valutadatum: 18-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210217</DTPOSTED>
+                  <TRNAMT>200,00</TRNAMT>
+                  <FITID>2021021720000</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Van Oranje spaarrekening F86672054 Valutadatum: 17-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20210217</DTPOSTED>
+                  <TRNAMT>-102,36</TRNAMT>
+                  <FITID>2021021710236</FITID>
+                  <NAME>Amazon EU SARL</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>DE80700111106020550684</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Amazon EU SARL Omschrijving: 2HIQESY 0140000336184296 WWW.AMAZON.DE WWW.AMAZON.DE IBAN: DE80700111106020550684 Kenmerk: 17-02-2021 20:18 0140000336184296 Valutadatum: 17-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210217</DTPOSTED>
+                  <TRNAMT>-67,07</TRNAMT>
+                  <FITID>202102176707</FITID>
+                  <NAME>Natuurwinkel Afoort AMERSFOORT</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 17-02-2021 10:05 Transactie: L6O4W1 Term: ZW5102 Valutadatum: 17-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210217</DTPOSTED>
+                  <TRNAMT>-73,84</TRNAMT>
+                  <FITID>202102177384</FITID>
+                  <NAME>Sligro ZB 5037 AMERSFOORT NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 17-02-2021 10:55 Transactie: L898F8 Term: RZS911 Valutadatum: 17-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20210217</DTPOSTED>
+                  <TRNAMT>-2,99</TRNAMT>
+                  <FITID>20210217299</FITID>
+                  <NAME>International Card Services B.V.</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL08ABNA0526650664</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: International Card Services B.V. Omschrijving: 202102171232430000000004273360026 0030006154991410 Betaling aan ICS 4273360026 ICS IBAN: NL08ABNA0526650664 Kenmerk: 17-02-2021 12:33 0030006154991410 Valutadatum: 17-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210217</DTPOSTED>
+                  <TRNAMT>-25,48</TRNAMT>
+                  <FITID>202102172548</FITID>
+                  <NAME>KPN - Mobiel</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL83INGB0000325513</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: KPN - Mobiel Omschrijving: Factuur 10-02-2021, klantnummer 20016854861, kpn.com/mobielefactuur. IBAN: NL83INGB0000325513 Kenmerk: 000001167854976 Machtiging ID: M10015692188 Incassant ID: NL39KPN271247010001 Doorlopende incasso Valutadatum: 17-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210216</DTPOSTED>
+                  <TRNAMT>5,00</TRNAMT>
+                  <FITID>20210216500</FITID>
+                  <NAME>Nederlandse Loterij Organisatie B.V.</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL62INGB0663707048</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Nederlandse Loterij Organisatie B.V. Omschrijving: Gefeliciteerd, Gewonnen met Lotto XL, Trekking 13-02-2021, 89083682.16562 IBAN: NL62INGB0663707048 Kenmerk: 89083682.16562 Valutadatum: 16-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210216</DTPOSTED>
+                  <TRNAMT>-7,38</TRNAMT>
+                  <FITID>20210216738</FITID>
+                  <NAME>Lidl 343 Hoevelaken HOEVELAKEN</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 15-02-2021 13:22 Transactie: H3D649 Term: 3TMW03 Valutadatum: 16-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210215</DTPOSTED>
+                  <TRNAMT>-250,00</TRNAMT>
+                  <FITID>2021021525000</FITID>
+                  <NAME>Mw W J M Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL08INGB0000263328</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Mw W J M Kwee-Zuiderwijk IBAN: NL08INGB0000263328 Datum/Tijd: 15-02-2021 09:17:17 Valutadatum: 15-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20210215</DTPOSTED>
+                  <TRNAMT>-194,60</TRNAMT>
+                  <FITID>2021021519460</FITID>
+                  <NAME>VenteExclusive by Adyen</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL51ABNA0565668625</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: VenteExclusive by Adyen Omschrijving: 1716133767722732 0030006141329188 14032873-20210215090812 IBAN: NL51ABNA0565668625 Kenmerk: 15-02-2021 09:13 0030006141329188 Valutadatum: 15-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210215</DTPOSTED>
+                  <TRNAMT>445,00</TRNAMT>
+                  <FITID>2021021544500</FITID>
+                  <NAME>Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL08INGB0000263328</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Mw drs WJM Kwee-Zuiderwijk IBAN: NL08INGB0000263328 Datum/Tijd: 15-02-2021 09:10:07 Valutadatum: 15-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210213</DTPOSTED>
+                  <TRNAMT>-15,75</TRNAMT>
+                  <FITID>202102131575</FITID>
+                  <NAME>CCVVOF Poeliersbed NIJKERK GLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 12-02-2021 11:10 Transactie: 79W7I6 Term: CT678809 Valutadatum: 13-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210213</DTPOSTED>
+                  <TRNAMT>-16,00</TRNAMT>
+                  <FITID>202102131600</FITID>
+                  <NAME>CCVMarkthandel R Hop</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 12-02-2021 11:15 Transactie: 8047P5 Term: CT689163 Valutadatum: 13-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DEBIT</TRNTYPE>
+                  <DTPOSTED>20210213</DTPOSTED>
+                  <TRNAMT>-7,40</TRNAMT>
+                  <FITID>20210213740</FITID>
+                  <NAME>Kosten RoyaalPakket</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>1 jan t/m 31 jan 2021 ING BANK N.V. Valutadatum: 13-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210212</DTPOSTED>
+                  <TRNAMT>-49,35</TRNAMT>
+                  <FITID>202102124935</FITID>
+                  <NAME>Groente Fruit NIJKERK GLD NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 12-02-2021 11:24 Transactie: 80R2P7 Term: N4YYZ9 Valutadatum: 12-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210212</DTPOSTED>
+                  <TRNAMT>10,00</TRNAMT>
+                  <FITID>202102121000</FITID>
+                  <NAME>Nederlandse Loterij Organisatie B.V.</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL62INGB0663707048</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Nederlandse Loterij Organisatie B.V. Omschrijving: Gefeliciteerd, Gewonnen met Staatsloterij, Trekking 10-02-2021, 88606808.3348 IBAN: NL62INGB0663707048 Kenmerk: 88606808.3348 Valutadatum: 12-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210212</DTPOSTED>
+                  <TRNAMT>-13,47</TRNAMT>
+                  <FITID>202102121347</FITID>
+                  <NAME>Lidl 343 Hoevelaken HOEVELAKEN</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 11-02-2021 13:29 Transactie: 5409M6 Term: 3TMW01 Valutadatum: 12-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210212</DTPOSTED>
+                  <TRNAMT>-43,62</TRNAMT>
+                  <FITID>202102124362</FITID>
+                  <NAME>Jumbo van Altena HOEVELAKEN NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 11-02-2021 13:16 Transactie: 52X9H2 Term: ZF2708 Valutadatum: 12-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210212</DTPOSTED>
+                  <TRNAMT>-91,18</TRNAMT>
+                  <FITID>202102129118</FITID>
+                  <NAME>VITENS NV</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL94INGB0000869000</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: VITENS NV Omschrijving: Factuurnr 070807429456 VNKlantnr 0000517458 BTW 7,53PC 3871 TD 13, FEB - APR IBAN: NL94INGB0000869000 Kenmerk: 098803746419 Machtiging ID: 000000412391 Incassant ID: NL84ZZZ050695810000 Doorlopende incasso Valutadatum: 12-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210210</DTPOSTED>
+                  <TRNAMT>-200,00</TRNAMT>
+                  <FITID>2021021020000</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naar Oranje spaarrekening F86672054 Valutadatum: 10-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210210</DTPOSTED>
+                  <TRNAMT>385,00</TRNAMT>
+                  <FITID>2021021038500</FITID>
+                  <NAME>CZ Groep Zorgverzekeraar</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL55INGB0007024837</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: CZ Groep Zorgverzekeraar Omschrijving: Rel.nr. 426972805 Restitutie - periode 01-03-2020/31-12-2020 - Gespreid Betalen Eigen Risico IBAN: NL55INGB0007024837 Kenmerk: FLITS0003529927 Valutadatum: 10-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210208</DTPOSTED>
+                  <TRNAMT>-200,00</TRNAMT>
+                  <FITID>20210208200002</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naar Oranje spaarrekening T54577882 Valutadatum: 08-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210208</DTPOSTED>
+                  <TRNAMT>-14,48</TRNAMT>
+                  <FITID>202102081448</FITID>
+                  <NAME>Jumbo van Altena HOEVELAKEN NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 06-02-2021 16:45 Transactie: V852V7 Term: ZF2711 Valutadatum: 08-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210206</DTPOSTED>
+                  <TRNAMT>-19,00</TRNAMT>
+                  <FITID>202102061900</FITID>
+                  <NAME>CCVMarkthandel R Hop</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 05-02-2021 08:50 Transactie: P2K4D9 Term: CT689163 Valutadatum: 06-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210206</DTPOSTED>
+                  <TRNAMT>-8,90</TRNAMT>
+                  <FITID>20210206890</FITID>
+                  <NAME>CCVVOF Poeliersbed NIJKERK GLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 05-02-2021 08:55 Transactie: P2T097 Term: CT678809 Valutadatum: 06-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210205</DTPOSTED>
+                  <TRNAMT>-7,50</TRNAMT>
+                  <FITID>20210205750</FITID>
+                  <NAME>Bloemenhuis Vink VOORTHUIZEN NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 05-02-2021 08:58 Transactie: P2O6Q5 Term: FHD1FV Valutadatum: 05-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210205</DTPOSTED>
+                  <TRNAMT>-48,95</TRNAMT>
+                  <FITID>202102054895</FITID>
+                  <NAME>Groente Fruit NIJKERK GLD NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 05-02-2021 09:10 Transactie: P2X1T3 Term: N4YYZ9 Valutadatum: 05-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210205</DTPOSTED>
+                  <TRNAMT>-37,66</TRNAMT>
+                  <FITID>202102053766</FITID>
+                  <NAME>Jumbo van Altena HOEVELAKEN NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 04-02-2021 15:25 Transactie: N968X7 Term: ZF2709 Valutadatum: 05-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210205</DTPOSTED>
+                  <TRNAMT>-13,99</TRNAMT>
+                  <FITID>202102051399</FITID>
+                  <NAME>Lidl 343 Hoevelaken HOEVELAKEN</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 04-02-2021 15:42 Transactie: O027K5 Term: 3TMW03 Valutadatum: 05-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210205</DTPOSTED>
+                  <TRNAMT>-23,41</TRNAMT>
+                  <FITID>202102052341</FITID>
+                  <NAME>Centraal Beheer</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL54INGB0005564520</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Centraal Beheer Omschrijving: Rechtsbijstandverz. 303651666 Periode 05.02.2021 - 05.03.2021 Centraal Beheer IBAN: NL54INGB0005564520 Kenmerk: 053501050945 Machtiging ID: 000003145358 Incassant ID: NL51ZZZ080534100001 Doorlopende incasso Valutadatum: 05-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210204</DTPOSTED>
+                  <TRNAMT>50,00</TRNAMT>
+                  <FITID>202102045000</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Van Oranje spaarrekening F86672054 Valutadatum: 04-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210203</DTPOSTED>
+                  <TRNAMT>-1037,20</TRNAMT>
+                  <FITID>20210203103720</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naar Oranje spaarrekening T54577882 Valutadatum: 03-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20210203</DTPOSTED>
+                  <TRNAMT>-45,97</TRNAMT>
+                  <FITID>202102034597</FITID>
+                  <NAME>Koopjedeal via Mollie</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL51DEUT0265262461</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Koopjedeal via Mollie Omschrijving: M06206501M971SIH 1150001444925324 204766716 koopjedeal.nl IBAN: NL51DEUT0265262461 Kenmerk: 03-02-2021 19:21 1150001444925324 Valutadatum: 03-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210203</DTPOSTED>
+                  <TRNAMT>1245,00</TRNAMT>
+                  <FITID>20210203124500</FITID>
+                  <NAME>SVB Dienstverlening PGB</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL10RABO0317335375</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: SVB Dienstverlening PGB Omschrijving: BETALINGSKENM.: 225031/dec-20, ONZE REF.: 40138757, TOELICHTING: Kwee IBAN: NL10RABO0317335375 Kenmerk: REF21/84/1746 225031/dec-20 Valutadatum: 03-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210202</DTPOSTED>
+                  <TRNAMT>-250,00</TRNAMT>
+                  <FITID>2021020225000</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naar Oranje spaarrekening T54577882 Valutadatum: 02-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210202</DTPOSTED>
+                  <TRNAMT>-8000,00</TRNAMT>
+                  <FITID>20210202800000</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naar Oranje spaarrekening T54577882 Valutadatum: 02-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210202</DTPOSTED>
+                  <TRNAMT>600,00</TRNAMT>
+                  <FITID>2021020260000</FITID>
+                  <NAME>SVB Dienstverlening PGB</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL10RABO0317335375</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: SVB Dienstverlening PGB Omschrijving: BETALINGSKENM.: 225031/jul-20, ONZE REF.: 40127134, TOELICHTING: Kwee IBAN: NL10RABO0317335375 Kenmerk: REF21/80/2424 225031/jul-20 Valutadatum: 02-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210202</DTPOSTED>
+                  <TRNAMT>750,00</TRNAMT>
+                  <FITID>2021020275000</FITID>
+                  <NAME>SVB Dienstverlening PGB</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL10RABO0317335375</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: SVB Dienstverlening PGB Omschrijving: BETALINGSKENM.: 225031/nov-20, ONZE REF.: 40127150, TOELICHTING: Kwee IBAN: NL10RABO0317335375 Kenmerk: REF21/80/2428 225031/nov-20 Valutadatum: 02-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210202</DTPOSTED>
+                  <TRNAMT>3630,00</TRNAMT>
+                  <FITID>20210202363000</FITID>
+                  <NAME>SVB Dienstverlening PGB</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL10RABO0317335375</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: SVB Dienstverlening PGB Omschrijving: BETALINGSKENM.: 225031/aug-20, ONZE REF.: 40127139, TOELICHTING: Kwee IBAN: NL10RABO0317335375 Kenmerk: REF21/80/2425 225031/aug-20 Valutadatum: 02-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210202</DTPOSTED>
+                  <TRNAMT>2040,00</TRNAMT>
+                  <FITID>20210202204000</FITID>
+                  <NAME>SVB Dienstverlening PGB</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL10RABO0317335375</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: SVB Dienstverlening PGB Omschrijving: BETALINGSKENM.: 225031/okt-20, ONZE REF.: 40127144, TOELICHTING: Kwee IBAN: NL10RABO0317335375 Kenmerk: REF21/80/2427 225031/okt-20 Valutadatum: 02-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210202</DTPOSTED>
+                  <TRNAMT>1320,00</TRNAMT>
+                  <FITID>20210202132000</FITID>
+                  <NAME>SVB Dienstverlening PGB</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL10RABO0317335375</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: SVB Dienstverlening PGB Omschrijving: BETALINGSKENM.: 225031/sep-20, ONZE REF.: 40127143, TOELICHTING: Kwee IBAN: NL10RABO0317335375 Kenmerk: REF21/80/2426 225031/sep-20 Valutadatum: 02-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210202</DTPOSTED>
+                  <TRNAMT>1,00</TRNAMT>
+                  <FITID>20210202100</FITID>
+                  <NAME>Nederlandse Loterij Organisatie B.V.</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL62INGB0663707048</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Nederlandse Loterij Organisatie B.V. Omschrijving: Gefeliciteerd, Gewonnen met Lotto XL, Trekking 30-01-2021, 87655261.4412 IBAN: NL62INGB0663707048 Kenmerk: 87655261.4412 Valutadatum: 02-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210201</DTPOSTED>
+                  <TRNAMT>-1000,00</TRNAMT>
+                  <FITID>20210201100000</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naar Oranje spaarrekening F86672054 Valutadatum: 01-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210201</DTPOSTED>
+                  <TRNAMT>-22,00</TRNAMT>
+                  <FITID>202102012200</FITID>
+                  <NAME>TINQ HOEVELAKEN WESTER</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 31-01-2021 12:22 Transactie: D0E2V1 Term: 21825652 Valutadatum: 01-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210201</DTPOSTED>
+                  <TRNAMT>-159,95</TRNAMT>
+                  <FITID>2021020115995</FITID>
+                  <NAME>Sligro ZB 5037 AMERSFOORT NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 30-01-2021 14:57 Transactie: A3T846 Term: RZS911 Valutadatum: 01-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210201</DTPOSTED>
+                  <TRNAMT>-116,79</TRNAMT>
+                  <FITID>2021020111679</FITID>
+                  <NAME>Centraal Beheer</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL54INGB0005564520</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Centraal Beheer Omschrijving: Autoverzekering 303258420 Periode 01.02.2021 - 01.03.2021 Centraal Beheer IBAN: NL54INGB0005564520 Kenmerk: 054251015242 Machtiging ID: 000002999162 Incassant ID: NL51ZZZ080534100001 Doorlopende incasso Valutadatum: 01-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210201</DTPOSTED>
+                  <TRNAMT>1500,00</TRNAMT>
+                  <FITID>20210201150000</FITID>
+                  <NAME>Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL08INGB0000263328</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Mw drs WJM Kwee-Zuiderwijk IBAN: NL08INGB0000263328 Valutadatum: 01-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210201</DTPOSTED>
+                  <TRNAMT>-45,38</TRNAMT>
+                  <FITID>202102014538</FITID>
+                  <NAME>AEGON NEDERLAND NV</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL89ABNA0450001067</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: AEGON NEDERLAND NV Omschrijving: K60266531 INLEG PER 02-21 AEGON KINDERSPAARBEURS 4196026653100000 IBAN: NL89ABNA0450001067 Kenmerk: E2E/DJ/K60266531 /26-01-2021/PROL / Machtiging ID: AEDJ20091101K60266531 Incassant ID: NL98ZZZ271112510000 Doorlopende incasso Valutadatum: 01-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210130</DTPOSTED>
+                  <TRNAMT>-13,50</TRNAMT>
+                  <FITID>202101301350</FITID>
+                  <NAME>CCVMarkthandel R Hop</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 29-01-2021 09:03 Transactie: 50W541 Term: CT689163 Valutadatum: 30-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210129</DTPOSTED>
+                  <TRNAMT>-7,50</TRNAMT>
+                  <FITID>20210129750</FITID>
+                  <NAME>Bloemenhuis Vink VOORTHUIZEN NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 29-01-2021 09:07 Transactie: 50O895 Term: FHD1FV Valutadatum: 29-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210129</DTPOSTED>
+                  <TRNAMT>-46,35</TRNAMT>
+                  <FITID>202101294635</FITID>
+                  <NAME>Groente Fruit NIJKERK GLD NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 29-01-2021 09:19 Transactie: 50N9K4 Term: N4YYZ9 Valutadatum: 29-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210129</DTPOSTED>
+                  <TRNAMT>250,00</TRNAMT>
+                  <FITID>2021012925000</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Van Oranje spaarrekening F86672054 Valutadatum: 29-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210129</DTPOSTED>
+                  <TRNAMT>-27,85</TRNAMT>
+                  <FITID>202101292785</FITID>
+                  <NAME>Lidl 343 Hoevelaken HOEVELAKEN</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 28-01-2021 17:19 Transactie: 43M427 Term: 3TMW03 Valutadatum: 29-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210129</DTPOSTED>
+                  <TRNAMT>-62,87</TRNAMT>
+                  <FITID>202101296287</FITID>
+                  <NAME>Jumbo van Altena HOEVELAKEN NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 28-01-2021 17:02 Transactie: 434053 Term: ZF2709 Valutadatum: 29-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20210127</DTPOSTED>
+                  <TRNAMT>-103,87</TRNAMT>
+                  <FITID>2021012710387</FITID>
+                  <NAME>Remka Medisch huisartsbenodigdheden by MultiSafepay</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL17DEUT0265262879</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Remka Medisch huisartsbenodigdheden by MultiSafepay Omschrijving: 437284856 1151000437284856 Order ?2021-1246 Remka Medisch huisartsbenodigdhe IBAN: NL17DEUT0265262879 Kenmerk: 27-01-2021 21:33 1151000437284856 Valutadatum: 27-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210126</DTPOSTED>
+                  <TRNAMT>-18,97</TRNAMT>
+                  <FITID>202101261897</FITID>
+                  <NAME>Lidl 343 Hoevelaken HOEVELAKEN</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 25-01-2021 15:13 Transactie: V72206 Term: 3TMW03 Valutadatum: 26-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210126</DTPOSTED>
+                  <TRNAMT>-15,00</TRNAMT>
+                  <FITID>202101261500</FITID>
+                  <NAME>Staatsloterij B.V.</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL25INGB0653573251</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Staatsloterij B.V. Omschrijving: Staatsloterij .Incasso trekking 10-02-2021 .15310631/348/1 IBAN: NL25INGB0653573251 Kenmerk: 15310631-348-1 Machtiging ID: ABO15310631 Incassant ID: NL40CON271397880000 Doorlopende incasso Valutadatum: 26-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210126</DTPOSTED>
+                  <TRNAMT>-75,50</TRNAMT>
+                  <FITID>202101267550</FITID>
+                  <NAME>CONSUMENTENBOND</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL31ABNA0484848488</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: CONSUMENTENBOND Omschrijving: FACT Basislidmaatschap 01.01.2021 31.12.2021 Volledig en Vertrouwd 01.01.2021 31.12.2021 Consumentengids papier 01.01.2021 31.12.2021 IBAN: NL31ABNA0484848488 Kenmerk: 20096532902021 Machtiging ID: 091555700001 Incassant ID: NL35ZZZ404094950000</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210125</DTPOSTED>
+                  <TRNAMT>-500,00</TRNAMT>
+                  <FITID>2021012550000</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naar Oranje spaarrekening T54577882 Valutadatum: 25-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210125</DTPOSTED>
+                  <TRNAMT>-8000,00</TRNAMT>
+                  <FITID>20210125800000</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naar Oranje spaarrekening T54577882 Valutadatum: 25-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210125</DTPOSTED>
+                  <TRNAMT>2880,00</TRNAMT>
+                  <FITID>20210125288000</FITID>
+                  <NAME>SVB Dienstverlening PGB</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL10RABO0317335375</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: SVB Dienstverlening PGB Omschrijving: BETALINGSKENM.: 225031/mei-20, ONZE REF.: 40108902, TOELICHTING: Kwee IBAN: NL10RABO0317335375 Kenmerk: REF21/52/999 225031/mei-20 Valutadatum: 25-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210125</DTPOSTED>
+                  <TRNAMT>600,00</TRNAMT>
+                  <FITID>2021012560000</FITID>
+                  <NAME>SVB Dienstverlening PGB</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL10RABO0317335375</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: SVB Dienstverlening PGB Omschrijving: BETALINGSKENM.: 225031/jan-20, ONZE REF.: 40108898, TOELICHTING: Kwee IBAN: NL10RABO0317335375 Kenmerk: REF21/52/995 225031/jan-20 Valutadatum: 25-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210125</DTPOSTED>
+                  <TRNAMT>2880,00</TRNAMT>
+                  <FITID>202101252880001</FITID>
+                  <NAME>SVB Dienstverlening PGB</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL10RABO0317335375</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: SVB Dienstverlening PGB Omschrijving: BETALINGSKENM.: 225031/apr-20, ONZE REF.: 40108901, TOELICHTING: Kwee IBAN: NL10RABO0317335375 Kenmerk: REF21/52/998 225031/apr-20 Valutadatum: 25-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210125</DTPOSTED>
+                  <TRNAMT>600,00</TRNAMT>
+                  <FITID>20210125600001</FITID>
+                  <NAME>SVB Dienstverlening PGB</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL10RABO0317335375</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: SVB Dienstverlening PGB Omschrijving: BETALINGSKENM.: 225031/feb-20, ONZE REF.: 40108899, TOELICHTING: Kwee IBAN: NL10RABO0317335375 Kenmerk: REF21/52/996 225031/feb-20 Valutadatum: 25-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210125</DTPOSTED>
+                  <TRNAMT>750,00</TRNAMT>
+                  <FITID>2021012575000</FITID>
+                  <NAME>SVB Dienstverlening PGB</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL10RABO0317335375</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: SVB Dienstverlening PGB Omschrijving: BETALINGSKENM.: 225031/jun-20, ONZE REF.: 40108903, TOELICHTING: Kwee IBAN: NL10RABO0317335375 Kenmerk: REF21/52/1000 225031/jun-20 Valutadatum: 25-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210125</DTPOSTED>
+                  <TRNAMT>750,00</TRNAMT>
+                  <FITID>20210125750001</FITID>
+                  <NAME>SVB Dienstverlening PGB</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL10RABO0317335375</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: SVB Dienstverlening PGB Omschrijving: BETALINGSKENM.: 225031/mrt-20, ONZE REF.: 40108900, TOELICHTING: Kwee IBAN: NL10RABO0317335375 Kenmerk: REF21/52/997 225031/mrt-20 Valutadatum: 25-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210125</DTPOSTED>
+                  <TRNAMT>1,00</TRNAMT>
+                  <FITID>20210125100</FITID>
+                  <NAME>Nederlandse Loterij Organisatie B.V.</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL62INGB0663707048</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Nederlandse Loterij Organisatie B.V. Omschrijving: Gefeliciteerd, Gewonnen met Lotto XL, Trekking 23-01-2021, 87343058.18038 IBAN: NL62INGB0663707048 Kenmerk: 87343058.18038 Valutadatum: 25-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20210125</DTPOSTED>
+                  <TRNAMT>-52,80</TRNAMT>
+                  <FITID>202101255280</FITID>
+                  <NAME>VenteExclusive by Adyen</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL51ABNA0565668625</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: VenteExclusive by Adyen Omschrijving: 1819115776872141 0030005952983228 13812595-20210125132805 IBAN: NL51ABNA0565668625 Kenmerk: 25-01-2021 13:28 0030005952983228 Valutadatum: 25-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210125</DTPOSTED>
+                  <TRNAMT>-56,01</TRNAMT>
+                  <FITID>202101255601</FITID>
+                  <NAME>TINQ HOEVELAKEN WESTER</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 24-01-2021 12:23 Transactie: S8K8T0 Term: 21825651 Valutadatum: 25-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210125</DTPOSTED>
+                  <TRNAMT>-50,00</TRNAMT>
+                  <FITID>202101255000</FITID>
+                  <NAME>Scweizer Reisekasse (REKA) Genossenschaft</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>CH0800790016851870914</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Scweizer Reisekasse (REKA) Genossenschaft Omschrijving: Anzhalung Mietvertrag Nr. 1867283 / ZZ IBAN: CH0800790016851870914 Kenmerk: Spesenfrei fr Reka Valutadatum: 25-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210123</DTPOSTED>
+                  <TRNAMT>-14,65</TRNAMT>
+                  <FITID>202101231465</FITID>
+                  <NAME>CCVVOF Poeliersbed NIJKERK GLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 22-01-2021 09:01 Transactie: L7C383 Term: CT678809 Valutadatum: 23-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210123</DTPOSTED>
+                  <TRNAMT>-14,00</TRNAMT>
+                  <FITID>202101231400</FITID>
+                  <NAME>CCVMarkthandel R Hop</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 22-01-2021 08:58 Transactie: L717B1 Term: CT689163 Valutadatum: 23-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210123</DTPOSTED>
+                  <TRNAMT>-43,40</TRNAMT>
+                  <FITID>202101234340</FITID>
+                  <NAME>SEPHet Groentevrouwtj Nijkerk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 22-01-2021 09:16 Transactie: L7H5T6 Term: 80006896 Valutadatum: 23-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210122</DTPOSTED>
+                  <TRNAMT>-7,50</TRNAMT>
+                  <FITID>20210122750</FITID>
+                  <NAME>Bloemenhuis Vink VOORTHUIZEN NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 22-01-2021 09:03 Transactie: L7E176 Term: FHD1FV Valutadatum: 22-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210122</DTPOSTED>
+                  <TRNAMT>-800,00</TRNAMT>
+                  <FITID>2021012280000</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naar Oranje spaarrekening F86672054 Valutadatum: 22-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210122</DTPOSTED>
+                  <TRNAMT>-100,00</TRNAMT>
+                  <FITID>2021012210000</FITID>
+                  <NAME>RSH Kwee</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL02ZWLB8828137371</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: RSH Kwee Omschrijving: Sparen Corianne IBAN: NL02ZWLB8828137371 Valutadatum: 22-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>ATM</TRNTYPE>
+                  <DTPOSTED>20210122</DTPOSTED>
+                  <TRNAMT>-600,00</TRNAMT>
+                  <FITID>2021012260000</FITID>
+                  <NAME>Geldmaat Elspeet NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 21-01-2021 13:34 Transactie: J993G8 Term: 811114 Valutadatum: 22-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210122</DTPOSTED>
+                  <TRNAMT>-35,74</TRNAMT>
+                  <FITID>202101223574</FITID>
+                  <NAME>Lidl 343 Hoevelaken HOEVELAKEN</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 21-01-2021 15:26 Transactie: K42849 Term: 3TMW03 Valutadatum: 22-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210122</DTPOSTED>
+                  <TRNAMT>-18,54</TRNAMT>
+                  <FITID>202101221854</FITID>
+                  <NAME>Drogisterij De Brin ELSPEET NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 21-01-2021 13:40 Transactie: J9C669 Term: ZX2901 Valutadatum: 22-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210122</DTPOSTED>
+                  <TRNAMT>-28,88</TRNAMT>
+                  <FITID>202101222888</FITID>
+                  <NAME>Jumbo van Altena HOEVELAKEN NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 21-01-2021 15:06 Transactie: K368S9 Term: ZF2708 Valutadatum: 22-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210122</DTPOSTED>
+                  <TRNAMT>1300,00</TRNAMT>
+                  <FITID>20210122130000</FITID>
+                  <NAME>Hr ir RSH Kwee</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL65INGB0001845439</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Hr ir RSH Kwee Omschrijving: Huishoudgeld IBAN: NL65INGB0001845439 Valutadatum: 22-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210122</DTPOSTED>
+                  <TRNAMT>250,00</TRNAMT>
+                  <FITID>2021012225000</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Van Oranje spaarrekening F86672054 Valutadatum: 22-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20210121</DTPOSTED>
+                  <TRNAMT>-104,50</TRNAMT>
+                  <FITID>2021012110450</FITID>
+                  <NAME>ANWB B.V.</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL73RABO0333003330</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: ANWB B.V. Omschrijving: 5721135832 0020004688428370 ANWB 125966644-7025232661 ANWB B.V. IBAN: NL73RABO0333003330 Kenmerk: 21-01-2021 22:43 0020004688428370 Valutadatum: 21-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210121</DTPOSTED>
+                  <TRNAMT>600,00</TRNAMT>
+                  <FITID>2021012160000</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Van Oranje spaarrekening F86672054 Valutadatum: 21-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210121</DTPOSTED>
+                  <TRNAMT>-30,00</TRNAMT>
+                  <FITID>202101213000</FITID>
+                  <NAME>NEDERLANDSE LOTERIJ BY BUCKAROO</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL93DEUT0265252393</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: NEDERLANDSE LOTERIJ BY BUCKAROO Omschrijving: Kenmerk LTT-27073428. Betreft inleg Lotto voor periode 1-2-2021 tm 28-2-2021 IBAN: NL93DEUT0265252393 Kenmerk: CF175F090667401EA74F8C285468B1CB Machtiging ID: 1H966A08681FD2A473E898D539023AC30C8 Incassant ID: NL39ZZZ302317620000 Doorlopende incasso Valutadatum: 21-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210120</DTPOSTED>
+                  <TRNAMT>250,00</TRNAMT>
+                  <FITID>2021012025000</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Van Oranje spaarrekening F86672054 Valutadatum: 20-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210120</DTPOSTED>
+                  <TRNAMT>-96,38</TRNAMT>
+                  <FITID>202101209638</FITID>
+                  <NAME>KPN B.V.</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL41INGB0000467598</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: KPN B.V. Omschrijving: Factuur 16-01-2021 incl. 16,73 BTW, klantnummer 9010800182, kpn.com/thuisfactuur. IBAN: NL41INGB0000467598 Kenmerk: 000011172367641 Machtiging ID: M10001507394 Incassant ID: NL39KPN271247010001 Doorlopende incasso Valutadatum: 20-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210120</DTPOSTED>
+                  <TRNAMT>-245,00</TRNAMT>
+                  <FITID>2021012024500</FITID>
+                  <NAME>Vandebron Energie B.V.</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL97RABO0140917969</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Vandebron Energie B.V. Omschrijving: 2147698/21700118171 NOTA ENERGIELEVERING / WINDENERGIE VAN WINDPARK RIJNWOUDE / ADRES: 3871TD13 IBAN: NL97RABO0140917969 Kenmerk: 19005288046 Machtiging ID: 2147698001 Incassant ID: NL45ZZZ593942180000 Doorlopende incasso Overige partij: Kwee, R.S.H. (Rene)</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210119</DTPOSTED>
+                  <TRNAMT>-25,48</TRNAMT>
+                  <FITID>202101192548</FITID>
+                  <NAME>KPN - Mobiel</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL83INGB0000325513</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: KPN - Mobiel Omschrijving: Factuur 12-01-2021, klantnummer 20016854861, kpn.com/mobielefactuur. IBAN: NL83INGB0000325513 Kenmerk: 000001164751801 Machtiging ID: M10015692188 Incassant ID: NL39KPN271247010001 Doorlopende incasso Valutadatum: 19-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210118</DTPOSTED>
+                  <TRNAMT>250,00</TRNAMT>
+                  <FITID>20210118250001</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Van Oranje spaarrekening F86672054 Valutadatum: 18-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210118</DTPOSTED>
+                  <TRNAMT>-52,61</TRNAMT>
+                  <FITID>202101185261</FITID>
+                  <NAME>Kruidvat 1236 HOEVELAKEN NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 16-01-2021 17:10 Transactie: 80Y7C8 Term: 12ZM01 Valutadatum: 18-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210116</DTPOSTED>
+                  <TRNAMT>311,08</TRNAMT>
+                  <FITID>2021011631108</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Van Oranje spaarrekening S39453756 Valutadatum: 16-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>OTHER</TRNTYPE>
+                  <DTPOSTED>20210116</DTPOSTED>
+                  <TRNAMT>-311,15</TRNAMT>
+                  <FITID>2021011631115</FITID>
+                  <NAME>International Card Services B.V.</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL08ABNA0526650664</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: International Card Services B.V. Omschrijving: 202101162026210000000004273360026 0030005925031900 Betaling aan ICS 4273360026 ICS IBAN: NL08ABNA0526650664 Kenmerk: 16-01-2021 20:26 0030005925031900 Valutadatum: 16-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210116</DTPOSTED>
+                  <TRNAMT>-46,05</TRNAMT>
+                  <FITID>202101164605</FITID>
+                  <NAME>SEPHet Groentevrouwtj Nijkerk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 15-01-2021 09:30 Transactie: 24E788 Term: 80006896 Valutadatum: 16-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210116</DTPOSTED>
+                  <TRNAMT>-19,00</TRNAMT>
+                  <FITID>202101161900</FITID>
+                  <NAME>CCVMarkthandel R Hop</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 15-01-2021 09:12 Transactie: 245587 Term: CT689163 Valutadatum: 16-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210116</DTPOSTED>
+                  <TRNAMT>-8,60</TRNAMT>
+                  <FITID>20210116860</FITID>
+                  <NAME>CCVVOF Poeliersbed NIJKERK GLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 15-01-2021 09:15 Transactie: 2427G6 Term: CT678809 Valutadatum: 16-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210115</DTPOSTED>
+                  <TRNAMT>-11,00</TRNAMT>
+                  <FITID>202101151100</FITID>
+                  <NAME>Bloemenhuis Vink VOORTHUIZEN NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 15-01-2021 09:18 Transactie: 2494U3 Term: FHD1FV Valutadatum: 15-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210115</DTPOSTED>
+                  <TRNAMT>-52,93</TRNAMT>
+                  <FITID>202101155293</FITID>
+                  <NAME>Lidl 343 Hoevelaken HOEVELAKEN</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 14-01-2021 13:30 Transactie: 06D8D1 Term: 3TMW01 Valutadatum: 15-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210115</DTPOSTED>
+                  <TRNAMT>-33,04</TRNAMT>
+                  <FITID>202101153304</FITID>
+                  <NAME>Jumbo van Altena HOEVELAKEN NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 14-01-2021 13:11 Transactie: 05Y1U1 Term: ZF2708 Valutadatum: 15-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210114</DTPOSTED>
+                  <TRNAMT>250,00</TRNAMT>
+                  <FITID>2021011425000</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Van Oranje spaarrekening F86672054 Valutadatum: 14-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210114</DTPOSTED>
+                  <TRNAMT>-27,57</TRNAMT>
+                  <FITID>202101142757</FITID>
+                  <NAME>Jumbo van Altena HOEVELAKEN NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 13-01-2021 16:48 Transactie: Y8T408 Term: ZF2711 Valutadatum: 14-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210113</DTPOSTED>
+                  <TRNAMT>-36,00</TRNAMT>
+                  <FITID>202101133600</FITID>
+                  <NAME>WELZIJNSVERENIGING VILLANDRY</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL60INGB0000109035</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: WELZIJNSVERENIGING VILLANDRY Omschrijving: Contributie lidnummer 14103 IBAN: NL60INGB0000109035 Kenmerk: 84AA6ABC5BBF25F5 Machtiging ID: LIDNR14103 Incassant ID: NL30ZZZ301782360000 Eerste incasso Overige partij: R.S.H. Kwee Valutadatum: 13-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DEBIT</TRNTYPE>
+                  <DTPOSTED>20210113</DTPOSTED>
+                  <TRNAMT>-7,40</TRNAMT>
+                  <FITID>20210113740</FITID>
+                  <NAME>Kosten RoyaalPakket</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>1 dec t/m 31 dec 2020 ING BANK N.V. Valutadatum: 13-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210112</DTPOSTED>
+                  <TRNAMT>-32,24</TRNAMT>
+                  <FITID>202101123224</FITID>
+                  <NAME>Sligro ZB 5037 AMERSFOORT NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 11-01-2021 12:28 Transactie: S5E3C7 Term: R13V8N Valutadatum: 12-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210112</DTPOSTED>
+                  <TRNAMT>-9,71</TRNAMT>
+                  <FITID>20210112971</FITID>
+                  <NAME>Lidl 343 Hoevelaken HOEVELAKEN</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 11-01-2021 13:47 Transactie: S8K617 Term: 3TMW01 Valutadatum: 12-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210111</DTPOSTED>
+                  <TRNAMT>-3,10</TRNAMT>
+                  <FITID>20210111310</FITID>
+                  <NAME>ParkStr Amersfoort Amersfoort</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 11-01-2021 10:31 Transactie: S1N356 Term: 802R2F Valutadatum: 11-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210111</DTPOSTED>
+                  <TRNAMT>250,00</TRNAMT>
+                  <FITID>2021011125000</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Van Oranje spaarrekening F86672054 Valutadatum: 11-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210111</DTPOSTED>
+                  <TRNAMT>-638,00</TRNAMT>
+                  <FITID>2021011163800</FITID>
+                  <NAME>De Weldam Tuinen</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL73RABO0347803008</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: De Weldam Tuinen Omschrijving: Factuur nr. 201434 IBAN: NL73RABO0347803008 Valutadatum: 11-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210111</DTPOSTED>
+                  <TRNAMT>200,00</TRNAMT>
+                  <FITID>2021011120000</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Van Oranje spaarrekening F86672054 Valutadatum: 11-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210109</DTPOSTED>
+                  <TRNAMT>-14,25</TRNAMT>
+                  <FITID>202101091425</FITID>
+                  <NAME>CCVMarkthandel R Hop</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 08-01-2021 09:11 Transactie: J8M8F6 Term: CT689163 Valutadatum: 09-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210108</DTPOSTED>
+                  <TRNAMT>-11,00</TRNAMT>
+                  <FITID>202101081100</FITID>
+                  <NAME>Bloemenhuis Vink VOORTHUIZEN NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 08-01-2021 09:14 Transactie: J903D2 Term: FHD1FV Valutadatum: 08-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210108</DTPOSTED>
+                  <TRNAMT>-66,95</TRNAMT>
+                  <FITID>202101086695</FITID>
+                  <NAME>Groente Fruit NIJKERK GLD NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 08-01-2021 09:25 Transactie: J9E2A5 Term: N4YYZ9 Valutadatum: 08-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210107</DTPOSTED>
+                  <TRNAMT>-32,80</TRNAMT>
+                  <FITID>202101073280</FITID>
+                  <NAME>Jumbo van Altena HOEVELAKEN NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 07-01-2021 11:55 Transactie: H7W3H3 Term: ZF2708 Valutadatum: 07-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210107</DTPOSTED>
+                  <TRNAMT>-13,52</TRNAMT>
+                  <FITID>202101071352</FITID>
+                  <NAME>Lidl 343 Hoevelaken HOEVELAKEN</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 019 07-01-2021 12:10 Transactie: H8P0H7 Term: 3TMW03 Valutadatum: 07-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210106</DTPOSTED>
+                  <TRNAMT>-23,41</TRNAMT>
+                  <FITID>202101062341</FITID>
+                  <NAME>Centraal Beheer</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL54INGB0005564520</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Centraal Beheer Omschrijving: Rechtsbijstandverz. 303651666 Periode 05.01.2021 - 05.02.2021 Centraal Beheer IBAN: NL54INGB0005564520 Kenmerk: 050005320690 Machtiging ID: 000003145358 Incassant ID: NL51ZZZ080534100001 Doorlopende incasso Valutadatum: 06-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210105</DTPOSTED>
+                  <TRNAMT>10,00</TRNAMT>
+                  <FITID>202101051000</FITID>
+                  <NAME>Nederlandse Loterij Organisatie B.V.</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL62INGB0663707048</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Nederlandse Loterij Organisatie B.V. Omschrijving: Gefeliciteerd, Gewonnen met Oudejaarstrekking, Trekking 31-12-2020, 84750279.35450 IBAN: NL62INGB0663707048 Kenmerk: 84750279.35450 Valutadatum: 05-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210105</DTPOSTED>
+                  <TRNAMT>-22,67</TRNAMT>
+                  <FITID>202101052267</FITID>
+                  <NAME>Kruidvat 1236 HOEVELAKEN NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 04-01-2021 14:56 Transactie: 97Q6H2 Term: 12ZM01 Valutadatum: 05-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>POS</TRNTYPE>
+                  <DTPOSTED>20210105</DTPOSTED>
+                  <TRNAMT>-68,66</TRNAMT>
+                  <FITID>202101056866</FITID>
+                  <NAME>Sligro ZB 5037 AMERSFOORT NLD</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Pasvolgnr: 018 04-01-2021 14:29 Transactie: 96K959 Term: R13V8N Valutadatum: 05-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210104</DTPOSTED>
+                  <TRNAMT>-45,38</TRNAMT>
+                  <FITID>202101044538</FITID>
+                  <NAME>AEGON NEDERLAND NV</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL89ABNA0450001067</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: AEGON NEDERLAND NV Omschrijving: K60266531 INLEG PER 01-21 AEGON KINDERSPAARBEURS 4196026653100000 IBAN: NL89ABNA0450001067 Kenmerk: E2E/DJ/K60266531 /28-12-2020/PROL / Machtiging ID: AEDJ20091101K60266531 Incassant ID: NL98ZZZ271112510000 Doorlopende incasso Valutadatum: 04-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210104</DTPOSTED>
+                  <TRNAMT>-116,51</TRNAMT>
+                  <FITID>2021010411651</FITID>
+                  <NAME>Centraal Beheer</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL54INGB0005564520</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Centraal Beheer Omschrijving: Autoverzekering 303258420 Periode 01.01.2021 - 01.02.2021 Centraal Beheer IBAN: NL54INGB0005564520 Kenmerk: 057667645359 Machtiging ID: 000002999162 Incassant ID: NL51ZZZ080534100001 Doorlopende incasso Valutadatum: 04-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210101</DTPOSTED>
+                  <TRNAMT>-999,97</TRNAMT>
+                  <FITID>2021010199997</FITID>
+                  <NAME>Hr ir RSH Kwee, Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naar Oranje spaarrekening F86672054 Valutadatum: 01-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210101</DTPOSTED>
+                  <TRNAMT>1500,00</TRNAMT>
+                  <FITID>20210101150000</FITID>
+                  <NAME>Mw drs WJM Kwee-Zuiderwijk</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL08INGB0000263328</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Mw drs WJM Kwee-Zuiderwijk IBAN: NL08INGB0000263328 Valutadatum: 01-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210226</DTPOSTED>
+                  <TRNAMT>-100,00</TRNAMT>
+                  <FITID>2021022610000</FITID>
+                  <NAME>RN inz. Robeco</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL75RABO0300000014</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: RN inz. Robeco Omschrijving: incasso tbv 273231855 IBAN: NL75RABO0300000014 Kenmerk: 72341-63772-20210226 Machtiging ID: 72341-20091101 Incassant ID: NL48ZZZ300462593002 Doorlopende incasso Valutadatum: 26-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210226</DTPOSTED>
+                  <TRNAMT>-144,00</TRNAMT>
+                  <FITID>2021022614400</FITID>
+                  <NAME>BELASTINGDIENST</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL86INGB0002445588</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: BELASTINGDIENST Omschrijving: GF-637-B LET OP, NIEUW TARIEF 29-01-2021 t/m 28-02-2021 MEER INFO WWW.BELASTINGDIENST.NL IBAN: NL86INGB0002445588 Kenmerk: COAXX581938057202102221308418072254 Machtiging ID: 005132875 Incassant ID: NL35ZZZ273653230000 Doorlopende incasso Valutadatum: 26-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210225</DTPOSTED>
+                  <TRNAMT>-28,50</TRNAMT>
+                  <FITID>202102252850</FITID>
+                  <NAME>NAT POSTCODE LOTERIJ</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL57ABNA0505050501</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: NAT POSTCODE LOTERIJ Omschrijving: maart 2021 3871TD010 3871TD067 IBAN: NL57ABNA0505050501 Kenmerk: 11833300828287 Machtiging ID: 10LN56NIBG0010484593023101130194 Incassant ID: NL62ZZZ411835980000 Doorlopende incasso Valutadatum: 25-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210225</DTPOSTED>
+                  <TRNAMT>-28,50</TRNAMT>
+                  <FITID>2021022528501</FITID>
+                  <NAME>VRIENDENLOTERIJ</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL40ABNA0524040400</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: VRIENDENLOTERIJ Omschrijving: Bingo april 2021 06-51174310-AA 06-51174310-AB IBAN: NL40ABNA0524040400 Kenmerk: 11833400154012 Machtiging ID: 20LN56NIBG0010484593023101130194 Incassant ID: NL97ZZZ411263950000 Doorlopende incasso Valutadatum: 25-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210222</DTPOSTED>
+                  <TRNAMT>-1000,00</TRNAMT>
+                  <FITID>20210222100000</FITID>
+                  <NAME>Hr ir RSH Kwee</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naar Oranje spaarrekening R77715941 Valutadatum: 22-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210222</DTPOSTED>
+                  <TRNAMT>-500,00</TRNAMT>
+                  <FITID>20210222500001</FITID>
+                  <NAME>Hr ir RSH Kwee</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naar Oranje spaarrekening R77715941 Valutadatum: 22-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210222</DTPOSTED>
+                  <TRNAMT>-1300,00</TRNAMT>
+                  <FITID>202102221300001</FITID>
+                  <NAME>R KWEE EN W KWEE-ZUIDERWIJK</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL52INGB0003157113</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: R KWEE EN W KWEE-ZUIDERWIJK Omschrijving: Huishoudgeld IBAN: NL52INGB0003157113 Valutadatum: 22-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210219</DTPOSTED>
+                  <TRNAMT>2743,40</TRNAMT>
+                  <FITID>20210219274340</FITID>
+                  <NAME>Movares Nederland B.V.</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL70RABO0146185749</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Movares Nederland B.V. Omschrijving: Salaris februari 2021 IBAN: NL70RABO0146185749 Kenmerk: 31C5D72B4E741551230C6AA6D24A1325 Valutadatum: 19-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DEBIT</TRNTYPE>
+                  <DTPOSTED>20210213</DTPOSTED>
+                  <TRNAMT>-2,40</TRNAMT>
+                  <FITID>20210213240</FITID>
+                  <NAME>Kosten BasisPakket</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>1 jan t/m 31 jan 2021 ING BANK N.V. Valutadatum: 13-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210212</DTPOSTED>
+                  <TRNAMT>-17,50</TRNAMT>
+                  <FITID>202102121750</FITID>
+                  <NAME>FNV</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL95INGB0000727750</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: FNV Omschrijving: Incasso feb-2021 Lidnr: 029140500 Factuur: CNF10029613149 FNV ledenservice nodig? 088 3680368 8.30 uur - 17.30 uur IBAN: NL95INGB0000727750 Kenmerk: INCA000024951-5674138947-029140500 Machtiging ID: MID000995701 Incassant ID: NL10ZZZ333000270000 Doorlopende incasso</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210209</DTPOSTED>
+                  <TRNAMT>-41,45</TRNAMT>
+                  <FITID>202102094145</FITID>
+                  <NAME>VERENIGING HCC</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL81ABNA0610206702</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: VERENIGING HCC Omschrijving: 2101-55816-J3 2101-55816-J3 IBAN: NL81ABNA0610206702 Kenmerk: 210120NL81ABNA06100000600001000563 Machtiging ID: R193C4BBD31EE2A4DA79910C8DB3896906D Incassant ID: NL26ZZZ300823110000 Doorlopende incasso Valutadatum: 09-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210206</DTPOSTED>
+                  <TRNAMT>-499,93</TRNAMT>
+                  <FITID>2021020649993</FITID>
+                  <NAME>Hr ir RSH Kwee</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naar Oranje spaarrekening R77715941 Valutadatum: 06-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210205</DTPOSTED>
+                  <TRNAMT>1028,00</TRNAMT>
+                  <FITID>20210205102800</FITID>
+                  <NAME>SVB Dienstverlening PGB</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL10RABO0317335375</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: SVB Dienstverlening PGB Omschrijving: BETALINGSKENM.: 225031WLZ, Betreft factuur: 40148440 IBAN: NL10RABO0317335375 Kenmerk: REF21/90/116 225031WLZ Valutadatum: 05-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210203</DTPOSTED>
+                  <TRNAMT>-137,50</TRNAMT>
+                  <FITID>2021020313750</FITID>
+                  <NAME>KIVI</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL69INGB0005096516</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: KIVI Omschrijving: 3492405/202113947 Lidmaatschap - 2021 IBAN: NL69INGB0005096516 Kenmerk: 210131NL69INGB00050000800001000341 Machtiging ID: 2895 Incassant ID: NL35ZZZ272640550000 Doorlopende incasso Valutadatum: 03-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210202</DTPOSTED>
+                  <TRNAMT>-15,50</TRNAMT>
+                  <FITID>202102021550</FITID>
+                  <NAME>ProgrammaTheek BV</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL13INGB0000206202</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: ProgrammaTheek BV Omschrijving: /IncassobatchId/10154/OpdrachtId/45 580/SoftwareBus 2021 januari t/m december Incasso fact. 20204670 IBAN: NL13INGB0000206202 Kenmerk: 93887 Machtiging ID: 19997172-001 Incassant ID: NL03ZZZ301230970000 Doorlopende incasso Valutadatum: 02-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DEBIT</TRNTYPE>
+                  <DTPOSTED>20210201</DTPOSTED>
+                  <TRNAMT>-100,00</TRNAMT>
+                  <FITID>2021020110000</FITID>
+                  <NAME>ir RSH Kwee</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>10996515</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naar Beleggingsrek. 10996515 Periodieke opdracht 01/02/2021 Valutadatum: 01-02-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210127</DTPOSTED>
+                  <TRNAMT>-142,00</TRNAMT>
+                  <FITID>2021012714200</FITID>
+                  <NAME>BELASTINGDIENST</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL86INGB0002445588</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: BELASTINGDIENST Omschrijving: GF-637-B 29-12-2020 t/m 28-01-2021 MEER INFO WWW.BELASTINGDIENST.NL IBAN: NL86INGB0002445588 Kenmerk: COAXX619120975202101211300303119374 Machtiging ID: 005132875 Incassant ID: NL35ZZZ273653230000 Doorlopende incasso Valutadatum: 27-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210126</DTPOSTED>
+                  <TRNAMT>-100,00</TRNAMT>
+                  <FITID>2021012610000</FITID>
+                  <NAME>RN inz. Robeco</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL75RABO0300000014</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: RN inz. Robeco Omschrijving: incasso tbv 273231855 IBAN: NL75RABO0300000014 Kenmerk: 72341-63772-20210126 Machtiging ID: 72341-20091101 Incassant ID: NL48ZZZ300462593002 Doorlopende incasso Valutadatum: 26-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210125</DTPOSTED>
+                  <TRNAMT>-28,50</TRNAMT>
+                  <FITID>202101252850</FITID>
+                  <NAME>VRIENDENLOTERIJ</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL40ABNA0524040400</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: VRIENDENLOTERIJ Omschrijving: Bingo maart 2021 06-51174310-AA 06-51174310-AB IBAN: NL40ABNA0524040400 Kenmerk: 11820200154784 Machtiging ID: 20LN56NIBG0010484593023101130194 Incassant ID: NL97ZZZ411263950000 Doorlopende incasso Valutadatum: 25-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210125</DTPOSTED>
+                  <TRNAMT>-28,50</TRNAMT>
+                  <FITID>2021012528501</FITID>
+                  <NAME>NAT POSTCODE LOTERIJ</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL57ABNA0505050501</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: NAT POSTCODE LOTERIJ Omschrijving: februari 2021 3871TD010 3871TD067 IBAN: NL57ABNA0505050501 Kenmerk: 11820100831781 Machtiging ID: 10LN56NIBG0010484593023101130194 Incassant ID: NL62ZZZ411835980000 Doorlopende incasso Valutadatum: 25-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210122</DTPOSTED>
+                  <TRNAMT>-499,94</TRNAMT>
+                  <FITID>2021012249994</FITID>
+                  <NAME>Hr ir RSH Kwee</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naar Oranje spaarrekening R77715941 Valutadatum: 22-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210122</DTPOSTED>
+                  <TRNAMT>-500,00</TRNAMT>
+                  <FITID>2021012250000</FITID>
+                  <NAME>Hr ir RSH Kwee</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naar Oranje spaarrekening R77715941 Valutadatum: 22-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>PAYMENT</TRNTYPE>
+                  <DTPOSTED>20210122</DTPOSTED>
+                  <TRNAMT>-1300,00</TRNAMT>
+                  <FITID>202101221300001</FITID>
+                  <NAME>R KWEE EN W KWEE-ZUIDERWIJK</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL52INGB0003157113</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: R KWEE EN W KWEE-ZUIDERWIJK Omschrijving: Huishoudgeld IBAN: NL52INGB0003157113 Valutadatum: 22-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20210121</DTPOSTED>
+                  <TRNAMT>2743,40</TRNAMT>
+                  <FITID>20210121274340</FITID>
+                  <NAME>Movares Nederland B.V.</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL70RABO0146185749</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: Movares Nederland B.V. Omschrijving: Salarissen januari 2021 IBAN: NL70RABO0146185749 Kenmerk: 768EEFC34C15F8D55A9D4BA1908E74C3 Valutadatum: 21-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+                  <DTPOSTED>20210113</DTPOSTED>
+                  <TRNAMT>-17,50</TRNAMT>
+                  <FITID>202101131750</FITID>
+                  <NAME>FNV</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL95INGB0000727750</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naam: FNV Omschrijving: Incasso jan-2021 Lidnr: 029140500 Factuur: CNF10028624758 FNV ledenservice nodig? 088 3680368 8.30 uur - 17.30 uur IBAN: NL95INGB0000727750 Kenmerk: INCA000024102-5673142218-029140500 Machtiging ID: MID000995701 Incassant ID: NL10ZZZ333000270000 Doorlopende incasso</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DEBIT</TRNTYPE>
+                  <DTPOSTED>20210113</DTPOSTED>
+                  <TRNAMT>-2,40</TRNAMT>
+                  <FITID>20210113240</FITID>
+                  <NAME>Kosten BasisPakket</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>null</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>1 dec t/m 31 dec 2020 ING BANK N.V. Valutadatum: 13-01-2021</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DEBIT</TRNTYPE>
+                  <DTPOSTED>20210101</DTPOSTED>
+                  <TRNAMT>-100,00</TRNAMT>
+                  <FITID>2021010110000</FITID>
+                  <NAME>ir RSH Kwee</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>10996515</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Naar Beleggingsrek. 10996515 Periodieke opdracht 01/01/2021 Valutadatum: 01-01-2021</MEMO>
+               </STMTTRN>
+            </BANKTRANLIST>                   <!-- End list of statement trans. -->
+            <LEDGERBAL>                       <!-- Ledger balance aggregate -->
+               <BALAMT>1485,89</BALAMT>
+               <DTASOF>202102232359</DTASOF>  <!-- Bal date: Last date in transactions, 11:59 pm -->
+            </LEDGERBAL>                      <!-- End ledger balance -->
+         </STMTRS>
+      </STMTTRNRS>                        <!-- End of accounts -->
+     </BANKMSGSRSV1>
+   </OFX>
+<!-- Alle_rekeningen_01-01-2020_22-12-2020PuntKomma.ofx -->
+<!--  Gegenereerd op 2021-12-08 13:31:48.999212100 -->

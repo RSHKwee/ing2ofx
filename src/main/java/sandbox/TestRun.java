@@ -4,6 +4,8 @@ import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -106,6 +108,20 @@ public class TestRun {
   }
 
   public static void main(String[] arg) throws IOException, URISyntaxException {
+    String ADDRESS_FILE3 = "D:\\WorkspaceGnuCash\\csv\\Alle_rekeningen_01-01-2021_28-02-2021-puntkomma.csv";
+    File file = new File(ADDRESS_FILE3);
+    System.out.println("AbsolutePath  :" + file.getAbsolutePath());
+    System.out.println("CanonicalPath :" + file.getCanonicalPath());
+    System.out.println("Name          :" + file.getName());
+    System.out.println("Parent        :" + file.getParent());
+    System.out.println("Path          :" + file.getPath());
+    System.out.println("AbosluteFile  :" + file.getAbsoluteFile());
+    System.out.println("CanonicalFile :" + file.getCanonicalFile());
+
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd");
+    LocalDateTime now = LocalDateTime.now();
+    System.out.println(dtf.format(now));
+    String datestr = dtf.format(now);
     TestRun tt = new TestRun();
 
     String[] l_optionsResize = new String[] { "python", "D:\\git\\ing2ofx\\src\\main\\resources\\ing2ofxPerAccount.py",

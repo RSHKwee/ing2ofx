@@ -8,7 +8,9 @@ import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 
 import ing2ofx.convertor.IngTransactions;
+import ing2ofx.convertor.OfxCommon;
 import ing2ofx.convertor.OfxTransaction;
+import ing2ofx.convertor.OfxTransactions;
 
 import java.io.File;
 import java.io.FileReader;
@@ -36,12 +38,24 @@ public class AddressExample {
   private static final String ADDRESS_FILE1 = "f:/data/Alle_rekeningen_01-01-2021_28-02-2021.csv";
   private static final String ADDRESS_FILE = "f:/data/Alle_spaarrekeningen_31-12-2020_27-11-2021.csv";
   private static final String ADDRESS_FILE2 = "E:\\OneDrive\\Documenten\\misc\\GnuCash\\ing\\Alle_rekeningen_01-01-2020_22-12-2020PuntKomma.csv";
+  private static final String ADDRESS_FILE3 = "D:\\WorkspaceGnuCash\\csv\\Alle_rekeningen_01-01-2021_28-02-2021-puntkomma.csv";
+  private static final String ADDRESS_FILE4 = "D:\\WorkspaceGnuCash\\csv\\Alle_spaar_rekeningen_31-12-2020_20-10-2021.csv";
 
   public static void main(String[] args) throws IOException {
 
-    IngTransactions l_ingtrns = new IngTransactions(new File(ADDRESS_FILE2));
-    l_ingtrns.Load();
-    List<OfxTransaction> l_ofxtrns = l_ingtrns.getOfxTransactions();
+    OfxCommon l_ingtrns = new OfxCommon(new File(ADDRESS_FILE3));
+    l_ingtrns.load();
+    l_ingtrns.CreateOfxDocument();
+
+    OfxCommon l_ingtrnssav = new OfxCommon(new File(ADDRESS_FILE4));
+    l_ingtrnssav.load();
+    l_ingtrnssav.CreateOfxDocument();
+
+    OfxCommon l_ingtrnssavi = new OfxCommon(new File(ADDRESS_FILE4));
+    l_ingtrnssavi.load("Rente");
+    l_ingtrnssavi.CreateOfxDocument();
+
+    // List<OfxTransaction> l_ofxtrns = l_ingtrns.getOfxTransactions();
     /*
      * CSVReader reader5 = new CSVReader(new FileReader(ADDRESS_FILE), ';');
      * CSVReader reader1 = new CSVReader(new FileReader(ADDRESS_FILE1), ';');

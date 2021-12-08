@@ -33,6 +33,7 @@ public class UserSetting {
   private String c_LookAndFeelVal = "Nimbus";
   private String c_Interest = "Interest";
   private String c_Savings = "Savings";
+  private String c_Java = "UseJava";
 
   private String m_Level = c_LevelValue;
   private String m_LookAndFeel;
@@ -48,6 +49,7 @@ public class UserSetting {
   private boolean m_SeparatorComma = false;
   private boolean m_Interest = true;
   private boolean m_Savings = false;
+  private boolean m_Java = true;
 
   private Preferences pref = Preferences.userRoot();
 
@@ -64,6 +66,7 @@ public class UserSetting {
     m_SeparatorComma = pref.getBoolean(c_SeparatorComma, false);
     m_Interest = pref.getBoolean(c_Interest, true);
     m_Savings = pref.getBoolean(c_Savings, false);
+    m_Java = pref.getBoolean(c_Java, true);
 
     m_LookAndFeel = pref.get(c_LookAndFeel, c_LookAndFeelVal);
     m_GnuCashExecutable = pref.get(c_GnuCashExe, c_GnuCashExeValue);
@@ -128,6 +131,10 @@ public class UserSetting {
     return m_SeparatorComma;
   }
 
+  public boolean is_Java() {
+    return m_Java;
+  }
+
   public void set_GnuCashExecutable(File a_GnuCashExecutable) {
     pref.put(c_GnuCashExe, a_GnuCashExecutable.getAbsolutePath());
     m_GnuCashExecutable = a_GnuCashExecutable.getAbsolutePath();
@@ -188,6 +195,11 @@ public class UserSetting {
     this.m_Savings = a_Savings;
   }
 
+  public void set_Java(boolean a_Java) {
+    pref.putBoolean(c_Java, a_Java);
+    this.m_Java = a_Java;
+  }
+
   public void set_ConfirmOnExit(boolean a_ConfirmOnExit) {
     pref.putBoolean(c_ConfirmOnExit, a_ConfirmOnExit);
     this.m_ConfirmOnExit = a_ConfirmOnExit;
@@ -207,6 +219,7 @@ public class UserSetting {
       pref.putBoolean(c_Interest, m_Interest);
       pref.putBoolean(c_Savings, m_Savings);
       pref.putBoolean(c_ConfirmOnExit, m_ConfirmOnExit);
+      pref.putBoolean(c_Java, m_Java);
 
       pref.put(c_LookAndFeel, m_LookAndFeel);
       pref.put(c_GnuCashExe, m_GnuCashExecutable);

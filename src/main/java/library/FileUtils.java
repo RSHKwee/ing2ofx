@@ -146,6 +146,10 @@ public class FileUtils {
     return ext.matcher(file.getName()).replaceAll("");
   }
 
+  public static String getFileNameWithoutExtension(String file) {
+    return ext.matcher(file).replaceAll("");
+  }
+
   /**
    * Returns a filename of a resource
    * 

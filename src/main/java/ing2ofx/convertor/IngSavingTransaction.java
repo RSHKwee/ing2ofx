@@ -19,37 +19,37 @@ public class IngSavingTransaction extends CsvToBean<Object> {
    * @formatter:on
    */
   @CsvBindByName(column = "Datum")
-  private String Datum;
+  private String Datum = "";
 
   @CsvBindByName(column = "Omschrijving")
-  private String Omschrijving;
+  private String Omschrijving = "";
 
   @CsvBindByName(column = "Rekening")
-  private String Rekening;
+  private String Rekening = "";
 
   @CsvBindByName(column = "Rekening naam")
-  private String RekeningNaam;
+  private String RekeningNaam = "";
 
   @CsvBindByName(column = "Tegenrekening")
-  private String Tegenrekening;
+  private String Tegenrekening = "";
 
   @CsvBindByName(column = "Af Bij")
-  private String Af_Bij;
+  private String Af_Bij = "";
 
   @CsvBindByName(column = "Bedrag")
-  private String Bedrag;
+  private String Bedrag = "";
 
   @CsvBindByName(column = "Valuta")
-  private String Valuta;
+  private String Valuta = "";
 
   @CsvBindByName(column = "Mutatiesoort")
-  private String Mutatiesoort;
+  private String Mutatiesoort = "";
 
   @CsvBindByName(column = "Mededelingen")
-  private String Mededelingen;
+  private String Mededelingen = "";
 
   @CsvBindByName(column = "Saldo na mutatie")
-  private String Saldo_na_mutatie;
+  private String Saldo_na_mutatie = "";
 
   public String getCode() {
     return "xx";
