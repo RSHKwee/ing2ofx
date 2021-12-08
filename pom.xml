@@ -4,7 +4,7 @@
 
   <groupId>ing2ofx</groupId>
   <artifactId>ing2ofx</artifactId>
-  <version>0.0.3</version>
+  <version>0.0.4-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>main</name>
