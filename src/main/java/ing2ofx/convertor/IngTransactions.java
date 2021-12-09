@@ -26,7 +26,6 @@ public class IngTransactions {
   private CSVReader m_reader;
   private File m_File;
   private boolean m_saving = false;
-  private boolean m_SaldoNaTran = false;
   private char m_separator = ';';
   private Set<String> m_UniqueId = new LinkedHashSet<>();
 
@@ -72,48 +71,10 @@ public class IngTransactions {
           l_ofxtrans = Ing2OfxTransaction.convertSavingToOfx(l_trans);
           l_ofxtrans.setFitid(createUniqueId(l_ofxtrans));
           if (m_metainfo.containsKey(l_ofxtrans.getAccount())) {
-            OfxMetaInfo l_meta = m_metainfo.get(l_ofxtrans.getAccount());
-            try {
-              String sDtPosted = l_ofxtrans.getDtposted();
-              l_meta.setMaxDate(sDtPosted);
-              if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted) && !m_SaldoNaTran) {
-                if (l_meta.getBalanceAfterTransaction().isBlank()) {
-                  l_meta.setBalanceAfterTransaction(l_trans.getSaldo_na_mutatie());
-                  m_SaldoNaTran = true;
-                }
-              }
-              l_meta.setMaxDate(sDtPosted);
-              l_meta.setMinDate(sDtPosted);
-              if (l_meta.getPrefix().isBlank()) {
-                if (!l_ofxtrans.getAccountto().isBlank()) {
-                  l_meta.setPrefix(l_ofxtrans.getAccountto());
-                }
-              }
-              m_metainfo.put(l_ofxtrans.getAccount(), l_meta);
-            } catch (Exception e) {
-            }
+            updateOfxMetaInfo(l_ofxtrans, l_trans.getSaldo_na_mutatie());
           } else {
-            OfxMetaInfo l_meta = new OfxMetaInfo();
-            l_meta.setAccount(l_ofxtrans.getAccount());
-            String sDtPosted = l_ofxtrans.getDtposted();
-            l_meta.setMaxDate(sDtPosted);
-            if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted) && !m_SaldoNaTran) {
-              if (l_meta.getBalanceAfterTransaction().isBlank()) {
-                l_meta.setBalanceAfterTransaction(l_trans.getSaldo_na_mutatie());
-                m_SaldoNaTran = true;
-              }
-            }
-            l_meta.setMaxDate(sDtPosted);
-            l_meta.setMinDate(sDtPosted);
-
-            if (l_meta.getPrefix().isBlank()) {
-              if (!l_ofxtrans.getAccountto().isBlank()) {
-                l_meta.setPrefix(l_ofxtrans.getAccountto());
-              }
-            }
-            m_metainfo.put(l_ofxtrans.getAccount(), l_meta);
+            createOfxMetaInfo(l_ofxtrans, l_trans.getSaldo_na_mutatie());
           }
-
           m_OfxTransactions.add(l_ofxtrans);
         });
       } else {
@@ -128,42 +89,14 @@ public class IngTransactions {
           l_ofxtrans = Ing2OfxTransaction.convertToOfx(l_trans);
           l_ofxtrans.setFitid(createUniqueId(l_ofxtrans));
           if (m_metainfo.containsKey(l_ofxtrans.getAccount())) {
-            OfxMetaInfo l_meta = m_metainfo.get(l_ofxtrans.getAccount());
-            try {
-              String sDtPosted = l_ofxtrans.getDtposted();
-              l_meta.setMaxDate(sDtPosted);
-              if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted) && !m_SaldoNaTran) {
-                if (l_meta.getBalanceAfterTransaction().isBlank()) {
-                  l_meta.setBalanceAfterTransaction(l_trans.getSaldo_na_mutatie());
-                  m_SaldoNaTran = true;
-                }
-              }
-              l_meta.setMaxDate(sDtPosted);
-              l_meta.setMinDate(sDtPosted);
-
-              m_metainfo.put(l_ofxtrans.getAccount(), l_meta);
-            } catch (Exception e) {
-            }
+            updateOfxMetaInfo(l_ofxtrans, l_trans.getSaldo_na_mutatie());
           } else {
-            OfxMetaInfo l_meta = new OfxMetaInfo();
-            String sDtPosted = l_ofxtrans.getDtposted();
-            l_meta.setMaxDate(sDtPosted);
-            if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted) && !m_SaldoNaTran) {
-              if (l_meta.getBalanceAfterTransaction().isBlank()) {
-                l_meta.setBalanceAfterTransaction(l_trans.getSaldo_na_mutatie());
-                m_SaldoNaTran = true;
-              }
-            }
-            l_meta.setMaxDate(sDtPosted);
-            l_meta.setMinDate(sDtPosted);
-
-            m_metainfo.put(l_ofxtrans.getAccount(), l_meta);
+            createOfxMetaInfo(l_ofxtrans, l_trans.getSaldo_na_mutatie());
           }
-
           m_OfxTransactions.add(l_ofxtrans);
         });
       }
-      LOGGER.log(Level.FINE, "");
+      LOGGER.log(Level.INFO, "Transactions read:         " + Integer.toString(m_OfxTransactions.size()) + "/n");
     } catch (IOException e) {
       LOGGER.log(Level.INFO, e.getMessage());
     }
@@ -189,6 +122,52 @@ public class IngTransactions {
     return m_metainfo;
   }
 
+  private void updateOfxMetaInfo(OfxTransaction a_OfxTransaction, String a_SaldoNaMutatie) {
+    OfxMetaInfo l_meta = m_metainfo.get(a_OfxTransaction.getAccount());
+    try {
+      String sDtPosted = a_OfxTransaction.getDtposted();
+      l_meta.setMaxDate(sDtPosted);
+      if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted)) {
+        if (l_meta.getBalanceAfterTransaction().isBlank()) {
+          l_meta.setBalanceAfterTransaction(a_SaldoNaMutatie);
+        }
+      }
+      l_meta.setMaxDate(sDtPosted);
+      l_meta.setMinDate(sDtPosted);
+      if (m_saving && (l_meta.getPrefix().isBlank())) {
+        if (!a_OfxTransaction.getAccountto().isBlank()) {
+          l_meta.setPrefix(a_OfxTransaction.getAccountto());
+        }
+      }
+      l_meta.setMaxDate(sDtPosted);
+      l_meta.setMinDate(sDtPosted);
+
+      m_metainfo.put(a_OfxTransaction.getAccount(), l_meta);
+    } catch (Exception e) {
+    }
+  }
+
+  private void createOfxMetaInfo(OfxTransaction a_OfxTransaction, String a_SaldoNaMutatie) {
+    OfxMetaInfo l_meta = new OfxMetaInfo();
+    l_meta.setAccount(a_OfxTransaction.getAccount());
+    String sDtPosted = a_OfxTransaction.getDtposted();
+    l_meta.setMaxDate(sDtPosted);
+    if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted)) {
+      if (l_meta.getBalanceAfterTransaction().isBlank()) {
+        l_meta.setBalanceAfterTransaction(a_SaldoNaMutatie);
+      }
+    }
+    l_meta.setMaxDate(sDtPosted);
+    l_meta.setMinDate(sDtPosted);
+
+    if (l_meta.getPrefix().isBlank()) {
+      if (!a_OfxTransaction.getAccountto().isBlank()) {
+        l_meta.setPrefix(a_OfxTransaction.getAccountto());
+      }
+    }
+    m_metainfo.put(a_OfxTransaction.getAccount(), l_meta);
+  }
+
   private String createUniqueId(OfxTransaction l_ofxtrans) {
     String uniqueid = "";
     String time = "";
@@ -210,7 +189,8 @@ public class IngTransactions {
       uniqueid = fitid;
       while (m_UniqueId.contains(uniqueid)) {
         idcount = idcount + 1;
-        uniqueid = fitid + time + Integer.toString(idcount);
+        // uniqueid = fitid + time + Integer.toString(idcount);
+        uniqueid = fitid + Integer.toString(idcount);
       }
       m_UniqueId.add(uniqueid);
     } else {

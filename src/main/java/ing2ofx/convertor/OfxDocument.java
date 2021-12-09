@@ -72,43 +72,6 @@ public class OfxDocument {
     m_FilterName = a_FilterName;
   }
 
-  /*
-   * @formatter:off
-   * OFX Header:
-   <OFX>
-     <SIGNONMSGSRSV1>
-       <SONRS>                            <!-- Begin signon -->
-         <STATUS>                        <!-- Begin status aggregate -->
-            <CODE>0</CODE>               <!-- OK -->
-            <SEVERITY>INFO</SEVERITY>
-         </STATUS>
-         <DTSERVER>%(nowdate)s</DTSERVER>   <!-- Oct. 29, 1999, 10:10:03 am -->
-         <LANGUAGE>ENG</LANGUAGE>        <!-- Language used in response -->
-         <DTPROFUP>%(nowdate)s</DTPROFUP>   <!-- Last update to profile-->
-         <DTACCTUP>%(nowdate)s</DTACCTUP>   <!-- Last account update -->
-         <FI>                            <!-- ID of receiving institution -->
-            <ORG>NCH</ORG>               <!-- Name of ID owner -->
-            <FID>1001</FID>              <!-- Actual ID -->
-         </FI>
-       </SONRS>                           <!-- End of signon -->
-     </SIGNONMSGSRSV1>
-     <BANKMSGSRSV1>
-               <STMTTRNRS>                        <!-- Begin response -->
-         <TRNUID>1001</TRNUID>           <!-- Client ID sent in request -->
-         <STATUS>                     <!-- Start status aggregate -->
-            <CODE>0</CODE>            <!-- OK -->
-            <SEVERITY>INFO</SEVERITY>
-         </STATUS>"""
-   *  See OFXTransactions
-         ........
-        
-   * OFX Footer:         
-     </BANKMSGSRSV1>
-   </OFX>
- 
-   * @formatter:on
-   */
-
   private ArrayList<String> OfxXmlHeader() {
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd");
     LocalDateTime now = LocalDateTime.now();
@@ -179,9 +142,9 @@ public class OfxDocument {
           if (!m_FilterName.isBlank()) {
             l_prefix = String.join("_", l_prefix, m_FilterName);
           }
-          l_filename = m_OutputDir + "//" + String.join("_", l_prefix, account, m_Filename);
+          l_filename = m_OutputDir + "\\" + String.join("_", l_prefix, account, m_Filename);
         } else {
-          l_filename = m_OutputDir + "//" + String.join("_", account, m_Filename);
+          l_filename = m_OutputDir + "\\" + String.join("_", account, m_Filename);
         }
         LOGGER.log(Level.INFO, "Create OFX file " + l_filename);
         library.TxtBestand.DumpXmlBestand(l_filename, l_regels);
@@ -193,7 +156,7 @@ public class OfxDocument {
         m_regels.addAll(m_OfxAcounts.get(account));
       });
       m_regels.addAll(OfxXmlFooter());
-      library.TxtBestand.DumpXmlBestand(m_OutputDir + "//" + m_Filename, m_regels);
+      library.TxtBestand.DumpXmlBestand(m_OutputDir + "\\" + m_Filename, m_regels);
     }
   }
 }

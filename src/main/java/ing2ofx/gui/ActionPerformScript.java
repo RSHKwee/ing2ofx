@@ -3,16 +3,10 @@ package ing2ofx.gui;
 import java.io.File;
 import java.io.IOException;
 
-import java.lang.reflect.Method;
-import java.net.URL;
-import java.net.URLClassLoader;
-
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.jar.JarFile;
-import java.util.jar.Manifest;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,7 +15,6 @@ import javax.swing.SwingWorker;
 
 import ing2ofx.convertor.OfxDocument;
 import library.OutputToLoggerReader;
-import library.JarClassLoader;
 
 public class ActionPerformScript extends SwingWorker<Void, String> implements MyAppendable {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
@@ -71,6 +64,7 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
 
   @Override
   protected Void doInBackground() throws Exception {
+    LOGGER.log(Level.INFO, "Input file: " + m_CSVFile);
     if (m_Java) {
       LOGGER.log(Level.INFO, "Use Java implementation.");
       doInBackgroundJava();
@@ -79,6 +73,17 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
       doInBackground_python();
     }
     return null;
+  }
+
+  @Override
+  public void append(String text) {
+    area.append(text);
+  }
+
+  @Override
+  protected void done() {
+    LOGGER.log(Level.INFO, "");
+    LOGGER.log(Level.INFO, "Done.");
   }
 
   protected Void doInBackground_python() throws Exception {
@@ -103,6 +108,8 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
      * -i, --interest Only interest savings transactions (true) otherwise all savings transactions default (false)
      */
     // @formatter:on
+    LOGGER.log(Level.INFO, "Start conversion.");
+
     String[] l_options = new String[8];
     l_options[0] = m_CSVFile;
     int idx = 0;
@@ -181,56 +188,32 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
       LOGGER.log(Level.INFO, es.getMessage());
       es.printStackTrace();
     }
+    LOGGER.log(Level.INFO, "End conversion.");
     return null;
   }
 
   protected Void doInBackgroundJava() throws Exception {
-    OfxDocument l_ingtrns = new OfxDocument(new File(m_CSVFile), m_SeparateOFX);
+    OfxDocument l_ingtrns;
+    LOGGER.log(Level.INFO, "Start conversion.");
+    if (!m_OutputFolder.isBlank()) {
+      l_ingtrns = new OfxDocument(new File(m_CSVFile), m_OutputFolder, m_SeparateOFX);
+    } else {
+      l_ingtrns = new OfxDocument(new File(m_CSVFile), m_SeparateOFX);
+    }
     if (m_Interrest) {
       l_ingtrns.load("Rente");
     } else {
       l_ingtrns.load();
     }
-
     if (m_OutputFile.equalsIgnoreCase("Output filename")) {
       l_ingtrns.CreateOfxDocument();
     } else {
       l_ingtrns.CreateOfxDocument(m_OutputFile);
     }
+    LOGGER.log(Level.INFO, "End conversion.");
     return null;
   }
 
-  @Override
-  public void append(String text) {
-    area.append(text);
-  }
-
-  @Override
-  protected void done() {
-    LOGGER.log(Level.INFO, "");
-    LOGGER.log(Level.INFO, "Done.");
-  }
-
-  private static void startExternalJAR(Class<?> c, File exe, String[] args) {
-    try {
-      final String mainClass;
-      final JarFile jarFile = new JarFile(exe);
-      final JarClassLoader jcl = new JarClassLoader(exe.toURI().toURL());
-
-      try {
-        final Manifest manifest = jarFile.getManifest();
-        mainClass = manifest.getMainAttributes().getValue("Main-Class");
-      } finally {
-        jarFile.close();
-      }
-
-      jcl.invokeClass(mainClass, args);
-
-    } catch (Exception ex) {
-      LOGGER.info(ex.getMessage());
-      ex.printStackTrace();
-    }
-  }
 }
 
 interface MyAppendable {

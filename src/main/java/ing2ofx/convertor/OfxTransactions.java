@@ -119,6 +119,8 @@ public class OfxTransactions {
     OfxXmlTransactionsForAccounts(a_AllInOne, "");
   }
 
+  int m_NumberOfTransactions = 0;
+
   public void OfxXmlTransactionsForAccounts(boolean a_AllInOne, String a_FilterName) {
     Set<String> accounts = m_metainfo.keySet();
     accounts.forEach(account -> {
@@ -126,7 +128,9 @@ public class OfxTransactions {
       ArrayList<String> l_regelshead = new ArrayList<String>();
       l_regelshead = OfxXmlTransactionsHeader(account, l_metainfo.getMinDate(), l_metainfo.getMaxDate());
       m_OfxAcounts.put(account, l_regelshead);
+      m_NumberOfTransactions = 0;
 
+      LOGGER.log(Level.INFO, "Process account:           " + account);
       m_OfxTransactions.forEach(transaction -> {
         if (a_AllInOne || (transaction.getAccount().equalsIgnoreCase(account))) {
           ArrayList<String> l_regelstrans = new ArrayList<String>();
@@ -136,12 +140,14 @@ public class OfxTransactions {
               ArrayList<String> prevregels = m_OfxAcounts.get(account);
               prevregels.addAll(l_regelstrans);
               m_OfxAcounts.put(account, prevregels);
+              m_NumberOfTransactions++;
             }
           } else {
             l_regelstrans = transaction.OfxXmlTransaction();
             ArrayList<String> prevregels = m_OfxAcounts.get(account);
             prevregels.addAll(l_regelstrans);
             m_OfxAcounts.put(account, prevregels);
+            m_NumberOfTransactions++;
           }
         }
       });
@@ -152,6 +158,7 @@ public class OfxTransactions {
       ArrayList<String> prevregels = m_OfxAcounts.get(account);
       prevregels.addAll(l_regelsfoot);
       m_OfxAcounts.put(account, prevregels);
+      LOGGER.log(Level.INFO, "Transactions processed: " + Integer.toString(m_NumberOfTransactions));
     });
     LOGGER.log(Level.FINE, "");
   }

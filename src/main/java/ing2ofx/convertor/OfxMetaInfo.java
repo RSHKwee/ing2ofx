@@ -10,6 +10,17 @@ public class OfxMetaInfo {
   private int maxDate = -1;
   private String balanceAfterTransaction = "";
 
+  public OfxMetaInfo() {
+  }
+
+  public OfxMetaInfo(OfxMetaInfo a_MetaInfo) {
+    account = a_MetaInfo.getAccount();
+    prefix = a_MetaInfo.getPrefix();
+    minDate = a_MetaInfo.getIntMinDate();
+    maxDate = a_MetaInfo.getIntMaxDate();
+    balanceAfterTransaction = a_MetaInfo.getBalanceAfterTransaction();
+  }
+
   public String getAccount() {
     return account;
   }
@@ -22,8 +33,16 @@ public class OfxMetaInfo {
     return Integer.toString(minDate);
   }
 
+  public int getIntMinDate() {
+    return minDate;
+  }
+
   public String getMaxDate() {
     return Integer.toString(maxDate);
+  }
+
+  public int getIntMaxDate() {
+    return maxDate;
   }
 
   public String getBalanceAfterTransaction() {
