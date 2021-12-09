@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /*
@@ -52,6 +53,8 @@ public class OfxTransactions {
   private String C_BankCode = "INGBNL2A";
 
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
+  private boolean m_Saving = false;
+
   public Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
   public Map<String, ArrayList<String>> m_OfxAcounts = new LinkedHashMap<String, ArrayList<String>>();
 
@@ -66,6 +69,7 @@ public class OfxTransactions {
     l_transactions.load();
     m_OfxTransactions = l_transactions.getOfxTransactions();
     m_metainfo = l_transactions.getOfxMetaInfo();
+    m_Saving = l_transactions.isSavingCsvFile();
   }
 
   public Map<String, OfxMetaInfo> getOfxMetaInfo() {
@@ -78,51 +82,67 @@ public class OfxTransactions {
 
   public ArrayList<String> OfxXmlTransactionsHeader(String account, String mindate, String maxdate) {
     ArrayList<String> l_regels = new ArrayList<String>();
-    l_regels.add("         <STMTRS>                            <!-- Begin statement response -->");
-    l_regels.add("            <CURDEF>EUR</CURDEF>");
-    l_regels.add("            <BANKACCTFROM>                   <!-- Identify the account -->");
-    l_regels.add("               <BANKID>" + C_BankCode + "</BANKID>     <!-- Routing transit or other FI ID -->");
-    l_regels.add("               <ACCTID>" + account + "</ACCTID>  <!-- Account number -->");
-    l_regels.add("               <ACCTTYPE>CHECKING</ACCTTYPE> <!-- Account type -->");
-    l_regels.add("            </BANKACCTFROM>                  <!-- End of account ID -->");
-    l_regels.add("            <BANKTRANLIST>                   <!-- Begin list of statement trans. -->");
-    l_regels.add("               <DTSTART>" + mindate + "</DTSTART>");
-    l_regels.add("               <DTEND>" + maxdate + "</DTEND>");
+    l_regels.add("      <STMTRS>                            <!-- Begin statement response -->");
+    l_regels.add("         <CURDEF>EUR</CURDEF>");
+    l_regels.add("         <BANKACCTFROM>                   <!-- Identify the account -->");
+    l_regels.add("            <BANKID>" + C_BankCode + "</BANKID>     <!-- Routing transit or other FI ID -->");
+    l_regels.add("            <ACCTID>" + account + "</ACCTID>  <!-- Account number -->");
+    l_regels.add("            <ACCTTYPE>CHECKING</ACCTTYPE> <!-- Account type -->");
+    l_regels.add("         </BANKACCTFROM>                  <!-- End of account ID -->");
+    l_regels.add("         <BANKTRANLIST>                   <!-- Begin list of statement trans. -->");
+    l_regels.add("            <DTSTART>" + mindate + "</DTSTART>");
+    l_regels.add("            <DTEND>" + maxdate + "</DTEND>");
     return l_regels;
   }
 
   public ArrayList<String> OfxXmlTransactionsFooter(String saldonatran, String maxdate) {
     ArrayList<String> l_regels = new ArrayList<String>();
-    l_regels.add("            </BANKTRANLIST>                   <!-- End list of statement trans. -->");
-    l_regels.add("            <LEDGERBAL>                       <!-- Ledger balance aggregate -->");
-    l_regels.add("               <BALAMT>" + saldonatran + "</BALAMT>");
+    l_regels.add("         </BANKTRANLIST>                   <!-- End list of statement trans. -->");
+    l_regels.add("         <LEDGERBAL>                       <!-- Ledger balance aggregate -->");
+    l_regels.add("            <BALAMT>" + saldonatran + "</BALAMT>");
     l_regels.add(
-        "               <DTASOF>" + maxdate + "2359</DTASOF>  <!-- Bal date: Last date in transactions, 11:59 pm -->");
-    l_regels.add("            </LEDGERBAL>                      <!-- End ledger balance -->");
-    l_regels.add("         </STMTRS>");
+        "            <DTASOF>" + maxdate + "2359</DTASOF>  <!-- Bal date: Last date in transactions, 11:59 pm -->");
+    l_regels.add("         </LEDGERBAL>                      <!-- End ledger balance -->");
+    l_regels.add("      </STMTRS>");
     return l_regels;
   }
 
   public void OfxXmlTransactionsForAccounts() {
-    OfxXmlTransactionsForAccounts("");
+    OfxXmlTransactionsForAccounts(false, "");
   }
 
   public void OfxXmlTransactionsForAccounts(String a_FilterName) {
+    OfxXmlTransactionsForAccounts(false, a_FilterName);
+  }
+
+  public void OfxXmlTransactionsForAccounts(boolean a_AllInOne) {
+    OfxXmlTransactionsForAccounts(a_AllInOne, "");
+  }
+
+  public void OfxXmlTransactionsForAccounts(boolean a_AllInOne, String a_FilterName) {
     Set<String> accounts = m_metainfo.keySet();
     accounts.forEach(account -> {
       OfxMetaInfo l_metainfo = m_metainfo.get(account);
       ArrayList<String> l_regelshead = new ArrayList<String>();
       l_regelshead = OfxXmlTransactionsHeader(account, l_metainfo.getMinDate(), l_metainfo.getMaxDate());
-
       m_OfxAcounts.put(account, l_regelshead);
 
       m_OfxTransactions.forEach(transaction -> {
-        ArrayList<String> l_regelstrans = new ArrayList<String>();
-        if ((transaction.getName().equalsIgnoreCase(a_FilterName)) || (a_FilterName.isBlank())) {
-          l_regelstrans = transaction.OfxXmlTransaction();
-          ArrayList<String> prevregels = m_OfxAcounts.get(account);
-          prevregels.addAll(l_regelstrans);
-          m_OfxAcounts.put(account, prevregels);
+        if (a_AllInOne || (transaction.getAccount().equalsIgnoreCase(account))) {
+          ArrayList<String> l_regelstrans = new ArrayList<String>();
+          if (m_Saving) {
+            if ((transaction.getName().equalsIgnoreCase(a_FilterName)) || a_FilterName.isBlank()) {
+              l_regelstrans = transaction.OfxXmlTransaction();
+              ArrayList<String> prevregels = m_OfxAcounts.get(account);
+              prevregels.addAll(l_regelstrans);
+              m_OfxAcounts.put(account, prevregels);
+            }
+          } else {
+            l_regelstrans = transaction.OfxXmlTransaction();
+            ArrayList<String> prevregels = m_OfxAcounts.get(account);
+            prevregels.addAll(l_regelstrans);
+            m_OfxAcounts.put(account, prevregels);
+          }
         }
       });
 
@@ -133,5 +153,6 @@ public class OfxTransactions {
       prevregels.addAll(l_regelsfoot);
       m_OfxAcounts.put(account, prevregels);
     });
+    LOGGER.log(Level.FINE, "");
   }
 }

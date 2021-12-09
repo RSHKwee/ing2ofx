@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 import javax.swing.JTextArea;
 import javax.swing.SwingWorker;
 
-import ing2ofx.convertor.OfxCommon;
+import ing2ofx.convertor.OfxDocument;
 import library.OutputToLoggerReader;
 import library.JarClassLoader;
 
@@ -185,7 +185,7 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
   }
 
   protected Void doInBackgroundJava() throws Exception {
-    OfxCommon l_ingtrns = new OfxCommon(new File(m_CSVFile), m_SeparateOFX);
+    OfxDocument l_ingtrns = new OfxDocument(new File(m_CSVFile), m_SeparateOFX);
     if (m_Interrest) {
       l_ingtrns.load("Rente");
     } else {

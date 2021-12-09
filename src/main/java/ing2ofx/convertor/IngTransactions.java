@@ -26,13 +26,13 @@ public class IngTransactions {
   private CSVReader m_reader;
   private File m_File;
   private boolean m_saving = false;
+  private boolean m_SaldoNaTran = false;
   private char m_separator = ';';
   private Set<String> m_UniqueId = new LinkedHashSet<>();
 
   private List<IngTransaction> m_Transactions;
   private List<IngSavingTransaction> m_SavingTransactions;
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
-
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
 
   public IngTransactions(File a_file) {
@@ -76,8 +76,11 @@ public class IngTransactions {
             try {
               String sDtPosted = l_ofxtrans.getDtposted();
               l_meta.setMaxDate(sDtPosted);
-              if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted)) {
-                l_meta.setBalanceAfterTransaction(l_trans.getSaldo_na_mutatie());
+              if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted) && !m_SaldoNaTran) {
+                if (l_meta.getBalanceAfterTransaction().isBlank()) {
+                  l_meta.setBalanceAfterTransaction(l_trans.getSaldo_na_mutatie());
+                  m_SaldoNaTran = true;
+                }
               }
               l_meta.setMaxDate(sDtPosted);
               l_meta.setMinDate(sDtPosted);
@@ -94,8 +97,11 @@ public class IngTransactions {
             l_meta.setAccount(l_ofxtrans.getAccount());
             String sDtPosted = l_ofxtrans.getDtposted();
             l_meta.setMaxDate(sDtPosted);
-            if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted)) {
-              l_meta.setBalanceAfterTransaction(l_trans.getSaldo_na_mutatie());
+            if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted) && !m_SaldoNaTran) {
+              if (l_meta.getBalanceAfterTransaction().isBlank()) {
+                l_meta.setBalanceAfterTransaction(l_trans.getSaldo_na_mutatie());
+                m_SaldoNaTran = true;
+              }
             }
             l_meta.setMaxDate(sDtPosted);
             l_meta.setMinDate(sDtPosted);
@@ -126,8 +132,11 @@ public class IngTransactions {
             try {
               String sDtPosted = l_ofxtrans.getDtposted();
               l_meta.setMaxDate(sDtPosted);
-              if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted)) {
-                l_meta.setBalanceAfterTransaction(l_trans.getSaldo_na_mutatie());
+              if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted) && !m_SaldoNaTran) {
+                if (l_meta.getBalanceAfterTransaction().isBlank()) {
+                  l_meta.setBalanceAfterTransaction(l_trans.getSaldo_na_mutatie());
+                  m_SaldoNaTran = true;
+                }
               }
               l_meta.setMaxDate(sDtPosted);
               l_meta.setMinDate(sDtPosted);
@@ -139,8 +148,11 @@ public class IngTransactions {
             OfxMetaInfo l_meta = new OfxMetaInfo();
             String sDtPosted = l_ofxtrans.getDtposted();
             l_meta.setMaxDate(sDtPosted);
-            if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted)) {
-              l_meta.setBalanceAfterTransaction(l_trans.getSaldo_na_mutatie());
+            if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted) && !m_SaldoNaTran) {
+              if (l_meta.getBalanceAfterTransaction().isBlank()) {
+                l_meta.setBalanceAfterTransaction(l_trans.getSaldo_na_mutatie());
+                m_SaldoNaTran = true;
+              }
             }
             l_meta.setMaxDate(sDtPosted);
             l_meta.setMinDate(sDtPosted);

@@ -8,7 +8,7 @@ import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 
 import ing2ofx.convertor.IngTransactions;
-import ing2ofx.convertor.OfxCommon;
+import ing2ofx.convertor.OfxDocument;
 import ing2ofx.convertor.OfxTransaction;
 import ing2ofx.convertor.OfxTransactions;
 
@@ -43,15 +43,15 @@ public class AddressExample {
 
   public static void main(String[] args) throws IOException {
 
-    OfxCommon l_ingtrns = new OfxCommon(new File(ADDRESS_FILE3));
+    OfxDocument l_ingtrns = new OfxDocument(new File(ADDRESS_FILE3));
     l_ingtrns.load();
     l_ingtrns.CreateOfxDocument();
 
-    OfxCommon l_ingtrnssav = new OfxCommon(new File(ADDRESS_FILE4));
+    OfxDocument l_ingtrnssav = new OfxDocument(new File(ADDRESS_FILE4));
     l_ingtrnssav.load();
     l_ingtrnssav.CreateOfxDocument();
 
-    OfxCommon l_ingtrnssavi = new OfxCommon(new File(ADDRESS_FILE4));
+    OfxDocument l_ingtrnssavi = new OfxDocument(new File(ADDRESS_FILE4));
     l_ingtrnssavi.load("Rente");
     l_ingtrnssavi.CreateOfxDocument();
 
