@@ -139,10 +139,11 @@ public class OfxDocument {
         String l_prefix = l_info.getPrefix();
         String l_filename = "";
         if (!l_prefix.isBlank()) {
+          l_filename = m_OutputDir + "\\" + String.join("_", l_prefix, account);
           if (!m_FilterName.isBlank()) {
-            l_prefix = String.join("_", l_prefix, m_FilterName);
+            l_filename = String.join("_", l_filename, m_FilterName);
           }
-          l_filename = m_OutputDir + "\\" + String.join("_", l_prefix, account, m_Filename);
+          l_filename = String.join("_", l_filename, m_Filename);
         } else {
           l_filename = m_OutputDir + "\\" + String.join("_", account, m_Filename);
         }
