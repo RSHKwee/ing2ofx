@@ -146,6 +146,8 @@ public class OfxDocument {
         } else {
           l_filename = m_OutputDir + "\\" + String.join("_", account, m_Filename);
         }
+        l_info.printLog();
+
         LOGGER.log(Level.INFO, "Create OFX file " + l_filename);
         library.TxtBestand.DumpXmlBestand(l_filename, l_regels);
       });
@@ -153,9 +155,12 @@ public class OfxDocument {
       m_regels.clear();
       m_regels = OfxXmlHeader();
       accounts.forEach(account -> {
+        OfxMetaInfo l_info = m_metainfo.get(account);
         m_regels.addAll(m_OfxAcounts.get(account));
+        l_info.printLog();
       });
       m_regels.addAll(OfxXmlFooter());
+      LOGGER.log(Level.INFO, "Create OFX file " + m_Filename);
       library.TxtBestand.DumpXmlBestand(m_OutputDir + "\\" + m_Filename, m_regels);
     }
   }

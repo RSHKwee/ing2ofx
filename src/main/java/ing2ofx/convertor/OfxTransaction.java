@@ -7,33 +7,7 @@ import com.opencsv.bean.CsvToBean;
 
 public class OfxTransaction extends CsvToBean<Object> {
 //  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
-  /*
- * @formatter:off
- *          
-                <ACCTID>%(account)s</ACCTID>  <!-- Account number -->
 
-               ofxfile.write(message_begin)
-
-                for trns in csv.transactions:
-                    if trns['account'] == account:
-                        message_transaction = """
-               <STMTTRN>
-                  <TRNTYPE>%(trntype)s</TRNTYPE>
-                  <DTPOSTED>%(dtposted)s</DTPOSTED>
-                  <TRNAMT>%(trnamt)s</TRNAMT>
-                  <FITID>%(fitid)s</FITID>
-                  <NAME>%(name)s</NAME>
-                  <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID>%(accountto)s</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>%(memo)s</MEMO>
-               </STMTTRN>""" % trns
-                        ofxfile.write(message_transaction)
-
- * @formatter:on
- */
   private String account = "";
   private String trntype = "";
   private String dtposted = "";

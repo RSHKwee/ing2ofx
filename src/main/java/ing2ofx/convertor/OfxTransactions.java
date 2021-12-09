@@ -11,43 +11,6 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
-   * @formatter:off
-   * for each account:
-
-         
-    * for trns in csv.transactions:
-    *  if trns['account'] == account:
-         <STMTRS>                            <!-- Begin statement response -->
-            <CURDEF>EUR</CURDEF>
-            <BANKACCTFROM>                   <!-- Identify the account -->
-               <BANKID>INGBNL2A</BANKID>     <!-- Routing transit or other FI ID -->
-               <ACCTID>%(account)s</ACCTID>  <!-- Account number -->
-               <ACCTTYPE>CHECKING</ACCTTYPE> <!-- Account type -->
-            </BANKACCTFROM>                  <!-- End of account ID -->
-            <BANKTRANLIST>                   <!-- Begin list of statement trans. -->
-               <DTSTART>%(mindate)s</DTSTART>
-               <DTEND>%(maxdate)s</DTEND>""" % {"account": account, "mindate": mindate, "maxdate": maxdate}
-         
-   * 
-   * See OfxTransaction v:
-               <STMTTRN>                          <!-- Begin statement response -->
-                ......
-               </STMTTRN>""" % {"maxdate": maxdate}
-   * OfxTransaction ^
-   
-            </BANKTRANLIST>                   <!-- End list of statement trans. -->
-            <LEDGERBAL>                       <!-- Ledger balance aggregate -->
-               <BALAMT>""" + saldonatran + """</BALAMT>
-               <DTASOF>%(maxdate)s2359</DTASOF>  <!-- Bal date: Last date in transactions, 11:59 pm -->
-            </LEDGERBAL>                      <!-- End ledger balance -->
-         </STMTRS>""" % {"maxdate": maxdate}
-         
-   * Each account:
-      </STMTTRNRS>                        <!-- End of transaction -->
-  
-   * @formatter:on
-   */
 public class OfxTransactions {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private String C_BankCode = "INGBNL2A";
@@ -130,6 +93,7 @@ public class OfxTransactions {
       m_OfxAcounts.put(account, l_regelshead);
       m_NumberOfTransactions = 0;
 
+      LOGGER.log(Level.INFO, "");
       LOGGER.log(Level.INFO, "Process account:           " + account);
       m_OfxTransactions.forEach(transaction -> {
         if (a_AllInOne || (transaction.getAccount().equalsIgnoreCase(account))) {

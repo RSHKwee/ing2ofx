@@ -81,7 +81,24 @@ public class GUILayout extends JPanel implements ItemListener {
   private boolean m_Java = true;
 
   // GUI items
+  private JMenuBar menuBar = new JMenuBar();
   private JTextArea output;
+
+  private JCheckBoxMenuItem chckbxAcountSeparateOFX = new JCheckBoxMenuItem("Accounts in separate OFX files");
+  private JMenu mnGnuCashExe = new JMenu("GnuCash executable");
+  private JMenuItem mntmLoglevel = new JMenuItem("Loglevel");
+
+  private JCheckBoxMenuItem chckbxJavaImplementation = new JCheckBoxMenuItem("Use Java implementation");
+
+  private JCheckBoxMenuItem chckbxConvertDecimalSeparator = new JCheckBoxMenuItem(
+      "Convert decimnal separator to dots (.)");
+  private JCheckBoxMenuItem chckbxConvertDateFormat = new JCheckBoxMenuItem(
+      "Convert dates with dd-mm-yyyy to yyyymmdd");
+
+  private JCheckBox chckbxInterest = new JCheckBox("Only interest transaction");
+  private JCheckBox chckbxSavings = new JCheckBox("Savings transactions");
+  private JCheckBox chckbxSeparatorComma = new JCheckBox("Seperator comma (\",\") Default semicolon (\";\")");
+
   private JTextField txtOutputFilename = new JTextField();
   private JLabel lblOutputFolder = new JLabel("");
   private JButton btnConvert = new JButton("Convert to OFX");
@@ -91,7 +108,7 @@ public class GUILayout extends JPanel implements ItemListener {
    * 
    */
   public GUILayout() {
-    // Initialize
+    // Initialize parameters
     m_GnuCashExecutable = new File(m_param.get_GnuCashExecutable());
 
     if (!m_param.get_OutputFolder().isBlank()) {
@@ -110,10 +127,10 @@ public class GUILayout extends JPanel implements ItemListener {
     m_SeparatorComma = m_param.is_SeparatorComma();
     m_Interest = m_param.is_Interest();
     m_Savings = m_param.is_Savings();
+    m_Java = m_param.is_Java();
 
     // Define Layout
     setLayout(new BorderLayout(0, 0));
-    JMenuBar menuBar = new JMenuBar();
     add(menuBar, BorderLayout.NORTH);
 
     // Define Setting menu in menubalk:
@@ -121,7 +138,6 @@ public class GUILayout extends JPanel implements ItemListener {
     menuBar.add(mnSettings);
 
     // Checkbox Separate OFX files
-    JCheckBoxMenuItem chckbxAcountSeparateOFX = new JCheckBoxMenuItem("Accounts in separate OFX files");
     chckbxAcountSeparateOFX.setHorizontalAlignment(SwingConstants.LEFT);
     chckbxAcountSeparateOFX.setSelected(m_AcountSeparateOFX);
     chckbxAcountSeparateOFX.addActionListener(new ActionListener() {
@@ -136,7 +152,6 @@ public class GUILayout extends JPanel implements ItemListener {
     mnSettings.add(chckbxAcountSeparateOFX);
 
     // Checkbox decimal separator
-    JCheckBoxMenuItem chckbxConvertDecimalSeparator = new JCheckBoxMenuItem("Convert decimnal separator to dots (.)");
     chckbxConvertDecimalSeparator.setHorizontalAlignment(SwingConstants.LEFT);
     chckbxConvertDecimalSeparator.setSelected(m_ConvertDecimalSeparator);
     chckbxConvertDecimalSeparator.addActionListener(new ActionListener() {
@@ -151,7 +166,6 @@ public class GUILayout extends JPanel implements ItemListener {
     mnSettings.add(chckbxConvertDecimalSeparator);
 
     // Checkbox convert date
-    JCheckBoxMenuItem chckbxConvertDateFormat = new JCheckBoxMenuItem("Convert dates with dd-mm-yyyy to yyyymmdd");
     chckbxConvertDateFormat.setHorizontalAlignment(SwingConstants.LEFT);
     chckbxConvertDateFormat.setSelected(m_ConvertDateFormat);
     chckbxConvertDateFormat.addActionListener(new ActionListener() {
@@ -166,7 +180,6 @@ public class GUILayout extends JPanel implements ItemListener {
     mnSettings.add(chckbxConvertDateFormat);
 
     // Option Location GnuCash exe
-    JMenu mnGnuCashExe = new JMenu("GnuCash executable");
     mnSettings.add(mnGnuCashExe);
 
     String l_GnuCashExecutable = "Install GnuCash?";
@@ -195,7 +208,6 @@ public class GUILayout extends JPanel implements ItemListener {
     mnGnuCashExe.add(mntmGnuCashExe);
 
     // Option log level
-    JMenuItem mntmLoglevel = new JMenuItem("Loglevel");
     mntmLoglevel.setHorizontalAlignment(SwingConstants.LEFT);
     mntmLoglevel.addActionListener(new ActionListener() {
       @Override
@@ -257,7 +269,7 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     mnSettings.add(mntmLogToDisk);
 
-    JCheckBoxMenuItem chckbxJavaImplementation = new JCheckBoxMenuItem("Use Java implementation");
+    // Option use Java implementation (default) or Python scripts
     chckbxJavaImplementation.setSelected(true);
     chckbxJavaImplementation.addActionListener(new ActionListener() {
       @Override
@@ -265,6 +277,7 @@ public class GUILayout extends JPanel implements ItemListener {
         boolean selected = chckbxJavaImplementation.isSelected();
         m_Java = selected;
         m_param.set_Java(selected);
+        setDisplayOptionsJava(m_Java);
         if (m_Java) {
           LOGGER.log(Level.CONFIG, "Use Java implementation :" + Boolean.toString(selected));
         } else {
@@ -380,7 +393,6 @@ public class GUILayout extends JPanel implements ItemListener {
     });
 
     // Savings transactions
-    JCheckBox chckbxInterest = new JCheckBox("Only interest transaction");
     chckbxInterest.setSelected(m_Interest);
     chckbxInterest.setHorizontalAlignment(SwingConstants.RIGHT);
     chckbxInterest.setEnabled(m_Savings);
@@ -394,7 +406,6 @@ public class GUILayout extends JPanel implements ItemListener {
       }
     });
 
-    JCheckBox chckbxSavings = new JCheckBox("Savings transactions");
     chckbxSavings.setSelected(m_Savings);
     chckbxSavings.setHorizontalAlignment(SwingConstants.LEFT);
     chckbxSavings.addActionListener(new ActionListener() {
@@ -415,7 +426,6 @@ public class GUILayout extends JPanel implements ItemListener {
     panel.add(chckbxInterest, "cell 1 1");
 
     // Separation
-    JCheckBox chckbxSeparatorComma = new JCheckBox("Seperator comma (\",\") Default semicolon (\";\")");
     chckbxSeparatorComma.setHorizontalAlignment(SwingConstants.LEFT);
     chckbxSeparatorComma.setSelected(m_SeparatorComma);
     chckbxSeparatorComma.addActionListener(new ActionListener() {
@@ -478,6 +488,8 @@ public class GUILayout extends JPanel implements ItemListener {
     bottomHalf.setMinimumSize(new Dimension(500, 100));
     bottomHalf.setPreferredSize(new Dimension(500, 400));
     splitPane.add(bottomHalf);
+
+    setDisplayOptionsJava(m_Java);
   }
 
   @Override
@@ -485,4 +497,13 @@ public class GUILayout extends JPanel implements ItemListener {
     LOGGER.log(Level.INFO, "itemStateChanged");
   }
 
+  private void setDisplayOptionsJava(boolean a_state) {
+    chckbxInterest.setVisible(a_state);
+    chckbxInterest.setEnabled(a_state);
+
+    chckbxConvertDecimalSeparator.setVisible(!a_state);
+    chckbxConvertDateFormat.setVisible(!a_state);
+    chckbxSavings.setVisible(!a_state);
+    chckbxSeparatorComma.setVisible(!a_state);
+  }
 }

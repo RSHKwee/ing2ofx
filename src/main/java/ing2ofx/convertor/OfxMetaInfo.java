@@ -1,9 +1,10 @@
 package ing2ofx.convertor;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class OfxMetaInfo {
-  // private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private String account = "";
   private String prefix = "";
   private int minDate = 999999999;
@@ -81,5 +82,22 @@ public class OfxMetaInfo {
 
   public void setBalanceAfterTransaction(String balanceAfterTransaction) {
     this.balanceAfterTransaction = balanceAfterTransaction;
+  }
+
+  public void printLog() {
+    LOGGER.log(Level.INFO, "");
+    LOGGER.info("Account           : " + getAccount());
+    if (!getPrefix().isEmpty()) {
+      LOGGER.info("File prefix       : " + getPrefix());
+    }
+    LOGGER.info("Period : " + getMinDate() + " til " + getMaxDate());
+    LOGGER.info("Balance on end period: €" + getBalanceAfterTransaction());
+  }
+
+  @Override
+  public String toString() {
+    String l_beanStr;
+    l_beanStr = String.join(";", getAccount(), getPrefix(), getMinDate(), getMaxDate(), getBalanceAfterTransaction());
+    return l_beanStr;
   }
 }

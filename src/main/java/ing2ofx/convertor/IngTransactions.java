@@ -96,7 +96,7 @@ public class IngTransactions {
           m_OfxTransactions.add(l_ofxtrans);
         });
       }
-      LOGGER.log(Level.INFO, "Transactions read:         " + Integer.toString(m_OfxTransactions.size()) + "/n");
+      LOGGER.log(Level.INFO, "Transactions read: " + Integer.toString(m_OfxTransactions.size()));
     } catch (IOException e) {
       LOGGER.log(Level.INFO, e.getMessage());
     }

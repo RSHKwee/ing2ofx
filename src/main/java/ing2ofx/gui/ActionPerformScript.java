@@ -64,13 +64,12 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
 
   @Override
   protected Void doInBackground() throws Exception {
-    LOGGER.log(Level.INFO, "Input file: " + m_CSVFile);
     if (m_Java) {
       LOGGER.log(Level.INFO, "Use Java implementation.");
       doInBackgroundJava();
     } else {
       LOGGER.log(Level.INFO, "Use Python scripts.");
-      doInBackground_python();
+      doInBackgroundPython();
     }
     return null;
   }
@@ -86,7 +85,7 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
     LOGGER.log(Level.INFO, "Done.");
   }
 
-  protected Void doInBackground_python() throws Exception {
+  protected Void doInBackgroundPython() throws Exception {
     // Run OFX Python script
     // @formatter:off
     /*
@@ -213,7 +212,6 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
     LOGGER.log(Level.INFO, "End conversion.");
     return null;
   }
-
 }
 
 interface MyAppendable {
