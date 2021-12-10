@@ -120,7 +120,7 @@
 				<icon>src/main/resources/ingLogo.ico</icon>
                 <jre>
                   <bundledJre64Bit>true</bundledJre64Bit>
-		          <path>C:/Program Files/Zulu/zulu-16/bin</path>
+		          <path>C:/Program Files/Zulu/zulu-17/bin</path>
                   <bundledJreAsFallback>false</bundledJreAsFallback>
                   <minVersion>1.8.0</minVersion>
                   <jdkPreference>preferJre</jdkPreference>
