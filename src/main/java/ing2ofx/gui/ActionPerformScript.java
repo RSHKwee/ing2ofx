@@ -159,18 +159,13 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
       }
     }
     String l_optionsResize = "python";
-    try {
-      l_optionsResize = library.FileUtils.getResourceAsFile("python.exe").getAbsolutePath();
-    } catch (Exception ep) {
-      // Do nothing
-    }
     l_optionsResize = l_optionsResize + " " + l_Script.getAbsolutePath();
     for (int i = 1; i <= idx + 1; i++) {
       l_optionsResize = l_optionsResize + " " + l_options[i - 1];
       l_logmsg = l_logmsg + " " + l_options[i - 1];
 
     }
-    LOGGER.log(Level.FINE, "Start: " + l_optionsResize);
+    LOGGER.log(Level.INFO, "Start: " + l_optionsResize);
     LOGGER.log(Level.INFO, l_logmsg);
     try {
       OutputToLoggerReader l_reader = new OutputToLoggerReader();
