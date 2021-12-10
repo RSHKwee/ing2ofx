@@ -1,5 +1,17 @@
 package ing2ofx.convertor;
 
+/**
+ * Meta information storage for an account and its transactions.
+ * <br>
+ * Per account the following information is stored:
+ * <li>Account name.
+ * <li>File prefix for OFX transactions.
+ * <li>Period start- and end date.
+ * <li>Period end date balance.
+ * <br>
+ * 
+ * @author rshkw
+ */
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,9 +23,17 @@ public class OfxMetaInfo {
   private int maxDate = -1;
   private String balanceAfterTransaction = "";
 
+  /**
+   * Default constructor
+   */
   public OfxMetaInfo() {
   }
 
+  /**
+   * Copy constructor
+   * 
+   * @param a_MetaInfo OFX Meta information
+   */
   public OfxMetaInfo(OfxMetaInfo a_MetaInfo) {
     account = a_MetaInfo.getAccount();
     prefix = a_MetaInfo.getPrefix();
@@ -22,6 +42,11 @@ public class OfxMetaInfo {
     balanceAfterTransaction = a_MetaInfo.getBalanceAfterTransaction();
   }
 
+  /**
+   * Get account
+   * 
+   * @return account
+   */
   public String getAccount() {
     return account;
   }

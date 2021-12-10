@@ -141,7 +141,29 @@
             </execution>
           </executions>
         </plugin>
-	    <!-- LAUNCH4J ^ -->			
+	    <!-- LAUNCH4J ^ -->
+		<!-- Sign executable v -->
+        <plugin>
+          <groupId>net.jsign</groupId>
+          <artifactId>jsign-maven-plugin</artifactId>
+          <version>4.0</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>sign</goal>
+              </goals>
+              <configuration>
+                <file>target/ing2ofx.exe</file>
+                <name>ING OFX Converter</name>
+                <url>https://github.com/RSHKwee/ing2ofx</url>
+                <keystore>keystore.jks</keystore>
+                <alias>RSHK</alias>
+                <storepass>GW93ayi0j2CfeJx9VoSo</storepass>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+		<!-- Sign executable ^ -->		
       </plugins>
   </build>
 </project>
