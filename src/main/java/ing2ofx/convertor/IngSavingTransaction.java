@@ -1,12 +1,12 @@
 package ing2ofx.convertor;
 
-import java.util.logging.Logger;
+//import java.util.logging.Logger;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBean;
 
 public class IngSavingTransaction extends CsvToBean<Object> {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+//  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   /*
    * @formatter:off
    * Spaarrekening 

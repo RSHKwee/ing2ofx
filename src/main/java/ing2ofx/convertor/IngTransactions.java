@@ -1,5 +1,11 @@
 package ing2ofx.convertor;
 
+/**
+ * Convert ING transactions to OFX transactions.
+ * 
+ * @author René
+ *
+ */
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,8 +17,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
+//import java.util.regex.Pattern;
+//import java.util.regex.Matcher;
 
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
@@ -34,10 +40,19 @@ public class IngTransactions {
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
 
+  /**
+   * Constructor.
+   * 
+   * @param a_file CSV File with ING transactions
+   */
   public IngTransactions(File a_file) {
     m_File = a_file;
   }
 
+  /**
+   * Determine type of ING transactions (saving or normal). <br>
+   * Process the transactions and convert them to OFX transactions.
+   */
   public void load() {
     try {
       m_reader = new CSVReaderBuilder(new FileReader(m_File))
@@ -102,26 +117,59 @@ public class IngTransactions {
     }
   }
 
+  /**
+   * Returns true when the processed transactions are saving transactions.
+   * 
+   * @return True for Saving transactions
+   */
   public boolean isSavingCsvFile() {
     return m_saving;
   }
 
+  /**
+   * Return a list of normal transactions or null when savings transactions are
+   * processed.
+   * 
+   * @return List of normal transactions
+   */
   public List<IngTransaction> getIngTransactions() {
     return m_Transactions;
   }
 
+  /**
+   * Return a list of saving transactions or null when normal transactions are
+   * processed.
+   * 
+   * @return List of saving transactions
+   */
   public List<IngSavingTransaction> getIngSavingTransactions() {
     return m_SavingTransactions;
   }
 
+  /**
+   * Return a list of OFX transactions.
+   * 
+   * @return List of saving transactions
+   */
   public List<OfxTransaction> getOfxTransactions() {
     return m_OfxTransactions;
   }
 
+  /**
+   * Returns meta information of the OFX transactions.
+   * 
+   * @return OFX Meta information
+   */
   public Map<String, OfxMetaInfo> getOfxMetaInfo() {
     return m_metainfo;
   }
 
+  /**
+   * Update meta information of OFX Transactions.
+   * 
+   * @param a_OfxTransaction OFX Transaction
+   * @param a_SaldoNaMutatie Balance after transaction
+   */
   private void updateOfxMetaInfo(OfxTransaction a_OfxTransaction, String a_SaldoNaMutatie) {
     OfxMetaInfo l_meta = m_metainfo.get(a_OfxTransaction.getAccount());
     try {
@@ -147,6 +195,12 @@ public class IngTransactions {
     }
   }
 
+  /**
+   * Store meta information of OFX Transactions.
+   * 
+   * @param a_OfxTransaction OFX Transaction
+   * @param a_SaldoNaMutatie Balance after transaction
+   */
   private void createOfxMetaInfo(OfxTransaction a_OfxTransaction, String a_SaldoNaMutatie) {
     OfxMetaInfo l_meta = new OfxMetaInfo();
     l_meta.setAccount(a_OfxTransaction.getAccount());
@@ -168,19 +222,28 @@ public class IngTransactions {
     m_metainfo.put(a_OfxTransaction.getAccount(), l_meta);
   }
 
+  /**
+   * Create a unique fitid for an OFX Transaction.
+   * 
+   * @param l_ofxtrans OFX Transaction
+   * @return A unique fitid
+   */
   private String createUniqueId(OfxTransaction l_ofxtrans) {
     String uniqueid = "";
-    String time = "";
-    String memo = l_ofxtrans.getMemo();
     /*
+     * @formatter:off
+    String memo = l_ofxtrans.getMemo();
+    String time = "";
      * time = "" matches = re.search("\s([0-9]{2}:[0-9]{2})\s", memo) if matches:
      * time = matches.group(1).replace(":", "")
-     */
+
     Pattern patt = Pattern.compile("([0-9]{2}:[0-9]{2})");
     Matcher matcher = patt.matcher(memo);
     if (matcher.find()) {
       time = matcher.group(1).replace(":", ""); // you can get it from desired index as well
     }
+     * @formatter:on
+    */
     String fitid = l_ofxtrans.getDtposted() + l_ofxtrans.getTrnamt().replace(",", "").replace("-", "").replace(".", "");
     uniqueid = fitid;
     if (m_UniqueId.contains(fitid)) {

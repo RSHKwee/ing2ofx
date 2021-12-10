@@ -1,5 +1,11 @@
 package ing2ofx.convertor;
 
+/**
+ * OFX Transactions handling.
+ * 
+ * @author René
+ *
+ */
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,10 +29,18 @@ public class OfxTransactions {
 
   private File m_file;
 
+  /**
+   * Constructor
+   * 
+   * @param a_file CSV file with ING transactions.
+   */
   public OfxTransactions(File a_file) {
     m_file = a_file;
   }
 
+  /**
+   * Load ING Transactions and initialize OFX Transactions and meta information.
+   */
   public void load() {
     IngTransactions l_transactions = new IngTransactions(m_file);
     l_transactions.load();
@@ -35,14 +49,32 @@ public class OfxTransactions {
     m_Saving = l_transactions.isSavingCsvFile();
   }
 
+  /**
+   * Get the OFX meta information of all processed accounts.
+   * 
+   * @return OFX meta information of all accounts.
+   */
   public Map<String, OfxMetaInfo> getOfxMetaInfo() {
     return m_metainfo;
   }
 
+  /**
+   * Return Account information of the processed transactions.
+   * 
+   * @return Account information
+   */
   public Map<String, ArrayList<String>> getAccountTransactions() {
     return m_OfxAcounts;
   }
 
+  /**
+   * OFX XML header for OFX transactions of an account and certain period.
+   * 
+   * @param account Account
+   * @param mindate Start date of period
+   * @param maxdate End date of period
+   * @return List of lines with the XML content for a header
+   */
   public ArrayList<String> OfxXmlTransactionsHeader(String account, String mindate, String maxdate) {
     ArrayList<String> l_regels = new ArrayList<String>();
     l_regels.add("      <STMTRS>                            <!-- Begin statement response -->");
@@ -58,6 +90,13 @@ public class OfxTransactions {
     return l_regels;
   }
 
+  /**
+   * OFX XML footer for OFX transactions of an account and certain period.
+   * 
+   * @param saldonatran Balance at end of period
+   * @param maxdate     End date period
+   * @return List of lines with the XML content for a footer
+   */
   public ArrayList<String> OfxXmlTransactionsFooter(String saldonatran, String maxdate) {
     ArrayList<String> l_regels = new ArrayList<String>();
     l_regels.add("         </BANKTRANLIST>                   <!-- End list of statement trans. -->");
@@ -70,18 +109,34 @@ public class OfxTransactions {
     return l_regels;
   }
 
+  /**
+   * 
+   */
   public void OfxXmlTransactionsForAccounts() {
     OfxXmlTransactionsForAccounts(false, "");
   }
 
+  /**
+   * 
+   * @param a_FilterName
+   */
   public void OfxXmlTransactionsForAccounts(String a_FilterName) {
     OfxXmlTransactionsForAccounts(false, a_FilterName);
   }
 
+  /**
+   * 
+   * @param a_AllInOne
+   */
   public void OfxXmlTransactionsForAccounts(boolean a_AllInOne) {
     OfxXmlTransactionsForAccounts(a_AllInOne, "");
   }
 
+  /**
+   * 
+   * @param a_AllInOne
+   * @param a_FilterName
+   */
   int m_NumberOfTransactions = 0;
 
   public void OfxXmlTransactionsForAccounts(boolean a_AllInOne, String a_FilterName) {
