@@ -1,12 +1,12 @@
 package ing2ofx.convertor;
 
-import java.util.logging.Logger;
+//import java.util.logging.Logger;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBean;
 
 public class IngTransaction extends CsvToBean<Object> {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+//  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   /*
  * @formatter:off
  * "Datum","Naam / Omschrijving","Rekening","Tegenrekening","Code","Af Bij","Bedrag (EUR)","MutatieSoort","Mededelingen"
@@ -21,10 +21,9 @@ public class IngTransaction extends CsvToBean<Object> {
 "1 jan t/m 31 jan 2020 ING BANK N.V. Valutadatum: 13-02-2020"
 
      or ";" seperated:
-     "Datum";"Naam / Omschrijving";"Rekening";"Tegenrekening";"Code";\
+     "Datum";"Naam / Omschrijving";"Rekening";"Tegenrekening";"Code";
      "Af Bij";"Bedrag (EUR)";"Mutatiesoort";"Mededelingen";"Saldo na mutatie";"Tag"
 "20210911";"Kosten OranjePakket";"NL12INGB0000123456";"";"DV";"Af";"1,95";"Diversen";"1 aug t/m 31 aug 2021 ING BANK N.V. Valutadatum: 11-09-2021";"5185,32";""
-
     
    * @formatter:on
    */
