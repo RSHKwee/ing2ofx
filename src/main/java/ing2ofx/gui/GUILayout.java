@@ -497,8 +497,12 @@ public class GUILayout extends JPanel implements ItemListener {
     LOGGER.log(Level.INFO, "itemStateChanged");
   }
 
+  /**
+   * Enable/disable buttons for Java or Python implemenation.
+   * 
+   * @param a_state "true" for Java, "false" for Python
+   */
   private void setDisplayOptionsJava(boolean a_state) {
-    // chckbxInterest.setVisible(a_state);
     chckbxInterest.setEnabled(a_state);
     if (chckbxSavings.isSelected()) {
       chckbxInterest.setEnabled(true);

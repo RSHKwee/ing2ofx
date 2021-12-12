@@ -33,21 +33,6 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
 
   public ActionPerformScript(String a_CSVFile, String a_OutputFile, String a_OutputFolder, boolean a_SeparateOFX,
       boolean a_ConvertDecimalSep, boolean a_ConvertDate, boolean a_SeparatorComma, boolean a_SavingTransactions,
-      boolean a_Interrest) {
-    m_CSVFile = a_CSVFile;
-    m_OutputFile = a_OutputFile;
-    m_OutputFolder = a_OutputFolder;
-
-    m_SeparateOFX = a_SeparateOFX;
-    m_ConvertDecimalSep = a_ConvertDecimalSep;
-    m_ConvertDate = a_ConvertDate;
-    m_SeparatorComma = a_SeparatorComma;
-    m_SavingTransactions = a_SavingTransactions;
-    m_Interrest = a_Interrest;
-  }
-
-  public ActionPerformScript(String a_CSVFile, String a_OutputFile, String a_OutputFolder, boolean a_SeparateOFX,
-      boolean a_ConvertDecimalSep, boolean a_ConvertDate, boolean a_SeparatorComma, boolean a_SavingTransactions,
       boolean a_Interrest, boolean a_Java) {
     m_CSVFile = a_CSVFile;
     m_OutputFile = a_OutputFile;
@@ -85,6 +70,12 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
     LOGGER.log(Level.INFO, "Done.");
   }
 
+  /**
+   * Call Python scripts (in resource\scripts folder).
+   * 
+   * @return null
+   * @throws Exception
+   */
   protected Void doInBackgroundPython() throws Exception {
     // Run OFX Python script
     // @formatter:off
@@ -186,6 +177,12 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
     return null;
   }
 
+  /**
+   * Use java implementation.
+   * 
+   * @return null
+   * @throws Exception
+   */
   protected Void doInBackgroundJava() throws Exception {
     OfxDocument l_ingtrns;
     LOGGER.log(Level.INFO, "Start conversion.");
