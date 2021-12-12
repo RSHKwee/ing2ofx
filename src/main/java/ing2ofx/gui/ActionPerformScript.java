@@ -16,6 +16,12 @@ import javax.swing.SwingWorker;
 import ing2ofx.convertor.OfxDocument;
 import library.OutputToLoggerReader;
 
+/**
+ * 
+ * 
+ * @author René
+ *
+ */
 public class ActionPerformScript extends SwingWorker<Void, String> implements MyAppendable {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private JTextArea area = new JTextArea(30, 50);
@@ -77,9 +83,9 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
    * @throws Exception
    */
   protected Void doInBackgroundPython() throws Exception {
-    // Run OFX Python script
     // @formatter:off
-    /*
+    /* Define options for script:
+     * 
      * usage: ing2ofx [-h] [-o, --outfile OUTFILE] [-d, --directory DIR] [-c,
      * --convert] [-b, --convert-date] csvfile
      * 
@@ -124,6 +130,7 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
       l_options[idx] = "-s";
     }
 
+    // Which script to use?
     String l_logmsg = "python";
     File l_Script = library.FileUtils.getResourceAsFile("scripts/ing2ofx.py");
     if (m_SavingTransactions) {
@@ -149,23 +156,25 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
         l_logmsg = l_logmsg + " " + "ing2ofx.py";
       }
     }
+    // Get rid of empty options.
     String l_optionsResize = "python";
     l_optionsResize = l_optionsResize + " " + l_Script.getAbsolutePath();
     for (int i = 1; i <= idx + 1; i++) {
       l_optionsResize = l_optionsResize + " " + l_options[i - 1];
       l_logmsg = l_logmsg + " " + l_options[i - 1];
-
     }
     LOGGER.log(Level.INFO, "Start: " + l_optionsResize);
     LOGGER.log(Level.INFO, l_logmsg);
+
+    // Call script
     try {
       OutputToLoggerReader l_reader = new OutputToLoggerReader();
       String l_logging = l_reader.getReadOut(l_optionsResize);
+      // Get rid of empty lines .....
       String[] ll_log = l_logging.split("\n");
       List<String> l_logList = Arrays.asList(ll_log);
       Set<String> l_uniLog = new LinkedHashSet<String>(l_logList);
       LOGGER.log(Level.INFO, " ");
-      // System.out.println(ll_log.toString());
       l_uniLog.forEach(ll -> {
         LOGGER.log(Level.INFO, " " + ll);
       });
