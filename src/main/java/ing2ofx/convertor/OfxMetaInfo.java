@@ -72,7 +72,11 @@ public class OfxMetaInfo {
   }
 
   public String getBalanceAfterTransaction() {
-    return balanceAfterTransaction;
+    if (balanceAfterTransaction.isBlank()) {
+      return "unknown";
+    } else {
+      return balanceAfterTransaction;
+    }
   }
 
   public void setAccount(String account) {

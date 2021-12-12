@@ -14,7 +14,7 @@ http://www.chmistry.nl/financien/beginnen-met-boekhouden-in-gnucash/
 
 Due to Python installation problems and integration in Java, this Java applicaton was born.
 Its is based on the python scripts of Chmistry (see https://github.com/chmistry/ing2ofx/releases).
-The Python script(s) are recoded in Java.
+The Python script(s) are rewritten in Java.
 
 The application recognize a comma or semicolon separated input file, it also recognize a content with "normal" or saving transactions.
 

@@ -61,7 +61,7 @@ public class GUILayout extends JPanel implements ItemListener {
 
   // Variables
   private String m_RootDir = "c:\\";
-  // private String newline = "\n";
+  private boolean m_OutputFolderModified = false;
 
   // Preferences
   private UserSetting m_param = Main.m_param;
@@ -364,9 +364,11 @@ public class GUILayout extends JPanel implements ItemListener {
 
           btnConvert.setEnabled(true);
           lblCSVFile.setEnabled(true);
-          lblOutputFolder.setText(file.getParent());
-          m_OutputFolder = new File(file.getParent());
-          m_param.set_OutputFolder(m_OutputFolder);
+          if (!m_OutputFolderModified) {
+            lblOutputFolder.setText(file.getParent());
+            m_OutputFolder = new File(file.getParent());
+            m_param.set_OutputFolder(m_OutputFolder);
+          }
         }
       }
     });
@@ -388,6 +390,7 @@ public class GUILayout extends JPanel implements ItemListener {
           lblOutputFolder.setText(file.getAbsolutePath());
           m_OutputFolder = new File(file.getAbsolutePath());
           m_param.set_OutputFolder(m_OutputFolder);
+          m_OutputFolderModified = true;
         }
       }
     });
