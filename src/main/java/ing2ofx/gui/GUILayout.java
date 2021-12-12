@@ -498,9 +498,11 @@ public class GUILayout extends JPanel implements ItemListener {
   }
 
   private void setDisplayOptionsJava(boolean a_state) {
-    chckbxInterest.setVisible(a_state);
+    // chckbxInterest.setVisible(a_state);
     chckbxInterest.setEnabled(a_state);
-
+    if (chckbxSavings.isSelected()) {
+      chckbxInterest.setEnabled(true);
+    }
     chckbxConvertDecimalSeparator.setVisible(!a_state);
     chckbxConvertDateFormat.setVisible(!a_state);
     chckbxSavings.setVisible(!a_state);
