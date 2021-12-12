@@ -21,6 +21,7 @@ public class OfxDocument {
   private boolean m_separateOFX = true;
   private File m_File;
   private String m_FilterName = "";
+  private boolean m_Savings = false;
 
   public OfxDocument(File a_File, String a_outputdir, boolean a_separateOfx) {
     m_File = a_File;
@@ -52,6 +53,7 @@ public class OfxDocument {
     l_OfxTrans.OfxXmlTransactionsForAccounts();
     m_OfxAcounts = l_OfxTrans.m_OfxAcounts;
     m_metainfo = l_OfxTrans.m_metainfo;
+    m_Savings = l_OfxTrans.isSavings();
   }
 
   public void load(String a_FilterName) {
@@ -61,6 +63,7 @@ public class OfxDocument {
     m_OfxAcounts = l_OfxTrans.m_OfxAcounts;
     m_metainfo = l_OfxTrans.m_metainfo;
     m_FilterName = a_FilterName;
+    m_Savings = l_OfxTrans.isSavings();
   }
 
   public void load(boolean a_AllInOne, String a_FilterName) {
@@ -70,6 +73,7 @@ public class OfxDocument {
     m_OfxAcounts = l_OfxTrans.m_OfxAcounts;
     m_metainfo = l_OfxTrans.m_metainfo;
     m_FilterName = a_FilterName;
+    m_Savings = l_OfxTrans.isSavings();
   }
 
   private ArrayList<String> OfxXmlHeader() {
@@ -138,7 +142,7 @@ public class OfxDocument {
         OfxMetaInfo l_info = m_metainfo.get(account);
         String l_prefix = l_info.getPrefix();
         String l_filename = "";
-        if (!l_prefix.isBlank()) {
+        if (!l_prefix.isBlank() && m_Savings) {
           l_filename = m_OutputDir + "\\" + String.join("_", l_prefix, account);
           if (!m_FilterName.isBlank()) {
             l_filename = String.join("_", l_filename, m_FilterName);

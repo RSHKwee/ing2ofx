@@ -68,7 +68,7 @@ public class IngTransactions {
           LOGGER.log(Level.INFO, "Unknown separator in file " + m_File.getAbsolutePath());
         }
       }
-      if (nextLine[nextLine.length - 1].equalsIgnoreCase("Tag")) {
+      if (nextLine[1].equalsIgnoreCase("Naam / Omschrijving")) {
         m_saving = false;
       } else {
         m_saving = true;

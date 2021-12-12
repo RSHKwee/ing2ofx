@@ -116,6 +116,10 @@ public class OfxTransactions {
     OfxXmlTransactionsForAccounts(false, "");
   }
 
+  public boolean isSavings() {
+    return m_Saving;
+  }
+
   /**
    * 
    * @param a_FilterName
