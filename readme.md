@@ -21,5 +21,7 @@ The application recognize a comma or semicolon separated input file, it also rec
 ![Main screen ing2ofx](https://github.com/RSHKwee/ing2ofx/blob/master/ing2ofxMain.PNG)
 
 A ING CSV file may contain transactions for more then one account.
-All converted OFX transcations can be stored in one OFX file or per account a separate OFX file (default). See:
+All converted OFX transcations can be stored in one OFX file or per account a separate OFX file (default). 
+See:
+
 ![Settings menu](https://github.com/RSHKwee/ing2ofx/blob/master/ing2ofxSettings.PNG)

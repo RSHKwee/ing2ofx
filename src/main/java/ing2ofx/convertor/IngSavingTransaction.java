@@ -1,7 +1,12 @@
 package ing2ofx.convertor;
 
+/**
+ * Bean package for ING Saving transaction
+ * 
+ * @author René
+ *
+ */
 //import java.util.logging.Logger;
-
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBean;
 
