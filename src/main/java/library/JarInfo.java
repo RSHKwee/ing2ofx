@@ -8,9 +8,6 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
-import java.util.Properties;
-
-import ing2ofx.gui.GUILayout;
 
 /**
  * Ophalen wijzigings tijdstip van opgegeven CLASS file in jar file.

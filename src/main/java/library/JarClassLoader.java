@@ -82,7 +82,9 @@ public class JarClassLoader extends URLClassLoader {
    */
   public void invokeClass(String name, String[] args)
       throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException {
+    @SuppressWarnings("rawtypes")
     Class c = loadClass(name);
+    @SuppressWarnings("unchecked")
     Method m = c.getMethod("main", new Class[] { args.getClass() });
     m.setAccessible(true);
     int mods = m.getModifiers();
