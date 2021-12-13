@@ -1,5 +1,8 @@
 ofx
 input
+.externalToolBuilders
+.jython_cache
+.settings
 .DS_Store
 /target/
 .class
