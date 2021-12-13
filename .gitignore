@@ -4,6 +4,8 @@ input
 .jython_cache
 .settings
 .DS_Store
+.externalToolBuilders
+.jython_cache
 /target/
 .class
 .prefs
