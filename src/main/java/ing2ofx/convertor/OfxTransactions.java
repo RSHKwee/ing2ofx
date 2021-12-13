@@ -75,7 +75,7 @@ public class OfxTransactions {
    * @param maxdate End date of period
    * @return List of lines with the XML content for a header
    */
-  public ArrayList<String> OfxXmlTransactionsHeader(String account, String mindate, String maxdate) {
+  private ArrayList<String> OfxXmlTransactionsHeader(String account, String mindate, String maxdate) {
     ArrayList<String> l_regels = new ArrayList<String>();
     l_regels.add("      <STMTRS>                            <!-- Begin statement response -->");
     l_regels.add("         <CURDEF>EUR</CURDEF>");
@@ -97,7 +97,7 @@ public class OfxTransactions {
    * @param maxdate     End date period
    * @return List of lines with the XML content for a footer
    */
-  public ArrayList<String> OfxXmlTransactionsFooter(String saldonatran, String maxdate) {
+  private ArrayList<String> OfxXmlTransactionsFooter(String saldonatran, String maxdate) {
     ArrayList<String> l_regels = new ArrayList<String>();
     l_regels.add("         </BANKTRANLIST>                   <!-- End list of statement trans. -->");
     l_regels.add("         <LEDGERBAL>                       <!-- Ledger balance aggregate -->");
@@ -176,7 +176,7 @@ public class OfxTransactions {
       });
 
       ArrayList<String> l_regelsfoot = new ArrayList<String>();
-      l_regelsfoot = OfxXmlTransactionsFooter(l_metainfo.getBalanceAfterTransaction(), l_metainfo.getMaxDate());
+      l_regelsfoot = OfxXmlTransactionsFooter(l_metainfo.getBalanceAfterTransaction(), l_metainfo.getBalanceDate());
 
       ArrayList<String> prevregels = m_OfxAcounts.get(account);
       prevregels.addAll(l_regelsfoot);

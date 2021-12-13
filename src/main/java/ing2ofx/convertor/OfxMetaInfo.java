@@ -71,9 +71,17 @@ public class OfxMetaInfo {
     return maxDate;
   }
 
+  public String getBalanceDate() {
+    if (balanceAfterTransaction.isBlank()) {
+      return "190001010001"; // 1-1-1900 00:01
+    } else {
+      return Integer.toString(maxDate);
+    }
+  }
+
   public String getBalanceAfterTransaction() {
     if (balanceAfterTransaction.isBlank()) {
-      return "unknown";
+      return "0";
     } else {
       return balanceAfterTransaction;
     }
