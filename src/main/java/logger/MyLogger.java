@@ -10,9 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-import logger.MyHtmlFormatter;
-import logger.TextAreaHandler;;
-
 /**
  *
  * @author Rene

@@ -60,7 +60,7 @@ public class GUILayout extends JPanel implements ItemListener {
   static final String[] c_LogToDisk = { "Yes", "No" };
 
   // Variables
-  private String m_RootDir = "c:\\";
+  private String m_LogDir = "c:\\";
   private boolean m_OutputFolderModified = false;
 
   // Preferences
@@ -128,6 +128,7 @@ public class GUILayout extends JPanel implements ItemListener {
     m_Interest = m_param.is_Interest();
     m_Savings = m_param.is_Savings();
     m_Java = m_param.is_Java();
+    m_LogDir = m_param.get_LogDir();
 
     // Define Layout
     setLayout(new BorderLayout(0, 0));
@@ -251,20 +252,34 @@ public class GUILayout extends JPanel implements ItemListener {
     }
 
     // Option Logging to Disk
-    JMenuItem mntmLogToDisk = new JMenuItem("Create logfiles");
+    JCheckBoxMenuItem mntmLogToDisk = new JCheckBoxMenuItem("Create logfiles");
     mntmLogToDisk.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        JFrame frame = new JFrame("Create Logfiles");
-        String ToDisk = "";
-        ToDisk = (String) JOptionPane.showInputDialog(frame, "Create logfiles?", "No", JOptionPane.QUESTION_MESSAGE,
-            null, c_LogToDisk, m_toDisk);
-        if (ToDisk == "Yes") {
-          m_toDisk = true;
+        boolean selected = mntmLogToDisk.isSelected();
+        if (selected) {
+          JFileChooser fileChooser = new JFileChooser();
+          fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+          fileChooser.setSelectedFile(new File(m_LogDir));
+          int option = fileChooser.showOpenDialog(GUILayout.this);
+          if (option == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            LOGGER.log(Level.INFO, "Log folder: " + file.getAbsolutePath());
+            m_LogDir = file.getAbsolutePath() + "\\";
+            m_param.set_LogDir(m_LogDir);
+            m_param.set_toDisk(true);
+            m_toDisk = selected;
+          }
         } else {
-          m_toDisk = false;
+          m_param.set_toDisk(false);
+          m_toDisk = selected;
         }
-        m_param.set_toDisk(m_toDisk);
+        try {
+          MyLogger.setup(m_Level, m_LogDir, m_toDisk);
+        } catch (IOException es) {
+          LOGGER.log(Level.SEVERE, Class.class.getName() + ": " + es.toString());
+          es.printStackTrace();
+        }
       }
     });
     mnSettings.add(mntmLogToDisk);
@@ -303,7 +318,7 @@ public class GUILayout extends JPanel implements ItemListener {
 
     // Build output area.
     try {
-      MyLogger.setup(m_Level, m_RootDir, m_toDisk);
+      MyLogger.setup(m_Level, m_LogDir, m_toDisk);
     } catch (IOException es) {
       LOGGER.log(Level.SEVERE, Class.class.getName() + ": " + es.toString());
       es.printStackTrace();
