@@ -55,7 +55,7 @@ public class GUILayout extends JPanel implements ItemListener {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private static final long serialVersionUID = 1L;
 
-  // Loglevels: OFF SEVERE WARNING INFO CONFIG FINE FINER FINEST ALL 
+  // Loglevels: OFF SEVERE WARNING INFO CONFIG FINE FINER FINEST ALL
   static final String[] c_levels = { "OFF", "SEVERE", "WARNING", "INFO", "CONFIG", "FINE", "FINER", "FINEST", "ALL" };
   static final String[] c_LogToDisk = { "Yes", "No" };
 
@@ -82,17 +82,17 @@ public class GUILayout extends JPanel implements ItemListener {
    */
   public GUILayout() {
     // GUI items
-     JMenuBar menuBar = new JMenuBar();
+    JMenuBar menuBar = new JMenuBar();
 
-     JCheckBoxMenuItem chckbxAcountSeparateOFX = new JCheckBoxMenuItem("Accounts in separate OFX files");
-     JMenu mnGnuCashExe = new JMenu("GnuCash executable");
-     JMenuItem mntmLoglevel = new JMenuItem("Loglevel");
+    JCheckBoxMenuItem chckbxAcountSeparateOFX = new JCheckBoxMenuItem("Accounts in separate OFX files");
+    JMenu mnGnuCashExe = new JMenu("GnuCash executable");
+    JMenuItem mntmLoglevel = new JMenuItem("Loglevel");
 
-     JCheckBox chckbxInterest = new JCheckBox("Only interest transaction");
-     JTextField txtOutputFilename = new JTextField();
-     JLabel lblOutputFolder = new JLabel("");
-     JButton btnConvert = new JButton("Convert to OFX");
-    
+    JCheckBox chckbxInterest = new JCheckBox("Only interest transaction");
+    JTextField txtOutputFilename = new JTextField();
+    JLabel lblOutputFolder = new JLabel("");
+    JButton btnConvert = new JButton("Convert to OFX");
+
     // Initialize parameters
     m_GnuCashExecutable = new File(m_param.get_GnuCashExecutable());
 
@@ -264,7 +264,7 @@ public class GUILayout extends JPanel implements ItemListener {
         output = textAreaHandler.getTextArea();
       }
     }
-    
+
     output.setEditable(false);
     output.setTabSize(4);
     JScrollPane outputPane = new JScrollPane(output, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
@@ -324,7 +324,22 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     panel.add(btnCSVFile, "cell 0 0");
 
+    // Savings transactions
+    chckbxInterest.setSelected(m_Interest);
+    chckbxInterest.setHorizontalAlignment(SwingConstants.LEFT);
+    chckbxInterest.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        boolean selected = chckbxInterest.isSelected();
+        m_Interest = selected;
+        m_param.set_Interest(m_Interest);
+        LOGGER.log(Level.CONFIG, "Save only interest :" + Boolean.toString(selected));
+      }
+    });
+    panel.add(chckbxInterest, "cell 1 1");
+
     // Define output folder
+    // Output folder & filename
     JButton btnOutputFolder = new JButton("Output folder");
     btnOutputFolder.setHorizontalAlignment(SwingConstants.RIGHT);
     btnOutputFolder.addActionListener(new ActionListener() {
@@ -344,31 +359,16 @@ public class GUILayout extends JPanel implements ItemListener {
         }
       }
     });
+    panel.add(btnOutputFolder, "cell 0 3");
 
-    // Savings transactions
-    chckbxInterest.setSelected(m_Interest);
-    chckbxInterest.setHorizontalAlignment(SwingConstants.LEFT);
-    chckbxInterest.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        boolean selected = chckbxInterest.isSelected();
-        m_Interest = selected;
-        m_param.set_Interest(m_Interest);
-        LOGGER.log(Level.CONFIG, "Save only interest :" + Boolean.toString(selected));
-      }
-    });
-    panel.add(chckbxInterest, "cell 1 1");
-
-    // Output folder & filename
-    panel.add(btnOutputFolder, "cell 0 4");
     lblOutputFolder.setHorizontalAlignment(SwingConstants.LEFT);
-    panel.add(lblOutputFolder, "cell 1 4");
+    panel.add(lblOutputFolder, "cell 1 3");
 
     txtOutputFilename.setHorizontalAlignment(SwingConstants.LEFT);
     txtOutputFilename.setText("Output filename");
     txtOutputFilename.setEnabled(false);
     txtOutputFilename.setColumns(100);
-    panel.add(txtOutputFilename, "cell 1 5");
+    panel.add(txtOutputFilename, "cell 1 4");
 
     // Convert button
     btnConvert.setEnabled(false);
@@ -377,15 +377,14 @@ public class GUILayout extends JPanel implements ItemListener {
       public void actionPerformed(ActionEvent e) {
         m_param.save();
         ActionPerformScript l_action = new ActionPerformScript(lblCSVFile.getText(), txtOutputFilename.getText(),
-            lblOutputFolder.getText(), chckbxAcountSeparateOFX.isSelected(), 
-            chckbxInterest.isSelected());
+            lblOutputFolder.getText(), chckbxAcountSeparateOFX.isSelected(), chckbxInterest.isSelected());
         l_action.execute();
       }
     });
-    panel.add(btnConvert, "cell 1 6");
+    panel.add(btnConvert, "cell 1 5");
 
     JLabel lblNewLabel = new JLabel("    ");
-    panel.add(lblNewLabel, "cell 0 7");
+    panel.add(lblNewLabel, "cell 0 6");
 
     // Start GnuCash
     JButton btnGNUCash = new JButton("Start GnuCash");
@@ -404,7 +403,7 @@ public class GUILayout extends JPanel implements ItemListener {
         LOGGER.log(Level.INFO, "Stop GNUCash");
       }
     });
-    panel.add(btnGNUCash, "cell 1 8");
+    panel.add(btnGNUCash, "cell 1 7");
 
     bottomHalf.setMinimumSize(new Dimension(500, 100));
     bottomHalf.setPreferredSize(new Dimension(500, 400));
