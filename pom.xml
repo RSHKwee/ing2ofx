@@ -159,10 +159,12 @@
       </plugins>
   </build>
   <distributionManagement>
+    <!-- Upload to Github v-->
     <repository>
       <id>github</id>
       <name>GitHub Packages</name>
       <url>https://maven.pkg.github.com/RSHKwee/ing2ofx</url>
     </repository>
+    <!-- Upload to Github ^-->
   </distributionManagement>
 </project>

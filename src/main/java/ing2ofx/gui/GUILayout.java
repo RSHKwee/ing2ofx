@@ -73,12 +73,7 @@ public class GUILayout extends JPanel implements ItemListener {
   private boolean m_toDisk = false;
   private Level m_Level = Level.INFO;
   private boolean m_AcountSeparateOFX = true;
-  private boolean m_ConvertDecimalSeparator = false;
-  private boolean m_ConvertDateFormat = false;
-  private boolean m_SeparatorComma = false;
   private boolean m_Interest = true;
-  private boolean m_Savings = false;
-  private boolean m_Java = true;
 
   // GUI items
   private JMenuBar menuBar = new JMenuBar();
@@ -88,20 +83,26 @@ public class GUILayout extends JPanel implements ItemListener {
   private JMenu mnGnuCashExe = new JMenu("GnuCash executable");
   private JMenuItem mntmLoglevel = new JMenuItem("Loglevel");
 
-  private JCheckBoxMenuItem chckbxJavaImplementation = new JCheckBoxMenuItem("Use Java implementation");
+  private JCheckBox chckbxInterest = new JCheckBox("Only interest transaction");
+  private JTextField txtOutputFilename = new JTextField();
+  private JLabel lblOutputFolder = new JLabel("");
+  private JButton btnConvert = new JButton("Convert to OFX");
 
+  // Needed for Python scripts v
+  private boolean m_ConvertDecimalSeparator = false;
+  private boolean m_ConvertDateFormat = false;
+  private boolean m_SeparatorComma = false;
+  private boolean m_Savings = false;
+  private boolean m_Java = true;
+  
+  private JCheckBoxMenuItem chckbxJavaImplementation = new JCheckBoxMenuItem("Use Java implementation");
   private JCheckBoxMenuItem chckbxConvertDecimalSeparator = new JCheckBoxMenuItem(
       "Convert decimnal separator to dots (.)");
   private JCheckBoxMenuItem chckbxConvertDateFormat = new JCheckBoxMenuItem(
       "Convert dates with dd-mm-yyyy to yyyymmdd");
-
-  private JCheckBox chckbxInterest = new JCheckBox("Only interest transaction");
   private JCheckBox chckbxSavings = new JCheckBox("Savings transactions");
   private JCheckBox chckbxSeparatorComma = new JCheckBox("Seperator comma (\",\") Default semicolon (\";\")");
-
-  private JTextField txtOutputFilename = new JTextField();
-  private JLabel lblOutputFolder = new JLabel("");
-  private JButton btnConvert = new JButton("Convert to OFX");
+  // Needed for Python scripts ^
 
   /**
    * Define GUI layout
@@ -122,13 +123,14 @@ public class GUILayout extends JPanel implements ItemListener {
     m_Level = m_param.get_Level();
     m_toDisk = m_param.is_toDisk();
     m_AcountSeparateOFX = m_param.is_AcountSeparateOFX();
+    m_Interest = m_param.is_Interest();
+    m_LogDir = m_param.get_LogDir();
+   
     m_ConvertDecimalSeparator = m_param.is_ConvertDecimalSeparator();
     m_ConvertDateFormat = m_param.is_ConvertDateFormat();
     m_SeparatorComma = m_param.is_SeparatorComma();
-    m_Interest = m_param.is_Interest();
     m_Savings = m_param.is_Savings();
     m_Java = m_param.is_Java();
-    m_LogDir = m_param.get_LogDir();
 
     // Define Layout
     setLayout(new BorderLayout(0, 0));
@@ -457,6 +459,7 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     panel.add(chckbxSeparatorComma, "cell 1 2");
 
+    // Output folder & filename
     panel.add(btnOutputFolder, "cell 0 4");
     lblOutputFolder.setHorizontalAlignment(SwingConstants.LEFT);
     panel.add(lblOutputFolder, "cell 1 4");
@@ -467,6 +470,7 @@ public class GUILayout extends JPanel implements ItemListener {
     txtOutputFilename.setColumns(100);
     panel.add(txtOutputFilename, "cell 1 5");
 
+    // Convert button
     btnConvert.setEnabled(false);
     btnConvert.addActionListener(new ActionListener() {
       @Override
