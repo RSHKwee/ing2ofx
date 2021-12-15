@@ -1,11 +1,12 @@
-# ING2OFX Introduction
+# Introduction
 
 The intent of this (java) application  is to convert ing (www.ing.nl) csv files to ofx files 
 that can be read by a program like GnuCash (www.gucash.org).
 
 The origin is a Python script which can be found on Github:  https://github.com/chmistry/ing2ofx/releases.
 The original script needed some modifications due to a new Python version and some changes in the ING CSV format.
-Due to Python installation problems and integration in Java, this Java applicaton was born.
+
+Due to Python installation and versioning problems, this Java applicaton was born.
 The Python script(s) are rewritten in Java.
 
 The ofx specification can be downloaded from http://www.ofx.net/
@@ -18,51 +19,25 @@ When running the application (Windows excutable or Java jar-file) the following 
 
 ![Main screen ing2ofx](https://github.com/RSHKwee/ing2ofx/blob/master/ing2ofxMain.PNG)
 
-With the button "CSV File" a ING CSV file can be choosen.
-The application recognize a comma or semicolon separated input file, it also recognize a content with "normal" or saving transactions.
+Button _CSV File_: an ING CSV file can be choosen.
+- The application recognize a comma or semicolon separated input file.
+- The content "normal" or saving transactions.
+The checkbox "Only interest transaction" is used only for a CSV file with saving transactions.
 
+Button _Output folder_: Point to the directory where the generated OFX-file(s) are stored. 
+A proposal for the "Output filename" is made, this can be changed.
+
+Button _Convert to OFX_: The conversion to OFX format is started, the progres is shown in the lower panel.
+<br>
+Button _Start GnuCash_: GnuCash is started.
+
+# Setting menu
+
+![Settings menu](https://github.com/RSHKwee/ing2ofx/blob/master/ing2ofxSettings.PNG)
 
 In the "settings" menu the following options are available:
 - A ING CSV file may contain transactions for more then one account, all converted OFX transcations can be stored in one OFX file or per account a separate OFX file (default).
-- The more or less original Python scripts can be used for conversion.
-
-See:
-![Settings menu](https://github.com/RSHKwee/ing2ofx/blob/master/ing2ofxSettings.PNG)
-
-
-
-You can use the [editor on GitHub](https://github.com/RSHKwee/ing2ofx/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/RSHKwee/ing2ofx/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+- Where to find _GnuCash_ executable.
+- For debugging a _loglevel_ can be defined, default is level _INFO_.
+- _Look and Feel_ of the GUI can be adjusted.
+- _Create logfiles_ in the choosen directory a HTML- and a textfile with logging is created.
