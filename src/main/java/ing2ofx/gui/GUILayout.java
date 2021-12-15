@@ -55,13 +55,14 @@ public class GUILayout extends JPanel implements ItemListener {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private static final long serialVersionUID = 1L;
 
-  // * -3 Loglevel: OFF SEVERE WARNING INFO CONFIG FINE FINER FINEST ALL <br>
+  // Loglevels: OFF SEVERE WARNING INFO CONFIG FINE FINER FINEST ALL 
   static final String[] c_levels = { "OFF", "SEVERE", "WARNING", "INFO", "CONFIG", "FINE", "FINER", "FINEST", "ALL" };
   static final String[] c_LogToDisk = { "Yes", "No" };
 
   // Variables
   private String m_LogDir = "c:\\";
   private boolean m_OutputFolderModified = false;
+  private JTextArea output;
 
   // Preferences
   private UserSetting m_param = Main.m_param;
@@ -75,40 +76,23 @@ public class GUILayout extends JPanel implements ItemListener {
   private boolean m_AcountSeparateOFX = true;
   private boolean m_Interest = true;
 
-  // GUI items
-  private JMenuBar menuBar = new JMenuBar();
-  private JTextArea output;
-
-  private JCheckBoxMenuItem chckbxAcountSeparateOFX = new JCheckBoxMenuItem("Accounts in separate OFX files");
-  private JMenu mnGnuCashExe = new JMenu("GnuCash executable");
-  private JMenuItem mntmLoglevel = new JMenuItem("Loglevel");
-
-  private JCheckBox chckbxInterest = new JCheckBox("Only interest transaction");
-  private JTextField txtOutputFilename = new JTextField();
-  private JLabel lblOutputFolder = new JLabel("");
-  private JButton btnConvert = new JButton("Convert to OFX");
-
-  // Needed for Python scripts v
-  private boolean m_ConvertDecimalSeparator = false;
-  private boolean m_ConvertDateFormat = false;
-  private boolean m_SeparatorComma = false;
-  private boolean m_Savings = false;
-  private boolean m_Java = true;
-  
-  private JCheckBoxMenuItem chckbxJavaImplementation = new JCheckBoxMenuItem("Use Java implementation");
-  private JCheckBoxMenuItem chckbxConvertDecimalSeparator = new JCheckBoxMenuItem(
-      "Convert decimnal separator to dots (.)");
-  private JCheckBoxMenuItem chckbxConvertDateFormat = new JCheckBoxMenuItem(
-      "Convert dates with dd-mm-yyyy to yyyymmdd");
-  private JCheckBox chckbxSavings = new JCheckBox("Savings transactions");
-  private JCheckBox chckbxSeparatorComma = new JCheckBox("Seperator comma (\",\") Default semicolon (\";\")");
-  // Needed for Python scripts ^
-
   /**
    * Define GUI layout
    * 
    */
   public GUILayout() {
+    // GUI items
+     JMenuBar menuBar = new JMenuBar();
+
+     JCheckBoxMenuItem chckbxAcountSeparateOFX = new JCheckBoxMenuItem("Accounts in separate OFX files");
+     JMenu mnGnuCashExe = new JMenu("GnuCash executable");
+     JMenuItem mntmLoglevel = new JMenuItem("Loglevel");
+
+     JCheckBox chckbxInterest = new JCheckBox("Only interest transaction");
+     JTextField txtOutputFilename = new JTextField();
+     JLabel lblOutputFolder = new JLabel("");
+     JButton btnConvert = new JButton("Convert to OFX");
+    
     // Initialize parameters
     m_GnuCashExecutable = new File(m_param.get_GnuCashExecutable());
 
@@ -125,12 +109,6 @@ public class GUILayout extends JPanel implements ItemListener {
     m_AcountSeparateOFX = m_param.is_AcountSeparateOFX();
     m_Interest = m_param.is_Interest();
     m_LogDir = m_param.get_LogDir();
-   
-    m_ConvertDecimalSeparator = m_param.is_ConvertDecimalSeparator();
-    m_ConvertDateFormat = m_param.is_ConvertDateFormat();
-    m_SeparatorComma = m_param.is_SeparatorComma();
-    m_Savings = m_param.is_Savings();
-    m_Java = m_param.is_Java();
 
     // Define Layout
     setLayout(new BorderLayout(0, 0));
@@ -153,34 +131,6 @@ public class GUILayout extends JPanel implements ItemListener {
       }
     });
     mnSettings.add(chckbxAcountSeparateOFX);
-
-    // Checkbox decimal separator
-    chckbxConvertDecimalSeparator.setHorizontalAlignment(SwingConstants.LEFT);
-    chckbxConvertDecimalSeparator.setSelected(m_ConvertDecimalSeparator);
-    chckbxConvertDecimalSeparator.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        boolean selected = chckbxConvertDecimalSeparator.isSelected();
-        m_ConvertDecimalSeparator = selected;
-        m_param.set_ConvertDecimalSeparator(selected);
-        LOGGER.log(Level.CONFIG, "Convert decimal to dots:" + Boolean.toString(selected));
-      }
-    });
-    mnSettings.add(chckbxConvertDecimalSeparator);
-
-    // Checkbox convert date
-    chckbxConvertDateFormat.setHorizontalAlignment(SwingConstants.LEFT);
-    chckbxConvertDateFormat.setSelected(m_ConvertDateFormat);
-    chckbxConvertDateFormat.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        boolean selected = chckbxConvertDateFormat.isSelected();
-        m_ConvertDateFormat = selected;
-        m_param.set_ConvertDateFormat(selected);
-        LOGGER.log(Level.CONFIG, "Convert dates with dd-mm-yyyy to yyyymmdd :" + Boolean.toString(selected));
-      }
-    });
-    mnSettings.add(chckbxConvertDateFormat);
 
     // Option Location GnuCash exe
     mnSettings.add(mnGnuCashExe);
@@ -286,24 +236,6 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     mnSettings.add(mntmLogToDisk);
 
-    // Option use Java implementation (default) or Python scripts
-    chckbxJavaImplementation.setSelected(true);
-    chckbxJavaImplementation.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        boolean selected = chckbxJavaImplementation.isSelected();
-        m_Java = selected;
-        m_param.set_Java(selected);
-        setDisplayOptionsJava(m_Java);
-        if (m_Java) {
-          LOGGER.log(Level.CONFIG, "Use Java implementation :" + Boolean.toString(selected));
-        } else {
-          LOGGER.log(Level.CONFIG, "Use Python scripts :" + Boolean.toString(selected));
-        }
-      }
-    });
-    mnSettings.add(chckbxJavaImplementation);
-
     // Do the layout.
     JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
     add(splitPane);
@@ -332,6 +264,7 @@ public class GUILayout extends JPanel implements ItemListener {
         output = textAreaHandler.getTextArea();
       }
     }
+    
     output.setEditable(false);
     output.setTabSize(4);
     JScrollPane outputPane = new JScrollPane(output, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
@@ -414,8 +347,7 @@ public class GUILayout extends JPanel implements ItemListener {
 
     // Savings transactions
     chckbxInterest.setSelected(m_Interest);
-    chckbxInterest.setHorizontalAlignment(SwingConstants.RIGHT);
-    chckbxInterest.setEnabled(m_Savings);
+    chckbxInterest.setHorizontalAlignment(SwingConstants.LEFT);
     chckbxInterest.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -425,39 +357,7 @@ public class GUILayout extends JPanel implements ItemListener {
         LOGGER.log(Level.CONFIG, "Save only interest :" + Boolean.toString(selected));
       }
     });
-
-    chckbxSavings.setSelected(m_Savings);
-    chckbxSavings.setHorizontalAlignment(SwingConstants.LEFT);
-    chckbxSavings.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        boolean selected = chckbxSavings.isSelected();
-        m_Savings = selected;
-        if (selected) {
-          chckbxInterest.setEnabled(true);
-        } else {
-          chckbxInterest.setEnabled(false);
-        }
-        m_param.set_Savings(selected);
-        LOGGER.log(Level.CONFIG, "Savings transaction :" + Boolean.toString(selected));
-      }
-    });
-    panel.add(chckbxSavings, "cell 1 1");
     panel.add(chckbxInterest, "cell 1 1");
-
-    // Separation
-    chckbxSeparatorComma.setHorizontalAlignment(SwingConstants.LEFT);
-    chckbxSeparatorComma.setSelected(m_SeparatorComma);
-    chckbxSeparatorComma.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        boolean selected = chckbxSeparatorComma.isSelected();
-        m_SeparatorComma = selected;
-        m_param.set_SeparatorComma(selected);
-        LOGGER.log(Level.CONFIG, "Seperator comma (\",\") Default semicolon (\";\") :" + Boolean.toString(selected));
-      }
-    });
-    panel.add(chckbxSeparatorComma, "cell 1 2");
 
     // Output folder & filename
     panel.add(btnOutputFolder, "cell 0 4");
@@ -477,9 +377,8 @@ public class GUILayout extends JPanel implements ItemListener {
       public void actionPerformed(ActionEvent e) {
         m_param.save();
         ActionPerformScript l_action = new ActionPerformScript(lblCSVFile.getText(), txtOutputFilename.getText(),
-            lblOutputFolder.getText(), chckbxAcountSeparateOFX.isSelected(), chckbxConvertDecimalSeparator.isSelected(),
-            chckbxConvertDecimalSeparator.isSelected(), chckbxSeparatorComma.isSelected(), chckbxSavings.isSelected(),
-            chckbxInterest.isSelected(), chckbxJavaImplementation.isSelected());
+            lblOutputFolder.getText(), chckbxAcountSeparateOFX.isSelected(), 
+            chckbxInterest.isSelected());
         l_action.execute();
       }
     });
@@ -510,28 +409,10 @@ public class GUILayout extends JPanel implements ItemListener {
     bottomHalf.setMinimumSize(new Dimension(500, 100));
     bottomHalf.setPreferredSize(new Dimension(500, 400));
     splitPane.add(bottomHalf);
-
-    setDisplayOptionsJava(m_Java);
   }
 
   @Override
   public void itemStateChanged(ItemEvent e) {
     LOGGER.log(Level.INFO, "itemStateChanged");
-  }
-
-  /**
-   * Enable/disable buttons for Java or Python implemenation.
-   * 
-   * @param a_state "true" for Java, "false" for Python
-   */
-  private void setDisplayOptionsJava(boolean a_state) {
-    chckbxInterest.setEnabled(a_state);
-    if (chckbxSavings.isSelected()) {
-      chckbxInterest.setEnabled(true);
-    }
-    chckbxConvertDecimalSeparator.setVisible(!a_state);
-    chckbxConvertDateFormat.setVisible(!a_state);
-    chckbxSavings.setVisible(!a_state);
-    chckbxSeparatorComma.setVisible(!a_state);
   }
 }
