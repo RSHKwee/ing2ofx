@@ -17,7 +17,7 @@ http://www.chmistry.nl/financien/beginnen-met-boekhouden-in-gnucash/
 # Opening menu
 When running the application (Windows excutable or Java jar-file) the following menu is shown:
 
-![Main screen ing2ofx](./master/ing2ofxMain.PNG)
+![Main screen ing2ofx](./ing2ofxMain.PNG)
 
 Button _CSV File_: an ING CSV file can be choosen.
 - The application recognize a comma or semicolon separated input file.
