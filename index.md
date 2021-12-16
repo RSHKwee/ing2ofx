@@ -17,7 +17,7 @@ http://www.chmistry.nl/financien/beginnen-met-boekhouden-in-gnucash/
 # Opening menu
 When running the application (Windows excutable or Java jar-file) the following menu is shown:
 
-![Main screen ing2ofx](https://github.com/RSHKwee/ing2ofx/blob/master/ing2ofxMain.PNG)
+![Main screen ing2ofx](./master/ing2ofxMain.PNG)
 
 Button _CSV File_: an ING CSV file can be choosen.
 - The application recognize a comma or semicolon separated input file.
@@ -33,7 +33,7 @@ Button _Start GnuCash_: GnuCash is started.
 
 # Setting menu
 
-![Settings menu](https://github.com/RSHKwee/ing2ofx/blob/master/ing2ofxSettings.PNG)
+![Settings menu](./ing2ofxSettings.PNG)
 
 In the "settings" menu the following options are available:
 - A ING CSV file may contain transactions for more then one account, all converted OFX transcations can be stored in one OFX file or per account a separate OFX file (default).
