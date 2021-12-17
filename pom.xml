@@ -7,7 +7,7 @@
   <version>0.1.2-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>main</name>
+  <name>ing2ofx</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -51,10 +51,10 @@
   </dependencies>
   <build>
     <resources>
-        <resource>
-            <directory>src/main/resources</directory>
-            <filtering>true</filtering>
-        </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
     </resources>   
 	<plugins>
 	  <plugin>
@@ -62,8 +62,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
         <configuration>
-           <source>11</source>
-           <target>11</target>
+          <source>11</source>
+          <target>11</target>
         </configuration>
       </plugin>
       <plugin>
@@ -105,28 +105,28 @@
                 <headerType>console</headerType>
                 <jar>target/ing2ofx-jar-with-dependencies.jar</jar>
                 <outfile>target/ing2ofx.exe</outfile>
-                <downloadUrl>http://java.com/download</downloadUrl>
+                <downloadUrl>https://github.com/RSHKwee/ing2ofx/releases</downloadUrl>
                 <classPath>
                   <mainClass>ing2ofx.main.Main</mainClass>
                 </classPath>
 				<icon>src/main/resources/ingLogo.ico</icon>
                 <jre>
                   <bundledJre64Bit>true</bundledJre64Bit>
-		          <path>C:/Program Files/Zulu/zulu-11/bin</path>
-                  <bundledJreAsFallback>false</bundledJreAsFallback>
+		          <path>%JAVA_HOME%;%PATH%</path>
+                  <bundledJreAsFallback>true</bundledJreAsFallback>
                   <minVersion>1.8.0</minVersion>
                   <jdkPreference>preferJre</jdkPreference>
-                  <runtimeBits>64</runtimeBits>
+                  <runtimeBits>64/32</runtimeBits>
                 </jre>
                 <versionInfo>
-                  <fileVersion>1.0.0.0</fileVersion>
+                  <fileVersion>0.1.2.0</fileVersion>
                   <txtFileVersion>${project.version}</txtFileVersion>
                   <fileDescription>${project.name}</fileDescription>
                   <copyright>C</copyright>
-                  <productVersion>1.0.0.0</productVersion>
-                  <txtProductVersion>1.0.0.0</txtProductVersion>
+                  <productVersion>0.1.2.0</productVersion>
+                  <txtProductVersion>0.1.2.SNAPSHOT</txtProductVersion>
                   <productName>${project.name}</productName>
-                  <internalName>AppName</internalName>
+                  <internalName>ing2ofx</internalName>
                   <originalFilename>ing2ofx.exe</originalFilename>
                 </versionInfo>
               </configuration>
