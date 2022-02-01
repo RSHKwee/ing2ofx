@@ -176,6 +176,8 @@ public class IngTransactions {
       String sDtPosted = a_OfxTransaction.getDtposted();
       l_meta.setMaxDate(sDtPosted);
       if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted)) {
+        boolean l_balance = l_meta.getBalanceAfterTransaction().isBlank();
+        boolean l_balanceempty = l_meta.getBalanceAfterTransaction().isEmpty();
         if (l_meta.getBalanceAfterTransaction().isBlank()) {
           l_meta.setBalanceAfterTransaction(a_SaldoNaMutatie);
         }
@@ -206,11 +208,11 @@ public class IngTransactions {
     l_meta.setAccount(a_OfxTransaction.getAccount());
     String sDtPosted = a_OfxTransaction.getDtposted();
     l_meta.setMaxDate(sDtPosted);
-    if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted)) {
-      if (l_meta.getBalanceAfterTransaction().isBlank()) {
+   // if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted)) {
+   //   if (l_meta.getBalanceAfterTransaction().isBlank()) {
         l_meta.setBalanceAfterTransaction(a_SaldoNaMutatie);
-      }
-    }
+   //   }
+   // }
     l_meta.setMaxDate(sDtPosted);
     l_meta.setMinDate(sDtPosted);
 
