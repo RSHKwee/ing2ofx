@@ -138,7 +138,7 @@ public class IngTransaction extends CsvToBean<Object> {
   }
 
   public void setMededelingen(String mededelingen) {
-    Mededelingen = mededelingen;
+    Mededelingen = filterMededelingen(mededelingen);
   }
 
   public void setSaldo_na_mutatie(String saldo_na_mutatie) {
@@ -149,4 +149,23 @@ public class IngTransaction extends CsvToBean<Object> {
     Tag = tag;
   }
 
+  // Naam: yyyyyy Omschrijving: xxxxxx IBAN: xxxxxx
+  // Naam: yyyyyy en Omschrijving: worden verwijderd
+  // Resultaat:
+  //     "xxxxxx IBAN: xxxxxx"
+  //
+  private String filterMededelingen (String a_Mededeling) {
+    String l_Mededeling = a_Mededeling;
+    if (l_Mededeling.contains(Omschrijving)) {
+      l_Mededeling = l_Mededeling.replaceAll(Omschrijving + " ", "");
+    }
+    if (l_Mededeling.contains("Omschrijving: ")) {
+      l_Mededeling = l_Mededeling.replaceAll("Omschrijving: ", "");
+    }
+    if (l_Mededeling.contains("Naam: ")) {
+      l_Mededeling = l_Mededeling.replaceAll("Naam: ", "");
+    }
+	  return l_Mededeling;
+  }
+  
 }
