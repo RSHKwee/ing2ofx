@@ -26,6 +26,12 @@ public class FileUtils {
     }
   }
 
+  /**
+   * Check if directory exists.
+   * 
+   * @param a_dir Diretory to check
+   * @return boolean, true if directory exists.
+   */
   public static boolean checkDirectory(String a_dir) {
     File directory = new File(a_dir);
     return directory.exists();
@@ -146,6 +152,12 @@ public class FileUtils {
     return ext.matcher(file.getName()).replaceAll("");
   }
 
+  /**
+   * Returns filename without extension.
+   *  
+   * @param file String representation of file
+   * @return filename without extension.
+   */
   public static String getFileNameWithoutExtension(String file) {
     return ext.matcher(file).replaceAll("");
   }

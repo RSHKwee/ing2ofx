@@ -7,10 +7,15 @@ import com.opencsv.bean.CsvToBean;
 
 public class IngTransaction extends CsvToBean<Object> {
 //  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
-  /*
+/*
  * @formatter:off
+ * 
+ * For comma seperated file:
  * "Datum","Naam / Omschrijving","Rekening","Tegenrekening","Code","Af Bij","Bedrag (EUR)","MutatieSoort","Mededelingen"
+ *
+ * For semicolon seperared file:
  * "Datum";"Naam / Omschrijving";"Rekening";"Tegenrekening";"Code";"Af Bij";"Bedrag (EUR)";"Mutatiesoort";"Mededelingen";"Saldo na mutatie";"Tag"
+ * 
  *     These are the first two lines of an ING Netherlands CSV file:
 
     "Datum","Naam / Omschrijving","Rekening","Tegenrekening","Code",\
@@ -154,6 +159,22 @@ public class IngTransaction extends CsvToBean<Object> {
   // Resultaat:
   //     "xxxxxx IBAN: xxxxxx"
   //
+  /**
+   * In mededeling kan de naam van rekeninghouder zijn opgenomen, dit is dubbele 
+   * informatie en wordt verwijderd.
+   * <br>
+   * Geldt ook voor naamgeving veld "Opmerking:", wordt ook verwijderd.
+   * <p>
+   * "Naam: yyyyyy Omschrijving: xxxxxx IBAN: xxxxxx"
+   * <p>
+   * "Naam: yyyyyy" en "Omschrijving: " worden verwijderd
+   * <br>
+   * Resultaat:
+   * <br>
+   * "xxxxxx IBAN: xxxxxx"
+   * @param a_Mededeling
+   * @return Gefilterde mededeling
+   */
   private String filterMededelingen (String a_Mededeling) {
     String l_Mededeling = a_Mededeling;
     if (l_Mededeling.contains(Omschrijving)) {
