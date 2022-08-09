@@ -1,4 +1,4 @@
-package ing2ofx.convertor;
+package ingLibrary;
 
 /**
  * Bean package for ING Saving transaction

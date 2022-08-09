@@ -1,4 +1,4 @@
-package ing2ofx.convertor;
+package ofxLibrary;
 
 import java.util.ArrayList;
 //import java.util.logging.Logger;

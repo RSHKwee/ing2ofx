@@ -1,4 +1,4 @@
-package ing2ofx.convertor;
+package ingLibrary;
 
 //import java.util.logging.Logger;
 

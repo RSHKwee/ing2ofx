@@ -1,4 +1,4 @@
-package ing2ofx.convertor;
+package ofxLibrary;
 
 /**
  * Meta information storage for an account and its transactions.

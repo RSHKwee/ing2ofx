@@ -1,4 +1,4 @@
-package ing2ofx.convertor;
+package ofxLibrary;
 
 import java.io.File;
 import java.time.LocalDateTime;
@@ -10,6 +10,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import ing2ofx.convertor.OfxTransactions;
 
 public class OfxDocument {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());

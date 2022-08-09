@@ -17,6 +17,9 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import ofxLibrary.OfxMetaInfo;
+import ofxLibrary.OfxTransaction;
+
 public class OfxTransactions {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private String C_BankCode = "INGBNL2A";

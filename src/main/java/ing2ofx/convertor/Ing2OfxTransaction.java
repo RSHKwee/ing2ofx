@@ -9,6 +9,10 @@ package ing2ofx.convertor;
 import java.util.Map;
 //import java.util.logging.Logger;
 
+import ingLibrary.IngSavingTransaction;
+import ingLibrary.IngTransaction;
+import ofxLibrary.OfxTransaction;
+
 public class Ing2OfxTransaction {
 //  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 

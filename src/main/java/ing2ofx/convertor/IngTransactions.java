@@ -26,6 +26,11 @@ import com.opencsv.CSVReaderBuilder;
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 
+import ingLibrary.IngSavingTransaction;
+import ingLibrary.IngTransaction;
+import ofxLibrary.OfxMetaInfo;
+import ofxLibrary.OfxTransaction;
+
 public class IngTransactions {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 
@@ -176,8 +181,6 @@ public class IngTransactions {
       String sDtPosted = a_OfxTransaction.getDtposted();
       l_meta.setMaxDate(sDtPosted);
       if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted)) {
-        boolean l_balance = l_meta.getBalanceAfterTransaction().isBlank();
-        boolean l_balanceempty = l_meta.getBalanceAfterTransaction().isEmpty();
         if (l_meta.getBalanceAfterTransaction().isBlank()) {
           l_meta.setBalanceAfterTransaction(a_SaldoNaMutatie);
         }
