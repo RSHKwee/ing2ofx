@@ -69,7 +69,7 @@ public class GUILayout extends JPanel implements ItemListener {
 
   private File m_GnuCashExecutable = new File("C:\\Program Files (x86)\\gnucash\\bin\\gnucash.exe");
   private File m_OutputFolder;
-  private File m_CsvFile;
+  private File[] m_CsvFiles;
 
   private boolean m_toDisk = false;
   private Level m_Level = Level.INFO;
@@ -100,8 +100,8 @@ public class GUILayout extends JPanel implements ItemListener {
       m_OutputFolder = new File(m_param.get_OutputFolder());
       lblOutputFolder.setText(m_OutputFolder.getAbsolutePath());
     }
-    if (!m_param.get_CsvFile().isBlank()) {
-      m_CsvFile = new File(m_param.get_CsvFile());
+    if (!(m_param.get_CsvFiles() == null)) {
+      m_CsvFiles = m_param.get_CsvFiles();
     }
 
     m_Level = m_param.get_Level();
@@ -298,17 +298,30 @@ public class GUILayout extends JPanel implements ItemListener {
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         FileFilter filter = new FileNameExtensionFilter("CSV File", "csv");
         fileChooser.setFileFilter(filter);
-        fileChooser.setSelectedFile(m_CsvFile);
+
+        File[] l_files = null;
+        m_param.set_CsvFiles(m_CsvFiles);
+        // l_files[0] = m_CsvFile;
+        fileChooser.setSelectedFiles(l_files);
+        fileChooser.setMultiSelectionEnabled(true);
+
+        fileChooser.setSelectedFile(m_CsvFiles[0]);
         int option = fileChooser.showOpenDialog(GUILayout.this);
         if (option == JFileChooser.APPROVE_OPTION) {
-          File file = fileChooser.getSelectedFile();
-          LOGGER.log(Level.INFO, "CSV File: " + file.getAbsolutePath());
-          lblCSVFile.setText(file.getAbsolutePath());
-          m_CsvFile = file;
-          m_param.set_CsvFile(file);
+          // File file = fileChooser.getSelectedFile();
+          File[] files = fileChooser.getSelectedFiles();
+          m_CsvFiles = files;
+          m_param.set_CsvFiles(m_CsvFiles);
 
-          String l_filename;
-          l_filename = library.FileUtils.getFileNameWithoutExtension(file) + ".ofx";
+          File file = null;
+          String l_filename = "";
+
+          for (int i = 0; i < files.length; i++) {
+            file = files[i];
+            LOGGER.log(Level.INFO, "CSV File: " + file.getAbsolutePath());
+            lblCSVFile.setText(file.getAbsolutePath());
+            l_filename = l_filename + library.FileUtils.getFileNameWithoutExtension(file) + ".ofx" + "; ";
+          }
           txtOutputFilename.setText(l_filename);
           txtOutputFilename.setEnabled(true);
 
@@ -376,8 +389,8 @@ public class GUILayout extends JPanel implements ItemListener {
       @Override
       public void actionPerformed(ActionEvent e) {
         m_param.save();
-        ActionPerformScript l_action = new ActionPerformScript(lblCSVFile.getText(), txtOutputFilename.getText(),
-            lblOutputFolder.getText(), chckbxAcountSeparateOFX.isSelected(), chckbxInterest.isSelected());
+        ActionPerformScript l_action = new ActionPerformScript(m_CsvFiles, lblOutputFolder.getText(),
+            chckbxAcountSeparateOFX.isSelected(), chckbxInterest.isSelected());
         l_action.execute();
       }
     });
