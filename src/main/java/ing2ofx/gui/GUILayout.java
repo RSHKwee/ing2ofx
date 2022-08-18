@@ -284,7 +284,7 @@ public class GUILayout extends JPanel implements ItemListener {
     panel.setPreferredSize(new Dimension(350, 290));
 
     // Choose CSV File
-    JLabel lblCSVFile = new JLabel("Select a ING CSV file");
+    JLabel lblCSVFile = new JLabel("Select ING CSV file(s)");
     lblCSVFile.setEnabled(false);
     lblCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
     panel.add(lblCSVFile, "cell 1 0");
