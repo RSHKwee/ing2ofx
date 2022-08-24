@@ -87,7 +87,15 @@ public class Ing2OfxTransaction {
         l_code = codex.get(a_code);
       }
     } else {
-      l_code = "OTHER";
+      if (a_code.equalsIgnoreCase("xx")) {
+        if (a_afbij.equalsIgnoreCase("Bij")) {
+          l_code = "CREDIT";
+        } else {
+          l_code = "DEBIT";
+        }
+      } else {
+        l_code = "OTHER";
+      }
     }
     return l_code;
   }
