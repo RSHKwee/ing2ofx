@@ -25,6 +25,8 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
   private boolean m_SeparateOFX = true;
   private boolean m_Interrest = true;
 
+  private String C_BankCode = "INGBNL2A";
+
   /**
    * Constructor for Java.
    * 
@@ -50,9 +52,9 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
     for (int i = 0; i < m_CSVFiles.length; i++) {
       String l_CSVFile = m_CSVFiles[i].getAbsolutePath();
       if (!m_OutputFolder.isBlank()) {
-        l_ingtrns = new OfxDocument(new File(l_CSVFile), m_OutputFolder, m_SeparateOFX);
+        l_ingtrns = new OfxDocument(C_BankCode, new File(l_CSVFile), m_OutputFolder, m_SeparateOFX);
       } else {
-        l_ingtrns = new OfxDocument(new File(l_CSVFile), m_SeparateOFX);
+        l_ingtrns = new OfxDocument(C_BankCode, new File(l_CSVFile), m_SeparateOFX);
       }
       if (m_Interrest) {
         l_ingtrns.load("Rente");
