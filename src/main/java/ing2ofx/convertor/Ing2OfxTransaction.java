@@ -61,6 +61,16 @@ public class Ing2OfxTransaction {
     l_ofxtrans.setName(xmlFriendlyName(a_trans.getOmschrijving()));
     l_ofxtrans.setAccountto(a_trans.getTegenrekening());
     l_ofxtrans.setMemo(xmlFriendlyName(a_trans.getMededelingen()));
+
+    if (a_trans.getTegenrekening().isBlank()) {
+      String l_memo = a_trans.getMededelingen();
+      String[] l_parts = l_memo.split(" ");
+      if (l_parts[0].equals("Van") || l_parts[0].equals("Naar")) {
+        if (l_parts.length >= 3) {
+          l_ofxtrans.setAccountto(l_parts[3]);
+        }
+      }
+    }
     return l_ofxtrans;
   }
 
