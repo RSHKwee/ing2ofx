@@ -46,27 +46,27 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
 
   @Override
   protected Void doInBackground() throws Exception {
-    OfxDocument l_ingtrns;
+    OfxDocument l_document;
     LOGGER.log(Level.INFO, "Start conversion (java).");
 
     for (int i = 0; i < m_CSVFiles.length; i++) {
       String l_CSVFile = m_CSVFiles[i].getAbsolutePath();
       if (!m_OutputFolder.isBlank()) {
-        l_ingtrns = new OfxDocument(C_BankCode, new File(l_CSVFile), m_OutputFolder, m_SeparateOFX);
+        l_document = new OfxDocument(C_BankCode, new File(l_CSVFile), m_OutputFolder, m_SeparateOFX);
       } else {
-        l_ingtrns = new OfxDocument(C_BankCode, new File(l_CSVFile), m_SeparateOFX);
+        l_document = new OfxDocument(C_BankCode, new File(l_CSVFile), m_SeparateOFX);
       }
       if (m_Interrest) {
-        l_ingtrns.load("Rente");
+        l_document.load("Rente");
       } else {
-        l_ingtrns.load();
+        l_document.load();
       }
       /*
        * if (m_OutputFile.equalsIgnoreCase("Output filename")) {
        * l_ingtrns.CreateOfxDocument(); } else {
        * l_ingtrns.CreateOfxDocument(m_OutputFile); }
        */
-      l_ingtrns.CreateOfxDocument();
+      l_document.CreateOfxDocument();
 
     }
     LOGGER.log(Level.INFO, "End conversion.");

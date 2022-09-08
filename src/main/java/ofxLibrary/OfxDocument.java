@@ -22,6 +22,7 @@ public class OfxDocument {
   private String m_OutputDir = "";
   private boolean m_separateOFX = true;
   private File m_File;
+  private File[] m_Files;
   private String m_FilterName = "";
   private boolean m_Savings = false;
   private String m_BankCode = "";
@@ -35,8 +36,22 @@ public class OfxDocument {
 
   public OfxDocument(String a_BankCode, File a_File, boolean a_separateOfx) {
     m_BankCode = a_BankCode;
-    m_File = a_File;
+    m_Files[0] = a_File;
     m_OutputDir = a_File.getParent();
+    m_separateOFX = a_separateOfx;
+  }
+
+  public OfxDocument(String a_BankCode, File[] a_Files, String a_outputdir, boolean a_separateOfx) {
+    m_BankCode = a_BankCode;
+    m_Files = a_Files;
+    m_OutputDir = a_outputdir;
+    m_separateOFX = a_separateOfx;
+  }
+
+  public OfxDocument(String a_BankCode, File[] a_Files, boolean a_separateOfx) {
+    m_BankCode = a_BankCode;
+    m_Files = a_Files;
+    m_OutputDir = a_Files[0].getParent();
     m_separateOFX = a_separateOfx;
   }
 

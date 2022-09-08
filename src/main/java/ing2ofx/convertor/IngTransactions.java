@@ -29,6 +29,7 @@ import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 import ingLibrary.IngSavingTransaction;
 import ingLibrary.IngTransaction;
 import ofxLibrary.OfxMetaInfo;
+import ofxLibrary.OfxPairTransaction;
 import ofxLibrary.OfxTransaction;
 
 public class IngTransactions {
@@ -52,6 +53,15 @@ public class IngTransactions {
    */
   public IngTransactions(File a_file) {
     m_File = a_file;
+  }
+
+  /**
+   * 
+   * @param a_file
+   */
+  public void load(File a_file) {
+    m_File = a_file;
+    load();
   }
 
   /**
@@ -116,6 +126,9 @@ public class IngTransactions {
           m_OfxTransactions.add(l_ofxtrans);
         });
       }
+      OfxPairTransaction l_filter = new OfxPairTransaction(m_OfxTransactions);
+      m_OfxTransactions = l_filter.pair();
+
       LOGGER.log(Level.INFO, "Transactions read: " + Integer.toString(m_OfxTransactions.size()));
     } catch (IOException e) {
       LOGGER.log(Level.INFO, e.getMessage());
@@ -211,11 +224,11 @@ public class IngTransactions {
     l_meta.setAccount(a_OfxTransaction.getAccount());
     String sDtPosted = a_OfxTransaction.getDtposted();
     l_meta.setMaxDate(sDtPosted);
-   // if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted)) {
-   //   if (l_meta.getBalanceAfterTransaction().isBlank()) {
-        l_meta.setBalanceAfterTransaction(a_SaldoNaMutatie);
-   //   }
-   // }
+    // if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted)) {
+    // if (l_meta.getBalanceAfterTransaction().isBlank()) {
+    l_meta.setBalanceAfterTransaction(a_SaldoNaMutatie);
+    // }
+    // }
     l_meta.setMaxDate(sDtPosted);
     l_meta.setMinDate(sDtPosted);
 
