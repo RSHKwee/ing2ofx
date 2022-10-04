@@ -37,6 +37,7 @@ public class Ing2OfxTransaction {
     l_ofxtrans.setName(xmlFriendlyName(a_trans.getOmschrijving()));
     l_ofxtrans.setAccountto(a_trans.getTegenrekening());
     l_ofxtrans.setMemo(xmlFriendlyName(a_trans.getMededelingen()));
+    l_ofxtrans.setSaldo_na_mutatie(a_trans.getSaldo_na_mutatie());
     return l_ofxtrans;
   }
 
@@ -61,6 +62,7 @@ public class Ing2OfxTransaction {
     l_ofxtrans.setName(xmlFriendlyName(a_trans.getOmschrijving()));
     l_ofxtrans.setAccountto(a_trans.getTegenrekening());
     l_ofxtrans.setMemo(xmlFriendlyName(a_trans.getMededelingen()));
+    l_ofxtrans.setSaldo_na_mutatie(a_trans.getSaldo_na_mutatie());
 
     if (a_trans.getTegenrekening().isBlank()) {
       String l_memo = a_trans.getMededelingen();

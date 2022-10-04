@@ -56,15 +56,6 @@ public class IngTransactions {
   }
 
   /**
-   * 
-   * @param a_file
-   */
-  public void load(File a_file) {
-    m_File = a_file;
-    load();
-  }
-
-  /**
    * Determine type of ING transactions (saving or normal). <br>
    * Process the transactions and convert them to OFX transactions.
    */

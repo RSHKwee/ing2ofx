@@ -1,4 +1,4 @@
-package ing2ofx.convertor;
+package ofxLibrary;
 
 /**
  * OFX Transactions handling.
@@ -6,7 +6,7 @@ package ing2ofx.convertor;
  * @author René
  *
  */
-import java.io.File;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -17,10 +17,10 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import ofxLibrary.OfxMetaInfo;
-import ofxLibrary.OfxTransaction;
+//import ofxLibrary.BankTransactions;
+//import ing2ofx.convertor.IngTransactions;
 
-public class OfxTransactions {
+public class OfxXmlTransactions {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private String m_BankCode = "";
 
@@ -30,27 +30,23 @@ public class OfxTransactions {
   public Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
   public Map<String, ArrayList<String>> m_OfxAcounts = new LinkedHashMap<String, ArrayList<String>>();
 
-  private File m_file;
-
   /**
    * Constructor
    * 
    * @param a_file CSV file with ING transactions.
    */
-  public OfxTransactions(File a_file, String a_BankCode) {
-    m_file = a_file;
+  public OfxXmlTransactions(String a_BankCode) {
     m_BankCode = a_BankCode;
   }
 
   /**
    * Load ING Transactions and initialize OFX Transactions and meta information.
    */
-  public void load() {
-    IngTransactions l_transactions = new IngTransactions(m_file);
-    l_transactions.load();
-    m_OfxTransactions = l_transactions.getOfxTransactions();
-    m_metainfo = l_transactions.getOfxMetaInfo();
-    m_Saving = l_transactions.isSavingCsvFile();
+  public void load(List<OfxTransaction> a_OfxTransactions, Map<String, OfxMetaInfo> a_metainfo, boolean a_Saving) {
+    m_OfxTransactions = a_OfxTransactions;
+
+    m_metainfo = a_metainfo;
+    m_Saving = a_Saving;
   }
 
   /**
@@ -113,15 +109,15 @@ public class OfxTransactions {
     return l_regels;
   }
 
+  public boolean isSavings() {
+    return m_Saving;
+  }
+
   /**
    * 
    */
   public void OfxXmlTransactionsForAccounts() {
     OfxXmlTransactionsForAccounts(false, "");
-  }
-
-  public boolean isSavings() {
-    return m_Saving;
   }
 
   /**

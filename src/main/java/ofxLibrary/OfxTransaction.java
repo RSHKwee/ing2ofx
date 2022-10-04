@@ -17,6 +17,15 @@ public class OfxTransaction extends CsvToBean<Object> {
   private String accountto = "";
   private String memo = "";
   private int OfxTranPair = -1;
+  private String Saldo_na_mutatie = "";
+
+  public String getSaldo_na_mutatie() {
+    return Saldo_na_mutatie;
+  }
+
+  public void setSaldo_na_mutatie(String saldo_na_mutatie) {
+    Saldo_na_mutatie = saldo_na_mutatie;
+  }
 
   public String getAccount() {
     return account;

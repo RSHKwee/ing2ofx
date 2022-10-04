@@ -11,8 +11,6 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import ing2ofx.convertor.OfxTransactions;
-
 public class OfxDocument {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 
@@ -70,7 +68,7 @@ public class OfxDocument {
   }
 
   public void load() {
-    OfxTransactions l_OfxTrans = new OfxTransactions(m_File, m_BankCode);
+    OfxXmlTransactions l_OfxTrans = new OfxXmlTransactions(m_BankCode);
     l_OfxTrans.load();
     l_OfxTrans.OfxXmlTransactionsForAccounts();
     m_OfxAcounts = l_OfxTrans.m_OfxAcounts;
@@ -79,7 +77,7 @@ public class OfxDocument {
   }
 
   public void load(String a_FilterName) {
-    OfxTransactions l_OfxTrans = new OfxTransactions(m_File, m_BankCode);
+    OfxXmlTransactions l_OfxTrans = new OfxXmlTransactions(m_BankCode);
     l_OfxTrans.load();
     l_OfxTrans.OfxXmlTransactionsForAccounts(a_FilterName);
     m_OfxAcounts = l_OfxTrans.m_OfxAcounts;
@@ -89,7 +87,7 @@ public class OfxDocument {
   }
 
   public void load(boolean a_AllInOne, String a_FilterName) {
-    OfxTransactions l_OfxTrans = new OfxTransactions(m_File, m_BankCode);
+    OfxXmlTransactions l_OfxTrans = new OfxXmlTransactions(m_BankCode);
     l_OfxTrans.load();
     l_OfxTrans.OfxXmlTransactionsForAccounts(a_AllInOne, a_FilterName);
     m_OfxAcounts = l_OfxTrans.m_OfxAcounts;
