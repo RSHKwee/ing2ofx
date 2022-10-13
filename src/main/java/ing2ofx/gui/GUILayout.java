@@ -284,19 +284,19 @@ public class GUILayout extends JPanel implements ItemListener {
     panel.setPreferredSize(new Dimension(350, 290));
 
     // Choose CSV File
-    JLabel lblCSVFile = new JLabel("Select ING CSV file(s)");
+    JLabel lblCSVFile = new JLabel("Select ING CSV or SNS XML file(s)");
     lblCSVFile.setEnabled(false);
     lblCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
     panel.add(lblCSVFile, "cell 1 0");
 
-    JButton btnCSVFile = new JButton("CSV File");
+    JButton btnCSVFile = new JButton("CSV/XML File");
     btnCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
     btnCSVFile.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        FileFilter filter = new FileNameExtensionFilter("CSV File", "csv");
+        FileFilter filter = new FileNameExtensionFilter("CSV/XML File", "csv", "xml");
         fileChooser.setFileFilter(filter);
 
         File[] l_files = null;

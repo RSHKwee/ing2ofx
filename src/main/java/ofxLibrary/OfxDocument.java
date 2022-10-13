@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
@@ -68,8 +69,9 @@ public class OfxDocument {
   }
 
   public void load() {
+    List<OfxTransaction> a_OfxTransactions = null;
     OfxXmlTransactions l_OfxTrans = new OfxXmlTransactions(m_BankCode);
-    l_OfxTrans.load();
+    l_OfxTrans.load(a_OfxTransactions, m_metainfo, m_Savings);
     l_OfxTrans.OfxXmlTransactionsForAccounts();
     m_OfxAcounts = l_OfxTrans.m_OfxAcounts;
     m_metainfo = l_OfxTrans.m_metainfo;

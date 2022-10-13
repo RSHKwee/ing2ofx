@@ -53,10 +53,6 @@ public class ofxXmlTransactionsForAccounts {
   public void OfxXmlTransactionsForAccounts(boolean a_AllInOne, String a_FilterName) {
     Set<String> accounts = m_metainfo.keySet();
     accounts.forEach(account -> {
-      OfxMetaInfo l_metainfo = m_metainfo.get(account);
-      ArrayList<String> l_regelshead = new ArrayList<String>();
-      l_regelshead = OfxXmlTransactionsHeader(account, l_metainfo.getMinDate(), l_metainfo.getMaxDate());
-      m_OfxAcounts.put(account, l_regelshead);
       m_NumberOfTransactions = 0;
 
       LOGGER.log(Level.INFO, "");
@@ -81,13 +77,6 @@ public class ofxXmlTransactionsForAccounts {
           }
         }
       });
-
-      ArrayList<String> l_regelsfoot = new ArrayList<String>();
-      l_regelsfoot = OfxXmlTransactionsFooter(l_metainfo.getBalanceAfterTransaction(), l_metainfo.getBalanceDate());
-
-      ArrayList<String> prevregels = m_OfxAcounts.get(account);
-      prevregels.addAll(l_regelsfoot);
-      m_OfxAcounts.put(account, prevregels);
       LOGGER.log(Level.INFO, "Transactions processed: " + Integer.toString(m_NumberOfTransactions));
     });
     LOGGER.log(Level.FINE, "");
