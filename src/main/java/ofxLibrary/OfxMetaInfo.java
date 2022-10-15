@@ -106,7 +106,8 @@ public class OfxMetaInfo {
     }
   }
 
-  public void setMaxDate(String maxDate) {
+  public boolean setMaxDate(String maxDate) {
+    boolean bstat = false;
     int i_maxDate = -1;
     try {
       i_maxDate = Integer.parseInt(maxDate);
@@ -114,7 +115,9 @@ public class OfxMetaInfo {
     }
     if (i_maxDate > this.maxDate) {
       this.maxDate = i_maxDate;
+      bstat = true;
     }
+    return bstat;
   }
 
   public void setBalanceAfterTransaction(String balanceAfterTransaction) {
