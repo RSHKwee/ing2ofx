@@ -37,6 +37,7 @@ import ofxLibrary.OfxTransaction;
 public class SnsTransactions {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 
+  private String m_bankcode = "SNSBNL2A";
   private Camt053Parser m_reader;
   private String m_File;
   private Set<String> m_UniqueId = new LinkedHashSet<>();
@@ -78,7 +79,7 @@ public class SnsTransactions {
           String ls_balDate = DateToNumeric.dateToNumeric(l_balDate);
           OfxMetaInfo l_meta = m_metainfo.get(l_IBANNr);
           if (null == l_meta) {
-            l_meta = new OfxMetaInfo();
+            l_meta = new OfxMetaInfo(m_bankcode);
           }
 
           l_meta.setAccount(l_IBANNr);
@@ -94,7 +95,7 @@ public class SnsTransactions {
         });
 
         for (ReportEntry2 reportEntry2 : accountStatement2.getNtry()) {
-          OfxTransaction l_ofxtrans = new OfxTransaction();
+          OfxTransaction l_ofxtrans = new OfxTransaction(m_bankcode);
           l_ofxtrans.setAccount(l_IBANNr);
           if (CreditDebitCode.DBIT == reportEntry2.getCdtDbtInd()) {
             l_ofxtrans.setTrntype("CREDIT");

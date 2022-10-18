@@ -4,12 +4,12 @@ import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
+//import java.util.HashMap;
+//import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+//import java.util.Map;
+//import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,16 +17,17 @@ public class OfxDocument {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 
 //  private Map<String, ArrayList<String>> m_OfxAcounts = new LinkedHashMap<String, ArrayList<String>>();
-  private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
+  // private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String,
+  // OfxMetaInfo>();
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
 
   private String m_OutputDir = "";
-  private boolean m_separateOFX = true;
+  // private boolean m_separateOFX = true;
   private File m_File;
-  private File[] m_Files;
-  private String m_FilterName = "";
-  private boolean m_Savings = false;
-  private String m_BankCode = "";
+  // private File[] m_Files;
+  // private String m_FilterName = "";
+  // private boolean m_Savings = false;
+//  private String m_BankCode = "";
 
   public OfxDocument(List<OfxTransaction> a_OfxTransactions) {
     m_OfxTransactions = a_OfxTransactions;
@@ -87,69 +88,13 @@ public class OfxDocument {
     }
 
     m_regels.clear();
-
     m_regels = OfxXmlHeader();
-    m_OfxTransactions.forEach(ofxtrans -> {
-      ArrayList<String> l_regels = new ArrayList<String>();
-      m_regels.addAll(ofxtrans.OfxXmlTransaction());
-    });
+
+    OfxXmlTransactions l_xmlTransactions = new OfxXmlTransactions(m_OfxTransactions);
+    m_regels.addAll(l_xmlTransactions.OfxXmlTransactionsBody());
+
     m_regels.addAll(OfxXmlFooter());
-
-    // Construct filename
-    OfxMetaInfo l_info = m_metainfo.get(account);
-    String l_prefix = l_info.getPrefix();
-    String l_filename = "";
-    if (!l_prefix.isBlank() && m_Savings) {
-      l_filename = m_OutputDir + "\\" + String.join("_", l_prefix, account);
-      if (!m_FilterName.isBlank()) {
-        l_filename = String.join("_", l_filename, m_FilterName);
-      }
-      l_filename = String.join("_", l_filename, m_Filename);
-    } else {
-      l_filename = m_OutputDir + "\\" + String.join("_", account, m_Filename);
-    }
-    l_info.printLog();
-
-    LOGGER.log(Level.INFO, "Create OFX file " + l_filename);
-    library.TxtBestand.DumpXmlBestand(l_filename, m_regels);
-
-    Set<String> accounts = m_OfxAcounts.keySet();
-    if (m_separateOFX) {
-      accounts.forEach(account -> {
-        ArrayList<String> l_regels = new ArrayList<String>();
-        l_regels = OfxXmlHeader();
-        l_regels.addAll(m_OfxAcounts.get(account));
-        l_regels.addAll(OfxXmlFooter());
-
-        // Construct filename
-        OfxMetaInfo l_info = m_metainfo.get(account);
-        String l_prefix = l_info.getPrefix();
-        String l_filename = "";
-        if (!l_prefix.isBlank() && m_Savings) {
-          l_filename = m_OutputDir + "\\" + String.join("_", l_prefix, account);
-          if (!m_FilterName.isBlank()) {
-            l_filename = String.join("_", l_filename, m_FilterName);
-          }
-          l_filename = String.join("_", l_filename, m_Filename);
-        } else {
-          l_filename = m_OutputDir + "\\" + String.join("_", account, m_Filename);
-        }
-        l_info.printLog();
-
-        LOGGER.log(Level.INFO, "Create OFX file " + l_filename);
-        library.TxtBestand.DumpXmlBestand(l_filename, l_regels);
-      });
-    } else {
-      m_regels.clear();
-      m_regels = OfxXmlHeader();
-      accounts.forEach(account -> {
-        OfxMetaInfo l_info = m_metainfo.get(account);
-        m_regels.addAll(m_OfxAcounts.get(account));
-        l_info.printLog();
-      });
-      m_regels.addAll(OfxXmlFooter());
-      LOGGER.log(Level.INFO, "Create OFX file " + m_Filename);
-      library.TxtBestand.DumpXmlBestand(m_OutputDir + "\\" + m_Filename, m_regels);
-    }
+    LOGGER.log(Level.INFO, "Create OFX file " + m_Filename);
+    library.TxtBestand.DumpXmlBestand(m_OutputDir + "\\" + m_Filename, m_regels);
   }
 }

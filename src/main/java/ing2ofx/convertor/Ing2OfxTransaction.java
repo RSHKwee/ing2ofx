@@ -15,6 +15,7 @@ import ofxLibrary.OfxTransaction;
 
 public class Ing2OfxTransaction {
 //  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  static String m_bankcode = "INGBNL2A";
 
   /**
    * Conversion of an ING Saving transaction to an OFX transaction.
@@ -23,7 +24,7 @@ public class Ing2OfxTransaction {
    * @return OFX Transaction
    */
   static public OfxTransaction convertSavingToOfx(IngSavingTransaction a_trans) {
-    OfxTransaction l_ofxtrans = new OfxTransaction();
+    OfxTransaction l_ofxtrans = new OfxTransaction(m_bankcode);
     l_ofxtrans.setAccount(a_trans.getRekening().replaceAll(" ", ""));
     l_ofxtrans.setTrntype(transType("xx", a_trans.getAf_Bij()));
     l_ofxtrans.setDtposted(a_trans.getDatum().replaceAll("-", ""));
@@ -48,7 +49,7 @@ public class Ing2OfxTransaction {
    * @return OFX Transaction
    */
   static public OfxTransaction convertToOfx(IngTransaction a_trans) {
-    OfxTransaction l_ofxtrans = new OfxTransaction();
+    OfxTransaction l_ofxtrans = new OfxTransaction(m_bankcode);
     l_ofxtrans.setAccount(a_trans.getRekening().replaceAll(" ", ""));
     l_ofxtrans.setTrntype(transType(a_trans.getCode(), a_trans.getAf_Bij()));
     l_ofxtrans.setDtposted(a_trans.getDatum());

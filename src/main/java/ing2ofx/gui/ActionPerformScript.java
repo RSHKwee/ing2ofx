@@ -1,7 +1,8 @@
 package ing2ofx.gui;
 
 import java.io.File;
-
+import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -9,6 +10,8 @@ import javax.swing.JTextArea;
 import javax.swing.SwingWorker;
 
 import ofxLibrary.OfxDocument;
+import ofxLibrary.OfxTransaction;
+import ofxLibrary.OfxXmlTransactions;
 
 /**
  * 
@@ -25,7 +28,7 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
   private boolean m_SeparateOFX = true;
   private boolean m_Interrest = true;
 
-  private String C_BankCode = "INGBNL2A";
+  private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
 
   /**
    * Constructor for Java.
@@ -36,8 +39,9 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
    * @param a_SeparateOFX  All accounts in separate OFX files or all in one.
    * @param a_Interrest    Only interest transactions in OFX file(s).
    */
-  public ActionPerformScript(File[] a_CSVFiles, String a_OutputFolder, boolean a_SeparateOFX, boolean a_Interrest) {
-    m_CSVFiles = a_CSVFiles;
+  public ActionPerformScript(List<OfxTransaction> a_OfxTransactions, String a_OutputFolder, boolean a_SeparateOFX,
+      boolean a_Interrest) {
+    m_OfxTransactions = a_OfxTransactions;
     m_OutputFolder = a_OutputFolder;
 
     m_SeparateOFX = a_SeparateOFX;
@@ -48,6 +52,9 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
   protected Void doInBackground() throws Exception {
     OfxDocument l_document;
     LOGGER.log(Level.INFO, "Start conversion (java).");
+
+    OfxXmlTransactions l_xmlTransactions = new OfxXmlTransactions(m_OfxTransactions);
+    l_xmlTransactions.getAccountTransactions();
 
     for (int i = 0; i < m_CSVFiles.length; i++) {
       String l_CSVFile = m_CSVFiles[i].getAbsolutePath();

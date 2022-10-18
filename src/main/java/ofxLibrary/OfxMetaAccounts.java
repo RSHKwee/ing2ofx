@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 // import java.util.logging.Logger;
+import java.util.Set;
 
 public class OfxMetaAccounts {
   // private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
@@ -51,7 +52,7 @@ public class OfxMetaAccounts {
         } catch (Exception e) {
         }
       } else {
-        OfxMetaInfo l_meta = new OfxMetaInfo();
+        OfxMetaInfo l_meta = new OfxMetaInfo(l_ofxtrans.getBankCode());
         l_meta.setAccount(l_ofxtrans.getAccount());
         String sDtPosted = l_ofxtrans.getDtposted();
         l_meta.setBalanceAfterTransaction(l_ofxtrans.getSaldo_na_mutatie());
@@ -79,5 +80,17 @@ public class OfxMetaAccounts {
 
   public List<OfxTransaction> getTransactions(String a_Account) {
     return m_OfxAcounts.get(a_Account);
+  }
+
+  public Set<String> getAccounts() {
+    return m_OfxAcounts.keySet();
+  }
+
+  public OfxMetaInfo getOfxMetaInfo(String a_Account) {
+    return m_metainfo.get(a_Account);
+  }
+
+  public Map<String, OfxMetaInfo> getAccountsOfxMetaInfo() {
+    return m_metainfo;
   }
 }

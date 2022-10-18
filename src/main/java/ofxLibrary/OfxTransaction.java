@@ -1,12 +1,13 @@
 package ofxLibrary;
 
-import java.util.ArrayList;
 //import java.util.logging.Logger;
 
 import com.opencsv.bean.CsvToBean;
 
 public class OfxTransaction extends CsvToBean<Object> {
 //  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+
+  private String bankCode = "";
 
   private String account = "";
   private String trntype = "";
@@ -18,6 +19,14 @@ public class OfxTransaction extends CsvToBean<Object> {
   private String memo = "";
   private int OfxTranPair = -1;
   private String Saldo_na_mutatie = "";
+
+  public OfxTransaction(String a_Bankcode) {
+    bankCode = a_Bankcode;
+  }
+
+  public String getBankCode() {
+    return bankCode;
+  }
 
   public String getSaldo_na_mutatie() {
     return Saldo_na_mutatie;
@@ -61,6 +70,10 @@ public class OfxTransaction extends CsvToBean<Object> {
 
   public int getOfxTranPair() {
     return OfxTranPair;
+  }
+
+  public void setBankCode(String bankCode) {
+    this.bankCode = bankCode;
   }
 
   public void setAccount(String account) {

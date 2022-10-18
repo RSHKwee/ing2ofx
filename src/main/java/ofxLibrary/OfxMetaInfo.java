@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 
 public class OfxMetaInfo {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private String bankcode = "";
   private String account = "";
   private String prefix = "";
   private int minDate = 999999999;
@@ -26,7 +27,8 @@ public class OfxMetaInfo {
   /**
    * Default constructor
    */
-  public OfxMetaInfo() {
+  public OfxMetaInfo(String a_bankcode) {
+    bankcode = a_bankcode;
   }
 
   /**
@@ -35,11 +37,16 @@ public class OfxMetaInfo {
    * @param a_MetaInfo OFX Meta information
    */
   public OfxMetaInfo(OfxMetaInfo a_MetaInfo) {
+    bankcode = a_MetaInfo.getBankcode();
     account = a_MetaInfo.getAccount();
     prefix = a_MetaInfo.getPrefix();
     minDate = a_MetaInfo.getIntMinDate();
     maxDate = a_MetaInfo.getIntMaxDate();
     balanceAfterTransaction = a_MetaInfo.getBalanceAfterTransaction();
+  }
+
+  public String getBankcode() {
+    return bankcode;
   }
 
   /**
@@ -85,6 +92,10 @@ public class OfxMetaInfo {
     } else {
       return balanceAfterTransaction;
     }
+  }
+
+  public void setBankcode(String bankcode) {
+    this.bankcode = bankcode;
   }
 
   public void setAccount(String account) {
