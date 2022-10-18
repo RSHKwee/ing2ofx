@@ -1,19 +1,18 @@
 package ofxLibrary;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
+// import java.util.logging.Logger;
 
 public class OfxMetaAccounts {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  // private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
 
-  private Map<String, ArrayList<String>> m_OfxAcounts = new LinkedHashMap<String, ArrayList<String>>();
+  private Map<String, LinkedList<OfxTransaction>> m_OfxAcounts = new LinkedHashMap<String, LinkedList<OfxTransaction>>();
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
 
   public OfxMetaAccounts(List<OfxTransaction> a_OfxTransactions) {
@@ -28,6 +27,8 @@ public class OfxMetaAccounts {
    */
   private void updateOfxMetaInfoMap() {
     m_OfxTransactions.forEach(l_ofxtrans -> {
+
+      // Fill MetaInfo
       if (m_metainfo.containsKey(l_ofxtrans.getAccount())) {
         OfxMetaInfo l_meta = m_metainfo.get(l_ofxtrans.getAccount());
         try {
@@ -64,11 +65,19 @@ public class OfxMetaAccounts {
         }
         m_metainfo.put(l_ofxtrans.getAccount(), l_meta);
       }
+
+      // Fill OfxAccounts
+      LinkedList<OfxTransaction> l_OfxTransactions = m_OfxAcounts.get(l_ofxtrans.getAccount());
+      l_OfxTransactions.add(l_ofxtrans);
+      m_OfxAcounts.put(l_ofxtrans.getAccount(), l_OfxTransactions);
     });
   }
 
   public List<OfxTransaction> getTransactions() {
-    return null;
+    return m_OfxTransactions;
   }
 
+  public List<OfxTransaction> getTransactions(String a_Account) {
+    return m_OfxAcounts.get(a_Account);
+  }
 }

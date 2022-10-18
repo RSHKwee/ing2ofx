@@ -99,22 +99,4 @@ public class OfxTransaction extends CsvToBean<Object> {
     this.OfxTranPair = OfxTranPair;
   }
 
-  public ArrayList<String> OfxXmlTransaction() {
-    ArrayList<String> l_regels = new ArrayList<String>();
-    l_regels.add("               <STMTTRN>");
-    l_regels.add("                  <TRNTYPE>" + trntype + "</TRNTYPE>");
-    l_regels.add("                  <DTPOSTED>" + dtposted + "</DTPOSTED>");
-    l_regels.add("                  <TRNAMT>" + trnamt + "</TRNAMT>");
-    l_regels.add("                  <FITID>" + fitid + "</FITID>");
-    l_regels.add("                  <NAME>" + name + "</NAME>");
-    l_regels.add("                  <BANKACCTTO>");
-    l_regels.add("                     <BANKID></BANKID>");
-    l_regels.add("                     <ACCTID>" + accountto + "</ACCTID>");
-    l_regels.add("                     <ACCTTYPE>CHECKING</ACCTTYPE>");
-    l_regels.add("                  </BANKACCTTO>");
-    l_regels.add("                  <MEMO>" + memo + "</MEMO>");
-    l_regels.add("               </STMTTRN>");
-    return l_regels;
-  }
-
 }

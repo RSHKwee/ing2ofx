@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -15,8 +16,9 @@ import java.util.logging.Logger;
 public class OfxDocument {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 
-  private Map<String, ArrayList<String>> m_OfxAcounts = new LinkedHashMap<String, ArrayList<String>>();
+//  private Map<String, ArrayList<String>> m_OfxAcounts = new LinkedHashMap<String, ArrayList<String>>();
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
+  private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
 
   private String m_OutputDir = "";
   private boolean m_separateOFX = true;
@@ -26,76 +28,8 @@ public class OfxDocument {
   private boolean m_Savings = false;
   private String m_BankCode = "";
 
-  public OfxDocument(String a_BankCode, File a_File, String a_outputdir, boolean a_separateOfx) {
-    m_BankCode = a_BankCode;
-    m_File = a_File;
-    m_OutputDir = a_outputdir;
-    m_separateOFX = a_separateOfx;
-  }
-
-  public OfxDocument(String a_BankCode, File a_File, boolean a_separateOfx) {
-    m_BankCode = a_BankCode;
-    m_Files[0] = a_File;
-    m_OutputDir = a_File.getParent();
-    m_separateOFX = a_separateOfx;
-  }
-
-  public OfxDocument(String a_BankCode, File[] a_Files, String a_outputdir, boolean a_separateOfx) {
-    m_BankCode = a_BankCode;
-    m_Files = a_Files;
-    m_OutputDir = a_outputdir;
-    m_separateOFX = a_separateOfx;
-  }
-
-  public OfxDocument(String a_BankCode, File[] a_Files, boolean a_separateOfx) {
-    m_BankCode = a_BankCode;
-    m_Files = a_Files;
-    m_OutputDir = a_Files[0].getParent();
-    m_separateOFX = a_separateOfx;
-  }
-
-  public OfxDocument(String a_BankCode, File a_File, String a_outputdir) {
-    m_BankCode = a_BankCode;
-    m_File = a_File;
-    m_OutputDir = a_outputdir;
-    m_separateOFX = true;
-  }
-
-  public OfxDocument(String a_BankCode, File a_File) {
-    m_BankCode = a_BankCode;
-    m_File = a_File;
-    m_OutputDir = a_File.getParent();
-    m_separateOFX = true;
-  }
-
-  public void load() {
-    List<OfxTransaction> a_OfxTransactions = null;
-    OfxXmlTransactions l_OfxTrans = new OfxXmlTransactions(m_BankCode);
-    l_OfxTrans.load(a_OfxTransactions, m_metainfo, m_Savings);
-    l_OfxTrans.OfxXmlTransactionsForAccounts();
-    m_OfxAcounts = l_OfxTrans.m_OfxAcounts;
-    m_metainfo = l_OfxTrans.m_metainfo;
-    m_Savings = l_OfxTrans.isSavings();
-  }
-
-  public void load(String a_FilterName) {
-    OfxXmlTransactions l_OfxTrans = new OfxXmlTransactions(m_BankCode);
-    l_OfxTrans.load();
-    l_OfxTrans.OfxXmlTransactionsForAccounts(a_FilterName);
-    m_OfxAcounts = l_OfxTrans.m_OfxAcounts;
-    m_metainfo = l_OfxTrans.m_metainfo;
-    m_FilterName = a_FilterName;
-    m_Savings = l_OfxTrans.isSavings();
-  }
-
-  public void load(boolean a_AllInOne, String a_FilterName) {
-    OfxXmlTransactions l_OfxTrans = new OfxXmlTransactions(m_BankCode);
-    l_OfxTrans.load();
-    l_OfxTrans.OfxXmlTransactionsForAccounts(a_AllInOne, a_FilterName);
-    m_OfxAcounts = l_OfxTrans.m_OfxAcounts;
-    m_metainfo = l_OfxTrans.m_metainfo;
-    m_FilterName = a_FilterName;
-    m_Savings = l_OfxTrans.isSavings();
+  public OfxDocument(List<OfxTransaction> a_OfxTransactions) {
+    m_OfxTransactions = a_OfxTransactions;
   }
 
   private ArrayList<String> OfxXmlHeader() {
@@ -151,6 +85,33 @@ public class OfxDocument {
     if (m_Filename.isBlank()) {
       m_Filename = library.FileUtils.getFileNameWithoutExtension(m_File.getName()) + ".ofx";
     }
+
+    m_regels.clear();
+
+    m_regels = OfxXmlHeader();
+    m_OfxTransactions.forEach(ofxtrans -> {
+      ArrayList<String> l_regels = new ArrayList<String>();
+      m_regels.addAll(ofxtrans.OfxXmlTransaction());
+    });
+    m_regels.addAll(OfxXmlFooter());
+
+    // Construct filename
+    OfxMetaInfo l_info = m_metainfo.get(account);
+    String l_prefix = l_info.getPrefix();
+    String l_filename = "";
+    if (!l_prefix.isBlank() && m_Savings) {
+      l_filename = m_OutputDir + "\\" + String.join("_", l_prefix, account);
+      if (!m_FilterName.isBlank()) {
+        l_filename = String.join("_", l_filename, m_FilterName);
+      }
+      l_filename = String.join("_", l_filename, m_Filename);
+    } else {
+      l_filename = m_OutputDir + "\\" + String.join("_", account, m_Filename);
+    }
+    l_info.printLog();
+
+    LOGGER.log(Level.INFO, "Create OFX file " + l_filename);
+    library.TxtBestand.DumpXmlBestand(l_filename, m_regels);
 
     Set<String> accounts = m_OfxAcounts.keySet();
     if (m_separateOFX) {
