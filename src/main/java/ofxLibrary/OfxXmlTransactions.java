@@ -27,7 +27,7 @@ public class OfxXmlTransactions {
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
   private Map<String, ArrayList<String>> m_OfxAcounts = new LinkedHashMap<String, ArrayList<String>>();
 
-  private ArrayList<String> m_Regels;
+  private ArrayList<String> m_Regels = new ArrayList<String>();
   private OfxMetaAccounts m_OfxMetaAccounts;
 
   /**

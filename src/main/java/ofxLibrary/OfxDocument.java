@@ -1,33 +1,19 @@
 package ofxLibrary;
 
-import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-//import java.util.HashMap;
-//import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
-//import java.util.Map;
-//import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class OfxDocument {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
-
-//  private Map<String, ArrayList<String>> m_OfxAcounts = new LinkedHashMap<String, ArrayList<String>>();
-  // private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String,
-  // OfxMetaInfo>();
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
 
-  private String m_OutputDir = "";
-  // private boolean m_separateOFX = true;
-  private File m_File;
-  // private File[] m_Files;
-  // private String m_FilterName = "";
-  // private boolean m_Savings = false;
-//  private String m_BankCode = "";
+  OfxDocument() {
+  }
 
   public OfxDocument(List<OfxTransaction> a_OfxTransactions) {
     m_OfxTransactions = a_OfxTransactions;
@@ -75,16 +61,11 @@ public class OfxDocument {
   }
 
   ArrayList<String> m_regels = new ArrayList<String>();
-  String m_Filename = "";
-
-  public void CreateOfxDocument() {
-    CreateOfxDocument("");
-  }
+  String m_Filename = "temp.ofx";
 
   public void CreateOfxDocument(String a_FileName) {
-    m_Filename = a_FileName;
-    if (m_Filename.isBlank()) {
-      m_Filename = library.FileUtils.getFileNameWithoutExtension(m_File.getName()) + ".ofx";
+    if (!a_FileName.isBlank()) {
+      m_Filename = a_FileName;
     }
 
     m_regels.clear();
@@ -95,6 +76,6 @@ public class OfxDocument {
 
     m_regels.addAll(OfxXmlFooter());
     LOGGER.log(Level.INFO, "Create OFX file " + m_Filename);
-    library.TxtBestand.DumpXmlBestand(m_OutputDir + "\\" + m_Filename, m_regels);
+    library.TxtBestand.DumpXmlBestand(m_Filename, m_regels);
   }
 }

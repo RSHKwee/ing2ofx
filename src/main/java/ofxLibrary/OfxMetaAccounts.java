@@ -69,6 +69,9 @@ public class OfxMetaAccounts {
 
       // Fill OfxAccounts
       LinkedList<OfxTransaction> l_OfxTransactions = m_OfxAcounts.get(l_ofxtrans.getAccount());
+      if (l_OfxTransactions == null) {
+        l_OfxTransactions = new LinkedList<OfxTransaction>();
+      }
       l_OfxTransactions.add(l_ofxtrans);
       m_OfxAcounts.put(l_ofxtrans.getAccount(), l_OfxTransactions);
     });

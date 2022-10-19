@@ -28,18 +28,21 @@ public class ActionReadTransactions {
     for (int i = 0; i < m_CSVFiles.length; i++) {
       String l_File = m_CSVFiles[i].getAbsolutePath();
       String l_ext = FilenameUtils.getExtension(l_File);
-      LOGGER.log(Level.INFO, "Process file " + l_File);
       // Read ING Transactions
       if (l_ext.toUpperCase().contains("CSV")) {
+        LOGGER.log(Level.INFO, "Process ING file " + l_File);
         IngTransactions l_ingtrans = new IngTransactions(m_CSVFiles[i]);
+        l_ingtrans.load();
         m_OfxTransactions.addAll(l_ingtrans.getOfxTransactions());
         m_TransactionProcessed = true;
       }
 
       // Read SNS Transactions
       if (l_ext.toUpperCase().contains("XML")) {
-        SnsTransactions l_ingtrans = new SnsTransactions(m_CSVFiles[i]);
-        m_OfxTransactions.addAll(l_ingtrans.getOfxTransactions());
+        LOGGER.log(Level.INFO, "Process SNS file " + l_File);
+        SnsTransactions l_snstrans = new SnsTransactions(m_CSVFiles[i]);
+        l_snstrans.load();
+        m_OfxTransactions.addAll(l_snstrans.getOfxTransactions());
         m_TransactionProcessed = true;
       }
       LOGGER.log(Level.INFO, "Processed file " + l_File);

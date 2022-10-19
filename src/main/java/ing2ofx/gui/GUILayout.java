@@ -407,7 +407,7 @@ public class GUILayout extends JPanel implements ItemListener {
       @Override
       public void actionPerformed(ActionEvent e) {
         m_param.save();
-        ActionPerformScript l_action = new ActionPerformScript(m_CsvFiles, lblOutputFolder.getText(),
+        ActionPerformScript l_action = new ActionPerformScript(m_OfxTransactions, m_CsvFiles, lblOutputFolder.getText(),
             chckbxAcountSeparateOFX.isSelected(), chckbxInterest.isSelected());
         l_action.execute();
       }

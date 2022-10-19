@@ -3,6 +3,7 @@ package ing2ofx.gui;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -10,8 +11,12 @@ import javax.swing.JTextArea;
 import javax.swing.SwingWorker;
 
 import ofxLibrary.OfxDocument;
+import ofxLibrary.OfxFilter;
+import ofxLibrary.OfxMetaAccounts;
+import ofxLibrary.OfxMetaInfo;
+import ofxLibrary.OfxPairTransaction;
 import ofxLibrary.OfxTransaction;
-import ofxLibrary.OfxXmlTransactions;
+//import ofxLibrary.OfxXmlTransactions;
 
 /**
  * 
@@ -23,10 +28,11 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private JTextArea area = new JTextArea(30, 50);
 
-  private File[] m_CSVFiles = null;
-  private String m_OutputFolder = "";
+//  private File[] m_Files = null;
+  private String m_OutputDir = "";
   private boolean m_SeparateOFX = true;
   private boolean m_Interrest = true;
+  private String m_FilterName = "";
 
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
 
@@ -39,45 +45,74 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
    * @param a_SeparateOFX  All accounts in separate OFX files or all in one.
    * @param a_Interrest    Only interest transactions in OFX file(s).
    */
-  public ActionPerformScript(List<OfxTransaction> a_OfxTransactions, String a_OutputFolder, boolean a_SeparateOFX,
-      boolean a_Interrest) {
+  public ActionPerformScript(List<OfxTransaction> a_OfxTransactions, File[] a_files, String a_OutputFolder,
+      boolean a_SeparateOFX, boolean a_Interrest) {
     m_OfxTransactions = a_OfxTransactions;
-    m_OutputFolder = a_OutputFolder;
-
+    // m_Files = a_files;
+    m_OutputDir = a_OutputFolder;
     m_SeparateOFX = a_SeparateOFX;
     m_Interrest = a_Interrest;
+
+    if (m_OutputDir.isBlank()) {
+      if (a_files.length > 0) {
+        m_OutputDir = a_files[0].getPath();
+      }
+    }
+    if (m_Interrest) {
+      FilterInterestTransactions();
+      m_FilterName = "Rente";
+    }
+    OfxPairTransaction l_pairs = new OfxPairTransaction(m_OfxTransactions);
+    m_OfxTransactions = l_pairs.pair();
+  }
+
+  void FilterInterestTransactions() {
+    OfxFilter a_OfxFilter = new OfxFilter("Rente");
+    List<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>();
+    l_OfxTransactions.clear();
+    m_OfxTransactions.forEach(transaction -> {
+      if (!a_OfxFilter.filter(transaction)) {
+        l_OfxTransactions.add(transaction);
+      }
+    });
+    m_OfxTransactions = l_OfxTransactions;
   }
 
   @Override
   protected Void doInBackground() throws Exception {
-    OfxDocument l_document;
     LOGGER.log(Level.INFO, "Start conversion (java).");
 
-    OfxXmlTransactions l_xmlTransactions = new OfxXmlTransactions(m_OfxTransactions);
-    l_xmlTransactions.getAccountTransactions();
+    OfxMetaAccounts l_OfxMetaAccounts = new OfxMetaAccounts(m_OfxTransactions);
+    Set<String> l_accounts = l_OfxMetaAccounts.getAccounts();
 
-    for (int i = 0; i < m_CSVFiles.length; i++) {
-      String l_CSVFile = m_CSVFiles[i].getAbsolutePath();
-      if (!m_OutputFolder.isBlank()) {
-        l_document = new OfxDocument(C_BankCode, new File(l_CSVFile), m_OutputFolder, m_SeparateOFX);
-      } else {
-        l_document = new OfxDocument(C_BankCode, new File(l_CSVFile), m_SeparateOFX);
-      }
-      if (m_Interrest) {
-        l_document.load("Rente");
-      } else {
-        l_document.load();
-      }
-      /*
-       * if (m_OutputFile.equalsIgnoreCase("Output filename")) {
-       * l_ingtrns.CreateOfxDocument(); } else {
-       * l_ingtrns.CreateOfxDocument(m_OutputFile); }
-       */
-      l_document.CreateOfxDocument();
+    if (m_SeparateOFX) {
+      l_accounts.forEach(l_account -> {
+        List<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>();
+        l_OfxTransactions = l_OfxMetaAccounts.getTransactions(l_account);
 
+        OfxMetaInfo l_info = l_OfxMetaAccounts.getOfxMetaInfo(l_account);
+        String l_prefix = l_info.getPrefix();
+        String l_filename = "";
+        if (!l_prefix.isBlank()) {
+          l_filename = m_OutputDir + "\\" + String.join("_", l_prefix, l_account);
+          if (!m_FilterName.isBlank()) {
+            l_filename = String.join("_", l_filename, m_FilterName);
+          }
+          l_filename = String.join("_", l_filename, ".ofx");
+        } else {
+          l_filename = m_OutputDir + "\\" + String.join("_", l_account, ".ofx");
+        }
+
+        OfxDocument l_document = new OfxDocument(l_OfxTransactions);
+        l_document.CreateOfxDocument(l_filename);
+      });
+    } else {
+      OfxDocument l_document = new OfxDocument(m_OfxTransactions);
+      String l_outputfilename = m_OutputDir + "\\AllTransactions.ofx";
+      l_document.CreateOfxDocument(l_outputfilename);
     }
-    LOGGER.log(Level.INFO, "End conversion.");
 
+    LOGGER.log(Level.INFO, "End conversion.");
     return null;
   }
 
