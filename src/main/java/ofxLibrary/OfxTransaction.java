@@ -20,6 +20,25 @@ public class OfxTransaction extends CsvToBean<Object> {
   private int OfxTranPair = -1;
   private String Saldo_na_mutatie = "";
 
+  private String Source = "";
+  private boolean saving = false;
+
+  public String getSource() {
+    return Source;
+  }
+
+  public void setSource(String source) {
+    Source = source;
+  }
+
+  public boolean isSaving() {
+    return saving;
+  }
+
+  public void setSaving(boolean saving) {
+    this.saving = saving;
+  }
+
   public OfxTransaction(String a_Bankcode) {
     bankCode = a_Bankcode;
   }

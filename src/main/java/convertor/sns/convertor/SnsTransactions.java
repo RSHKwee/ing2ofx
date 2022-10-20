@@ -1,4 +1,4 @@
-package sns2ofx.convertor;
+package convertor.sns.convertor;
 
 /**
  * Convert SNS transactions to OFX transactions.
@@ -29,8 +29,7 @@ import camt053parser.model.EntryDetails1;
 import camt053parser.model.ReportEntry2;
 
 import library.DateToNumeric;
-import snsLibrary.SnsTransaction;
-import ofxLibrary.OfxPairTransaction;
+import convertor.sns.snsLibrary.SnsTransaction;
 import ofxLibrary.OfxMetaInfo;
 import ofxLibrary.OfxTransaction;
 
@@ -41,6 +40,7 @@ public class SnsTransactions {
   private Camt053Parser m_reader;
   private String m_File;
   private Set<String> m_UniqueId = new LinkedHashSet<>();
+  private String m_FileName = "";
 
   private List<SnsTransaction> m_Transactions;
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
@@ -53,6 +53,7 @@ public class SnsTransactions {
    */
   public SnsTransactions(File a_file) {
     m_File = a_file.getAbsolutePath();
+    m_FileName = library.FileUtils.getFileNameWithoutExtension(a_file);
   }
 
   /**
@@ -203,6 +204,8 @@ public class SnsTransactions {
                   }
                 }
                 l_ofxtrans.setFitid(createUniqueId(l_ofxtrans));
+                l_ofxtrans.setSaving(false);
+                l_ofxtrans.setSource(m_FileName);
                 m_OfxTransactions.add(l_ofxtrans);
               }
             } catch (Exception e) {
@@ -211,8 +214,6 @@ public class SnsTransactions {
           }
         }
       }
-      OfxPairTransaction l_filter = new OfxPairTransaction(m_OfxTransactions);
-      m_OfxTransactions = l_filter.pair();
 
       LOGGER.log(Level.INFO, "Transactions read: " + Integer.toString(m_OfxTransactions.size()));
     } catch (Exception e) {

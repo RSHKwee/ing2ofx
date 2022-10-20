@@ -92,15 +92,16 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
 
         OfxMetaInfo l_info = l_OfxMetaAccounts.getOfxMetaInfo(l_account);
         String l_prefix = l_info.getPrefix();
+        String l_suffix = l_info.getSuffix();
         String l_filename = "";
         if (!l_prefix.isBlank()) {
-          l_filename = m_OutputDir + "\\" + String.join("_", l_prefix, l_account);
+          l_filename = m_OutputDir + "\\" + String.join("_", l_prefix, l_account, l_suffix);
           if (!m_FilterName.isBlank()) {
             l_filename = String.join("_", l_filename, m_FilterName);
           }
           l_filename = String.join("_", l_filename, ".ofx");
         } else {
-          l_filename = m_OutputDir + "\\" + String.join("_", l_account, ".ofx");
+          l_filename = m_OutputDir + "\\" + String.join("_", l_account, l_suffix, ".ofx");
         }
 
         OfxDocument l_document = new OfxDocument(l_OfxTransactions);

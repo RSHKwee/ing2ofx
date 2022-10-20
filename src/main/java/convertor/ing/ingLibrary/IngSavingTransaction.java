@@ -1,4 +1,4 @@
-package ingLibrary;
+package convertor.ing.ingLibrary;
 
 /**
  * Bean package for ING Saving transaction

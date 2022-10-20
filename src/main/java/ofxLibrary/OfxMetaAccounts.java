@@ -43,11 +43,14 @@ public class OfxMetaAccounts {
           l_meta.setMaxDate(sDtPosted);
           l_meta.setMinDate(sDtPosted);
 
-          if (l_meta.getPrefix().isBlank()) {
-            if (!l_ofxtrans.getAccountto().isBlank()) {
-              l_meta.setPrefix(l_ofxtrans.getAccountto());
+          if (l_ofxtrans.isSaving()) {
+            if (l_meta.getPrefix().isBlank()) {
+              if (!l_ofxtrans.getAccountto().isBlank()) {
+                l_meta.setPrefix(l_ofxtrans.getAccountto());
+              }
             }
           }
+          l_meta.setSuffix(l_ofxtrans.getSource());
           m_metainfo.put(l_ofxtrans.getAccount(), l_meta);
         } catch (Exception e) {
         }
@@ -59,11 +62,14 @@ public class OfxMetaAccounts {
         l_meta.setMaxDate(sDtPosted);
         l_meta.setMinDate(sDtPosted);
 
-        if (l_meta.getPrefix().isBlank()) {
-          if (!l_ofxtrans.getAccountto().isBlank()) {
-            l_meta.setPrefix(l_ofxtrans.getAccountto());
+        if (l_ofxtrans.isSaving()) {
+          if (l_meta.getPrefix().isBlank()) {
+            if (!l_ofxtrans.getAccountto().isBlank()) {
+              l_meta.setPrefix(l_ofxtrans.getAccountto());
+            }
           }
         }
+        l_meta.setSuffix(l_ofxtrans.getSource());
         m_metainfo.put(l_ofxtrans.getAccount(), l_meta);
       }
 

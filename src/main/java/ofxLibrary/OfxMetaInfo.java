@@ -23,6 +23,15 @@ public class OfxMetaInfo {
   private int minDate = 999999999;
   private int maxDate = -1;
   private String balanceAfterTransaction = "";
+  private String suffix = "";
+
+  public String getSuffix() {
+    return suffix;
+  }
+
+  public void setSuffix(String suffix) {
+    this.suffix = suffix;
+  }
 
   /**
    * Default constructor

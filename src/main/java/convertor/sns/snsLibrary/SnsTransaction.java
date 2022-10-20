@@ -1,13 +1,13 @@
-package ingLibrary;
+package convertor.sns.snsLibrary;
 
 //import java.util.logging.Logger;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBean;
 
-public class IngTransaction extends CsvToBean<Object> {
+public class SnsTransaction extends CsvToBean<Object> {
 //  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
-/*
+  /*
  * @formatter:off
  * 
  * For comma seperated file:
@@ -157,25 +157,23 @@ public class IngTransaction extends CsvToBean<Object> {
   // Naam: yyyyyy Omschrijving: xxxxxx IBAN: xxxxxx
   // Naam: yyyyyy en Omschrijving: worden verwijderd
   // Resultaat:
-  //     "xxxxxx IBAN: xxxxxx"
+  // "xxxxxx IBAN: xxxxxx"
   //
   /**
-   * In mededeling kan de naam van rekeninghouder zijn opgenomen, dit is dubbele 
-   * informatie en wordt verwijderd.
-   * <br>
+   * In mededeling kan de naam van rekeninghouder zijn opgenomen, dit is dubbele
+   * informatie en wordt verwijderd. <br>
    * Geldt ook voor naamgeving veld "Opmerking:", wordt ook verwijderd.
    * <p>
    * "Naam: yyyyyy Omschrijving: xxxxxx IBAN: xxxxxx"
    * <p>
-   * "Naam: yyyyyy" en "Omschrijving: " worden verwijderd
-   * <br>
-   * Resultaat:
-   * <br>
+   * "Naam: yyyyyy" en "Omschrijving: " worden verwijderd <br>
+   * Resultaat: <br>
    * "xxxxxx IBAN: xxxxxx"
+   * 
    * @param a_Mededeling
    * @return Gefilterde mededeling
    */
-  private String filterMededelingen (String a_Mededeling) {
+  private String filterMededelingen(String a_Mededeling) {
     String l_Mededeling = a_Mededeling;
     if (l_Mededeling.contains(Omschrijving)) {
       l_Mededeling = l_Mededeling.replaceAll(Omschrijving + " ", "");
@@ -186,7 +184,7 @@ public class IngTransaction extends CsvToBean<Object> {
     if (l_Mededeling.contains("Naam: ")) {
       l_Mededeling = l_Mededeling.replaceAll("Naam: ", "");
     }
-	  return l_Mededeling;
+    return l_Mededeling;
   }
-  
+
 }

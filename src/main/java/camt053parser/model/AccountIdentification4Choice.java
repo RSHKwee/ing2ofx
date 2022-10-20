@@ -5,18 +5,20 @@
 // Generated on: 2015.04.08 at 10:37:47 AM CEST 
 //
 
+package camt053parser.model;
 
-package camt053parser.model ;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for AccountIdentification4Choice complex type.
+ * <p>
+ * Java class for AccountIdentification4Choice complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="AccountIdentification4Choice">
@@ -36,63 +38,52 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AccountIdentification4Choice", propOrder = {
-    "iban",
-    "othr"
-})
+@XmlType(name = "AccountIdentification4Choice", propOrder = { "iban", "othr" })
 public class AccountIdentification4Choice {
 
-    @XmlElement(name = "IBAN")
-    protected String iban;
-    @XmlElement(name = "Othr")
-    protected GenericAccountIdentification1 othr;
+  @XmlElement(name = "IBAN")
+  protected String iban;
+  @XmlElement(name = "Othr")
+  protected GenericAccountIdentification1 othr;
 
-    /**
-     * Gets the value of the iban property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getIBAN() {
-        return iban;
-    }
+  /**
+   * Gets the value of the iban property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getIBAN() {
+    return iban;
+  }
 
-    /**
-     * Sets the value of the iban property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setIBAN(String value) {
-        this.iban = value;
-    }
+  /**
+   * Sets the value of the iban property.
+   * 
+   * @param value allowed object is {@link String }
+   * 
+   */
+  public void setIBAN(String value) {
+    this.iban = value;
+  }
 
-    /**
-     * Gets the value of the othr property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link GenericAccountIdentification1 }
-     *     
-     */
-    public GenericAccountIdentification1 getOthr() {
-        return othr;
-    }
+  /**
+   * Gets the value of the othr property.
+   * 
+   * @return possible object is {@link GenericAccountIdentification1 }
+   * 
+   */
+  public GenericAccountIdentification1 getOthr() {
+    return othr;
+  }
 
-    /**
-     * Sets the value of the othr property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link GenericAccountIdentification1 }
-     *     
-     */
-    public void setOthr(GenericAccountIdentification1 value) {
-        this.othr = value;
-    }
+  /**
+   * Sets the value of the othr property.
+   * 
+   * @param value allowed object is {@link GenericAccountIdentification1 }
+   * 
+   */
+  public void setOthr(GenericAccountIdentification1 value) {
+    this.othr = value;
+  }
 
 }

@@ -1,11 +1,11 @@
-package snsLibrary;
+package convertor.ing.ingLibrary;
 
 //import java.util.logging.Logger;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBean;
 
-public class SnsTransaction extends CsvToBean<Object> {
+public class IngTransaction extends CsvToBean<Object> {
 //  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   /*
  * @formatter:off

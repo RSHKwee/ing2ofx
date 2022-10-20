@@ -1,4 +1,4 @@
-package ing2ofx.convertor;
+package convertor.ing.convertor;
 
 /**
  * Conversion methods for conversion ING- to OFX transaction.
@@ -9,8 +9,8 @@ package ing2ofx.convertor;
 import java.util.Map;
 //import java.util.logging.Logger;
 
-import ingLibrary.IngSavingTransaction;
-import ingLibrary.IngTransaction;
+import convertor.ing.ingLibrary.IngSavingTransaction;
+import convertor.ing.ingLibrary.IngTransaction;
 import ofxLibrary.OfxTransaction;
 
 public class Ing2OfxTransaction {

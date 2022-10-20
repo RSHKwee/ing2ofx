@@ -1,4 +1,4 @@
-package ing2ofx.convertor;
+package convertor.ing.convertor;
 
 /**
  * Convert ING transactions to OFX transactions.
@@ -24,9 +24,8 @@ import com.opencsv.CSVReaderBuilder;
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 
-import ingLibrary.IngSavingTransaction;
-import ingLibrary.IngTransaction;
-import ofxLibrary.OfxPairTransaction;
+import convertor.ing.ingLibrary.IngSavingTransaction;
+import convertor.ing.ingLibrary.IngTransaction;
 import ofxLibrary.OfxTransaction;
 
 public class IngTransactions {
@@ -37,6 +36,7 @@ public class IngTransactions {
   private boolean m_saving = false;
   private char m_separator = ';';
   private Set<String> m_UniqueId = new LinkedHashSet<>();
+  private String m_FileName = "";
 
   private List<IngTransaction> m_Transactions;
   private List<IngSavingTransaction> m_SavingTransactions;
@@ -50,6 +50,7 @@ public class IngTransactions {
    */
   public IngTransactions(File a_file) {
     m_File = a_file;
+    m_FileName = library.FileUtils.getFileNameWithoutExtension(a_file);
   }
 
   /**
@@ -88,6 +89,8 @@ public class IngTransactions {
           OfxTransaction l_ofxtrans;
           l_ofxtrans = Ing2OfxTransaction.convertSavingToOfx(l_trans);
           l_ofxtrans.setFitid(createUniqueId(l_ofxtrans));
+          l_ofxtrans.setSaving(m_saving);
+          l_ofxtrans.setSource(m_FileName);
           m_OfxTransactions.add(l_ofxtrans);
         });
       } else {
@@ -101,11 +104,13 @@ public class IngTransactions {
           OfxTransaction l_ofxtrans;
           l_ofxtrans = Ing2OfxTransaction.convertToOfx(l_trans);
           l_ofxtrans.setFitid(createUniqueId(l_ofxtrans));
+          l_ofxtrans.setSaving(m_saving);
+          l_ofxtrans.setSource(m_FileName);
           m_OfxTransactions.add(l_ofxtrans);
         });
       }
-      OfxPairTransaction l_filter = new OfxPairTransaction(m_OfxTransactions);
-      m_OfxTransactions = l_filter.pair();
+      // OfxPairTransaction l_filter = new OfxPairTransaction(m_OfxTransactions);
+      // m_OfxTransactions = l_filter.pair();
 
       LOGGER.log(Level.INFO, "Transactions read: " + Integer.toString(m_OfxTransactions.size()));
     } catch (IOException e) {

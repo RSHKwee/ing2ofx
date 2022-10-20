@@ -7,9 +7,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.commons.io.FilenameUtils;
 
-import ing2ofx.convertor.IngTransactions;
+import convertor.ing.convertor.IngTransactions;
 import ofxLibrary.OfxTransaction;
-import sns2ofx.convertor.SnsTransactions;
+import convertor.sns.convertor.*;
 
 public class ActionReadTransactions {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
@@ -28,6 +28,7 @@ public class ActionReadTransactions {
     for (int i = 0; i < m_CSVFiles.length; i++) {
       String l_File = m_CSVFiles[i].getAbsolutePath();
       String l_ext = FilenameUtils.getExtension(l_File);
+
       // Read ING Transactions
       if (l_ext.toUpperCase().contains("CSV")) {
         LOGGER.log(Level.INFO, "Process ING file " + l_File);
