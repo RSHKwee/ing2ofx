@@ -27,7 +27,6 @@ public class OfxXmlTransactions {
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
   private Map<String, ArrayList<String>> m_OfxAcounts = new LinkedHashMap<String, ArrayList<String>>();
 
-  private ArrayList<String> m_Regels = new ArrayList<String>();
   private OfxMetaAccounts m_OfxMetaAccounts;
 
   /**
@@ -39,7 +38,6 @@ public class OfxXmlTransactions {
     m_OfxTransactions = a_OfxTransactions;
     m_OfxMetaAccounts = new OfxMetaAccounts(m_OfxTransactions);
     m_metainfo = m_OfxMetaAccounts.getAccountsOfxMetaInfo();
-    m_Regels.clear();
   }
 
   /**
@@ -126,6 +124,9 @@ public class OfxXmlTransactions {
    * 
    */
   public ArrayList<String> OfxXmlTransactionsBody() {
+    ArrayList<String> l_Regels = new ArrayList<String>();
+    l_Regels.clear();
+
     Set<String> accounts = m_metainfo.keySet();
     accounts.forEach(account -> {
       OfxMetaInfo l_metainfo = m_metainfo.get(account);
@@ -152,10 +153,10 @@ public class OfxXmlTransactions {
 
       ArrayList<String> prevregels = m_OfxAcounts.get(account);
       prevregels.addAll(l_regelsfoot);
-      m_Regels.addAll(prevregels);
+      l_Regels.addAll(prevregels);
       LOGGER.log(Level.INFO, "Transactions processed: " + Integer.toString(m_NumberOfTransactions));
     });
     LOGGER.log(Level.FINE, "");
-    return m_Regels;
+    return l_Regels;
   }
 }
