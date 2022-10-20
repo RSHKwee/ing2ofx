@@ -17,9 +17,6 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-//import ofxLibrary.BankTransactions;
-//import ing2ofx.convertor.IngTransactions;
-
 public class OfxXmlTransactions {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 
@@ -122,6 +119,7 @@ public class OfxXmlTransactions {
 
   /**
    * 
+   * @return XML Body OFX Transactions
    */
   public ArrayList<String> OfxXmlTransactionsBody() {
     ArrayList<String> l_Regels = new ArrayList<String>();
