@@ -7,6 +7,7 @@ import logger.MyLogger;
 import logger.TextAreaHandler;
 
 import net.miginfocom.swing.MigLayout;
+import ofxLibrary.OfxMetaInfo;
 import ofxLibrary.OfxTransaction;
 
 import java.awt.BorderLayout;
@@ -18,8 +19,10 @@ import java.awt.event.ItemListener;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -65,6 +68,8 @@ public class GUILayout extends JPanel implements ItemListener {
   private String m_LogDir = "c:\\";
   private boolean m_OutputFolderModified = false;
   private JTextArea output;
+
+  private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
 
   // Preferences
@@ -386,6 +391,7 @@ public class GUILayout extends JPanel implements ItemListener {
         m_param.save();
         ActionReadTransactions l_action = new ActionReadTransactions(m_CsvFiles);
         m_OfxTransactions.addAll(l_action.execute());
+        m_metainfo = l_action.getOfxMetaInfo();
         btnConvert.setEnabled(l_action.TransactionsProcessed());
       }
     });
@@ -407,8 +413,8 @@ public class GUILayout extends JPanel implements ItemListener {
       @Override
       public void actionPerformed(ActionEvent e) {
         m_param.save();
-        ActionPerformScript l_action = new ActionPerformScript(m_OfxTransactions, m_CsvFiles, lblOutputFolder.getText(),
-            chckbxAcountSeparateOFX.isSelected(), chckbxInterest.isSelected());
+        ActionPerformScript l_action = new ActionPerformScript(m_OfxTransactions, m_metainfo, m_CsvFiles,
+            lblOutputFolder.getText(), chckbxAcountSeparateOFX.isSelected(), chckbxInterest.isSelected());
         l_action.execute();
       }
     });

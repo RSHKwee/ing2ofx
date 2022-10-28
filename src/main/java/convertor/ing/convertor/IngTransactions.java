@@ -9,9 +9,11 @@ package convertor.ing.convertor;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +29,7 @@ import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 import convertor.ing.ingLibrary.IngSavingTransaction;
 import convertor.ing.ingLibrary.IngTransaction;
 import ofxLibrary.OfxTransaction;
+import ofxLibrary.OfxMetaInfo;
 
 public class IngTransactions {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
@@ -41,7 +44,7 @@ public class IngTransactions {
   private List<IngTransaction> m_Transactions;
   private List<IngSavingTransaction> m_SavingTransactions;
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
-//  private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
+  private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
 
   /**
    * Constructor.
@@ -89,8 +92,14 @@ public class IngTransactions {
           OfxTransaction l_ofxtrans;
           l_ofxtrans = Ing2OfxTransaction.convertSavingToOfx(l_trans);
           l_ofxtrans.setFitid(createUniqueId(l_ofxtrans));
-          l_ofxtrans.setSaving(m_saving);
+          l_ofxtrans.setSaving(true);
           l_ofxtrans.setSource(m_FileName);
+
+          if (m_metainfo.containsKey(l_ofxtrans.getAccount())) {
+            updateOfxMetaInfo(l_ofxtrans, l_trans.getSaldo_na_mutatie());
+          } else {
+            createOfxMetaInfo(l_ofxtrans, l_trans.getSaldo_na_mutatie());
+          }
           m_OfxTransactions.add(l_ofxtrans);
         });
       } else {
@@ -104,8 +113,14 @@ public class IngTransactions {
           OfxTransaction l_ofxtrans;
           l_ofxtrans = Ing2OfxTransaction.convertToOfx(l_trans);
           l_ofxtrans.setFitid(createUniqueId(l_ofxtrans));
-          l_ofxtrans.setSaving(m_saving);
+          l_ofxtrans.setSaving(false);
           l_ofxtrans.setSource(m_FileName);
+
+          if (m_metainfo.containsKey(l_ofxtrans.getAccount())) {
+            updateOfxMetaInfo(l_ofxtrans, l_trans.getSaldo_na_mutatie());
+          } else {
+            createOfxMetaInfo(l_ofxtrans, l_trans.getSaldo_na_mutatie());
+          }
           m_OfxTransactions.add(l_ofxtrans);
         });
       }
@@ -154,6 +169,73 @@ public class IngTransactions {
    */
   public List<OfxTransaction> getOfxTransactions() {
     return m_OfxTransactions;
+  }
+
+  /**
+   * Returns meta information of the OFX transactions.
+   * 
+   * @return OFX Meta information
+   */
+  public Map<String, OfxMetaInfo> getOfxMetaInfo() {
+    return m_metainfo;
+  }
+
+  /**
+   * Update meta information of OFX Transactions.
+   * 
+   * @param a_OfxTransaction OFX Transaction
+   * @param a_SaldoNaMutatie Balance after transaction
+   */
+  private void updateOfxMetaInfo(OfxTransaction a_OfxTransaction, String a_SaldoNaMutatie) {
+    OfxMetaInfo l_meta = m_metainfo.get(a_OfxTransaction.getAccount());
+    try {
+      String sDtPosted = a_OfxTransaction.getDtposted();
+      l_meta.setMaxDate(sDtPosted);
+      if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted)) {
+        if (l_meta.getBalanceAfterTransaction().isBlank()) {
+          l_meta.setBalanceAfterTransaction(a_SaldoNaMutatie);
+        }
+      }
+      l_meta.setMaxDate(sDtPosted);
+      l_meta.setMinDate(sDtPosted);
+      if (a_OfxTransaction.isSaving()) {
+        if (!a_OfxTransaction.getAccountto().isBlank()) {
+          l_meta.setPrefix(a_OfxTransaction.getAccountto());
+        }
+      }
+      l_meta.setMaxDate(sDtPosted);
+      l_meta.setMinDate(sDtPosted);
+      l_meta.setSuffix(a_OfxTransaction.getSource());
+      m_metainfo.put(a_OfxTransaction.getAccount(), l_meta);
+    } catch (Exception e) {
+    }
+  }
+
+  /**
+   * Store meta information of OFX Transactions.
+   * 
+   * @param a_OfxTransaction OFX Transaction
+   * @param a_SaldoNaMutatie Balance after transaction
+   */
+  private void createOfxMetaInfo(OfxTransaction a_OfxTransaction, String a_SaldoNaMutatie) {
+    String l_bankcode = a_OfxTransaction.getBankCode();
+    OfxMetaInfo l_meta = new OfxMetaInfo(l_bankcode);
+    l_meta.setSuffix(a_OfxTransaction.getSource());
+    l_meta.setAccount(a_OfxTransaction.getAccount());
+    String sDtPosted = a_OfxTransaction.getDtposted();
+    l_meta.setMaxDate(sDtPosted);
+    l_meta.setBalanceAfterTransaction(a_SaldoNaMutatie);
+
+    l_meta.setMaxDate(sDtPosted);
+    l_meta.setMinDate(sDtPosted);
+    if (a_OfxTransaction.isSaving()) {
+      if (l_meta.getPrefix().isBlank()) {
+        if (!a_OfxTransaction.getAccountto().isBlank()) {
+          l_meta.setPrefix(a_OfxTransaction.getAccountto());
+        }
+      }
+    }
+    m_metainfo.put(a_OfxTransaction.getAccount(), l_meta);
   }
 
   /**

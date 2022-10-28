@@ -5,19 +5,21 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-// import java.util.logging.Logger;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.Set;
 
 public class OfxMetaAccounts {
-  // private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
 
   private Map<String, LinkedList<OfxTransaction>> m_OfxAcounts = new LinkedHashMap<String, LinkedList<OfxTransaction>>();
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
 
-  public OfxMetaAccounts(List<OfxTransaction> a_OfxTransactions) {
+  public OfxMetaAccounts(List<OfxTransaction> a_OfxTransactions, Map<String, OfxMetaInfo> a_metainfo) {
     m_OfxTransactions = a_OfxTransactions;
+    m_metainfo = a_metainfo;
     updateOfxMetaInfoMap();
   }
 
@@ -27,60 +29,79 @@ public class OfxMetaAccounts {
    * @return
    */
   private void updateOfxMetaInfoMap() {
-    m_OfxTransactions.forEach(l_ofxtrans -> {
+    try {
+      m_OfxTransactions.forEach(l_ofxtrans -> {
 
-      // Fill MetaInfo
-      if (m_metainfo.containsKey(l_ofxtrans.getAccount())) {
-        OfxMetaInfo l_meta = m_metainfo.get(l_ofxtrans.getAccount());
         try {
-          String sDtPosted = l_ofxtrans.getDtposted();
-          l_meta.setMaxDate(sDtPosted);
-          if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted)) {
-            if (l_meta.getBalanceAfterTransaction().isBlank()) {
-              l_meta.setBalanceAfterTransaction(l_ofxtrans.getSaldo_na_mutatie());
-            }
+          // Fill OfxAccounts
+          if (l_ofxtrans.getAccount() == null) {
+            LOGGER.log(Level.INFO, "Acount is null");
+          } else {
+            LOGGER.log(Level.INFO, "Account : " + l_ofxtrans.getAccount());
           }
-          l_meta.setMaxDate(sDtPosted);
-          l_meta.setMinDate(sDtPosted);
+          if (m_OfxAcounts != null) {
+            if (!m_OfxAcounts.isEmpty()) {
+              try {
+                if (m_OfxAcounts.get(l_ofxtrans.getAccount()) != null) {
 
-          if (l_ofxtrans.isSaving()) {
-            if (l_meta.getPrefix().isBlank()) {
-              if (!l_ofxtrans.getAccountto().isBlank()) {
-                l_meta.setPrefix(l_ofxtrans.getAccountto());
+                  if (!m_OfxAcounts.get(l_ofxtrans.getAccount()).isEmpty()) {
+                    try {
+                      LinkedList<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>(
+                          m_OfxAcounts.get(l_ofxtrans.getAccount()));
+                      l_OfxTransactions.add(l_ofxtrans);
+                      m_OfxAcounts.put(l_ofxtrans.getAccount(), l_OfxTransactions);
+                    } catch (Exception e) {
+                      LOGGER.log(Level.INFO, e.getMessage());
+                    }
+                  } else {
+                    try {
+                      LinkedList<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>();
+                      l_OfxTransactions.add(l_ofxtrans);
+                      m_OfxAcounts.put(l_ofxtrans.getAccount(), l_OfxTransactions);
+                    } catch (Exception e) {
+                      LOGGER.log(Level.INFO, e.getMessage());
+                    }
+                  }
+                } else {
+                  try {
+                    LinkedList<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>();
+                    l_OfxTransactions.add(l_ofxtrans);
+                    m_OfxAcounts.put(l_ofxtrans.getAccount(), l_OfxTransactions);
+                  } catch (Exception e) {
+                    LOGGER.log(Level.INFO, e.getMessage());
+                  }
+                }
+              } catch (Exception e) {
+                LOGGER.log(Level.INFO, e.getMessage());
+              }
+            } else {
+              try {
+                LinkedList<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>();
+                l_OfxTransactions.add(l_ofxtrans);
+                m_OfxAcounts.put(l_ofxtrans.getAccount(), l_OfxTransactions);
+              } catch (Exception e) {
+                LOGGER.log(Level.INFO, e.getMessage());
               }
             }
-          }
-          l_meta.setSuffix(l_ofxtrans.getSource());
-          m_metainfo.put(l_ofxtrans.getAccount(), l_meta);
-        } catch (Exception e) {
-        }
-      } else {
-        OfxMetaInfo l_meta = new OfxMetaInfo(l_ofxtrans.getBankCode());
-        l_meta.setAccount(l_ofxtrans.getAccount());
-        String sDtPosted = l_ofxtrans.getDtposted();
-        l_meta.setBalanceAfterTransaction(l_ofxtrans.getSaldo_na_mutatie());
-        l_meta.setMaxDate(sDtPosted);
-        l_meta.setMinDate(sDtPosted);
-
-        if (l_ofxtrans.isSaving()) {
-          if (l_meta.getPrefix().isBlank()) {
-            if (!l_ofxtrans.getAccountto().isBlank()) {
-              l_meta.setPrefix(l_ofxtrans.getAccountto());
+          } else {
+            try {
+              m_OfxAcounts = new LinkedHashMap<String, LinkedList<OfxTransaction>>();
+              LinkedList<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>();
+              l_OfxTransactions.add(l_ofxtrans);
+              m_OfxAcounts.put(l_ofxtrans.getAccount(), l_OfxTransactions);
+            } catch (Exception e) {
+              LOGGER.log(Level.INFO, e.getMessage());
             }
           }
+          LOGGER.log(Level.FINE, " ");
+        } catch (Exception e) {
+          LOGGER.log(Level.INFO, e.getMessage());
         }
-        l_meta.setSuffix(l_ofxtrans.getSource());
-        m_metainfo.put(l_ofxtrans.getAccount(), l_meta);
-      }
-
-      // Fill OfxAccounts
-      LinkedList<OfxTransaction> l_OfxTransactions = m_OfxAcounts.get(l_ofxtrans.getAccount());
-      if (l_OfxTransactions == null) {
-        l_OfxTransactions = new LinkedList<OfxTransaction>();
-      }
-      l_OfxTransactions.add(l_ofxtrans);
-      m_OfxAcounts.put(l_ofxtrans.getAccount(), l_OfxTransactions);
-    });
+      });
+      LOGGER.log(Level.FINE, " ");
+    } catch (Exception e) {
+      LOGGER.log(Level.INFO, e.getMessage());
+    }
   }
 
   public List<OfxTransaction> getTransactions() {

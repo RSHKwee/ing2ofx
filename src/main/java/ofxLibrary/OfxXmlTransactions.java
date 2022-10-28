@@ -24,17 +24,14 @@ public class OfxXmlTransactions {
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
   private Map<String, ArrayList<String>> m_OfxAcounts = new LinkedHashMap<String, ArrayList<String>>();
 
-  private OfxMetaAccounts m_OfxMetaAccounts;
-
   /**
    * Constructor
    * 
    * @param a_file CSV file with ING transactions.
    */
-  public OfxXmlTransactions(List<OfxTransaction> a_OfxTransactions) {
+  public OfxXmlTransactions(List<OfxTransaction> a_OfxTransactions, Map<String, OfxMetaInfo> a_metainfo) {
     m_OfxTransactions = a_OfxTransactions;
-    m_OfxMetaAccounts = new OfxMetaAccounts(m_OfxTransactions);
-    m_metainfo = m_OfxMetaAccounts.getAccountsOfxMetaInfo();
+    m_metainfo = a_metainfo;
   }
 
   /**
@@ -44,15 +41,6 @@ public class OfxXmlTransactions {
    */
   public Map<String, OfxMetaInfo> getOfxMetaInfo() {
     return m_metainfo;
-  }
-
-  /**
-   * Return Account information of the processed transactions.
-   * 
-   * @return Account information
-   */
-  public Map<String, ArrayList<String>> getAccountTransactions() {
-    return m_OfxAcounts;
   }
 
   /**

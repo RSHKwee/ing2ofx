@@ -3,20 +3,26 @@ package ofxLibrary;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class OfxDocument {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
+  private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
+
+  // private OfxMetaAccounts m_OfxMetaAccounts;
 
   OfxDocument() {
   }
 
-  public OfxDocument(List<OfxTransaction> a_OfxTransactions) {
+  public OfxDocument(List<OfxTransaction> a_OfxTransactions, Map<String, OfxMetaInfo> a_metainfo) {
     m_OfxTransactions = a_OfxTransactions;
+    m_metainfo = a_metainfo;
   }
 
   private ArrayList<String> OfxXmlHeader() {
@@ -71,7 +77,7 @@ public class OfxDocument {
     m_regels.clear();
     m_regels = OfxXmlHeader();
 
-    OfxXmlTransactions l_xmlTransactions = new OfxXmlTransactions(m_OfxTransactions);
+    OfxXmlTransactions l_xmlTransactions = new OfxXmlTransactions(m_OfxTransactions, m_metainfo);
     m_regels.addAll(l_xmlTransactions.OfxXmlTransactionsBody());
 
     m_regels.addAll(OfxXmlFooter());

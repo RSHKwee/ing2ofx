@@ -92,6 +92,7 @@ public class SnsTransactions {
               l_meta.setBalanceAfterTransaction(l_balValue);
             }
           }
+          l_meta.setSuffix(m_FileName);
           m_metainfo.put(l_IBANNr, l_meta);
         });
 
