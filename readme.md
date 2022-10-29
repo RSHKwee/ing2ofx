@@ -1,7 +1,6 @@
 # Introduction
 
-The intent of this (java) application  is to convert ing (www.ing.nl) csv files to ofx files 
-that can be read by a program like GnuCash (www.gucash.org).
+The intent of this (java) application  is to convert ING (www.ing.nl) csv- or SNS (www.snsbank.nl) xml-files to ofx files that can be read by a program like GnuCash (www.gucash.org).
 
 The origin is a Python script which can be found on Github:  https://github.com/chmistry/ing2ofx/releases.
 The original script needed some modifications due to a new Python version and some changes in the ING CSV format.
@@ -19,7 +18,7 @@ When running the application (Windows excutable or Java jar-file) the following 
 
 ![Main screen ing2ofx](./ing2ofxMain.PNG)
 
-Button _CSV File_: an ING CSV file can be choosen.
+Button _CSV File(s)_: one or more ING CSV file or SNS XML can be choosen.
 - The application recognize a comma or semicolon separated input file.
 - The content "normal" or saving transactions.
 The checkbox "Only interest transaction" is used only for a CSV file with saving transactions.
