@@ -1,6 +1,7 @@
 package ing2ofx.gui;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -34,9 +35,11 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
   private boolean m_SeparateOFX = true;
   private boolean m_Interrest = true;
   private String m_FilterName = "";
+  private String m_suffix = "";
 
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
+  private Map<String, ArrayList<String>> m_PrefixAccount = new HashMap<String, ArrayList<String>>();
 
   /**
    * Constructor for Java.
@@ -85,6 +88,22 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
   protected Void doInBackground() throws Exception {
     LOGGER.log(Level.INFO, "Start conversion (java).");
 
+    Set<String> l_AccKeys = m_metainfo.keySet();
+    l_AccKeys.forEach(l_AccKey -> {
+      OfxMetaInfo l_metainfo = m_metainfo.get(l_AccKey);
+      if (!l_metainfo.getPrefix().isEmpty()) {
+        if (m_PrefixAccount.get(l_metainfo.getPrefix()) == null) {
+          ArrayList<String> l_accounts = new ArrayList<String>();
+          l_accounts.add(l_metainfo.getAccount());
+          m_PrefixAccount.put(l_metainfo.getPrefix(), l_accounts);
+        } else {
+          ArrayList<String> l_accounts = new ArrayList<String>(m_PrefixAccount.get(l_metainfo.getPrefix()));
+          l_accounts.add(l_metainfo.getAccount());
+          m_PrefixAccount.put(l_metainfo.getPrefix(), l_accounts);
+        }
+      }
+    });
+
     OfxMetaAccounts l_OfxMetaAccounts = new OfxMetaAccounts(m_OfxTransactions, m_metainfo);
     Set<String> l_accounts = l_OfxMetaAccounts.getAccounts();
 
@@ -119,6 +138,28 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
       String l_outputfilename = m_OutputDir + "\\AllTransactions.ofx";
       l_document.CreateOfxDocument(l_outputfilename);
     }
+
+    // Prefix summary
+    l_AccKeys = m_PrefixAccount.keySet();
+    l_AccKeys.forEach(l_acckey -> {
+      ArrayList<String> ll_accounts = new ArrayList<String>(m_PrefixAccount.get(l_acckey));
+      if (ll_accounts.size() > 1) {
+        Map<String, OfxMetaInfo> l_metainfo = new HashMap<String, OfxMetaInfo>();
+        List<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>();
+
+        ll_accounts.forEach(ll_account -> {
+          OfxMetaInfo l_OfxMetaInfo = l_OfxMetaAccounts.getOfxMetaInfo(ll_account);
+          l_metainfo.put(ll_account, l_OfxMetaInfo);
+          l_OfxTransactions.addAll(l_OfxMetaAccounts.getTransactions(ll_account));
+          m_suffix = l_OfxMetaInfo.getSuffix();
+        });
+
+        String l_filename = "";
+        l_filename = m_OutputDir + "\\" + String.join("_", l_acckey, m_suffix) + ".ofx";
+        OfxDocument l_document = new OfxDocument(l_OfxTransactions, l_metainfo);
+        l_document.CreateOfxDocument(l_filename);
+      }
+    });
 
     LOGGER.log(Level.INFO, "End conversion.");
     return null;
