@@ -26,7 +26,7 @@ import ing2ofx.gui.GUILayout;
 
 public class Main {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
-  static String m_MenuTitel = "ING csv to ofx convertor";
+  static String m_MenuTitel = "ING csv / SNS xml to ofx convertor";
   static public String m_creationtime;
   static String m_LookAndFeel = "Nimbus";
   public static UserSetting m_param = new UserSetting();
@@ -143,29 +143,29 @@ public class Main {
     m_ConfirmOnExit = m_param.is_ConfirmOnExit();
 
     switch (argv.length) {
-      case 1: {
-        if (argv[0].toLowerCase().startsWith("t")) {
-          m_ConfirmOnExit = true;
-          m_param.set_ConfirmOnExit(m_ConfirmOnExit);
-        } else {
-          m_ConfirmOnExit = false;
-          m_param.set_ConfirmOnExit(m_ConfirmOnExit);
-        }
-        break;
+    case 1: {
+      if (argv[0].toLowerCase().startsWith("t")) {
+        m_ConfirmOnExit = true;
+        m_param.set_ConfirmOnExit(m_ConfirmOnExit);
+      } else {
+        m_ConfirmOnExit = false;
+        m_param.set_ConfirmOnExit(m_ConfirmOnExit);
       }
-      case 2: {
-        if (argv[0].toLowerCase().startsWith("t")) {
-          m_ConfirmOnExit = true;
-          m_param.set_ConfirmOnExit(true);
-        } else {
-          m_ConfirmOnExit = false;
-          m_param.set_ConfirmOnExit(false);
-        }
-        m_LookAndFeel = argv[1];
-        m_param.set_LookAndFeel(m_LookAndFeel);
+      break;
+    }
+    case 2: {
+      if (argv[0].toLowerCase().startsWith("t")) {
+        m_ConfirmOnExit = true;
+        m_param.set_ConfirmOnExit(true);
+      } else {
+        m_ConfirmOnExit = false;
+        m_param.set_ConfirmOnExit(false);
       }
-      default: {
-      }
+      m_LookAndFeel = argv[1];
+      m_param.set_LookAndFeel(m_LookAndFeel);
+    }
+    default: {
+    }
     }
 
     // Schedule a job for the event-dispatching thread:

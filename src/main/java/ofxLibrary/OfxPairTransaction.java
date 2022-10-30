@@ -70,7 +70,7 @@ public class OfxPairTransaction {
 
           l_OfxTransaction1.setOfxTranPair(j);
           m_OfxTransactions.set(i, l_OfxTransaction1);
-          LOGGER.log(Level.INFO, "Fit id adjusted: " + fitid2 + " -> " + fitid1);
+          LOGGER.log(Level.FINE, "Fit id adjusted: " + fitid2 + " -> " + fitid1);
         }
         j++;
       }

@@ -7,6 +7,8 @@ import logger.MyLogger;
 import logger.TextAreaHandler;
 
 import net.miginfocom.swing.MigLayout;
+import ofxLibrary.OfxMetaInfo;
+import ofxLibrary.OfxTransaction;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -17,7 +19,10 @@ import java.awt.event.ItemListener;
 
 import java.io.File;
 import java.io.IOException;
-
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -64,6 +69,9 @@ public class GUILayout extends JPanel implements ItemListener {
   private boolean m_OutputFolderModified = false;
   private JTextArea output;
 
+  private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
+  private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
+
   // Preferences
   private UserSetting m_param = Main.m_param;
 
@@ -92,6 +100,7 @@ public class GUILayout extends JPanel implements ItemListener {
     JTextField txtOutputFilename = new JTextField();
     JLabel lblOutputFolder = new JLabel("");
     JButton btnConvert = new JButton("Convert to OFX");
+    JButton btnReadTransactions = new JButton("Read transactions");
 
     // Initialize parameters
     m_GnuCashExecutable = new File(m_param.get_GnuCashExecutable());
@@ -284,19 +293,19 @@ public class GUILayout extends JPanel implements ItemListener {
     panel.setPreferredSize(new Dimension(350, 290));
 
     // Choose CSV File
-    JLabel lblCSVFile = new JLabel("Select ING CSV file(s)");
+    JLabel lblCSVFile = new JLabel("Select ING CSV or SNS XML file(s)");
     lblCSVFile.setEnabled(false);
     lblCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
     panel.add(lblCSVFile, "cell 1 0");
 
-    JButton btnCSVFile = new JButton("CSV File");
+    JButton btnCSVFile = new JButton("CSV/XML File");
     btnCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
     btnCSVFile.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        FileFilter filter = new FileNameExtensionFilter("CSV File", "csv");
+        FileFilter filter = new FileNameExtensionFilter("CSV/XML File", "csv", "xml");
         fileChooser.setFileFilter(filter);
 
         File[] l_files = null;
@@ -318,14 +327,14 @@ public class GUILayout extends JPanel implements ItemListener {
 
           for (int i = 0; i < files.length; i++) {
             file = files[i];
-            LOGGER.log(Level.INFO, "CSV File: " + file.getAbsolutePath());
+            LOGGER.log(Level.INFO, "CSV/XML File: " + file.getAbsolutePath());
             lblCSVFile.setText(file.getAbsolutePath());
             l_filename = l_filename + library.FileUtils.getFileNameWithoutExtension(file) + ".ofx" + "; ";
           }
           txtOutputFilename.setText(l_filename);
           txtOutputFilename.setEnabled(true);
 
-          btnConvert.setEnabled(true);
+          btnReadTransactions.setEnabled(true);
           lblCSVFile.setEnabled(true);
           if (!m_OutputFolderModified) {
             lblOutputFolder.setText(file.getParent());
@@ -374,6 +383,21 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     panel.add(btnOutputFolder, "cell 0 3");
 
+    // Read transactions
+    btnReadTransactions.setEnabled(false);
+    btnReadTransactions.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        m_param.save();
+        ActionReadTransactions l_action = new ActionReadTransactions(m_CsvFiles);
+        m_OfxTransactions.addAll(l_action.execute());
+        m_metainfo = l_action.getOfxMetaInfo();
+        btnConvert.setEnabled(l_action.TransactionsProcessed());
+      }
+    });
+    panel.add(btnReadTransactions, "cell 1 2");
+
+    // Output
     lblOutputFolder.setHorizontalAlignment(SwingConstants.LEFT);
     panel.add(lblOutputFolder, "cell 1 3");
 
@@ -389,8 +413,8 @@ public class GUILayout extends JPanel implements ItemListener {
       @Override
       public void actionPerformed(ActionEvent e) {
         m_param.save();
-        ActionPerformScript l_action = new ActionPerformScript(m_CsvFiles, lblOutputFolder.getText(),
-            chckbxAcountSeparateOFX.isSelected(), chckbxInterest.isSelected());
+        ActionPerformScript l_action = new ActionPerformScript(m_OfxTransactions, m_metainfo, m_CsvFiles,
+            lblOutputFolder.getText(), chckbxAcountSeparateOFX.isSelected(), chckbxInterest.isSelected());
         l_action.execute();
       }
     });
