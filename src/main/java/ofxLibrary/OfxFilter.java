@@ -36,7 +36,6 @@ public class OfxFilter {
       }
       if (!a_transaction.getName().isBlank()) {
         bstat = bstat || a_transaction.getName().toUpperCase().contains(m_FilterMemo.toUpperCase());
-
       }
     }
     return bstat;
