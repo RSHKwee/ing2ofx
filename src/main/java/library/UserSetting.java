@@ -35,6 +35,7 @@ public class UserSetting {
   private String c_Savings = "Savings";
   private String c_Java = "UseJava";
   private String c_LogDir = "LogDir";
+  private String c_ClearTransactions = "ClearTransactions";
 
   private String m_Level = c_LevelValue;
   private String m_LookAndFeel;
@@ -52,6 +53,7 @@ public class UserSetting {
   private boolean m_Interest = true;
   private boolean m_Savings = false;
   private boolean m_Java = true;
+  private boolean m_ClearTransactions = true;
 
   private Preferences pref = Preferences.userRoot();
 
@@ -69,6 +71,7 @@ public class UserSetting {
     m_Interest = pref.getBoolean(c_Interest, true);
     m_Savings = pref.getBoolean(c_Savings, false);
     m_Java = pref.getBoolean(c_Java, true);
+    m_ClearTransactions = pref.getBoolean(c_ClearTransactions, true);
 
     m_LookAndFeel = pref.get(c_LookAndFeel, c_LookAndFeelVal);
     m_GnuCashExecutable = pref.get(c_GnuCashExe, c_GnuCashExeValue);
@@ -149,6 +152,10 @@ public class UserSetting {
     return m_Java;
   }
 
+  public boolean is_ClearTransactions() {
+    return m_ClearTransactions;
+  }
+
   public void set_GnuCashExecutable(File a_GnuCashExecutable) {
     pref.put(c_GnuCashExe, a_GnuCashExecutable.getAbsolutePath());
     this.m_GnuCashExecutable = a_GnuCashExecutable.getAbsolutePath();
@@ -219,6 +226,11 @@ public class UserSetting {
     this.m_ConfirmOnExit = a_ConfirmOnExit;
   }
 
+  public void set_ClearTransactions(boolean a_ClearTransactions) {
+    pref.putBoolean(c_ClearTransactions, a_ClearTransactions);
+    this.m_ClearTransactions = a_ClearTransactions;
+  }
+
   /**
    * Save all settings
    */
@@ -234,6 +246,7 @@ public class UserSetting {
       pref.putBoolean(c_Savings, m_Savings);
       pref.putBoolean(c_ConfirmOnExit, m_ConfirmOnExit);
       pref.putBoolean(c_Java, m_Java);
+      pref.putBoolean(c_ClearTransactions, m_ClearTransactions);
 
       pref.put(c_LookAndFeel, m_LookAndFeel);
       pref.put(c_GnuCashExe, m_GnuCashExecutable);

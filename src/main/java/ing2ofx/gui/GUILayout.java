@@ -83,6 +83,7 @@ public class GUILayout extends JPanel implements ItemListener {
   private Level m_Level = Level.INFO;
   private boolean m_AcountSeparateOFX = true;
   private boolean m_Interest = true;
+  private boolean m_ClearTransactions = true;
 
   /**
    * Define GUI layout
@@ -99,8 +100,11 @@ public class GUILayout extends JPanel implements ItemListener {
     JCheckBox chckbxInterest = new JCheckBox("Only interest transaction");
     JTextField txtOutputFilename = new JTextField();
     JLabel lblOutputFolder = new JLabel("");
+
     JButton btnConvert = new JButton("Convert to OFX");
     JButton btnReadTransactions = new JButton("Read transactions");
+
+    JCheckBox chckbxClearTransactons = new JCheckBox("Clear transactions");
 
     // Initialize parameters
     m_GnuCashExecutable = new File(m_param.get_GnuCashExecutable());
@@ -360,6 +364,20 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     panel.add(chckbxInterest, "cell 1 1");
 
+    // Clear transactions
+    chckbxClearTransactons.setSelected(m_ClearTransactions);
+    chckbxClearTransactons.setHorizontalAlignment(SwingConstants.LEFT);
+    chckbxClearTransactons.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        boolean selected = chckbxInterest.isSelected();
+        m_ClearTransactions = selected;
+        m_param.set_ClearTransactions(m_ClearTransactions);
+        LOGGER.log(Level.CONFIG, "Clear transactions before read :" + Boolean.toString(selected));
+      }
+    });
+    panel.add(chckbxClearTransactons, "cell 0 1");
+
     // Define output folder
     // Output folder & filename
     JButton btnOutputFolder = new JButton("Output folder");
@@ -389,7 +407,8 @@ public class GUILayout extends JPanel implements ItemListener {
       @Override
       public void actionPerformed(ActionEvent e) {
         m_param.save();
-        ActionReadTransactions l_action = new ActionReadTransactions(m_CsvFiles);
+        ActionReadTransactions l_action = new ActionReadTransactions(m_CsvFiles, m_ClearTransactions,
+            m_OfxTransactions);
         m_OfxTransactions.addAll(l_action.execute());
         m_metainfo = l_action.getOfxMetaInfo();
         btnConvert.setEnabled(l_action.TransactionsProcessed());

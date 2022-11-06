@@ -23,11 +23,19 @@ public class ActionReadTransactions {
 
   private File[] m_CSVFiles = null;
   private boolean m_TransactionProcessed = false;
+  private boolean m_ClearTransactions = true;
 
-  public ActionReadTransactions(File[] a_CSVFiles) {
+  public ActionReadTransactions(File[] a_CSVFiles, boolean a_ClearTransactions,
+      List<OfxTransaction> a_OfxTransactions) {
     m_CSVFiles = a_CSVFiles;
-    m_OfxTransactions.clear();
-    m_TransactionProcessed = false;
+    m_ClearTransactions = a_ClearTransactions;
+    if (m_ClearTransactions) {
+      m_OfxTransactions.clear();
+      m_TransactionProcessed = false;
+    } else {
+      m_OfxTransactions.addAll(0, a_OfxTransactions);
+      m_TransactionProcessed = true;
+    }
   }
 
   public List<OfxTransaction> execute() {
@@ -41,6 +49,7 @@ public class ActionReadTransactions {
         IngTransactions l_ingtrans = new IngTransactions(m_CSVFiles[i]);
         l_ingtrans.load();
         m_OfxTransactions.addAll(l_ingtrans.getOfxTransactions());
+        LOGGER.log(Level.INFO, "Total of (ING) transactions read: " + m_OfxTransactions.size());
 
         Map<String, OfxMetaInfo> l_metainfo = l_ingtrans.getOfxMetaInfo();
         m_metainfo = updateMetaInfo(l_metainfo);
@@ -54,15 +63,16 @@ public class ActionReadTransactions {
         SnsTransactions l_snstrans = new SnsTransactions(m_CSVFiles[i]);
         l_snstrans.load();
         m_OfxTransactions.addAll(l_snstrans.getOfxTransactions());
+        LOGGER.log(Level.INFO, "Total of (SNS) transactions read: " + m_OfxTransactions.size());
 
         Map<String, OfxMetaInfo> l_metainfo = l_snstrans.getOfxMetaInfo();
-
         m_metainfo = updateMetaInfo(l_metainfo);
 
         m_TransactionProcessed = true;
       }
       LOGGER.log(Level.INFO, "Processed file " + l_File);
     }
+    LOGGER.log(Level.INFO, "Grand total of transactions read: " + m_OfxTransactions.size());
     return m_OfxTransactions;
   }
 
