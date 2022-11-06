@@ -6,7 +6,7 @@ import java.util.List;
 // import java.util.logging.Logger;
 // import java.util.logging.Level;
 
-public class OfxFunctios {
+public class OfxFunctions {
 //  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 
   /**

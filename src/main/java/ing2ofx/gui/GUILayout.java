@@ -7,6 +7,7 @@ import logger.MyLogger;
 import logger.TextAreaHandler;
 
 import net.miginfocom.swing.MigLayout;
+import ofxLibrary.OfxFunctions;
 import ofxLibrary.OfxMetaInfo;
 import ofxLibrary.OfxTransaction;
 
@@ -409,7 +410,12 @@ public class GUILayout extends JPanel implements ItemListener {
         m_param.save();
         ActionReadTransactions l_action = new ActionReadTransactions(m_CsvFiles, m_ClearTransactions,
             m_OfxTransactions);
-        m_OfxTransactions.addAll(l_action.execute());
+        List<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>();
+        l_OfxTransactions.clear();
+        l_OfxTransactions.addAll(l_action.execute());
+        l_OfxTransactions = OfxFunctions.uniqueOfxTransactions(m_OfxTransactions,
+        		l_OfxTransactions);
+        m_OfxTransactions.addAll(l_OfxTransactions);
         m_metainfo = l_action.getOfxMetaInfo();
         btnConvert.setEnabled(l_action.TransactionsProcessed());
       }
