@@ -322,7 +322,6 @@ public class GUILayout extends JPanel implements ItemListener {
         fileChooser.setSelectedFile(m_CsvFiles[0]);
         int option = fileChooser.showOpenDialog(GUILayout.this);
         if (option == JFileChooser.APPROVE_OPTION) {
-          // File file = fileChooser.getSelectedFile();
           File[] files = fileChooser.getSelectedFiles();
           m_CsvFiles = files;
           m_param.set_CsvFiles(m_CsvFiles);
