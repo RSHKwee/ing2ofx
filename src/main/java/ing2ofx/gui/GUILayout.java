@@ -407,15 +407,22 @@ public class GUILayout extends JPanel implements ItemListener {
       @Override
       public void actionPerformed(ActionEvent e) {
         m_param.save();
-        ActionReadTransactions l_action = new ActionReadTransactions(m_CsvFiles, m_ClearTransactions,
-            m_OfxTransactions);
-        List<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>();
-        l_OfxTransactions.clear();
-        l_OfxTransactions.addAll(l_action.execute());
-        l_OfxTransactions = OfxFunctions.uniqueOfxTransactions(m_OfxTransactions,
-        		l_OfxTransactions);
+        if (m_ClearTransactions) {
+          m_OfxTransactions.clear();
+          m_metainfo.clear();
+        }
+        // ActionReadTransactions l_action = new ActionReadTransactions(m_CsvFiles,
+        // m_ClearTransactions, m_OfxTransactions);
+        ActionReadTransactions l_action = new ActionReadTransactions(m_CsvFiles);
+
+        List<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>(l_action.execute());
+        // l_OfxTransactions.clear();
+        // l_OfxTransactions.addAll(l_action.execute());
+        l_OfxTransactions = OfxFunctions.uniqueOfxTransactions(m_OfxTransactions, l_OfxTransactions);
         m_OfxTransactions.addAll(l_OfxTransactions);
-        m_metainfo = l_action.getOfxMetaInfo();
+        LOGGER.log(Level.INFO, "Grand total of transactions read: " + m_OfxTransactions.size());
+        m_metainfo = OfxFunctions.addMetaInfo(m_metainfo, l_action.getOfxMetaInfo());
+        // m_metainfo = l_action.getOfxMetaInfo();
         btnConvert.setEnabled(l_action.TransactionsProcessed());
       }
     });

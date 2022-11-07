@@ -38,6 +38,13 @@ public class ActionReadTransactions {
     }
   }
 
+  public ActionReadTransactions(File[] a_CSVFiles) {
+    m_CSVFiles = a_CSVFiles;
+    m_ClearTransactions = true;
+    m_OfxTransactions.clear();
+    m_TransactionProcessed = false;
+  }
+
   public List<OfxTransaction> execute() {
     for (int i = 0; i < m_CSVFiles.length; i++) {
       String l_File = m_CSVFiles[i].getAbsolutePath();
@@ -72,7 +79,6 @@ public class ActionReadTransactions {
       }
       LOGGER.log(Level.INFO, "Processed file " + l_File);
     }
-    LOGGER.log(Level.INFO, "Grand total of transactions read: " + m_OfxTransactions.size());
     return m_OfxTransactions;
   }
 
