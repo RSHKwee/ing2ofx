@@ -1,6 +1,7 @@
 package ofxLibrary;
 
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 // import java.util.logging.Level;
@@ -41,14 +42,19 @@ public class OfxFunctions {
   /**
    * Add MetaInfo to existing MetaInfo.
    * 
-   * @param a_MetaInfo1 Base MetaInfo
-   * @param a_MetaInfo2 MetaInfo to be added
+   * @param a_MetaInfo1       Base MetaInfo
+   * @param a_MetaInfo2       MetaInfo to be added
+   * @param a_OfxTransactions List of transactions to be added
    * @return Sum of MetaInfo's.
    */
   static public Map<String, OfxMetaInfo> addMetaInfo(Map<String, OfxMetaInfo> a_MetaInfo1,
-      Map<String, OfxMetaInfo> a_MetaInfo2) {
+      Map<String, OfxMetaInfo> a_MetaInfo2, List<OfxTransaction> a_OfxTransactions) {
+    Set<String> l_Keys = new LinkedHashSet<String>();
+    a_OfxTransactions.forEach(tran -> {
+      l_Keys.add(tran.getAccount());
+    });
+
     Map<String, OfxMetaInfo> l_metainfo = new HashMap<String, OfxMetaInfo>(a_MetaInfo1);
-    Set<String> l_Keys = a_MetaInfo2.keySet();
     l_Keys.forEach(key -> {
       OfxMetaInfo ll_OfxMetaInfo = a_MetaInfo2.get(key);
       l_metainfo.put(key, ll_OfxMetaInfo);

@@ -421,7 +421,7 @@ public class GUILayout extends JPanel implements ItemListener {
         l_OfxTransactions = OfxFunctions.uniqueOfxTransactions(m_OfxTransactions, l_OfxTransactions);
         m_OfxTransactions.addAll(l_OfxTransactions);
         LOGGER.log(Level.INFO, "Grand total of transactions read: " + m_OfxTransactions.size());
-        m_metainfo = OfxFunctions.addMetaInfo(m_metainfo, l_action.getOfxMetaInfo());
+        m_metainfo = OfxFunctions.addMetaInfo(m_metainfo, l_action.getOfxMetaInfo(), l_OfxTransactions);
         // m_metainfo = l_action.getOfxMetaInfo();
         btnConvert.setEnabled(l_action.TransactionsProcessed());
       }
