@@ -83,7 +83,7 @@ public class GUILayout extends JPanel implements ItemListener {
   private boolean m_toDisk = false;
   private Level m_Level = Level.INFO;
   private boolean m_AcountSeparateOFX = true;
-  private boolean m_Interest = true;
+  private boolean m_Interest = false;
   private boolean m_ClearTransactions = true;
 
   /**
@@ -91,7 +91,7 @@ public class GUILayout extends JPanel implements ItemListener {
    * 
    */
   public GUILayout() {
-    // GUI items
+    // GUI items menubar
     JMenuBar menuBar = new JMenuBar();
 
     JCheckBoxMenuItem chckbxAcountSeparateOFX = new JCheckBoxMenuItem("Accounts in separate OFX files");
@@ -101,11 +101,6 @@ public class GUILayout extends JPanel implements ItemListener {
     JCheckBox chckbxInterest = new JCheckBox("Only interest transaction");
     JTextField txtOutputFilename = new JTextField();
     JLabel lblOutputFolder = new JLabel("");
-
-    JButton btnConvert = new JButton("Convert to OFX");
-    JButton btnReadTransactions = new JButton("Read transactions");
-
-    JCheckBox chckbxClearTransactons = new JCheckBox("Clear transactions");
 
     // Initialize parameters
     m_GnuCashExecutable = new File(m_param.get_GnuCashExecutable());
@@ -145,6 +140,21 @@ public class GUILayout extends JPanel implements ItemListener {
       }
     });
     mnSettings.add(chckbxAcountSeparateOFX);
+
+    // Savings transactions
+    JCheckBoxMenuItem chcmnkbxInterest = new JCheckBoxMenuItem("Only interest transactions");
+    chcmnkbxInterest.setHorizontalAlignment(SwingConstants.LEFT);
+    chcmnkbxInterest.setSelected(m_Interest);
+    chcmnkbxInterest.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        boolean selected = chcmnkbxInterest.isSelected();
+        m_Interest = selected;
+        m_param.set_Interest(m_Interest);
+        LOGGER.log(Level.CONFIG, "Save only interest :" + Boolean.toString(selected));
+      }
+    });
+    mnSettings.add(chcmnkbxInterest);
 
     // Option Location GnuCash exe
     mnSettings.add(mnGnuCashExe);
@@ -303,6 +313,8 @@ public class GUILayout extends JPanel implements ItemListener {
     lblCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
     panel.add(lblCSVFile, "cell 1 0");
 
+    JCheckBox chckbxClearTransactons = new JCheckBox("Clear transactions");
+    JButton btnReadTransactions = new JButton("Read transactions");
     JButton btnCSVFile = new JButton("CSV/XML File");
     btnCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
     btnCSVFile.addActionListener(new ActionListener() {
@@ -350,20 +362,6 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     panel.add(btnCSVFile, "cell 0 0");
 
-    // Savings transactions
-    chckbxInterest.setSelected(m_Interest);
-    chckbxInterest.setHorizontalAlignment(SwingConstants.LEFT);
-    chckbxInterest.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        boolean selected = chckbxInterest.isSelected();
-        m_Interest = selected;
-        m_param.set_Interest(m_Interest);
-        LOGGER.log(Level.CONFIG, "Save only interest :" + Boolean.toString(selected));
-      }
-    });
-    panel.add(chckbxInterest, "cell 1 1");
-
     // Clear transactions
     chckbxClearTransactons.setSelected(m_ClearTransactions);
     chckbxClearTransactons.setHorizontalAlignment(SwingConstants.LEFT);
@@ -376,7 +374,7 @@ public class GUILayout extends JPanel implements ItemListener {
         LOGGER.log(Level.CONFIG, "Clear transactions before read :" + Boolean.toString(selected));
       }
     });
-    panel.add(chckbxClearTransactons, "cell 0 1");
+    panel.add(chckbxClearTransactons, "cell 1 1");
 
     // Define output folder
     // Output folder & filename
@@ -402,6 +400,8 @@ public class GUILayout extends JPanel implements ItemListener {
     panel.add(btnOutputFolder, "cell 0 3");
 
     // Read transactions
+    JButton btnConvert = new JButton("Convert to OFX");
+
     btnReadTransactions.setEnabled(false);
     btnReadTransactions.addActionListener(new ActionListener() {
       @Override
@@ -411,19 +411,23 @@ public class GUILayout extends JPanel implements ItemListener {
           m_OfxTransactions.clear();
           m_metainfo.clear();
         }
-        // ActionReadTransactions l_action = new ActionReadTransactions(m_CsvFiles,
-        // m_ClearTransactions, m_OfxTransactions);
         ActionReadTransactions l_action = new ActionReadTransactions(m_CsvFiles);
 
         List<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>(l_action.execute());
-        // l_OfxTransactions.clear();
-        // l_OfxTransactions.addAll(l_action.execute());
+        int l_read = l_OfxTransactions.size();
         l_OfxTransactions = OfxFunctions.uniqueOfxTransactions(m_OfxTransactions, l_OfxTransactions);
+        int l_unique = l_OfxTransactions.size();
+        LOGGER.log(Level.INFO, "Transactions read: " + l_read + ", after doubles removed: " + l_unique);
+
         m_OfxTransactions.addAll(l_OfxTransactions);
         LOGGER.log(Level.INFO, "Grand total of transactions read: " + m_OfxTransactions.size());
+
         m_metainfo = OfxFunctions.addMetaInfo(m_metainfo, l_action.getOfxMetaInfo(), l_OfxTransactions);
-        // m_metainfo = l_action.getOfxMetaInfo();
         btnConvert.setEnabled(l_action.TransactionsProcessed());
+
+        m_ClearTransactions = false;
+        m_param.set_ClearTransactions(m_ClearTransactions);
+        chckbxClearTransactons.setSelected(m_ClearTransactions);
       }
     });
     panel.add(btnReadTransactions, "cell 1 2");

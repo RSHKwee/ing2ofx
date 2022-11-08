@@ -49,11 +49,14 @@ public class OfxFunctions {
    */
   static public Map<String, OfxMetaInfo> addMetaInfo(Map<String, OfxMetaInfo> a_MetaInfo1,
       Map<String, OfxMetaInfo> a_MetaInfo2, List<OfxTransaction> a_OfxTransactions) {
+
+    // Determine accounts/keys in transactions to be added.
     Set<String> l_Keys = new LinkedHashSet<String>();
     a_OfxTransactions.forEach(tran -> {
       l_Keys.add(tran.getAccount());
     });
 
+    // Add metainfo for transactions
     Map<String, OfxMetaInfo> l_metainfo = new HashMap<String, OfxMetaInfo>(a_MetaInfo1);
     l_Keys.forEach(key -> {
       OfxMetaInfo ll_OfxMetaInfo = a_MetaInfo2.get(key);
