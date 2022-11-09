@@ -15,6 +15,12 @@ import ofxLibrary.OfxMetaInfo;
 import ofxLibrary.OfxTransaction;
 import convertor.sns.convertor.*;
 
+/**
+ * Read transactions from file(s).
+ * 
+ * @author René
+ *
+ */
 public class ActionReadTransactions {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 
@@ -23,9 +29,36 @@ public class ActionReadTransactions {
 
   private File[] m_CSVFiles = null;
   private boolean m_TransactionProcessed = false;
+  private boolean m_ClearTransactions = true;
 
+  /**
+   * Constructor initialize variables.
+   * 
+   * @param a_CSVFiles          List of files to be processed.
+   * @param a_ClearTransactions Clear, or not, the list of transactions.
+   * @param a_OfxTransactions   List of processed transactions.
+   */
+  public ActionReadTransactions(File[] a_CSVFiles, boolean a_ClearTransactions,
+      List<OfxTransaction> a_OfxTransactions) {
+    m_CSVFiles = a_CSVFiles;
+    m_ClearTransactions = a_ClearTransactions;
+    if (m_ClearTransactions) {
+      m_OfxTransactions.clear();
+      m_TransactionProcessed = false;
+    } else {
+      m_OfxTransactions.addAll(a_OfxTransactions);
+      m_TransactionProcessed = true;
+    }
+  }
+
+  /**
+   * Constructor initialize variables.
+   * 
+   * @param a_CSVFiles List of files to be processed.
+   */
   public ActionReadTransactions(File[] a_CSVFiles) {
     m_CSVFiles = a_CSVFiles;
+    m_ClearTransactions = true;
     m_OfxTransactions.clear();
     m_TransactionProcessed = false;
   }
@@ -41,6 +74,7 @@ public class ActionReadTransactions {
         IngTransactions l_ingtrans = new IngTransactions(m_CSVFiles[i]);
         l_ingtrans.load();
         m_OfxTransactions.addAll(l_ingtrans.getOfxTransactions());
+        LOGGER.log(Level.INFO, "Total of (ING) transactions read: " + m_OfxTransactions.size());
 
         Map<String, OfxMetaInfo> l_metainfo = l_ingtrans.getOfxMetaInfo();
         m_metainfo = updateMetaInfo(l_metainfo);
@@ -54,9 +88,9 @@ public class ActionReadTransactions {
         SnsTransactions l_snstrans = new SnsTransactions(m_CSVFiles[i]);
         l_snstrans.load();
         m_OfxTransactions.addAll(l_snstrans.getOfxTransactions());
+        LOGGER.log(Level.INFO, "Total of (SNS) transactions read: " + m_OfxTransactions.size());
 
         Map<String, OfxMetaInfo> l_metainfo = l_snstrans.getOfxMetaInfo();
-
         m_metainfo = updateMetaInfo(l_metainfo);
 
         m_TransactionProcessed = true;

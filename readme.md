@@ -19,13 +19,18 @@ When running the application (Windows excutable or Java jar-file) the following 
 ![Main screen ing2ofx](./ing2ofxMain.PNG)
 
 Button _CSV File(s)_: one or more ING CSV file or SNS XML can be choosen.
-- The application recognize a comma or semicolon separated input file.
+- The application recognizes:
+  - a comma or semicolon separated ING input file.
+  - a SNS XML input file.
 - The content "normal" or saving transactions.
-The checkbox "Only interest transaction" is used only for a CSV file with saving transactions.
-
+<br>
+Checkbox _Clear transactions_: If checked then the buffer of already processed input files is cleared.
+<br>
+Button _Read transactions_: The selected CSV/XML files are processed.
+<br>
 Button _Output folder_: Point to the directory where the generated OFX-file(s) are stored. 
 A proposal for the "Output filename" is made, this can be changed.
-
+<br>
 Button _Convert to OFX_: The conversion to OFX format is started, the progres is shown in the lower panel.
 <br>
 Button _Start GnuCash_: GnuCash is started.
@@ -35,8 +40,9 @@ Button _Start GnuCash_: GnuCash is started.
 ![Settings menu](./ing2ofxSettings.PNG)
 
 In the "settings" menu the following options are available:
-- A ING CSV file may contain transactions for more then one account, all converted OFX transcations can be stored in one OFX file or per account a separate OFX file (default).
-- Where to find _GnuCash_ executable.
-- For debugging a _loglevel_ can be defined, default is level _INFO_.
+- _Accounts in seperate OFX files_: A ING/SNS CSV/XML file may contain transactions for more then one account, all converted OFX transcations can be stored in one OFX file or per account a separate OFX file (default).
+- _Only interest transaction_: is used only for a ING CSV file with saving transactions.
+- _GnuCash executable_: Where to find _GnuCash_ executable.
+- _Loglevel_: For debugging a _loglevel_ can be defined, default is level _INFO_.
 - _Look and Feel_ of the GUI can be adjusted.
 - _Create logfiles_ in the choosen directory a HTML- and a textfile with logging is created.
