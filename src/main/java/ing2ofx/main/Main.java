@@ -90,12 +90,12 @@ public class Main {
 
     // Image ING logo;
     try {
-      URL iconURL = Main.class.getClassLoader().getResource("ingLogo.png");
+      URL iconURL = Main.class.getClassLoader().getResource("ingSNSLogo.png");
       // iconURL is null when not found
       ImageIcon icon = new ImageIcon(iconURL);
       frame.setIconImage(icon.getImage());
     } catch (Exception e) {
-      LOGGER.log(Level.FINE, "ING Logo not found.");
+      LOGGER.log(Level.FINE, "ING/SNS Logo not found.");
     }
 
     // Create and set up the content pane.
@@ -110,7 +110,7 @@ public class Main {
     frame.setLocation(50, 50);
     frame.setVisible(true);
 
-    LOGGER.log(Level.INFO, " ING Csv to OFX convertor versie : " + m_creationtime);
+    LOGGER.log(Level.INFO, "ING csv / SNS xml to OFX convertor versie : " + m_creationtime);
   }
 
   /**

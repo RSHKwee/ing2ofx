@@ -4,7 +4,7 @@
 
   <groupId>ing2ofx</groupId>
   <artifactId>ing2ofx</artifactId>
-  <version>0.2.1</version>
+  <version>0.2.2</version>
   <packaging>jar</packaging>
 
   <name>ing2ofx</name>
@@ -134,7 +134,7 @@
                 <classPath>
                   <mainClass>ing2ofx.main.Main</mainClass>
                 </classPath>
-				<icon>src/main/resources/ingLogo.ico</icon>
+				<icon>src/main/resources/ingSNSLogo.ico</icon>
                 <jre>
                   <bundledJre64Bit>true</bundledJre64Bit>
 		          <path>%JAVA_HOME%;%PATH%</path>
