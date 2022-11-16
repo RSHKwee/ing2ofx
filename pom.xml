@@ -113,7 +113,36 @@
               </descriptorRefs>
               <finalName>ing2ofx</finalName>
            </configuration>
+        </plugin>
+		<!-- Distribute readme.md v -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.1</version>
+          <executions>
+            <execution>
+              <id>readme-md</id>
+              <phase>process-resources</phase>
+              <goals>
+                <goal>copy-resources</goal>
+              </goals>
+              <configuration>
+                <outputDirectory>${project.basedir}/target</outputDirectory>
+                <resources>                                        
+                  <resource>
+                    <directory>${project.basedir}</directory>
+                    <includes>
+                      <include>readme.md</include>
+                    </includes>
+                    <filtering>true</filtering>
+                  </resource>
+                </resources>
+                <encoding>UTF-8</encoding>
+              </configuration>            
+            </execution>
+          </executions>
         </plugin>		
+	    <!-- readme.md ^ -->
 		<!-- LAUNCH4J create executable v -->
         <plugin>
           <groupId>com.akathist.maven.plugins.launch4j</groupId>
