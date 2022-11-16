@@ -130,7 +130,7 @@
                 <outputDirectory>${project.basedir}/target</outputDirectory>
                 <resources>                                        
                   <resource>
-                    <directory>${project.basedir}</directory>
+                    <directory>.</directory>
                     <includes>
                       <include>readme.md</include>
                     </includes>
