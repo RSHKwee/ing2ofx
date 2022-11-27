@@ -30,6 +30,7 @@ public class ActionReadTransactions {
   private File[] m_CSVFiles = null;
   private boolean m_TransactionProcessed = false;
   private boolean m_ClearTransactions = true;
+  private File m_Synonym_file;
 
   /**
    * Constructor initialize variables.
@@ -38,10 +39,11 @@ public class ActionReadTransactions {
    * @param a_ClearTransactions Clear, or not, the list of transactions.
    * @param a_OfxTransactions   List of processed transactions.
    */
-  public ActionReadTransactions(File[] a_CSVFiles, boolean a_ClearTransactions,
+  public ActionReadTransactions(File a_Synonym_file, File[] a_CSVFiles, boolean a_ClearTransactions,
       List<OfxTransaction> a_OfxTransactions) {
     m_CSVFiles = a_CSVFiles;
     m_ClearTransactions = a_ClearTransactions;
+    m_Synonym_file = a_Synonym_file;
     if (m_ClearTransactions) {
       m_OfxTransactions.clear();
       m_TransactionProcessed = false;
@@ -56,11 +58,12 @@ public class ActionReadTransactions {
    * 
    * @param a_CSVFiles List of files to be processed.
    */
-  public ActionReadTransactions(File[] a_CSVFiles) {
+  public ActionReadTransactions(File a_Synonym_file, File[] a_CSVFiles) {
     m_CSVFiles = a_CSVFiles;
     m_ClearTransactions = true;
     m_OfxTransactions.clear();
     m_TransactionProcessed = false;
+    m_Synonym_file = a_Synonym_file;
   }
 
   public List<OfxTransaction> execute() {
@@ -71,7 +74,7 @@ public class ActionReadTransactions {
       // Read ING Transactions
       if (l_ext.toUpperCase().contains("CSV")) {
         LOGGER.log(Level.INFO, "Process ING file " + l_File);
-        IngTransactions l_ingtrans = new IngTransactions(m_CSVFiles[i]);
+        IngTransactions l_ingtrans = new IngTransactions(m_CSVFiles[i], m_Synonym_file);
         l_ingtrans.load();
         m_OfxTransactions.addAll(l_ingtrans.getOfxTransactions());
         LOGGER.log(Level.INFO, "Total of (ING) transactions read: " + m_OfxTransactions.size());
@@ -85,7 +88,7 @@ public class ActionReadTransactions {
       // Read SNS Transactions
       if (l_ext.toUpperCase().contains("XML")) {
         LOGGER.log(Level.INFO, "Process SNS file " + l_File);
-        SnsTransactions l_snstrans = new SnsTransactions(m_CSVFiles[i]);
+        SnsTransactions l_snstrans = new SnsTransactions(m_CSVFiles[i], m_Synonym_file);
         l_snstrans.load();
         m_OfxTransactions.addAll(l_snstrans.getOfxTransactions());
         LOGGER.log(Level.INFO, "Total of (SNS) transactions read: " + m_OfxTransactions.size());

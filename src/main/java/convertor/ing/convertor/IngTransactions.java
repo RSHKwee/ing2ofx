@@ -45,15 +45,17 @@ public class IngTransactions {
   private List<IngSavingTransaction> m_SavingTransactions;
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
+  private File m_Synonym_file;
 
   /**
    * Constructor.
    * 
    * @param a_file CSV File with ING transactions
    */
-  public IngTransactions(File a_file) {
+  public IngTransactions(File a_file, File a_Synonym_file) {
     m_File = a_file;
     m_FileName = library.FileUtils.getFileNameWithoutExtension(a_file);
+    m_Synonym_file = a_Synonym_file;
   }
 
   /**
@@ -219,7 +221,7 @@ public class IngTransactions {
    */
   private void createOfxMetaInfo(OfxTransaction a_OfxTransaction, String a_SaldoNaMutatie) {
     String l_bankcode = a_OfxTransaction.getBankCode();
-    OfxMetaInfo l_meta = new OfxMetaInfo(l_bankcode);
+    OfxMetaInfo l_meta = new OfxMetaInfo(l_bankcode, m_Synonym_file);
     l_meta.setSuffix(a_OfxTransaction.getSource());
     l_meta.setAccount(a_OfxTransaction.getAccount());
     String sDtPosted = a_OfxTransaction.getDtposted();

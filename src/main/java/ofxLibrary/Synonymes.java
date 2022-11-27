@@ -1,5 +1,6 @@
-package library;
+package ofxLibrary;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -13,10 +14,15 @@ public class Synonymes {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private Map<String, Synonyme> m_Synonymes = new HashMap<String, Synonyme>();
 
-  public Synonymes(String a_file) {
-    String a_path = "D:\\Users\\René\\OneDrive\\Documenten\\Administraties\\Synoniem.txt";
+  public Synonymes() {
+  }
+
+  public Synonymes(File a_SynonymesFile) {
+    String l_SynonymesFile = a_SynonymesFile.getPath();
+    LOGGER.log(Level.FINE, "File read:" + l_SynonymesFile);
+
     // read file into stream, try-with-resources
-    try (Stream<String> stream = Files.lines(Paths.get(a_path))) {
+    try (Stream<String> stream = Files.lines(Paths.get(l_SynonymesFile))) {
       stream.forEach(l_line -> {
         String[] l_elems = l_line.split(";");
         if (l_elems.length >= 3) {
@@ -34,7 +40,7 @@ public class Synonymes {
         }
       });
     } catch (IOException e) {
-      LOGGER.log(Level.SEVERE, Class.class.getName() + ": " + e.getMessage());
+      // LOGGER.log(Level.SEVERE, Class.class.getName() + ": " + e.getMessage());
     }
   }
 

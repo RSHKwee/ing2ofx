@@ -1,5 +1,6 @@
 package ofxLibrary;
 
+import java.io.File;
 /**
  * Meta information storage for an account and its transactions.
  * <br>
@@ -24,20 +25,22 @@ public class OfxMetaInfo {
   private int maxDate = -1;
   private String balanceAfterTransaction = "";
   private String suffix = "";
-
-  public String getSuffix() {
-    return suffix;
-  }
-
-  public void setSuffix(String suffix) {
-    this.suffix = suffix;
-  }
+  private Synonymes m_Synonymes = new Synonymes();
 
   /**
    * Default constructor
    */
-  public OfxMetaInfo(String a_bankcode) {
+  // public OfxMetaInfo(String a_bankcode) {
+  // bankcode = a_bankcode;
+  // }
+
+  /**
+   * Default constructor
+   */
+  public OfxMetaInfo(String a_bankcode, File a_SynonymesFile) {
     bankcode = a_bankcode;
+    m_Synonymes = new Synonymes(a_SynonymesFile);
+    LOGGER.log(Level.INFO, "Read Synonymes File" + a_SynonymesFile);
   }
 
   /**
@@ -52,6 +55,15 @@ public class OfxMetaInfo {
     minDate = a_MetaInfo.getIntMinDate();
     maxDate = a_MetaInfo.getIntMaxDate();
     balanceAfterTransaction = a_MetaInfo.getBalanceAfterTransaction();
+    m_Synonymes = a_MetaInfo.getSynonymes();
+  }
+
+  public Synonymes getSynonymes() {
+    return m_Synonymes;
+  }
+
+  public void setSynonymes(Synonymes a_Synonymes) {
+    this.m_Synonymes = a_Synonymes;
   }
 
   public String getBankcode() {
@@ -68,7 +80,19 @@ public class OfxMetaInfo {
   }
 
   public String getPrefix() {
-    return prefix;
+    String l_prefix = "";
+    if (!prefix.isEmpty()) {
+      String ll_prefix = m_Synonymes.GetSynonyme(prefix);
+      if (!ll_prefix.isEmpty()) {
+        l_prefix = ll_prefix + "_";
+      }
+    } else {
+      String ll_prefix = m_Synonymes.GetSynonyme(account);
+      if (!ll_prefix.isEmpty()) {
+        l_prefix = ll_prefix;
+      }
+    }
+    return l_prefix + prefix;
   }
 
   public String getMinDate() {
@@ -101,6 +125,14 @@ public class OfxMetaInfo {
     } else {
       return balanceAfterTransaction;
     }
+  }
+
+  public String getSuffix() {
+    return suffix;
+  }
+
+  public void setSuffix(String suffix) {
+    this.suffix = suffix;
   }
 
   public void setBankcode(String bankcode) {

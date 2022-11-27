@@ -45,15 +45,17 @@ public class SnsTransactions {
   private List<SnsTransaction> m_Transactions;
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
+  private File m_Synonym_file;
 
   /**
    * Constructor.
    * 
    * @param a_file XML File with SNS transactions
    */
-  public SnsTransactions(File a_file) {
+  public SnsTransactions(File a_file, File a_Synonym_file) {
     m_File = a_file.getAbsolutePath();
     m_FileName = library.FileUtils.getFileNameWithoutExtension(a_file);
+    m_Synonym_file = a_Synonym_file;
   }
 
   /**
@@ -80,7 +82,7 @@ public class SnsTransactions {
           String ls_balDate = DateToNumeric.dateToNumeric(l_balDate);
           OfxMetaInfo l_meta = m_metainfo.get(l_IBANNr);
           if (null == l_meta) {
-            l_meta = new OfxMetaInfo(m_bankcode);
+            l_meta = new OfxMetaInfo(m_bankcode, m_Synonym_file);
           }
 
           l_meta.setAccount(l_IBANNr);

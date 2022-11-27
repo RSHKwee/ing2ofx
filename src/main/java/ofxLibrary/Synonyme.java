@@ -1,4 +1,4 @@
-package library;
+package ofxLibrary;
 
 public class Synonyme {
   // private static final Logger LOGGER = Logger.getLogger(Class.class.getName());

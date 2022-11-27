@@ -77,6 +77,7 @@ public class GUILayout extends JPanel implements ItemListener {
   private UserSetting m_param = Main.m_param;
 
   private File m_GnuCashExecutable = new File("C:\\Program Files (x86)\\gnucash\\bin\\gnucash.exe");
+  private File m_Synonym_file;
   private File m_OutputFolder;
   private File[] m_CsvFiles;
 
@@ -96,6 +97,7 @@ public class GUILayout extends JPanel implements ItemListener {
 
     JCheckBoxMenuItem chckbxAcountSeparateOFX = new JCheckBoxMenuItem("Accounts in separate OFX files");
     JMenu mnGnuCashExe = new JMenu("GnuCash executable");
+    JMenu mnSynonyme = new JMenu("Synonym file");
     JMenuItem mntmLoglevel = new JMenuItem("Loglevel");
 
     JCheckBox chckbxInterest = new JCheckBox("Only interest transaction");
@@ -104,6 +106,7 @@ public class GUILayout extends JPanel implements ItemListener {
 
     // Initialize parameters
     m_GnuCashExecutable = new File(m_param.get_GnuCashExecutable());
+    m_Synonym_file = new File(m_param.get_Synonym_file());
 
     if (!m_param.get_OutputFolder().isBlank()) {
       m_OutputFolder = new File(m_param.get_OutputFolder());
@@ -183,6 +186,34 @@ public class GUILayout extends JPanel implements ItemListener {
       }
     });
     mnGnuCashExe.add(mntmGnuCashExe);
+
+    // Option Location Synonym file
+    mnSettings.add(mnSynonyme);
+
+    String l_Synonyme = "Location synonym file?";
+    if (m_Synonym_file.exists()) {
+      l_Synonyme = m_Synonym_file.getAbsolutePath();
+    }
+    JMenuItem mntmSynonym = new JMenuItem(l_Synonyme);
+    mntmSynonym.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        JFileChooser fileChooser = new JFileChooser(m_Synonym_file);
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser.setSelectedFile(m_Synonym_file);
+        FileFilter filter = new FileNameExtensionFilter("TXT File", "txt");
+        fileChooser.setFileFilter(filter);
+        int option = fileChooser.showOpenDialog(GUILayout.this);
+        if (option == JFileChooser.APPROVE_OPTION) {
+          File file = fileChooser.getSelectedFile();
+          LOGGER.log(Level.INFO, "Synonym file: " + file.getAbsolutePath());
+          m_Synonym_file = file;
+          m_param.set_Synonym_file(m_Synonym_file);
+          mntmSynonym.setText(m_Synonym_file.getAbsolutePath());
+        }
+      }
+    });
+    mnSynonyme.add(mntmSynonym);
 
     // Option log level
     mntmLoglevel.setHorizontalAlignment(SwingConstants.LEFT);
@@ -411,7 +442,7 @@ public class GUILayout extends JPanel implements ItemListener {
           m_OfxTransactions.clear();
           m_metainfo.clear();
         }
-        ActionReadTransactions l_action = new ActionReadTransactions(m_CsvFiles);
+        ActionReadTransactions l_action = new ActionReadTransactions(m_Synonym_file, m_CsvFiles);
 
         List<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>(l_action.execute());
         int l_read = l_OfxTransactions.size();

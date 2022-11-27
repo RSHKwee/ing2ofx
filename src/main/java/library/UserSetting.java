@@ -15,11 +15,12 @@ import java.util.prefs.Preferences;
 public class UserSetting {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 
-  private String c_GnuCashExe = "GnuCashExe";
-  private String c_GnuCashExeValue = "C:\\Program Files (x86)\\gnucash\\bin\\gnucash.exe";
-
   private String c_Level = "Level";
   private String c_LevelValue = "INFO";
+
+  private String c_GnuCashExe = "GnuCashExe";
+  private String c_GnuCashExeValue = "C:\\Program Files (x86)\\gnucash\\bin\\gnucash.exe";
+  private String c_Synonym_file = "SynonymFile";
 
   private String c_ConfirmOnExit = "ConfirmOnExit";
   private String c_toDisk = "ToDisk";
@@ -43,6 +44,7 @@ public class UserSetting {
   private String m_OutputFolder = "";
   private File[] m_CsvFiles = null;
   private String m_LogDir = "";
+  private String m_Synonym_file = "";
 
   private boolean m_ConfirmOnExit = false;
   private boolean m_toDisk = false;
@@ -76,6 +78,7 @@ public class UserSetting {
     m_LookAndFeel = pref.get(c_LookAndFeel, c_LookAndFeelVal);
     m_GnuCashExecutable = pref.get(c_GnuCashExe, c_GnuCashExeValue);
     m_OutputFolder = pref.get(c_OutputFolder, "");
+    m_Synonym_file = pref.get(c_Synonym_file, "");
 
     String l_CsvFiles = pref.get(c_CsvFiles, "");
     m_CsvFiles = StringToFiles(l_CsvFiles);
@@ -114,6 +117,10 @@ public class UserSetting {
 
   public String get_LookAndFeel() {
     return m_LookAndFeel;
+  }
+
+  public String get_Synonym_file() {
+    return m_Synonym_file;
   }
 
   public boolean is_toDisk() {
@@ -159,6 +166,11 @@ public class UserSetting {
   public void set_GnuCashExecutable(File a_GnuCashExecutable) {
     pref.put(c_GnuCashExe, a_GnuCashExecutable.getAbsolutePath());
     this.m_GnuCashExecutable = a_GnuCashExecutable.getAbsolutePath();
+  }
+
+  public void set_Synonym_file(File a_Synonym_file) {
+    pref.put(c_Synonym_file, a_Synonym_file.getAbsolutePath());
+    this.m_Synonym_file = a_Synonym_file.getAbsolutePath();
   }
 
   public void set_OutputFolder(File a_OutputFolder) {
@@ -250,6 +262,7 @@ public class UserSetting {
 
       pref.put(c_LookAndFeel, m_LookAndFeel);
       pref.put(c_GnuCashExe, m_GnuCashExecutable);
+      pref.put(c_Synonym_file, m_Synonym_file);
       pref.put(c_OutputFolder, m_OutputFolder);
       pref.put(c_CsvFiles, FilesToString(m_CsvFiles));
       pref.put(c_Level, m_Level);
