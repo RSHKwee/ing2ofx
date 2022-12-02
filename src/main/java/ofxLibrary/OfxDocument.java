@@ -15,8 +15,6 @@ public class OfxDocument {
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
 
-  // private OfxMetaAccounts m_OfxMetaAccounts;
-
   OfxDocument() {
   }
 

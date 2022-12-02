@@ -1,5 +1,6 @@
 package ofxLibrary;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -9,6 +10,8 @@ import java.util.List;
 // import java.util.logging.Level;
 import java.util.Map;
 import java.util.Set;
+
+import library.TxtBestand;
 
 public class OfxFunctions {
 //  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
@@ -63,6 +66,22 @@ public class OfxFunctions {
       l_metainfo.put(key, ll_OfxMetaInfo);
     });
     return l_metainfo;
+  }
+
+  static public void dumpMetaInfo(String a_OutputFile, Map<String, OfxMetaInfo> a_metainfo) {
+    ArrayList<String> l_Regels = new ArrayList<String>();
+    Set<String> l_AccKeys = a_metainfo.keySet();
+    l_Regels.add("Prefix; Account; BalanceDate; Balance; BankCode; MaxDate; MinDate");
+
+    l_AccKeys.forEach(l_AccKey -> {
+      OfxMetaInfo l_metainfo = a_metainfo.get(l_AccKey);
+      String l_Regel = l_metainfo.getPrefix() + ";" + l_metainfo.getAccount() + "; " + l_metainfo.getBalanceDate()
+          + "; " + l_metainfo.getBalanceAfterTransaction().replaceAll("\\.", ",") + "; " + l_metainfo.getBankcode()
+          + "; " + l_metainfo.getMaxDate() + "; " + l_metainfo.getMinDate();
+      l_Regels.add(l_Regel);
+    });
+
+    TxtBestand.DumpBestand(a_OutputFile, l_Regels);
   }
 
 }

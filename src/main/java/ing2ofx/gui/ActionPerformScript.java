@@ -15,6 +15,7 @@ import javax.swing.SwingWorker;
 
 import ofxLibrary.OfxDocument;
 import ofxLibrary.OfxFilter;
+import ofxLibrary.OfxFunctions;
 import ofxLibrary.OfxMetaAccounts;
 import ofxLibrary.OfxMetaInfo;
 import ofxLibrary.OfxPairTransaction;
@@ -139,28 +140,32 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
       l_document.CreateOfxDocument(l_outputfilename);
     }
 
+    String l_outputfilename = m_OutputDir + "\\_Saldos.csv";
+    OfxFunctions.dumpMetaInfo(l_outputfilename, m_metainfo);
+
     // Prefix summary
-    l_AccKeys = m_PrefixAccount.keySet();
-    l_AccKeys.forEach(l_acckey -> {
-      ArrayList<String> ll_accounts = new ArrayList<String>(m_PrefixAccount.get(l_acckey));
-      if (ll_accounts.size() > 1) {
-        Map<String, OfxMetaInfo> l_metainfo = new HashMap<String, OfxMetaInfo>();
-        List<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>();
+    if (false) {
+      l_AccKeys = m_PrefixAccount.keySet();
+      l_AccKeys.forEach(l_acckey -> {
+        ArrayList<String> ll_accounts = new ArrayList<String>(m_PrefixAccount.get(l_acckey));
+        if (ll_accounts.size() > 1) {
+          Map<String, OfxMetaInfo> l_metainfo = new HashMap<String, OfxMetaInfo>();
+          List<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>();
 
-        ll_accounts.forEach(ll_account -> {
-          OfxMetaInfo l_OfxMetaInfo = l_OfxMetaAccounts.getOfxMetaInfo(ll_account);
-          l_metainfo.put(ll_account, l_OfxMetaInfo);
-          l_OfxTransactions.addAll(l_OfxMetaAccounts.getTransactions(ll_account));
-          m_suffix = l_OfxMetaInfo.getSuffix();
-        });
+          ll_accounts.forEach(ll_account -> {
+            OfxMetaInfo l_OfxMetaInfo = l_OfxMetaAccounts.getOfxMetaInfo(ll_account);
+            l_metainfo.put(ll_account, l_OfxMetaInfo);
+            l_OfxTransactions.addAll(l_OfxMetaAccounts.getTransactions(ll_account));
+            m_suffix = l_OfxMetaInfo.getSuffix();
+          });
 
-        String l_filename = "";
-        l_filename = m_OutputDir + "\\" + String.join("_", l_acckey, m_suffix) + ".ofx";
-        OfxDocument l_document = new OfxDocument(l_OfxTransactions, l_metainfo);
-        l_document.CreateOfxDocument(l_filename);
-      }
-    });
-
+          String l_filename = "";
+          l_filename = m_OutputDir + "\\" + String.join("_", l_acckey, m_suffix) + ".ofx";
+          OfxDocument l_document = new OfxDocument(l_OfxTransactions, l_metainfo);
+          l_document.CreateOfxDocument(l_filename);
+        }
+      });
+    }
     LOGGER.log(Level.INFO, "End conversion.");
     return null;
   }
