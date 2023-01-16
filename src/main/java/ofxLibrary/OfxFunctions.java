@@ -86,7 +86,7 @@ public class OfxFunctions {
 	}
 
 	static String formatDate(String a_date) {
-		// 20230101
+		// 20230101 => 01-01-2023
 		String s_date = "";
 		s_date = a_date.substring(6, 8) + "-" + a_date.substring(4, 6) + "-" + a_date.substring(0, 4);
 		return s_date;
