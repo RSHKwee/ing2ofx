@@ -91,4 +91,46 @@ public class OfxFunctions {
 		s_date = a_date.substring(6, 8) + "-" + a_date.substring(4, 6) + "-" + a_date.substring(0, 4);
 		return s_date;
 	}
+
+	/**
+	 * Create a unique fitid for an OFX Transaction.
+	 * 
+	 * @param a_ofxtrans OFX Transaction
+	 * @param a_UniqueId set of already generated Fit-id's
+	 * @return A unique fitid
+	 */
+	static public String createUniqueId(OfxTransaction a_ofxtrans, Set<String> a_UniqueId) {
+		String uniqueid = "";
+		/*
+     * @formatter:off
+    String memo = l_ofxtrans.getMemo();
+    String time = "";
+     * time = "" matches = re.search("\s([0-9]{2}:[0-9]{2})\s", memo) if matches:
+     * time = matches.group(1).replace(":", "")
+
+    Pattern patt = Pattern.compile("([0-9]{2}:[0-9]{2})");
+    Matcher matcher = patt.matcher(memo);
+    if (matcher.find()) {
+      time = matcher.group(1).replace(":", ""); // you can get it from desired index as well
+    }
+     * @formatter:on
+    */
+		String fitid = a_ofxtrans.getDtposted() + a_ofxtrans.getTrnamt().replace(",", "").replace("-", "").replace(".", "");
+		uniqueid = fitid;
+		if (a_UniqueId.contains(fitid)) {
+			// # Make unique by adding time and sequence nr.
+			int idcount = 0;
+			uniqueid = fitid;
+			while (a_UniqueId.contains(uniqueid)) {
+				idcount = idcount + 1;
+				// uniqueid = fitid + time + Integer.toString(idcount);
+				uniqueid = fitid + Integer.toString(idcount);
+			}
+			a_UniqueId.add(uniqueid);
+		} else {
+			a_UniqueId.add(fitid);
+		}
+		return uniqueid;
+	}
+
 }
