@@ -42,3 +42,16 @@ In the "settings" menu the following options are available:
 - For debugging a _loglevel_ can be defined, default is level _INFO_.
 - _Look and Feel_ of the GUI can be adjusted.
 - _Create logfiles_ in the choosen directory a HTML- and a textfile with logging is created.
+
+# Transaction "fitting"
+When a transaction is present in the input files of two different accounts, because it is a transfer between those accounts, then the "fit-id" is adjusted accordenly.
+If there is a import correlation present that the transaction is coupled to the other account, then GnuCash will mark one of the transactions as a duplicate (and transaction is not imported).
+
+For the transaction fitting the following rules are used:
+- "Account" from is "Account to".
+- Transaction dates are the same.
+- Sum of amounts is zero.
+
+# Synonym
+The generated files are getting a prefix accordenly the synonym.
+.....
