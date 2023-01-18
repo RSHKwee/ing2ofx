@@ -40,7 +40,7 @@ public class SnsTransactions {
 	private String m_bankcode = "SNSBNL2A";
 	private Camt053Parser m_reader;
 	private String m_File;
-	private Set<String> m_UniqueId = new LinkedHashSet<>();
+	private Set<String> m_UniqueIds = new LinkedHashSet<>();
 	private String m_FileName = "";
 
 	private List<SnsTransaction> m_Transactions;
@@ -207,7 +207,11 @@ public class SnsTransactions {
 										l_ofxtrans.setName(l_memo);
 									}
 								}
-								l_ofxtrans.setFitid(OfxFunctions.createUniqueId(l_ofxtrans, m_UniqueId));
+
+								String l_fitid = OfxFunctions.createUniqueId(l_ofxtrans, m_UniqueIds);
+								m_UniqueIds.add(l_fitid);
+								l_ofxtrans.setFitid(l_fitid);
+
 								l_ofxtrans.setSaving(false);
 								l_ofxtrans.setSource(m_FileName);
 								m_OfxTransactions.add(l_ofxtrans);
@@ -241,6 +245,10 @@ public class SnsTransactions {
 	 */
 	public List<SnsTransaction> getSnsTransactions() {
 		return m_Transactions;
+	}
+
+	public Set<String> getUniqueIds() {
+		return m_UniqueIds;
 	}
 
 	/**

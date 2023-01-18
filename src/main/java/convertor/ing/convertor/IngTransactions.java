@@ -39,7 +39,7 @@ public class IngTransactions {
 	private File m_File;
 	private boolean m_saving = false;
 	private char m_separator = ';';
-	private Set<String> m_UniqueId = new LinkedHashSet<>();
+	private Set<String> m_UniqueIds = new LinkedHashSet<>();
 	private String m_FileName = "";
 
 	private List<IngTransaction> m_Transactions;
@@ -94,7 +94,11 @@ public class IngTransactions {
 				m_SavingTransactions.forEach(l_trans -> {
 					OfxTransaction l_ofxtrans;
 					l_ofxtrans = Ing2OfxTransaction.convertSavingToOfx(l_trans);
-					l_ofxtrans.setFitid(OfxFunctions.createUniqueId(l_ofxtrans, m_UniqueId));
+
+					String l_fitid = OfxFunctions.createUniqueId(l_ofxtrans, m_UniqueIds);
+					m_UniqueIds.add(l_fitid);
+					l_ofxtrans.setFitid(l_fitid);
+
 					l_ofxtrans.setSaving(true);
 					l_ofxtrans.setSource(m_FileName);
 
@@ -115,7 +119,11 @@ public class IngTransactions {
 				m_Transactions.forEach(l_trans -> {
 					OfxTransaction l_ofxtrans;
 					l_ofxtrans = Ing2OfxTransaction.convertToOfx(l_trans);
-					l_ofxtrans.setFitid(OfxFunctions.createUniqueId(l_ofxtrans, m_UniqueId));
+
+					String l_fitid = OfxFunctions.createUniqueId(l_ofxtrans, m_UniqueIds);
+					m_UniqueIds.add(l_fitid);
+					l_ofxtrans.setFitid(l_fitid);
+
 					l_ofxtrans.setSaving(false);
 					l_ofxtrans.setSource(m_FileName);
 
@@ -178,6 +186,10 @@ public class IngTransactions {
 	 */
 	public Map<String, OfxMetaInfo> getOfxMetaInfo() {
 		return m_metainfo;
+	}
+
+	public Set<String> getUniqueIds() {
+		return m_UniqueIds;
 	}
 
 	/**
