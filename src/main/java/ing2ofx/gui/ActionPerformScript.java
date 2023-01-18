@@ -86,19 +86,7 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
 	@Override
 	protected Void doInBackground() throws Exception {
 		LOGGER.log(Level.INFO, "Start conversion (java).");
-		/*
-		 * Set<String> l_AccKeys = m_metainfo.keySet(); l_AccKeys.forEach(l_AccKey -> {
-		 * OfxMetaInfo l_metainfo = m_metainfo.get(l_AccKey); if
-		 * (!l_metainfo.getPrefix().isEmpty()) { if
-		 * (m_PrefixAccount.get(l_metainfo.getPrefix()) == null) { ArrayList<String>
-		 * l_accounts = new ArrayList<String>();
-		 * l_accounts.add(l_metainfo.getAccount());
-		 * m_PrefixAccount.put(l_metainfo.getPrefix(), l_accounts); } else {
-		 * ArrayList<String> l_accounts = new
-		 * ArrayList<String>(m_PrefixAccount.get(l_metainfo.getPrefix()));
-		 * l_accounts.add(l_metainfo.getAccount());
-		 * m_PrefixAccount.put(l_metainfo.getPrefix(), l_accounts); } } });
-		 */
+
 		OfxMetaAccounts l_OfxMetaAccounts = new OfxMetaAccounts(m_OfxTransactions, m_metainfo);
 		Set<String> l_accounts = l_OfxMetaAccounts.getAccounts();
 

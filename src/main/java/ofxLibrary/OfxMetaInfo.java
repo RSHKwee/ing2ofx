@@ -55,8 +55,8 @@ public class OfxMetaInfo {
 		return m_Synonyms;
 	}
 
-	public void setSynonymes(Synonyms a_Synonymes) {
-		this.m_Synonyms = a_Synonymes;
+	public void setSynonymes(Synonyms a_Synonyms) {
+		this.m_Synonyms = a_Synonyms;
 	}
 
 	public String getBankcode() {

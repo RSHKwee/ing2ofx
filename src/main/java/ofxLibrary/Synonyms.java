@@ -18,7 +18,7 @@ import java.util.stream.Stream;
  */
 public class Synonyms {
 	private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
-	private Map<String, Synonyme> m_Synonymes = new HashMap<String, Synonyme>();
+	private Map<String, Synonym> m_Synonyms = new HashMap<String, Synonym>();
 
 	/**
 	 * 
@@ -30,12 +30,12 @@ public class Synonyms {
 	 * 
 	 * @param a_SynonymsFile
 	 */
-	public Synonyms(File a_SynonymesFile) {
-		String l_SynonymesFile = a_SynonymesFile.getPath();
-		LOGGER.log(Level.FINE, "File read:" + l_SynonymesFile);
+	public Synonyms(File a_SynonymsFile) {
+		String l_SynonymsFile = a_SynonymsFile.getPath();
+		LOGGER.log(Level.FINE, "File read:" + l_SynonymsFile);
 
 		// read file into stream, try-with-resources
-		try (Stream<String> stream = Files.lines(Paths.get(l_SynonymesFile))) {
+		try (Stream<String> stream = Files.lines(Paths.get(l_SynonymsFile))) {
 			stream.forEach(l_line -> {
 				String[] l_elems = l_line.split(";");
 				if (l_elems.length >= 3) {
@@ -48,8 +48,8 @@ public class Synonyms {
 
 					String l_key = l_elems[1].strip();
 					String l_syn = l_elems[2].strip();
-					Synonyme l_synonyme = new Synonyme(lseq, l_key, l_syn);
-					m_Synonymes.put(l_key, l_synonyme);
+					Synonym l_synonym = new Synonym(lseq, l_key, l_syn);
+					m_Synonyms.put(l_key, l_synonym);
 				}
 			});
 		} catch (IOException e) {
@@ -64,9 +64,9 @@ public class Synonyms {
 	 */
 	public String getSynonym(String a_key) {
 		String l_Syn = "";
-		if (m_Synonymes.containsKey(a_key)) {
-			Synonyme l_Synonyme = m_Synonymes.get(a_key);
-			l_Syn = l_Synonyme.getSyn();
+		if (m_Synonyms.containsKey(a_key)) {
+			Synonym l_Synonym = m_Synonyms.get(a_key);
+			l_Syn = l_Synonym.getSyn();
 		}
 		return l_Syn;
 	}
@@ -79,9 +79,9 @@ public class Synonyms {
 	 */
 	public int getSequence(String a_key) {
 		int l_Seq = -1;
-		if (m_Synonymes.containsKey(a_key)) {
-			Synonyme l_Synonyme = m_Synonymes.get(a_key);
-			l_Seq = l_Synonyme.getSequence();
+		if (m_Synonyms.containsKey(a_key)) {
+			Synonym l_Synonym = m_Synonyms.get(a_key);
+			l_Seq = l_Synonym.getSequence();
 		}
 		return l_Seq;
 	}

@@ -1,13 +1,13 @@
 package ofxLibrary;
 
-public class Synonyme {
+public class Synonym {
   // private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 
   private int m_Sequence = -1;
   private String m_Key = "";
   private String m_Syn = "";
 
-  public Synonyme(int a_Seq, String a_Key, String a_Syn) {
+  public Synonym(int a_Seq, String a_Key, String a_Syn) {
     m_Sequence = a_Seq;
     m_Key = a_Key;
     m_Syn = a_Syn;
