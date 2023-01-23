@@ -121,6 +121,9 @@ public class GUILayout extends JPanel implements ItemListener {
     m_AcountSeparateOFX = m_param.is_AcountSeparateOFX();
     m_Interest = m_param.is_Interest();
     m_LogDir = m_param.get_LogDir();
+    m_ClearTransactions = m_param.is_ClearTransactions();
+
+    LOGGER.log(Level.CONFIG, m_param.print());
 
     // Define Layout
     setLayout(new BorderLayout(0, 0));
@@ -399,10 +402,11 @@ public class GUILayout extends JPanel implements ItemListener {
     chckbxClearTransactons.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        boolean selected = chckbxInterest.isSelected();
+        boolean selected = chckbxClearTransactons.isSelected();
         m_ClearTransactions = selected;
         m_param.set_ClearTransactions(m_ClearTransactions);
         LOGGER.log(Level.CONFIG, "Clear transactions before read :" + Boolean.toString(selected));
+        LOGGER.log(Level.CONFIG, m_param.print());
       }
     });
     panel.add(chckbxClearTransactons, "cell 1 1");
@@ -455,10 +459,6 @@ public class GUILayout extends JPanel implements ItemListener {
 
         m_metainfo = OfxFunctions.addMetaInfo(m_metainfo, l_action.getOfxMetaInfo(), l_OfxTransactions);
         btnConvert.setEnabled(l_action.TransactionsProcessed());
-
-        m_ClearTransactions = false;
-        m_param.set_ClearTransactions(m_ClearTransactions);
-        chckbxClearTransactons.setSelected(m_ClearTransactions);
       }
     });
     panel.add(btnReadTransactions, "cell 1 2");

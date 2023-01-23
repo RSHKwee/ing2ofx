@@ -274,6 +274,31 @@ public class UserSetting {
     }
   }
 
+  public String print() {
+    String l_line = "User setting \n";
+    l_line = l_line + c_toDisk + ": " + m_toDisk + "\n";
+    l_line = l_line + c_AccountSepOfx + ": " + m_AcountSeparateOFX + "\n";
+    l_line = l_line + c_ConvertDecimalSeparator + ": " + m_ConvertDecimalSeparator + "\n";
+
+    l_line = l_line + c_ConvertDateFormat + ": " + m_ConvertDateFormat + "\n";
+    l_line = l_line + c_SeparatorComma + ": " + m_SeparatorComma + "\n";
+    l_line = l_line + c_Interest + ": " + m_Interest + "\n";
+    l_line = l_line + c_Savings + ": " + m_Savings + "\n";
+    l_line = l_line + c_ConfirmOnExit + ": " + m_ConfirmOnExit + "\n";
+    l_line = l_line + c_Java + ": " + m_Java + "\n";
+    l_line = l_line + c_ClearTransactions + ": " + m_ClearTransactions + "\n";
+
+    l_line = l_line + c_LookAndFeel + ": " + m_LookAndFeel + "\n";
+    l_line = l_line + c_GnuCashExe + ": " + m_GnuCashExecutable + "\n";
+    l_line = l_line + c_Synonym_file + ": " + m_Synonym_file + "\n";
+    l_line = l_line + c_OutputFolder + ": " + m_OutputFolder + "\n";
+    l_line = l_line + c_CsvFiles + ": " + FilesToString(m_CsvFiles) + "\n";
+    l_line = l_line + c_Level + ": " + m_Level + "\n";
+    l_line = l_line + c_LogDir + ": " + m_LogDir + "\n";
+
+    return l_line;
+  }
+
   private String c_StringDelim = ";";
 
   private String FilesToString(File[] a_Files) {

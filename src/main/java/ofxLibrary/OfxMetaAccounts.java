@@ -37,7 +37,7 @@ public class OfxMetaAccounts {
           if (l_ofxtrans.getAccount() == null) {
             LOGGER.log(Level.INFO, "Acount is null");
           } else {
-            LOGGER.log(Level.INFO, "Get transactions for Account : " + l_ofxtrans.getAccount());
+            LOGGER.log(Level.FINE, "Get transactions for Account : " + l_ofxtrans.getAccount());
           }
           if (m_OfxAcounts != null) {
             if (!m_OfxAcounts.isEmpty()) {

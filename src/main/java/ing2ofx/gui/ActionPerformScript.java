@@ -11,7 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.JTextArea;
-import javax.swing.SwingUtilities;
+//import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 
 import ofxLibrary.OfxDocument;
@@ -36,6 +36,7 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
   private boolean m_SeparateOFX = true;
   private boolean m_Interrest = true;
   private String m_FilterName = "";
+  private String m_Suffix = "";
 
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
@@ -57,6 +58,7 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
     m_OutputDir = a_OutputFolder;
     m_SeparateOFX = a_SeparateOFX;
     m_Interrest = a_Interrest;
+    m_Suffix = "";
 
     if (m_OutputDir.isBlank()) {
       if (a_files.length > 0) {
@@ -91,68 +93,44 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
     Set<String> l_accounts = l_OfxMetaAccounts.getAccounts();
 
     if (m_SeparateOFX) {
+      m_Suffix = "";
       l_accounts.forEach(l_account -> {
         LOGGER.log(Level.INFO, "Convert for " + l_account);
-        new Thread(new Runnable() {
-          @Override
-          public void run() {
-            // SwingUtilities.invokeLater(new Runnable() {
-            // @Override
-            // public void run() {
-            publish("Beginning Work");
-            LOGGER.log(Level.INFO, "Begining Work.");
 
-            OfxMetaInfo l_OfxMetaInfo = l_OfxMetaAccounts.getOfxMetaInfo(l_account);
-            Map<String, OfxMetaInfo> l_metainfo = new HashMap<String, OfxMetaInfo>();
-            l_metainfo.put(l_account, l_OfxMetaInfo);
+        OfxMetaInfo l_OfxMetaInfo = l_OfxMetaAccounts.getOfxMetaInfo(l_account);
+        Map<String, OfxMetaInfo> l_metainfo = new HashMap<String, OfxMetaInfo>();
+        l_metainfo.put(l_account, l_OfxMetaInfo);
 
-            List<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>(
-                l_OfxMetaAccounts.getTransactions(l_account));
-            LOGGER.log(Level.INFO, "Account: " + l_account + " number of transactions: " + l_OfxTransactions.size());
-            OfxMetaInfo l_info = l_OfxMetaAccounts.getOfxMetaInfo(l_account);
-            String l_prefix = l_info.getPrefix();
-            String l_suffix = l_info.getSuffix();
-            String l_filename = "";
-            if (!l_prefix.isBlank()) {
-              l_filename = m_OutputDir + "\\" + String.join("_", l_prefix, l_account, l_suffix);
-              if (!m_FilterName.isBlank()) {
-                l_filename = String.join("_", l_filename, m_FilterName);
-              }
-              l_filename = String.join("_", l_filename) + ".ofx";
-            } else {
-              l_filename = m_OutputDir + "\\" + String.join("_", l_account, l_suffix) + ".ofx";
-            }
-
-            OfxDocument l_document = new OfxDocument(l_OfxTransactions, l_metainfo);
-            l_document.CreateOfxDocument(l_filename);
+        List<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>(
+            l_OfxMetaAccounts.getTransactions(l_account));
+        LOGGER.log(Level.INFO, "Account: " + l_account + " number of transactions: " + l_OfxTransactions.size());
+        OfxMetaInfo l_info = l_OfxMetaAccounts.getOfxMetaInfo(l_account);
+        String l_prefix = l_info.getPrefix();
+        String l_suffix = l_info.getSuffix();
+        if (!l_suffix.isBlank()) {
+          m_Suffix = l_suffix;
+        }
+        String l_filename = "";
+        if (!l_prefix.isBlank()) {
+          l_filename = m_OutputDir + "\\" + String.join("_", l_prefix, l_account, l_suffix);
+          if (!m_FilterName.isBlank()) {
+            l_filename = String.join("_", l_filename, m_FilterName);
           }
-          // });
-          // }
-        }).start();
+          l_filename = String.join("_", l_filename) + ".ofx";
+        } else {
+          l_filename = m_OutputDir + "\\" + String.join("_", l_account, l_suffix) + ".ofx";
+        }
+
+        OfxDocument l_document = new OfxDocument(l_OfxTransactions, l_metainfo);
+        l_document.CreateOfxDocument(l_filename);
       });
     } else {
-      new Thread() {
-        @Override
-        public void run() {
-          SwingUtilities.invokeLater(new Runnable() {
-            // @Override
-            // public void run() {
-            // SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-
-              OfxDocument l_document = new OfxDocument(m_OfxTransactions, m_metainfo);
-              String l_outputfilename = m_OutputDir + "\\AllTransactions.ofx";
-              l_document.CreateOfxDocument(l_outputfilename);
-            }
-          });
-          // }
-          // });
-        }
-      }.start();
+      OfxDocument l_document = new OfxDocument(m_OfxTransactions, m_metainfo);
+      String l_outputfilename = m_OutputDir + "\\AllTransactions.ofx";
+      l_document.CreateOfxDocument(l_outputfilename);
     }
 
-    String l_outputfilename = m_OutputDir + "\\_Saldos.csv";
+    String l_outputfilename = m_OutputDir + "\\_Saldos_" + m_Suffix + ".csv";
     LOGGER.log(Level.INFO, "Saldos filename: " + l_outputfilename);
     OfxFunctions.dumpMetaInfo(l_outputfilename, m_metainfo);
 
