@@ -10,6 +10,8 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JLabel;
+import javax.swing.JProgressBar;
 import javax.swing.JTextArea;
 //import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
@@ -38,6 +40,11 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
   private String m_FilterName = "";
   private String m_Suffix = "";
 
+  private JProgressBar m_ProgressBar;
+  private JLabel m_Progresslabel;
+  private int m_Processed = 0;
+  private int m_Number = -1;
+
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
 
@@ -51,7 +58,8 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
    * @param a_Interrest    Only interest transactions in OFX file(s).
    */
   public ActionPerformScript(List<OfxTransaction> a_OfxTransactions, Map<String, OfxMetaInfo> a_metainfo,
-      File[] a_files, String a_OutputFolder, boolean a_SeparateOFX, boolean a_Interrest) {
+      File[] a_files, String a_OutputFolder, boolean a_SeparateOFX, boolean a_Interrest, JProgressBar a_ProgressBar,
+      JLabel a_Progresslabel) {
     m_OfxTransactions = a_OfxTransactions;
     m_metainfo = a_metainfo;
 
@@ -59,6 +67,9 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
     m_SeparateOFX = a_SeparateOFX;
     m_Interrest = a_Interrest;
     m_Suffix = "";
+
+    m_ProgressBar = a_ProgressBar;
+    m_Progresslabel = a_Progresslabel;
 
     if (m_OutputDir.isBlank()) {
       if (a_files.length > 0) {
@@ -69,8 +80,6 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
       FilterInterestTransactions();
       m_FilterName = "Rente";
     }
-    OfxPairTransaction l_pairs = new OfxPairTransaction(m_OfxTransactions);
-    m_OfxTransactions = l_pairs.pair();
   }
 
   void FilterInterestTransactions() {
@@ -88,9 +97,23 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
   @Override
   protected Void doInBackground() throws Exception {
     LOGGER.log(Level.INFO, "Start conversion (java).");
+    m_Processed = -1;
+    m_Number = m_OfxTransactions.size();
+
+    m_ProgressBar.setMaximum(m_Number);
+    m_Progresslabel.setVisible(true);
+
+    OfxPairTransaction l_pairs = new OfxPairTransaction(m_OfxTransactions, m_ProgressBar, m_Progresslabel);
+    m_OfxTransactions = l_pairs.pair();
 
     OfxMetaAccounts l_OfxMetaAccounts = new OfxMetaAccounts(m_OfxTransactions, m_metainfo);
     Set<String> l_accounts = l_OfxMetaAccounts.getAccounts();
+
+    m_Processed = -1;
+    m_ProgressBar.setMaximum(m_Number);
+    m_Progresslabel.setVisible(true);
+    m_ProgressBar.setVisible(true);
+    verwerkProgress();
 
     if (m_SeparateOFX) {
       m_Suffix = "";
@@ -123,6 +146,8 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
 
         OfxDocument l_document = new OfxDocument(l_OfxTransactions, l_metainfo);
         l_document.CreateOfxDocument(l_filename);
+
+        verwerkProgress();
       });
     } else {
       OfxDocument l_document = new OfxDocument(m_OfxTransactions, m_metainfo);
@@ -135,6 +160,8 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
     OfxFunctions.dumpMetaInfo(l_outputfilename, m_metainfo);
 
     LOGGER.log(Level.INFO, "End conversion(s).");
+    m_Progresslabel.setVisible(false);
+    m_ProgressBar.setVisible(false);
     return null;
   }
 
@@ -147,6 +174,21 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
   protected void done() {
     LOGGER.log(Level.INFO, "");
     LOGGER.log(Level.INFO, "Done.");
+  }
+
+  /**
+   * Display progress processed files.
+   */
+  private void verwerkProgress() {
+    m_Processed++;
+    try {
+      m_ProgressBar.setValue(m_Processed);
+      Double v_prog = ((double) m_Processed / (double) m_Number) * 100;
+      Integer v_iprog = v_prog.intValue();
+      m_Progresslabel.setText(v_iprog.toString() + "% (" + m_Processed + " of " + m_Number + " transactions)");
+    } catch (Exception e) {
+      // Do nothing
+    }
   }
 }
 

@@ -38,6 +38,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -72,6 +73,9 @@ public class GUILayout extends JPanel implements ItemListener {
 
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
+
+  private JProgressBar m_ProgressBar = new JProgressBar();
+  private JLabel lblProgressLabel;
 
   // Preferences
   private UserSetting m_param = Main.m_param;
@@ -480,21 +484,13 @@ public class GUILayout extends JPanel implements ItemListener {
       public void actionPerformed(ActionEvent e) {
         m_param.save();
         btnConvert.setEnabled(false);
-        new Thread() {
-          @Override
-          public void run() {
-            SwingUtilities.invokeLater(new Runnable() {
-              @Override
-              public void run() {
-                LOGGER.log(Level.INFO, "Start conversion(s).");
-                ActionPerformScript l_action = new ActionPerformScript(m_OfxTransactions, m_metainfo, m_CsvFiles,
-                    lblOutputFolder.getText(), chckbxAcountSeparateOFX.isSelected(), chckbxInterest.isSelected());
-                l_action.execute();
-                LOGGER.log(Level.INFO, "Conversion(s) done.");
-              }
-            });
-          }
-        }.start();
+
+        LOGGER.log(Level.FINE, "Start conversion(s).");
+        ActionPerformScript l_action = new ActionPerformScript(m_OfxTransactions, m_metainfo, m_CsvFiles,
+            lblOutputFolder.getText(), chckbxAcountSeparateOFX.isSelected(), chckbxInterest.isSelected(), m_ProgressBar,
+            lblProgressLabel);
+        l_action.execute();
+        LOGGER.log(Level.FINE, "Conversion(s) done.");
       }
     });
     panel.add(btnConvert, "cell 1 5");
@@ -521,6 +517,14 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     panel.add(btnGNUCash, "cell 1 7");
 
+    // Progress bars
+    lblProgressLabel = new JLabel(" ");
+    panel.add(lblProgressLabel, "flowx,cell 1 9, alignx right,aligny top");
+
+    m_ProgressBar.setVisible(true);
+    panel.add(m_ProgressBar, "cell 1 8, south");
+
+    // Bottom
     bottomHalf.setMinimumSize(new Dimension(500, 100));
     bottomHalf.setPreferredSize(new Dimension(500, 400));
     splitPane.add(bottomHalf);

@@ -6,12 +6,24 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JLabel;
+import javax.swing.JProgressBar;
+
 public class OfxPairTransaction {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
 
-  public OfxPairTransaction(List<OfxTransaction> a_OfxTransactions) {
+  private JProgressBar m_ProgressBar;
+  private JLabel m_Progresslabel;
+  private int m_Processed = 0;
+  private int m_Number = -1;
+
+  public OfxPairTransaction(List<OfxTransaction> a_OfxTransactions, JProgressBar a_ProgressBar,
+      JLabel a_Progresslabel) {
     m_OfxTransactions = a_OfxTransactions;
+
+    m_ProgressBar = a_ProgressBar;
+    m_Progresslabel = a_Progresslabel;
   }
 
   /**
@@ -53,6 +65,14 @@ public class OfxPairTransaction {
    * @return List of OFX Transactions.
    */
   public List<OfxTransaction> pair() {
+    m_Processed = -1;
+    m_Number = m_OfxTransactions.size();
+    m_ProgressBar.setMaximum(m_Number);
+    m_Progresslabel.setVisible(true);
+    m_ProgressBar.setVisible(true);
+
+    verwerkProgress();
+
     for (int i = 0; i < m_OfxTransactions.size(); i++) {
       OfxTransaction l_OfxTransaction1 = m_OfxTransactions.get(i);
       boolean bstat = false;
@@ -74,8 +94,27 @@ public class OfxPairTransaction {
         }
         j++;
       }
+      verwerkProgress();
     }
+    m_Progresslabel.setVisible(false);
+    m_ProgressBar.setVisible(false);
+
     return m_OfxTransactions;
+  }
+
+  /**
+   * Display progress processed files.
+   */
+  private void verwerkProgress() {
+    m_Processed++;
+    try {
+      m_ProgressBar.setValue(m_Processed);
+      Double v_prog = ((double) m_Processed / (double) m_Number) * 100;
+      Integer v_iprog = v_prog.intValue();
+      m_Progresslabel.setText(v_iprog.toString() + "% (" + m_Processed + " of " + m_Number + " transactions)");
+    } catch (Exception e) {
+      // Do nothing
+    }
   }
 
 }
