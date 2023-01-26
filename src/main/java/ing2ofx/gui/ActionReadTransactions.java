@@ -29,29 +29,7 @@ public class ActionReadTransactions {
 
   private File[] m_CSVFiles = null;
   private boolean m_TransactionProcessed = false;
-  private boolean m_ClearTransactions = true;
   private File m_Synonym_file;
-
-  /**
-   * Constructor initialize variables.
-   * 
-   * @param a_CSVFiles          List of files to be processed.
-   * @param a_ClearTransactions Clear, or not, the list of transactions.
-   * @param a_OfxTransactions   List of processed transactions.
-   */
-  public ActionReadTransactions(File a_Synonym_file, File[] a_CSVFiles, boolean a_ClearTransactions,
-      List<OfxTransaction> a_OfxTransactions) {
-    m_CSVFiles = a_CSVFiles;
-    m_ClearTransactions = a_ClearTransactions;
-    m_Synonym_file = a_Synonym_file;
-    if (m_ClearTransactions) {
-      m_OfxTransactions.clear();
-      m_TransactionProcessed = false;
-    } else {
-      m_OfxTransactions.addAll(a_OfxTransactions);
-      m_TransactionProcessed = true;
-    }
-  }
 
   /**
    * Constructor initialize variables.
@@ -60,7 +38,6 @@ public class ActionReadTransactions {
    */
   public ActionReadTransactions(File a_Synonym_file, File[] a_CSVFiles) {
     m_CSVFiles = a_CSVFiles;
-    m_ClearTransactions = true;
     m_OfxTransactions.clear();
     m_TransactionProcessed = false;
     m_Synonym_file = a_Synonym_file;
