@@ -521,7 +521,7 @@ public class GUILayout extends JPanel implements ItemListener {
     lblProgressLabel = new JLabel(" ");
     panel.add(lblProgressLabel, "flowx,cell 1 9, alignx right,aligny top");
 
-    m_ProgressBar.setVisible(true);
+    m_ProgressBar.setVisible(false);
     panel.add(m_ProgressBar, "cell 1 8, south");
 
     // Bottom

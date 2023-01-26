@@ -97,25 +97,20 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
   @Override
   protected Void doInBackground() throws Exception {
     LOGGER.log(Level.INFO, "Start conversion (java).");
-    m_Processed = -1;
-    m_Number = m_OfxTransactions.size();
-
-    m_ProgressBar.setMaximum(m_Number);
-    m_Progresslabel.setVisible(true);
-
     OfxPairTransaction l_pairs = new OfxPairTransaction(m_OfxTransactions, m_ProgressBar, m_Progresslabel);
     m_OfxTransactions = l_pairs.pair();
 
     OfxMetaAccounts l_OfxMetaAccounts = new OfxMetaAccounts(m_OfxTransactions, m_metainfo);
     Set<String> l_accounts = l_OfxMetaAccounts.getAccounts();
 
-    m_Processed = -1;
-    m_ProgressBar.setMaximum(m_Number);
-    m_Progresslabel.setVisible(true);
-    m_ProgressBar.setVisible(true);
-    verwerkProgress();
-
     if (m_SeparateOFX) {
+      m_Processed = -1;
+      m_Number = l_accounts.size();
+      m_ProgressBar.setMaximum(m_Number);
+      m_Progresslabel.setVisible(true);
+      m_ProgressBar.setVisible(true);
+      verwerkProgress();
+
       m_Suffix = "";
       l_accounts.forEach(l_account -> {
         LOGGER.log(Level.INFO, "Convert for " + l_account);
