@@ -8,6 +8,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.swing.JLabel;
+import javax.swing.JProgressBar;
+
 import org.apache.commons.io.FilenameUtils;
 
 import convertor.ing.convertor.IngTransactions;
@@ -31,19 +35,35 @@ public class ActionReadTransactions {
   private boolean m_TransactionProcessed = false;
   private File m_Synonym_file;
 
+  private JProgressBar m_ProgressBar;
+  private JLabel m_Progresslabel;
+  private int m_Processed = 0;
+  private int m_Number = -1;
+
   /**
    * Constructor initialize variables.
    * 
    * @param a_CSVFiles List of files to be processed.
    */
-  public ActionReadTransactions(File a_Synonym_file, File[] a_CSVFiles) {
+  public ActionReadTransactions(File a_Synonym_file, File[] a_CSVFiles, JProgressBar a_ProgressBar,
+      JLabel a_Progresslabel) {
     m_CSVFiles = a_CSVFiles;
     m_OfxTransactions.clear();
     m_TransactionProcessed = false;
     m_Synonym_file = a_Synonym_file;
+
+    m_ProgressBar = a_ProgressBar;
+    m_Progresslabel = a_Progresslabel;
   }
 
   public List<OfxTransaction> execute() {
+    m_Processed = -1;
+    m_Number = m_CSVFiles.length;
+    m_ProgressBar.setMaximum(m_Number);
+    m_Progresslabel.setVisible(true);
+    m_ProgressBar.setVisible(true);
+    verwerkProgress();
+
     for (int i = 0; i < m_CSVFiles.length; i++) {
       String l_File = m_CSVFiles[i].getAbsolutePath();
       String l_ext = FilenameUtils.getExtension(l_File);
@@ -77,6 +97,8 @@ public class ActionReadTransactions {
       }
       LOGGER.log(Level.INFO, "Processed file " + l_File);
     }
+    m_Progresslabel.setVisible(false);
+    m_ProgressBar.setVisible(false);
     return m_OfxTransactions;
   }
 
@@ -102,5 +124,20 @@ public class ActionReadTransactions {
       }
     });
     return l_metainfo;
+  }
+
+  /**
+   * Display progress processed files.
+   */
+  private void verwerkProgress() {
+    m_Processed++;
+    try {
+      m_ProgressBar.setValue(m_Processed);
+      Double v_prog = ((double) m_Processed / (double) m_Number) * 100;
+      Integer v_iprog = v_prog.intValue();
+      m_Progresslabel.setText(v_iprog.toString() + "% (" + m_Processed + " of " + m_Number + " transactions)");
+    } catch (Exception e) {
+      // Do nothing
+    }
   }
 }

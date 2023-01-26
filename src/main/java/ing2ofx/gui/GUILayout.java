@@ -450,7 +450,8 @@ public class GUILayout extends JPanel implements ItemListener {
           m_OfxTransactions.clear();
           m_metainfo.clear();
         }
-        ActionReadTransactions l_action = new ActionReadTransactions(m_Synonym_file, m_CsvFiles);
+        ActionReadTransactions l_action = new ActionReadTransactions(m_Synonym_file, m_CsvFiles, m_ProgressBar,
+            lblProgressLabel);
 
         List<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>(l_action.execute());
         int l_read = l_OfxTransactions.size();

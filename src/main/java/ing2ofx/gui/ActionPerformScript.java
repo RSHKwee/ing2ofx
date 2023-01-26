@@ -154,9 +154,9 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
     LOGGER.log(Level.INFO, "Saldos filename: " + l_outputfilename);
     OfxFunctions.dumpMetaInfo(l_outputfilename, m_metainfo);
 
-    LOGGER.log(Level.INFO, "End conversion(s).");
     m_Progresslabel.setVisible(false);
     m_ProgressBar.setVisible(false);
+    LOGGER.log(Level.INFO, "End conversion(s).");
     return null;
   }
 
