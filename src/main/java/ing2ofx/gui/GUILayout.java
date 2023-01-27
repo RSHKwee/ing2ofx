@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -453,8 +454,15 @@ public class GUILayout extends JPanel implements ItemListener {
         }
         ActionReadTransactions l_action = new ActionReadTransactions(m_Synonym_file, m_CsvFiles, m_ProgressBar,
             lblProgressLabel);
+        l_action.execute();
+        List<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>();
+        try {
+          l_OfxTransactions.addAll(l_action.get());
+        } catch (InterruptedException | ExecutionException e1) {
+          // TODO Auto-generated catch block
+          e1.printStackTrace();
+        }
 
-        List<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>(l_action.execute());
         int l_read = l_OfxTransactions.size();
         l_OfxTransactions = OfxFunctions.uniqueOfxTransactions(m_OfxTransactions, l_OfxTransactions);
         int l_unique = l_OfxTransactions.size();

@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
+import javax.swing.SwingWorker;
 
 import org.apache.commons.io.FilenameUtils;
 
@@ -25,7 +26,7 @@ import convertor.sns.convertor.*;
  * @author René
  *
  */
-public class ActionReadTransactions {
+public class ActionReadTransactions extends SwingWorker<List<OfxTransaction>, String> {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
@@ -38,7 +39,7 @@ public class ActionReadTransactions {
   private JProgressBar m_ProgressBar;
   private JLabel m_Progresslabel;
   private int m_Processed = 0;
-  private int m_Number = -1;
+  private int m_Number = 0;
 
   /**
    * Constructor initialize variables.
@@ -61,8 +62,9 @@ public class ActionReadTransactions {
    * 
    * @return
    */
-  public List<OfxTransaction> execute() {
-    m_Processed = -1;
+  @Override
+  public List<OfxTransaction> doInBackground() {
+    m_Processed = 0;
     m_Number = m_CSVFiles.length;
     m_ProgressBar.setMaximum(m_Number);
     m_Progresslabel.setVisible(true);
