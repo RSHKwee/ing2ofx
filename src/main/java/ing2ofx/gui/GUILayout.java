@@ -459,8 +459,7 @@ public class GUILayout extends JPanel implements ItemListener {
         try {
           l_OfxTransactions.addAll(l_action.get());
         } catch (InterruptedException | ExecutionException e1) {
-          // TODO Auto-generated catch block
-          e1.printStackTrace();
+          LOGGER.log(Level.WARNING, e1.getMessage());
         }
 
         int l_read = l_OfxTransactions.size();
