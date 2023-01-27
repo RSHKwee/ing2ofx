@@ -38,7 +38,7 @@ public class ActionReadTransactions extends SwingWorker<List<OfxTransaction>, St
 
   private JProgressBar m_ProgressBar;
   private JLabel m_Progresslabel;
-  private int m_Processed = 0;
+  private int m_Processed = -1;
   private int m_Number = 0;
 
   /**
@@ -55,6 +55,13 @@ public class ActionReadTransactions extends SwingWorker<List<OfxTransaction>, St
 
     m_ProgressBar = a_ProgressBar;
     m_Progresslabel = a_Progresslabel;
+
+    m_Processed = -1;
+    m_Number = m_CSVFiles.length;
+    m_ProgressBar.setMaximum(m_Number);
+    m_Progresslabel.setVisible(true);
+    m_ProgressBar.setVisible(true);
+    verwerkProgress();
   }
 
   /**
@@ -64,13 +71,6 @@ public class ActionReadTransactions extends SwingWorker<List<OfxTransaction>, St
    */
   @Override
   public List<OfxTransaction> doInBackground() {
-    m_Processed = 0;
-    m_Number = m_CSVFiles.length;
-    m_ProgressBar.setMaximum(m_Number);
-    m_Progresslabel.setVisible(true);
-    m_ProgressBar.setVisible(true);
-    verwerkProgress();
-
     for (int i = 0; i < m_CSVFiles.length; i++) {
       String l_File = m_CSVFiles[i].getAbsolutePath();
       String l_ext = FilenameUtils.getExtension(l_File);
@@ -105,9 +105,16 @@ public class ActionReadTransactions extends SwingWorker<List<OfxTransaction>, St
       verwerkProgress();
       LOGGER.log(Level.INFO, "Processed file " + l_File);
     }
+    return m_OfxTransactions;
+  }
+
+  @Override
+  protected void done() {
     m_Progresslabel.setVisible(false);
     m_ProgressBar.setVisible(false);
-    return m_OfxTransactions;
+
+    LOGGER.log(Level.INFO, "");
+    LOGGER.log(Level.INFO, "Done.");
   }
 
   /**
@@ -148,12 +155,16 @@ public class ActionReadTransactions extends SwingWorker<List<OfxTransaction>, St
    * Display progress processed files.
    */
   private void verwerkProgress() {
+    m_Progresslabel.setVisible(true);
+    m_ProgressBar.setVisible(true);
     m_Processed++;
     try {
       m_ProgressBar.setValue(m_Processed);
+      m_ProgressBar.paintImmediately(m_ProgressBar.getVisibleRect());
       Double v_prog = ((double) m_Processed / (double) m_Number) * 100;
       Integer v_iprog = v_prog.intValue();
       m_Progresslabel.setText(v_iprog.toString() + "% (" + m_Processed + " of " + m_Number + " files)");
+      m_Progresslabel.paintImmediately(m_Progresslabel.getVisibleRect());
     } catch (Exception e) {
       // Do nothing
     }

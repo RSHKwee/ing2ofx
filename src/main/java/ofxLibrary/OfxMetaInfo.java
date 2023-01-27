@@ -33,7 +33,7 @@ public class OfxMetaInfo {
   public OfxMetaInfo(String a_bankcode, File a_SynonymsFile) {
     bankcode = a_bankcode;
     m_Synonyms = new Synonyms(a_SynonymsFile);
-    LOGGER.log(Level.INFO, "Read Synonyms File" + a_SynonymsFile);
+    LOGGER.log(Level.FINE, "Read Synonyms File" + a_SynonymsFile);
   }
 
   /**
