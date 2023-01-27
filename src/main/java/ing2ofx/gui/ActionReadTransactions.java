@@ -56,6 +56,11 @@ public class ActionReadTransactions {
     m_Progresslabel = a_Progresslabel;
   }
 
+  /**
+   * Do the processing, read transactions from files.
+   * 
+   * @return
+   */
   public List<OfxTransaction> execute() {
     m_Processed = -1;
     m_Number = m_CSVFiles.length;
@@ -95,6 +100,7 @@ public class ActionReadTransactions {
 
         m_TransactionProcessed = true;
       }
+      verwerkProgress();
       LOGGER.log(Level.INFO, "Processed file " + l_File);
     }
     m_Progresslabel.setVisible(false);
@@ -102,26 +108,36 @@ public class ActionReadTransactions {
     return m_OfxTransactions;
   }
 
+  /**
+   * Check if Transactions are processed (read from file(s)).
+   * 
+   * @return If true then Transactions are read.
+   */
   public boolean TransactionsProcessed() {
     return m_TransactionProcessed;
   }
 
+  /**
+   * Get MetaInfo of processed transactions.
+   * 
+   * @return MetaInfo
+   */
   public Map<String, OfxMetaInfo> getOfxMetaInfo() {
     return m_metainfo;
   }
 
+  /**
+   * Merge MetaInfo's
+   * 
+   * @param a_metainfo
+   * @return MetaInfo
+   */
   private Map<String, OfxMetaInfo> updateMetaInfo(Map<String, OfxMetaInfo> a_metainfo) {
     Map<String, OfxMetaInfo> l_metainfo = m_metainfo;
     Set<String> keys = a_metainfo.keySet();
     keys.forEach(key -> {
-      if (l_metainfo.containsKey(key)) {
-        OfxMetaInfo ll_metainfo = a_metainfo.get(key);
-        // TODO: do something
-        l_metainfo.put(key, ll_metainfo);
-      } else {
-        OfxMetaInfo ll_metainfo = a_metainfo.get(key);
-        l_metainfo.put(key, ll_metainfo);
-      }
+      OfxMetaInfo ll_metainfo = a_metainfo.get(key);
+      l_metainfo.put(key, ll_metainfo);
     });
     return l_metainfo;
   }
@@ -135,7 +151,7 @@ public class ActionReadTransactions {
       m_ProgressBar.setValue(m_Processed);
       Double v_prog = ((double) m_Processed / (double) m_Number) * 100;
       Integer v_iprog = v_prog.intValue();
-      m_Progresslabel.setText(v_iprog.toString() + "% (" + m_Processed + " of " + m_Number + " transactions)");
+      m_Progresslabel.setText(v_iprog.toString() + "% (" + m_Processed + " of " + m_Number + " files)");
     } catch (Exception e) {
       // Do nothing
     }

@@ -74,6 +74,7 @@ public class GUILayout extends JPanel implements ItemListener {
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
 
+  // Progress Bar
   private JProgressBar m_ProgressBar = new JProgressBar();
   private JLabel lblProgressLabel;
 

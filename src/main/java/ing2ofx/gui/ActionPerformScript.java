@@ -172,7 +172,7 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
   }
 
   /**
-   * Display progress processed files.
+   * Display progress processed transactions.
    */
   private void verwerkProgress() {
     m_Processed++;

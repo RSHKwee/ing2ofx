@@ -34,7 +34,7 @@ public class OfxPairTransaction {
    * 
    * @param a_tran1
    * @param a_tran2
-   * @return
+   * @return If true then transactions are "partners"
    */
   private boolean checkTrans(OfxTransaction a_tran1, OfxTransaction a_tran2) {
     boolean l_bstat = false;
@@ -70,7 +70,6 @@ public class OfxPairTransaction {
     m_ProgressBar.setMaximum(m_Number);
     m_Progresslabel.setVisible(true);
     m_ProgressBar.setVisible(true);
-
     verwerkProgress();
 
     for (int i = 0; i < m_OfxTransactions.size(); i++) {
@@ -103,7 +102,7 @@ public class OfxPairTransaction {
   }
 
   /**
-   * Display progress processed files.
+   * Display progress processed transactions.
    */
   private void verwerkProgress() {
     m_Processed++;
