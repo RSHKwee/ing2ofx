@@ -100,6 +100,9 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
     OfxPairTransaction l_pairs = new OfxPairTransaction(m_OfxTransactions, m_ProgressBar, m_Progresslabel);
     m_OfxTransactions = l_pairs.pair();
 
+    m_Progresslabel.setVisible(true);
+    m_ProgressBar.setVisible(true);
+
     OfxMetaAccounts l_OfxMetaAccounts = new OfxMetaAccounts(m_OfxTransactions, m_metainfo);
     Set<String> l_accounts = l_OfxMetaAccounts.getAccounts();
 
@@ -107,8 +110,6 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
       m_Processed = -1;
       m_Number = l_accounts.size();
       m_ProgressBar.setMaximum(m_Number);
-      m_Progresslabel.setVisible(true);
-      m_ProgressBar.setVisible(true);
       verwerkProgress();
 
       m_Suffix = "";
@@ -180,7 +181,7 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
       m_ProgressBar.setValue(m_Processed);
       Double v_prog = ((double) m_Processed / (double) m_Number) * 100;
       Integer v_iprog = v_prog.intValue();
-      m_Progresslabel.setText(v_iprog.toString() + "% (" + m_Processed + " of " + m_Number + " transactions)");
+      m_Progresslabel.setText(v_iprog.toString() + "% (" + m_Processed + " of " + m_Number + " accounts)");
     } catch (Exception e) {
       // Do nothing
     }

@@ -12,6 +12,7 @@ import ofxLibrary.OfxMetaInfo;
 import ofxLibrary.OfxTransaction;
 
 import java.awt.BorderLayout;
+//import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -77,7 +78,7 @@ public class GUILayout extends JPanel implements ItemListener {
 
   // Progress Bar
   private JProgressBar m_ProgressBar = new JProgressBar();
-  private JLabel lblProgressLabel;
+  private JLabel lblProgressLabel = new JLabel(" ");;
 
   // Preferences
   private UserSetting m_param = Main.m_param;
@@ -100,6 +101,7 @@ public class GUILayout extends JPanel implements ItemListener {
   public GUILayout() {
     // GUI items menubar
     JMenuBar menuBar = new JMenuBar();
+    // Desktop desktop = Desktop.getDesktop();
 
     JCheckBoxMenuItem chckbxAcountSeparateOFX = new JCheckBoxMenuItem("Accounts in separate OFX files");
     JMenu mnGnuCashExe = new JMenu("GnuCash executable");
