@@ -16,7 +16,7 @@
     <maven.compiler.target>17</maven.compiler.target>
  	<junit.version>4.12</junit.version>
 	<assertj.version>3.11.1</assertj.version>
- </properties>
+  </properties>
   
   <dependencies>
 	<!-- https://mvnrepository.com/artifact/com.miglayout/miglayout -->
@@ -94,6 +94,14 @@
         </configuration>
       </plugin>
       <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>target-platform-configuration</artifactId>
+        <version>2.3.0</version>
+        <configuration>
+           <executionEnvironment>org.eclipse.justj.openjdk.hotspot.jre.full-17</executionEnvironment>
+        </configuration>
+      </plugin>
+      <plugin>
 		<artifactId>maven-assembly-plugin</artifactId>
 		<executions>
           <execution>
@@ -115,105 +123,117 @@
               </descriptorRefs>
               <finalName>ing2ofx</finalName>
            </configuration>
-        </plugin>
-		<!-- Distribute readme.md v -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-resources-plugin</artifactId>
-          <version>3.0.1</version>
-          <executions>
-            <execution>
-              <id>readme-md</id>
-              <phase>process-resources</phase>
-              <goals>
-                <goal>copy-resources</goal>
-              </goals>
-              <configuration>
-                <outputDirectory>${project.basedir}/target</outputDirectory>
-                <resources>                                        
-                  <resource>
-                    <directory>.</directory>
-                    <includes>
-                      <include>readme.md</include>
-                      <include>*.PNG</include>
-                    </includes>
-                    <filtering>true</filtering>
-                  </resource>
-                </resources>
-                <encoding>UTF-8</encoding>
-              </configuration>            
-            </execution>
-          </executions>
-        </plugin>		
-	    <!-- readme.md ^ -->
-		<!-- LAUNCH4J create executable v -->
-        <plugin>
-          <groupId>com.akathist.maven.plugins.launch4j</groupId>
-          <artifactId>launch4j-maven-plugin</artifactId>
-          <version>2.1.2</version>
-          <executions>
-            <execution>
-              <id>l4j-clui</id>
-              <phase>package</phase>
-              <goals>
-                <goal>launch4j</goal>
-              </goals>
-              <configuration>
-                <headerType>console</headerType>
-                <jar>target/ing2ofx-jar-with-dependencies.jar</jar>
-                <outfile>target/ing2ofx.exe</outfile>
-                <downloadUrl>https://cdn.azul.com/zulu/bin/zulu17.40.19-ca-jdk17.0.6-win_x64.msi</downloadUrl>
-                <classPath>
-                  <mainClass>ing2ofx.main.Main</mainClass>
-                </classPath>
-				<icon>src/main/resources/ingSNSLogo.ico</icon>
-                <jre>
-                  <bundledJre64Bit>true</bundledJre64Bit>
-		          <path>%JAVA_HOME%;%PATH%</path>
-                  <bundledJreAsFallback>true</bundledJreAsFallback>
-                  <minVersion>1.8.0</minVersion>
-                  <jdkPreference>preferJre</jdkPreference>
-                  <runtimeBits>64</runtimeBits>
-                </jre>
-                <versionInfo>
-                  <fileVersion>0.1.3.0</fileVersion>
-                  <txtFileVersion>${project.version}</txtFileVersion>
-                  <fileDescription>${project.name}</fileDescription>
-                  <copyright>C</copyright>
-                  <productVersion>0.2.4.0</productVersion>
-                  <txtProductVersion>0.2.4.0</txtProductVersion>
-                  <productName>${project.name}</productName>
-                  <internalName>ing2ofx</internalName>
-                  <originalFilename>ing2ofx.exe</originalFilename>
-                </versionInfo>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-	    <!-- LAUNCH4J ^ -->
-		<!-- Sign executable v -->
-        <plugin>
-          <groupId>net.jsign</groupId>
-          <artifactId>jsign-maven-plugin</artifactId>
-          <version>4.0</version>
-          <executions>
-            <execution>
-              <goals>
-                <goal>sign</goal>
-              </goals>
-              <configuration>
-                <file>target/ing2ofx.exe</file>
-                <name>ING OFX Converter</name>
-                <url>https://github.com/RSHKwee/ing2ofx</url>
-                <keystore>keystore.jks</keystore>
-                <alias>RSHK</alias>
-                <storepass>GW93ayi0j2CfeJx9VoSo</storepass>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-		<!-- Sign executable ^ -->		
-      </plugins>
+      </plugin>
+	  <!-- Distribute readme.md v -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.0.1</version>
+        <executions>
+          <execution>
+            <id>readme-md</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.basedir}/target</outputDirectory>
+              <resources>                                        
+                <resource>
+                  <directory>.</directory>
+                  <includes>
+                    <include>readme.md</include>
+                    <include>*.PNG</include>
+                  </includes>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+              <encoding>UTF-8</encoding>
+            </configuration>
+          </execution>
+          <execution>
+            <id>java_jre</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>           
+            <configuration>
+              <outputDirectory>${basedir}/target/jre</outputDirectory>
+              <resources>                                        
+                <resource>
+                  <directory>${java.home}</directory>
+                </resource>
+              </resources>
+            </configuration>            
+          </execution>
+        </executions>
+      </plugin>		
+	  <!-- readme.md ^ -->
+	  <!-- LAUNCH4J create executable v -->      
+       <plugin>
+         <groupId>com.akathist.maven.plugins.launch4j</groupId>
+         <artifactId>launch4j-maven-plugin</artifactId>
+         <version>2.1.2</version>
+         <executions>
+           <execution>
+             <id>l4j-clui</id>
+             <phase>package</phase>
+             <goals>
+               <goal>launch4j</goal>
+             </goals>
+             <configuration>
+               <headerType>console</headerType>
+               <jar>target/ing2ofx-jar-with-dependencies.jar</jar>
+               <outfile>target/ing2ofx.exe</outfile>
+               <downloadUrl>https://cdn.azul.com/zulu/bin/zulu17.40.19-ca-jdk17.0.6-win_x64.msi</downloadUrl>
+               <classPath>
+                 <mainClass>ing2ofx.main.Main</mainClass>
+              </classPath>
+	  	      <icon>src/main/resources/ingSNSLogo.ico</icon>
+              <jre>
+                <bundledJre64Bit>true</bundledJre64Bit>
+	            <path>./jre</path>
+                <bundledJreAsFallback>true</bundledJreAsFallback>
+              </jre>
+              <versionInfo>
+                <fileVersion>0.1.3.0</fileVersion>
+                <txtFileVersion>${project.version}</txtFileVersion>
+                <fileDescription>${project.name}</fileDescription>
+                <copyright>C</copyright>
+                <productVersion>0.2.4.0</productVersion>
+                <txtProductVersion>0.2.4.0</txtProductVersion>
+                <productName>${project.name}</productName>
+                <internalName>ing2ofx</internalName>
+                <originalFilename>ing2ofx.exe</originalFilename>
+              </versionInfo>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+	  <!-- LAUNCH4J ^ -->
+	  <!-- Sign executable v -->
+      <plugin>
+        <groupId>net.jsign</groupId>
+        <artifactId>jsign-maven-plugin</artifactId>
+        <version>4.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+            <configuration>
+              <file>target/ing2ofx.exe</file>
+              <name>ING OFX Converter</name>
+              <url>https://github.com/RSHKwee/ing2ofx</url>
+              <keystore>keystore.jks</keystore>
+              <alias>RSHK</alias>
+              <storepass>GW93ayi0j2CfeJx9VoSo</storepass>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+	  <!-- Sign executable ^ -->		
+    </plugins>
   </build>
   <distributionManagement>
     <!-- Upload to Github v-->
