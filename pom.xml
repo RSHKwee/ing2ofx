@@ -4,7 +4,7 @@
 
   <groupId>ing2ofx</groupId>
   <artifactId>ing2ofx</artifactId>
-  <version>0.2.4</version>
+  <version>0.2.5</version>
   <packaging>jar</packaging>
 
   <name>ing2ofx</name>
@@ -94,14 +94,6 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>target-platform-configuration</artifactId>
-        <version>2.3.0</version>
-        <configuration>
-           <executionEnvironment>org.eclipse.justj.openjdk.hotspot.jre.full-17</executionEnvironment>
-        </configuration>
-      </plugin>
-      <plugin>
 		<artifactId>maven-assembly-plugin</artifactId>
 		<executions>
           <execution>
@@ -151,26 +143,11 @@
               <encoding>UTF-8</encoding>
             </configuration>
           </execution>
-          <execution>
-            <id>java_jre</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>           
-            <configuration>
-              <outputDirectory>${basedir}/target/jre</outputDirectory>
-              <resources>                                        
-                <resource>
-                  <directory>${java.home}</directory>
-                </resource>
-              </resources>
-            </configuration>            
-          </execution>
         </executions>
       </plugin>		
 	  <!-- readme.md ^ -->
 	  <!-- LAUNCH4J create executable v -->      
-       <plugin>
+      <plugin>
          <groupId>com.akathist.maven.plugins.launch4j</groupId>
          <artifactId>launch4j-maven-plugin</artifactId>
          <version>2.1.2</version>
@@ -192,7 +169,7 @@
 	  	      <icon>src/main/resources/ingSNSLogo.ico</icon>
               <jre>
                 <bundledJre64Bit>true</bundledJre64Bit>
-	            <path>./jre</path>
+	            <path>%java_home%</path>
                 <bundledJreAsFallback>true</bundledJreAsFallback>
               </jre>
               <versionInfo>
@@ -200,8 +177,8 @@
                 <txtFileVersion>${project.version}</txtFileVersion>
                 <fileDescription>${project.name}</fileDescription>
                 <copyright>C</copyright>
-                <productVersion>0.2.4.0</productVersion>
-                <txtProductVersion>0.2.4.0</txtProductVersion>
+                <productVersion>0.2.5.0</productVersion>
+                <txtProductVersion>0.2.5.0</txtProductVersion>
                 <productName>${project.name}</productName>
                 <internalName>ing2ofx</internalName>
                 <originalFilename>ing2ofx.exe</originalFilename>
@@ -212,6 +189,7 @@
       </plugin>
 	  <!-- LAUNCH4J ^ -->
 	  <!-- Sign executable v -->
+
       <plugin>
         <groupId>net.jsign</groupId>
         <artifactId>jsign-maven-plugin</artifactId>
@@ -232,7 +210,59 @@
           </execution>
         </executions>
       </plugin>
-	  <!-- Sign executable ^ -->		
+	  <!-- Sign executable ^ -->
+      <!-- Windows installers v -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <id>innoSetup</id>
+            <phase>package</phase>
+           <goals>
+              <goal>exec</goal>
+            </goals>          
+            <configuration>
+              <executable>C:\Program Files (x86)\Inno Setup 6\ISCC.exe</executable>
+              <workingDirectory>...</workingDirectory>
+              <arguments>
+                <argument>ing2ofx.iss</argument>
+              </arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>innoSetupNoJre</id>
+            <phase>package</phase>
+           <goals>
+              <goal>exec</goal>
+            </goals>          
+            <configuration>
+              <executable>C:\Program Files (x86)\Inno Setup 6\ISCC.exe</executable>
+              <workingDirectory>...</workingDirectory>
+              <arguments>
+                <argument>ing2ofxnojre.iss</argument>
+              </arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>innoSetupJreDown</id>
+            <phase>package</phase>
+           <goals>
+              <goal>exec</goal>
+            </goals>          
+            <configuration>
+              <executable>C:\Program Files (x86)\Inno Setup 6\ISCC.exe</executable>
+              <workingDirectory>...</workingDirectory>
+              <arguments>
+                <argument>ing2ofx_jreDownload.iss</argument>
+              </arguments>
+            </configuration>
+          </execution>
+         
+          
+        </executions>
+      </plugin>
     </plugins>
   </build>
   <distributionManagement>

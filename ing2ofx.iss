@@ -6,7 +6,10 @@
 
 [Setup]
 AppName={#MyAppName}
-AppVersion=0.2.4
+AppVersion=0.2.5
+AppPublisher=RSH Kwee
+AppPublisherURL=https://github.com/RSHKwee/ing2ofx/releases
+AppContact=rsh.kwee@gmail.com
 WizardStyle=modern
 DisableWelcomePage=no
 DefaultDirName={code:MyConst}\{#MyAppName}
@@ -22,7 +25,7 @@ SetupIconFile={#MyIconFile}
 
 [Registry]
 Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName: "JAVA_HOME"; \
-    ValueData: "{app}\jre"; Flags: preservestringtype
+    ValueData: "{app}\jre"; Flags: preservestringtype; Check: JreNotPresent
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; \

@@ -1,0 +1,15 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=ing2ofx.chm
+Contents file=Table of Contents.hhc
+Display compile progress=No
+Index file=Index.hhk
+Language=0x413 Nederlands (Nederland)
+Title=ING to OFX Convertor
+
+
+[FILES]
+Inleiding
+
+[INFOTYPES]
+

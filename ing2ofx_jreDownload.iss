@@ -1,12 +1,16 @@
-; -- ing2ofx.iss --
+; -- ing2ofx_jreDownload.iss --
 ;
 #define MyAppName "ing2ofx"
 #define MyAppExeName "ing2ofx.exe"
 #define MyIconFile "src\main\resources\ingSNSLogo.ico"
+#define JreUrl =  "https://www.eclipse.org/downloads/download.php?file=/justj/jres/17/downloads/20230204_0657/org.eclipse.justj.openjdk.hotspot.jre.minimal.stripped-17.0.6-win32-x86_64.tar.gz"
 
 [Setup]
 AppName={#MyAppName}
-AppVersion=0.2.4
+AppVersion=0.2.5
+AppPublisher=RSH Kwee
+AppPublisherURL=https://github.com/RSHKwee/ing2ofx/releases
+AppContact=rsh.kwee@gmail.com
 WizardStyle=modern
 DisableWelcomePage=no
 DefaultDirName={code:MyConst}\{#MyAppName}
@@ -22,7 +26,7 @@ SetupIconFile={#MyIconFile}
 
 [Registry]
 Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName: "JAVA_HOME"; \
-    ValueData: "{app}\jre"; Flags: preservestringtype
+    ValueData: "{app}\jre"; Flags: preservestringtype; Check: JreNotPresent
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; \
@@ -85,6 +89,7 @@ begin
       Log('Java jre is not present.');
     end else begin          
       jrePresent := true;
+      Log('Java jre is present.');
     end;
     jreNotChecked := false;
   end;
@@ -99,12 +104,11 @@ begin
 end;
 
 function NextButtonClick(CurPageID: Integer): Boolean;
-var
-  ResultCode: integer;
 begin
-  if CurPageID = wpReady then begin
+  if ((CurPageID = wpReady) AND (NOT JreNotPresent())) then
+  begin
     DownloadPage.Clear;
-    DownloadPage.Add('https://www.eclipse.org/downloads/download.php?file=/justj/jres/17/downloads/20230204_0657/org.eclipse.justj.openjdk.hotspot.jre.minimal.stripped-17.0.6-win32-x86_64.tar.gz&r=1', 'jre.tar.gz', '');
+    DownloadPage.Add(ExpandConstant('{#JreUrl}' + '&r=1'), 'jre.tar.gz', '');
     DownloadPage.Show;
     try
       try
@@ -120,8 +124,9 @@ begin
     finally
       DownloadPage.Hide;
     end;
-  end else
-    Result := True;  
+  end else begin
+    Result := True;
+  end;  
 end;
 
 procedure DeinitializeSetup();
@@ -132,7 +137,7 @@ end;
 procedure CurStepChanged(CurStep: TSetupStep);
 begin
   Log('CurStepChanged(' + IntToStr(Ord(CurStep)) + ') called');
-  if CurStep = ssPostInstall then
+  if ((CurStep = ssPostInstall) and (NOT JreNotPresent())) then
   begin
     ExtractTarGz(ExpandConstant('{tmp}\jre.tar.gz'), ExpandConstant('{app}\jre'));
     FinishedInstall := True;
