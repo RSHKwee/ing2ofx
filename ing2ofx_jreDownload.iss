@@ -63,6 +63,7 @@ begin
     Log(Format('Successfully downloaded file to {tmp}: %s', [FileName]));
   Result := True;
 end;
+
 procedure ExtractTarGz(TarGzFile, DestDir: string);
 var
   ResultCode: Integer;

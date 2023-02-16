@@ -23,10 +23,6 @@ UninstallFilesDir={app}\uninst
 ChangesEnvironment=yes
 SetupIconFile={#MyIconFile}
 
-[Registry]
-Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName: "JAVA_HOME"; \
-    ValueData: "{app}\jre"; Flags: preservestringtype
-
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; \
     GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
@@ -34,7 +30,6 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; \
 [Files]
 Source: ".\target\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "readme.md"; DestDir: "{app}"; Flags: isreadme
-; DestDir: {app}\jre; Source: jre\*;   Flags: recursesubdirs ; Check: JreNotPresent
 
 [Icons]
 Name: "{commonstartup}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
@@ -42,39 +37,17 @@ Name: "{userdesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 
 [Code]
 var
-  jreNotChecked : Boolean;
   FinishedInstall: Boolean;
-  jrePresent : Boolean;
 
 function InitializeSetup(): Boolean;
 begin
   Log('InitializeSetup called');
   Result := true;
-  jreNotChecked := true;
-  jrePresent := false;
 end;
 
 procedure InitializeWizard;
 begin
   Log('InitializeWizard called');
-end;
-
-function JreNotPresent: Boolean;
-var
-  ResultCode: integer;
-begin
-  if jreNotChecked then
-  begin
-    if Exec('java', '-version', '', SW_SHOW, ewWaitUntilTerminated, ResultCode) then
-    begin
-      jrePresent := false;    
-      Log('Java jre is not present.');
-    end else begin          
-      jrePresent := true;
-    end;
-    jreNotChecked := false;
-  end;
-  Result := jrePresent;
 end;
 
 <event('InitializeWizard')>
