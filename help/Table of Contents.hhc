@@ -12,5 +12,13 @@
 		<param name="Name" value="Introduction">
 		<param name="Local" value="Introduction.html">
 		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Opening menu">
+		<param name="Local" value="OpeningMenu.html">
+		</OBJECT>
+	<OBJECT type="text/sitemap">
+		<param name="Merge" value="MainMenu.JPG">
+
+		</OBJECT>
 </UL>
 </BODY></HTML>
