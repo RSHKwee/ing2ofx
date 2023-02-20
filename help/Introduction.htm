@@ -13,10 +13,17 @@
 <div class="topicbody">
 
 <p>The intent of this (java) application is to convert ING (www.ing.nl) csv- or SNS (www.snsbank.nl) xml-files to ofx files that can be read by a program like GnuCash (www.gucash.org).</p>
-<p>The origin is a Python script which can be found on Github: https://github.com/chmistry/ing2ofx/releases. The original script needed some modifications due to a new Python version and some changes in the ING CSV format.</p>
-<p>Due to Python installation and versioning problems, this Java applicaton was born. The Python script(s) are rewritten in Java.</p>
-<p>The ofx specification can be downloaded from http://www.ofx.net/</p>
-<p>A tutorial on how to keep your bank records in GnuCash can be read on: http://www.chmistry.nl/financien/beginnen-met-boekhouden-in-gnucash/</p>
+A check is performed to avoid duplication of transactions.
+
+
+All stored transaction will be paired with the following conditions:
+
+    Same transaction date
+    Account To equals Account From or Account From equals Account To
+    Amount sums to zero
+
+The fit-id is modified, the paired transactions get the same fit-id.
+
 
 </div>
 </body>
