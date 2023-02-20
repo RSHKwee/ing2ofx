@@ -11,20 +11,42 @@
 <body>
 <h1 class="topicheading">Introduction</h1>
 <div class="topicbody">
+<br>
+<p>This (java) application converts (<a href="https://github.com/RSHKwee/ing2ofx/releases">ing2ofx</a>):</p>
+<ol>
+<li>ING (<a href="https://www.ing.nl">ING site</a>) csv-file(s) (comma or semicolon separated).
+    <br>
+    The csv-file(s) may contain transactions of multiple accounts.
+</li>
+<li>SNS (<a href="www.snsbank.nl">SNS Bank site</a>) xml-files (CAMT.053 format).
+    <br>
+    The xml-file(s) may contain transactions of multiple accounts.
+    </li>
+</ol>
+<p>To ofx files that can be read by a program like GnuCash (www.gucash.org).</p>
 
-<p>The intent of this (java) application is to convert ING (www.ing.nl) csv- or SNS (www.snsbank.nl) xml-files to ofx files that can be read by a program like GnuCash (www.gucash.org).</p>
-A check is performed to avoid duplication of transactions.
+<br>
 
-
-All stored transaction will be paired with the following conditions:
-
-    Same transaction date
-    Account To equals Account From or Account From equals Account To
-    Amount sums to zero
-
-The fit-id is modified, the paired transactions get the same fit-id.
-
-
+<p>The following steps are taken:</p>
+<ol>
+<li>The input files are read, the read transactions are stored in cache.</li>
+   <ol>
+   <li>The input files can be read all at once</li>
+   <li>One by one</li>
+   </ol>
+<li>The stored transactions are converted to OFX format: </li>
+   <ol>
+   <li>A check is performed to avoid duplication of transactions.</li>
+   <li>All stored transaction will be paired (if possible) with the following conditions:</li>
+      <ol>
+      <li>Same transaction date.</li>
+      <li>Account To equals Account From or Account From equals Account To.</li>
+      <li>Amounts of transactions sums to zero.</li>
+      </ol>
+      The fit-id of the transactionsare modified, the paired transactions get the same fit-id.
+   </ol>
+   <li>The OFX formatted transactions are stored in seperate files (one per account).
+</ol>
 </div>
 </body>
 </html>
