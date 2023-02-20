@@ -10,15 +10,15 @@
 <UL>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Introduction">
-		<param name="Local" value="Introduction.html">
+		<param name="Local" value="Introduction.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Background">
-		<param name="Local" value="Background.html">
+		<param name="Local" value="Background.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Opening menu">
-		<param name="Local" value="OpeningMenu.html">
+		<param name="Local" value="OpeningMenu.htm">
 		</OBJECT>
 </UL>
 </BODY></HTML>
