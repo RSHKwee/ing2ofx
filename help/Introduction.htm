@@ -1,52 +1,68 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=8" />
-<title>Introduction</title>
-<!--[if IE 6]><style type="text/css">html{overflow-y:scroll}</style><![endif]-->
-<link rel="stylesheet" type="text/css" href="styles.css" />
-<script type="text/javascript" src="topic.js"></script>
-</head>
-<body>
-<h1 class="topicheading">Introduction</h1>
-<div class="topicbody">
-<br>
-<p>This (java) application converts (<a href="https://github.com/RSHKwee/ing2ofx/releases">ing2ofx</a>):</p>
-<ol>
-<li>ING (<a href="https://www.ing.nl">ING site</a>) csv-file(s) (comma or semicolon separated).
-    <br>
-    The csv-file(s) may contain transactions of multiple accounts.
-</li>
-<li>SNS (<a href="www.snsbank.nl">SNS Bank site</a>) xml-files (CAMT.053 format).
-    <br>
-    The xml-file(s) may contain transactions of multiple accounts.
-    </li>
-</ol>
-<p>To ofx files that can be read by a program like GnuCash (www.gucash.org).</p>
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduction</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
 
-<br>
-
-<p>The following steps are taken:</p>
-<ol>
-<li>The input files are read, the read transactions are stored in cache.</li>
-   <ol>
-   <li>The input files can be read all at once</li>
-   <li>One by one</li>
-   </ol>
-<li>The stored transactions are converted to OFX format: </li>
-   <ol>
-   <li>A check is performed to avoid duplication of transactions.</li>
-   <li>All stored transaction will be paired (if possible) with the following conditions:</li>
-      <ol>
-      <li>Same transaction date.</li>
-      <li>Account To equals Account From or Account From equals Account To.</li>
-      <li>Amounts of transactions sums to zero.</li>
+	<style type="text/css">
+      #topic_header
+      {
+        background-color: #EFEFEF;
+      }
+	</style>
+    <script type="text/javascript" src="js/chmRelative.js"></script>
+  </head>
+  <body>
+    <div id="topic_header">
+      <div id="topic_header_content">
+        <h1>Introduction</h1>
+      </div>
+      <div id="topic_header_nav">
+        <a href="Background.htm"><img src="img/arrow_right.png" alt="Next"/></a>
+      </div>
+	  <div class="clear"></div>
+    </div>
+	<div id="topic_content">
+      <h1 class="rvps4"><span class="rvts0"><span class="rvts11"><br/></span></span></h1>
+      <p class="rvps5"><span class="rvts12">This (java) application converts (</span><a class="rvts13" href="https://github.com/RSHKwee/ing2ofx/releases">ing2ofx</a><span class="rvts12">):</span></p>
+      <ol style="text-indent: 0px; padding: 0; margin: 0 0 0 48px; list-style-position: outside;">
+        <li class="rvps5"><span class="rvts12">ING (</span><a class="rvts13" href="https://www.ing.nl">ING site</a><span class="rvts12">) csv-file(s) (comma or semicolon separated).</span><br/><span class="rvts12">The csv-file(s) may contain transactions of multiple accounts.</span></li>
+        <li class="rvps5"><span class="rvts12">SNS (</span><a class="rvts13" href="www.snsbank.nl">SNS Bank site</a><span class="rvts12">) xml-files (CAMT.053 format).</span><br/><span class="rvts12">The xml-file(s) may contain transactions of multiple accounts.</span></li>
       </ol>
-      The fit-id of the transactionsare modified, the paired transactions get the same fit-id.
-   </ol>
-   <li>The OFX formatted transactions are stored in seperate files (one per account).
-</ol>
-</div>
-</body>
+      <p class="rvps5"><span class="rvts12">To ofx files that can be read by a program like GnuCash (www.gucash.org).</span></p>
+      <p class="rvps5"><span class="rvts12">(The ofx specification can be downloaded from </span><a class="rvts13" href="https:http://www.ofx.net/">OFX.NET</a><span class="rvts14">)</span></p>
+      <p class="rvps5"><span class="rvts14"><br/></span></p>
+      <p class="rvps5"><span class="rvts12">The following steps are taken:</span></p>
+      <ol style="text-indent: 0px; padding: 0; margin: 0 0 0 48px; list-style-position: outside;">
+        <li class="rvps5"><span class="rvts12">The input files are read, the read transactions are stored in cache.</span></li>
+        <ol style="text-indent: 0px; padding: 0; margin: 0 0 0 40px; list-style-position: outside;">
+          <li class="rvps5"><span class="rvts12">The input files can be read all at once</span></li>
+          <li class="rvps5"><span class="rvts12">One by one</span></li>
+        </ol>
+        <li class="rvps5"><span class="rvts12">The stored transactions are converted to OFX format:</span></li>
+          <ol style="text-indent: 0px; padding: 0; margin: 0 0 0 40px; list-style-position: outside;">
+            <li class="rvps5"><span class="rvts12">A check is performed to avoid duplication of transactions.</span></li>
+            <li class="rvps5"><span class="rvts12">All stored transaction will be paired (if possible) with the following conditions:</span></li>
+            <ol style="text-indent: 0px; padding: 0; margin: 0 0 0 40px; list-style-position: outside;">
+              <li class="rvps5"><span class="rvts12">Same transaction date.</span></li>
+              <li class="rvps5"><span class="rvts12">Account To equals Account From or Account From equals Account To.</span></li>
+              <li class="rvps5"><span class="rvts12">Amounts of transactions sums to zero.</span></li>
+            </ol>
+         </ol>
+      </ol>
+      <p class="rvps6"><span class="rvts12">The transaction-identifier of the transactions are modified, the paired transactions get the same identifier.</span></p>
+      <ol style="text-indent: 0px; padding: 0; margin: 0 0 0 48px; list-style-position: outside;">
+        <li value="3" class="rvps5"><span class="rvts12">The OFX formatted transactions are stored in seperate files (one per account).</span><span class="rvts6"></span></li>
+      </ol>
+    </div>
+  </body>	
 </html>
+
