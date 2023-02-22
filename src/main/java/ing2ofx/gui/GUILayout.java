@@ -84,6 +84,7 @@ public class GUILayout extends JPanel implements ItemListener {
 
   // Preferences
   private UserSetting m_param = Main.m_param;
+  private boolean m_4Help = false;
 
   private File m_GnuCashExecutable = new File("C:\\Program Files (x86)\\gnucash\\bin\\gnucash.exe");
   private File m_Synonym_file;
@@ -101,9 +102,13 @@ public class GUILayout extends JPanel implements ItemListener {
    * 
    */
   public GUILayout() {
+    JLabel lblCSVFile = new JLabel("Select ING CSV or SNS XML file(s)");
+    JButton btnOutputFolder = new JButton("Output folder");
+    JButton btnReadTransactions = new JButton("Read transactions");
+    JButton btnConvert = new JButton("Convert to OFX");
+
     // GUI items menubar
     JMenuBar menuBar = new JMenuBar();
-    // Desktop desktop = Desktop.getDesktop();
 
     JCheckBoxMenuItem chckbxAcountSeparateOFX = new JCheckBoxMenuItem("Accounts in separate OFX files");
     JMenu mnGnuCashExe = new JMenu("GnuCash executable");
@@ -141,6 +146,7 @@ public class GUILayout extends JPanel implements ItemListener {
 
     // Define Setting menu in menubalk:
     JMenu mnSettings = new JMenu("Settings");
+    mnSettings.setEnabled(true);
     menuBar.add(mnSettings);
 
     // Checkbox Separate OFX files
@@ -304,6 +310,29 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     mnSettings.add(mntmLogToDisk);
 
+    // Enable for Help
+    JCheckBoxMenuItem chckbxmntm4Help = new JCheckBoxMenuItem("Enable all fields");
+    chckbxmntm4Help.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        boolean selected = chckbxmntm4Help.isSelected();
+        m_4Help = selected;
+        if (m_4Help) {
+          lblCSVFile.setEnabled(true);
+          btnReadTransactions.setEnabled(true);
+          txtOutputFilename.setEnabled(true);
+          btnConvert.setEnabled(true);
+        } else {
+          lblCSVFile.setEnabled(false);
+          btnReadTransactions.setEnabled(false);
+          txtOutputFilename.setEnabled(false);
+          btnConvert.setEnabled(false);
+        }
+        LOGGER.log(Level.INFO, "All fields enabled: " + Boolean.toString(selected));
+      }
+    });
+    mnSettings.add(chckbxmntm4Help);
+
     // ? item
     JMenu mnHelpAbout = new JMenu("?");
     mnHelpAbout.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -337,8 +366,8 @@ public class GUILayout extends JPanel implements ItemListener {
       @Override
       public void actionPerformed(ActionEvent e) {
         JFrame frame = new JFrame("About");
-        String l_message = "ING2OFX " + Main.m_creationtime + "\n\nCopyright © " + c_CopyrightYear;
-        JOptionPane.showMessageDialog(frame, l_message);
+        String l_message = "ING2OFX version " + Main.m_creationtime + "\n\nCopyright © " + c_CopyrightYear;
+        JOptionPane.showMessageDialog(frame, l_message, "About", JOptionPane.PLAIN_MESSAGE);
       }
     });
     mnHelpAbout.add(mntmAbout);
@@ -391,13 +420,12 @@ public class GUILayout extends JPanel implements ItemListener {
     panel.setPreferredSize(new Dimension(350, 290));
 
     // Choose CSV File
-    JLabel lblCSVFile = new JLabel("Select ING CSV or SNS XML file(s)");
     lblCSVFile.setEnabled(false);
+
     lblCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
     panel.add(lblCSVFile, "cell 1 0");
 
     JCheckBox chckbxClearTransactons = new JCheckBox("Clear transactions");
-    JButton btnReadTransactions = new JButton("Read transactions");
     JButton btnCSVFile = new JButton("CSV/XML File");
     btnCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
     btnCSVFile.addActionListener(new ActionListener() {
@@ -462,7 +490,6 @@ public class GUILayout extends JPanel implements ItemListener {
 
     // Define output folder
     // Output folder & filename
-    JButton btnOutputFolder = new JButton("Output folder");
     btnOutputFolder.setHorizontalAlignment(SwingConstants.RIGHT);
     btnOutputFolder.addActionListener(new ActionListener() {
       @Override
@@ -484,8 +511,6 @@ public class GUILayout extends JPanel implements ItemListener {
     panel.add(btnOutputFolder, "cell 0 3");
 
     // Read transactions
-    JButton btnConvert = new JButton("Convert to OFX");
-
     btnReadTransactions.setEnabled(false);
     btnReadTransactions.addActionListener(new ActionListener() {
       @Override
@@ -526,6 +551,7 @@ public class GUILayout extends JPanel implements ItemListener {
     txtOutputFilename.setHorizontalAlignment(SwingConstants.LEFT);
     txtOutputFilename.setText("Output filename");
     txtOutputFilename.setEnabled(false);
+
     txtOutputFilename.setColumns(100);
     panel.add(txtOutputFilename, "cell 1 4");
 

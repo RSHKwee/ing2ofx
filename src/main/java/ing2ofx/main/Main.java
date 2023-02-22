@@ -26,7 +26,7 @@ import ing2ofx.gui.GUILayout;
 
 public class Main {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
-  static String m_MenuTitel = "ING csv / SNS xml to ofx convertor";
+  static String m_MenuTitel = "ING csv / SNS xml to ofx convertor, version ";
   static public String m_creationtime;
   static String m_LookAndFeel = "Nimbus";
   public static UserSetting m_param = new UserSetting();
