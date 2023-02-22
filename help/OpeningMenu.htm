@@ -1,57 +1,55 @@
-<!DOCTYPE html>
-<html>
-  <head>
-	<title>Opening menu</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	
-	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
-	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
-	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
-	<!--[if lte IE 8]>
-		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
-	<![endif]-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=8" />
+<title>Opening menu</title>
+<!--[if IE 6]><style type="text/css">html{overflow-y:scroll}</style><![endif]-->
+<link rel="stylesheet" type="text/css" href="styles.css" />
+<script type="text/javascript" src="topic.js"></script>
+</head>
+<body>
+<h1 class="topicheading">Opening menu</h1>
+<div class="topicbody">
 
-	<style type="text/css">
-      #topic_header
-      {
-        background-color: #EFEFEF;
-      }
-	</style>
-	<script type="text/javascript" src="js/chmRelative.js"></script>	
-  </head>
-  <body>
-    <div id="topic_header">
-      <div id="topic_header_content">
-        <h1>Opening menu</h1>
-      </div>
-      <div id="topic_header_nav">
-        <a href="Background.htm"><img src="img/arrow_left.png" alt="Previous"/></a>
-        <a href="Settingsmenu.htm"><img src="img/arrow_right.png" alt="Next"/></a>
-      </div>
-      <div class="clear"></div>
-	</div>
-	<div id="topic_content">	
-      <h1 class="rvps4"><span class="rvts0"><span class="rvts11">Opening menu</span></span></h1>
-      <p class="rvps8"><img width="885" height="325" alt="" style="vertical-align: text-bottom;" src="lib/MainMenu.jpg"></p> 
-      <p class="rvps5"><span class="rvts12">Buttons:</span></p>
-      <ul style="text-indent: 0px; padding: 0; margin: 0 0 0 30px; list-style-position: outside; list-style-type: disc;">
-        <li class="rvps5"><span class="rvts17">CSV/XML File</span><br/><span class="rvts12">With this button the input file(s) (csv or xml) is/are selected. With the ctrl-key multiple files can be selected.</span></li>
-      </ul>
-      <p class="rvps5"><span class="rvts12">The application recognizes:</span></p>
-      <ul style="text-indent: 0px; padding: 0; margin: 0 0 0 30px; list-style-position: outside; list-style-type: disc;">
-        <ul style="text-indent: 0px; padding: 0; margin: 0 0 0 22px; list-style-position: outside; list-style-type: circle;">
-          <li class="rvps5"><span class="rvts12">a comma or semicolon separated ING input file.</span></li>
-          <li class="rvps5"><span class="rvts12">a SNS XML input file.</span></li>
-        </ul>
-      </ul>
-      <p class="rvps5"><span class="rvts12">Checkbox </span><span class="rvts17">Clear transactions</span><span class="rvts12">: If checked, then the cache is cleared before the file(s) are read otherwise the transactions are added to the previously stored transactions.</span></p>
-      <ul style="text-indent: 0px; padding: 0; margin: 0 0 0 30px; list-style-position: outside; list-style-type: disc;">
-        <li class="rvps5"><span class="rvts17">Output folder</span><br/><span class="rvts12">Points to the directory where the generated OFX-file(s) are stored. A proposal for the "Output filename" is made, this can be changed.</span></li>
-        <li class="rvps5"><span class="rvts17">Convert to OFX</span><br/><span class="rvts12">The conversion to OFX format is started, the progres is shown in the lower panel.</span></li>
-        <li class="rvps5"><span class="rvts17">Start GnuCash</span><span class="rvts12">: GnuCash is started.</span><span class="rvts6"></span></li>
-      </ul>
-	</div>	
-  </body>	
+<MAP NAME="test"> 
+<AREA SHAPE=RECT COORDS="4,2,108,103"> 
+<AREA SHAPE=RECT COORDS="117,6,212,104"> 
+<AREA SHAPE=RECT COORDS="3,111,105,213"> 
+<AREA SHAPE=RECT COORDS="114,113,211,210"> 
+</MAP> 
+<img src="MainMenu.JPG" usemap="#test" WIDTH=892 HEIGHT=701> 
+
+<p>Buttons:</p>
+<ul>
+<li><i>CSV/XML File</i>
+<br>
+<p>With this button the input file(s) (csv or xml) is/are selected. With the ctrl-key multiple files can be selected.</p>
+<p>The application recognizes:</p>
+<ul>
+<li>a comma or semicolon separated ING input file.</li>
+<li>a SNS XML input file.</li>
+</ul>
+<p>Checkbox <i>Clear transactions</i>:
+If checked, then the cache is cleared before the file(s) are read otherwise the transactions are added to the previously stored transactions.</p>
+<ul>
+<li><i>Read transactions</i>
+<br>
+<p>The transactions are read and stored in the cache.</p>
+</li>
+</ul>
+
+<li><i>Output folder</i>
+<br>
+<p>Points to the directory where the generated OFX-file(s) are stored. A proposal for the "Output filename" is made, this can be changed.</p>
+</li>
+<ul>
+<li><i>Convert to OFX</i>
+<br>
+The conversion to OFX format is started, the progres is shown in the lower panel.</li>
+</ul>
+<li><i>Start GnuCash</i>: GnuCash is started.
+</ul>
+</div>
+</body>
 </html>
-

@@ -1,52 +1,56 @@
-<!DOCTYPE html>
-<html>
-  <head>
-	<title>Settings menu</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		
-	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
-	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
-	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
-	<!--[if lte IE 8]>
-		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
-	<![endif]-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=8" />
+<title>Settings menu</title>
+<!--[if IE 6]><style type="text/css">html{overflow-y:scroll}</style><![endif]-->
+<link rel="stylesheet" type="text/css" href="styles.css" />
+<script type="text/javascript" src="topic.js"></script>
+</head>
+<body>
+<h1 class="topicheading">Settings menu</h1>
+<div class="topicbody">
 
-    <style type="text/css">
-      #topic_header
-      {
-        background-color: #EFEFEF;
-      }
-    </style>
-	<script type="text/javascript" src="js/chmRelative.js"></script>	
-  </head>
-  <body>
-    <div id="topic_header">
-	  <div id="topic_header_content">
-	    <h1>Settings menu</h1>
-	  </div>
-      <div id="topic_header_nav">
-        <a href="Openingmenu.htm"><img src="img/arrow_left.png" alt="Previous"/></a>
-        <a href="Synonyms.htm"><img src="img/arrow_right.png" alt="Next"/></a>			
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div id="topic_content">
-      <h1 class="rvps4"><span class="rvts0"><span class="rvts11">Settings menu</span></span></h1>
-      <p class="rvps8"><img width="885" height="325" alt="" style="vertical-align: text-bottom;" src="lib/MainPulldown.jpg"></p>
-      <p class="rvps5"><span class="rvts12">Pulldown choices:</span></p>
-      <ul style="text-indent: 0px; padding: 0; margin: 0 0 0 30px; list-style-position: outside; list-style-type: disc;">
-        <li class="rvps5"><span class="rvts17">Accounts in separate OFX files</span><br/><span class="rvts12">Partly implemented, all transactions are divide according to account, when </span><span class="rvts18">unchecked</span><span class="rvts12"> then it may give unpredictable results.</span></li>
-        <li class="rvps5"><span class="rvts17">Only interest transactions</span><br/><span class="rvts12">This is "old" functionality, it filters ING savings transactions, only the </span><span class="rvts17">interest</span><span class="rvts12"> transactions are stored.</span></li>
-        <li class="rvps5"><span class="rvts17">GnuCash executable</span><br/><span class="rvts12">Points to the location of the GnuCash executable, defaults to </span><span class="rvts17">C:\Program Files (x86)\gnucash\bin\gnucash.exe</span><span class="rvts12">.</span></li>
-        <li class="rvps5"><span class="rvts17">Synonym file</span><span class="rvts12"> .br A prefix can be configured, in case there are multiple accounts.</span></li>
-        <li class="rvps5"><span class="rvts17">Loglevel</span><br/><span class="rvts17">For debugging purposes, the detail level of the messages can be adjusted(Normal level is INFO).</span></li>
-      </ul>
-      <ul style="text-indent: 0px; padding: 0; margin: 0 0 0 30px; list-style-position: outside; list-style-type: disc;">
-        <li class="rvps5"><span class="rvts17">Look and Feel</span><br/><span class="rvts17">The look and feel of the application windows can be choosen.</span></li>
-        <li class="rvps5"><span class="rvts17">Create logfiles</span><br/><span class="rvts17">A directory where the logfiles are created is choosen.</span><span class="rvts6"></span></li>
-      </ul>
-	</div>
-  </body>	
+<MAP NAME="test"> 
+<AREA SHAPE=RECT COORDS="4,2,108,103"> 
+<AREA SHAPE=RECT COORDS="117,6,212,104"> 
+<AREA SHAPE=RECT COORDS="3,111,105,213"> 
+<AREA SHAPE=RECT COORDS="114,113,211,210"> 
+</MAP> 
+<img src="MainPulldown.jpg" usemap="#test" WIDTH=892 HEIGHT=701> 
+
+<p>Pulldown choices:</p>
+<ul>
+<li><i>Accounts in separate OFX files</i>
+<br>
+Not yet implemented, all transactions are divide according to account.
+
+<li><i>Only interest transactions</i>
+<br>
+This is "old" functionality, it filters ING savings transactions, only the <i>interest</i> transactions are stored.</li>
+
+<li><i>GnuCash executable</i>
+<br>
+Points to the location of the GnuCash executable, defaults to <i>C:\Program Files (x86)\gnucash\bin\gnucash.exe</i>.</li>
+<li><i>Synonym file</i>
+.br
+A prefix can be configured, in case there are multiple accounts.
+ </li>
+
+<li><i>Loglvel<i> 
+<br>
+For debugging purposes, the detail level of the messages can be adjusted(Normal level is <i>INFO</i>).</li>
+
+<li><i>Look and Feel</i> 
+<br>
+The look and feel of the application windows can be choosen.</li>
+
+<li><i>Create logfiles</i> 
+<br>
+A directory where the logfiles are created is choosen.</li>
+
+</ul>
+</div>
+</body>
 </html>
-

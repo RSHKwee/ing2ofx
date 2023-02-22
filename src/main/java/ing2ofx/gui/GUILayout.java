@@ -12,6 +12,7 @@ import ofxLibrary.OfxMetaInfo;
 import ofxLibrary.OfxTransaction;
 
 import java.awt.BorderLayout;
+import java.awt.Desktop;
 //import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -56,6 +57,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import ing2ofx.main.Main;
 
 import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JDesktopPane;
 
 import library.UserSetting;
 import library.OutputToLoggerReader;
@@ -67,6 +69,7 @@ public class GUILayout extends JPanel implements ItemListener {
   // Loglevels: OFF SEVERE WARNING INFO CONFIG FINE FINER FINEST ALL
   static final String[] c_levels = { "OFF", "SEVERE", "WARNING", "INFO", "CONFIG", "FINE", "FINER", "FINEST", "ALL" };
   static final String[] c_LogToDisk = { "Yes", "No" };
+  static final String m_HelpFile = "F:\\dev\\ing2ofx\\help\\ing2ofx.chm";
 
   // Variables
   private String m_LogDir = "c:\\";
@@ -301,6 +304,59 @@ public class GUILayout extends JPanel implements ItemListener {
       }
     });
     mnSettings.add(mntmLogToDisk);
+
+    // ? item
+    JMenu mnHelpAbout = new JMenu("?");
+    mnHelpAbout.setHorizontalAlignment(SwingConstants.RIGHT);
+    menuBar.add(mnHelpAbout);
+
+    // Help
+    JMenuItem mntmHelp = new JMenuItem("Help");
+    mntmHelp.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        // Replace "path/to/help/file" with the actual path to your help file
+        File helpFile = new File(m_HelpFile);
+
+        if (helpFile.exists()) {
+          try {
+            // Open the help file with the default viewer
+            Desktop.getDesktop().open(helpFile);
+          } catch (IOException e1) {
+            e1.printStackTrace();
+          }
+        } else {
+          System.out.println("Help file not found.");
+        }
+      }
+    });
+    mnHelpAbout.add(mntmHelp);
+
+    // About
+    JMenuItem mntmAbout = new JMenuItem("About");
+    mntmAbout.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        // JFrame desktop = new JFrame("About");
+
+        JFrame frame = new JFrame("About");
+        // Create a text area with information about your program
+        JTextArea textArea = new JTextArea("MyProgram v1.0\n\nCopyright © 2023");
+
+        // Set the text area to be uneditable
+        textArea.setEditable(false);
+
+        // Add the text area to the window
+        // add(textArea);
+        // desktop.add(textArea);
+        frame.add(textArea);
+
+        // Set the size of the window and make it visible
+        setSize(200, 150);
+        setVisible(true);
+      }
+    });
+    mnHelpAbout.add(mntmAbout);
 
     // Do the layout.
     JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
