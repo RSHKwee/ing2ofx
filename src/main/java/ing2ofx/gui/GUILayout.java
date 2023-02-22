@@ -53,11 +53,9 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.JCheckBoxMenuItem;
 
 import ing2ofx.main.Main;
-
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JDesktopPane;
 
 import library.UserSetting;
 import library.OutputToLoggerReader;
@@ -65,6 +63,7 @@ import library.OutputToLoggerReader;
 public class GUILayout extends JPanel implements ItemListener {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private static final long serialVersionUID = 1L;
+  static final String c_CopyrightYear = "2023";
 
   // Loglevels: OFF SEVERE WARNING INFO CONFIG FINE FINER FINEST ALL
   static final String[] c_levels = { "OFF", "SEVERE", "WARNING", "INFO", "CONFIG", "FINE", "FINER", "FINEST", "ALL" };
@@ -332,28 +331,14 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     mnHelpAbout.add(mntmHelp);
 
-    // About
+    // TODO About
     JMenuItem mntmAbout = new JMenuItem("About");
     mntmAbout.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        // JFrame desktop = new JFrame("About");
-
         JFrame frame = new JFrame("About");
-        // Create a text area with information about your program
-        JTextArea textArea = new JTextArea("MyProgram v1.0\n\nCopyright © 2023");
-
-        // Set the text area to be uneditable
-        textArea.setEditable(false);
-
-        // Add the text area to the window
-        // add(textArea);
-        // desktop.add(textArea);
-        frame.add(textArea);
-
-        // Set the size of the window and make it visible
-        setSize(200, 150);
-        setVisible(true);
+        String l_message = "ING2OFX " + Main.m_creationtime + "\n\nCopyright © " + c_CopyrightYear;
+        JOptionPane.showMessageDialog(frame, l_message);
       }
     });
     mnHelpAbout.add(mntmAbout);
