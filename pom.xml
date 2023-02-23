@@ -4,7 +4,7 @@
 
   <groupId>ing2ofx</groupId>
   <artifactId>ing2ofx</artifactId>
-  <version>0.2.5</version>
+  <version>0.2.5.0</version>
   <packaging>jar</packaging>
 
   <name>ing2ofx</name>
@@ -195,12 +195,12 @@
                 <bundledJreAsFallback>true</bundledJreAsFallback>
               </jre>
               <versionInfo>
-                <fileVersion>0.1.3.0</fileVersion>
+                <fileVersion>${project.version}</fileVersion>
                 <txtFileVersion>${project.version}</txtFileVersion>
                 <fileDescription>${project.name}</fileDescription>
                 <copyright>C</copyright>
-                <productVersion>0.2.5.0</productVersion>
-                <txtProductVersion>0.2.5.0</txtProductVersion>
+                <productVersion>${project.version}</productVersion>
+                <txtProductVersion>${project.version}</txtProductVersion>
                 <productName>${project.name}</productName>
                 <internalName>ing2ofx</internalName>
                 <originalFilename>ing2ofx.exe</originalFilename>

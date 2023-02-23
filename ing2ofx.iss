@@ -1,7 +1,7 @@
 ; -- ing2ofx.iss --
 ;
 #define MyAppName "ing2ofx"
-#define MyAppVersion "0.2.5"
+#define MyAppVersion GetVersionNumbersString('target\ing2ofx.exe')
 #define MyAppExeName "ing2ofx.exe"
 #define MyIconFile "src\main\resources\ingSNSLogo.ico"
 
