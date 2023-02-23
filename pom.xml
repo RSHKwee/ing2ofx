@@ -157,10 +157,8 @@
                   <includes>
                     <include>ing2ofx.chm</include>
                   </includes>
-                  <filtering>true</filtering>
                 </resource>
               </resources>
-              <encoding>UTF-8</encoding>
             </configuration>
           </execution>
  
