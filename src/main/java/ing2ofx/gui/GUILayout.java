@@ -68,7 +68,9 @@ public class GUILayout extends JPanel implements ItemListener {
   // Loglevels: OFF SEVERE WARNING INFO CONFIG FINE FINER FINEST ALL
   static final String[] c_levels = { "OFF", "SEVERE", "WARNING", "INFO", "CONFIG", "FINE", "FINER", "FINEST", "ALL" };
   static final String[] c_LogToDisk = { "Yes", "No" };
-  static final String m_HelpFile = "F:\\dev\\ing2ofx\\help\\ing2ofx.chm";
+
+  // Replace "path/to/help/file" with the actual path to your help file
+  static final String m_HelpFile = "ing2ofx.chm";
 
   // Variables
   private String m_LogDir = "c:\\";
@@ -343,7 +345,6 @@ public class GUILayout extends JPanel implements ItemListener {
     mntmHelp.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        // Replace "path/to/help/file" with the actual path to your help file
         File helpFile = new File(m_HelpFile);
 
         if (helpFile.exists()) {
@@ -354,7 +355,7 @@ public class GUILayout extends JPanel implements ItemListener {
             e1.printStackTrace();
           }
         } else {
-          System.out.println("Help file not found.");
+          LOGGER.log(Level.INFO, "Help file not found " + helpFile.getAbsolutePath());
         }
       }
     });

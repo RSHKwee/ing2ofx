@@ -1,12 +1,13 @@
 ; -- ing2ofx.iss --
 ;
 #define MyAppName "ing2ofx"
+#define MyAppVersion "0.2.5"
 #define MyAppExeName "ing2ofx.exe"
 #define MyIconFile "src\main\resources\ingSNSLogo.ico"
 
 [Setup]
 AppName={#MyAppName}
-AppVersion=0.2.5
+AppVersion={#MyAppVersion}
 AppPublisher=RSH Kwee
 AppPublisherURL=https://github.com/RSHKwee/ing2ofx/releases
 AppContact=rsh.kwee@gmail.com
@@ -17,15 +18,11 @@ DefaultGroupName={#MyAppName}
 UninstallDisplayIcon={app}\{#MyAppExeName}
 InfoBeforeFile=readme.md
 OutputDir=target
-OutputBaseFilename={#MyAppName}_jre_setup
+OutputBaseFilename={#MyAppName}_v{#MyAppVersion}_jre_setup
 UninstallFilesDir={app}\uninst
  ; Tell Windows Explorer to reload the environment
 ChangesEnvironment=yes
 SetupIconFile={#MyIconFile}
-
-[Registry]
-Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName: "JAVA_HOME"; \
-    ValueData: "{app}\jre"; Flags: preservestringtype; Check: JreNotPresent
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; \
@@ -34,6 +31,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; \
 [Files]
 Source: ".\target\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "readme.md"; DestDir: "{app}"; Flags: isreadme
+Source: ".\help\ing2ofx.chm"; DestDir: "{app}"; Flags: ignoreversion
 DestDir: {app}\jre; Source: jre\*;   Flags: recursesubdirs ; Check: JreNotPresent
 
 [Icons]
@@ -44,14 +42,14 @@ Name: "{userdesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 var
   jreNotChecked : Boolean;
   FinishedInstall: Boolean;
-  jrePresent : Boolean;
+  L_jreNotPresent: boolean;
 
 function InitializeSetup(): Boolean;
 begin
   Log('InitializeSetup called');
   Result := true;
   jreNotChecked := true;
-  jrePresent := false;
+  L_jreNotPresent := true;
 end;
 
 procedure InitializeWizard;
@@ -67,14 +65,16 @@ begin
   begin
     if Exec('"%java_home%\bin\java"', '-version', '', SW_SHOW, ewWaitUntilTerminated, ResultCode) then
     begin
-      jrePresent := false;    
-      Log('Java jre is not present.');
+      L_jreNotPresent := true;
+      RegWriteStringValue('HKCU', 'Environment', 'JAVA_HOME', ExpandConstant('{app}\jre'));  
+      Log('Java jre is not present, define JAVA_HOME.');
     end else begin          
-      jrePresent := true;
+      L_jreNotPresent := false;
+      Log('Java jre is present.');
     end;
     jreNotChecked := false;
   end;
-  Result := jrePresent;
+  Result := L_jreNotPresent;
 end;
 
 <event('InitializeWizard')>

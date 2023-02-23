@@ -1,12 +1,13 @@
 ; -- ing2ofxnojre.iss --
 ;
 #define MyAppName "ing2ofx"
+#define MyAppVersion "0.2.5"
 #define MyAppExeName "ing2ofx.exe"
 #define MyIconFile "src\main\resources\ingSNSLogo.ico"
 
 [Setup]
 AppName={#MyAppName}
-AppVersion=0.2.5
+AppVersion={#MyAppVersion}
 AppPublisher=RSH Kwee
 AppPublisherURL=https://github.com/RSHKwee/ing2ofx/releases
 AppContact=rsh.kwee@gmail.com
@@ -17,7 +18,7 @@ DefaultGroupName={#MyAppName}
 UninstallDisplayIcon={app}\{#MyAppExeName}
 InfoBeforeFile=readme.md
 OutputDir=target
-OutputBaseFilename={#MyAppName}_setup
+OutputBaseFilename={#MyAppName}_v{#MyAppVersion}_setup
 UninstallFilesDir={app}\uninst
  ; Tell Windows Explorer to reload the environment
 ChangesEnvironment=yes
@@ -30,6 +31,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; \
 [Files]
 Source: ".\target\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "readme.md"; DestDir: "{app}"; Flags: isreadme
+Source: ".\help\ing2ofx.chm"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{commonstartup}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"

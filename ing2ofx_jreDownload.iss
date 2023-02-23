@@ -1,13 +1,15 @@
 ; -- ing2ofx_jreDownload.iss --
 ;
 #define MyAppName "ing2ofx"
+#define MyAppVersion "0.2.5"
 #define MyAppExeName "ing2ofx.exe"
 #define MyIconFile "src\main\resources\ingSNSLogo.ico"
+
 #define JreUrl =  "https://www.eclipse.org/downloads/download.php?file=/justj/jres/17/downloads/20230204_0657/org.eclipse.justj.openjdk.hotspot.jre.minimal.stripped-17.0.6-win32-x86_64.tar.gz"
 
 [Setup]
 AppName={#MyAppName}
-AppVersion=0.2.5
+AppVersion={#MyAppVersion}
 AppPublisher=RSH Kwee
 AppPublisherURL=https://github.com/RSHKwee/ing2ofx/releases
 AppContact=rsh.kwee@gmail.com
@@ -18,7 +20,7 @@ DefaultGroupName={#MyAppName}
 UninstallDisplayIcon={app}\{#MyAppExeName}
 InfoBeforeFile=readme.md
 OutputDir=target
-OutputBaseFilename={#MyAppName}_jreDownload_setup
+OutputBaseFilename={#MyAppName}_v{#MyAppVersion}_jreDownload_setup
 UninstallFilesDir={app}\uninst
  ; Tell Windows Explorer to reload the environment
 ChangesEnvironment=yes
@@ -35,7 +37,8 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; \
 [Files]
 Source: ".\target\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "readme.md"; DestDir: "{app}"; Flags: isreadme
-;DestDir: {app}\jre; Source: jre\*;   Flags: recursesubdirs ; Check: JreNotPresent
+Source: ".\help\ing2ofx.chm"; DestDir: "{app}"; Flags: ignoreversion
+
 
 [Icons]
 Name: "{commonstartup}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
@@ -45,8 +48,8 @@ Name: "{userdesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 var
   jreNotChecked : Boolean;
   FinishedInstall: Boolean;
-  jrePresent : Boolean;
-
+  L_jreNotPresent: boolean;
+ 
   DownloadPage: TDownloadWizardPage;
 
 function InitializeSetup(): Boolean;
@@ -54,7 +57,7 @@ begin
   Log('InitializeSetup called');
   Result := true;
   jreNotChecked := true;
-  jrePresent := false;
+  L_jreNotPresent := true;
 end;
 
 function OnDownloadProgress(const Url, FileName: String; const Progress, ProgressMax: Int64): Boolean;
@@ -86,15 +89,16 @@ begin
   begin
     if Exec('"%java_home%\bin\java"', '-version', '', SW_SHOW, ewWaitUntilTerminated, ResultCode) then
     begin
-      jrePresent := false;    
-      Log('Java jre is not present.');
+      L_jreNotPresent := true;
+      RegWriteStringValue('HKCU', 'Environment', 'JAVA_HOME', ExpandConstant('{app}\jre'));  
+      Log('Java jre is not present, define JAVA_HOME.');
     end else begin          
-      jrePresent := true;
+      L_jreNotPresent := false;
       Log('Java jre is present.');
     end;
     jreNotChecked := false;
   end;
-  Result := jrePresent;
+  Result := L_jreNotPresent;
 end;
 
 <event('InitializeWizard')>
@@ -106,7 +110,7 @@ end;
 
 function NextButtonClick(CurPageID: Integer): Boolean;
 begin
-  if ((CurPageID = wpReady) AND (NOT JreNotPresent())) then
+  if ((CurPageID = wpReady) AND JreNotPresent()) then
   begin
     DownloadPage.Clear;
     DownloadPage.Add(ExpandConstant('{#JreUrl}' + '&r=1'), 'jre.tar.gz', '');
