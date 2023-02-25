@@ -25,10 +25,12 @@ UninstallFilesDir={app}\uninst
  ; Tell Windows Explorer to reload the environment
 ChangesEnvironment=yes
 SetupIconFile={#MyIconFile}
+SetupLogging=yes
 
 [Registry]
 Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName: "JAVA_HOME"; \
     ValueData: "{app}\jre"; Flags: preservestringtype; Check: JreNotPresent
+
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; \
@@ -36,9 +38,12 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; \
 
 [Files]
 Source: ".\target\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "readme.md"; DestDir: "{app}"; Flags: isreadme
+Source: "readme.md"; DestDir: "{app}"; Flags: ignoreversion
+Source: "readme.txt"; DestDir: "{app}"; Flags: isreadme
 Source: ".\help\ing2ofx.chm"; DestDir: "{app}"; Flags: ignoreversion
 
+[Dirs]
+Name: {app}\jre
 
 [Icons]
 Name: "{commonstartup}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
@@ -81,20 +86,65 @@ begin
   Log('InitializeWizard called');
 end;
 
+function GetJavaMajorVersion(): integer;
+var
+  TempFile: string;
+  ResultCode: Integer;
+  S: AnsiString;
+  P: Integer;
+begin
+  Result := 0;
+
+  { execute java -version and redirect output to a temp file }
+  TempFile := ExpandConstant('{tmp}\javaversion.txt');
+  if (not ExecAsOriginalUser(ExpandConstant('{cmd}'), '/c java -version 2> "' + TempFile + '"', '',SW_HIDE, ewWaitUntilTerminated, ResultCode)) 
+    or (ResultCode <> 0) then
+  begin
+    Log('Failed to execute java -version');
+    exit;
+  end;
+
+  { read file into variable S }
+  LoadStringFromFile(TempFile, S)
+  DeleteFile(TempFile);
+  Log(Format('java -version output: ' + #13#10 + '%s', [S]));
+
+  { extract version (between quotes) }
+  P := Pos('"', S);
+  Delete(S, 1, P);
+  P := Pos('"', S);
+  SetLength(S, P - 1);
+  Log(Format('Extracted version: %s', [S]));
+
+  { extract major }
+  if Copy(S, 1, 2) = '1.' then
+  begin
+    Delete(S, 1, 2)
+  end;
+  P := Pos('.', S);
+  SetLength(S, P - 1);
+  Log(Format('Major version: %s', [S]));
+
+  Result := StrToIntDef(S, 0);
+end;
+
 function JreNotPresent: Boolean;
 var
   ResultCode: integer;
+  TmpDir : string;
 begin
   if jreNotChecked then
   begin
-    if Exec('"%java_home%\bin\java"', '-version', '', SW_SHOW, ewWaitUntilTerminated, ResultCode) then
+
+    if (GetJavaMajorVersion() > 16) then
+
+    {if Exec('java', '-version', '', SW_SHOW, ewWaitUntilTerminated, ResultCode) then   }
     begin
-      L_jreNotPresent := true;
-      RegWriteStringValue('HKCU', 'Environment', 'JAVA_HOME', ExpandConstant('{app}\jre'));  
-      Log('Java jre is not present, define JAVA_HOME.');
-    end else begin          
       L_jreNotPresent := false;
       Log('Java jre is present.');
+    end else begin
+      L_jreNotPresent := true;
+      Log('Java jre is not present, define JAVA_HOME.');
     end;
     jreNotChecked := false;
   end;
@@ -142,7 +192,7 @@ end;
 procedure CurStepChanged(CurStep: TSetupStep);
 begin
   Log('CurStepChanged(' + IntToStr(Ord(CurStep)) + ') called');
-  if ((CurStep = ssPostInstall) and (NOT JreNotPresent())) then
+  if ((CurStep = ssPostInstall) and JreNotPresent()) then
   begin
     ExtractTarGz(ExpandConstant('{tmp}\jre.tar.gz'), ExpandConstant('{app}\jre'));
     FinishedInstall := True;

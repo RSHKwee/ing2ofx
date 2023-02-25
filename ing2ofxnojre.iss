@@ -30,7 +30,8 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; \
 
 [Files]
 Source: ".\target\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "readme.md"; DestDir: "{app}"; Flags: isreadme
+Source: "readme.md"; DestDir: "{app}"; Flags: ignoreversion
+Source: "readme.txt"; DestDir: "{app}"; Flags: isreadme
 Source: ".\help\ing2ofx.chm"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
