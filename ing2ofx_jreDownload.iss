@@ -22,10 +22,10 @@ InfoBeforeFile=readme.md
 OutputDir=target
 OutputBaseFilename={#MyAppName}_v{#MyAppVersion}_jreDownload_setup
 UninstallFilesDir={app}\uninst
- ; Tell Windows Explorer to reload the environment
+; Tell Windows Explorer to reload the environment
 ChangesEnvironment=yes
 SetupIconFile={#MyIconFile}
-SetupLogging=yes
+; SetupLogging=yes
 
 [Registry]
 Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName: "JAVA_HOME"; \
@@ -129,16 +129,11 @@ begin
 end;
 
 function JreNotPresent: Boolean;
-var
-  ResultCode: integer;
-  TmpDir : string;
 begin
   if jreNotChecked then
   begin
 
     if (GetJavaMajorVersion() > 16) then
-
-    {if Exec('java', '-version', '', SW_SHOW, ewWaitUntilTerminated, ResultCode) then   }
     begin
       L_jreNotPresent := false;
       Log('Java jre is present.');
