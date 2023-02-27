@@ -17,3 +17,4 @@ input
 *.pkc
 *.bak
 jre/
+*.chm
