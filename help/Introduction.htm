@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=8" />
+<title>Introduction</title>
+<!--[if IE 6]><style type="text/css">html{overflow-y:scroll}</style><![endif]-->
+<link rel="stylesheet" type="text/css" href="styles.css" />
+<script type="text/javascript" src="topic.js"></script>
+</head>
+<body>
+<h1 class="topicheading">Introduction</h1>
+<div class="topicbody">
+<br>
+<p>This (java) application converts (<a href="https://github.com/RSHKwee/ing2ofx/releases">https://github.com/RSHKwee/ing2ofx/releases</a>):</p>
+<ol>
+<li>ING (<a href="https://www.ing.nl/particulier">ING site</a>) csv-file(s) (comma or semicolon separated).
+    <br>
+    The csv-file(s) may contain transactions of multiple accounts.
+</li>
+<li>SNS (<a href="https://www.snsbank.nl">SNS Bank site</a>) xml-files (<a href="https://www.snsbank.nl/zakelijk/zzp/camt053-voor-boekhoudpakketten.html">CAMT.053 format</a>).
+    <br>
+    The xml-file(s) may contain transactions of multiple accounts.
+    </li>
+</ol>
+<p>To ofx files that can be read by a program like GnuCash (<a href="http://www.gnucash.org">GnuCash</a>).</p>
+
+<br>
+
+<p>The following steps are taken:</p>
+<ol>
+<li>The input files are read, the read transactions are stored in cache.</li>
+   <ol>
+   <li>The input files can be read all at once</li>
+   <li>One by one</li>
+   </ol>
+<li>The stored transactions are converted to OFX format (<a href="https://financialdataexchange.org//ofx">OFX.NET</a>): </li>
+   <ol>
+   <li>A check is performed to avoid duplication of transactions.</li>
+   <li>All stored transaction will be paired (if possible) with the following conditions:</li>
+      <ol>
+      <li>Same transaction date.</li>
+      <li>Account To equals Account From or Account From equals Account To.</li>
+      <li>Amounts of transactions sums to zero.</li>
+      </ol>
+      The fit-id of the transactionsare modified, the paired transactions get the same fit-id.
+   </ol>
+   <li>The OFX formatted transactions are stored in seperate files (one per account).
+</ol>
+</div>
+</body>
+</html>
