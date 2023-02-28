@@ -31,21 +31,22 @@
 <ol>
 <li>The input files are read, the read transactions are stored in cache.</li>
    <ol>
-   <li>The input files can be read all at once</li>
-   <li>One by one</li>
+     <li>The input files can be read all at once</li>
+     <li>One by one</li>
    </ol>
-<li>The stored transactions are converted to OFX format (<a href="https://financialdataexchange.org//ofx">OFX.NET</a>): </li>
-   <ol>
-   <li>A check is performed to avoid duplication of transactions.</li>
-   <li>All stored transaction will be paired (if possible) with the following conditions:</li>
+   <li>The stored transactions are then converted to OFX format (<a href="https://financialdataexchange.org//ofx">OFX.NET</a>).
+     <br>
+     Before pairing transactions a check is performed to avoid dupliction.        .
+     <br>
+     To be paired, transactions must meet the following conditions:
       <ol>
-      <li>Same transaction date.</li>
-      <li>Account To equals Account From or Account From equals Account To.</li>
-      <li>Amounts of transactions sums to zero.</li>
+      <li>they must have the same transaction date, involve the same accounts for both 'from' and 'to' (or just the same accounts in case of intra-account transactions).</li>
+      <li>Their amounts must sum to zero.</li>
       </ol>
-      The unique-id (fit-id) of the transactionsare modified, the paired transactions get the same unique-id.
-   </ol>
-   <li>The OFX formatted transactions are stored in seperate files (one per account).
+      <p>Paired transactions are given the same unique-id (fit-id).</p>
+
+      </li>
+   <li>The OFX formatted transactions are stored in seperate files (one per account).</li>
 </ol>
 </div>
 </body>
