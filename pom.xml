@@ -160,9 +160,7 @@
                 </resource>
               </resources>
             </configuration>
-          </execution>
- 
-          
+          </execution>         
         </executions>
       </plugin>		
 	  <!-- readme.md ^ -->
@@ -209,7 +207,6 @@
       </plugin>
 	  <!-- LAUNCH4J ^ -->
 	  <!-- Sign executable v -->
-
       <plugin>
         <groupId>net.jsign</groupId>
         <artifactId>jsign-maven-plugin</artifactId>
@@ -237,6 +234,23 @@
         <artifactId>exec-maven-plugin</artifactId>
         <version>3.1.0</version>
         <executions>
+		
+		  <execution>
+            <id>ING2OFXHelp</id>
+            <phase>package</phase>
+           <goals>
+              <goal>exec</goal>
+            </goals>          
+            <configuration>
+          <!--    <executable>C:\Program Files (x86)\HTML Help Workshop\hhc.exe</executable> -->
+              <executable>HelpChm.cmd</executable>
+              <workingDirectory>help</workingDirectory>
+              <arguments>
+                <argument>ing2ofx.hhp</argument>
+              </arguments>
+            </configuration>          
+          </execution>
+		  
           <execution>
             <id>innoSetup</id>
             <phase>package</phase>
@@ -278,9 +292,7 @@
                 <argument>ing2ofx_jreDownload.iss</argument>
               </arguments>
             </configuration>
-          </execution>
-         
-          
+          </execution>         
         </executions>
       </plugin>
     </plugins>
