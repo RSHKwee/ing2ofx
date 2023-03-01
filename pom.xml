@@ -237,7 +237,7 @@
 		
 		  <execution>
             <id>ING2OFXHelp</id>
-            <phase>copy-resources</phase>
+            <phase>process-resources</phase>
            <goals>
               <goal>exec</goal>
             </goals>          
