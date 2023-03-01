@@ -145,7 +145,7 @@
           </execution>
           <execution>
             <id>helpfile</id>
-            <phase>process-resources</phase>
+            <phase>package</phase>
             <goals>
               <goal>copy-resources</goal>
             </goals>
@@ -237,12 +237,11 @@
 		
 		  <execution>
             <id>ING2OFXHelp</id>
-            <phase>package</phase>
+            <phase>copy-resources</phase>
            <goals>
               <goal>exec</goal>
             </goals>          
             <configuration>
-          <!--    <executable>C:\Program Files (x86)\HTML Help Workshop\hhc.exe</executable> -->
               <executable>HelpChm.cmd</executable>
               <workingDirectory>help</workingDirectory>
               <arguments>
