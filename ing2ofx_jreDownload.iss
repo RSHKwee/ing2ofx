@@ -26,6 +26,7 @@ UninstallFilesDir={app}\uninst
 ChangesEnvironment=yes
 SetupIconFile={#MyIconFile}
 ; SetupLogging=yes
+; PrivilegesRequired=poweruser
 
 [Registry]
 Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName: "JAVA_HOME"; \

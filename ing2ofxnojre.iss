@@ -20,9 +20,11 @@ InfoBeforeFile=readme.md
 OutputDir=target
 OutputBaseFilename={#MyAppName}_v{#MyAppVersion}_setup
 UninstallFilesDir={app}\uninst
- ; Tell Windows Explorer to reload the environment
+; Tell Windows Explorer to reload the environment
 ChangesEnvironment=yes
 SetupIconFile={#MyIconFile}
+; SetupLogging=yes
+; PrivilegesRequired=poweruser
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; \
