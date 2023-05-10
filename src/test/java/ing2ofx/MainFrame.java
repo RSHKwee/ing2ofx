@@ -5,6 +5,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class MainFrame extends JFrame {
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 2195348893060154192L;
+
   public MainFrame() {
     super("Main Window");
 

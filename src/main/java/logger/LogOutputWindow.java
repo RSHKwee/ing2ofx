@@ -12,10 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import logger.MyLogger;
-
 public class LogOutputWindow {
-  private static final Logger LOGGER    = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 
   static public JFrame outputWindow(String a_Title, Level a_Level, String a_RootDir, Boolean a_toDisk) {
     JTextArea output = new JTextArea();
