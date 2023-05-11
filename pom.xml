@@ -83,7 +83,7 @@
         <filtering>true</filtering>
       </resource>
     </resources>   
-    <pluginManagement>
+  <!--  <pluginManagement> -->
 	<plugins>
 	  <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -103,19 +103,19 @@
 			  <goal>single</goal>
 			</goals>
           </execution>
-          </executions>
-			<configuration>
-              <archive>
-                 <manifest>
-				   <addClasspath>true</addClasspath>
-				   <mainClass>ing2ofx.main.Main</mainClass>
-				 </manifest>
-              </archive>
-              <descriptorRefs>
-                 <descriptorRef>jar-with-dependencies</descriptorRef>
-              </descriptorRefs>
-              <finalName>ing2ofx</finalName>
-           </configuration>
+        </executions>
+		<configuration>
+          <archive>
+            <manifest>
+		      <addClasspath>true</addClasspath>
+		      <mainClass>ing2ofx.main.Main</mainClass>
+		    </manifest>
+          </archive>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <finalName>ing2ofx</finalName>
+        </configuration>
       </plugin>
 	  <!-- Distribute readme.md v -->
       <plugin>
@@ -296,7 +296,7 @@
         </executions>
       </plugin>
     </plugins>
-    </pluginManagement>
+<!--    </pluginManagement> -->
   </build>
   <distributionManagement>
     <!-- Upload to Github v-->
