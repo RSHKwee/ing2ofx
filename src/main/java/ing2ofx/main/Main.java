@@ -15,7 +15,6 @@ import javax.swing.UIManager.LookAndFeelInfo;
 import java.net.URL;
 
 import library.JarInfo;
-import library.UserSetting;
 import ing2ofx.gui.GUILayout;
 
 /**
