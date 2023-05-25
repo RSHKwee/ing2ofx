@@ -131,7 +131,7 @@
           <archive>
             <manifest>
 		      <addClasspath>true</addClasspath>
-		      <mainClass>ing2ofx.main.Main</mainClass>
+		      <mainClass>kwee.ing2ofx.main.Main</mainClass>
 		    </manifest>
           </archive>
           <descriptorRefs>
