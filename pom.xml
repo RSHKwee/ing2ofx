@@ -8,8 +8,14 @@
   <packaging>jar</packaging>
 
   <name>ing2ofx</name>
+  
   <url>http://maven.apache.org</url>
-
+  <!--
+  <modules>     
+    <module>library</module>
+  </modules>
+  -->
+  
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>17</maven.compiler.source>
