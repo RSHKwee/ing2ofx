@@ -57,7 +57,7 @@ import javax.swing.JCheckBoxMenuItem;
 
 import ing2ofx.main.Main;
 
-import library.UserSetting;
+import ing2ofx.main.UserSetting;
 import library.OutputToLoggerReader;
 
 public class GUILayout extends JPanel implements ItemListener {
