@@ -53,7 +53,7 @@ public class OfxPairTransaction {
         BigDecimal bdDiff = bd1.add(bd2);
         l_bstat = l_bstat && (bdDiff.compareTo(BigDecimal.ZERO) == 0);
       } catch (Exception e) {
-        System.out.println(e.getMessage());
+        LOGGER.log(Level.WARNING, e.getMessage());
       }
     }
     return l_bstat;
