@@ -6,19 +6,36 @@
   <artifactId>ing2ofx</artifactId>
   <version>0.2.7.0</version>
   <packaging>jar</packaging>
-
+<!--
+  <parent>
+	<groupId>kwee</groupId>
+	<artifactId>aggregator</artifactId>
+	<version>0.0.1.0</version>
+	<relativePath>../pom.xml</relativePath>
+  </parent>
+-->
   <name>ing2ofx</name>
 
   <repositories>
+     <repository>
+       <id>mvn-repo-aggr</id>
+       <url>https://github.com/RSHKwee/Aggregator/releases</url>
+       <releases>
+           <enabled>true</enabled>
+       </releases>
+       <snapshots>
+           <enabled>true</enabled>
+       </snapshots>
+    </repository>
     <repository>
-        <id>mvn-repo</id>
-        <url>https://github.com/RSHKwee/library/releases</url>
-        <releases>
-            <enabled>true</enabled>
-        </releases>
-        <snapshots>
-            <enabled>true</enabled>
-        </snapshots>
+      <id>mvn-repo</id>
+      <url>https://github.com/RSHKwee/library/releases</url>
+      <releases>
+          <enabled>true</enabled>
+      </releases>
+      <snapshots>
+          <enabled>true</enabled>
+      </snapshots>
     </repository>
   </repositories>
 
