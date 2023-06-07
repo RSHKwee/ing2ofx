@@ -45,17 +45,6 @@
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
-<<<<<<< HEAD
-  </properties>
-  
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>  
-=======
 
     <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
  	<junit.version>4.12</junit.version>
@@ -69,7 +58,6 @@
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
->>>>>>> 09f0bd8bddfde4fdf9ad5b861806fba639392971
  	<dependency>
 	  <groupId>kwee.library</groupId>
 	  <artifactId>library</artifactId>
