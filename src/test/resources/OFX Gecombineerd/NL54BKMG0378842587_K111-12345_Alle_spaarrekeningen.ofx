@@ -1,0 +1,110 @@
+<OFX>
+  <SIGNONMSGSRSV1>
+    <SONRS>                            <!-- Begin signon -->
+      <STATUS>                        <!-- Begin status aggregate -->
+         <CODE>0</CODE>               <!-- OK -->
+         <SEVERITY>INFO</SEVERITY>
+      </STATUS>
+      <DTSERVER>20230611</DTSERVER>   <!-- Oct. 29, 1999, 10:10:03 am -->
+      <LANGUAGE>ENG</LANGUAGE>        <!-- Language used in response -->
+      <DTPROFUP>20230611</DTPROFUP>   <!-- Last update to profile-->
+      <DTACCTUP>20230611</DTACCTUP>   <!-- Last account update -->
+      <FI>                            <!-- ID of receiving institution -->
+         <ORG>NCH</ORG>               <!-- Name of ID owner -->
+         <FID>1001</FID>              <!-- Actual ID -->
+      </FI>
+    </SONRS>                           <!-- End of signon -->
+  </SIGNONMSGSRSV1>
+  <BANKMSGSRSV1>
+   <STMTTRNRS>                        <!-- Begin response -->
+      <TRNUID>1001</TRNUID>           <!-- Client ID sent in request -->
+      <STATUS>                     <!-- Start status aggregate -->
+         <CODE>0</CODE>            <!-- OK -->
+         <SEVERITY>INFO</SEVERITY>
+      </STATUS>
+      <STMTRS>                            <!-- Begin statement response -->
+         <CURDEF>EUR</CURDEF>
+         <BANKACCTFROM>                   <!-- Identify the account -->
+            <BANKID>INGBNL2A</BANKID>     <!-- Routing transit or other FI ID -->
+            <ACCTID>K111-12345</ACCTID>  <!-- Account number -->
+            <ACCTTYPE>CHECKING</ACCTTYPE> <!-- Account type -->
+         </BANKACCTFROM>                  <!-- End of account ID -->
+         <BANKTRANLIST>                   <!-- Begin list of statement trans. -->
+            <DTSTART>20230501</DTSTART>
+            <DTEND>20230531</DTEND>
+               <STMTTRN>
+                  <TRNTYPE>DEBIT</TRNTYPE>
+                  <DTPOSTED>20230531</DTPOSTED>
+                  <TRNAMT>-250,00</TRNAMT>
+                  <FITID>2023053125000</FITID>
+                  <NAME>Overboeking naar betaalrekening NL54BKMG0378842587</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL54BKMG0378842587</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO></MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20230526</DTPOSTED>
+                  <TRNAMT>750,00</TRNAMT>
+                  <FITID>2023052675000</FITID>
+                  <NAME>Overboeking van betaalrekening NL54BKMG0378842587</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL54BKMG0378842587</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO></MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DEBIT</TRNTYPE>
+                  <DTPOSTED>20230511</DTPOSTED>
+                  <TRNAMT>-250,00</TRNAMT>
+                  <FITID>20230511250001</FITID>
+                  <NAME>Overboeking naar betaalrekening NL54BKMG0378842587</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL54BKMG0378842587</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO></MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20230502</DTPOSTED>
+                  <TRNAMT>246,37</TRNAMT>
+                  <FITID>2023050224637</FITID>
+                  <NAME>Overboeking van betaalrekening NL54BKMG0378842587</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL54BKMG0378842587</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO></MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20230501</DTPOSTED>
+                  <TRNAMT>3,63</TRNAMT>
+                  <FITID>20230501363</FITID>
+                  <NAME>Rente</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID></ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO></MEMO>
+               </STMTTRN>
+         </BANKTRANLIST>                   <!-- End list of statement trans. -->
+         <LEDGERBAL>                       <!-- Ledger balance aggregate -->
+            <BALAMT>9500,00</BALAMT>
+            <DTASOF>202305312359</DTASOF>  <!-- Bal date: Last date in transactions, 11:59 pm -->
+         </LEDGERBAL>                      <!-- End ledger balance -->
+      </STMTRS>
+   </STMTTRNRS>                        <!-- End of accounts -->
+  </BANKMSGSRSV1>
+</OFX>
+<!-- G:\Users\René\SynologyDrive\Administraties\Test\substitute\OFX Gecombineerd\NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx -->
+<!--  Gegenereerd op 2023-06-11 11:59:36.635057700
