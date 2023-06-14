@@ -1,4 +1,4 @@
-package ing2ofx;
+package zandbak;
 
 import java.awt.Desktop;
 

@@ -21,6 +21,11 @@
 	  <artifactId>library</artifactId>
 	  <version>${kweeLibrary.version}</version>
 	</dependency>
+	<dependency>
+      <groupId>net.bytebuddy</groupId>
+      <artifactId>byte-buddy</artifactId>
+      <version>1.10.22</version>
+    </dependency>
     <!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
     <dependency>
       <groupId>com.opencsv</groupId>

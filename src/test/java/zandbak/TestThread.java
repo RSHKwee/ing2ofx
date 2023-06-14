@@ -1,4 +1,4 @@
-package ing2ofx;
+package zandbak;
 
 class RunnableDemo implements Runnable {
 	private Thread t;

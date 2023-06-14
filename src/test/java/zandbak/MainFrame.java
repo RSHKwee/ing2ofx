@@ -1,4 +1,4 @@
-package ing2ofx;
+package zandbak;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
