@@ -80,8 +80,6 @@ public class IngTransactionsTest extends TestCase {
    * Test method for {@link kwee.convertor.ing.convertor.IngTransactions#load()}.
    */
   public void testLoad() {
-    // fail("Not yet implemented");
-
     IngTransactions l_transSaving = new IngTransactions(m_IngSavingFile, m_SynonymFile);
     l_transSaving.load();
     l_transSaving.getIngSavingTransactions();
@@ -89,7 +87,7 @@ public class IngTransactionsTest extends TestCase {
     IngTransactions l_trans = new IngTransactions(m_IngFile, m_SynonymFile);
     l_trans.load();
     l_trans.getIngTransactions();
-    fail("Not yet implemented");
+    // fail("Not yet implemented");
 
   }
 
