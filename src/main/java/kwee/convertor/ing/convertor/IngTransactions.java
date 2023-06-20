@@ -44,8 +44,8 @@ public class IngTransactions {
   private Set<String> m_UniqueIds = new LinkedHashSet<>();
   private String m_FileName = "";
 
-  private List<IngTransaction> m_Transactions;
-  private List<IngSavingTransaction> m_SavingTransactions;
+  private List<IngTransaction> m_Transactions = new LinkedList<IngTransaction>();
+  private List<IngSavingTransaction> m_SavingTransactions = new LinkedList<IngSavingTransaction>();
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
   private File m_Synonym_file;
@@ -91,7 +91,7 @@ public class IngTransactions {
         beanStrategy.setType(IngSavingTransaction.class);
         m_SavingTransactions = new CsvToBeanBuilder<IngSavingTransaction>(new FileReader(m_File))
             .withSeparator(m_separator).withMappingStrategy(beanStrategy).build().parse();
-        m_Transactions = null;
+        m_Transactions.clear();
 
         m_SavingTransactions.forEach(l_trans -> {
           OfxTransaction l_ofxtrans;
@@ -116,7 +116,7 @@ public class IngTransactions {
         beanStrategy.setType(IngTransaction.class);
         m_Transactions = new CsvToBeanBuilder<IngTransaction>(new FileReader(m_File)).withSeparator(m_separator)
             .withMappingStrategy(beanStrategy).build().parse();
-        m_SavingTransactions = null;
+        m_SavingTransactions.clear();
 
         m_Transactions.forEach(l_trans -> {
           OfxTransaction l_ofxtrans;

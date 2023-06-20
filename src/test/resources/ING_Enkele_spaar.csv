@@ -1,0 +1,4 @@
+"Datum";"Omschrijving";"Rekening";"Rekening naam";"Tegenrekening";"Af Bij";"Bedrag";"Valuta";"Mutatiesoort";"Mededelingen";"Saldo na mutatie"
+"2023-05-26";"Overboeking van betaalrekening NL94COBA0678011583";"K 444-12345";"sprek 1";"NL94COBA0678011583";"Bij";"2500,00";"EUR";"Inleg";"";"2750,00"
+"2023-05-25";"Overboeking naar betaalrekening NL94COBA0678011583";"K 444-12345";"sprek 1";"NL94COBA0678011583";"Af";"250,00";"EUR";"Opname";"";"250,00"
+"2023-05-01";"Rente";"K 444-12345";"sprek 1";"";"Bij";"0,75";"EUR";"Rente";"";"1650,75"

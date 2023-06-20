@@ -1,0 +1,3 @@
+"Datum";"Naam / Omschrijving";"Rekening";"Tegenrekening";"Code";"Af Bij";"Bedrag (EUR)";"Mutatiesoort";"Mededelingen";"Saldo na mutatie";"Tag"
+"20230523";"a Acchouder 7";"NL90KNAB0445266309";"";"GT";"Af";"2000,00";"Online bankieren";"Naar Oranje spaarrekening K55512345 Valutadatum: 23-05-2023";"446,38";""
+"20230523";"Acchouder 8";"NL90KNAB0445266309";"NL58INGB0702712760";"VZ";"Bij";"821,98";"Verzamelbetaling";"Naam: Acchouder 8 Omschrijving: P0000200000000000231148665230523 PWJ 30-04-23/30-04-23 Acchouder 7 IBAN: NL58INGB0702712760 Kenmerk: DK13 110520EA-01120651634 Valutadatum: 23-05-2023";"2446,38";""

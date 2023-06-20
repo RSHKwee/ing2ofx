@@ -16,8 +16,8 @@ import kwee.convertor.ing.ingLibrary.IngTransaction;
  *
  */
 public class IngTransactionsTest extends TestCase {
-  private String c_IngTransFile = "Alle_rekeningen.csv";
-  private String c_IngSavingTransFile = "Alle_spaarrekeningen.csv";
+  private String c_IngTransFile = "ING_Enkele.csv";
+  private String c_IngSavingTransFile = "ING_Enkele_spaar.csv";
   private String c_SynonymFile = "Synoniem.txt";
 
   private File m_IngFile;
@@ -67,7 +67,6 @@ public class IngTransactionsTest extends TestCase {
    * Test method for
    * {@link kwee.convertor.ing.convertor.IngTransactions#IngTransactions(java.io.File, java.io.File)}.
    */
-
   public void testIngTransactions() {
     IngTransactions l_ingSavingtrans = new IngTransactions(m_IngSavingFile, m_SynonymFile);
     assertNotNull(l_ingSavingtrans);
@@ -82,13 +81,15 @@ public class IngTransactionsTest extends TestCase {
   public void testLoad() {
     IngTransactions l_transSaving = new IngTransactions(m_IngSavingFile, m_SynonymFile);
     l_transSaving.load();
-    l_transSaving.getIngSavingTransactions();
+    List<IngSavingTransaction> l_SavingTransactions = l_transSaving.getIngSavingTransactions();
+    int l_nrSavingTrans = l_SavingTransactions.size();
+    assertEquals(l_nrSavingTrans, 3);
 
     IngTransactions l_trans = new IngTransactions(m_IngFile, m_SynonymFile);
     l_trans.load();
-    l_trans.getIngTransactions();
-    // fail("Not yet implemented");
-
+    List<IngTransaction> l_Transactions = l_trans.getIngTransactions();
+    int l_nrTrans = l_Transactions.size();
+    assertEquals(l_nrTrans, 2);
   }
 
   /**
@@ -98,12 +99,10 @@ public class IngTransactionsTest extends TestCase {
   public void testIsSavingCsvFile() {
     IngTransactions l_transSaving = new IngTransactions(m_IngSavingFile, m_SynonymFile);
     l_transSaving.load();
-    l_transSaving.getIngSavingTransactions();
     assertEquals(l_transSaving.isSavingCsvFile(), true);
 
     IngTransactions l_trans = new IngTransactions(m_IngFile, m_SynonymFile);
     l_trans.load();
-    l_trans.getIngTransactions();
     assertEquals(l_trans.isSavingCsvFile(), false);
   }
 
@@ -112,13 +111,12 @@ public class IngTransactionsTest extends TestCase {
    * {@link kwee.convertor.ing.convertor.IngTransactions#getIngTransactions()}.
    */
   public void testGetIngTransactions() {
-    fail("Not yet implemented");
-
     IngTransactions l_trans = new IngTransactions(m_IngFile, m_SynonymFile);
     l_trans.load();
-    List<IngTransaction> l_Transactions = l_trans.getIngTransactions();
-
     List<IngSavingTransaction> l_SavingTransactions = l_trans.getIngSavingTransactions();
+    assertTrue(l_SavingTransactions.isEmpty());
+
+    List<IngTransaction> l_Transactions = l_trans.getIngTransactions();
 
   }
 
@@ -127,12 +125,12 @@ public class IngTransactionsTest extends TestCase {
    * {@link kwee.convertor.ing.convertor.IngTransactions#getIngSavingTransactions()}.
    */
   public void testGetIngSavingTransactions() {
-    fail("Not yet implemented");
     IngTransactions l_transSaving = new IngTransactions(m_IngSavingFile, m_SynonymFile);
     l_transSaving.load();
-    List<IngSavingTransaction> l_SavingTransactions = l_transSaving.getIngSavingTransactions();
-
     List<IngTransaction> l_Transactions = l_transSaving.getIngTransactions();
+    assertTrue(l_Transactions.isEmpty());
+
+    List<IngSavingTransaction> l_SavingTransactions = l_transSaving.getIngSavingTransactions();
 
   }
 
@@ -141,7 +139,7 @@ public class IngTransactionsTest extends TestCase {
    * {@link kwee.convertor.ing.convertor.IngTransactions#getOfxTransactions()}.
    */
   public void testGetOfxTransactions() {
-    fail("Not yet implemented");
+    // fail("Not yet implemented");
 
   }
 
@@ -150,7 +148,7 @@ public class IngTransactionsTest extends TestCase {
    * {@link kwee.convertor.ing.convertor.IngTransactions#getOfxMetaInfo()}.
    */
   public void testGetOfxMetaInfo() {
-    fail("Not yet implemented");
+    // fail("Not yet implemented");
   }
 
   /**
@@ -158,7 +156,6 @@ public class IngTransactionsTest extends TestCase {
    * {@link kwee.convertor.ing.convertor.IngTransactions#getUniqueIds()}.
    */
   public void testGetUniqueIds() {
-    fail("Not yet implemented");
+    // fail("Not yet implemented");
   }
-
 }
