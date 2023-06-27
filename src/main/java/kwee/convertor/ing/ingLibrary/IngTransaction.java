@@ -154,6 +154,22 @@ public class IngTransaction extends CsvToBean<Object> {
     Tag = tag;
   }
 
+  public boolean equals(IngTransaction a_transaction) {
+    boolean bstat = false;
+    bstat = a_transaction.getDatum().equals(this.Datum);
+    bstat = a_transaction.getOmschrijving().equals(this.Omschrijving);
+    bstat = a_transaction.getRekening().equals(this.Rekening);
+    bstat = a_transaction.getTegenrekening().equals(this.Tegenrekening);
+    bstat = a_transaction.getCode().equals(this.Code);
+    bstat = a_transaction.getAf_Bij().equals(this.Af_Bij);
+    bstat = a_transaction.getBedrag().equals(this.Bedrag);
+    bstat = a_transaction.getMutatiesoort().equals(this.Mutatiesoort);
+    bstat = a_transaction.getMededelingen().equals(Mededelingen);
+    bstat = a_transaction.getSaldo_na_mutatie().equals(this.Saldo_na_mutatie);
+    bstat = a_transaction.getTag().equals(this.Tag);
+    return bstat;
+  }
+
   // Naam: yyyyyy Omschrijving: xxxxxx IBAN: xxxxxx
   // Naam: yyyyyy en Omschrijving: worden verwijderd
   // Resultaat:

@@ -152,4 +152,20 @@ public class IngSavingTransaction extends CsvToBean<Object> {
     Saldo_na_mutatie = saldo_na_mutatie;
   }
 
+  public boolean equals(IngSavingTransaction a_transaction) {
+    boolean bstat = false;
+    bstat = a_transaction.getDatum().equals(this.Datum);
+    bstat = a_transaction.getOmschrijving().equals(this.Omschrijving);
+    bstat = a_transaction.getRekening().equals(this.Rekening);
+    bstat = a_transaction.getRekeningNaam().equals(this.RekeningNaam);
+    bstat = a_transaction.getTegenrekening().equals(this.Tegenrekening);
+    bstat = a_transaction.getAf_Bij().equals(this.Af_Bij);
+    bstat = a_transaction.getBedrag().equals(this.Bedrag);
+    bstat = a_transaction.getValuta().equals(this.Valuta);
+    bstat = a_transaction.getMutatiesoort().equals(this.Mutatiesoort);
+    bstat = a_transaction.getMededelingen().equals(Mededelingen);
+    bstat = a_transaction.getSaldo_na_mutatie().equals(this.Saldo_na_mutatie);
+    return bstat;
+  }
+
 }

@@ -23,6 +23,9 @@ public class OfxTransaction extends CsvToBean<Object> {
   private String Source = "";
   private boolean saving = false;
 
+  public OfxTransaction() {
+  }
+
   public String getSource() {
     return Source;
   }
@@ -134,16 +137,24 @@ public class OfxTransaction extends CsvToBean<Object> {
   public boolean equals(OfxTransaction a_ofxtransaction) {
     boolean bstat = false;
     bstat = a_ofxtransaction.getBankCode().equals(this.bankCode);
-    bstat = bstat && a_ofxtransaction.getAccount().equals(this.account);
-    bstat = bstat && a_ofxtransaction.getTrntype().equals(this.trntype);
-    bstat = bstat && a_ofxtransaction.getDtposted().equals(this.dtposted);
-    bstat = bstat && a_ofxtransaction.getTrnamt().equals(this.trnamt);
     bstat = bstat && a_ofxtransaction.getFitid().equals(this.fitid);
+    bstat = bstat && a_ofxtransaction.getDtposted().equals(this.dtposted);
+    bstat = bstat && a_ofxtransaction.getAccount().equals(this.account);
     bstat = bstat && a_ofxtransaction.getName().equals(this.name);
     bstat = bstat && a_ofxtransaction.getAccountto().equals(this.accountto);
+    bstat = bstat && a_ofxtransaction.getTrntype().equals(this.trntype);
+    bstat = bstat && a_ofxtransaction.getTrnamt().equals(this.trnamt);
     bstat = bstat && a_ofxtransaction.getMemo().equals(this.memo);
     bstat = bstat && a_ofxtransaction.getSaldo_na_mutatie().equals(this.Saldo_na_mutatie);
     return bstat;
+  }
+
+  @Override
+  public String toString() {
+    String l_str = "";
+    l_str = String.join(";", this.bankCode, this.fitid, this.dtposted, this.account, this.name, this.accountto,
+        this.trntype, this.trnamt, this.memo, this.Saldo_na_mutatie);
+    return l_str;
   }
 
 }

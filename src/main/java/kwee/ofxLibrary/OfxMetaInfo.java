@@ -184,7 +184,20 @@ public class OfxMetaInfo {
   @Override
   public String toString() {
     String l_beanStr;
-    l_beanStr = String.join(";", getAccount(), getPrefix(), getMinDate(), getMaxDate(), getBalanceAfterTransaction());
+    l_beanStr = String.join(";", getAccount(), getPrefix(), getSuffix(), getMinDate(), getMaxDate(),
+        getBalanceAfterTransaction());
     return l_beanStr;
   }
+
+  public boolean equals(OfxMetaInfo a_metaInfo) {
+    boolean bstat = false;
+    bstat = a_metaInfo.getAccount().equals(this.account);
+    bstat = a_metaInfo.getPrefix().equals(this.prefix);
+    bstat = a_metaInfo.getSuffix().equals(this.suffix);
+    bstat = a_metaInfo.getMinDate().equals(this.getMinDate());
+    bstat = a_metaInfo.getMaxDate().equals(this.getMaxDate());
+    bstat = a_metaInfo.getBalanceAfterTransaction().equals(getBalanceAfterTransaction());
+    return bstat;
+  }
+
 }
