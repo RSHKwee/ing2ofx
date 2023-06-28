@@ -44,7 +44,10 @@ public class ActionReadTransactions extends SwingWorker<List<OfxTransaction>, St
   /**
    * Constructor initialize variables.
    * 
-   * @param a_CSVFiles List of files to be processed.
+   * @param a_Synonym_file
+   * @param a_CSVFiles      List of files to be processed.
+   * @param a_ProgressBar
+   * @param a_Progresslabel
    */
   public ActionReadTransactions(File a_Synonym_file, File[] a_CSVFiles, JProgressBar a_ProgressBar,
       JLabel a_Progresslabel) {

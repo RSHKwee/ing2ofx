@@ -30,7 +30,7 @@ import kwee.ofxLibrary.OfxTransaction;
  * @author René
  *
  */
-public class ActionPerformScript extends SwingWorker<Void, String> implements MyAppendable {
+public class ActionConvertTransactions extends SwingWorker<Void, String> implements MyAppendable {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private JTextArea area = new JTextArea(30, 50);
 
@@ -49,15 +49,19 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
 
   /**
-   * Constructor for Java.
+   * Constructor for Java. For conversion transactions to OFX and write to
+   * file(s).
    * 
-   * @param a_CSVFile      CSV input file.
-   * @param a_OutputFile   OFX output file.
-   * @param a_OutputFolder OFX output directory.
-   * @param a_SeparateOFX  All accounts in separate OFX files or all in one.
-   * @param a_Interrest    Only interest transactions in OFX file(s).
+   * @param a_OfxTransactions List of OFX Transactions.
+   * @param a_metainfo
+   * @param a_files
+   * @param a_OutputFolder
+   * @param a_SeparateOFX
+   * @param a_Interrest
+   * @param a_ProgressBar
+   * @param a_Progresslabel
    */
-  public ActionPerformScript(List<OfxTransaction> a_OfxTransactions, Map<String, OfxMetaInfo> a_metainfo,
+  public ActionConvertTransactions(List<OfxTransaction> a_OfxTransactions, Map<String, OfxMetaInfo> a_metainfo,
       File[] a_files, String a_OutputFolder, boolean a_SeparateOFX, boolean a_Interrest, JProgressBar a_ProgressBar,
       JLabel a_Progresslabel) {
     m_OfxTransactions = a_OfxTransactions;
@@ -188,6 +192,11 @@ public class ActionPerformScript extends SwingWorker<Void, String> implements My
   }
 }
 
+/**
+ * 
+ * @author René
+ *
+ */
 interface MyAppendable {
   public void append(String text);
 }

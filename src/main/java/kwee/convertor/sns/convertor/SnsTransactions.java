@@ -83,7 +83,7 @@ public class SnsTransactions {
           String ls_balDate = DateToNumeric.dateToNumeric(l_balDate);
           String ls_baltype = ll_balance.getTp().getCdOrPrtry().getCd().toString();
           if (ls_baltype.toUpperCase().contains("CLBD")) {
-            LOGGER.log(Level.INFO, "Balancetype: " + ls_baltype);
+            LOGGER.log(l_Level, "Balancetype: " + ls_baltype);
             OfxMetaInfo l_meta = m_metainfo.get(l_IBANNr);
             if (null == l_meta) {
               l_meta = new OfxMetaInfo(m_bankcode, m_Synonym_file);
@@ -108,7 +108,6 @@ public class SnsTransactions {
           l_ofxtrans.setAccount(l_IBANNr);
           if (CreditDebitCode.DBIT == reportEntry2.getCdtDbtInd()) {
             l_ofxtrans.setTrntype("CREDIT");
-
           }
           if (CreditDebitCode.CRDT == reportEntry2.getCdtDbtInd()) {
             l_ofxtrans.setTrntype("DEBIT");

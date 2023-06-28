@@ -103,11 +103,24 @@ public class GUILayout extends JPanel implements ItemListener {
    * Define GUI layout
    * 
    */
+  public GUILayout(boolean a_help) {
+    m_4Help = a_help;
+    do_GUILayout();
+  }
+
   public GUILayout() {
+    do_GUILayout();
+  }
+
+  public void do_GUILayout() {
     JLabel lblCSVFile = new JLabel("Select ING CSV or SNS XML file(s)");
     JButton btnOutputFolder = new JButton("Output folder");
     JButton btnReadTransactions = new JButton("Read transactions");
     JButton btnConvert = new JButton("Convert to OFX");
+
+    btnOutputFolder.setName("Output folder");
+    btnReadTransactions.setName("Read transactions");
+    btnConvert.setName("Convert to OFX");
 
     // GUI items menubar
     JMenuBar menuBar = new JMenuBar();
@@ -122,6 +135,18 @@ public class GUILayout extends JPanel implements ItemListener {
     JLabel lblOutputFolder = new JLabel("");
 
     // Initialize parameters
+    if (m_4Help) {
+      lblCSVFile.setEnabled(true);
+      btnReadTransactions.setEnabled(true);
+      txtOutputFilename.setEnabled(true);
+      btnConvert.setEnabled(true);
+    } else {
+      lblCSVFile.setEnabled(false);
+      btnReadTransactions.setEnabled(false);
+      txtOutputFilename.setEnabled(false);
+      btnConvert.setEnabled(false);
+    }
+
     m_GnuCashExecutable = new File(m_param.get_GnuCashExecutable());
     m_Synonym_file = new File(m_param.get_Synonym_file());
 
@@ -256,6 +281,7 @@ public class GUILayout extends JPanel implements ItemListener {
 
     // Add item Look and Feel
     JMenu menu = new JMenu("Look and Feel");
+    menu.setName("LookAndFeel");
     menu.setHorizontalAlignment(SwingConstants.LEFT);
     mnSettings.add(menu);
 
@@ -361,7 +387,7 @@ public class GUILayout extends JPanel implements ItemListener {
     });
     mnHelpAbout.add(mntmHelp);
 
-    // TODO About
+    // About
     JMenuItem mntmAbout = new JMenuItem("About");
     mntmAbout.addActionListener(new ActionListener() {
       @Override
@@ -421,13 +447,14 @@ public class GUILayout extends JPanel implements ItemListener {
     panel.setPreferredSize(new Dimension(350, 290));
 
     // Choose CSV File
-    lblCSVFile.setEnabled(false);
-
     lblCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
     panel.add(lblCSVFile, "cell 1 0");
 
     JCheckBox chckbxClearTransactons = new JCheckBox("Clear transactions");
     JButton btnCSVFile = new JButton("CSV/XML File");
+
+    chckbxClearTransactons.setName("Clear transactions");
+    btnCSVFile.setName("CSV/XML File");
     btnCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
     btnCSVFile.addActionListener(new ActionListener() {
       @Override
@@ -501,9 +528,9 @@ public class GUILayout extends JPanel implements ItemListener {
         int option = fileChooser.showOpenDialog(GUILayout.this);
         if (option == JFileChooser.APPROVE_OPTION) {
           File file = fileChooser.getSelectedFile();
-          LOGGER.log(Level.INFO, "Output folder: " + file.getAbsolutePath());
-          lblOutputFolder.setText(file.getAbsolutePath());
-          m_OutputFolder = new File(file.getAbsolutePath());
+          LOGGER.log(Level.INFO, "Output folder: " + file.getParent());
+          lblOutputFolder.setText(file.getParent());
+          m_OutputFolder = new File(file.getParent());
           m_param.set_OutputFolder(m_OutputFolder);
           m_OutputFolderModified = true;
         }
@@ -512,7 +539,6 @@ public class GUILayout extends JPanel implements ItemListener {
     panel.add(btnOutputFolder, "cell 0 3");
 
     // Read transactions
-    btnReadTransactions.setEnabled(false);
     btnReadTransactions.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -551,13 +577,11 @@ public class GUILayout extends JPanel implements ItemListener {
 
     txtOutputFilename.setHorizontalAlignment(SwingConstants.LEFT);
     txtOutputFilename.setText("Output filename");
-    txtOutputFilename.setEnabled(false);
 
     txtOutputFilename.setColumns(100);
     panel.add(txtOutputFilename, "cell 1 4");
 
     // Convert button
-    btnConvert.setEnabled(false);
     btnConvert.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -565,7 +589,7 @@ public class GUILayout extends JPanel implements ItemListener {
         btnConvert.setEnabled(false);
 
         LOGGER.log(Level.FINE, "Start conversion(s).");
-        ActionPerformScript l_action = new ActionPerformScript(m_OfxTransactions, m_metainfo, m_CsvFiles,
+        ActionConvertTransactions l_action = new ActionConvertTransactions(m_OfxTransactions, m_metainfo, m_CsvFiles,
             lblOutputFolder.getText(), chckbxAcountSeparateOFX.isSelected(), chckbxInterest.isSelected(), m_ProgressBar,
             lblProgressLabel);
         l_action.execute();

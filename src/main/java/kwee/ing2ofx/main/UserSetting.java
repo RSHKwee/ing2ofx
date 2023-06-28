@@ -57,12 +57,17 @@ public class UserSetting {
   private boolean m_Java = true;
   private boolean m_ClearTransactions = true;
 
-  private Preferences pref = Preferences.userRoot();
+  private Preferences pref;
+  private Preferences userPrefs = Preferences.userRoot();
 
   /**
    * Constructor Initialize settings
    */
+
   public UserSetting() {
+    // Navigate to the preference node that stores the user setting
+    pref = userPrefs.node("kwee.ing2ofx");
+
     m_toDisk = pref.getBoolean(c_toDisk, false);
 
     m_ConfirmOnExit = pref.getBoolean(c_ConfirmOnExit, false);
@@ -178,6 +183,11 @@ public class UserSetting {
     this.m_OutputFolder = a_OutputFolder.getAbsolutePath();
   }
 
+  public void set_OutputFolder(String a_OutputFolder) {
+    pref.put(c_OutputFolder, a_OutputFolder);
+    this.m_OutputFolder = a_OutputFolder;
+  }
+
   public void set_CsvFiles(File[] a_CsvFiles) {
     pref.put(c_CsvFiles, FilesToString(a_CsvFiles));
     this.m_CsvFiles = a_CsvFiles;
@@ -276,6 +286,7 @@ public class UserSetting {
 
   public String print() {
     String l_line = "User setting \n";
+    l_line = l_line + "Name: " + pref.name() + "\n";
     l_line = l_line + c_toDisk + ": " + m_toDisk + "\n";
     l_line = l_line + c_AccountSepOfx + ": " + m_AcountSeparateOFX + "\n";
     l_line = l_line + c_ConvertDecimalSeparator + ": " + m_ConvertDecimalSeparator + "\n";
@@ -299,6 +310,7 @@ public class UserSetting {
     return l_line;
   }
 
+  // Local functions to convert File to String and vice versa
   private String c_StringDelim = ";";
 
   private String FilesToString(File[] a_Files) {

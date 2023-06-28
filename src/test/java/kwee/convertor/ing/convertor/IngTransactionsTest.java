@@ -4,7 +4,6 @@
 package kwee.convertor.ing.convertor;
 
 import java.io.File;
-import java.net.URL;
 
 import java.util.HashMap;
 import java.util.LinkedHashSet;
@@ -16,13 +15,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.junit.Assert;
-
 import junit.framework.TestCase;
 
 import kwee.convertor.ing.ingLibrary.IngSavingTransaction;
 import kwee.convertor.ing.ingLibrary.IngTransaction;
 import kwee.ofxLibrary.OfxMetaInfo;
 import kwee.ofxLibrary.OfxTransaction;
+import kwee.testlibrary.TestFunctions;
 
 /**
  * @author René
@@ -45,40 +44,16 @@ public class IngTransactionsTest extends TestCase {
 
   private Map<String, OfxMetaInfo> m_metainfo_exp = new HashMap<String, OfxMetaInfo>();
 
+  private TestFunctions m_Functions = new TestFunctions();
+
   /**
    * @throws java.lang.Exception
    */
   @Override
   public void setUp() throws Exception {
-    // Get the URL of synonym file
-    URL resourceUrl = getClass().getClassLoader().getResource(c_SynonymFile);
-    if (resourceUrl != null) {
-      // Get the resource directory path
-      String resourceDirectory = resourceUrl.getPath();
-      m_SynonymFile = new File(resourceDirectory);
-    } else {
-      LOGGER.log(Level.INFO, "File not found: " + c_SynonymFile);
-    }
-
-    // Get the URL of csv ING Savings file
-    resourceUrl = getClass().getClassLoader().getResource(c_IngSavingTransFile);
-    if (resourceUrl != null) {
-      // Get the resource directory path
-      String resourceDirectory = resourceUrl.getPath();
-      m_IngSavingFile = new File(resourceDirectory);
-    } else {
-      LOGGER.log(Level.INFO, "File not found: " + c_IngSavingTransFile);
-    }
-
-    // Get the URL of csv ING file
-    resourceUrl = getClass().getClassLoader().getResource(c_IngTransFile);
-    if (resourceUrl != null) {
-      // Get the resource directory path
-      String resourceDirectory = resourceUrl.getPath();
-      m_IngFile = new File(resourceDirectory);
-    } else {
-      LOGGER.log(Level.INFO, "File not found: " + c_IngTransFile);
-    }
+    m_SynonymFile = m_Functions.GetResourceFile(c_SynonymFile);
+    m_IngSavingFile = m_Functions.GetResourceFile(c_IngSavingTransFile);
+    m_IngFile = m_Functions.GetResourceFile(c_IngTransFile);
   }
 
   /**
