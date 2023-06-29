@@ -1,6 +1,9 @@
 package kwee.testlibrary;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -55,6 +58,43 @@ public class TestFunctions {
     l_UserSetting.set_Synonym_file(new File(a_UserSetting.get_Synonym_file()));
     l_UserSetting.set_toDisk(a_UserSetting.is_toDisk());
     return l_UserSetting;
+  }
+
+  public boolean compareXmlFiles(String logFile1Path, String logFile2Path) throws IOException {
+    BufferedReader reader1 = new BufferedReader(new FileReader(logFile1Path));
+    BufferedReader reader2 = new BufferedReader(new FileReader(logFile2Path));
+
+    String line1 = reader1.readLine();
+    String line2 = reader2.readLine();
+
+    while (line1 != null && line2 != null) {
+      String content1 = extractLogContent(line1);
+      String content2 = extractLogContent(line2);
+
+      if (!content1.equals(content2)) {
+        reader1.close();
+        reader2.close();
+        return false;
+      }
+      line1 = reader1.readLine();
+      line2 = reader2.readLine();
+    }
+
+    boolean areFilesEndReached = line1 == null && line2 == null;
+    reader1.close();
+    reader2.close();
+    return areFilesEndReached;
+  }
+
+  private static String extractLogContent(String logLine) {
+    String[] lfilter = { "<DTSERVER>", "<DTPROFUP>", "<DTACCTUP>", "<!--", "#" };
+    String l_logline = logLine;
+    for (String listItem : lfilter) {
+      if (logLine.contains(listItem)) {
+        l_logline = "<REPLACED>";
+      }
+    }
+    return l_logline; // If no space is found, return the entire line
   }
 
 }

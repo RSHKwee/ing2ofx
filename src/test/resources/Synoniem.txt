@@ -1,15 +1,15 @@
 Seq; Rekeningnummer    ; Prefix
-  2; NL75FVLB0105564737; Huishouding
-  1; NL90KNAB0445266309; Bewindvoering
-  3; NL38RABO0192584529; Prive_RKDoelbeleg
-  3; NL45TRIO0953178943; Huishouding
-  1; NL94COBA0678011583; Huishouding
-  1; NL54BKMG0378842587; Prive_RK
-  2; NL20LPLN0892606304; SNS_Basis
-  3; NL75FVLB0105564737; Corianne_Spaarpot
+  2; NL75FVLB0105564737; Aap
+  1; NL90KNAB0445266309; Noot
+  3; NL38RABO0192584529; Teun
+  3; NL45TRIO0953178943; Aap
+  1; NL94COBA0678011583; Aap
+  1; NL54BKMG0378842587; Mies
+  2; NL20LPLN0892606304; Basis
+  3; NL75FVLB0105564737; Vuur
 
-  1; K444-12345         ; Huishouding
-  2; K222-12345         ; Huishouding
-  3; K333-12345         ; Huishouding
-  1; K555-12345         ; Bewindvoering
-  1; K111-12345         ; Prive_RK
+  1; K444-12345         ; Aap
+  2; K222-12345         ; Aap
+  3; K333-12345         ; Aap
+  1; K555-12345         ; Noot
+  1; K111-12345         ; Mies
