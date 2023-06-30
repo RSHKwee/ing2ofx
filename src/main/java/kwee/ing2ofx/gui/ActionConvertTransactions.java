@@ -139,9 +139,11 @@ public class ActionConvertTransactions extends SwingWorker<Void, String> impleme
           if (!m_FilterName.isBlank()) {
             l_filename = String.join("_", l_filename, m_FilterName);
           }
-          l_filename = String.join("_", l_filename) + ".ofx";
+          l_filename = l_filename + ".ofx";
+          LOGGER.log(Level.INFO, "OFX Filename: " + l_filename);
         } else {
           l_filename = m_OutputDir + "\\" + String.join("_", l_account, l_suffix) + ".ofx";
+          LOGGER.log(Level.INFO, "OFX Filename: " + l_filename);
         }
 
         OfxDocument l_document = new OfxDocument(l_OfxTransactions, l_metainfo);
