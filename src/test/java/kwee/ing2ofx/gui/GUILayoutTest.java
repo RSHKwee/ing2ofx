@@ -1,13 +1,11 @@
 package kwee.ing2ofx.gui;
 
-import static org.junit.Assert.*;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.fest.swing.fixture.FrameFixture;
+import org.assertj.swing.fixture.FrameFixture;
 
 import javax.swing.JFrame;
 
@@ -15,12 +13,14 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import junit.framework.TestCase;
 import kwee.ing2ofx.main.Main;
 import kwee.ing2ofx.main.UserSetting;
 import kwee.library.FileUtils;
+import kwee.logger.TestLogger;
 import kwee.testlibrary.TestFunctions;
 
-public class GUILayoutTest {
+public class GUILayoutTest extends TestCase {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private FrameFixture frame;
 
@@ -43,8 +43,11 @@ public class GUILayoutTest {
   private String m_OfxCombine = "\\OFX_Combine_Gen\\";
   private String m_OfxCombineSyn = "\\OFX_Combine_GenSyn\\";
 
+  @Override
   @Before
   public void setUp() throws Exception {
+    super.setUp();
+
     // Parameters
     m_OrgParam = m_Functions.CopyUserSetting(m_param);
     m_param.set_ClearTransactions(true);
@@ -54,16 +57,21 @@ public class GUILayoutTest {
     m_param.set_ConvertDateFormat(false);
     m_param.set_SeparatorComma(false);
     m_param.set_Java(true);
+    m_param.set_Level(Level.INFO);
 
     m_param.set_Synonym_file(new File(c_SynonymFile));
     m_param.save();
   }
 
+  @Override
   @After
   public void tearDown() throws Exception {
+    super.tearDown();
+
     m_param = m_Functions.CopyUserSetting(m_OrgParam);
     m_param.save();
     this.frame.cleanUp();
+    TestLogger.close();
   }
 
   @Test
@@ -79,10 +87,7 @@ public class GUILayoutTest {
     FileUtils.checkCreateDirectory(m_OutputDir + m_OfxEnkel);
 
     // Start GUI, with prepared Usersettings
-    JFrame l_frame = new JFrame();
-    GUILayout guilayout = new GUILayout(true);
-    l_frame.add(guilayout);
-    frame = new FrameFixture(l_frame);
+    frame = SetupGUI();
     frame.show();
 
     frame.button("Read transactions").click();
@@ -98,6 +103,14 @@ public class GUILayoutTest {
      * @formatter:on
      */
     boolean bstat = false;
+    String logOutput = TestLogger.getOutput();
+
+    bstat = logOutput.contains("Transactions read: 124, after doubles removed: 124");
+    assertTrue(bstat);
+
+    bstat = logOutput.contains("Grand total of transactions read: 124");
+    assertTrue(bstat);
+
     bstat = AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL54BKMG0378842587_Alle_rekeningen.ofx");
     assertTrue(bstat);
 
@@ -126,10 +139,7 @@ public class GUILayoutTest {
     FileUtils.checkCreateDirectory(m_OutputDir + m_OfxEnkel);
 
     // Start GUI, with prepared Usersettings
-    JFrame l_frame = new JFrame();
-    GUILayout guilayout = new GUILayout(true);
-    l_frame.add(guilayout);
-    frame = new FrameFixture(l_frame);
+    frame = SetupGUI();
     frame.show();
 
     frame.button("Read transactions").click();
@@ -147,6 +157,14 @@ public class GUILayoutTest {
      * @formatter:on
      */
     boolean bstat = false;
+    String logOutput = TestLogger.getOutput();
+
+    bstat = logOutput.contains("Transactions read: 24, after doubles removed: 24");
+    assertTrue(bstat);
+
+    bstat = logOutput.contains("Grand total of transactions read: 24");
+    assertTrue(bstat);
+
     bstat = AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
     assertTrue(bstat);
 
@@ -179,10 +197,7 @@ public class GUILayoutTest {
     m_param.save();
     FileUtils.checkCreateDirectory(m_OutputDir + m_OfxEnkel);
 
-    JFrame l_frame = new JFrame();
-    GUILayout guilayout = new GUILayout(true);
-    l_frame.add(guilayout);
-    frame = new FrameFixture(l_frame);
+    frame = SetupGUI();
     frame.show();
 
     frame.button("Read transactions").click();
@@ -198,6 +213,14 @@ public class GUILayoutTest {
      * @formatter:on
      */
     boolean bstat = false;
+    String logOutput = TestLogger.getOutput();
+
+    bstat = logOutput.contains("Transactions read: 9, after doubles removed: 9");
+    assertTrue(bstat);
+
+    bstat = logOutput.contains("Grand total of transactions read: 9");
+    assertTrue(bstat);
+
     bstat = AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL20LPLN0892606304_transactie-historie.ofx");
     assertTrue(bstat);
 
@@ -225,10 +248,7 @@ public class GUILayoutTest {
     m_param.save();
     FileUtils.checkCreateDirectory(m_OutputDir + m_OfxCombine);
 
-    JFrame l_frame = new JFrame();
-    GUILayout guilayout = new GUILayout(true);
-    l_frame.add(guilayout);
-    frame = new FrameFixture(l_frame);
+    frame = SetupGUI();
     frame.show();
 
     frame.button("Read transactions").click();
@@ -254,6 +274,14 @@ public class GUILayoutTest {
      * @formatter:on
      */
     boolean bstat = false;
+    String logOutput = TestLogger.getOutput();
+
+    bstat = logOutput.contains("Transactions read: 157, after doubles removed: 157");
+    assertTrue(bstat);
+
+    bstat = logOutput.contains("Grand total of transactions read: 157");
+    assertTrue(bstat);
+
     bstat = AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL20LPLN0892606304_transactie-historie.ofx");
     assertTrue(bstat);
 
@@ -308,10 +336,7 @@ public class GUILayoutTest {
     m_param.save();
     FileUtils.checkCreateDirectory(m_OutputDir + m_OfxCombineSyn);
 
-    JFrame l_frame = new JFrame();
-    GUILayout guilayout = new GUILayout(true);
-    l_frame.add(guilayout);
-    frame = new FrameFixture(l_frame);
+    frame = SetupGUI();
     frame.show();
 
     frame.button("Read transactions").click();
@@ -337,6 +362,14 @@ public class GUILayoutTest {
      * @formatter:on
      */
     boolean bstat = false;
+    String logOutput = TestLogger.getOutput();
+
+    bstat = logOutput.contains("Transactions read: 157, after doubles removed: 157");
+    assertTrue(bstat);
+
+    bstat = logOutput.contains("Grand total of transactions read: 157");
+    assertTrue(bstat);
+
     bstat = AssertXmlFile(m_OfxCombineExp, m_OfxCombineSyn, "NL94COBA0678011583_K222-12345_Alle_spaarrekeningen.ofx",
         "Aap_K222-12345_Alle_spaarrekeningen.ofx");
     assertTrue(bstat);
@@ -392,6 +425,19 @@ public class GUILayoutTest {
   }
 
   // Local functions/methods
+  private FrameFixture SetupGUI() {
+    // Start GUI, with prepared Usersettings
+    JFrame l_frame = new JFrame();
+    GUILayout guilayout = new GUILayout(true);
+    l_frame.add(guilayout);
+    frame = new FrameFixture(l_frame);
+    frame.show();
+    System.setProperty("fest.swing.timeout", "75000");
+
+    TestLogger.setup(Level.INFO);
+    return frame;
+  }
+
   private String c_StringDelim = ";";
 
   private File[] StringToFiles(String a_Files) {
@@ -406,12 +452,16 @@ public class GUILayoutTest {
     return l_files;
   }
 
+  // File asserts
   private boolean AssertXmlFile(String a_dir1, String a_dir2, String a_filename) {
     boolean bstat = false;
     String l_filename1 = m_OutputDir + "\\" + a_dir1 + "\\" + a_filename;
     String l_filename2 = m_OutputDir + "\\" + a_dir2 + "\\" + a_filename;
     try {
       bstat = m_Functions.compareXmlFiles(l_filename1, l_filename2);
+      if (!bstat) {
+        LOGGER.log(Level.INFO, "Files not equal " + a_dir1 + "\\" + a_filename + " and " + a_dir2 + "\\" + a_filename);
+      }
     } catch (IOException e) {
       e.printStackTrace();
       LOGGER.log(Level.INFO, e.getMessage() + "/ Filename: " + a_filename);
@@ -425,6 +475,10 @@ public class GUILayoutTest {
     String l_filename2 = m_OutputDir + "\\" + a_dir2 + "\\" + a_filename;
     try {
       bstat = m_Functions.compareXmlFiles(l_filename1, l_filename2);
+      if (!bstat) {
+        LOGGER.log(Level.INFO,
+            "Files not equal " + a_dirExp + "\\" + a_filenameExp + " and " + a_dir2 + "\\" + a_filename);
+      }
     } catch (IOException e) {
       e.printStackTrace();
       LOGGER.log(Level.INFO, e.getMessage() + "/ Filename: " + a_filename);
@@ -437,6 +491,9 @@ public class GUILayoutTest {
     String l_filename1 = m_OutputDir + "\\" + a_dir1 + "\\" + a_filename;
     String l_filename2 = m_OutputDir + "\\" + a_dir2 + "\\" + a_filename;
     bstat = FileUtils.FileContentsEquals(l_filename1, l_filename2);
+    if (!bstat) {
+      LOGGER.log(Level.INFO, "Files not equal " + a_dir1 + "\\" + a_filename + " and " + a_dir2 + "\\" + a_filename);
+    }
     return bstat;
   }
 
@@ -445,6 +502,10 @@ public class GUILayoutTest {
     String l_filename1 = m_OutputDir + "\\" + a_dirExp + "\\" + a_filenameExp;
     String l_filename2 = m_OutputDir + "\\" + a_dir2 + "\\" + a_filename;
     bstat = FileUtils.FileContentsEquals(l_filename1, l_filename2);
+    if (!bstat) {
+      LOGGER.log(Level.INFO,
+          "Files not equal " + a_dirExp + "\\" + a_filenameExp + " and " + a_dir2 + "\\" + a_filename);
+    }
     return bstat;
   }
 }

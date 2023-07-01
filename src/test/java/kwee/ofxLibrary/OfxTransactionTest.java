@@ -1,19 +1,23 @@
 package kwee.ofxLibrary;
 
-import static org.junit.Assert.*;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class OfxTransactionTest {
+import junit.framework.TestCase;
 
+public class OfxTransactionTest extends TestCase {
+
+  @Override
   @Before
   public void setUp() throws Exception {
+    super.setUp();
   }
 
+  @Override
   @After
   public void tearDown() throws Exception {
+    super.tearDown();
   }
 
   @Test

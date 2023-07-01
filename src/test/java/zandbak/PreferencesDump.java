@@ -15,7 +15,7 @@ public class PreferencesDump {
       System.out.println("Preferences file location: " + filePath);
     } catch (Exception e) {
       // TODO Auto-generated catch block
-      e.printStackTrace();
+      // e.printStackTrace();
     }
   }
 

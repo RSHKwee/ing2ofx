@@ -88,6 +88,7 @@ public class TestFunctions {
 
   private static String extractLogContent(String logLine) {
     String[] lfilter = { "<DTSERVER>", "<DTPROFUP>", "<DTACCTUP>", "<!--", "#" };
+    // String[] lfilter = { "<!--", "#" };
     String l_logline = logLine;
     for (String listItem : lfilter) {
       if (logLine.contains(listItem)) {

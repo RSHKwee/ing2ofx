@@ -1,12 +1,13 @@
 package kwee.ofxLibrary;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+// import java.time.LocalDateTime;
+// import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,6 +15,8 @@ public class OfxDocument {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
+  private String m_maxdate = "";
+  private int m_maxdateint = 0;
 
   OfxDocument() {
   }
@@ -21,12 +24,14 @@ public class OfxDocument {
   public OfxDocument(List<OfxTransaction> a_OfxTransactions, Map<String, OfxMetaInfo> a_metainfo) {
     m_OfxTransactions = a_OfxTransactions;
     m_metainfo = a_metainfo;
+    maxMetaDate();
   }
 
   private ArrayList<String> OfxXmlHeader() {
-    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd");
-    LocalDateTime now = LocalDateTime.now();
-    String datestr = dtf.format(now);
+    // DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd");
+    // LocalDateTime now = LocalDateTime.now();
+    // String datestr = dtf.format(now);
+    String datestr = m_maxdate;
 
     ArrayList<String> l_regels = new ArrayList<String>();
     l_regels.add("<OFX>");
@@ -81,5 +86,17 @@ public class OfxDocument {
     m_regels.addAll(OfxXmlFooter());
     LOGGER.log(Level.INFO, "Create OFX file " + m_Filename);
     kwee.library.TxtBestand.DumpXmlBestand(m_Filename, m_regels);
+  }
+
+  private void maxMetaDate() {
+    m_maxdate = "";
+    Set<String> l_keys = m_metainfo.keySet();
+    l_keys.forEach(l_key -> {
+      OfxMetaInfo l_metainf = m_metainfo.get(l_key);
+      if ((l_metainf.getIntMaxDate() > m_maxdateint)) {
+        m_maxdateint = l_metainf.getIntMaxDate();
+        m_maxdate = l_metainf.getMaxDate();
+      }
+    });
   }
 }
