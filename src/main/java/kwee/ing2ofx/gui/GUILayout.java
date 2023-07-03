@@ -126,11 +126,15 @@ public class GUILayout extends JPanel implements ItemListener {
     JMenuBar menuBar = new JMenuBar();
 
     JCheckBoxMenuItem chckbxAcountSeparateOFX = new JCheckBoxMenuItem("Accounts in separate OFX files");
+    chckbxAcountSeparateOFX.setName("Accounts in separate OFX files");
+
     JMenu mnGnuCashExe = new JMenu("GnuCash executable");
     JMenu mnSynonym = new JMenu("Synonym file");
     JMenuItem mntmLoglevel = new JMenuItem("Loglevel");
 
     JCheckBox chckbxInterest = new JCheckBox("Only interest transaction");
+    chckbxInterest.setName("Only interest transaction");
+
     JTextField txtOutputFilename = new JTextField();
     JLabel lblOutputFolder = new JLabel("");
 
@@ -192,6 +196,7 @@ public class GUILayout extends JPanel implements ItemListener {
 
     // Savings transactions
     JCheckBoxMenuItem chcmnkbxInterest = new JCheckBoxMenuItem("Only interest transactions");
+    chcmnkbxInterest.setName("Only interest transactions");
     chcmnkbxInterest.setHorizontalAlignment(SwingConstants.LEFT);
     chcmnkbxInterest.setSelected(m_Interest);
     chcmnkbxInterest.addActionListener(new ActionListener() {
@@ -213,6 +218,7 @@ public class GUILayout extends JPanel implements ItemListener {
       l_GnuCashExecutable = m_GnuCashExecutable.getAbsolutePath();
     }
     JMenuItem mntmGnuCashExe = new JMenuItem(l_GnuCashExecutable);
+    mntmGnuCashExe.setName("GNUCash Executable");
     mntmGnuCashExe.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -241,6 +247,7 @@ public class GUILayout extends JPanel implements ItemListener {
       l_Synonyme = m_Synonym_file.getAbsolutePath();
     }
     JMenuItem mntmSynonym = new JMenuItem(l_Synonyme);
+    mntmSynonym.setName("Synonym file");
     mntmSynonym.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -451,6 +458,8 @@ public class GUILayout extends JPanel implements ItemListener {
     panel.add(lblCSVFile, "cell 1 0");
 
     JCheckBox chckbxClearTransactons = new JCheckBox("Clear transactions");
+    chckbxClearTransactons.setName("Clear transactions");
+
     JButton btnCSVFile = new JButton("CSV/XML File");
 
     chckbxClearTransactons.setName("Clear transactions");

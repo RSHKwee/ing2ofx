@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.assertj.swing.fixture.FrameFixture;
+import org.assertj.swing.fixture.JFileChooserFixture;
 
 import javax.swing.JFrame;
 
@@ -59,8 +60,23 @@ public class GUILayoutTest extends TestCase {
     m_param.set_Java(true);
     m_param.set_Level(Level.INFO);
 
+    File ll_file = m_Functions.GetResourceFile(c_SynonymFile);
+    m_OutputDir = ll_file.getParent();
     m_param.set_Synonym_file(new File(c_SynonymFile));
     m_param.save();
+
+    // Start GUI, with prepared Usersettings
+    if (frame != null) {
+      frame.cleanUp();
+    }
+
+    JFrame l_frame = new JFrame();
+    GUILayout guilayout = new GUILayout(true);
+    l_frame.add(guilayout);
+    frame = new FrameFixture(l_frame);
+    frame.show();
+
+    TestLogger.setup(Level.INFO);
   }
 
   @Override
@@ -76,19 +92,14 @@ public class GUILayoutTest extends TestCase {
 
   @Test
   public void testGUILayoutING() {
-    String l_FileList;
     LOGGER.log(Level.INFO, "testGUILayoutING");
+    FileUtils.checkCreateDirectory(m_OutputDir + m_OfxCombineSyn);
 
-    // ING Trans
-    l_FileList = String.join(";", c_IngTransFile);
-    m_param.set_CsvFiles(StringToFiles(l_FileList));
-    m_param.set_OutputFolder(m_OutputDir + m_OfxEnkel);
-    m_param.save();
-    FileUtils.checkCreateDirectory(m_OutputDir + m_OfxEnkel);
-
-    // Start GUI, with prepared Usersettings
-    frame = SetupGUI();
-    frame.show();
+    frame.button("CSV/XML File").click();
+    JFileChooserFixture fileChooser = frame.fileChooser();
+    fileChooser.setCurrentDirectory(new File(m_OutputDir));
+    fileChooser.fileNameTextBox().setText(c_IngTransFile); // Set the desired file name
+    fileChooser.approve();
 
     frame.button("Read transactions").click();
     frame.button("Convert to OFX").click();
@@ -128,19 +139,16 @@ public class GUILayoutTest extends TestCase {
 
   @Test
   public void testGUILayoutINGSaving() {
-    String l_FileList;
     LOGGER.log(Level.INFO, "testGUILayoutINGSaving");
 
     // ING Saving trans
-    l_FileList = String.join(";", c_IngSavingTransFile);
-    m_param.set_CsvFiles(StringToFiles(l_FileList));
-    m_param.set_OutputFolder(m_OutputDir + m_OfxEnkel);
-    m_param.save();
     FileUtils.checkCreateDirectory(m_OutputDir + m_OfxEnkel);
 
-    // Start GUI, with prepared Usersettings
-    frame = SetupGUI();
-    frame.show();
+    frame.button("CSV/XML File").click();
+    JFileChooserFixture fileChooser = frame.fileChooser();
+    fileChooser.setCurrentDirectory(new File(m_OutputDir));
+    fileChooser.fileNameTextBox().setText(c_IngSavingTransFile); // Set the desired file name
+    fileChooser.approve();
 
     frame.button("Read transactions").click();
     frame.button("Convert to OFX").click();
@@ -188,17 +196,14 @@ public class GUILayoutTest extends TestCase {
 
   @Test
   public void testGUILayoutSNS() {
-    String l_FileList;
     LOGGER.log(Level.INFO, "testGUILayoutSNS");
-    // SNS Trans
-    l_FileList = String.join(";", c_SNSTransFile);
-    m_param.set_CsvFiles(StringToFiles(l_FileList));
-    m_param.set_OutputFolder(m_OutputDir + m_OfxEnkel);
-    m_param.save();
     FileUtils.checkCreateDirectory(m_OutputDir + m_OfxEnkel);
 
-    frame = SetupGUI();
-    frame.show();
+    frame.button("CSV/XML File").click();
+    JFileChooserFixture fileChooser = frame.fileChooser();
+    fileChooser.setCurrentDirectory(new File(m_OutputDir));
+    fileChooser.fileNameTextBox().setText(c_SNSTransFile); // Set the desired file name
+    fileChooser.approve();
 
     frame.button("Read transactions").click();
     frame.button("Convert to OFX").click();
@@ -238,18 +243,21 @@ public class GUILayoutTest extends TestCase {
 
   @Test
   public void testGUILayoutCombine() {
-    String l_FileList;
     LOGGER.log(Level.INFO, "testGUILayoutCombine");
 
     // Combine multiple input files
-    l_FileList = String.join(";", c_IngTransFile, c_IngSavingTransFile, c_SNSTransFile);
-    m_param.set_CsvFiles(StringToFiles(l_FileList));
-    m_param.set_OutputFolder(m_OutputDir + m_OfxCombine);
-    m_param.save();
     FileUtils.checkCreateDirectory(m_OutputDir + m_OfxCombine);
 
-    frame = SetupGUI();
-    frame.show();
+    frame.button("CSV/XML File").click();
+    JFileChooserFixture fileChooser = frame.fileChooser();
+    fileChooser.setCurrentDirectory(new File(m_OutputDir));
+
+    // Select multiple files
+    File file1 = new File(m_OutputDir + "\\" + c_IngTransFile);
+    File file2 = new File(m_OutputDir + "\\" + c_IngSavingTransFile);
+    File file3 = new File(m_OutputDir + "\\" + c_SNSTransFile);
+    fileChooser.selectFiles(file1, file2, file3);
+    fileChooser.approve();
 
     frame.button("Read transactions").click();
     frame.button("Convert to OFX").click();
@@ -325,19 +333,27 @@ public class GUILayoutTest extends TestCase {
 
   @Test
   public void testGUILayoutCombineSyn() {
-    String l_FileList;
     LOGGER.log(Level.INFO, "testGUILayoutCombineSyn");
 
     // Combine multiple input files
-    l_FileList = String.join(";", c_IngTransFile, c_IngSavingTransFile, c_SNSTransFile);
-    m_param.set_CsvFiles(StringToFiles(l_FileList));
-    m_param.set_OutputFolder(m_OutputDir + m_OfxCombineSyn);
-    m_param.set_Synonym_file(new File(m_OutputDir + "\\" + c_SynonymFile));
-    m_param.save();
     FileUtils.checkCreateDirectory(m_OutputDir + m_OfxCombineSyn);
 
-    frame = SetupGUI();
-    frame.show();
+    frame.menuItem("Synonym file").click();
+    JFileChooserFixture fileChoosersyn = frame.fileChooser();
+    fileChoosersyn.setCurrentDirectory(new File(m_OutputDir));
+    fileChoosersyn.fileNameTextBox().setText(c_SynonymFile);
+    fileChoosersyn.approve();
+
+    frame.button("CSV/XML File").click();
+    JFileChooserFixture fileChooser = frame.fileChooser();
+    fileChooser.setCurrentDirectory(new File(m_OutputDir));
+
+    // Select multiple files
+    File file1 = new File(m_OutputDir + "\\" + c_IngTransFile);
+    File file2 = new File(m_OutputDir + "\\" + c_IngSavingTransFile);
+    File file3 = new File(m_OutputDir + "\\" + c_SNSTransFile);
+    fileChooser.selectFiles(file1, file2, file3);
+    fileChooser.approve();
 
     frame.button("Read transactions").click();
     frame.button("Convert to OFX").click();
@@ -422,34 +438,6 @@ public class GUILayoutTest extends TestCase {
         "_Saldos_transactie-historie.csv");
     assertTrue(bstat);
     LOGGER.log(Level.INFO, "Ready testGUILayoutCombineSyn Status:" + bstat);
-  }
-
-  // Local functions/methods
-  private FrameFixture SetupGUI() {
-    // Start GUI, with prepared Usersettings
-    JFrame l_frame = new JFrame();
-    GUILayout guilayout = new GUILayout(true);
-    l_frame.add(guilayout);
-    frame = new FrameFixture(l_frame);
-    frame.show();
-    System.setProperty("fest.swing.timeout", "75000");
-
-    TestLogger.setup(Level.INFO);
-    return frame;
-  }
-
-  private String c_StringDelim = ";";
-
-  private File[] StringToFiles(String a_Files) {
-    String[] ls_files = a_Files.split(c_StringDelim);
-
-    File[] l_files = new File[ls_files.length];
-    for (int i = 0; i < ls_files.length; i++) {
-      File ll_file = m_Functions.GetResourceFile(ls_files[i]);
-      l_files[i] = ll_file;
-      m_OutputDir = ll_file.getParent();
-    }
-    return l_files;
   }
 
   // File asserts
