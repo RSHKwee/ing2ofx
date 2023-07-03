@@ -312,11 +312,6 @@ public class GUILayoutTest extends TestCase {
     FileUtils.checkCreateDirectory(m_OutputDir + m_OfxCombine);
 
     JCheckBoxFixture checkBox = frame.checkBox("Clear transactions");
-
-    // Simulate checking the checkbox
-    // checkBox.check();
-
-    // Simulate unchecking the checkbox
     checkBox.uncheck();
 
     frame.button("CSV/XML File").click();
