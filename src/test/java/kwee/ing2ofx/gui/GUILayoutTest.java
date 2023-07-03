@@ -101,33 +101,27 @@ public class GUILayoutTest extends TestCase {
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
     fileChooser.fileNameTextBox().setText(c_IngTransFile); // Set the desired file name
     fileChooser.approve();
-
     frame.button("Read transactions").click();
+
     frame.button("Convert to OFX").click();
 
     // Evaluate results:
-    boolean bstat = false;
     String logOutput = TestLogger.getOutput();
 
-    bstat = logOutput.contains("Transactions read: 124, after doubles removed: 124");
-    assertTrue(bstat);
-
-    bstat = logOutput.contains("Grand total of transactions read: 124");
-    assertTrue(bstat);
+    assertTrue(logOutput.contains("Transactions read: 124, after doubles removed: 124"));
+    assertTrue(logOutput.contains("Grand total of transactions read: 124"));
 
     AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL54BKMG0378842587_Alle_rekeningen.ofx");
     AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL90KNAB0445266309_Alle_rekeningen.ofx");
     AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL94COBA0678011583_Alle_rekeningen.ofx");
     AssertFile(m_OfxEnkelExp, m_OfxEnkel, "_Saldos_Alle_rekeningen.csv");
 
-    LOGGER.log(Level.INFO, "Ready testGUILayoutING Status:" + bstat);
+    LOGGER.log(Level.INFO, "Ready testGUILayoutING");
   }
 
   @Test
   public void testGUILayoutINGSaving() {
     LOGGER.log(Level.INFO, "testGUILayoutINGSaving");
-
-    // ING Saving trans
     FileUtils.checkCreateDirectory(m_OutputDir + m_OfxEnkel);
 
     frame.button("CSV/XML File").click();
@@ -135,19 +129,15 @@ public class GUILayoutTest extends TestCase {
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
     fileChooser.fileNameTextBox().setText(c_IngSavingTransFile); // Set the desired file name
     fileChooser.approve();
-
     frame.button("Read transactions").click();
+
     frame.button("Convert to OFX").click();
 
     // Evaluate results
-    boolean bstat = false;
     String logOutput = TestLogger.getOutput();
 
-    bstat = logOutput.contains("Transactions read: 24, after doubles removed: 24");
-    assertTrue(bstat);
-
-    bstat = logOutput.contains("Grand total of transactions read: 24");
-    assertTrue(bstat);
+    assertTrue(logOutput.contains("Transactions read: 24, after doubles removed: 24"));
+    assertTrue(logOutput.contains("Grand total of transactions read: 24"));
 
     AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
     AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx");
@@ -156,7 +146,7 @@ public class GUILayoutTest extends TestCase {
     AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
     AssertFile(m_OfxEnkelExp, m_OfxEnkel, "_Saldos_Alle_spaarrekeningen.csv");
 
-    LOGGER.log(Level.INFO, "Ready testGUILayoutINGSaving Status:" + bstat);
+    LOGGER.log(Level.INFO, "Ready testGUILayoutINGSaving");
   }
 
   @Test
@@ -169,33 +159,27 @@ public class GUILayoutTest extends TestCase {
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
     fileChooser.fileNameTextBox().setText(c_SNSTransFile); // Set the desired file name
     fileChooser.approve();
-
     frame.button("Read transactions").click();
+
     frame.button("Convert to OFX").click();
 
     // Evaluate results:
-    boolean bstat = false;
     String logOutput = TestLogger.getOutput();
 
-    bstat = logOutput.contains("Transactions read: 9, after doubles removed: 9");
-    assertTrue(bstat);
-
-    bstat = logOutput.contains("Grand total of transactions read: 9");
-    assertTrue(bstat);
+    assertTrue(logOutput.contains("Transactions read: 9, after doubles removed: 9"));
+    assertTrue(logOutput.contains("Grand total of transactions read: 9"));
 
     AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL20LPLN0892606304_transactie-historie.ofx");
     AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL38RABO0192584529_transactie-historie.ofx");
     AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL45TRIO0953178943_transactie-historie.ofx");
     AssertFile(m_OfxEnkelExp, m_OfxEnkel, "_Saldos_transactie-historie.csv");
 
-    LOGGER.log(Level.INFO, "Ready testGUILayoutSNS Status:" + bstat);
+    LOGGER.log(Level.INFO, "Ready testGUILayoutSNS");
   }
 
   @Test
   public void testGUILayoutCombine() {
     LOGGER.log(Level.INFO, "testGUILayoutCombine");
-
-    // Combine multiple input files
     FileUtils.checkCreateDirectory(m_OutputDir + m_OfxCombine);
 
     frame.button("CSV/XML File").click();
@@ -208,19 +192,15 @@ public class GUILayoutTest extends TestCase {
     File file3 = new File(m_OutputDir + "\\" + c_SNSTransFile);
     fileChooser.selectFiles(file1, file2, file3);
     fileChooser.approve();
-
     frame.button("Read transactions").click();
+
     frame.button("Convert to OFX").click();
 
     // Evaluate results:
-    boolean bstat = false;
     String logOutput = TestLogger.getOutput();
 
-    bstat = logOutput.contains("Transactions read: 157, after doubles removed: 157");
-    assertTrue(bstat);
-
-    bstat = logOutput.contains("Grand total of transactions read: 157");
-    assertTrue(bstat);
+    assertTrue(logOutput.contains("Transactions read: 157, after doubles removed: 157"));
+    assertTrue(logOutput.contains("Grand total of transactions read: 157"));
 
     AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL20LPLN0892606304_transactie-historie.ofx");
     AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL38RABO0192584529_transactie-historie.ofx");
@@ -235,16 +215,15 @@ public class GUILayoutTest extends TestCase {
     AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx");
     AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
     AssertFile(m_OfxCombineExp, m_OfxCombine, "_Saldos_transactie-historie.csv");
-    LOGGER.log(Level.INFO, "Ready testGUILayoutCombine Status:" + bstat);
+    LOGGER.log(Level.INFO, "Ready testGUILayoutCombine");
   }
 
   @Test
   public void testGUILayoutCombineSyn() {
     LOGGER.log(Level.INFO, "testGUILayoutCombineSyn");
-
-    // Combine multiple input files
     FileUtils.checkCreateDirectory(m_OutputDir + m_OfxCombineSyn);
 
+    // Define Synonym file
     frame.menuItem("Synonym file").click();
     JFileChooserFixture fileChoosersyn = frame.fileChooser();
     fileChoosersyn.setCurrentDirectory(new File(m_OutputDir));
@@ -261,19 +240,15 @@ public class GUILayoutTest extends TestCase {
     File file3 = new File(m_OutputDir + "\\" + c_SNSTransFile);
     fileChooser.selectFiles(file1, file2, file3);
     fileChooser.approve();
-
     frame.button("Read transactions").click();
+
     frame.button("Convert to OFX").click();
 
-    // Evaluate
-    boolean bstat = false;
+    // Evaluate results
     String logOutput = TestLogger.getOutput();
 
-    bstat = logOutput.contains("Transactions read: 157, after doubles removed: 157");
-    assertTrue(bstat);
-
-    bstat = logOutput.contains("Grand total of transactions read: 157");
-    assertTrue(bstat);
+    assertTrue(logOutput.contains("Transactions read: 157, after doubles removed: 157"));
+    assertTrue(logOutput.contains("Grand total of transactions read: 157"));
 
     AssertXmlFile(m_OfxCombineExp, m_OfxCombineSyn, "NL94COBA0678011583_K222-12345_Alle_spaarrekeningen.ofx",
         "Aap_K222-12345_Alle_spaarrekeningen.ofx");
@@ -301,14 +276,15 @@ public class GUILayoutTest extends TestCase {
         "Vuur_NL75FVLB0105564737_transactie-historie.ofx");
     AssertFile(m_OfxCombineExp, m_OfxCombineSyn, "_Saldos_transactie-historieSyn.csv",
         "_Saldos_transactie-historie.csv");
-    LOGGER.log(Level.INFO, "Ready testGUILayoutCombineSyn Status:" + bstat);
+    LOGGER.log(Level.INFO, "Ready testGUILayoutCombineSyn");
   }
 
+  /**
+   * Test double transactions, doubles are filtered.
+   */
   @Test
   public void testGUILayoutDouble() {
     LOGGER.log(Level.INFO, "testGUILayoutDouble");
-
-    // Combine multiple input files
     FileUtils.checkCreateDirectory(m_OutputDir + m_OfxCombine);
 
     JCheckBoxFixture checkBox = frame.checkBox("Clear transactions");
@@ -317,17 +293,15 @@ public class GUILayoutTest extends TestCase {
     frame.button("CSV/XML File").click();
     JFileChooserFixture fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
-
     // Select multiple files
     File file1 = new File(m_OutputDir + "\\" + c_IngTransFile);
     File file2 = new File(m_OutputDir + "\\" + c_IngSavingTransFile);
     File file3 = new File(m_OutputDir + "\\" + c_SNSTransFile);
     fileChooser.selectFiles(file1, file2, file3);
     fileChooser.approve();
-
     frame.button("Read transactions").click();
 
-    LOGGER.log(Level.INFO, "Nogmaals inlezen.....");
+    LOGGER.log(Level.INFO, "Read again (double).....");
     frame.button("CSV/XML File").click();
     fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
@@ -337,24 +311,18 @@ public class GUILayoutTest extends TestCase {
     file3 = new File(m_OutputDir + "\\" + c_SNSTransFile);
     fileChooser.selectFiles(file1, file2, file3);
     fileChooser.approve();
-
     frame.button("Read transactions").click();
 
     frame.button("Convert to OFX").click();
 
     // Evaluate results:
-    boolean bstat = false;
+    // Logmessages
     String logOutput = TestLogger.getOutput();
+    assertTrue(logOutput.contains("Transactions read: 157, after doubles removed: 157"));
+    assertTrue(logOutput.contains("Transactions read: 157, after doubles removed: 0"));
+    assertTrue(logOutput.contains("Grand total of transactions read: 157"));
 
-    bstat = logOutput.contains("Transactions read: 157, after doubles removed: 157");
-    assertTrue(bstat);
-
-    bstat = logOutput.contains("Transactions read: 157, after doubles removed: 0");
-    assertTrue(bstat);
-
-    bstat = logOutput.contains("Grand total of transactions read: 157");
-    assertTrue(bstat);
-
+    // Generated files
     AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL20LPLN0892606304_transactie-historie.ofx");
     AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL38RABO0192584529_transactie-historie.ofx");
     AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL45TRIO0953178943_transactie-historie.ofx");
@@ -368,12 +336,12 @@ public class GUILayoutTest extends TestCase {
     AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx");
     AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
     AssertFile(m_OfxCombineExp, m_OfxCombine, "_Saldos_transactie-historie.csv");
-    LOGGER.log(Level.INFO, "Ready testGUILayoutCombine Status:" + bstat);
+    LOGGER.log(Level.INFO, "Ready testGUILayoutCombine");
   }
 
   @Test
   public void testGUILayoutOneByOne() {
-    LOGGER.log(Level.INFO, "testGUILayoutOneByOne");
+    LOGGER.log(Level.FINE, "testGUILayoutOneByOne");
 
     // Combine multiple input files
     FileUtils.checkCreateDirectory(m_OutputDir + m_OfxCombine);
