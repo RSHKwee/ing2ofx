@@ -1,0 +1,97 @@
+<OFX>
+  <SIGNONMSGSRSV1>
+    <SONRS>                            <!-- Begin signon -->
+      <STATUS>                        <!-- Begin status aggregate -->
+         <CODE>0</CODE>               <!-- OK -->
+         <SEVERITY>INFO</SEVERITY>
+      </STATUS>
+      <DTSERVER>20230509</DTSERVER>   <!-- Oct. 29, 1999, 10:10:03 am -->
+      <LANGUAGE>ENG</LANGUAGE>        <!-- Language used in response -->
+      <DTPROFUP>20230509</DTPROFUP>   <!-- Last update to profile-->
+      <DTACCTUP>20230509</DTACCTUP>   <!-- Last account update -->
+      <FI>                            <!-- ID of receiving institution -->
+         <ORG>NCH</ORG>               <!-- Name of ID owner -->
+         <FID>1001</FID>              <!-- Actual ID -->
+      </FI>
+    </SONRS>                           <!-- End of signon -->
+  </SIGNONMSGSRSV1>
+  <BANKMSGSRSV1>
+   <STMTTRNRS>                        <!-- Begin response -->
+      <TRNUID>1001</TRNUID>           <!-- Client ID sent in request -->
+      <STATUS>                     <!-- Start status aggregate -->
+         <CODE>0</CODE>            <!-- OK -->
+         <SEVERITY>INFO</SEVERITY>
+      </STATUS>
+      <STMTRS>                            <!-- Begin statement response -->
+         <CURDEF>EUR</CURDEF>
+         <BANKACCTFROM>                   <!-- Identify the account -->
+            <BANKID>SNSBNL2A</BANKID>     <!-- Routing transit or other FI ID -->
+            <ACCTID>NL38RABO0192584529</ACCTID>  <!-- Account number -->
+            <ACCTTYPE>CHECKING</ACCTTYPE> <!-- Account type -->
+         </BANKACCTFROM>                  <!-- End of account ID -->
+         <BANKTRANLIST>                   <!-- Begin list of statement trans. -->
+            <DTSTART>20230509</DTSTART>
+            <DTEND>20230509</DTEND>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20230509</DTPOSTED>
+                  <TRNAMT>-363.75</TRNAMT>
+                  <FITID>2023050936375</FITID>
+                  <NAME>Voor u gekocht via Euronext Fund Services: 6,3042 Participaties ASN Duurzaam Mixfonds Neutraal aEUR 57,70. Valutadatum: 11/05/2023. Positie ,na transactie: 434,2441 ASN Duurzaam Mixfonds Neutraal. (Trans.nr. 24712542)</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID></ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Voor u gekocht via Euronext Fund Services: 6,3042 Participaties ASN Duurzaam Mixfonds Neutraal aEUR 57,70. Valutadatum: 11/05/2023. Positie ,na transactie: 434,2441 ASN Duurzaam Mixfonds Neutraal. (Trans.nr. 24712542)</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20230509</DTPOSTED>
+                  <TRNAMT>-75.44</TRNAMT>
+                  <FITID>202305097544</FITID>
+                  <NAME>Voor u gekocht via Euronext Fund Services: 1,4505 Participaties ASN Duurzaam Mixfonds Defensief a EUR 52,01. Valutadatum: 11/05/2023. Positi,e na transactie: 94,8511 ASN Duurzaam Mixfonds Defensief. (Trans.nr. 24647328)</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID></ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Voor u gekocht via Euronext Fund Services: 1,4505 Participaties ASN Duurzaam Mixfonds Defensief a EUR 52,01. Valutadatum: 11/05/2023. Positi,e na transactie: 94,8511 ASN Duurzaam Mixfonds Defensief. (Trans.nr. 24647328)</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DEBIT</TRNTYPE>
+                  <DTPOSTED>20230505</DTPOSTED>
+                  <TRNAMT>363.75</TRNAMT>
+                  <FITID>2023050536375</FITID>
+                  <NAME>Tekst33 cash dividend ASN Duurzaam Mixfonds Neutraal van EUR 427,94. Dividendbelasting (15%): EUR 64,19. (Trans.nr. 24141669) Het bedrag E,UR 363,75 wordt de eerstvolgende handelsdag herbelegd.</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID></ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Tekst33 cash dividend ASN Duurzaam Mixfonds Neutraal van EUR 427,94. Dividendbelasting (15%): EUR 64,19. (Trans.nr. 24141669) Het bedrag E,UR 363,75 wordt de eerstvolgende handelsdag herbelegd.</MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DEBIT</TRNTYPE>
+                  <DTPOSTED>20230505</DTPOSTED>
+                  <TRNAMT>75.44</TRNAMT>
+                  <FITID>202305057544</FITID>
+                  <NAME>Tekst33 cash dividend ASN Duurzaam Mixfonds Defensief van EUR 88,74. Dividendbelasting (15%): EUR 13,30. (Trans.nr. 24055379) Het bedrag E,UR 75,44 wordt de eerstvolgende handelsdag herbelegd.</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID></ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO>Tekst33 cash dividend ASN Duurzaam Mixfonds Defensief van EUR 88,74. Dividendbelasting (15%): EUR 13,30. (Trans.nr. 24055379) Het bedrag E,UR 75,44 wordt de eerstvolgende handelsdag herbelegd.</MEMO>
+               </STMTTRN>
+         </BANKTRANLIST>                   <!-- End list of statement trans. -->
+         <LEDGERBAL>                       <!-- Ledger balance aggregate -->
+            <BALAMT>0.00</BALAMT>
+            <DTASOF>202305092359</DTASOF>  <!-- Bal date: Last date in transactions, 11:59 pm -->
+         </LEDGERBAL>                      <!-- End ledger balance -->
+      </STMTRS>
+   </STMTTRNRS>                        <!-- End of accounts -->
+  </BANKMSGSRSV1>
+</OFX>
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_Combine_Gen\NL38RABO0192584529_transactie-historie.ofx -->
+<!--  Gegenereerd op 2023-07-04 11:36:23.597662500 -->

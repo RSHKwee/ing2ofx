@@ -37,13 +37,16 @@ public class GUILayoutTest extends TestCase {
   private String m_OutputDir;
 
   // Expected results in following dirs:
-  private String m_OfxEnkelExp = "\\OFX_Enkel\\";
-  private String m_OfxCombineExp = "\\OFX_Gecombineerd\\";
+  private String m_DirExp_Suffux = "_Exp";
 
   // Generated results in following dirs:
-  private String m_OfxEnkel = "\\OFX_Enkel_Gen\\";
-  private String m_OfxCombine = "\\OFX_Combine_Gen\\";
-  private String m_OfxCombineSyn = "\\OFX_Combine_GenSyn\\";
+  private String m_OfxEnkelING = "OFX_ING";
+  private String m_OfxEnkelINGSaving = "OFX_INGSaving";
+  private String m_OfxEnkelSNS = "OFX_SNS";
+  private String m_OfxCombine = "OFX_Combine";
+  private String m_OfxCombineSyn = "OFX_Combine_Syn";
+  private String m_OfxCombineDouble = "OFX_CombineDouble_Syn";
+  private String m_OfxCombineOneByOne = "OFX_CombineOneByOne_Syn";
 
   @Override
   @Before
@@ -94,7 +97,7 @@ public class GUILayoutTest extends TestCase {
   @Test
   public void testGUILayoutING() {
     LOGGER.log(Level.INFO, "testGUILayoutING");
-    FileUtils.checkCreateDirectory(m_OutputDir + m_OfxCombineSyn);
+    FileUtils.checkCreateDirectory(m_OutputDir + "\\" + m_OfxEnkelING);
 
     frame.button("CSV/XML File").click();
     JFileChooserFixture fileChooser = frame.fileChooser();
@@ -102,6 +105,11 @@ public class GUILayoutTest extends TestCase {
     fileChooser.fileNameTextBox().setText(c_IngTransFile); // Set the desired file name
     fileChooser.approve();
     frame.button("Read transactions").click();
+
+    frame.button("Output folder").click();
+    fileChooser = frame.fileChooser();
+    fileChooser.setCurrentDirectory(new File(m_OutputDir + "\\" + m_OfxEnkelING + "\\"));
+    fileChooser.approve();
 
     frame.button("Convert to OFX").click();
 
@@ -111,10 +119,10 @@ public class GUILayoutTest extends TestCase {
     assertTrue(logOutput.contains("Transactions read: 124, after doubles removed: 124"));
     assertTrue(logOutput.contains("Grand total of transactions read: 124"));
 
-    AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL54BKMG0378842587_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL90KNAB0445266309_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL94COBA0678011583_Alle_rekeningen.ofx");
-    AssertFile(m_OfxEnkelExp, m_OfxEnkel, "_Saldos_Alle_rekeningen.csv");
+    AssertXmlFile(m_OfxEnkelING, "NL54BKMG0378842587_Alle_rekeningen.ofx");
+    AssertXmlFile(m_OfxEnkelING, "NL90KNAB0445266309_Alle_rekeningen.ofx");
+    AssertXmlFile(m_OfxEnkelING, "NL94COBA0678011583_Alle_rekeningen.ofx");
+    AssertFile(m_OfxEnkelING, "_Saldos_Alle_rekeningen.csv");
 
     LOGGER.log(Level.INFO, "Ready testGUILayoutING");
   }
@@ -122,10 +130,15 @@ public class GUILayoutTest extends TestCase {
   @Test
   public void testGUILayoutINGSaving() {
     LOGGER.log(Level.INFO, "testGUILayoutINGSaving");
-    FileUtils.checkCreateDirectory(m_OutputDir + m_OfxEnkel);
+    FileUtils.checkCreateDirectory(m_OutputDir + "\\" + m_OfxEnkelINGSaving);
+
+    frame.button("Output folder").click();
+    JFileChooserFixture fileChooser = frame.fileChooser();
+    fileChooser.setCurrentDirectory(new File(m_OutputDir + "\\" + m_OfxEnkelINGSaving));
+    fileChooser.approve();
 
     frame.button("CSV/XML File").click();
-    JFileChooserFixture fileChooser = frame.fileChooser();
+    fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
     fileChooser.fileNameTextBox().setText(c_IngSavingTransFile); // Set the desired file name
     fileChooser.approve();
@@ -139,12 +152,12 @@ public class GUILayoutTest extends TestCase {
     assertTrue(logOutput.contains("Transactions read: 24, after doubles removed: 24"));
     assertTrue(logOutput.contains("Grand total of transactions read: 24"));
 
-    AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL94COBA0678011583_K222-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
-    AssertFile(m_OfxEnkelExp, m_OfxEnkel, "_Saldos_Alle_spaarrekeningen.csv");
+    AssertXmlFile(m_OfxEnkelINGSaving, "NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
+    AssertXmlFile(m_OfxEnkelINGSaving, "NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx");
+    AssertXmlFile(m_OfxEnkelINGSaving, "NL94COBA0678011583_K222-12345_Alle_spaarrekeningen.ofx");
+    AssertXmlFile(m_OfxEnkelINGSaving, "NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx");
+    AssertXmlFile(m_OfxEnkelINGSaving, "NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
+    AssertFile(m_OfxEnkelINGSaving, "_Saldos_Alle_spaarrekeningen.csv");
 
     LOGGER.log(Level.INFO, "Ready testGUILayoutINGSaving");
   }
@@ -152,10 +165,15 @@ public class GUILayoutTest extends TestCase {
   @Test
   public void testGUILayoutSNS() {
     LOGGER.log(Level.INFO, "testGUILayoutSNS");
-    FileUtils.checkCreateDirectory(m_OutputDir + m_OfxEnkel);
+    FileUtils.checkCreateDirectory(m_OutputDir + "\\" + m_OfxEnkelSNS);
+
+    frame.button("Output folder").click();
+    JFileChooserFixture fileChooser = frame.fileChooser();
+    fileChooser.setCurrentDirectory(new File(m_OutputDir + "\\" + m_OfxEnkelSNS));
+    fileChooser.approve();
 
     frame.button("CSV/XML File").click();
-    JFileChooserFixture fileChooser = frame.fileChooser();
+    fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
     fileChooser.fileNameTextBox().setText(c_SNSTransFile); // Set the desired file name
     fileChooser.approve();
@@ -169,10 +187,10 @@ public class GUILayoutTest extends TestCase {
     assertTrue(logOutput.contains("Transactions read: 9, after doubles removed: 9"));
     assertTrue(logOutput.contains("Grand total of transactions read: 9"));
 
-    AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL20LPLN0892606304_transactie-historie.ofx");
-    AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL38RABO0192584529_transactie-historie.ofx");
-    AssertXmlFile(m_OfxEnkelExp, m_OfxEnkel, "NL45TRIO0953178943_transactie-historie.ofx");
-    AssertFile(m_OfxEnkelExp, m_OfxEnkel, "_Saldos_transactie-historie.csv");
+    AssertXmlFile(m_OfxEnkelSNS, "NL20LPLN0892606304_transactie-historie.ofx");
+    AssertXmlFile(m_OfxEnkelSNS, "NL38RABO0192584529_transactie-historie.ofx");
+    AssertXmlFile(m_OfxEnkelSNS, "NL45TRIO0953178943_transactie-historie.ofx");
+    AssertFile(m_OfxEnkelSNS, "_Saldos_transactie-historie.csv");
 
     LOGGER.log(Level.INFO, "Ready testGUILayoutSNS");
   }
@@ -180,10 +198,15 @@ public class GUILayoutTest extends TestCase {
   @Test
   public void testGUILayoutCombine() {
     LOGGER.log(Level.INFO, "testGUILayoutCombine");
-    FileUtils.checkCreateDirectory(m_OutputDir + m_OfxCombine);
+    FileUtils.checkCreateDirectory(m_OutputDir + "\\" + m_OfxCombine);
+
+    frame.button("Output folder").click();
+    JFileChooserFixture fileChooser = frame.fileChooser();
+    fileChooser.setCurrentDirectory(new File(m_OutputDir + "\\" + m_OfxCombine));
+    fileChooser.approve();
 
     frame.button("CSV/XML File").click();
-    JFileChooserFixture fileChooser = frame.fileChooser();
+    fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
 
     // Select multiple files
@@ -202,26 +225,26 @@ public class GUILayoutTest extends TestCase {
     assertTrue(logOutput.contains("Transactions read: 157, after doubles removed: 157"));
     assertTrue(logOutput.contains("Grand total of transactions read: 157"));
 
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL20LPLN0892606304_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL38RABO0192584529_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL45TRIO0953178943_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL54BKMG0378842587_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL75FVLB0105564737_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL90KNAB0445266309_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL94COBA0678011583_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL94COBA0678011583_K222-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
-    AssertFile(m_OfxCombineExp, m_OfxCombine, "_Saldos_transactie-historie.csv");
+    AssertXmlFile(m_OfxCombine, "NL20LPLN0892606304_transactie-historie.ofx");
+    AssertXmlFile(m_OfxCombine, "NL38RABO0192584529_transactie-historie.ofx");
+    AssertXmlFile(m_OfxCombine, "NL45TRIO0953178943_transactie-historie.ofx");
+    AssertXmlFile(m_OfxCombine, "NL54BKMG0378842587_Alle_rekeningen.ofx");
+    AssertXmlFile(m_OfxCombine, "NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
+    AssertXmlFile(m_OfxCombine, "NL75FVLB0105564737_transactie-historie.ofx");
+    AssertXmlFile(m_OfxCombine, "NL90KNAB0445266309_Alle_rekeningen.ofx");
+    AssertXmlFile(m_OfxCombine, "NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx");
+    AssertXmlFile(m_OfxCombine, "NL94COBA0678011583_Alle_rekeningen.ofx");
+    AssertXmlFile(m_OfxCombine, "NL94COBA0678011583_K222-12345_Alle_spaarrekeningen.ofx");
+    AssertXmlFile(m_OfxCombine, "NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx");
+    AssertXmlFile(m_OfxCombine, "NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
+    AssertFile(m_OfxCombine, "_Saldos_transactie-historie.csv");
     LOGGER.log(Level.INFO, "Ready testGUILayoutCombine");
   }
 
   @Test
   public void testGUILayoutCombineSyn() {
     LOGGER.log(Level.INFO, "testGUILayoutCombineSyn");
-    FileUtils.checkCreateDirectory(m_OutputDir + m_OfxCombineSyn);
+    FileUtils.checkCreateDirectory(m_OutputDir + "\\" + m_OfxCombineSyn);
 
     // Define Synonym file
     frame.menuItem("Synonym file").click();
@@ -230,8 +253,13 @@ public class GUILayoutTest extends TestCase {
     fileChoosersyn.fileNameTextBox().setText(c_SynonymFile);
     fileChoosersyn.approve();
 
-    frame.button("CSV/XML File").click();
+    frame.button("Output folder").click();
     JFileChooserFixture fileChooser = frame.fileChooser();
+    fileChooser.setCurrentDirectory(new File(m_OutputDir + "\\" + m_OfxCombineSyn));
+    fileChooser.approve();
+
+    frame.button("CSV/XML File").click();
+    fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
 
     // Select multiple files
@@ -250,32 +278,19 @@ public class GUILayoutTest extends TestCase {
     assertTrue(logOutput.contains("Transactions read: 157, after doubles removed: 157"));
     assertTrue(logOutput.contains("Grand total of transactions read: 157"));
 
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombineSyn, "NL94COBA0678011583_K222-12345_Alle_spaarrekeningen.ofx",
-        "Aap_K222-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombineSyn, "NL45TRIO0953178943_transactie-historie.ofx",
-        "Aap_NL45TRIO0953178943_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombineSyn, "NL94COBA0678011583_Alle_rekeningen.ofx",
-        "Aap_NL94COBA0678011583_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombineSyn, "NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx",
-        "Aap_NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombineSyn, "NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx",
-        "Aap_NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombineSyn, "NL20LPLN0892606304_transactie-historie.ofx",
-        "Basis_NL20LPLN0892606304_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombineSyn, "NL54BKMG0378842587_Alle_rekeningen.ofx",
-        "Mies_NL54BKMG0378842587_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombineSyn, "NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx",
-        "Mies_NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombineSyn, "NL90KNAB0445266309_Alle_rekeningen.ofx",
-        "Noot_NL90KNAB0445266309_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombineSyn, "NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx",
-        "Noot_NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombineSyn, "NL38RABO0192584529_transactie-historie.ofx",
-        "Teun_NL38RABO0192584529_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombineSyn, "NL75FVLB0105564737_transactie-historie.ofx",
-        "Vuur_NL75FVLB0105564737_transactie-historie.ofx");
-    AssertFile(m_OfxCombineExp, m_OfxCombineSyn, "_Saldos_transactie-historieSyn.csv",
-        "_Saldos_transactie-historie.csv");
+    AssertXmlFile(m_OfxCombineSyn, "Aap_K222-12345_Alle_spaarrekeningen.ofx");
+    AssertXmlFile(m_OfxCombineSyn, "Aap_NL45TRIO0953178943_transactie-historie.ofx");
+    AssertXmlFile(m_OfxCombineSyn, "Aap_NL94COBA0678011583_Alle_rekeningen.ofx");
+    AssertXmlFile(m_OfxCombineSyn, "Aap_NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx");
+    AssertXmlFile(m_OfxCombineSyn, "Aap_NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
+    AssertXmlFile(m_OfxCombineSyn, "Basis_NL20LPLN0892606304_transactie-historie.ofx");
+    AssertXmlFile(m_OfxCombineSyn, "Mies_NL54BKMG0378842587_Alle_rekeningen.ofx");
+    AssertXmlFile(m_OfxCombineSyn, "Mies_NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
+    AssertXmlFile(m_OfxCombineSyn, "Noot_NL90KNAB0445266309_Alle_rekeningen.ofx");
+    AssertXmlFile(m_OfxCombineSyn, "Noot_NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx");
+    AssertXmlFile(m_OfxCombineSyn, "Teun_NL38RABO0192584529_transactie-historie.ofx");
+    AssertXmlFile(m_OfxCombineSyn, "Vuur_NL75FVLB0105564737_transactie-historie.ofx");
+    AssertFile(m_OfxCombineSyn, "_Saldos_transactie-historie.csv");
     LOGGER.log(Level.INFO, "Ready testGUILayoutCombineSyn");
   }
 
@@ -285,13 +300,18 @@ public class GUILayoutTest extends TestCase {
   @Test
   public void testGUILayoutDouble() {
     LOGGER.log(Level.INFO, "testGUILayoutDouble");
-    FileUtils.checkCreateDirectory(m_OutputDir + m_OfxCombine);
+    FileUtils.checkCreateDirectory(m_OutputDir + "\\" + m_OfxCombineDouble);
 
     JCheckBoxFixture checkBox = frame.checkBox("Clear transactions");
     checkBox.uncheck();
 
-    frame.button("CSV/XML File").click();
+    frame.button("Output folder").click();
     JFileChooserFixture fileChooser = frame.fileChooser();
+    fileChooser.setCurrentDirectory(new File(m_OutputDir + "\\" + m_OfxCombineDouble));
+    fileChooser.approve();
+
+    frame.button("CSV/XML File").click();
+    fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
     // Select multiple files
     File file1 = new File(m_OutputDir + "\\" + c_IngTransFile);
@@ -323,19 +343,19 @@ public class GUILayoutTest extends TestCase {
     assertTrue(logOutput.contains("Grand total of transactions read: 157"));
 
     // Generated files
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL20LPLN0892606304_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL38RABO0192584529_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL45TRIO0953178943_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL54BKMG0378842587_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL75FVLB0105564737_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL90KNAB0445266309_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL94COBA0678011583_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL94COBA0678011583_K222-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
-    AssertFile(m_OfxCombineExp, m_OfxCombine, "_Saldos_transactie-historie.csv");
+    AssertXmlFile(m_OfxCombineDouble, "NL20LPLN0892606304_transactie-historie.ofx");
+    AssertXmlFile(m_OfxCombineDouble, "NL38RABO0192584529_transactie-historie.ofx");
+    AssertXmlFile(m_OfxCombineDouble, "NL45TRIO0953178943_transactie-historie.ofx");
+    AssertXmlFile(m_OfxCombineDouble, "NL54BKMG0378842587_Alle_rekeningen.ofx");
+    AssertXmlFile(m_OfxCombineDouble, "NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
+    AssertXmlFile(m_OfxCombineDouble, "NL75FVLB0105564737_transactie-historie.ofx");
+    AssertXmlFile(m_OfxCombineDouble, "NL90KNAB0445266309_Alle_rekeningen.ofx");
+    AssertXmlFile(m_OfxCombineDouble, "NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx");
+    AssertXmlFile(m_OfxCombineDouble, "NL94COBA0678011583_Alle_rekeningen.ofx");
+    AssertXmlFile(m_OfxCombineDouble, "NL94COBA0678011583_K222-12345_Alle_spaarrekeningen.ofx");
+    AssertXmlFile(m_OfxCombineDouble, "NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx");
+    AssertXmlFile(m_OfxCombineDouble, "NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
+    AssertFile(m_OfxCombineDouble, "_Saldos_transactie-historie.csv");
     LOGGER.log(Level.INFO, "Ready testGUILayoutCombine");
   }
 
@@ -344,13 +364,18 @@ public class GUILayoutTest extends TestCase {
     LOGGER.log(Level.FINE, "testGUILayoutOneByOne");
 
     // Combine multiple input files
-    FileUtils.checkCreateDirectory(m_OutputDir + m_OfxCombine);
+    FileUtils.checkCreateDirectory(m_OutputDir + "\\" + m_OfxCombineOneByOne);
 
     JCheckBoxFixture checkBox = frame.checkBox("Clear transactions");
     checkBox.uncheck();
 
-    frame.button("CSV/XML File").click();
+    frame.button("Output folder").click();
     JFileChooserFixture fileChooser = frame.fileChooser();
+    fileChooser.setCurrentDirectory(new File(m_OutputDir + "\\" + m_OfxCombineOneByOne));
+    fileChooser.approve();
+
+    frame.button("CSV/XML File").click();
+    fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
     fileChooser.fileNameTextBox().setText(c_IngTransFile);
     fileChooser.approve();
@@ -373,90 +398,55 @@ public class GUILayoutTest extends TestCase {
     frame.button("Convert to OFX").click();
 
     // Evaluate results:
-    boolean bstat = false;
     String logOutput = TestLogger.getOutput();
 
-    bstat = logOutput.contains("Transactions read: 124, after doubles removed: 124");
-    assertTrue(bstat);
+    assertTrue(logOutput.contains("Transactions read: 124, after doubles removed: 124"));
+    assertTrue(logOutput.contains("Transactions read: 24, after doubles removed: 24"));
+    assertTrue(logOutput.contains("Transactions read: 9, after doubles removed: 9"));
+    assertTrue(logOutput.contains("Grand total of transactions read: 157"));
 
-    bstat = logOutput.contains("Transactions read: 24, after doubles removed: 24");
-    assertTrue(bstat);
-
-    bstat = logOutput.contains("Transactions read: 9, after doubles removed: 9");
-    assertTrue(bstat);
-
-    bstat = logOutput.contains("Grand total of transactions read: 157");
-    assertTrue(bstat);
-
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL20LPLN0892606304_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL38RABO0192584529_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL45TRIO0953178943_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL54BKMG0378842587_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL75FVLB0105564737_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL90KNAB0445266309_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL94COBA0678011583_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL94COBA0678011583_K222-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineExp, m_OfxCombine, "NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
-    AssertFile(m_OfxCombineExp, m_OfxCombine, "_Saldos_transactie-historie.csv");
-    LOGGER.log(Level.INFO, "Ready testGUILayoutCombine Status:" + bstat);
+    AssertXmlFile(m_OfxCombineOneByOne, "NL20LPLN0892606304_transactie-historie.ofx");
+    AssertXmlFile(m_OfxCombineOneByOne, "NL38RABO0192584529_transactie-historie.ofx");
+    AssertXmlFile(m_OfxCombineOneByOne, "NL45TRIO0953178943_transactie-historie.ofx");
+    AssertXmlFile(m_OfxCombineOneByOne, "NL54BKMG0378842587_Alle_rekeningen.ofx");
+    AssertXmlFile(m_OfxCombineOneByOne, "NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
+    AssertXmlFile(m_OfxCombineOneByOne, "NL75FVLB0105564737_transactie-historie.ofx");
+    AssertXmlFile(m_OfxCombineOneByOne, "NL90KNAB0445266309_Alle_rekeningen.ofx");
+    AssertXmlFile(m_OfxCombineOneByOne, "NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx");
+    AssertXmlFile(m_OfxCombineOneByOne, "NL94COBA0678011583_Alle_rekeningen.ofx");
+    AssertXmlFile(m_OfxCombineOneByOne, "NL94COBA0678011583_K222-12345_Alle_spaarrekeningen.ofx");
+    AssertXmlFile(m_OfxCombineOneByOne, "NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx");
+    AssertXmlFile(m_OfxCombineOneByOne, "NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
+    AssertFile(m_OfxCombineOneByOne, "_Saldos_transactie-historie.csv");
+    LOGGER.log(Level.INFO, "Ready testGUILayoutCombine");
   }
 
   // File asserts
-  private void AssertXmlFile(String a_dir1, String a_dir2, String a_filename) {
+  private void AssertXmlFile(String a_dir, String a_filename) {
     boolean bstat = false;
-    String l_filename1 = m_OutputDir + "\\" + a_dir1 + "\\" + a_filename;
-    String l_filename2 = m_OutputDir + "\\" + a_dir2 + "\\" + a_filename;
-    try {
-      bstat = m_Functions.compareXmlFiles(l_filename1, l_filename2);
-      if (!bstat) {
-        LOGGER.log(Level.INFO, "Files not equal " + a_dir1 + "\\" + a_filename + " and " + a_dir2 + "\\" + a_filename);
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
-      LOGGER.log(Level.INFO, e.getMessage() + "/ Filename: " + a_filename);
-    }
-    assertTrue(bstat);
-  }
-
-  private void AssertXmlFile(String a_dirExp, String a_dir2, String a_filenameExp, String a_filename) {
-    boolean bstat = false;
-    String l_filename1 = m_OutputDir + "\\" + a_dirExp + "\\" + a_filenameExp;
-    String l_filename2 = m_OutputDir + "\\" + a_dir2 + "\\" + a_filename;
+    String l_filename1 = m_OutputDir + "\\" + a_dir + m_DirExp_Suffux + "\\" + a_filename;
+    String l_filename2 = m_OutputDir + "\\" + a_dir + "\\" + a_filename;
     try {
       bstat = m_Functions.compareXmlFiles(l_filename1, l_filename2);
       if (!bstat) {
         LOGGER.log(Level.INFO,
-            "Files not equal " + a_dirExp + "\\" + a_filenameExp + " and " + a_dir2 + "\\" + a_filename);
+            "Files not equal " + a_dir + m_DirExp_Suffux + "\\" + a_filename + " and " + a_dir + "\\" + a_filename);
       }
     } catch (IOException e) {
-      e.printStackTrace();
-      LOGGER.log(Level.INFO, e.getMessage() + "/ Filename: " + a_filename);
+      // e.printStackTrace();
+      LOGGER.log(Level.INFO, e.getMessage() + "File " + a_dir + "\\" + a_filename + " and " + a_dir + m_DirExp_Suffux);
     }
     assertTrue(bstat);
   }
 
-  private void AssertFile(String a_dir1, String a_dir2, String a_filename) {
+  private void AssertFile(String a_dir, String a_filename) {
     boolean bstat = false;
-    String l_filename1 = m_OutputDir + "\\" + a_dir1 + "\\" + a_filename;
-    String l_filename2 = m_OutputDir + "\\" + a_dir2 + "\\" + a_filename;
-    bstat = FileUtils.FileContentsEquals(l_filename1, l_filename2);
-    if (!bstat) {
-      LOGGER.log(Level.INFO, "Files not equal " + a_dir1 + "\\" + a_filename + " and " + a_dir2 + "\\" + a_filename);
-    }
-    assertTrue(bstat);
-  }
-
-  private void AssertFile(String a_dirExp, String a_dir2, String a_filenameExp, String a_filename) {
-    boolean bstat = false;
-    String l_filename1 = m_OutputDir + "\\" + a_dirExp + "\\" + a_filenameExp;
-    String l_filename2 = m_OutputDir + "\\" + a_dir2 + "\\" + a_filename;
+    String l_filename1 = m_OutputDir + "\\" + a_dir + m_DirExp_Suffux + "\\" + a_filename;
+    String l_filename2 = m_OutputDir + "\\" + a_dir + "\\" + a_filename;
     bstat = FileUtils.FileContentsEquals(l_filename1, l_filename2);
     if (!bstat) {
       LOGGER.log(Level.INFO,
-          "Files not equal " + a_dirExp + "\\" + a_filenameExp + " and " + a_dir2 + "\\" + a_filename);
+          "Files not equal " + a_dir + m_DirExp_Suffux + "\\" + a_filename + " and " + a_dir + "\\" + a_filename);
     }
     assertTrue(bstat);
   }

@@ -537,9 +537,10 @@ public class GUILayout extends JPanel implements ItemListener {
         int option = fileChooser.showOpenDialog(GUILayout.this);
         if (option == JFileChooser.APPROVE_OPTION) {
           File file = fileChooser.getSelectedFile();
-          LOGGER.log(Level.INFO, "Output folder: " + file.getParent());
-          lblOutputFolder.setText(file.getParent());
-          m_OutputFolder = new File(file.getParent());
+          LOGGER.log(Level.INFO, "Output folder: " + file.getAbsolutePath());
+          // String temp = fileChooser.getTe
+          lblOutputFolder.setText(file.getAbsolutePath());
+          m_OutputFolder = new File(file.getAbsolutePath());
           m_param.set_OutputFolder(m_OutputFolder);
           m_OutputFolderModified = true;
         }

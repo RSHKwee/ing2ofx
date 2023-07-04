@@ -10,6 +10,8 @@ import java.util.List;
 // import java.util.logging.Level;
 import java.util.Map;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import kwee.library.TxtBestand;
 
@@ -70,7 +72,8 @@ public class OfxFunctions {
 
   static public void dumpMetaInfo(String a_OutputFile, Map<String, OfxMetaInfo> a_metainfo) {
     ArrayList<String> l_Regels = new ArrayList<String>();
-    Set<String> l_AccKeys = a_metainfo.keySet();
+    Set<String> l_AccUnsortedKeys = a_metainfo.keySet();
+    SortedSet<String> l_AccKeys = new TreeSet<>(l_AccUnsortedKeys);
     l_Regels.add("Prefix; Account; BalanceDate; Balance; BankCode; MaxDate; MinDate");
 
     l_AccKeys.forEach(l_AccKey -> {
