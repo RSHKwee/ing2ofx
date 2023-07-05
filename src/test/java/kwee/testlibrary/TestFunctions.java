@@ -72,7 +72,7 @@ public class TestFunctions {
       String content2 = extractLogContent(line2);
 
       if (!content1.equals(content2)) {
-        LOGGER.log(Level.INFO, "Not Equal: Line 1: " + content1 + " NOT Line 2: " + content2);
+        LOGGER.log(Level.FINE, "Not Equal: Line 1: " + content1 + " NOT Line 2: " + content2);
         reader1.close();
         reader2.close();
         return false;
