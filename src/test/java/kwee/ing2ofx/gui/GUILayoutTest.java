@@ -48,6 +48,10 @@ public class GUILayoutTest extends TestCase {
   private String m_OfxCombineDouble = "OFX_CombineDouble_Syn";
   private String m_OfxCombineOneByOne = "OFX_CombineOneByOne_Syn";
 
+  /**
+   * setUp, store original User parameters and reset parameters for Test purpose.
+   * Start GUI
+   */
   @Override
   @Before
   public void setUp() throws Exception {
@@ -83,6 +87,9 @@ public class GUILayoutTest extends TestCase {
     TestLogger.setup(Level.INFO);
   }
 
+  /**
+   * Reset User parameters to original settings. Close GUI.
+   */
   @Override
   @After
   public void tearDown() throws Exception {
@@ -94,6 +101,9 @@ public class GUILayoutTest extends TestCase {
     TestLogger.close();
   }
 
+  /**
+   * Test handling of ING Transactions, csv to OFX.
+   */
   @Test
   public void testGUILayoutING() {
     LOGGER.log(Level.INFO, "testGUILayoutING");
@@ -127,6 +137,9 @@ public class GUILayoutTest extends TestCase {
     LOGGER.log(Level.INFO, "Ready testGUILayoutING");
   }
 
+  /**
+   * Test handling of ING Saving transactions, csv to OFX.
+   */
   @Test
   public void testGUILayoutINGSaving() {
     LOGGER.log(Level.INFO, "testGUILayoutINGSaving");
@@ -162,6 +175,9 @@ public class GUILayoutTest extends TestCase {
     LOGGER.log(Level.INFO, "Ready testGUILayoutINGSaving");
   }
 
+  /**
+   * Test handling of SNS Transactions, CAMT0.53 to OFX.
+   */
   @Test
   public void testGUILayoutSNS() {
     LOGGER.log(Level.INFO, "testGUILayoutSNS");
@@ -195,6 +211,9 @@ public class GUILayoutTest extends TestCase {
     LOGGER.log(Level.INFO, "Ready testGUILayoutSNS");
   }
 
+  /**
+   * Test handling of Combined ING-, ING Saving- and SNS Transactions.
+   */
   @Test
   public void testGUILayoutCombine() {
     LOGGER.log(Level.INFO, "testGUILayoutCombine");
@@ -241,6 +260,10 @@ public class GUILayoutTest extends TestCase {
     LOGGER.log(Level.INFO, "Ready testGUILayoutCombine");
   }
 
+  /**
+   * Test handling of Combined ING-, ING Saving- and SNS Transactions and make use
+   * of a Synonym file.
+   */
   @Test
   public void testGUILayoutCombineSyn() {
     LOGGER.log(Level.INFO, "testGUILayoutCombineSyn");
@@ -359,6 +382,10 @@ public class GUILayoutTest extends TestCase {
     LOGGER.log(Level.INFO, "Ready testGUILayoutCombine");
   }
 
+  /**
+   * Test handling of Combined ING-, ING Saving- and SNS Transactions, are entered
+   * one by one.
+   */
   @Test
   public void testGUILayoutOneByOne() {
     LOGGER.log(Level.FINE, "testGUILayoutOneByOne");
@@ -422,6 +449,12 @@ public class GUILayoutTest extends TestCase {
   }
 
   // File asserts
+  /**
+   * File assert for XML files
+   * 
+   * @param a_dir      Test dir prefix
+   * @param a_filename Filename
+   */
   private void AssertXmlFile(String a_dir, String a_filename) {
     boolean bstat = false;
     String l_filename1 = m_OutputDir + "\\" + a_dir + m_DirExp_Suffux + "\\" + a_filename;
@@ -439,6 +472,12 @@ public class GUILayoutTest extends TestCase {
     assertTrue(bstat);
   }
 
+  /**
+   * File assert for log files
+   * 
+   * @param a_dir      Test dir prefix
+   * @param a_filename Filename
+   */
   private void AssertFile(String a_dir, String a_filename) {
     boolean bstat = false;
     String l_filename1 = m_OutputDir + "\\" + a_dir + m_DirExp_Suffux + "\\" + a_filename;
