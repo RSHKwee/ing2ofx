@@ -28,6 +28,7 @@ import kwee.convertor.sns.convertor.*;
  */
 public class ActionReadTransactions extends SwingWorker<List<OfxTransaction>, String> {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private Object lock = GUILayout.lock;
 
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
@@ -74,39 +75,41 @@ public class ActionReadTransactions extends SwingWorker<List<OfxTransaction>, St
    */
   @Override
   public List<OfxTransaction> doInBackground() {
-    for (int i = 0; i < m_CSVFiles.length; i++) {
-      String l_File = m_CSVFiles[i].getAbsolutePath();
-      String l_ext = FilenameUtils.getExtension(l_File);
+    synchronized (lock) {
+      for (int i = 0; i < m_CSVFiles.length; i++) {
+        String l_File = m_CSVFiles[i].getAbsolutePath();
+        String l_ext = FilenameUtils.getExtension(l_File);
 
-      // Read ING Transactions
-      if (l_ext.toUpperCase().contains("CSV")) {
-        LOGGER.log(Level.INFO, "Process ING file " + l_File);
-        IngTransactions l_ingtrans = new IngTransactions(m_CSVFiles[i], m_Synonym_file);
-        l_ingtrans.load();
-        m_OfxTransactions.addAll(l_ingtrans.getOfxTransactions());
-        LOGGER.log(Level.INFO, "Total of (ING) transactions read: " + m_OfxTransactions.size());
+        // Read ING Transactions
+        if (l_ext.toUpperCase().contains("CSV")) {
+          LOGGER.log(Level.INFO, "Process ING file " + l_File);
+          IngTransactions l_ingtrans = new IngTransactions(m_CSVFiles[i], m_Synonym_file);
+          l_ingtrans.load();
+          m_OfxTransactions.addAll(l_ingtrans.getOfxTransactions());
+          LOGGER.log(Level.INFO, "Total of (ING) transactions read: " + m_OfxTransactions.size());
 
-        Map<String, OfxMetaInfo> l_metainfo = l_ingtrans.getOfxMetaInfo();
-        m_metainfo = updateMetaInfo(l_metainfo);
+          Map<String, OfxMetaInfo> l_metainfo = l_ingtrans.getOfxMetaInfo();
+          m_metainfo = updateMetaInfo(l_metainfo);
 
-        m_TransactionProcessed = true;
+          m_TransactionProcessed = true;
+        }
+
+        // Read SNS Transactions
+        if (l_ext.toUpperCase().contains("XML")) {
+          LOGGER.log(Level.INFO, "Process SNS file " + l_File);
+          SnsTransactions l_snstrans = new SnsTransactions(m_CSVFiles[i], m_Synonym_file);
+          l_snstrans.load();
+          m_OfxTransactions.addAll(l_snstrans.getOfxTransactions());
+          LOGGER.log(Level.INFO, "Total of (SNS) transactions read: " + m_OfxTransactions.size());
+
+          Map<String, OfxMetaInfo> l_metainfo = l_snstrans.getOfxMetaInfo();
+          m_metainfo = updateMetaInfo(l_metainfo);
+
+          m_TransactionProcessed = true;
+        }
+        verwerkProgress();
+        LOGGER.log(Level.INFO, "Processed file " + l_File);
       }
-
-      // Read SNS Transactions
-      if (l_ext.toUpperCase().contains("XML")) {
-        LOGGER.log(Level.INFO, "Process SNS file " + l_File);
-        SnsTransactions l_snstrans = new SnsTransactions(m_CSVFiles[i], m_Synonym_file);
-        l_snstrans.load();
-        m_OfxTransactions.addAll(l_snstrans.getOfxTransactions());
-        LOGGER.log(Level.INFO, "Total of (SNS) transactions read: " + m_OfxTransactions.size());
-
-        Map<String, OfxMetaInfo> l_metainfo = l_snstrans.getOfxMetaInfo();
-        m_metainfo = updateMetaInfo(l_metainfo);
-
-        m_TransactionProcessed = true;
-      }
-      verwerkProgress();
-      LOGGER.log(Level.INFO, "Processed file " + l_File);
     }
     return m_OfxTransactions;
   }

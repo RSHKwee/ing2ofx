@@ -4,4 +4,5 @@ The intent of this (java) application  is to convert ING (www.ing.nl) csv- or SN
 
 What is new
 
-A Windows help is added.
+JUnit tests are added.
+Minor bugfixes.

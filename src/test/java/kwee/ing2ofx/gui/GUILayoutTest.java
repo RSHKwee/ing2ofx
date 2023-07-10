@@ -25,6 +25,7 @@ import kwee.testlibrary.TestFunctions;
 public class GUILayoutTest extends TestCase {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private FrameFixture frame;
+  Object lock = GUILayout.lock;
 
   private String c_SynonymFile = "Synoniem.txt";
   private String c_IngTransFile = "Alle_rekeningen.csv";
@@ -58,7 +59,7 @@ public class GUILayoutTest extends TestCase {
     super.setUp();
 
     // Parameters
-    m_OrgParam = m_Functions.CopyUserSetting(m_param);
+    m_OrgParam = m_param.copy();
     m_param.set_ClearTransactions(true);
 
     m_param.set_AcountSeparateOFX(true);
@@ -95,7 +96,7 @@ public class GUILayoutTest extends TestCase {
   public void tearDown() throws Exception {
     super.tearDown();
 
-    m_param = m_Functions.CopyUserSetting(m_OrgParam);
+    m_param = m_OrgParam.copy();
     m_param.save();
     this.frame.cleanUp();
     TestLogger.close();
@@ -124,17 +125,19 @@ public class GUILayoutTest extends TestCase {
     frame.button("Convert to OFX").click();
 
     // Evaluate results:
-    String logOutput = TestLogger.getOutput();
+    synchronized (lock) {
+      String logOutput = TestLogger.getOutput();
 
-    assertTrue(logOutput.contains("Transactions read: 124, after doubles removed: 124"));
-    assertTrue(logOutput.contains("Grand total of transactions read: 124"));
+      assertTrue(logOutput.contains("Transactions read: 124, after doubles removed: 124"));
+      assertTrue(logOutput.contains("Grand total of transactions read: 124"));
 
-    AssertXmlFile(m_OfxEnkelING, "NL54BKMG0378842587_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxEnkelING, "NL90KNAB0445266309_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxEnkelING, "NL94COBA0678011583_Alle_rekeningen.ofx");
-    AssertFile(m_OfxEnkelING, "_Saldos_Alle_rekeningen.csv");
+      AssertXmlFile(m_OfxEnkelING, "NL54BKMG0378842587_Alle_rekeningen.ofx");
+      AssertXmlFile(m_OfxEnkelING, "NL90KNAB0445266309_Alle_rekeningen.ofx");
+      AssertXmlFile(m_OfxEnkelING, "NL94COBA0678011583_Alle_rekeningen.ofx");
+      AssertFile(m_OfxEnkelING, "_Saldos_Alle_rekeningen.csv");
 
-    LOGGER.log(Level.INFO, "Ready testGUILayoutING");
+      LOGGER.log(Level.INFO, "Ready testGUILayoutING");
+    }
   }
 
   /**
@@ -160,19 +163,21 @@ public class GUILayoutTest extends TestCase {
     frame.button("Convert to OFX").click();
 
     // Evaluate results
-    String logOutput = TestLogger.getOutput();
+    synchronized (lock) {
+      String logOutput = TestLogger.getOutput();
 
-    assertTrue(logOutput.contains("Transactions read: 24, after doubles removed: 24"));
-    assertTrue(logOutput.contains("Grand total of transactions read: 24"));
+      assertTrue(logOutput.contains("Transactions read: 24, after doubles removed: 24"));
+      assertTrue(logOutput.contains("Grand total of transactions read: 24"));
 
-    AssertXmlFile(m_OfxEnkelINGSaving, "NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxEnkelINGSaving, "NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxEnkelINGSaving, "NL94COBA0678011583_K222-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxEnkelINGSaving, "NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxEnkelINGSaving, "NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
-    AssertFile(m_OfxEnkelINGSaving, "_Saldos_Alle_spaarrekeningen.csv");
+      AssertXmlFile(m_OfxEnkelINGSaving, "NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
+      AssertXmlFile(m_OfxEnkelINGSaving, "NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx");
+      AssertXmlFile(m_OfxEnkelINGSaving, "NL94COBA0678011583_K222-12345_Alle_spaarrekeningen.ofx");
+      AssertXmlFile(m_OfxEnkelINGSaving, "NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx");
+      AssertXmlFile(m_OfxEnkelINGSaving, "NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
+      AssertFile(m_OfxEnkelINGSaving, "_Saldos_Alle_spaarrekeningen.csv");
 
-    LOGGER.log(Level.INFO, "Ready testGUILayoutINGSaving");
+      LOGGER.log(Level.INFO, "Ready testGUILayoutINGSaving");
+    }
   }
 
   /**
@@ -198,17 +203,19 @@ public class GUILayoutTest extends TestCase {
     frame.button("Convert to OFX").click();
 
     // Evaluate results:
-    String logOutput = TestLogger.getOutput();
+    synchronized (lock) {
+      String logOutput = TestLogger.getOutput();
 
-    assertTrue(logOutput.contains("Transactions read: 9, after doubles removed: 9"));
-    assertTrue(logOutput.contains("Grand total of transactions read: 9"));
+      assertTrue(logOutput.contains("Transactions read: 9, after doubles removed: 9"));
+      assertTrue(logOutput.contains("Grand total of transactions read: 9"));
 
-    AssertXmlFile(m_OfxEnkelSNS, "NL20LPLN0892606304_transactie-historie.ofx");
-    AssertXmlFile(m_OfxEnkelSNS, "NL38RABO0192584529_transactie-historie.ofx");
-    AssertXmlFile(m_OfxEnkelSNS, "NL45TRIO0953178943_transactie-historie.ofx");
-    AssertFile(m_OfxEnkelSNS, "_Saldos_transactie-historie.csv");
+      AssertXmlFile(m_OfxEnkelSNS, "NL20LPLN0892606304_transactie-historie.ofx");
+      AssertXmlFile(m_OfxEnkelSNS, "NL38RABO0192584529_transactie-historie.ofx");
+      AssertXmlFile(m_OfxEnkelSNS, "NL45TRIO0953178943_transactie-historie.ofx");
+      AssertFile(m_OfxEnkelSNS, "_Saldos_transactie-historie.csv");
 
-    LOGGER.log(Level.INFO, "Ready testGUILayoutSNS");
+      LOGGER.log(Level.INFO, "Ready testGUILayoutSNS");
+    }
   }
 
   /**
@@ -239,25 +246,27 @@ public class GUILayoutTest extends TestCase {
     frame.button("Convert to OFX").click();
 
     // Evaluate results:
-    String logOutput = TestLogger.getOutput();
+    synchronized (lock) {
+      String logOutput = TestLogger.getOutput();
 
-    assertTrue(logOutput.contains("Transactions read: 157, after doubles removed: 157"));
-    assertTrue(logOutput.contains("Grand total of transactions read: 157"));
+      assertTrue(logOutput.contains("Transactions read: 157, after doubles removed: 157"));
+      assertTrue(logOutput.contains("Grand total of transactions read: 157"));
 
-    AssertXmlFile(m_OfxCombine, "NL20LPLN0892606304_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombine, "NL38RABO0192584529_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombine, "NL45TRIO0953178943_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombine, "NL54BKMG0378842587_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombine, "NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombine, "NL75FVLB0105564737_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombine, "NL90KNAB0445266309_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombine, "NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombine, "NL94COBA0678011583_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombine, "NL94COBA0678011583_K222-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombine, "NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombine, "NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
-    AssertFile(m_OfxCombine, "_Saldos_transactie-historie.csv");
-    LOGGER.log(Level.INFO, "Ready testGUILayoutCombine");
+      AssertXmlFile(m_OfxCombine, "NL20LPLN0892606304_transactie-historie.ofx");
+      AssertXmlFile(m_OfxCombine, "NL38RABO0192584529_transactie-historie.ofx");
+      AssertXmlFile(m_OfxCombine, "NL45TRIO0953178943_transactie-historie.ofx");
+      AssertXmlFile(m_OfxCombine, "NL54BKMG0378842587_Alle_rekeningen.ofx");
+      AssertXmlFile(m_OfxCombine, "NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
+      AssertXmlFile(m_OfxCombine, "NL75FVLB0105564737_transactie-historie.ofx");
+      AssertXmlFile(m_OfxCombine, "NL90KNAB0445266309_Alle_rekeningen.ofx");
+      AssertXmlFile(m_OfxCombine, "NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx");
+      AssertXmlFile(m_OfxCombine, "NL94COBA0678011583_Alle_rekeningen.ofx");
+      AssertXmlFile(m_OfxCombine, "NL94COBA0678011583_K222-12345_Alle_spaarrekeningen.ofx");
+      AssertXmlFile(m_OfxCombine, "NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx");
+      AssertXmlFile(m_OfxCombine, "NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
+      AssertFile(m_OfxCombine, "_Saldos_transactie-historie.csv");
+      LOGGER.log(Level.INFO, "Ready testGUILayoutCombine");
+    }
   }
 
   /**
@@ -296,25 +305,27 @@ public class GUILayoutTest extends TestCase {
     frame.button("Convert to OFX").click();
 
     // Evaluate results
-    String logOutput = TestLogger.getOutput();
+    synchronized (lock) {
+      String logOutput = TestLogger.getOutput();
 
-    assertTrue(logOutput.contains("Transactions read: 157, after doubles removed: 157"));
-    assertTrue(logOutput.contains("Grand total of transactions read: 157"));
+      assertTrue(logOutput.contains("Transactions read: 157, after doubles removed: 157"));
+      assertTrue(logOutput.contains("Grand total of transactions read: 157"));
 
-    AssertXmlFile(m_OfxCombineSyn, "Aap_K222-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineSyn, "Aap_NL45TRIO0953178943_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineSyn, "Aap_NL94COBA0678011583_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombineSyn, "Aap_NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineSyn, "Aap_NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineSyn, "Basis_NL20LPLN0892606304_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineSyn, "Mies_NL54BKMG0378842587_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombineSyn, "Mies_NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineSyn, "Noot_NL90KNAB0445266309_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombineSyn, "Noot_NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineSyn, "Teun_NL38RABO0192584529_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineSyn, "Vuur_NL75FVLB0105564737_transactie-historie.ofx");
-    AssertFile(m_OfxCombineSyn, "_Saldos_transactie-historie.csv");
-    LOGGER.log(Level.INFO, "Ready testGUILayoutCombineSyn");
+      AssertXmlFile(m_OfxCombineSyn, "Aap_K222-12345_Alle_spaarrekeningen.ofx");
+      AssertXmlFile(m_OfxCombineSyn, "Aap_NL45TRIO0953178943_transactie-historie.ofx");
+      AssertXmlFile(m_OfxCombineSyn, "Aap_NL94COBA0678011583_Alle_rekeningen.ofx");
+      AssertXmlFile(m_OfxCombineSyn, "Aap_NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx");
+      AssertXmlFile(m_OfxCombineSyn, "Aap_NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
+      AssertXmlFile(m_OfxCombineSyn, "Basis_NL20LPLN0892606304_transactie-historie.ofx");
+      AssertXmlFile(m_OfxCombineSyn, "Mies_NL54BKMG0378842587_Alle_rekeningen.ofx");
+      AssertXmlFile(m_OfxCombineSyn, "Mies_NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
+      AssertXmlFile(m_OfxCombineSyn, "Noot_NL90KNAB0445266309_Alle_rekeningen.ofx");
+      AssertXmlFile(m_OfxCombineSyn, "Noot_NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx");
+      AssertXmlFile(m_OfxCombineSyn, "Teun_NL38RABO0192584529_transactie-historie.ofx");
+      AssertXmlFile(m_OfxCombineSyn, "Vuur_NL75FVLB0105564737_transactie-historie.ofx");
+      AssertFile(m_OfxCombineSyn, "_Saldos_transactie-historie.csv");
+      LOGGER.log(Level.INFO, "Ready testGUILayoutCombineSyn");
+    }
   }
 
   /**
@@ -359,27 +370,29 @@ public class GUILayoutTest extends TestCase {
     frame.button("Convert to OFX").click();
 
     // Evaluate results:
-    // Logmessages
-    String logOutput = TestLogger.getOutput();
-    assertTrue(logOutput.contains("Transactions read: 157, after doubles removed: 157"));
-    assertTrue(logOutput.contains("Transactions read: 157, after doubles removed: 0"));
-    assertTrue(logOutput.contains("Grand total of transactions read: 157"));
+    synchronized (lock) {
+      // Logmessages
+      String logOutput = TestLogger.getOutput();
+      assertTrue(logOutput.contains("Transactions read: 157, after doubles removed: 157"));
+      assertTrue(logOutput.contains("Transactions read: 157, after doubles removed: 0"));
+      assertTrue(logOutput.contains("Grand total of transactions read: 157"));
 
-    // Generated files
-    AssertXmlFile(m_OfxCombineDouble, "NL20LPLN0892606304_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineDouble, "NL38RABO0192584529_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineDouble, "NL45TRIO0953178943_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineDouble, "NL54BKMG0378842587_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombineDouble, "NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineDouble, "NL75FVLB0105564737_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineDouble, "NL90KNAB0445266309_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombineDouble, "NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineDouble, "NL94COBA0678011583_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombineDouble, "NL94COBA0678011583_K222-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineDouble, "NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineDouble, "NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
-    AssertFile(m_OfxCombineDouble, "_Saldos_transactie-historie.csv");
-    LOGGER.log(Level.INFO, "Ready testGUILayoutCombine");
+      // Generated files
+      AssertXmlFile(m_OfxCombineDouble, "NL20LPLN0892606304_transactie-historie.ofx");
+      AssertXmlFile(m_OfxCombineDouble, "NL38RABO0192584529_transactie-historie.ofx");
+      AssertXmlFile(m_OfxCombineDouble, "NL45TRIO0953178943_transactie-historie.ofx");
+      AssertXmlFile(m_OfxCombineDouble, "NL54BKMG0378842587_Alle_rekeningen.ofx");
+      AssertXmlFile(m_OfxCombineDouble, "NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
+      AssertXmlFile(m_OfxCombineDouble, "NL75FVLB0105564737_transactie-historie.ofx");
+      AssertXmlFile(m_OfxCombineDouble, "NL90KNAB0445266309_Alle_rekeningen.ofx");
+      AssertXmlFile(m_OfxCombineDouble, "NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx");
+      AssertXmlFile(m_OfxCombineDouble, "NL94COBA0678011583_Alle_rekeningen.ofx");
+      AssertXmlFile(m_OfxCombineDouble, "NL94COBA0678011583_K222-12345_Alle_spaarrekeningen.ofx");
+      AssertXmlFile(m_OfxCombineDouble, "NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx");
+      AssertXmlFile(m_OfxCombineDouble, "NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
+      AssertFile(m_OfxCombineDouble, "_Saldos_transactie-historie.csv");
+      LOGGER.log(Level.INFO, "Ready testGUILayoutCombine");
+    }
   }
 
   /**
@@ -425,27 +438,29 @@ public class GUILayoutTest extends TestCase {
     frame.button("Convert to OFX").click();
 
     // Evaluate results:
-    String logOutput = TestLogger.getOutput();
+    synchronized (lock) {
+      String logOutput = TestLogger.getOutput();
 
-    assertTrue(logOutput.contains("Transactions read: 124, after doubles removed: 124"));
-    assertTrue(logOutput.contains("Transactions read: 24, after doubles removed: 24"));
-    assertTrue(logOutput.contains("Transactions read: 9, after doubles removed: 9"));
-    assertTrue(logOutput.contains("Grand total of transactions read: 157"));
+      assertTrue(logOutput.contains("Transactions read: 124, after doubles removed: 124"));
+      assertTrue(logOutput.contains("Transactions read: 24, after doubles removed: 24"));
+      assertTrue(logOutput.contains("Transactions read: 9, after doubles removed: 9"));
+      assertTrue(logOutput.contains("Grand total of transactions read: 157"));
 
-    AssertXmlFile(m_OfxCombineOneByOne, "NL20LPLN0892606304_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineOneByOne, "NL38RABO0192584529_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineOneByOne, "NL45TRIO0953178943_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineOneByOne, "NL54BKMG0378842587_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombineOneByOne, "NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineOneByOne, "NL75FVLB0105564737_transactie-historie.ofx");
-    AssertXmlFile(m_OfxCombineOneByOne, "NL90KNAB0445266309_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombineOneByOne, "NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineOneByOne, "NL94COBA0678011583_Alle_rekeningen.ofx");
-    AssertXmlFile(m_OfxCombineOneByOne, "NL94COBA0678011583_K222-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineOneByOne, "NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx");
-    AssertXmlFile(m_OfxCombineOneByOne, "NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
-    AssertFile(m_OfxCombineOneByOne, "_Saldos_transactie-historie.csv");
-    LOGGER.log(Level.INFO, "Ready testGUILayoutCombine");
+      AssertXmlFile(m_OfxCombineOneByOne, "NL20LPLN0892606304_transactie-historie.ofx");
+      AssertXmlFile(m_OfxCombineOneByOne, "NL38RABO0192584529_transactie-historie.ofx");
+      AssertXmlFile(m_OfxCombineOneByOne, "NL45TRIO0953178943_transactie-historie.ofx");
+      AssertXmlFile(m_OfxCombineOneByOne, "NL54BKMG0378842587_Alle_rekeningen.ofx");
+      AssertXmlFile(m_OfxCombineOneByOne, "NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
+      AssertXmlFile(m_OfxCombineOneByOne, "NL75FVLB0105564737_transactie-historie.ofx");
+      AssertXmlFile(m_OfxCombineOneByOne, "NL90KNAB0445266309_Alle_rekeningen.ofx");
+      AssertXmlFile(m_OfxCombineOneByOne, "NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx");
+      AssertXmlFile(m_OfxCombineOneByOne, "NL94COBA0678011583_Alle_rekeningen.ofx");
+      AssertXmlFile(m_OfxCombineOneByOne, "NL94COBA0678011583_K222-12345_Alle_spaarrekeningen.ofx");
+      AssertXmlFile(m_OfxCombineOneByOne, "NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx");
+      AssertXmlFile(m_OfxCombineOneByOne, "NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx");
+      AssertFile(m_OfxCombineOneByOne, "_Saldos_transactie-historie.csv");
+      LOGGER.log(Level.INFO, "Ready testGUILayoutCombine");
+    }
   }
 
   // File asserts

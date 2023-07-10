@@ -66,6 +66,7 @@ public class GUILayout extends JPanel implements ItemListener {
   private static final long serialVersionUID = 1L;
   static final String c_CopyrightYear = "2023";
   static final String c_repoName = "Ing2Ofx";
+  public static final Object lock = new Object();
 
   // Loglevels: OFF SEVERE WARNING INFO CONFIG FINE FINER FINEST ALL
   static final String[] c_levels = { "OFF", "SEVERE", "WARNING", "INFO", "CONFIG", "FINE", "FINER", "FINEST", "ALL" };
@@ -403,15 +404,6 @@ public class GUILayout extends JPanel implements ItemListener {
       public void actionPerformed(ActionEvent e) {
         AboutWindow l_window = new AboutWindow(c_repoName, Main.m_creationtime, c_CopyrightYear);
         l_window.setVisible(true);
-
-        // @formatter:off
-        /*
-      
-        JFrame frame = new JFrame("About");
-        String l_message = "ING2OFX version " + Main.m_creationtime + "\n\nCopyright © " + c_CopyrightYear;
-        JOptionPane.showMessageDialog(frame, l_message, "About", JOptionPane.PLAIN_MESSAGE);
-         */
-        // @formatter:on
       }
     });
     mnHelpAbout.add(mntmAbout);

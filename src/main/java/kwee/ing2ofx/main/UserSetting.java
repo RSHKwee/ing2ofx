@@ -284,6 +284,36 @@ public class UserSetting {
     }
   }
 
+  /**
+   * Copy UserSetings
+   * 
+   * @return Copy of UserSetings
+   */
+  public UserSetting copy() {
+    UserSetting l_UserSetting = new UserSetting();
+    l_UserSetting.set_toDisk(m_toDisk);
+
+    l_UserSetting.set_AcountSeparateOFX(m_AcountSeparateOFX);
+    l_UserSetting.set_ConvertDecimalSeparator(m_ConvertDecimalSeparator);
+    l_UserSetting.set_ConvertDateFormat(m_ConvertDateFormat);
+    l_UserSetting.set_SeparatorComma(m_SeparatorComma);
+    l_UserSetting.set_Interest(m_Interest);
+    l_UserSetting.set_Savings(m_Savings);
+    l_UserSetting.set_ConfirmOnExit(m_ConfirmOnExit);
+    l_UserSetting.set_Java(m_Java);
+    l_UserSetting.set_ClearTransactions(m_ClearTransactions);
+
+    l_UserSetting.set_LookAndFeel(m_LookAndFeel);
+    l_UserSetting.set_GnuCashExecutable(new File(m_GnuCashExecutable));
+    l_UserSetting.set_Synonym_file(new File(m_Synonym_file));
+    l_UserSetting.set_OutputFolder(m_OutputFolder);
+
+    l_UserSetting.set_CsvFiles(m_CsvFiles);
+    l_UserSetting.set_Level(Level.parse(m_Level));
+    l_UserSetting.set_LogDir(m_LogDir);
+    return l_UserSetting;
+  }
+
   public String print() {
     String l_line = "User setting \n";
     l_line = l_line + "Name: " + pref.name() + "\n";
