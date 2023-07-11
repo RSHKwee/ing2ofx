@@ -60,6 +60,7 @@ import kwee.ing2ofx.main.Main;
 import kwee.ing2ofx.main.UserSetting;
 import kwee.library.AboutWindow;
 import kwee.library.OutputToLoggerReader;
+import kwee.library.ShowPreferences;
 
 public class GUILayout extends JPanel implements ItemListener {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
@@ -370,6 +371,18 @@ public class GUILayout extends JPanel implements ItemListener {
       }
     });
     mnSettings.add(chckbxmntm4Help);
+
+    // Option Preferences
+    JMenuItem mntmPreferences = new JMenuItem("Preferences");
+    mntmPreferences.setName("Preferences");
+    mntmPreferences.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        ShowPreferences showpref = new ShowPreferences(UserSetting.NodePrefName);
+        showpref.showAllPreferences();
+      }
+    });
+    mnSettings.add(mntmPreferences);
 
     // ? item
     JMenu mnHelpAbout = new JMenu("?");

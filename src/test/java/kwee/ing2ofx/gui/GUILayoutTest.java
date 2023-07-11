@@ -32,7 +32,6 @@ public class GUILayoutTest extends TestCase {
   private String c_IngSavingTransFile = "Alle_spaarrekeningen.csv";
   private String c_SNSTransFile = "transactie-historie.xml";
 
-  public UserSetting m_param = Main.m_param;
   private UserSetting m_OrgParam = new UserSetting();
   private TestFunctions m_Functions = new TestFunctions();
   private String m_OutputDir;
@@ -59,20 +58,20 @@ public class GUILayoutTest extends TestCase {
     super.setUp();
 
     // Parameters
-    m_OrgParam = m_param.copy();
-    m_param.set_ClearTransactions(true);
+    m_OrgParam = Main.m_param.copy();
+    Main.m_param.set_ClearTransactions(true);
 
-    m_param.set_AcountSeparateOFX(true);
-    m_param.set_ConvertDecimalSeparator(false);
-    m_param.set_ConvertDateFormat(false);
-    m_param.set_SeparatorComma(false);
-    m_param.set_Java(true);
-    m_param.set_Level(Level.INFO);
+    Main.m_param.set_AcountSeparateOFX(true);
+    Main.m_param.set_ConvertDecimalSeparator(false);
+    Main.m_param.set_ConvertDateFormat(false);
+    Main.m_param.set_SeparatorComma(false);
+    Main.m_param.set_Java(true);
+    Main.m_param.set_Level(Level.INFO);
 
     File ll_file = m_Functions.GetResourceFile(c_SynonymFile);
     m_OutputDir = ll_file.getParent();
-    m_param.set_Synonym_file(new File(c_SynonymFile));
-    m_param.save();
+    Main.m_param.set_Synonym_file(new File(c_SynonymFile));
+    Main.m_param.save();
 
     // Start GUI, with prepared Usersettings
     if (frame != null) {
@@ -96,8 +95,8 @@ public class GUILayoutTest extends TestCase {
   public void tearDown() throws Exception {
     super.tearDown();
 
-    m_param = m_OrgParam.copy();
-    m_param.save();
+    Main.m_param = m_OrgParam.copy();
+    Main.m_param.save();
     this.frame.cleanUp();
     TestLogger.close();
   }
