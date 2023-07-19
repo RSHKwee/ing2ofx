@@ -2,11 +2,15 @@ package kwee.ing2ofx.gui;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.assertj.swing.core.BasicRobot;
+import org.assertj.swing.core.Robot;
 import org.assertj.swing.fixture.FrameFixture;
 import org.assertj.swing.fixture.JFileChooserFixture;
+import org.assertj.swing.launcher.ApplicationLauncher;
 import org.assertj.swing.fixture.JCheckBoxFixture;
 
 import javax.swing.JFrame;
@@ -73,16 +77,21 @@ public class GUILayoutTest extends TestCase {
     Main.m_param.set_Synonym_file(new File(c_SynonymFile));
     Main.m_param.save();
 
-    // Start GUI, with prepared Usersettings
-    if (frame != null) {
-      frame.cleanUp();
+    // Launch your application or obtain a reference to an existing Swing frame
+    ApplicationLauncher.application(kwee.ing2ofx.main.Main.class).start();
+    try {
+      TimeUnit.SECONDS.sleep(1);
+    } catch (InterruptedException e) {
+      LOGGER.log(Level.INFO, e.getMessage());
     }
 
-    JFrame l_frame = new JFrame();
-    GUILayout guilayout = new GUILayout(true);
-    l_frame.add(guilayout);
-    frame = new FrameFixture(l_frame);
-    frame.show();
+    // Create a FrameFixture instance
+    JFrame l_frame = Main.createAndShowGUI();
+    l_frame.setName("DEFAULT");
+
+    // Get the robot associated with the FrameFixture
+    Robot robot = BasicRobot.robotWithCurrentAwtHierarchy();
+    frame = new FrameFixture(robot, l_frame);
 
     TestLogger.setup(Level.INFO);
   }

@@ -35,7 +35,7 @@ public class Main {
    * Create the GUI and show it. For thread safety, this method should be invoked
    * from the event-dispatching thread.
    */
-  private static void createAndShowGUI() {
+  public static JFrame createAndShowGUI() {
     // Set the look and feel.
     initLookAndFeel();
 
@@ -112,6 +112,7 @@ public class Main {
     frame.setVisible(true);
 
     LOGGER.log(Level.INFO, "ING csv / SNS xml to OFX convertor versie : " + m_creationtime);
+    return frame;
   }
 
   /**
@@ -177,9 +178,10 @@ public class Main {
     // Schedule a job for the event-dispatching thread:
     // creating and showing this application's GUI.
     javax.swing.SwingUtilities.invokeLater(new Runnable() {
+      @SuppressWarnings("unused")
       @Override
       public void run() {
-        createAndShowGUI();
+        JFrame frame = createAndShowGUI();
       }
     });
   }
