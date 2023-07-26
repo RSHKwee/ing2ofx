@@ -77,7 +77,7 @@ public class GUILayout extends JPanel implements ItemListener {
   static final String m_HelpFile = "ing2ofx.chm";
 
   // Variables
-  private String m_LogDir = "c:\\";
+  private String m_LogDir = "c:/";
   private boolean m_OutputFolderModified = false;
   private JTextArea output;
 
@@ -92,7 +92,7 @@ public class GUILayout extends JPanel implements ItemListener {
   private UserSetting m_param = Main.m_param;
   private boolean m_4Help = false;
 
-  private File m_GnuCashExecutable = new File("C:\\Program Files (x86)\\gnucash\\bin\\gnucash.exe");
+  private File m_GnuCashExecutable = new File("C:/Program Files (x86)/gnucash/bin/gnucash.exe");
   private File m_Synonym_file;
   private File m_OutputFolder;
   private File[] m_CsvFiles;
@@ -330,7 +330,7 @@ public class GUILayout extends JPanel implements ItemListener {
           if (option == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             LOGGER.log(Level.INFO, "Log folder: " + file.getAbsolutePath());
-            m_LogDir = file.getAbsolutePath() + "\\";
+            m_LogDir = file.getAbsolutePath() + "/";
             m_param.set_LogDir(m_LogDir);
             m_param.set_toDisk(true);
             m_toDisk = selected;

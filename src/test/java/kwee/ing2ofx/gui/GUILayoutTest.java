@@ -116,7 +116,7 @@ public class GUILayoutTest extends TestCase {
   @Test
   public void testGUILayoutING() {
     LOGGER.log(Level.INFO, "testGUILayoutING");
-    FileUtils.checkCreateDirectory(m_OutputDir + "\\" + m_OfxEnkelING);
+    FileUtils.checkCreateDirectory(m_OutputDir + "/" + m_OfxEnkelING);
 
     frame.button("CSV/XML File").click();
     JFileChooserFixture fileChooser = frame.fileChooser();
@@ -127,7 +127,7 @@ public class GUILayoutTest extends TestCase {
 
     frame.button("Output folder").click();
     fileChooser = frame.fileChooser();
-    fileChooser.setCurrentDirectory(new File(m_OutputDir + "\\" + m_OfxEnkelING + "\\"));
+    fileChooser.setCurrentDirectory(new File(m_OutputDir + "/" + m_OfxEnkelING + "/"));
     fileChooser.approve();
 
     frame.button("Convert to OFX").click();
@@ -154,11 +154,11 @@ public class GUILayoutTest extends TestCase {
   @Test
   public void testGUILayoutINGSaving() {
     LOGGER.log(Level.INFO, "testGUILayoutINGSaving");
-    FileUtils.checkCreateDirectory(m_OutputDir + "\\" + m_OfxEnkelINGSaving);
+    FileUtils.checkCreateDirectory(m_OutputDir + "/" + m_OfxEnkelINGSaving);
 
     frame.button("Output folder").click();
     JFileChooserFixture fileChooser = frame.fileChooser();
-    fileChooser.setCurrentDirectory(new File(m_OutputDir + "\\" + m_OfxEnkelINGSaving));
+    fileChooser.setCurrentDirectory(new File(m_OutputDir + "/" + m_OfxEnkelINGSaving));
     fileChooser.approve();
 
     frame.button("CSV/XML File").click();
@@ -194,11 +194,11 @@ public class GUILayoutTest extends TestCase {
   @Test
   public void testGUILayoutSNS() {
     LOGGER.log(Level.INFO, "testGUILayoutSNS");
-    FileUtils.checkCreateDirectory(m_OutputDir + "\\" + m_OfxEnkelSNS);
+    FileUtils.checkCreateDirectory(m_OutputDir + "/" + m_OfxEnkelSNS);
 
     frame.button("Output folder").click();
     JFileChooserFixture fileChooser = frame.fileChooser();
-    fileChooser.setCurrentDirectory(new File(m_OutputDir + "\\" + m_OfxEnkelSNS));
+    fileChooser.setCurrentDirectory(new File(m_OutputDir + "/" + m_OfxEnkelSNS));
     fileChooser.approve();
 
     frame.button("CSV/XML File").click();
@@ -232,11 +232,11 @@ public class GUILayoutTest extends TestCase {
   @Test
   public void testGUILayoutCombine() {
     LOGGER.log(Level.INFO, "testGUILayoutCombine");
-    FileUtils.checkCreateDirectory(m_OutputDir + "\\" + m_OfxCombine);
+    FileUtils.checkCreateDirectory(m_OutputDir + "/" + m_OfxCombine);
 
     frame.button("Output folder").click();
     JFileChooserFixture fileChooser = frame.fileChooser();
-    fileChooser.setCurrentDirectory(new File(m_OutputDir + "\\" + m_OfxCombine));
+    fileChooser.setCurrentDirectory(new File(m_OutputDir + "/" + m_OfxCombine));
     fileChooser.approve();
 
     frame.button("CSV/XML File").click();
@@ -244,9 +244,9 @@ public class GUILayoutTest extends TestCase {
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
 
     // Select multiple files
-    File file1 = new File(m_OutputDir + "\\" + c_IngTransFile);
-    File file2 = new File(m_OutputDir + "\\" + c_IngSavingTransFile);
-    File file3 = new File(m_OutputDir + "\\" + c_SNSTransFile);
+    File file1 = new File(m_OutputDir + "/" + c_IngTransFile);
+    File file2 = new File(m_OutputDir + "/" + c_IngSavingTransFile);
+    File file3 = new File(m_OutputDir + "/" + c_SNSTransFile);
     fileChooser.selectFiles(file1, file2, file3);
     fileChooser.approve();
     frame.button("Read transactions").click();
@@ -284,7 +284,7 @@ public class GUILayoutTest extends TestCase {
   @Test
   public void testGUILayoutCombineSyn() {
     LOGGER.log(Level.INFO, "testGUILayoutCombineSyn");
-    FileUtils.checkCreateDirectory(m_OutputDir + "\\" + m_OfxCombineSyn);
+    FileUtils.checkCreateDirectory(m_OutputDir + "/" + m_OfxCombineSyn);
 
     // Define Synonym file
     frame.menuItem("Synonym file").click();
@@ -295,7 +295,7 @@ public class GUILayoutTest extends TestCase {
 
     frame.button("Output folder").click();
     JFileChooserFixture fileChooser = frame.fileChooser();
-    fileChooser.setCurrentDirectory(new File(m_OutputDir + "\\" + m_OfxCombineSyn));
+    fileChooser.setCurrentDirectory(new File(m_OutputDir + "/" + m_OfxCombineSyn));
     fileChooser.approve();
 
     frame.button("CSV/XML File").click();
@@ -303,9 +303,9 @@ public class GUILayoutTest extends TestCase {
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
 
     // Select multiple files
-    File file1 = new File(m_OutputDir + "\\" + c_IngTransFile);
-    File file2 = new File(m_OutputDir + "\\" + c_IngSavingTransFile);
-    File file3 = new File(m_OutputDir + "\\" + c_SNSTransFile);
+    File file1 = new File(m_OutputDir + "/" + c_IngTransFile);
+    File file2 = new File(m_OutputDir + "/" + c_IngSavingTransFile);
+    File file3 = new File(m_OutputDir + "/" + c_SNSTransFile);
     fileChooser.selectFiles(file1, file2, file3);
     fileChooser.approve();
     frame.button("Read transactions").click();
@@ -342,23 +342,23 @@ public class GUILayoutTest extends TestCase {
   @Test
   public void testGUILayoutDouble() {
     LOGGER.log(Level.INFO, "testGUILayoutDouble");
-    FileUtils.checkCreateDirectory(m_OutputDir + "\\" + m_OfxCombineDouble);
+    FileUtils.checkCreateDirectory(m_OutputDir + "/" + m_OfxCombineDouble);
 
     JCheckBoxFixture checkBox = frame.checkBox("Clear transactions");
     checkBox.uncheck();
 
     frame.button("Output folder").click();
     JFileChooserFixture fileChooser = frame.fileChooser();
-    fileChooser.setCurrentDirectory(new File(m_OutputDir + "\\" + m_OfxCombineDouble));
+    fileChooser.setCurrentDirectory(new File(m_OutputDir + "/" + m_OfxCombineDouble));
     fileChooser.approve();
 
     frame.button("CSV/XML File").click();
     fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
     // Select multiple files
-    File file1 = new File(m_OutputDir + "\\" + c_IngTransFile);
-    File file2 = new File(m_OutputDir + "\\" + c_IngSavingTransFile);
-    File file3 = new File(m_OutputDir + "\\" + c_SNSTransFile);
+    File file1 = new File(m_OutputDir + "/" + c_IngTransFile);
+    File file2 = new File(m_OutputDir + "/" + c_IngSavingTransFile);
+    File file3 = new File(m_OutputDir + "/" + c_SNSTransFile);
     fileChooser.selectFiles(file1, file2, file3);
     fileChooser.approve();
     frame.button("Read transactions").click();
@@ -368,9 +368,9 @@ public class GUILayoutTest extends TestCase {
     fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
 
-    file1 = new File(m_OutputDir + "\\" + c_IngTransFile);
-    file2 = new File(m_OutputDir + "\\" + c_IngSavingTransFile);
-    file3 = new File(m_OutputDir + "\\" + c_SNSTransFile);
+    file1 = new File(m_OutputDir + "/" + c_IngTransFile);
+    file2 = new File(m_OutputDir + "/" + c_IngSavingTransFile);
+    file3 = new File(m_OutputDir + "/" + c_SNSTransFile);
     fileChooser.selectFiles(file1, file2, file3);
     fileChooser.approve();
     frame.button("Read transactions").click();
@@ -412,14 +412,14 @@ public class GUILayoutTest extends TestCase {
     LOGGER.log(Level.FINE, "testGUILayoutOneByOne");
 
     // Combine multiple input files
-    FileUtils.checkCreateDirectory(m_OutputDir + "\\" + m_OfxCombineOneByOne);
+    FileUtils.checkCreateDirectory(m_OutputDir + "/" + m_OfxCombineOneByOne);
 
     JCheckBoxFixture checkBox = frame.checkBox("Clear transactions");
     checkBox.uncheck();
 
     frame.button("Output folder").click();
     JFileChooserFixture fileChooser = frame.fileChooser();
-    fileChooser.setCurrentDirectory(new File(m_OutputDir + "\\" + m_OfxCombineOneByOne));
+    fileChooser.setCurrentDirectory(new File(m_OutputDir + "/" + m_OfxCombineOneByOne));
     fileChooser.approve();
 
     frame.button("CSV/XML File").click();
@@ -480,17 +480,17 @@ public class GUILayoutTest extends TestCase {
    */
   private void AssertXmlFile(String a_dir, String a_filename) {
     boolean bstat = false;
-    String l_filename1 = m_OutputDir + "\\" + a_dir + m_DirExp_Suffux + "\\" + a_filename;
-    String l_filename2 = m_OutputDir + "\\" + a_dir + "\\" + a_filename;
+    String l_filename1 = m_OutputDir + "/" + a_dir + m_DirExp_Suffux + "/" + a_filename;
+    String l_filename2 = m_OutputDir + "/" + a_dir + "/" + a_filename;
     try {
       bstat = m_Functions.compareXmlFiles(l_filename1, l_filename2);
       if (!bstat) {
         LOGGER.log(Level.INFO,
-            "Files not equal " + a_dir + m_DirExp_Suffux + "\\" + a_filename + " and " + a_dir + "\\" + a_filename);
+            "Files not equal " + a_dir + m_DirExp_Suffux + "/" + a_filename + " and " + a_dir + "/" + a_filename);
       }
     } catch (IOException e) {
       // e.printStackTrace();
-      LOGGER.log(Level.INFO, e.getMessage() + "File " + a_dir + "\\" + a_filename + " and " + a_dir + m_DirExp_Suffux);
+      LOGGER.log(Level.INFO, e.getMessage() + "File " + a_dir + "/" + a_filename + " and " + a_dir + m_DirExp_Suffux);
     }
     assertTrue(bstat);
   }
@@ -503,12 +503,12 @@ public class GUILayoutTest extends TestCase {
    */
   private void AssertFile(String a_dir, String a_filename) {
     boolean bstat = false;
-    String l_filename1 = m_OutputDir + "\\" + a_dir + m_DirExp_Suffux + "\\" + a_filename;
-    String l_filename2 = m_OutputDir + "\\" + a_dir + "\\" + a_filename;
+    String l_filename1 = m_OutputDir + "/" + a_dir + m_DirExp_Suffux + "/" + a_filename;
+    String l_filename2 = m_OutputDir + "/" + a_dir + "/" + a_filename;
     bstat = FileUtils.FileContentsEquals(l_filename1, l_filename2);
     if (!bstat) {
       LOGGER.log(Level.INFO,
-          "Files not equal " + a_dir + m_DirExp_Suffux + "\\" + a_filename + " and " + a_dir + "\\" + a_filename);
+          "Files not equal " + a_dir + m_DirExp_Suffux + "/" + a_filename + " and " + a_dir + "/" + a_filename);
     }
     assertTrue(bstat);
   }

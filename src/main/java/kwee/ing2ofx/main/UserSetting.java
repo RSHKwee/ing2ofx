@@ -20,7 +20,7 @@ public class UserSetting {
   private String c_LevelValue = "INFO";
 
   private String c_GnuCashExe = "GnuCashExe";
-  private String c_GnuCashExeValue = "C:\\Program Files (x86)\\gnucash\\bin\\gnucash.exe";
+  private String c_GnuCashExeValue = "C:/Program Files (x86)/gnucash/bin/gnucash.exe";
   private String c_Synonym_file = "SynonymFile";
 
   private String c_ConfirmOnExit = "ConfirmOnExit";

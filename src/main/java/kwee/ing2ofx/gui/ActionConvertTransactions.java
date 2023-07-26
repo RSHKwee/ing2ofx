@@ -137,14 +137,14 @@ public class ActionConvertTransactions extends SwingWorker<Void, String> impleme
           }
           String l_filename = "";
           if (!l_prefix.isBlank()) {
-            l_filename = m_OutputDir + "\\" + String.join("_", l_prefix, l_account, l_suffix);
+            l_filename = m_OutputDir + "/" + String.join("_", l_prefix, l_account, l_suffix);
             if (!m_FilterName.isBlank()) {
               l_filename = String.join("_", l_filename, m_FilterName);
             }
             l_filename = l_filename + ".ofx";
             LOGGER.log(Level.INFO, "OFX Filename: " + l_filename);
           } else {
-            l_filename = m_OutputDir + "\\" + String.join("_", l_account, l_suffix) + ".ofx";
+            l_filename = m_OutputDir + "/" + String.join("_", l_account, l_suffix) + ".ofx";
             LOGGER.log(Level.INFO, "OFX Filename: " + l_filename);
           }
 
@@ -155,11 +155,11 @@ public class ActionConvertTransactions extends SwingWorker<Void, String> impleme
         });
       } else {
         OfxDocument l_document = new OfxDocument(m_OfxTransactions, m_metainfo);
-        String l_outputfilename = m_OutputDir + "\\AllTransactions.ofx";
+        String l_outputfilename = m_OutputDir + "/AllTransactions.ofx";
         l_document.CreateOfxDocument(l_outputfilename);
       }
 
-      String l_outputfilename = m_OutputDir + "\\_Saldos_" + m_Suffix + ".csv";
+      String l_outputfilename = m_OutputDir + "/_Saldos_" + m_Suffix + ".csv";
       LOGGER.log(Level.INFO, "Saldos filename: " + l_outputfilename);
       OfxFunctions.dumpMetaInfo(l_outputfilename, m_metainfo);
 
