@@ -32,26 +32,23 @@
       <artifactId>commons-io</artifactId>
       <version>2.11.0</version>
     </dependency>
-	<dependency>
-      <groupId>com.sun.xml.bind</groupId>
-      <artifactId>jaxb-core</artifactId>
-      <version>2.3.0.1</version>
-    </dependency>
-    <dependency>
-      <groupId>javax.xml.bind</groupId>
-      <artifactId>jaxb-api</artifactId>
-	  <version>2.3.1</version>
-    </dependency>
-    <dependency>
-      <groupId>com.sun.xml.bind</groupId>
-      <artifactId>jaxb-impl</artifactId>
-      <version>2.3.1</version>
-    </dependency>
     <dependency>
       <groupId>org.javassist</groupId>
       <artifactId>javassist</artifactId>
-      <version>3.25.0-GA</version>
+      <version>3.29.2-GA</version>
     </dependency>
+    
+    <dependency>
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-impl</artifactId>
+      <version>4.0.1</version>
+    </dependency>
+
+    		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+			<version>4.0.0</version>
+		</dependency>
   </dependencies>
   
   <build>
@@ -63,6 +60,27 @@
     </resources>   
     <!--  <pluginManagement> -->
 	<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>xjc</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- The package of your generated sources -->
+					<packageName>kwee.ing2ofx.generated</packageName>
+					<sources>
+						<source>src/main/resources/xsd</source>
+					</sources>
+				</configuration>
+			</plugin>
+		
       <plugin>
 		<artifactId>maven-assembly-plugin</artifactId>
 		<executions>

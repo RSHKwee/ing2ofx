@@ -1,8 +1,9 @@
 package kwee.camt053parser;
 
-import kwee.camt053parser.model.*;
+import jakarta.xml.bind.*;
+import kwee.ing2ofx.generated.Document;
+import kwee.ing2ofx.generated.ObjectFactory;
 
-import javax.xml.bind.*;
 import java.io.InputStream;
 
 public class Camt053Parser {

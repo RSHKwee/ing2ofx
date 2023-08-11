@@ -21,12 +21,12 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import kwee.camt053parser.Camt053Parser;
-import kwee.camt053parser.model.AccountStatement2;
-import kwee.camt053parser.model.CashBalance3;
-import kwee.camt053parser.model.CreditDebitCode;
-import kwee.camt053parser.model.Document;
-import kwee.camt053parser.model.EntryDetails1;
-import kwee.camt053parser.model.ReportEntry2;
+import kwee.ing2ofx.generated.AccountStatement2;
+import kwee.ing2ofx.generated.CashBalance3;
+import kwee.ing2ofx.generated.CreditDebitCode;
+import kwee.ing2ofx.generated.Document;
+import kwee.ing2ofx.generated.EntryDetails1;
+import kwee.ing2ofx.generated.ReportEntry2;
 
 import kwee.library.DateToNumeric;
 import kwee.convertor.sns.snsLibrary.SnsTransaction;
