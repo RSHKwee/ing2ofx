@@ -71,6 +71,7 @@ public class GUILayoutTest extends TestCase {
     Main.m_param.set_SeparatorComma(false);
     Main.m_param.set_Java(true);
     Main.m_param.set_Level(Level.INFO);
+    Main.m_param.set_Language("en");
 
     File ll_file = m_Functions.GetResourceFile(c_SynonymFile);
     m_OutputDir = ll_file.getParent();
