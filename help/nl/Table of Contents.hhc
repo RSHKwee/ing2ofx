@@ -9,27 +9,27 @@
 </OBJECT>
 <UL>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="Introduction">
+		<param name="Name" value="Inleiding">
 		<param name="Local" value="Introduction.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="Background">
+		<param name="Name" value="Achtergrond">
 		<param name="Local" value="Background.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="Opening menu">
+		<param name="Name" value="Hoofdmenu">
 		<param name="Local" value="OpeningMenu.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="Settings menu">
+		<param name="Name" value="Instellingen menu">
 		<param name="Local" value="SettingsMenu.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="Synonyms">
+		<param name="Name" value="Synonymen">
 		<param name="Local" value="Synonyms.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="Filename convention">
+		<param name="Name" value="Bestandsnaam conventie">
 		<param name="Local" value="Filenames.htm">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
