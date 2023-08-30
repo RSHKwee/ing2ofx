@@ -12,9 +12,11 @@ import kwee.ofxLibrary.OfxMetaInfo;
 import kwee.ofxLibrary.OfxTransaction;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Desktop;
 //import java.awt.Desktop;
 import java.awt.Dimension;
+import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -26,6 +28,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -105,21 +108,28 @@ public class GUILayout extends JPanel implements ItemListener {
   private boolean m_AcountSeparateOFX = true;
   private boolean m_Interest = false;
   private boolean m_ClearTransactions = true;
+  private String m_Language = "nl";
+  private int i = 0;
+  private JFrame m_Frame;
 
   /**
    * Define GUI layout
    * 
    */
-  public GUILayout(boolean a_help) {
+  public GUILayout(JFrame frame, boolean a_help) {
+    m_Frame = frame;
     m_4Help = a_help;
     do_GUILayout();
   }
 
-  public GUILayout() {
+  public GUILayout(JFrame frame) {
+    m_Frame = frame;
     do_GUILayout();
   }
 
   public void do_GUILayout() {
+    bundle.changeLanguage(m_param.get_Language());
+
     JLabel lblCSVFile = new JLabel(bundle.getMessage("SelectInpFile"));
     JButton btnOutputFolder = new JButton(bundle.getMessage("OutputFolder"));
     JButton btnReadTransactions = new JButton(bundle.getMessage("ReadTransactions"));
@@ -138,6 +148,7 @@ public class GUILayout extends JPanel implements ItemListener {
     JMenu mnGnuCashExe = new JMenu(bundle.getMessage("GnuCashExecutable"));
     JMenu mnSynonym = new JMenu(bundle.getMessage("SynonymFile"));
     JMenuItem mntmLoglevel = new JMenuItem(bundle.getMessage("Loglevel"));
+    JMenuItem mntmLanguages = new JMenuItem(bundle.getMessage("Languages"));
 
     JCheckBox chckbxInterest = new JCheckBox(bundle.getMessage("OnlyInterestTransaction"));
     chckbxInterest.setName(bundle.getMessage("OnlyInterestTransaction"));
@@ -274,6 +285,34 @@ public class GUILayout extends JPanel implements ItemListener {
       }
     });
     mnSynonym.add(mntmSynonym);
+
+    // Language setting
+    mntmLanguages.setHorizontalAlignment(SwingConstants.LEFT);
+    mntmLanguages.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        JFrame frame = new JFrame(bundle.getMessage("Language"));
+        String language = "nl";
+        Set<String> l_languages = bundle.getTranslations();
+        String[] la_languages = new String[l_languages.size()];
+        i = 0;
+        l_languages.forEach(lang -> {
+          la_languages[i] = lang;
+          i++;
+        });
+
+        language = (String) JOptionPane.showInputDialog(frame, bundle.getMessage("Language") + "?", "nl",
+            JOptionPane.QUESTION_MESSAGE, null, la_languages, m_Language);
+        if (language != null) {
+          m_Language = language;
+          m_param.set_Language(m_Language);
+          m_param.save();
+          bundle.changeLanguage(language);
+          restartGUI();
+        }
+      }
+    });
+    mnSettings.add(mntmLanguages);
 
     // Option log level
     mntmLoglevel.setHorizontalAlignment(SwingConstants.LEFT);
@@ -663,6 +702,14 @@ public class GUILayout extends JPanel implements ItemListener {
     bottomHalf.setMinimumSize(new Dimension(500, 100));
     bottomHalf.setPreferredSize(new Dimension(500, 400));
     splitPane.add(bottomHalf);
+  }
+
+  private void restartGUI() {
+    // Dispose of the current GUI window or frame
+    m_Frame.dispose();
+
+    // Recreate the main GUI window or frame
+    m_Frame = Main.createAndShowGUI();
   }
 
   @Override

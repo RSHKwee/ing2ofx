@@ -37,6 +37,7 @@ public class Main {
    */
   public static JFrame createAndShowGUI() {
     ApplicationMessages bundle = ApplicationMessages.getInstance();
+    bundle.changeLanguage(m_param.get_Language());
 
     // Set the look and feel.
     initLookAndFeel();
@@ -102,7 +103,7 @@ public class Main {
     }
 
     // Create and set up the content pane.
-    GUILayout scenGUI = new GUILayout();
+    GUILayout scenGUI = new GUILayout(frame);
     scenGUI.setOpaque(true);
     frame.setContentPane(scenGUI);
 

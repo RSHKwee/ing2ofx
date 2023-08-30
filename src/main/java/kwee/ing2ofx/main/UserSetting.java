@@ -38,6 +38,7 @@ public class UserSetting {
   private String c_Java = "UseJava";
   private String c_LogDir = "LogDir";
   private String c_ClearTransactions = "ClearTransactions";
+  private String c_Language = "Language";
 
   private String m_Level = c_LevelValue;
   private String m_LookAndFeel;
@@ -46,6 +47,7 @@ public class UserSetting {
   private File[] m_CsvFiles = null;
   private String m_LogDir = "";
   private String m_Synonym_file = "";
+  private String m_Language = "nl";
 
   private boolean m_ConfirmOnExit = false;
   private boolean m_toDisk = false;
@@ -85,20 +87,13 @@ public class UserSetting {
     m_GnuCashExecutable = pref.get(c_GnuCashExe, c_GnuCashExeValue);
     m_OutputFolder = pref.get(c_OutputFolder, "");
     m_Synonym_file = pref.get(c_Synonym_file, "");
+    m_Language = pref.get(c_Language, "nl");
 
     String l_CsvFiles = pref.get(c_CsvFiles, "");
     m_CsvFiles = StringToFiles(l_CsvFiles);
 
     m_Level = pref.get(c_Level, c_LevelValue);
     m_LogDir = pref.get(c_LogDir, "");
-  }
-
-  public String get_LogDir() {
-    return m_LogDir;
-  }
-
-  public void set_LogDir(String m_LogDir) {
-    this.m_LogDir = m_LogDir;
   }
 
   /**
@@ -117,8 +112,16 @@ public class UserSetting {
     return m_CsvFiles;
   }
 
+  public String get_Language() {
+    return m_Language;
+  }
+
   public Level get_Level() {
     return Level.parse(m_Level);
+  }
+
+  public String get_LogDir() {
+    return m_LogDir;
   }
 
   public String get_LookAndFeel() {
@@ -174,6 +177,10 @@ public class UserSetting {
     this.m_GnuCashExecutable = a_GnuCashExecutable.getAbsolutePath();
   }
 
+  public void set_LogDir(String m_LogDir) {
+    this.m_LogDir = m_LogDir;
+  }
+
   public void set_Synonym_file(File a_Synonym_file) {
     pref.put(c_Synonym_file, a_Synonym_file.getAbsolutePath());
     this.m_Synonym_file = a_Synonym_file.getAbsolutePath();
@@ -192,6 +199,10 @@ public class UserSetting {
   public void set_CsvFiles(File[] a_CsvFiles) {
     pref.put(c_CsvFiles, FilesToString(a_CsvFiles));
     this.m_CsvFiles = a_CsvFiles;
+  }
+
+  public void set_Language(String m_Language) {
+    this.m_Language = m_Language;
   }
 
   public void set_toDisk(boolean a_toDisk) {
@@ -271,6 +282,7 @@ public class UserSetting {
       pref.putBoolean(c_Java, m_Java);
       pref.putBoolean(c_ClearTransactions, m_ClearTransactions);
 
+      pref.put(c_Language, m_Language);
       pref.put(c_LookAndFeel, m_LookAndFeel);
       pref.put(c_GnuCashExe, m_GnuCashExecutable);
       pref.put(c_Synonym_file, m_Synonym_file);
@@ -303,6 +315,7 @@ public class UserSetting {
     l_UserSetting.set_ConfirmOnExit(m_ConfirmOnExit);
     l_UserSetting.set_Java(m_Java);
     l_UserSetting.set_ClearTransactions(m_ClearTransactions);
+    l_UserSetting.set_Language(m_Language);
 
     l_UserSetting.set_LookAndFeel(m_LookAndFeel);
     l_UserSetting.set_GnuCashExecutable(new File(m_GnuCashExecutable));
@@ -321,6 +334,7 @@ public class UserSetting {
     l_line = l_line + c_toDisk + ": " + m_toDisk + "\n";
     l_line = l_line + c_AccountSepOfx + ": " + m_AcountSeparateOFX + "\n";
     l_line = l_line + c_ConvertDecimalSeparator + ": " + m_ConvertDecimalSeparator + "\n";
+    l_line = l_line + c_Language + ": " + m_Language + "\n";
 
     l_line = l_line + c_ConvertDateFormat + ": " + m_ConvertDateFormat + "\n";
     l_line = l_line + c_SeparatorComma + ": " + m_SeparatorComma + "\n";
