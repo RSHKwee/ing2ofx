@@ -59,6 +59,7 @@ import kwee.ing2ofx.main.Main;
 
 import kwee.ing2ofx.main.UserSetting;
 import kwee.library.AboutWindow;
+import kwee.library.ApplicationMessages;
 import kwee.library.OutputToLoggerReader;
 import kwee.library.ShowPreferences;
 
@@ -68,6 +69,8 @@ public class GUILayout extends JPanel implements ItemListener {
   static final String c_CopyrightYear = "2023";
   static final String c_repoName = "Ing2Ofx";
   public static final Object lock = new Object();
+
+  private ApplicationMessages bundle = ApplicationMessages.getInstance();
 
   // Loglevels: OFF SEVERE WARNING INFO CONFIG FINE FINER FINEST ALL
   static final String[] c_levels = { "OFF", "SEVERE", "WARNING", "INFO", "CONFIG", "FINE", "FINER", "FINEST", "ALL" };
@@ -117,27 +120,27 @@ public class GUILayout extends JPanel implements ItemListener {
   }
 
   public void do_GUILayout() {
-    JLabel lblCSVFile = new JLabel("Select ING CSV or SNS XML file(s)");
-    JButton btnOutputFolder = new JButton("Output folder");
-    JButton btnReadTransactions = new JButton("Read transactions");
-    JButton btnConvert = new JButton("Convert to OFX");
+    JLabel lblCSVFile = new JLabel(bundle.getMessage("SelectInpFile"));
+    JButton btnOutputFolder = new JButton(bundle.getMessage("OutputFolder"));
+    JButton btnReadTransactions = new JButton(bundle.getMessage("ReadTransactions"));
+    JButton btnConvert = new JButton(bundle.getMessage("ConvertToOFX"));
 
-    btnOutputFolder.setName("Output folder");
-    btnReadTransactions.setName("Read transactions");
-    btnConvert.setName("Convert to OFX");
+    btnOutputFolder.setName(bundle.getMessage("OutputFolder"));
+    btnReadTransactions.setName(bundle.getMessage("ReadTransactions"));
+    btnConvert.setName(bundle.getMessage("ConvertToOFX"));
 
     // GUI items menubar
     JMenuBar menuBar = new JMenuBar();
 
-    JCheckBoxMenuItem chckbxAcountSeparateOFX = new JCheckBoxMenuItem("Accounts in separate OFX files");
-    chckbxAcountSeparateOFX.setName("Accounts in separate OFX files");
+    JCheckBoxMenuItem chckbxAcountSeparateOFX = new JCheckBoxMenuItem(bundle.getMessage("AccountsInSeparateOFXFiles"));
+    chckbxAcountSeparateOFX.setName(bundle.getMessage("AccountsInSeparateOFXFiles"));
 
-    JMenu mnGnuCashExe = new JMenu("GnuCash executable");
-    JMenu mnSynonym = new JMenu("Synonym file");
-    JMenuItem mntmLoglevel = new JMenuItem("Loglevel");
+    JMenu mnGnuCashExe = new JMenu(bundle.getMessage("GnuCashExecutable"));
+    JMenu mnSynonym = new JMenu(bundle.getMessage("SynonymFile"));
+    JMenuItem mntmLoglevel = new JMenuItem(bundle.getMessage("Loglevel"));
 
-    JCheckBox chckbxInterest = new JCheckBox("Only interest transaction");
-    chckbxInterest.setName("Only interest transaction");
+    JCheckBox chckbxInterest = new JCheckBox(bundle.getMessage("OnlyInterestTransaction"));
+    chckbxInterest.setName(bundle.getMessage("OnlyInterestTransaction"));
 
     JTextField txtOutputFilename = new JTextField();
     JLabel lblOutputFolder = new JLabel("");
@@ -193,14 +196,14 @@ public class GUILayout extends JPanel implements ItemListener {
         boolean selected = chckbxAcountSeparateOFX.isSelected();
         m_AcountSeparateOFX = selected;
         m_param.set_AcountSeparateOFX(selected);
-        LOGGER.log(Level.CONFIG, "Accounts in separate OFX files :" + Boolean.toString(selected));
+        LOGGER.log(Level.CONFIG, bundle.getMessage("AccountsInSeparateOFXFilesSelected", Boolean.toString(selected)));
       }
     });
     mnSettings.add(chckbxAcountSeparateOFX);
 
     // Savings transactions
-    JCheckBoxMenuItem chcmnkbxInterest = new JCheckBoxMenuItem("Only interest transactions");
-    chcmnkbxInterest.setName("Only interest transactions");
+    JCheckBoxMenuItem chcmnkbxInterest = new JCheckBoxMenuItem(bundle.getMessage("OnlyInterestTransaction"));
+    chcmnkbxInterest.setName(bundle.getMessage("OnlyInterestTransaction"));
     chcmnkbxInterest.setHorizontalAlignment(SwingConstants.LEFT);
     chcmnkbxInterest.setSelected(m_Interest);
     chcmnkbxInterest.addActionListener(new ActionListener() {
@@ -209,7 +212,7 @@ public class GUILayout extends JPanel implements ItemListener {
         boolean selected = chcmnkbxInterest.isSelected();
         m_Interest = selected;
         m_param.set_Interest(m_Interest);
-        LOGGER.log(Level.CONFIG, "Save only interest :" + Boolean.toString(selected));
+        LOGGER.log(Level.CONFIG, bundle.getMessage("OnlyInterestTransactionSelected", Boolean.toString(selected)));
       }
     });
     mnSettings.add(chcmnkbxInterest);
@@ -217,7 +220,7 @@ public class GUILayout extends JPanel implements ItemListener {
     // Option Location GnuCash exe
     mnSettings.add(mnGnuCashExe);
 
-    String l_GnuCashExecutable = "Install GnuCash?";
+    String l_GnuCashExecutable = bundle.getMessage("InstallGnuCashQuestion");
     if (m_GnuCashExecutable.exists()) {
       l_GnuCashExecutable = m_GnuCashExecutable.getAbsolutePath();
     }
@@ -234,7 +237,7 @@ public class GUILayout extends JPanel implements ItemListener {
         int option = fileChooser.showOpenDialog(GUILayout.this);
         if (option == JFileChooser.APPROVE_OPTION) {
           File file = fileChooser.getSelectedFile();
-          LOGGER.log(Level.INFO, "GnuCash executable: " + file.getAbsolutePath());
+          LOGGER.log(Level.INFO, bundle.getMessage("InstalledGnuCash", file.getAbsolutePath()));
           m_GnuCashExecutable = file;
           m_param.set_GnuCashExecutable(m_GnuCashExecutable);
           mntmGnuCashExe.setText(m_GnuCashExecutable.getAbsolutePath());
@@ -246,12 +249,12 @@ public class GUILayout extends JPanel implements ItemListener {
     // Option Location Synonym file
     mnSettings.add(mnSynonym);
 
-    String l_Synonyme = "Location synonym file?";
+    String l_Synonyme = bundle.getMessage("SynonymFileQuestion");
     if (m_Synonym_file.exists()) {
       l_Synonyme = m_Synonym_file.getAbsolutePath();
     }
     JMenuItem mntmSynonym = new JMenuItem(l_Synonyme);
-    mntmSynonym.setName("Synonym file");
+    mntmSynonym.setName(bundle.getMessage("SynonymFile"));
     mntmSynonym.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -263,7 +266,7 @@ public class GUILayout extends JPanel implements ItemListener {
         int option = fileChooser.showOpenDialog(GUILayout.this);
         if (option == JFileChooser.APPROVE_OPTION) {
           File file = fileChooser.getSelectedFile();
-          LOGGER.log(Level.INFO, "Synonym file: " + file.getAbsolutePath());
+          LOGGER.log(Level.INFO, bundle.getMessage("SynonymFileSelected", file.getAbsolutePath()));
           m_Synonym_file = file;
           m_param.set_Synonym_file(m_Synonym_file);
           mntmSynonym.setText(m_Synonym_file.getAbsolutePath());
@@ -277,10 +280,10 @@ public class GUILayout extends JPanel implements ItemListener {
     mntmLoglevel.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        JFrame frame = new JFrame("Loglevel");
+        JFrame frame = new JFrame(bundle.getMessage("Loglevel"));
         String level = "";
-        level = (String) JOptionPane.showInputDialog(frame, "Loglevel?", "INFO", JOptionPane.QUESTION_MESSAGE, null,
-            c_levels, m_Level.toString());
+        level = (String) JOptionPane.showInputDialog(frame, bundle.getMessage("Loglevel") + "?", "INFO",
+            JOptionPane.QUESTION_MESSAGE, null, c_levels, m_Level.toString());
         if (level != null) {
           m_Level = Level.parse(level.toUpperCase());
           m_param.set_Level(m_Level);
@@ -291,7 +294,7 @@ public class GUILayout extends JPanel implements ItemListener {
     mnSettings.add(mntmLoglevel);
 
     // Add item Look and Feel
-    JMenu menu = new JMenu("Look and Feel");
+    JMenu menu = new JMenu(bundle.getMessage("LookAndFeel"));
     menu.setName("LookAndFeel");
     menu.setHorizontalAlignment(SwingConstants.LEFT);
     mnSettings.add(menu);
@@ -317,7 +320,7 @@ public class GUILayout extends JPanel implements ItemListener {
     }
 
     // Option Logging to Disk
-    JCheckBoxMenuItem mntmLogToDisk = new JCheckBoxMenuItem("Create logfiles");
+    JCheckBoxMenuItem mntmLogToDisk = new JCheckBoxMenuItem(bundle.getMessage("CreateLogfiles"));
     mntmLogToDisk.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -329,7 +332,7 @@ public class GUILayout extends JPanel implements ItemListener {
           int option = fileChooser.showOpenDialog(GUILayout.this);
           if (option == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
-            LOGGER.log(Level.INFO, "Log folder: " + file.getAbsolutePath());
+            LOGGER.log(Level.INFO, bundle.getMessage("LogFolder", file.getAbsolutePath()));
             m_LogDir = file.getAbsolutePath() + "/";
             m_param.set_LogDir(m_LogDir);
             m_param.set_toDisk(true);
@@ -350,7 +353,7 @@ public class GUILayout extends JPanel implements ItemListener {
     mnSettings.add(mntmLogToDisk);
 
     // Enable for Help
-    JCheckBoxMenuItem chckbxmntm4Help = new JCheckBoxMenuItem("Enable all fields");
+    JCheckBoxMenuItem chckbxmntm4Help = new JCheckBoxMenuItem(bundle.getMessage("EnableAllFields"));
     chckbxmntm4Help.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -367,14 +370,14 @@ public class GUILayout extends JPanel implements ItemListener {
           txtOutputFilename.setEnabled(false);
           btnConvert.setEnabled(false);
         }
-        LOGGER.log(Level.INFO, "All fields enabled: " + Boolean.toString(selected));
+        LOGGER.log(Level.INFO, bundle.getMessage("EnableAllFieldsSelected", Boolean.toString(selected)));
       }
     });
     mnSettings.add(chckbxmntm4Help);
 
     // Option Preferences
-    JMenuItem mntmPreferences = new JMenuItem("Preferences");
-    mntmPreferences.setName("Preferences");
+    JMenuItem mntmPreferences = new JMenuItem(bundle.getMessage("Preferences"));
+    mntmPreferences.setName(bundle.getMessage("Preferences"));
     mntmPreferences.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -390,7 +393,7 @@ public class GUILayout extends JPanel implements ItemListener {
     menuBar.add(mnHelpAbout);
 
     // Help
-    JMenuItem mntmHelp = new JMenuItem("Help");
+    JMenuItem mntmHelp = new JMenuItem(bundle.getMessage("Help"));
     mntmHelp.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -404,14 +407,14 @@ public class GUILayout extends JPanel implements ItemListener {
             e1.printStackTrace();
           }
         } else {
-          LOGGER.log(Level.INFO, "Help file not found " + helpFile.getAbsolutePath());
+          LOGGER.log(Level.INFO, bundle.getMessage("HelpFileNotFound", helpFile.getAbsolutePath()));
         }
       }
     });
     mnHelpAbout.add(mntmHelp);
 
     // About
-    JMenuItem mntmAbout = new JMenuItem("About");
+    JMenuItem mntmAbout = new JMenuItem(bundle.getMessage("About"));
     mntmAbout.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -472,12 +475,12 @@ public class GUILayout extends JPanel implements ItemListener {
     lblCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
     panel.add(lblCSVFile, "cell 1 0");
 
-    JCheckBox chckbxClearTransactons = new JCheckBox("Clear transactions");
-    chckbxClearTransactons.setName("Clear transactions");
+    JCheckBox chckbxClearTransactons = new JCheckBox(bundle.getMessage("ClearTransactions"));
+    chckbxClearTransactons.setName(bundle.getMessage("ClearTransactions"));
 
-    JButton btnCSVFile = new JButton("CSV/XML File");
+    JButton btnCSVFile = new JButton(bundle.getMessage("CSVXMLFile"));
 
-    chckbxClearTransactons.setName("Clear transactions");
+    chckbxClearTransactons.setName(bundle.getMessage("ClearTransactions"));
     btnCSVFile.setName("CSV/XML File");
     btnCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
     btnCSVFile.addActionListener(new ActionListener() {
@@ -485,7 +488,7 @@ public class GUILayout extends JPanel implements ItemListener {
       public void actionPerformed(ActionEvent e) {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        FileFilter filter = new FileNameExtensionFilter("CSV/XML File", "csv", "xml");
+        FileFilter filter = new FileNameExtensionFilter(bundle.getMessage("CSVXMLFile"), "csv", "xml");
         fileChooser.setFileFilter(filter);
 
         File[] l_files = null;
@@ -506,7 +509,7 @@ public class GUILayout extends JPanel implements ItemListener {
 
           for (int i = 0; i < files.length; i++) {
             file = files[i];
-            LOGGER.log(Level.INFO, "CSV/XML File: " + file.getAbsolutePath());
+            LOGGER.log(Level.INFO, bundle.getMessage("CSVXMLFileProcessed", file.getAbsolutePath()));
             lblCSVFile.setText(file.getAbsolutePath());
             l_filename = l_filename + kwee.library.FileUtils.getFileNameWithoutExtension(file) + ".ofx" + "; ";
           }
@@ -534,7 +537,7 @@ public class GUILayout extends JPanel implements ItemListener {
         boolean selected = chckbxClearTransactons.isSelected();
         m_ClearTransactions = selected;
         m_param.set_ClearTransactions(m_ClearTransactions);
-        LOGGER.log(Level.CONFIG, "Clear transactions before read :" + Boolean.toString(selected));
+        LOGGER.log(Level.CONFIG, bundle.getMessage("ClearTransactionsSelected", Boolean.toString(selected)));
         LOGGER.log(Level.CONFIG, m_param.print());
       }
     });
@@ -585,10 +588,14 @@ public class GUILayout extends JPanel implements ItemListener {
         int l_read = l_OfxTransactions.size();
         l_OfxTransactions = OfxFunctions.uniqueOfxTransactions(m_OfxTransactions, l_OfxTransactions);
         int l_unique = l_OfxTransactions.size();
-        LOGGER.log(Level.INFO, "Transactions read: " + l_read + ", after doubles removed: " + l_unique);
+
+        String ls_read = Integer.toString(l_read);
+        String ls_unique = Integer.toString(l_unique);
+
+        LOGGER.log(Level.INFO, bundle.getMessage("TransactionsRead", ls_read, ls_unique));
 
         m_OfxTransactions.addAll(l_OfxTransactions);
-        LOGGER.log(Level.INFO, "Grand total of transactions read: " + m_OfxTransactions.size());
+        LOGGER.log(Level.INFO, bundle.getMessage("GrandTotalTransactionsRead", m_OfxTransactions.size()));
 
         m_metainfo = OfxFunctions.addMetaInfo(m_metainfo, l_action.getOfxMetaInfo(), l_OfxTransactions);
         btnConvert.setEnabled(l_action.TransactionsProcessed());
@@ -601,7 +608,7 @@ public class GUILayout extends JPanel implements ItemListener {
     panel.add(lblOutputFolder, "cell 1 3");
 
     txtOutputFilename.setHorizontalAlignment(SwingConstants.LEFT);
-    txtOutputFilename.setText("Output filename");
+    txtOutputFilename.setText(bundle.getMessage("OutputFile"));
 
     txtOutputFilename.setColumns(100);
     panel.add(txtOutputFilename, "cell 1 4");
@@ -613,12 +620,12 @@ public class GUILayout extends JPanel implements ItemListener {
         m_param.save();
         btnConvert.setEnabled(false);
 
-        LOGGER.log(Level.FINE, "Start conversion(s).");
+        LOGGER.log(Level.FINE, bundle.getMessage("StartConversions"));
         ActionConvertTransactions l_action = new ActionConvertTransactions(m_OfxTransactions, m_metainfo, m_CsvFiles,
             lblOutputFolder.getText(), chckbxAcountSeparateOFX.isSelected(), chckbxInterest.isSelected(), m_ProgressBar,
             lblProgressLabel);
         l_action.execute();
-        LOGGER.log(Level.FINE, "Conversion(s) done.");
+        LOGGER.log(Level.FINE, bundle.getMessage("ConversionsDone"));
       }
     });
     panel.add(btnConvert, "cell 1 5");
@@ -627,7 +634,7 @@ public class GUILayout extends JPanel implements ItemListener {
     panel.add(lblNewLabel, "cell 0 6");
 
     // Start GnuCash
-    JButton btnGNUCash = new JButton("Start GnuCash");
+    JButton btnGNUCash = new JButton(bundle.getMessage("StartGnuCash"));
     btnGNUCash.setHorizontalAlignment(SwingConstants.RIGHT);
     btnGNUCash.addActionListener(new ActionListener() {
       @Override
@@ -640,7 +647,7 @@ public class GUILayout extends JPanel implements ItemListener {
         } catch (IOException | InterruptedException e1) {
           e1.printStackTrace();
         }
-        LOGGER.log(Level.INFO, "Stop GNUCash");
+        LOGGER.log(Level.INFO, bundle.getMessage("StopGnuCash"));
       }
     });
     panel.add(btnGNUCash, "cell 1 7");

@@ -19,6 +19,7 @@ import kwee.convertor.ing.convertor.IngTransactions;
 import kwee.ofxLibrary.OfxMetaInfo;
 import kwee.ofxLibrary.OfxTransaction;
 import kwee.convertor.sns.convertor.*;
+import kwee.library.ApplicationMessages;
 
 /**
  * Read transactions from file(s).
@@ -29,6 +30,8 @@ import kwee.convertor.sns.convertor.*;
 public class ActionReadTransactions extends SwingWorker<List<OfxTransaction>, String> {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private Object lock = GUILayout.lock;
+
+  private ApplicationMessages bundle = ApplicationMessages.getInstance();
 
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
@@ -82,11 +85,11 @@ public class ActionReadTransactions extends SwingWorker<List<OfxTransaction>, St
 
         // Read ING Transactions
         if (l_ext.toUpperCase().contains("CSV")) {
-          LOGGER.log(Level.INFO, "Process ING file " + l_File);
+          LOGGER.log(Level.INFO, bundle.getMessage("ProcessFile", "ING", l_File));
           IngTransactions l_ingtrans = new IngTransactions(m_CSVFiles[i], m_Synonym_file);
           l_ingtrans.load();
           m_OfxTransactions.addAll(l_ingtrans.getOfxTransactions());
-          LOGGER.log(Level.INFO, "Total of (ING) transactions read: " + m_OfxTransactions.size());
+          LOGGER.log(Level.INFO, bundle.getMessage("ProcessFile", "ING", m_OfxTransactions.size()));
 
           Map<String, OfxMetaInfo> l_metainfo = l_ingtrans.getOfxMetaInfo();
           m_metainfo = updateMetaInfo(l_metainfo);
@@ -96,11 +99,11 @@ public class ActionReadTransactions extends SwingWorker<List<OfxTransaction>, St
 
         // Read SNS Transactions
         if (l_ext.toUpperCase().contains("XML")) {
-          LOGGER.log(Level.INFO, "Process SNS file " + l_File);
+          LOGGER.log(Level.INFO, bundle.getMessage("ProcessFile", "SNS", l_File));
           SnsTransactions l_snstrans = new SnsTransactions(m_CSVFiles[i], m_Synonym_file);
           l_snstrans.load();
           m_OfxTransactions.addAll(l_snstrans.getOfxTransactions());
-          LOGGER.log(Level.INFO, "Total of (SNS) transactions read: " + m_OfxTransactions.size());
+          LOGGER.log(Level.INFO, bundle.getMessage("ProcessFile", "SNS", m_OfxTransactions.size()));
 
           Map<String, OfxMetaInfo> l_metainfo = l_snstrans.getOfxMetaInfo();
           m_metainfo = updateMetaInfo(l_metainfo);
@@ -108,7 +111,7 @@ public class ActionReadTransactions extends SwingWorker<List<OfxTransaction>, St
           m_TransactionProcessed = true;
         }
         verwerkProgress();
-        LOGGER.log(Level.INFO, "Processed file " + l_File);
+        LOGGER.log(Level.INFO, bundle.getMessage("ProcessedFile", l_File));
       }
     }
     return m_OfxTransactions;
@@ -120,7 +123,7 @@ public class ActionReadTransactions extends SwingWorker<List<OfxTransaction>, St
     m_ProgressBar.setVisible(false);
 
     LOGGER.log(Level.INFO, "");
-    LOGGER.log(Level.INFO, "Done.");
+    LOGGER.log(Level.INFO, bundle.getMessage("Done"));
   }
 
   /**
@@ -168,8 +171,9 @@ public class ActionReadTransactions extends SwingWorker<List<OfxTransaction>, St
       m_ProgressBar.setValue(m_Processed);
       m_ProgressBar.paintImmediately(m_ProgressBar.getVisibleRect());
       Double v_prog = ((double) m_Processed / (double) m_Number) * 100;
-      Integer v_iprog = v_prog.intValue();
-      m_Progresslabel.setText(v_iprog.toString() + "% (" + m_Processed + " of " + m_Number + " files)");
+      int v_iprog = v_prog.intValue();
+
+      m_Progresslabel.setText(bundle.getMessage("Progress", v_iprog, m_Processed, m_Number));
       m_Progresslabel.paintImmediately(m_Progresslabel.getVisibleRect());
     } catch (Exception e) {
       // Do nothing

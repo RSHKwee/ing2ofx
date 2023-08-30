@@ -16,6 +16,7 @@ import javax.swing.JTextArea;
 //import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 
+import kwee.library.ApplicationMessages;
 import kwee.ofxLibrary.OfxDocument;
 import kwee.ofxLibrary.OfxFilter;
 import kwee.ofxLibrary.OfxFunctions;
@@ -34,6 +35,8 @@ public class ActionConvertTransactions extends SwingWorker<Void, String> impleme
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private Object lock = GUILayout.lock;
   private JTextArea area = new JTextArea(30, 50);
+
+  private ApplicationMessages bundle = ApplicationMessages.getInstance();
 
   private String m_OutputDir = "";
   private boolean m_SeparateOFX = true;
@@ -102,7 +105,7 @@ public class ActionConvertTransactions extends SwingWorker<Void, String> impleme
   @Override
   protected Void doInBackground() throws Exception {
     synchronized (lock) {
-      LOGGER.log(Level.INFO, "Start conversion (java).");
+      LOGGER.log(Level.INFO, bundle.getMessage("StartConversions"));
       OfxPairTransaction l_pairs = new OfxPairTransaction(m_OfxTransactions, m_ProgressBar, m_Progresslabel);
       m_OfxTransactions = l_pairs.pair();
 
@@ -120,7 +123,7 @@ public class ActionConvertTransactions extends SwingWorker<Void, String> impleme
 
         m_Suffix = "";
         l_accounts.forEach(l_account -> {
-          LOGGER.log(Level.INFO, "Convert for " + l_account);
+          LOGGER.log(Level.INFO, bundle.getMessage("ConvertFor", l_account));
 
           OfxMetaInfo l_OfxMetaInfo = l_OfxMetaAccounts.getOfxMetaInfo(l_account);
           Map<String, OfxMetaInfo> l_metainfo = new HashMap<String, OfxMetaInfo>();
@@ -128,7 +131,8 @@ public class ActionConvertTransactions extends SwingWorker<Void, String> impleme
 
           List<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>(
               l_OfxMetaAccounts.getTransactions(l_account));
-          LOGGER.log(Level.INFO, "Account: " + l_account + " number of transactions: " + l_OfxTransactions.size());
+          String l_Size = Integer.toString(l_OfxTransactions.size());
+          LOGGER.log(Level.INFO, bundle.getMessage("ConvertAccount", l_account, l_Size));
           OfxMetaInfo l_info = l_OfxMetaAccounts.getOfxMetaInfo(l_account);
           String l_prefix = l_info.getPrefix();
           String l_suffix = l_info.getSuffix();
@@ -142,10 +146,10 @@ public class ActionConvertTransactions extends SwingWorker<Void, String> impleme
               l_filename = String.join("_", l_filename, m_FilterName);
             }
             l_filename = l_filename + ".ofx";
-            LOGGER.log(Level.INFO, "OFX Filename: " + l_filename);
+            LOGGER.log(Level.INFO, bundle.getMessage("OFXFilename", l_filename));
           } else {
             l_filename = m_OutputDir + "/" + String.join("_", l_account, l_suffix) + ".ofx";
-            LOGGER.log(Level.INFO, "OFX Filename: " + l_filename);
+            LOGGER.log(Level.INFO, bundle.getMessage("OFXFilename", l_filename));
           }
 
           OfxDocument l_document = new OfxDocument(l_OfxTransactions, l_metainfo);
@@ -160,12 +164,12 @@ public class ActionConvertTransactions extends SwingWorker<Void, String> impleme
       }
 
       String l_outputfilename = m_OutputDir + "/_Saldos_" + m_Suffix + ".csv";
-      LOGGER.log(Level.INFO, "Saldos filename: " + l_outputfilename);
+      LOGGER.log(Level.INFO, bundle.getMessage("SaldosFilename", l_outputfilename));
       OfxFunctions.dumpMetaInfo(l_outputfilename, m_metainfo);
 
       m_Progresslabel.setVisible(false);
       m_ProgressBar.setVisible(false);
-      LOGGER.log(Level.INFO, "End conversion(s).");
+      LOGGER.log(Level.INFO, bundle.getMessage("ConversionsDone"));
     }
     return null;
   }
@@ -178,7 +182,7 @@ public class ActionConvertTransactions extends SwingWorker<Void, String> impleme
   @Override
   protected void done() {
     LOGGER.log(Level.INFO, "");
-    LOGGER.log(Level.INFO, "Done.");
+    LOGGER.log(Level.INFO, bundle.getMessage("Done"));
   }
 
   /**
@@ -190,7 +194,7 @@ public class ActionConvertTransactions extends SwingWorker<Void, String> impleme
       m_ProgressBar.setValue(m_Processed);
       Double v_prog = ((double) m_Processed / (double) m_Number) * 100;
       Integer v_iprog = v_prog.intValue();
-      m_Progresslabel.setText(v_iprog.toString() + "% (" + m_Processed + " of " + m_Number + " accounts)");
+      m_Progresslabel.setText(bundle.getMessage("ProgressAccounts", v_iprog, m_Processed, m_Number));
     } catch (Exception e) {
       // Do nothing
     }
