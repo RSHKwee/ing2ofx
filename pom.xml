@@ -136,10 +136,28 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${project.basedir}/target</outputDirectory>
+              <outputDirectory>${project.basedir}/target/help/en</outputDirectory>
               <resources>                                        
                 <resource>
-                  <directory>${project.basedir}/help</directory>
+                  <directory>${project.basedir}/help/en</directory>
+                  <includes>
+                    <include>ing2ofx.chm</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution> 
+          <execution>
+            <id>helpfilenl</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.basedir}/target/help/nl</outputDirectory>
+              <resources>                                        
+                <resource>
+                  <directory>${project.basedir}/help/nl</directory>
                   <includes>
                     <include>ing2ofx.chm</include>
                   </includes>
@@ -222,20 +240,33 @@
         <executions>
 		
 		  <execution>
-            <id>ING2OFXHelp</id>
+            <id>ING2OFXHelpEn</id>
             <phase>process-resources</phase>
            <goals>
               <goal>exec</goal>
             </goals>          
             <configuration>
               <executable>HelpChm.cmd</executable>
-              <workingDirectory>help</workingDirectory>
+              <workingDirectory>help/en</workingDirectory>
               <arguments>
                 <argument>ing2ofx.hhp</argument>
               </arguments>
             </configuration>          
           </execution>
-		  
+		  <execution>
+            <id>ING2OFXHelpNl</id>
+            <phase>process-resources</phase>
+           <goals>
+              <goal>exec</goal>
+            </goals>          
+            <configuration>
+              <executable>HelpChm.cmd</executable>
+              <workingDirectory>help/nl</workingDirectory>
+              <arguments>
+                <argument>ing2ofx.hhp</argument>
+              </arguments>
+            </configuration>          
+          </execution>	  
           <execution>
             <id>innoSetup</id>
             <phase>package</phase>

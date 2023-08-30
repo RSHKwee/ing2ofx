@@ -177,6 +177,7 @@ public class GUILayout extends JPanel implements ItemListener {
       m_CsvFiles = m_param.get_CsvFiles();
     }
 
+    m_Language = m_param.get_Language();
     m_Level = m_param.get_Level();
     m_toDisk = m_param.is_toDisk();
     m_AcountSeparateOFX = m_param.is_AcountSeparateOFX();
@@ -433,7 +434,7 @@ public class GUILayout extends JPanel implements ItemListener {
     mntmHelp.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        File helpFile = new File(m_HelpFile);
+        File helpFile = new File("help\\" + m_Language + "\\" + m_HelpFile);
 
         if (helpFile.exists()) {
           try {
