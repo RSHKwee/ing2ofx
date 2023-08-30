@@ -14,6 +14,7 @@ import javax.swing.UIManager.LookAndFeelInfo;
 
 import java.net.URL;
 
+import kwee.library.ApplicationMessages;
 import kwee.library.JarInfo;
 import kwee.ing2ofx.gui.GUILayout;
 
@@ -25,7 +26,6 @@ import kwee.ing2ofx.gui.GUILayout;
 
 public class Main {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
-  static String m_MenuTitel = "ING csv / SNS xml to ofx convertor, version ";
   static public String m_creationtime;
   static String m_LookAndFeel = "Nimbus";
   public static UserSetting m_param = new UserSetting();
@@ -36,11 +36,13 @@ public class Main {
    * from the event-dispatching thread.
    */
   public static JFrame createAndShowGUI() {
+    ApplicationMessages bundle = ApplicationMessages.getInstance();
+
     // Set the look and feel.
     initLookAndFeel();
 
     // Create and set up the window.
-    JFrame frame = new JFrame(m_MenuTitel + " (" + m_creationtime + ")");
+    JFrame frame = new JFrame(bundle.getMessage("AppTitel", m_creationtime));
     frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
     frame.addWindowListener(new WindowListener() {
@@ -48,8 +50,8 @@ public class Main {
       public void windowClosing(WindowEvent e) {
         JFrame frame = (JFrame) e.getSource();
         if (m_ConfirmOnExit) {
-          int result = JOptionPane.showConfirmDialog(frame, "Are you sure you want to exit the application?",
-              "Exit Application", JOptionPane.YES_NO_OPTION);
+          int result = JOptionPane.showConfirmDialog(frame, bundle.getMessage("ConfirmQuestion"), "Exit Application",
+              JOptionPane.YES_NO_OPTION);
 
           if (result == JOptionPane.YES_OPTION) {
             m_param.save();
@@ -96,7 +98,7 @@ public class Main {
       ImageIcon icon = new ImageIcon(iconURL);
       frame.setIconImage(icon.getImage());
     } catch (Exception e) {
-      LOGGER.log(Level.FINE, "ING/SNS Logo not found.");
+      LOGGER.log(Level.FINE, bundle.getMessage("LogoNotFound"));
     }
 
     // Create and set up the content pane.
@@ -111,7 +113,7 @@ public class Main {
     frame.setLocation(50, 50);
     frame.setVisible(true);
 
-    LOGGER.log(Level.INFO, "ING csv / SNS xml to OFX convertor versie : " + m_creationtime);
+    LOGGER.log(Level.INFO, bundle.getMessage("AppTitel", m_creationtime));
     return frame;
   }
 
@@ -173,7 +175,7 @@ public class Main {
     }
     }
     // Print the jvm heap size.
-    LOGGER.log(Level.INFO, "Heap Size = " + heapSize);
+    LOGGER.log(Level.FINE, "Heap Size = " + heapSize);
 
     // Schedule a job for the event-dispatching thread:
     // creating and showing this application's GUI.
