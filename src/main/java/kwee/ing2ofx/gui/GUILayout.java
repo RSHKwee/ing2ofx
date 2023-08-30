@@ -183,7 +183,7 @@ public class GUILayout extends JPanel implements ItemListener {
     add(menuBar, BorderLayout.NORTH);
 
     // Define Setting menu in menubalk:
-    JMenu mnSettings = new JMenu("Settings");
+    JMenu mnSettings = new JMenu(bundle.getMessage("Settings"));
     mnSettings.setEnabled(true);
     menuBar.add(mnSettings);
 
