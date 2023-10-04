@@ -1,7 +1,7 @@
 package kwee.convertor.ing.ingLibrary;
 
 /**
- * Bean package for ING Saving transaction
+ * Bean package for ING Saving transaction English heading
  * 
  * @author René
  *
@@ -10,7 +10,7 @@ package kwee.convertor.ing.ingLibrary;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBean;
 
-public class IngSavingTransaction extends CsvToBean<Object> {
+public class IngSavingTransactionEng extends CsvToBean<Object> {
 //  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   /*
    * @formatter:off
@@ -27,37 +27,37 @@ public class IngSavingTransaction extends CsvToBean<Object> {
    *   
    * @formatter:on
    */
-  @CsvBindByName(column = "Datum")
+  @CsvBindByName(column = "Date")
   private String Datum = "";
 
-  @CsvBindByName(column = "Omschrijving")
+  @CsvBindByName(column = "Description")
   private String Omschrijving = "";
 
-  @CsvBindByName(column = "Rekening")
+  @CsvBindByName(column = "Account")
   private String Rekening = "";
 
-  @CsvBindByName(column = "Rekening naam")
+  @CsvBindByName(column = "Account name")
   private String RekeningNaam = "";
 
-  @CsvBindByName(column = "Tegenrekening")
+  @CsvBindByName(column = "Counterparty")
   private String Tegenrekening = "";
 
-  @CsvBindByName(column = "Af Bij")
+  @CsvBindByName(column = "Debit/credit")
   private String Af_Bij = "";
 
-  @CsvBindByName(column = "Bedrag")
+  @CsvBindByName(column = "Amount")
   private String Bedrag = "";
 
-  @CsvBindByName(column = "Valuta")
+  @CsvBindByName(column = "Currency")
   private String Valuta = "";
 
-  @CsvBindByName(column = "Mutatiesoort")
+  @CsvBindByName(column = "Transaction type")
   private String Mutatiesoort = "";
 
-  @CsvBindByName(column = "Mededelingen")
+  @CsvBindByName(column = "Notifications")
   private String Mededelingen = "";
 
-  @CsvBindByName(column = "Saldo na mutatie")
+  @CsvBindByName(column = "Resulting balance")
   private String Saldo_na_mutatie = "";
 
   public String getCode() {

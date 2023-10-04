@@ -10,7 +10,9 @@ import java.util.Map;
 //import java.util.logging.Logger;
 
 import kwee.convertor.ing.ingLibrary.IngSavingTransaction;
+import kwee.convertor.ing.ingLibrary.IngSavingTransactionEng;
 import kwee.convertor.ing.ingLibrary.IngTransaction;
+import kwee.convertor.ing.ingLibrary.IngTransactionEng;
 import kwee.ofxLibrary.OfxTransaction;
 
 public class Ing2OfxTransaction {
@@ -24,6 +26,25 @@ public class Ing2OfxTransaction {
    * @return OFX Transaction
    */
   static public OfxTransaction convertSavingToOfx(IngSavingTransaction a_trans) {
+    OfxTransaction l_ofxtrans = new OfxTransaction(m_bankcode);
+    l_ofxtrans.setAccount(a_trans.getRekening().replaceAll(" ", ""));
+    l_ofxtrans.setTrntype(transType("xx", a_trans.getAf_Bij()));
+    l_ofxtrans.setDtposted(a_trans.getDatum().replaceAll("-", ""));
+
+    if (a_trans.getAf_Bij().equalsIgnoreCase("Bij")) {
+      l_ofxtrans.setTrnamt(a_trans.getBedrag());
+    } else {
+      l_ofxtrans.setTrnamt("-" + a_trans.getBedrag());
+    }
+
+    l_ofxtrans.setName(xmlFriendlyName(a_trans.getOmschrijving()));
+    l_ofxtrans.setAccountto(a_trans.getTegenrekening());
+    l_ofxtrans.setMemo(xmlFriendlyName(a_trans.getMededelingen()));
+    l_ofxtrans.setSaldo_na_mutatie(a_trans.getSaldo_na_mutatie());
+    return l_ofxtrans;
+  }
+
+  static public OfxTransaction convertSavingEngToOfx(IngSavingTransactionEng a_trans) {
     OfxTransaction l_ofxtrans = new OfxTransaction(m_bankcode);
     l_ofxtrans.setAccount(a_trans.getRekening().replaceAll(" ", ""));
     l_ofxtrans.setTrntype(transType("xx", a_trans.getAf_Bij()));
@@ -77,6 +98,35 @@ public class Ing2OfxTransaction {
     return l_ofxtrans;
   }
 
+  static public OfxTransaction convertToOfxEng(IngTransactionEng a_trans) {
+    OfxTransaction l_ofxtrans = new OfxTransaction(m_bankcode);
+    l_ofxtrans.setAccount(a_trans.getRekening().replaceAll(" ", ""));
+    l_ofxtrans.setTrntype(transType(a_trans.getCode(), a_trans.getAf_Bij()));
+    l_ofxtrans.setDtposted(a_trans.getDatum());
+
+    if (a_trans.getAf_Bij().equalsIgnoreCase("Bij")) {
+      l_ofxtrans.setTrnamt(a_trans.getBedrag());
+    } else {
+      l_ofxtrans.setTrnamt("-" + a_trans.getBedrag());
+    }
+
+    l_ofxtrans.setName(xmlFriendlyName(a_trans.getOmschrijving()));
+    l_ofxtrans.setAccountto(a_trans.getTegenrekening());
+    l_ofxtrans.setMemo(xmlFriendlyName(a_trans.getMededelingen()));
+    l_ofxtrans.setSaldo_na_mutatie(a_trans.getSaldo_na_mutatie());
+
+    if (a_trans.getTegenrekening().isBlank()) {
+      String l_memo = a_trans.getMededelingen();
+      String[] l_parts = l_memo.split(" ");
+      if (l_parts[0].equals("Van") || l_parts[0].equals("Naar")) {
+        if (l_parts.length >= 3) {
+          l_ofxtrans.setAccountto(l_parts[3]);
+        }
+      }
+    }
+    return l_ofxtrans;
+  }
+
   /**
    * Determine the Transaction type.
    * 
@@ -91,7 +141,7 @@ public class Ing2OfxTransaction {
 
     if (codex.containsKey(a_code)) {
       if (codex.get(a_code).equalsIgnoreCase("xx")) {
-        if (a_afbij.equalsIgnoreCase("Bij")) {
+        if (a_afbij.equalsIgnoreCase("Bij") || a_afbij.equalsIgnoreCase("Credit")) {
           l_code = "CREDIT";
         } else {
           l_code = "DEBIT";

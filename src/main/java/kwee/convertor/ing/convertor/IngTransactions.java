@@ -26,8 +26,11 @@ import com.opencsv.CSVReaderBuilder;
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 
+import kwee.convertor.ing.Convert;
 import kwee.convertor.ing.ingLibrary.IngSavingTransaction;
+import kwee.convertor.ing.ingLibrary.IngSavingTransactionEng;
 import kwee.convertor.ing.ingLibrary.IngTransaction;
+import kwee.convertor.ing.ingLibrary.IngTransactionEng;
 import kwee.ofxLibrary.OfxTransaction;
 import kwee.ofxLibrary.OfxFunctions;
 import kwee.ofxLibrary.OfxMetaInfo;
@@ -40,12 +43,15 @@ public class IngTransactions {
   private CSVReader m_reader;
   private File m_File;
   private boolean m_saving = false;
+  private boolean m_eng = false;
   private char m_separator = ';';
   private Set<String> m_UniqueIds = new LinkedHashSet<>();
   private String m_FileName = "";
 
   private List<IngTransaction> m_Transactions = new LinkedList<IngTransaction>();
+  private List<IngTransactionEng> m_TransactionsEng = new LinkedList<IngTransactionEng>();
   private List<IngSavingTransaction> m_SavingTransactions = new LinkedList<IngSavingTransaction>();
+  private List<IngSavingTransactionEng> m_SavingTransactionsEng = new LinkedList<IngSavingTransactionEng>();
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
   private File m_Synonym_file;
@@ -82,60 +88,131 @@ public class IngTransactions {
       }
       if (nextLine[1].equalsIgnoreCase("Naam / Omschrijving")) {
         m_saving = false;
-      } else {
+        m_eng = false;
+      } else if (nextLine[1].equalsIgnoreCase("Name / Description")) {
+        m_saving = false;
+        m_eng = true;
+      } else if (nextLine[1].equalsIgnoreCase("Omschrijving")) {
         m_saving = true;
+        m_eng = false;
+      } else if (nextLine[1].equalsIgnoreCase("Description")) {
+        m_saving = true;
+        m_eng = true;
       }
 
       if (m_saving) {
-        HeaderColumnNameMappingStrategy<IngSavingTransaction> beanStrategy = new HeaderColumnNameMappingStrategy<IngSavingTransaction>();
-        beanStrategy.setType(IngSavingTransaction.class);
-        m_SavingTransactions = new CsvToBeanBuilder<IngSavingTransaction>(new FileReader(m_File))
-            .withSeparator(m_separator).withMappingStrategy(beanStrategy).build().parse();
-        m_Transactions.clear();
+        if (m_eng) {
+          HeaderColumnNameMappingStrategy<IngSavingTransactionEng> beanStrategy = new HeaderColumnNameMappingStrategy<IngSavingTransactionEng>();
+          beanStrategy.setType(IngSavingTransactionEng.class);
+          m_SavingTransactionsEng = new CsvToBeanBuilder<IngSavingTransactionEng>(new FileReader(m_File))
+              .withSeparator(m_separator).withMappingStrategy(beanStrategy).build().parse();
+          m_Transactions.clear();
 
-        m_SavingTransactions.forEach(l_trans -> {
-          OfxTransaction l_ofxtrans;
-          l_ofxtrans = Ing2OfxTransaction.convertSavingToOfx(l_trans);
+          m_SavingTransactionsEng.forEach(l_transEng -> {
+            IngSavingTransaction l_trans = new IngSavingTransaction();
+            l_trans = Convert.ConvSavingTran(l_transEng);
 
-          String l_fitid = OfxFunctions.createUniqueId(l_ofxtrans, m_UniqueIds);
-          m_UniqueIds.add(l_fitid);
-          l_ofxtrans.setFitid(l_fitid);
+            m_SavingTransactions.add(l_trans);
+            OfxTransaction l_ofxtrans;
+            l_ofxtrans = Ing2OfxTransaction.convertSavingToOfx(l_trans);
 
-          l_ofxtrans.setSaving(true);
-          l_ofxtrans.setSource(m_FileName);
+            String l_fitid = OfxFunctions.createUniqueId(l_ofxtrans, m_UniqueIds);
+            m_UniqueIds.add(l_fitid);
+            l_ofxtrans.setFitid(l_fitid);
 
-          if (m_metainfo.containsKey(l_ofxtrans.getAccount())) {
-            updateOfxMetaInfo(l_ofxtrans, l_trans.getSaldo_na_mutatie());
-          } else {
-            createOfxMetaInfo(l_ofxtrans, l_trans.getSaldo_na_mutatie());
-          }
-          m_OfxTransactions.add(l_ofxtrans);
-        });
+            l_ofxtrans.setSaving(true);
+            l_ofxtrans.setSource(m_FileName);
+
+            if (m_metainfo.containsKey(l_ofxtrans.getAccount())) {
+              updateOfxMetaInfo(l_ofxtrans, l_trans.getSaldo_na_mutatie());
+            } else {
+              createOfxMetaInfo(l_ofxtrans, l_trans.getSaldo_na_mutatie());
+            }
+            m_OfxTransactions.add(l_ofxtrans);
+          });
+        } else {
+          HeaderColumnNameMappingStrategy<IngSavingTransaction> beanStrategy = new HeaderColumnNameMappingStrategy<IngSavingTransaction>();
+          beanStrategy.setType(IngSavingTransaction.class);
+          m_SavingTransactions = new CsvToBeanBuilder<IngSavingTransaction>(new FileReader(m_File))
+              .withSeparator(m_separator).withMappingStrategy(beanStrategy).build().parse();
+          m_Transactions.clear();
+
+          m_SavingTransactions.forEach(l_trans -> {
+            OfxTransaction l_ofxtrans;
+            l_ofxtrans = Ing2OfxTransaction.convertSavingToOfx(l_trans);
+
+            String l_fitid = OfxFunctions.createUniqueId(l_ofxtrans, m_UniqueIds);
+            m_UniqueIds.add(l_fitid);
+            l_ofxtrans.setFitid(l_fitid);
+
+            l_ofxtrans.setSaving(true);
+            l_ofxtrans.setSource(m_FileName);
+
+            if (m_metainfo.containsKey(l_ofxtrans.getAccount())) {
+              updateOfxMetaInfo(l_ofxtrans, l_trans.getSaldo_na_mutatie());
+            } else {
+              createOfxMetaInfo(l_ofxtrans, l_trans.getSaldo_na_mutatie());
+            }
+            m_OfxTransactions.add(l_ofxtrans);
+          });
+        }
       } else {
-        HeaderColumnNameMappingStrategy<IngTransaction> beanStrategy = new HeaderColumnNameMappingStrategy<IngTransaction>();
-        beanStrategy.setType(IngTransaction.class);
-        m_Transactions = new CsvToBeanBuilder<IngTransaction>(new FileReader(m_File)).withSeparator(m_separator)
-            .withMappingStrategy(beanStrategy).build().parse();
-        m_SavingTransactions.clear();
+        if (m_eng) {
+          HeaderColumnNameMappingStrategy<IngTransactionEng> beanStrategy = new HeaderColumnNameMappingStrategy<IngTransactionEng>();
+          beanStrategy.setType(IngTransactionEng.class);
+          m_TransactionsEng = new CsvToBeanBuilder<IngTransactionEng>(new FileReader(m_File)).withSeparator(m_separator)
+              .withMappingStrategy(beanStrategy).build().parse();
+          m_SavingTransactions.clear();
 
-        m_Transactions.forEach(l_trans -> {
-          OfxTransaction l_ofxtrans;
-          l_ofxtrans = Ing2OfxTransaction.convertToOfx(l_trans);
+          m_TransactionsEng.forEach(l_transEng -> {
+            IngTransaction l_trans = new IngTransaction();
+            l_trans = Convert.ConvTran(l_transEng);
 
-          String l_fitid = OfxFunctions.createUniqueId(l_ofxtrans, m_UniqueIds);
-          m_UniqueIds.add(l_fitid);
-          l_ofxtrans.setFitid(l_fitid);
+            m_Transactions.add(l_trans);
+            OfxTransaction l_ofxtrans;
+            l_ofxtrans = Ing2OfxTransaction.convertToOfx(l_trans);
 
-          l_ofxtrans.setSaving(false);
-          l_ofxtrans.setSource(m_FileName);
+            String l_fitid = OfxFunctions.createUniqueId(l_ofxtrans, m_UniqueIds);
+            m_UniqueIds.add(l_fitid);
+            l_ofxtrans.setFitid(l_fitid);
 
-          if (m_metainfo.containsKey(l_ofxtrans.getAccount())) {
-            updateOfxMetaInfo(l_ofxtrans, l_trans.getSaldo_na_mutatie());
-          } else {
-            createOfxMetaInfo(l_ofxtrans, l_trans.getSaldo_na_mutatie());
-          }
-          m_OfxTransactions.add(l_ofxtrans);
-        });
+            l_ofxtrans.setSaving(false);
+            l_ofxtrans.setSource(m_FileName);
+
+            if (m_metainfo.containsKey(l_ofxtrans.getAccount())) {
+              updateOfxMetaInfo(l_ofxtrans, l_trans.getSaldo_na_mutatie());
+            } else {
+              createOfxMetaInfo(l_ofxtrans, l_trans.getSaldo_na_mutatie());
+            }
+            m_OfxTransactions.add(l_ofxtrans);
+          });
+
+        } else {
+          HeaderColumnNameMappingStrategy<IngTransaction> beanStrategy = new HeaderColumnNameMappingStrategy<IngTransaction>();
+          beanStrategy.setType(IngTransaction.class);
+          m_Transactions = new CsvToBeanBuilder<IngTransaction>(new FileReader(m_File)).withSeparator(m_separator)
+              .withMappingStrategy(beanStrategy).build().parse();
+          m_SavingTransactions.clear();
+
+          m_Transactions.forEach(l_trans -> {
+            OfxTransaction l_ofxtrans;
+            l_ofxtrans = Ing2OfxTransaction.convertToOfx(l_trans);
+
+            String l_fitid = OfxFunctions.createUniqueId(l_ofxtrans, m_UniqueIds);
+            m_UniqueIds.add(l_fitid);
+            l_ofxtrans.setFitid(l_fitid);
+
+            l_ofxtrans.setSaving(false);
+            l_ofxtrans.setSource(m_FileName);
+
+            if (m_metainfo.containsKey(l_ofxtrans.getAccount())) {
+              updateOfxMetaInfo(l_ofxtrans, l_trans.getSaldo_na_mutatie());
+            } else {
+              createOfxMetaInfo(l_ofxtrans, l_trans.getSaldo_na_mutatie());
+            }
+            m_OfxTransactions.add(l_ofxtrans);
+          });
+        }
       }
       LOGGER.log(Level.INFO, "Transactions read: " + Integer.toString(m_OfxTransactions.size()));
     } catch (IOException e) {
@@ -251,4 +328,7 @@ public class IngTransactions {
     }
     m_metainfo.put(a_OfxTransaction.getAccount(), l_meta);
   }
+
+//  private ENG to NL
+
 }
