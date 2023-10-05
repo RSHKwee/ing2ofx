@@ -75,7 +75,7 @@ public class Ing2OfxTransaction {
     l_ofxtrans.setTrntype(transType(a_trans.getCode(), a_trans.getAf_Bij()));
     l_ofxtrans.setDtposted(a_trans.getDatum());
 
-    if (a_trans.getAf_Bij().equalsIgnoreCase("Bij")) {
+    if (a_trans.getAf_Bij().equalsIgnoreCase("Bij") || a_trans.getAf_Bij().equalsIgnoreCase("Credit")) {
       l_ofxtrans.setTrnamt(a_trans.getBedrag());
     } else {
       l_ofxtrans.setTrnamt("-" + a_trans.getBedrag());
@@ -89,7 +89,11 @@ public class Ing2OfxTransaction {
     if (a_trans.getTegenrekening().isBlank()) {
       String l_memo = a_trans.getMededelingen();
       String[] l_parts = l_memo.split(" ");
-      if (l_parts[0].equals("Van") || l_parts[0].equals("Naar")) {
+      if (l_parts[0].equalsIgnoreCase("Van") || l_parts[0].equalsIgnoreCase("Naar")) {
+        if (l_parts.length >= 3) {
+          l_ofxtrans.setAccountto(l_parts[3]);
+        }
+      } else if (l_parts[0].equalsIgnoreCase("From") || l_parts[0].equalsIgnoreCase("To")) {
         if (l_parts.length >= 3) {
           l_ofxtrans.setAccountto(l_parts[3]);
         }
@@ -104,7 +108,7 @@ public class Ing2OfxTransaction {
     l_ofxtrans.setTrntype(transType(a_trans.getCode(), a_trans.getAf_Bij()));
     l_ofxtrans.setDtposted(a_trans.getDatum());
 
-    if (a_trans.getAf_Bij().equalsIgnoreCase("Bij")) {
+    if (a_trans.getAf_Bij().equalsIgnoreCase("Bij") || a_trans.getAf_Bij().equalsIgnoreCase("Credit")) {
       l_ofxtrans.setTrnamt(a_trans.getBedrag());
     } else {
       l_ofxtrans.setTrnamt("-" + a_trans.getBedrag());
@@ -118,7 +122,7 @@ public class Ing2OfxTransaction {
     if (a_trans.getTegenrekening().isBlank()) {
       String l_memo = a_trans.getMededelingen();
       String[] l_parts = l_memo.split(" ");
-      if (l_parts[0].equals("Van") || l_parts[0].equals("Naar")) {
+      if (l_parts[0].equals("To") || l_parts[0].equals("From")) {
         if (l_parts.length >= 3) {
           l_ofxtrans.setAccountto(l_parts[3]);
         }

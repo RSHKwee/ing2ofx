@@ -1,5 +1,9 @@
 package kwee.convertor.ing;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import kwee.convertor.ing.ingLibrary.IngSavingTransaction;
 import kwee.convertor.ing.ingLibrary.IngSavingTransactionEng;
 import kwee.convertor.ing.ingLibrary.IngTransaction;
@@ -23,10 +27,22 @@ public class Convert {
   public static IngSavingTransaction ConvSavingTran(IngSavingTransactionEng a_Tran) {
     IngSavingTransaction l_tran = new IngSavingTransaction();
 
-    l_tran.setDatum(a_Tran.getDatum());
+    String inputDate = a_Tran.getDatum();
+    String outputDate = "";
+    SimpleDateFormat inputDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    SimpleDateFormat outputDateFormat = new SimpleDateFormat("yyyyMMdd");
+
+    try {
+      Date date = inputDateFormat.parse(inputDate);
+      outputDate = outputDateFormat.format(date);
+    } catch (ParseException e) {
+      e.printStackTrace();
+    }
+
+    l_tran.setDatum(outputDate);
     l_tran.setOmschrijving(a_Tran.getOmschrijving());
     l_tran.setRekening(a_Tran.getRekening());
-    l_tran.setOmschrijving(a_Tran.getRekeningNaam());
+    l_tran.setRekeningNaam(a_Tran.getRekeningNaam());
     l_tran.setTegenrekening(a_Tran.getTegenrekening());
     l_tran.setAf_Bij(a_Tran.getAf_Bij());
     l_tran.setBedrag(a_Tran.getBedrag());

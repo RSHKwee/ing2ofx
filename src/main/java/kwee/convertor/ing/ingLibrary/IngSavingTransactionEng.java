@@ -85,6 +85,11 @@ public class IngSavingTransactionEng extends CsvToBean<Object> {
   }
 
   public String getAf_Bij() {
+    if (Af_Bij.equalsIgnoreCase("Debit")) {
+      Af_Bij = "Af";
+    } else if (Af_Bij.equalsIgnoreCase("Credit")) {
+      Af_Bij = "Bij";
+    }
     return Af_Bij;
   }
 
@@ -137,7 +142,11 @@ public class IngSavingTransactionEng extends CsvToBean<Object> {
   }
 
   public void setAf_Bij(String af_Bij) {
-    Af_Bij = af_Bij;
+    if (af_Bij.equalsIgnoreCase("Debit")) {
+      Af_Bij = "Af";
+    } else if (af_Bij.equalsIgnoreCase("Credit")) {
+      Af_Bij = "Bij";
+    }
   }
 
   public void setBedrag(String bedrag) {
