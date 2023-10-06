@@ -4,5 +4,5 @@ The intent of this (java) application  is to convert ING (www.ing.nl) csv- or SN
 
 What is new
 
-JUnit tests are added.
-Minor bugfixes.
+- ING has changed CSV input format (on ~2 mar 2023), which is now supported.
+- Tests are added.
