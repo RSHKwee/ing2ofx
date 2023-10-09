@@ -35,6 +35,8 @@ public class GUILayoutTest extends TestCase {
   private String c_IngTransFile = "Alle_rekeningen.csv";
   private String c_IngSavingTransFile = "Alle_spaarrekeningen.csv";
   private String c_SNSTransFile = "transactie-historie.xml";
+  private String c_IngTransEngFile = "Alle_rekeningen_eng.csv";
+  private String c_IngSavingEngTransFile = "Alle_spaarrekeningen_eng.csv";
 
   private UserSetting m_OrgParam = new UserSetting();
   private TestFunctions m_Functions = new TestFunctions();
@@ -51,6 +53,8 @@ public class GUILayoutTest extends TestCase {
   private String m_OfxCombineSyn = "OFX_Combine_Syn";
   private String m_OfxCombineDouble = "OFX_CombineDouble_Syn";
   private String m_OfxCombineOneByOne = "OFX_CombineOneByOne_Syn";
+  private String m_OfxEnkelEngING = "OFX_ING_eng";
+  private String m_OfxEnkelEngINGSaving = "OFX_INGSaving_eng";
 
   /**
    * setUp, store original User parameters and reset parameters for Test purpose.
@@ -186,6 +190,84 @@ public class GUILayoutTest extends TestCase {
       AssertFile(m_OfxEnkelINGSaving, "_Saldos_Alle_spaarrekeningen.csv");
 
       LOGGER.log(Level.INFO, "Ready testGUILayoutINGSaving");
+    }
+  }
+
+  /**
+   * Test handling of ING Transactions, csv to OFX.
+   */
+  @Test
+  public void testGUILayoutINGEng() {
+    LOGGER.log(Level.INFO, "testGUILayoutINGEng");
+    FileUtils.checkCreateDirectory(m_OutputDir + "/" + m_OfxEnkelEngING);
+
+    frame.button("CSV/XML File").click();
+    JFileChooserFixture fileChooser = frame.fileChooser();
+    fileChooser.setCurrentDirectory(new File(m_OutputDir));
+    fileChooser.fileNameTextBox().setText(c_IngTransEngFile); // Set the desired file name
+    fileChooser.approve();
+    frame.button("Read transactions").click();
+
+    frame.button("Output folder").click();
+    fileChooser = frame.fileChooser();
+    fileChooser.setCurrentDirectory(new File(m_OutputDir + "/" + m_OfxEnkelEngING + "/"));
+    fileChooser.approve();
+
+    frame.button("Convert to OFX").click();
+
+    // Evaluate results:
+    synchronized (lock) {
+      String logOutput = TestLogger.getOutput();
+
+      assertTrue(logOutput.contains("Transactions read: 151, after doubles removed: 151"));
+      assertTrue(logOutput.contains("Grand total of transactions read: 151"));
+
+      AssertXmlFile(m_OfxEnkelEngING, "NL54BKMG0378842587_Alle_rekeningen_eng.ofx");
+      AssertXmlFile(m_OfxEnkelEngING, "NL90KNAB0445266309_Alle_rekeningen_eng.ofx");
+      AssertXmlFile(m_OfxEnkelEngING, "NL94COBA0678011583_Alle_rekeningen_eng.ofx");
+      AssertFile(m_OfxEnkelEngING, "_Saldos_Alle_rekeningen_eng.csv");
+
+      LOGGER.log(Level.INFO, "Ready testGUILayoutINGENG");
+    }
+  }
+
+  /**
+   * Test handling of ING Saving transactions, csv to OFX.
+   */
+  @Test
+  public void testGUILayoutINGSavingEng() {
+    LOGGER.log(Level.INFO, "testGUILayoutINGSavingEng");
+    FileUtils.checkCreateDirectory(m_OutputDir + "/" + m_OfxEnkelEngINGSaving);
+
+    frame.button("Output folder").click();
+    JFileChooserFixture fileChooser = frame.fileChooser();
+    fileChooser.setCurrentDirectory(new File(m_OutputDir + "/" + m_OfxEnkelEngINGSaving));
+    fileChooser.approve();
+
+    frame.button("CSV/XML File").click();
+    fileChooser = frame.fileChooser();
+    fileChooser.setCurrentDirectory(new File(m_OutputDir));
+    fileChooser.fileNameTextBox().setText(c_IngSavingEngTransFile); // Set the desired file name
+    fileChooser.approve();
+    frame.button("Read transactions").click();
+
+    frame.button("Convert to OFX").click();
+
+    // Evaluate results
+    synchronized (lock) {
+      String logOutput = TestLogger.getOutput();
+
+      assertTrue(logOutput.contains("Transactions read: 41, after doubles removed: 41"));
+      assertTrue(logOutput.contains("Grand total of transactions read: 41"));
+
+      AssertXmlFile(m_OfxEnkelEngINGSaving, "NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen_eng.ofx");
+      AssertXmlFile(m_OfxEnkelEngINGSaving, "NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen_eng.ofx");
+      AssertXmlFile(m_OfxEnkelEngINGSaving, "NL94COBA0678011583_K222-12345_Alle_spaarrekeningen_eng.ofx");
+      AssertXmlFile(m_OfxEnkelEngINGSaving, "NL94COBA0678011583_K333-12345_Alle_spaarrekeningen_eng.ofx");
+      AssertXmlFile(m_OfxEnkelEngINGSaving, "NL94COBA0678011583_K444-12345_Alle_spaarrekeningen_eng.ofx");
+      AssertFile(m_OfxEnkelEngINGSaving, "_Saldos_Alle_spaarrekeningen_eng.csv");
+
+      LOGGER.log(Level.INFO, "Ready testGUILayoutINGSavingEng");
     }
   }
 

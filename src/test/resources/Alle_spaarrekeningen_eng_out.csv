@@ -1,0 +1,42 @@
+Date;Description;Account;Account name;Counterparty;Debit/credit;Amount;Currency;Transaction type;Notifications;Resulting balance
+2-10-2023;Overboeking naar betaalrekening NL94COBA0678011583;K 444-12345;sprek 1;NL94COBA0678011583;Debit;1,23;EUR;Opname;;1750
+2-10-2023;Overboeking naar betaalrekening NL94COBA0678011583;K 444-12345;sprek 1;NL94COBA0678011583;Debit;500;EUR;Opname;;1751,23
+1-10-2023;Rente;K 444-12345;sprek 1;;Credit;1,23;EUR;Rente;;2251,23
+29-9-2023;Overboeking naar betaalrekening NL94COBA0678011583;K 444-12345;sprek 1;NL94COBA0678011583;Debit;250;EUR;Opname;;2250
+28-9-2023;Overboeking van betaalrekening NL94COBA0678011583;K 444-12345;sprek 1;NL94COBA0678011583;Credit;2000;EUR;Inleg;;2500
+21-9-2023;Overboeking naar betaalrekening NL94COBA0678011583;K 444-12345;sprek 1;NL94COBA0678011583;Debit;250;EUR;Opname;;500
+15-9-2023;Overboeking naar betaalrekening NL94COBA0678011583;K 444-12345;sprek 1;NL94COBA0678011583;Debit;250;EUR;Opname;;750
+14-9-2023;Overboeking naar betaalrekening NL94COBA0678011583;K 444-12345;sprek 1;NL94COBA0678011583;Debit;250;EUR;Opname;;1000
+10-9-2023;Overboeking naar betaalrekening NL94COBA0678011583;K 444-12345;sprek 1;NL94COBA0678011583;Debit;250;EUR;Opname;;1250
+8-9-2023;Overboeking naar betaalrekening NL94COBA0678011583;K 444-12345;sprek 1;NL94COBA0678011583;Debit;250;EUR;Opname;;1500
+5-9-2023;Overboeking naar betaalrekening NL94COBA0678011583;K 444-12345;sprek 1;NL94COBA0678011583;Debit;251,34;EUR;Opname;;1750
+1-9-2023;Rente;K 444-12345;sprek 1;;Credit;1,34;EUR;Rente;;2001,34
+1-9-2023;Overboeking naar betaalrekening NL94COBA0678011583;K 444-12345;sprek 1;NL94COBA0678011583;Debit;500;EUR;Opname;;2000
+2-10-2023;Overboeking naar betaalrekening NL90KNAB0445266309;K 555-12345;sprek 2;NL90KNAB0445266309;Debit;250;EUR;Opname;;51450
+2-10-2023;Overboeking naar betaalrekening NL90KNAB0445266309;K 555-12345;sprek 2;NL90KNAB0445266309;Debit;98,72;EUR;Opname;;51700
+1-10-2023;Rente;K 555-12345;sprek 2;;Credit;48,72;EUR;Rente;;51798,72
+24-9-2023;Overboeking van betaalrekening NL90KNAB0445266309;K 555-12345;sprek 2;NL90KNAB0445266309;Credit;300;EUR;Inleg;;51750
+23-9-2023;Overboeking van betaalrekening NL90KNAB0445266309;K 555-12345;sprek 2;NL90KNAB0445266309;Credit;1200;EUR;Inleg;;51450
+20-9-2023;Overboeking van betaalrekening NL90KNAB0445266309;K 555-12345;sprek 2;NL90KNAB0445266309;Credit;25;EUR;Inleg;;50250
+15-9-2023;Overboeking naar betaalrekening NL90KNAB0445266309;K 555-12345;sprek 2;NL90KNAB0445266309;Debit;25;EUR;Opname;;50225
+6-9-2023;Overboeking naar betaalrekening NL90KNAB0445266309;K 555-12345;sprek 2;NL90KNAB0445266309;Debit;200;EUR;Opname;;50250
+4-9-2023;Overboeking naar betaalrekening NL90KNAB0445266309;K 555-12345;sprek 2;NL90KNAB0445266309;Debit;50;EUR;Opname;;50450
+2-9-2023;Overboeking naar betaalrekening NL90KNAB0445266309;K 555-12345;sprek 2;NL90KNAB0445266309;Debit;45,14;EUR;Opname;;50500
+1-9-2023;Rente;K 555-12345;sprek 2;;Credit;45,14;EUR;Rente;;50545,14
+2-10-2023;Overboeking van betaalrekening NL54BKMG0378842587;K 111-12345;sprek 3;NL54BKMG0378842587;Credit;242,96;EUR;Inleg;;6500
+1-10-2023;Rente;K 111-12345;sprek 3;;Credit;7,04;EUR;Rente;;6257,04
+20-9-2023;Overboeking naar betaalrekening NL54BKMG0378842587;K 111-12345;sprek 3;NL54BKMG0378842587;Debit;1000;EUR;Opname;;6250
+5-9-2023;Overboeking van betaalrekening NL54BKMG0378842587;K 111-12345;sprek 3;NL54BKMG0378842587;Credit;243,46;EUR;Inleg;;7250
+1-9-2023;Rente;K 111-12345;sprek 3;;Credit;6,54;EUR;Rente;;7006,54
+2-10-2023;Overboeking naar betaalrekening NL94COBA0678011583;K 222-12345;sprek 4;NL94COBA0678011583;Debit;0,48;EUR;Opname;;4250
+1-10-2023;Rente;K 222-12345;sprek 4;;Credit;0,48;EUR;Rente;;4250,48
+28-9-2023;Overboeking van betaalrekening NL94COBA0678011583;K 222-12345;sprek 4;NL94COBA0678011583;Credit;4225;EUR;Inleg;;4250
+5-9-2023;Overboeking van betaalrekening NL94COBA0678011583;K 222-12345;sprek 4;NL94COBA0678011583;Credit;25;EUR;Inleg;;25
+5-9-2023;Overboeking naar betaalrekening NL94COBA0678011583;K 222-12345;sprek 4;NL94COBA0678011583;Debit;250,57;EUR;Opname;;0
+1-9-2023;Rente;K 222-12345;sprek 4;;Credit;0,57;EUR;Rente;;250,57
+2-10-2023;Overboeking naar betaalrekening NL94COBA0678011583;K 333-12345;sprek 5;NL94COBA0678011583;Debit;91,07;EUR;Opname;;5750
+1-10-2023;Rente;K 333-12345;sprek 5;;Credit;16,07;EUR;Rente;;5841,07
+27-9-2023;Overboeking naar betaalrekening NL94COBA0678011583;K 333-12345;sprek 5;NL94COBA0678011583;Debit;1925;EUR;Opname;;5825
+26-9-2023;Overboeking naar betaalrekening NL94COBA0678011583;K 333-12345;sprek 5;NL94COBA0678011583;Debit;10500;EUR;Opname;;7750
+5-9-2023;Overboeking naar betaalrekening NL94COBA0678011583;K 333-12345;sprek 5;NL94COBA0678011583;Debit;16,85;EUR;Opname;;18250
+1-9-2023;Rente;K 333-12345;sprek 5;;Credit;16,85;EUR;Rente;;18266,85

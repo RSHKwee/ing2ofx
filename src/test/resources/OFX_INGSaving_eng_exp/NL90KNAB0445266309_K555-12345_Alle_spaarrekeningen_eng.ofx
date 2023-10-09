@@ -1,0 +1,188 @@
+<OFX>
+  <SIGNONMSGSRSV1>
+    <SONRS>                            <!-- Begin signon -->
+      <STATUS>                        <!-- Begin status aggregate -->
+         <CODE>0</CODE>               <!-- OK -->
+         <SEVERITY>INFO</SEVERITY>
+      </STATUS>
+      <DTSERVER>20231002</DTSERVER>   <!-- Oct. 29, 1999, 10:10:03 am -->
+      <LANGUAGE>ENG</LANGUAGE>        <!-- Language used in response -->
+      <DTPROFUP>20231002</DTPROFUP>   <!-- Last update to profile-->
+      <DTACCTUP>20231002</DTACCTUP>   <!-- Last account update -->
+      <FI>                            <!-- ID of receiving institution -->
+         <ORG>NCH</ORG>               <!-- Name of ID owner -->
+         <FID>1001</FID>              <!-- Actual ID -->
+      </FI>
+    </SONRS>                           <!-- End of signon -->
+  </SIGNONMSGSRSV1>
+  <BANKMSGSRSV1>
+   <STMTTRNRS>                        <!-- Begin response -->
+      <TRNUID>1001</TRNUID>           <!-- Client ID sent in request -->
+      <STATUS>                     <!-- Start status aggregate -->
+         <CODE>0</CODE>            <!-- OK -->
+         <SEVERITY>INFO</SEVERITY>
+      </STATUS>
+      <STMTRS>                            <!-- Begin statement response -->
+         <CURDEF>EUR</CURDEF>
+         <BANKACCTFROM>                   <!-- Identify the account -->
+            <BANKID>INGBNL2A</BANKID>     <!-- Routing transit or other FI ID -->
+            <ACCTID>K555-12345</ACCTID>  <!-- Account number -->
+            <ACCTTYPE>CHECKING</ACCTTYPE> <!-- Account type -->
+         </BANKACCTFROM>                  <!-- End of account ID -->
+         <BANKTRANLIST>                   <!-- Begin list of statement trans. -->
+            <DTSTART>20230901</DTSTART>
+            <DTEND>20231002</DTEND>
+               <STMTTRN>
+                  <TRNTYPE>DEBIT</TRNTYPE>
+                  <DTPOSTED>20231002</DTPOSTED>
+                  <TRNAMT>-250</TRNAMT>
+                  <FITID>20231002250</FITID>
+                  <NAME>Overboeking naar betaalrekening NL90KNAB0445266309</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL90KNAB0445266309</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO></MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DEBIT</TRNTYPE>
+                  <DTPOSTED>20231002</DTPOSTED>
+                  <TRNAMT>-98,72</TRNAMT>
+                  <FITID>202310029872</FITID>
+                  <NAME>Overboeking naar betaalrekening NL90KNAB0445266309</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL90KNAB0445266309</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO></MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20231001</DTPOSTED>
+                  <TRNAMT>48,72</TRNAMT>
+                  <FITID>202310014872</FITID>
+                  <NAME>Rente</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID></ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO></MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20230924</DTPOSTED>
+                  <TRNAMT>300</TRNAMT>
+                  <FITID>20230924300</FITID>
+                  <NAME>Overboeking van betaalrekening NL90KNAB0445266309</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL90KNAB0445266309</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO></MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20230923</DTPOSTED>
+                  <TRNAMT>1200</TRNAMT>
+                  <FITID>202309231200</FITID>
+                  <NAME>Overboeking van betaalrekening NL90KNAB0445266309</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL90KNAB0445266309</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO></MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20230920</DTPOSTED>
+                  <TRNAMT>25</TRNAMT>
+                  <FITID>2023092025</FITID>
+                  <NAME>Overboeking van betaalrekening NL90KNAB0445266309</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL90KNAB0445266309</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO></MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DEBIT</TRNTYPE>
+                  <DTPOSTED>20230915</DTPOSTED>
+                  <TRNAMT>-25</TRNAMT>
+                  <FITID>2023091525</FITID>
+                  <NAME>Overboeking naar betaalrekening NL90KNAB0445266309</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL90KNAB0445266309</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO></MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DEBIT</TRNTYPE>
+                  <DTPOSTED>20230906</DTPOSTED>
+                  <TRNAMT>-200</TRNAMT>
+                  <FITID>20230906200</FITID>
+                  <NAME>Overboeking naar betaalrekening NL90KNAB0445266309</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL90KNAB0445266309</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO></MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DEBIT</TRNTYPE>
+                  <DTPOSTED>20230904</DTPOSTED>
+                  <TRNAMT>-50</TRNAMT>
+                  <FITID>2023090450</FITID>
+                  <NAME>Overboeking naar betaalrekening NL90KNAB0445266309</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL90KNAB0445266309</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO></MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>DEBIT</TRNTYPE>
+                  <DTPOSTED>20230902</DTPOSTED>
+                  <TRNAMT>-45,14</TRNAMT>
+                  <FITID>202309024514</FITID>
+                  <NAME>Overboeking naar betaalrekening NL90KNAB0445266309</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID>NL90KNAB0445266309</ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO></MEMO>
+               </STMTTRN>
+               <STMTTRN>
+                  <TRNTYPE>CREDIT</TRNTYPE>
+                  <DTPOSTED>20230901</DTPOSTED>
+                  <TRNAMT>45,14</TRNAMT>
+                  <FITID>202309014514</FITID>
+                  <NAME>Rente</NAME>
+                  <BANKACCTTO>
+                     <BANKID></BANKID>
+                     <ACCTID></ACCTID>
+                     <ACCTTYPE>CHECKING</ACCTTYPE>
+                  </BANKACCTTO>
+                  <MEMO></MEMO>
+               </STMTTRN>
+         </BANKTRANLIST>                   <!-- End list of statement trans. -->
+         <LEDGERBAL>                       <!-- Ledger balance aggregate -->
+            <BALAMT>51450</BALAMT>
+            <DTASOF>202310022359</DTASOF>  <!-- Bal date: Last date in transactions, 11:59 pm -->
+         </LEDGERBAL>                      <!-- End ledger balance -->
+      </STMTRS>
+   </STMTTRNRS>                        <!-- End of accounts -->
+  </BANKMSGSRSV1>
+</OFX>
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_INGSaving_eng/NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen_eng.ofx -->
+<!--  Generated on 2023-10-09 11:18:27.407396500 -->
