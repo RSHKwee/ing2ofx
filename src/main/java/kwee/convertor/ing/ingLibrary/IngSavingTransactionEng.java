@@ -15,15 +15,8 @@ public class IngSavingTransactionEng extends CsvToBean<Object> {
   /*
    * @formatter:off
    * Spaarrekening 
-   * "Datum";"Omschrijving";"Rekening";"Rekening naam";"Tegenrekening";"Af Bij";"Bedrag";"Valuta";"Mutatiesoort";"Mededelingen";"Saldo na mutatie"
    * Date;Description;Account;Account name;Counterparty;Debit/credit;Amount;
    * Currency;Transaction type;Notifications;Resulting balance
-
-   *
-   *
-   * "Datum"; "Omschrijving"; "Rekening"; "Rekening naam"; "Tegenrekening";
-   * "Af Bij"; "Bedrag"; "Valuta"; "Mutatiesoort"; "Mededelingen";
-   * "Saldo na mutatie"
    *   
    * @formatter:on
    */

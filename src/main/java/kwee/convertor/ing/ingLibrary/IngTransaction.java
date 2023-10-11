@@ -13,11 +13,6 @@ public class IngTransaction extends CsvToBean<Object> {
  * For comma seperated file:
  * "Datum","Naam / Omschrijving","Rekening","Tegenrekening","Code","Af Bij","Bedrag (EUR)","MutatieSoort","Mededelingen"
  *
- * "Date";"Name / Description";"Account";"Counterparty";"Code";"Debit/credit";
- * "Amount (EUR)";"Transaction type";"Notifications";"Resulting balance";"Tag"
-
- *
- *
  * For semicolon seperared file:
  * "Datum";"Naam / Omschrijving";"Rekening";"Tegenrekening";"Code";"Af Bij";"Bedrag (EUR)";"Mutatiesoort";"Mededelingen";"Saldo na mutatie";"Tag"
  * 

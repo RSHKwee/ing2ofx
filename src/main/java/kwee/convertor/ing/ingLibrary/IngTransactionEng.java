@@ -9,34 +9,13 @@ public class IngTransactionEng extends CsvToBean<Object> {
 //  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   /*
  * @formatter:off
- * 
- * For comma seperated file:
- * "Datum","Naam / Omschrijving","Rekening","Tegenrekening","Code","Af Bij","Bedrag (EUR)","MutatieSoort","Mededelingen"
- *
- * "Date";"Name / Description";"Account";"Counterparty";"Code";"Debit/credit";
- * "Amount (EUR)";"Transaction type";"Notifications";"Resulting balance";"Tag"
-
- *
  *
  * For semicolon seperared file:
- * "Datum";"Naam / Omschrijving";"Rekening";"Tegenrekening";"Code";"Af Bij";"Bedrag (EUR)";"Mutatiesoort";"Mededelingen";"Saldo na mutatie";"Tag"
- * 
- *     These are the first two lines of an ING Netherlands CSV file:
-
-    "Datum","Naam / Omschrijving","Rekening","Tegenrekening","Code",\
-"Af Bij","Bedrag (EUR)","MutatieSoort",\
-"Mededelingen"
-    "20200213","Kosten OranjePakket met korting","NL42INGB0001085276","","DV",\
-"Af","1,25","Diversen",\
-"1 jan t/m 31 jan 2020 ING BANK N.V. Valutadatum: 13-02-2020"
-
-     or ";" seperated:
-     "Datum";"Naam / Omschrijving";"Rekening";"Tegenrekening";"Code";
-     "Af Bij";"Bedrag (EUR)";"Mutatiesoort";"Mededelingen";"Saldo na mutatie";"Tag"
-"20210911";"Kosten OranjePakket";"NL12INGB0000123456";"";"DV";"Af";"1,95";"Diversen";"1 aug t/m 31 aug 2021 ING BANK N.V. Valutadatum: 11-09-2021";"5185,32";""
-    
-   * @formatter:on
-   */
+ * "Date";"Name / Description";"Account";"Counterparty";"Code";"Debit/credit";
+ * "Amount (EUR)";"Transaction type";"Notifications";"Resulting balance";"Tag"
+ *     
+ * @formatter:on
+ */
 
   @CsvBindByName(column = "Date")
   private String Datum = "";
@@ -92,6 +71,11 @@ public class IngTransactionEng extends CsvToBean<Object> {
   }
 
   public String getAf_Bij() {
+    if (Af_Bij.equalsIgnoreCase("Debit")) {
+      Af_Bij = "Af";
+    } else if (Af_Bij.equalsIgnoreCase("Credit")) {
+      Af_Bij = "Bij";
+    }
     return Af_Bij;
   }
 
@@ -136,7 +120,11 @@ public class IngTransactionEng extends CsvToBean<Object> {
   }
 
   public void setAf_Bij(String af_Bij) {
-    Af_Bij = af_Bij;
+    if (af_Bij.equalsIgnoreCase("Debit")) {
+      Af_Bij = "Af";
+    } else if (af_Bij.equalsIgnoreCase("Credit")) {
+      Af_Bij = "Bij";
+    }
   }
 
   public void setBedrag(String bedrag) {
