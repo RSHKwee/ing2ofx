@@ -39,7 +39,7 @@
                   <FITID>20231002250</FITID>
                   <NAME>Overboeking naar betaalrekening NL90KNAB0445266309</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>KNABNL0A</BANKID>
                      <ACCTID>NL90KNAB0445266309</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -52,7 +52,7 @@
                   <FITID>202310029872</FITID>
                   <NAME>Overboeking naar betaalrekening NL90KNAB0445266309</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>KNABNL0A</BANKID>
                      <ACCTID>NL90KNAB0445266309</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -65,8 +65,8 @@
                   <FITID>202310014872</FITID>
                   <NAME>Rente</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO></MEMO>
@@ -78,7 +78,7 @@
                   <FITID>20230924300</FITID>
                   <NAME>Overboeking van betaalrekening NL90KNAB0445266309</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>KNABNL0A</BANKID>
                      <ACCTID>NL90KNAB0445266309</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -91,7 +91,7 @@
                   <FITID>202309231200</FITID>
                   <NAME>Overboeking van betaalrekening NL90KNAB0445266309</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>KNABNL0A</BANKID>
                      <ACCTID>NL90KNAB0445266309</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -104,7 +104,7 @@
                   <FITID>2023092025</FITID>
                   <NAME>Overboeking van betaalrekening NL90KNAB0445266309</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>KNABNL0A</BANKID>
                      <ACCTID>NL90KNAB0445266309</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -117,7 +117,7 @@
                   <FITID>2023091525</FITID>
                   <NAME>Overboeking naar betaalrekening NL90KNAB0445266309</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>KNABNL0A</BANKID>
                      <ACCTID>NL90KNAB0445266309</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -130,7 +130,7 @@
                   <FITID>20230906200</FITID>
                   <NAME>Overboeking naar betaalrekening NL90KNAB0445266309</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>KNABNL0A</BANKID>
                      <ACCTID>NL90KNAB0445266309</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -143,7 +143,7 @@
                   <FITID>2023090450</FITID>
                   <NAME>Overboeking naar betaalrekening NL90KNAB0445266309</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>KNABNL0A</BANKID>
                      <ACCTID>NL90KNAB0445266309</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -156,7 +156,7 @@
                   <FITID>202309024514</FITID>
                   <NAME>Overboeking naar betaalrekening NL90KNAB0445266309</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>KNABNL0A</BANKID>
                      <ACCTID>NL90KNAB0445266309</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -169,8 +169,8 @@
                   <FITID>202309014514</FITID>
                   <NAME>Rente</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO></MEMO>
@@ -185,4 +185,4 @@
   </BANKMSGSRSV1>
 </OFX>
 <!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_INGSaving_eng/NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen_eng.ofx -->
-<!--  Generated on 2023-10-09 11:18:27.407396500 -->
+<!--  Generated on 2023-10-30 12:09:06.751731800 -->

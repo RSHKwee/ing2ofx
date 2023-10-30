@@ -39,8 +39,8 @@
                   <FITID>20230524075</FITID>
                   <NAME>Kosten extra betaalpas met nr. 005</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>SNSBNL0A</BANKID>
+                     <ACCTID>NL00SNSBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Kosten extra betaalpas met nr. 005</MEMO>
@@ -52,8 +52,8 @@
                   <FITID>20230524255</FITID>
                   <NAME>Kosten gebruik betaalrekening inclusief 1 betaalpas</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>SNSBNL0A</BANKID>
+                     <ACCTID>NL00SNSBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Kosten gebruik betaalrekening inclusief 1 betaalpas</MEMO>
@@ -65,7 +65,7 @@
                   <FITID>20230524330</FITID>
                   <NAME>a Acchouder 1a, a Acchouder 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>COBANL0A</BANKID>
                      <ACCTID>NL94COBA0678011583</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -80,5 +80,5 @@
    </STMTTRNRS>                        <!-- End of accounts -->
   </BANKMSGSRSV1>
 </OFX>
-<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_CombineOneByOne_Syn\NL20LPLN0892606304_transactie-historie.ofx -->
-<!--  Gegenereerd op 2023-07-04 12:09:04.957919900 -->
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_CombineOneByOne_Syn/NL20LPLN0892606304_transactie-historie.ofx -->
+<!--  Generated on 2023-10-30 12:09:14.829043400 -->

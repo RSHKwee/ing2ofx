@@ -39,7 +39,7 @@
                   <FITID>2023100225000</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K50A</BANKID>
                      <ACCTID>K55512345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -52,7 +52,7 @@
                   <FITID>2023100212100</FITID>
                   <NAME>J P Smit sprek 5adviesburo Bv</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL47INGB0003910214</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -65,7 +65,7 @@
                   <FITID>202310029872</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K50A</BANKID>
                      <ACCTID>K55512345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -78,7 +78,7 @@
                   <FITID>2023100218587</FITID>
                   <NAME>Acchouder 14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL85INGB0668339063</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -91,7 +91,7 @@
                   <FITID>202310023850</FITID>
                   <NAME>Acchouder 14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL85INGB0668339063</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -104,7 +104,7 @@
                   <FITID>2023092430000</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K50A</BANKID>
                      <ACCTID>K55512345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -117,7 +117,7 @@
                   <FITID>20230923120000</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K50A</BANKID>
                      <ACCTID>K55512345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -130,7 +130,7 @@
                   <FITID>202309222600</FITID>
                   <NAME>Acchouder 10</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>ABNANL0A</BANKID>
                      <ACCTID>NL19ABNA0435928112</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -143,7 +143,7 @@
                   <FITID>20230922146640</FITID>
                   <NAME>Acchouder 8</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL58INGB0702712760</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -156,7 +156,7 @@
                   <FITID>202309202500</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K50A</BANKID>
                      <ACCTID>K55512345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -169,7 +169,7 @@
                   <FITID>2023092015500</FITID>
                   <NAME>Acchouder 9</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL86INGB0002445588</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -182,8 +182,8 @@
                   <FITID>202309162000</FITID>
                   <NAME>Tekst4 NLD</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 008 15/09/2023 10:08 Transaction: B90027 Term: 810183 Value date: 16/09/2023</MEMO>
@@ -195,7 +195,7 @@
                   <FITID>202309152500</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K50A</BANKID>
                      <ACCTID>K55512345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -208,7 +208,7 @@
                   <FITID>202309146998</FITID>
                   <NAME>Hipay</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>2022DE0A</BANKID>
                      <ACCTID>DE75202208000000019190</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -221,8 +221,8 @@
                   <FITID>202309125000</FITID>
                   <NAME>Tekst4 NLD</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 007 11/09/2023 14:39 Transaction: B20026 Term: 810183 Value date: 12/09/2023</MEMO>
@@ -234,8 +234,8 @@
                   <FITID>20230910220</FITID>
                   <NAME>Tekst10</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>1 aug t/m 31 aug 2023 ING BANK N.V. Value date: 10/09/2023</MEMO>
@@ -247,8 +247,8 @@
                   <FITID>20230910315</FITID>
                   <NAME>Tekst11</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>1 aug t/m 31 aug 2023 ING BANK N.V. Value date: 10/09/2023</MEMO>
@@ -260,8 +260,8 @@
                   <FITID>202309089560</FITID>
                   <NAME>Restaurant Teufi Davos Dorf CHE</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 006 06/09/2023 13:11 Transaction: B70025 Term: 90126727 Currency: 90,00 CHF Rate: 1,062212 Mark-up: 1,32 EUR Value date: 08/09/2023</MEMO>
@@ -273,7 +273,7 @@
                   <FITID>2023090620000</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K50A</BANKID>
                      <ACCTID>K55512345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -286,8 +286,8 @@
                   <FITID>202309054201</FITID>
                   <NAME>HANSELMANNIS CONDITORE CHE</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 006 04/09/2023 15:18 Transaction: B50024 Term: 79G37071 Currency: 39,50 CHF Rate: 1,063547 Mark-up: 0,58 EUR Value date: 05/09/2023</MEMO>
@@ -299,7 +299,7 @@
                   <FITID>202309045000</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K50A</BANKID>
                      <ACCTID>K55512345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -312,7 +312,7 @@
                   <FITID>202309024514</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K50A</BANKID>
                      <ACCTID>K55512345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -325,7 +325,7 @@
                   <FITID>2023090118587</FITID>
                   <NAME>Acchouder 14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL85INGB0668339063</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -338,7 +338,7 @@
                   <FITID>202309013850</FITID>
                   <NAME>Acchouder 14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL85INGB0668339063</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -353,5 +353,5 @@
    </STMTTRNRS>                        <!-- End of accounts -->
   </BANKMSGSRSV1>
 </OFX>
-<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_eng_ING/NL90KNAB0445266309_Alle_rekeningen_eng.ofx -->
-<!--  Generated on 2023-10-09 11:03:58.322549200 -->
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_ING_eng/NL90KNAB0445266309_Alle_rekeningen_eng.ofx -->
+<!--  Generated on 2023-10-30 12:08:35.429684200 -->

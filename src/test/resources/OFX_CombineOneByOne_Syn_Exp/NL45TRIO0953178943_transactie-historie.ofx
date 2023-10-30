@@ -39,8 +39,8 @@
                   <FITID>2023050541</FITID>
                   <NAME>Rente over positief saldo tot 01-05-23</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>SNSBNL0A</BANKID>
+                     <ACCTID>NL00SNSBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Rente over positief saldo tot 01-05-23</MEMO>
@@ -54,5 +54,5 @@
    </STMTTRNRS>                        <!-- End of accounts -->
   </BANKMSGSRSV1>
 </OFX>
-<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_CombineOneByOne_Syn\NL45TRIO0953178943_transactie-historie.ofx -->
-<!--  Gegenereerd op 2023-07-04 12:09:04.955916700 -->
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_CombineOneByOne_Syn/NL45TRIO0953178943_transactie-historie.ofx -->
+<!--  Generated on 2023-10-30 12:09:14.826051400 -->

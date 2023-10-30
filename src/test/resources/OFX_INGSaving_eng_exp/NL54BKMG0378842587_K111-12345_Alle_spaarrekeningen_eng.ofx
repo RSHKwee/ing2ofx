@@ -39,7 +39,7 @@
                   <FITID>2023100224296</FITID>
                   <NAME>Overboeking van betaalrekening NL54BKMG0378842587</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>BKMGNL0A</BANKID>
                      <ACCTID>NL54BKMG0378842587</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -52,8 +52,8 @@
                   <FITID>20231001704</FITID>
                   <NAME>Rente</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO></MEMO>
@@ -65,7 +65,7 @@
                   <FITID>202309201000</FITID>
                   <NAME>Overboeking naar betaalrekening NL54BKMG0378842587</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>BKMGNL0A</BANKID>
                      <ACCTID>NL54BKMG0378842587</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -78,7 +78,7 @@
                   <FITID>2023090524346</FITID>
                   <NAME>Overboeking van betaalrekening NL54BKMG0378842587</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>BKMGNL0A</BANKID>
                      <ACCTID>NL54BKMG0378842587</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -91,8 +91,8 @@
                   <FITID>20230901654</FITID>
                   <NAME>Rente</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO></MEMO>
@@ -107,4 +107,4 @@
   </BANKMSGSRSV1>
 </OFX>
 <!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_INGSaving_eng/NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen_eng.ofx -->
-<!--  Generated on 2023-10-09 11:18:27.410384800 -->
+<!--  Generated on 2023-10-30 12:09:06.755715500 -->

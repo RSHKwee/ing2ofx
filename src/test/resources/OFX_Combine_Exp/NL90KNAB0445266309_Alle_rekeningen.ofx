@@ -39,7 +39,7 @@
                   <FITID>20230523200000</FITID>
                   <NAME>a Acchouder 7</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K50A</BANKID>
                      <ACCTID>K55512345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -52,7 +52,7 @@
                   <FITID>2023052382198</FITID>
                   <NAME>Acchouder 8</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL58INGB0702712760</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -65,7 +65,7 @@
                   <FITID>20230523124002</FITID>
                   <NAME>Acchouder 8</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL58INGB0702712760</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -78,7 +78,7 @@
                   <FITID>2023052215500</FITID>
                   <NAME>Acchouder 9</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL86INGB0002445588</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -91,7 +91,7 @@
                   <FITID>202305222600</FITID>
                   <NAME>Acchouder 10</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>ABNANL0A</BANKID>
                      <ACCTID>NL19ABNA0435928112</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -104,8 +104,8 @@
                   <FITID>202305112500</FITID>
                   <NAME>Tekst19</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 006 11-05-2023 12:15 Tekst156: B30010 Term: 1M6G52 Valutadatum: 11-05-2023</MEMO>
@@ -117,8 +117,8 @@
                   <FITID>20230510220</FITID>
                   <NAME>Tekst10</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>1 apr t/m 30 apr 2023 ING BANK N.V. Valutadatum: 10-05-2023</MEMO>
@@ -130,8 +130,8 @@
                   <FITID>20230510315</FITID>
                   <NAME>Tekst11</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>1 apr t/m 30 apr 2023 ING BANK N.V. Valutadatum: 10-05-2023</MEMO>
@@ -143,7 +143,7 @@
                   <FITID>2023050525000</FITID>
                   <NAME>a Acchouder 7</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K50A</BANKID>
                      <ACCTID>K55512345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -156,8 +156,8 @@
                   <FITID>2023050524600</FITID>
                   <NAME>Tekst23</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 006 04-05-2023 14:58 Tekst156: B10009 Term: 89PE01 Valutadatum: 05-05-2023</MEMO>
@@ -169,7 +169,7 @@
                   <FITID>2023050313401</FITID>
                   <NAME>a Acchouder 7</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K50A</BANKID>
                      <ACCTID>K55512345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -182,7 +182,7 @@
                   <FITID>202305023850</FITID>
                   <NAME>Acchouder 14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL85INGB0668339063</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -195,7 +195,7 @@
                   <FITID>2023050218587</FITID>
                   <NAME>Acchouder 14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL85INGB0668339063</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -208,7 +208,7 @@
                   <FITID>20230501100000</FITID>
                   <NAME>a Acchouder 7</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K50A</BANKID>
                      <ACCTID>K55512345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -223,5 +223,5 @@
    </STMTTRNRS>                        <!-- End of accounts -->
   </BANKMSGSRSV1>
 </OFX>
-<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_Combine_Gen\NL90KNAB0445266309_Alle_rekeningen.ofx -->
-<!--  Gegenereerd op 2023-07-04 11:36:23.575722100 -->
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_Combine/NL90KNAB0445266309_Alle_rekeningen.ofx -->
+<!--  Generated on 2023-10-30 12:09:01.399058100 -->

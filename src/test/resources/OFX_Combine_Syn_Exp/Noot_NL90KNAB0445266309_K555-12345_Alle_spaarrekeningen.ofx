@@ -39,7 +39,7 @@
                   <FITID>20230523200000</FITID>
                   <NAME>Overboeking van betaalrekening NL90KNAB0445266309</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>KNABNL0A</BANKID>
                      <ACCTID>NL90KNAB0445266309</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -52,7 +52,7 @@
                   <FITID>2023050525000</FITID>
                   <NAME>Overboeking naar betaalrekening NL90KNAB0445266309</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>KNABNL0A</BANKID>
                      <ACCTID>NL90KNAB0445266309</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -65,7 +65,7 @@
                   <FITID>2023050313401</FITID>
                   <NAME>Overboeking van betaalrekening NL90KNAB0445266309</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>KNABNL0A</BANKID>
                      <ACCTID>NL90KNAB0445266309</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -78,8 +78,8 @@
                   <FITID>202305011599</FITID>
                   <NAME>Rente</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO></MEMO>
@@ -91,7 +91,7 @@
                   <FITID>20230501100000</FITID>
                   <NAME>Overboeking van betaalrekening NL90KNAB0445266309</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>KNABNL0A</BANKID>
                      <ACCTID>NL90KNAB0445266309</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -106,5 +106,5 @@
    </STMTTRNRS>                        <!-- End of accounts -->
   </BANKMSGSRSV1>
 </OFX>
-<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_Combine_GenSyn\Noot_NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx -->
-<!--  Gegenereerd op 2023-07-04 11:36:20.345470400 -->
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_Combine_Syn/Noot_NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx -->
+<!--  Generated on 2023-10-30 12:08:56.657367500 -->

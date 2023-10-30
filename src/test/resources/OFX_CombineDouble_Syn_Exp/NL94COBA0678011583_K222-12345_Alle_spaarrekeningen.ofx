@@ -39,7 +39,7 @@
                   <FITID>20230523301</FITID>
                   <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>COBANL0A</BANKID>
                      <ACCTID>NL94COBA0678011583</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -52,8 +52,8 @@
                   <FITID>20230501106</FITID>
                   <NAME>Rente</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO></MEMO>
@@ -67,5 +67,5 @@
    </STMTTRNRS>                        <!-- End of accounts -->
   </BANKMSGSRSV1>
 </OFX>
-<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_CombineDouble_GenSyn\NL94COBA0678011583_K222-12345_Alle_spaarrekeningen.ofx -->
-<!--  Gegenereerd op 2023-07-04 11:36:36.700119800 -->
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_CombineDouble_Syn/NL94COBA0678011583_K222-12345_Alle_spaarrekeningen.ofx -->
+<!--  Generated on 2023-10-30 12:09:22.521320600 -->

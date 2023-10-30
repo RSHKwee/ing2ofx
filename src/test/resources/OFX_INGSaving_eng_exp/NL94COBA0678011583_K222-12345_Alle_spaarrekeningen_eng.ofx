@@ -39,7 +39,7 @@
                   <FITID>20231002048</FITID>
                   <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>COBANL0A</BANKID>
                      <ACCTID>NL94COBA0678011583</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -52,8 +52,8 @@
                   <FITID>20231001048</FITID>
                   <NAME>Rente</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO></MEMO>
@@ -65,7 +65,7 @@
                   <FITID>202309284225</FITID>
                   <NAME>Overboeking van betaalrekening NL94COBA0678011583</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>COBANL0A</BANKID>
                      <ACCTID>NL94COBA0678011583</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -78,7 +78,7 @@
                   <FITID>2023090525</FITID>
                   <NAME>Overboeking van betaalrekening NL94COBA0678011583</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>COBANL0A</BANKID>
                      <ACCTID>NL94COBA0678011583</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -91,7 +91,7 @@
                   <FITID>2023090525057</FITID>
                   <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>COBANL0A</BANKID>
                      <ACCTID>NL94COBA0678011583</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -104,8 +104,8 @@
                   <FITID>20230901057</FITID>
                   <NAME>Rente</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO></MEMO>
@@ -120,4 +120,4 @@
   </BANKMSGSRSV1>
 </OFX>
 <!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_INGSaving_eng/NL94COBA0678011583_K222-12345_Alle_spaarrekeningen_eng.ofx -->
-<!--  Generated on 2023-10-09 11:18:27.413376800 -->
+<!--  Generated on 2023-10-30 12:09:06.758708 -->

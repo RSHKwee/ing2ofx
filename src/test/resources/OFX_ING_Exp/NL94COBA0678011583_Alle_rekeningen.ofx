@@ -39,7 +39,7 @@
                   <FITID>202305306651</FITID>
                   <NAME>Acchouder 22</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>ADYBNL0A</BANKID>
                      <ACCTID>NL04ADYB2017400157</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -52,7 +52,7 @@
                   <FITID>2023053029000</FITID>
                   <NAME>Tekst30 b</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>RABONL0A</BANKID>
                      <ACCTID>NL97RABO0140917969</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -65,8 +65,8 @@
                   <FITID>202305291865</FITID>
                   <NAME>Tekst24</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 021 28-05-2023 13:38 Tekst156: B20175 Term: 21825651 Valutadatum: 29-05-2023</MEMO>
@@ -78,8 +78,8 @@
                   <FITID>202305281590</FITID>
                   <NAME>Tekst16</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 26-05-2023 10:15 Tekst156: B20171 Term: CT801857 Valutadatum: 28-05-2023</MEMO>
@@ -91,8 +91,8 @@
                   <FITID>202305281475</FITID>
                   <NAME>Tekst18</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 26-05-2023 10:20 Tekst156: B20172 Term: 62RN4H Valutadatum: 28-05-2023</MEMO>
@@ -104,8 +104,8 @@
                   <FITID>20230528995</FITID>
                   <NAME>Tekst2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 26-05-2023 10:23 Tekst156: B60173 Term: FHD1FV Valutadatum: 28-05-2023</MEMO>
@@ -117,8 +117,8 @@
                   <FITID>202305283300</FITID>
                   <NAME>Tekst5</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 26-05-2023 10:33 Tekst156: B70174 Term: 80006896 Valutadatum: 28-05-2023</MEMO>
@@ -130,8 +130,8 @@
                   <FITID>202305275385</FITID>
                   <NAME>Tekst8</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 021 25-05-2023 10:41 Tekst156: B90168 Term: ZF2711 Valutadatum: 27-05-2023</MEMO>
@@ -143,8 +143,8 @@
                   <FITID>202305271338</FITID>
                   <NAME>Tekst13</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 25-05-2023 11:05 Tekst156: B40170 Term: 12ZM02 Valutadatum: 27-05-2023</MEMO>
@@ -156,8 +156,8 @@
                   <FITID>202305275223</FITID>
                   <NAME>Tekst14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 25-05-2023 10:58 Tekst156: B40169 Term: 3TMW02 Valutadatum: 27-05-2023</MEMO>
@@ -169,7 +169,7 @@
                   <FITID>20230526250000</FITID>
                   <NAME>a Acchouder 1a, a Acchouder 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K40A</BANKID>
                      <ACCTID>K44412345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -182,7 +182,7 @@
                   <FITID>20230526300000</FITID>
                   <NAME>a Acchouder 1a</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>BKMGNL0A</BANKID>
                      <ACCTID>NL54BKMG0378842587</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -195,7 +195,7 @@
                   <FITID>202305269384</FITID>
                   <NAME>Acchouder 13</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>DEUTNL0A</BANKID>
                      <ACCTID>NL82DEUT0319804615</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -208,7 +208,7 @@
                   <FITID>20230526476</FITID>
                   <NAME>Acchouder 13</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>DEUTNL0A</BANKID>
                      <ACCTID>NL82DEUT0319804615</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -221,7 +221,7 @@
                   <FITID>202305262565</FITID>
                   <NAME>Acchouder 14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL85INGB0668339063</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -234,7 +234,7 @@
                   <FITID>202305263425</FITID>
                   <NAME>Tekst25</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL83INGB0003155100</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -247,7 +247,7 @@
                   <FITID>2023052525000</FITID>
                   <NAME>a Acchouder 1a, a Acchouder 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K40A</BANKID>
                      <ACCTID>K44412345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -260,8 +260,8 @@
                   <FITID>20230524387</FITID>
                   <NAME>Tekst8</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 021 23-05-2023 10:08 Tekst156: B10167 Term: ZF2713 Valutadatum: 24-05-2023</MEMO>
@@ -273,7 +273,7 @@
                   <FITID>20230524330</FITID>
                   <NAME>Acchouder 1a</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>LPLNNL0A</BANKID>
                      <ACCTID>NL20LPLN0892606304</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -286,7 +286,7 @@
                   <FITID>202305234000</FITID>
                   <NAME>a Acchouder 1a</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>BKMGNL0A</BANKID>
                      <ACCTID>NL54BKMG0378842587</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -299,7 +299,7 @@
                   <FITID>2023052340001</FITID>
                   <NAME>Acchouder 14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL55INGB0007024837</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -312,7 +312,7 @@
                   <FITID>20230523301</FITID>
                   <NAME>a Acchouder 1a, a Acchouder 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K20A</BANKID>
                      <ACCTID>K22212345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -325,7 +325,7 @@
                   <FITID>202305233000</FITID>
                   <NAME>a Acchouder 16</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>DEUTNL0A</BANKID>
                      <ACCTID>NL93DEUT0265252393</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -338,7 +338,7 @@
                   <FITID>202305231750</FITID>
                   <NAME>Tekst20</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>DEUTNL0A</BANKID>
                      <ACCTID>NL96DEUT0265293952</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -351,8 +351,8 @@
                   <FITID>202305225287</FITID>
                   <NAME>Tekst24</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 021 21-05-2023 11:48 Tekst156: B20166 Term: 21825651 Valutadatum: 22-05-2023</MEMO>
@@ -364,8 +364,8 @@
                   <FITID>202305202900</FITID>
                   <NAME>Tekst28</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 19-05-2023 11:21 Tekst156: B40164 Term: 88411801 Valutadatum: 20-05-2023</MEMO>
@@ -377,8 +377,8 @@
                   <FITID>20230520950</FITID>
                   <NAME>Tekst2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 19-05-2023 11:17 Tekst156: B30163 Term: FHD1FV Valutadatum: 20-05-2023</MEMO>
@@ -390,8 +390,8 @@
                   <FITID>202305202960</FITID>
                   <NAME>Tekst5</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 19-05-2023 11:32 Tekst156: B70165 Term: 80006896 Valutadatum: 20-05-2023</MEMO>
@@ -403,8 +403,8 @@
                   <FITID>202305202040</FITID>
                   <NAME>Tekst15</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 19-05-2023 11:07 Tekst156: B20161 Term: CT689163 Valutadatum: 20-05-2023</MEMO>
@@ -416,8 +416,8 @@
                   <FITID>202305201100</FITID>
                   <NAME>Tekst26</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 19-05-2023 11:09 Tekst156: B00162 Term: GNW63P Valutadatum: 20-05-2023</MEMO>
@@ -429,7 +429,7 @@
                   <FITID>202305199088</FITID>
                   <NAME>Acchouder 17 b</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL41INGB0000467598</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -442,8 +442,8 @@
                   <FITID>202305185596</FITID>
                   <NAME>Tekst8</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 021 17-05-2023 13:39 Tekst156: B70159 Term: ZF2708 Valutadatum: 18-05-2023</MEMO>
@@ -455,8 +455,8 @@
                   <FITID>202305188141</FITID>
                   <NAME>Tekst14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 17-05-2023 14:05 Tekst156: B90160 Term: 0DX0B2 Valutadatum: 18-05-2023</MEMO>
@@ -468,7 +468,7 @@
                   <FITID>202305182535</FITID>
                   <NAME>Acchouder 17 - mel</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL83INGB0000325513</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -481,8 +481,8 @@
                   <FITID>202305171500</FITID>
                   <NAME>Tekst21</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 021 16-05-2023 19:23 Tekst156: B70158 Term: 3NPK73 Valutadatum: 17-05-2023</MEMO>
@@ -494,7 +494,7 @@
                   <FITID>2023051710000</FITID>
                   <NAME>Acchouder 6</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL38INGB0000281897</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -507,7 +507,7 @@
                   <FITID>20230517933</FITID>
                   <NAME>Acchouder 19 b</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>ABNANL0A</BANKID>
                      <ACCTID>NL08ABNA0526650664</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -520,7 +520,7 @@
                   <FITID>2023051628270</FITID>
                   <NAME>Acchouder 18</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>RABONL0A</BANKID>
                      <ACCTID>NL81RABO0306874490</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -533,7 +533,7 @@
                   <FITID>20230515500</FITID>
                   <NAME>Acchouder 20 b</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL62INGB0663707048</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -546,8 +546,8 @@
                   <FITID>202305131545</FITID>
                   <NAME>Tekst18</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 12-05-2023 09:31 Tekst156: B40155 Term: SGW9BK Valutadatum: 13-05-2023</MEMO>
@@ -559,8 +559,8 @@
                   <FITID>20230513990</FITID>
                   <NAME>Tekst15</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 12-05-2023 09:22 Tekst156: B20154 Term: CT801857 Valutadatum: 13-05-2023</MEMO>
@@ -572,8 +572,8 @@
                   <FITID>202305131300</FITID>
                   <NAME>Tekst2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 12-05-2023 09:34 Tekst156: B80156 Term: FHD1FV Valutadatum: 13-05-2023</MEMO>
@@ -585,8 +585,8 @@
                   <FITID>202305134780</FITID>
                   <NAME>Tekst5</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 12-05-2023 09:44 Tekst156: B30157 Term: 80006896 Valutadatum: 13-05-2023</MEMO>
@@ -598,8 +598,8 @@
                   <FITID>20230513315</FITID>
                   <NAME>Tekst11</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>1 apr t/m 30 apr 2023 ING BANK N.V. Valutadatum: 13-05-2023</MEMO>
@@ -611,8 +611,8 @@
                   <FITID>20230513110</FITID>
                   <NAME>Tekst12</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>1 apr t/m 30 apr 2023 ING BANK N.V. Valutadatum: 13-05-2023</MEMO>
@@ -624,8 +624,8 @@
                   <FITID>202305125498</FITID>
                   <NAME>Tekst8</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 021 11-05-2023 09:42 Tekst156: B40152 Term: ZF2708 Valutadatum: 12-05-2023</MEMO>
@@ -637,8 +637,8 @@
                   <FITID>202305124618</FITID>
                   <NAME>Tekst14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 11-05-2023 10:09 Tekst156: B80153 Term: 3TMW02 Valutadatum: 12-05-2023</MEMO>
@@ -650,7 +650,7 @@
                   <FITID>2023051244100</FITID>
                   <NAME>Acchouder 1a en/of Acchouder 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>LPLNNL0A</BANKID>
                      <ACCTID>NL72LPLN2800214643</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -663,7 +663,7 @@
                   <FITID>202305126763</FITID>
                   <NAME>Acchouder 23</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL94INGB0000869000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -676,8 +676,8 @@
                   <FITID>202305111100</FITID>
                   <NAME>Tekst6</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 021 10-05-2023 14:41 Tekst156: B80151 Term: 225V01 Valutadatum: 11-05-2023</MEMO>
@@ -689,7 +689,7 @@
                   <FITID>2023051125000</FITID>
                   <NAME>a Acchouder 1a, a Acchouder 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K40A</BANKID>
                      <ACCTID>K44412345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -702,7 +702,7 @@
                   <FITID>2023051128270</FITID>
                   <NAME>Acchouder 18</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>RABONL0A</BANKID>
                      <ACCTID>NL81RABO0306874490</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -715,7 +715,7 @@
                   <FITID>20230511418450</FITID>
                   <NAME>Acchouder 22</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>RABONL0A</BANKID>
                      <ACCTID>NL61RABO0366302094</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -728,8 +728,8 @@
                   <FITID>20230510613</FITID>
                   <NAME>Tekst8</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 021 09-05-2023 09:48 Tekst156: B30150 Term: ZF2708 Valutadatum: 10-05-2023</MEMO>
@@ -741,7 +741,7 @@
                   <FITID>20230510418450</FITID>
                   <NAME>a Acchouder 1a, a Acchouder 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K30A</BANKID>
                      <ACCTID>K33312345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -754,8 +754,8 @@
                   <FITID>2023050819500</FITID>
                   <NAME>Tekst3</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 021 07-05-2023 20:02 Tekst156: B50149 Term: 80014797 Valutadatum: 08-05-2023</MEMO>
@@ -767,8 +767,8 @@
                   <FITID>202305082901</FITID>
                   <NAME>Tekst24</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 021 07-05-2023 16:13 Tekst156: B40148 Term: 21825651 Valutadatum: 08-05-2023</MEMO>
@@ -780,7 +780,7 @@
                   <FITID>20230508200</FITID>
                   <NAME>Acchouder 20 b</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL62INGB0663707048</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -793,7 +793,7 @@
                   <FITID>202305074900</FITID>
                   <NAME>a Acchouder 7</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL87INGB0004454537</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -806,7 +806,7 @@
                   <FITID>2023050725000</FITID>
                   <NAME>a Acchouder 1a, a Acchouder 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K40A</BANKID>
                      <ACCTID>K44412345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -819,8 +819,8 @@
                   <FITID>202305072015</FITID>
                   <NAME>Tekst15</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 05-05-2023 11:31 Tekst156: B60143 Term: CT801857 Valutadatum: 07-05-2023</MEMO>
@@ -832,8 +832,8 @@
                   <FITID>202305073935</FITID>
                   <NAME>Tekst5</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 05-05-2023 12:03 Tekst156: B10147 Term: 80006896 Valutadatum: 07-05-2023</MEMO>
@@ -845,8 +845,8 @@
                   <FITID>202305061900</FITID>
                   <NAME>Tekst26</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 05-05-2023 11:45 Tekst156: B90145 Term: GNW63P Valutadatum: 06-05-2023</MEMO>
@@ -858,8 +858,8 @@
                   <FITID>202305061200</FITID>
                   <NAME>Tekst2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 05-05-2023 11:48 Tekst156: B30146 Term: FHD1FV Valutadatum: 06-05-2023</MEMO>
@@ -871,8 +871,8 @@
                   <FITID>202305062956</FITID>
                   <NAME>Tekst18</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 05-05-2023 11:40 Tekst156: B40144 Term: SGW9BK Valutadatum: 06-05-2023</MEMO>
@@ -884,8 +884,8 @@
                   <FITID>20230505150</FITID>
                   <NAME>Tekst17</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 021 04-05-2023 14:11 Tekst156: B40141 Term: CT695965 Valutadatum: 05-05-2023</MEMO>
@@ -897,8 +897,8 @@
                   <FITID>202305059759</FITID>
                   <NAME>Tekst8</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 021 04-05-2023 10:41 Tekst156: B70138 Term: ZF2709 Valutadatum: 05-05-2023</MEMO>
@@ -910,8 +910,8 @@
                   <FITID>20230505720</FITID>
                   <NAME>Tekst7</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 021 04-05-2023 15:13 Tekst156: B90142 Term: T3PFG0 Valutadatum: 05-05-2023</MEMO>
@@ -923,8 +923,8 @@
                   <FITID>202305057000</FITID>
                   <NAME>Tekst4</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 04-05-2023 10:46 Tekst156: B30139 Term: 810183 Valutadatum: 05-05-2023</MEMO>
@@ -936,8 +936,8 @@
                   <FITID>202305054216</FITID>
                   <NAME>Tekst14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 04-05-2023 11:07 Tekst156: B10140 Term: 3TMW01 Valutadatum: 05-05-2023</MEMO>
@@ -949,7 +949,7 @@
                   <FITID>20230505610000</FITID>
                   <NAME>Acchouder 21</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>ABNANL0A</BANKID>
                      <ACCTID>NL21ABNA0887430872</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -962,7 +962,7 @@
                   <FITID>20230505250001</FITID>
                   <NAME>a Acchouder 1a, a Acchouder 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K40A</BANKID>
                      <ACCTID>K44412345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -975,7 +975,7 @@
                   <FITID>202305052520</FITID>
                   <NAME>Acchouder 23</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL54INGB0005564520</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -988,7 +988,7 @@
                   <FITID>2023050410000</FITID>
                   <NAME>Acchouder 21</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>ABNANL0A</BANKID>
                      <ACCTID>NL21ABNA0887430872</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1001,7 +1001,7 @@
                   <FITID>20230504610000</FITID>
                   <NAME>a Acchouder 1a, a Acchouder 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K30A</BANKID>
                      <ACCTID>K33312345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1014,7 +1014,7 @@
                   <FITID>2023050425000</FITID>
                   <NAME>a Acchouder 1a, a Acchouder 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K40A</BANKID>
                      <ACCTID>K44412345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1027,8 +1027,8 @@
                   <FITID>20230503600</FITID>
                   <NAME>Tekst1</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 021 02-05-2023 13:16 Tekst156: B60137 Term: CT676476 Valutadatum: 03-05-2023</MEMO>
@@ -1040,7 +1040,7 @@
                   <FITID>202305036190</FITID>
                   <NAME>Acchouder 24a b Tekst29</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>DEUTNL0A</BANKID>
                      <ACCTID>NL51DEUT0265262461</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1053,7 +1053,7 @@
                   <FITID>2023050215075</FITID>
                   <NAME>a Acchouder 1a, a Acchouder 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K40A</BANKID>
                      <ACCTID>K44412345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1066,7 +1066,7 @@
                   <FITID>202305027700</FITID>
                   <NAME>Acchouder 14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL85INGB0668339063</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1079,7 +1079,7 @@
                   <FITID>2023050243202</FITID>
                   <NAME>Acchouder 14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL85INGB0668339063</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1092,7 +1092,7 @@
                   <FITID>202305024538</FITID>
                   <NAME>Acchouder 25</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>ABNANL0A</BANKID>
                      <ACCTID>NL89ABNA0450001067</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1105,7 +1105,7 @@
                   <FITID>2023050211704</FITID>
                   <NAME>Acchouder 23</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL54INGB0005564520</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1118,7 +1118,7 @@
                   <FITID>2023050252430</FITID>
                   <NAME>Acchouder 23</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL54INGB0005564520</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1131,8 +1131,8 @@
                   <FITID>202305013036</FITID>
                   <NAME>Tekst24</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 021 30-04-2023 14:12 Tekst156: B10135 Term: 21825651 Valutadatum: 01-05-2023</MEMO>
@@ -1144,8 +1144,8 @@
                   <FITID>202305013232</FITID>
                   <NAME>Tekst14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst3955: 020 30-04-2023 16:08 Tekst156: B00136 Term: 3TMW03 Valutadatum: 01-05-2023</MEMO>
@@ -1157,7 +1157,7 @@
                   <FITID>202305011000</FITID>
                   <NAME>Acchouder 20 b</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL62INGB0663707048</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1170,7 +1170,7 @@
                   <FITID>20230501110000</FITID>
                   <NAME>a Acchouder 1a, a Acchouder 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K40A</BANKID>
                      <ACCTID>K44412345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1185,5 +1185,5 @@
    </STMTTRNRS>                        <!-- End of accounts -->
   </BANKMSGSRSV1>
 </OFX>
-<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_ING_Gen\NL94COBA0678011583_Alle_rekeningen.ofx -->
-<!--  Gegenereerd op 2023-07-04 11:36:07.144104500 -->
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_ING/NL94COBA0678011583_Alle_rekeningen.ofx -->
+<!--  Generated on 2023-10-30 12:08:40.370114900 -->

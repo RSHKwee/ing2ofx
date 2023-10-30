@@ -39,8 +39,8 @@
                   <FITID>2023050936375</FITID>
                   <NAME>Voor u gekocht via Euronext Fund Services: 6,3042 Participaties ASN Duurzaam Mixfonds Neutraal aEUR 57,70. Valutadatum: 11/05/2023. Positie ,na transactie: 434,2441 ASN Duurzaam Mixfonds Neutraal. (Trans.nr. 24712542)</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>SNSBNL0A</BANKID>
+                     <ACCTID>NL00SNSBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Voor u gekocht via Euronext Fund Services: 6,3042 Participaties ASN Duurzaam Mixfonds Neutraal aEUR 57,70. Valutadatum: 11/05/2023. Positie ,na transactie: 434,2441 ASN Duurzaam Mixfonds Neutraal. (Trans.nr. 24712542)</MEMO>
@@ -52,8 +52,8 @@
                   <FITID>202305097544</FITID>
                   <NAME>Voor u gekocht via Euronext Fund Services: 1,4505 Participaties ASN Duurzaam Mixfonds Defensief a EUR 52,01. Valutadatum: 11/05/2023. Positi,e na transactie: 94,8511 ASN Duurzaam Mixfonds Defensief. (Trans.nr. 24647328)</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>SNSBNL0A</BANKID>
+                     <ACCTID>NL00SNSBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Voor u gekocht via Euronext Fund Services: 1,4505 Participaties ASN Duurzaam Mixfonds Defensief a EUR 52,01. Valutadatum: 11/05/2023. Positi,e na transactie: 94,8511 ASN Duurzaam Mixfonds Defensief. (Trans.nr. 24647328)</MEMO>
@@ -65,8 +65,8 @@
                   <FITID>2023050536375</FITID>
                   <NAME>Tekst33 cash dividend ASN Duurzaam Mixfonds Neutraal van EUR 427,94. Dividendbelasting (15%): EUR 64,19. (Trans.nr. 24141669) Het bedrag E,UR 363,75 wordt de eerstvolgende handelsdag herbelegd.</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>SNSBNL0A</BANKID>
+                     <ACCTID>NL00SNSBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst33 cash dividend ASN Duurzaam Mixfonds Neutraal van EUR 427,94. Dividendbelasting (15%): EUR 64,19. (Trans.nr. 24141669) Het bedrag E,UR 363,75 wordt de eerstvolgende handelsdag herbelegd.</MEMO>
@@ -78,8 +78,8 @@
                   <FITID>202305057544</FITID>
                   <NAME>Tekst33 cash dividend ASN Duurzaam Mixfonds Defensief van EUR 88,74. Dividendbelasting (15%): EUR 13,30. (Trans.nr. 24055379) Het bedrag E,UR 75,44 wordt de eerstvolgende handelsdag herbelegd.</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>SNSBNL0A</BANKID>
+                     <ACCTID>NL00SNSBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Tekst33 cash dividend ASN Duurzaam Mixfonds Defensief van EUR 88,74. Dividendbelasting (15%): EUR 13,30. (Trans.nr. 24055379) Het bedrag E,UR 75,44 wordt de eerstvolgende handelsdag herbelegd.</MEMO>
@@ -93,5 +93,5 @@
    </STMTTRNRS>                        <!-- End of accounts -->
   </BANKMSGSRSV1>
 </OFX>
-<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_Combine_Gen\NL38RABO0192584529_transactie-historie.ofx -->
-<!--  Gegenereerd op 2023-07-04 11:36:23.597662500 -->
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_Combine/NL38RABO0192584529_transactie-historie.ofx -->
+<!--  Generated on 2023-10-30 12:09:01.446927 -->

@@ -39,7 +39,7 @@
                   <FITID>20231002100</FITID>
                   <NAME>Acchouder 20 b</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL62INGB0663707048</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -52,8 +52,8 @@
                   <FITID>20231002885</FITID>
                   <NAME>STICHTING KUMPULAN BRONBE ARNHEM</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 01/10/2023 12:34 Transaction: B40359 Term: CT168844 Value date: 02/10/2023</MEMO>
@@ -65,8 +65,8 @@
                   <FITID>20231002775</FITID>
                   <NAME>STICHTING KUMPULAN BRONBE ARNHEM</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 01/10/2023 13:36 Transaction: B20360 Term: CT168844 Value date: 02/10/2023</MEMO>
@@ -78,8 +78,8 @@
                   <FITID>202310028382</FITID>
                   <NAME>OK Amersfoort AMERSFOORT NLD</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 01/10/2023 17:20 Transaction: B00361 Term: DS8FD2 Value date: 02/10/2023</MEMO>
@@ -91,7 +91,7 @@
                   <FITID>20231002048</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K20A</BANKID>
                      <ACCTID>K22212345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -104,7 +104,7 @@
                   <FITID>20231002123</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K40A</BANKID>
                      <ACCTID>K44412345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -117,7 +117,7 @@
                   <FITID>202310029107</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K30A</BANKID>
                      <ACCTID>K33312345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -130,7 +130,7 @@
                   <FITID>2023100250000</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K40A</BANKID>
                      <ACCTID>K44412345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -143,7 +143,7 @@
                   <FITID>202310027700</FITID>
                   <NAME>Acchouder 14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL85INGB0668339063</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -156,7 +156,7 @@
                   <FITID>2023100243202</FITID>
                   <NAME>Acchouder 14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL85INGB0668339063</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -169,7 +169,7 @@
                   <FITID>202310024538</FITID>
                   <NAME>Acchouder 25</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>ABNANL0A</BANKID>
                      <ACCTID>NL89ABNA0450001067</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -182,7 +182,7 @@
                   <FITID>2023100211704</FITID>
                   <NAME>Acchouder 23</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL54INGB0005564520</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -195,8 +195,8 @@
                   <FITID>202309301915</FITID>
                   <NAME>Tekst18</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 29/09/2023 10:33 Transaction: B60357 Term: SGW9BK Value date: 30/09/2023</MEMO>
@@ -208,8 +208,8 @@
                   <FITID>202309304775</FITID>
                   <NAME>Tekst5</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 29/09/2023 10:43 Transaction: B80358 Term: 80006896 Value date: 30/09/2023</MEMO>
@@ -221,8 +221,8 @@
                   <FITID>20230930700</FITID>
                   <NAME>Bruna 0177 HOEVELAKEN NLD</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 29/09/2023 10:26 Transaction: B90356 Term: V6F4N1 Value date: 30/09/2023</MEMO>
@@ -234,8 +234,8 @@
                   <FITID>202309297000</FITID>
                   <NAME>Tekst4 NLD</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 28/09/2023 11:00 Transaction: B40353 Term: 810182 Value date: 29/09/2023</MEMO>
@@ -247,8 +247,8 @@
                   <FITID>20230929894</FITID>
                   <NAME>ALBERT HEIJN 1839 HOEVELAKEN NLD</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 28/09/2023 11:04 Transaction: B80354 Term: 090JCJ Value date: 29/09/2023</MEMO>
@@ -260,8 +260,8 @@
                   <FITID>202309295281</FITID>
                   <NAME>Tekst14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 28/09/2023 11:23 Transaction: B80355 Term: 3TMW01 Value date: 29/09/2023</MEMO>
@@ -273,8 +273,8 @@
                   <FITID>202309295634</FITID>
                   <NAME>Tekst8</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 28/09/2023 10:51 Transaction: B00352 Term: ZF2711 Value date: 29/09/2023</MEMO>
@@ -286,7 +286,7 @@
                   <FITID>202309294014</FITID>
                   <NAME>Tekst3961 b.v.</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL27INGB0000026500</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -299,7 +299,7 @@
                   <FITID>2023092925000</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K40A</BANKID>
                      <ACCTID>K44412345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -312,8 +312,8 @@
                   <FITID>20230928299</FITID>
                   <NAME>ALBERT HEIJN 1839 HOEVELAKEN NLD</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 27/09/2023 11:14 Transaction: B00350 Term: 090JCJ Value date: 28/09/2023</MEMO>
@@ -325,8 +325,8 @@
                   <FITID>202309281494</FITID>
                   <NAME>EKOPLAZA AMERSFOORT AMERSFOORT</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 27/09/2023 14:41 Transaction: B90351 Term: Q817Q0 Value date: 28/09/2023</MEMO>
@@ -338,7 +338,7 @@
                   <FITID>20230928200000</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K40A</BANKID>
                      <ACCTID>K44412345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -351,7 +351,7 @@
                   <FITID>20230928422500</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K20A</BANKID>
                      <ACCTID>K22212345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -364,7 +364,7 @@
                   <FITID>20230928113100</FITID>
                   <NAME>Acchouder 9</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL86INGB0002445588</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -377,7 +377,7 @@
                   <FITID>2023092823000</FITID>
                   <NAME>Acchouder 9</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL86INGB0002445588</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -390,7 +390,7 @@
                   <FITID>2023092855000</FITID>
                   <NAME>Acchouder 9</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL86INGB0002445588</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -403,7 +403,7 @@
                   <FITID>2023092829000</FITID>
                   <NAME>Tekst30 b</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>RABONL0A</BANKID>
                      <ACCTID>NL97RABO0140917969</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -416,7 +416,7 @@
                   <FITID>20230928425800</FITID>
                   <NAME>Acchouder 9</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL86INGB0002445588</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -429,8 +429,8 @@
                   <FITID>20230927699</FITID>
                   <NAME>Kruidvat 7925 AMERSFOORT NLD</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 26/09/2023 10:28 Transaction: B70348 Term: JN9P56 Value date: 27/09/2023</MEMO>
@@ -442,8 +442,8 @@
                   <FITID>20230927329</FITID>
                   <NAME>Amazing Oriental AMERSFOORT NLD</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 26/09/2023 10:21 Transaction: B10347 Term: FSL4GS Value date: 27/09/2023</MEMO>
@@ -455,8 +455,8 @@
                   <FITID>2023092713400</FITID>
                   <NAME>DE LINDE HAARDHOUT TIEL NLD</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 26/09/2023 16:48 Transaction: B00349 Term: CT308454 Value date: 27/09/2023</MEMO>
@@ -468,7 +468,7 @@
                   <FITID>202309271044700</FITID>
                   <NAME>Acchouder 9</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL86INGB0002445588</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -481,7 +481,7 @@
                   <FITID>2023092712495</FITID>
                   <NAME>DPG MEDIA BV</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL82INGB0009033900</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -494,7 +494,7 @@
                   <FITID>20230927192500</FITID>
                   <NAME>sprek 5</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K30A</BANKID>
                      <ACCTID>K33312345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -507,7 +507,7 @@
                   <FITID>2023092621000</FITID>
                   <NAME>Hr AP Twisk,Mw AMJ van der Put</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL89INGB0008461765</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -520,7 +520,7 @@
                   <FITID>20230926300000</FITID>
                   <NAME>a Acchouder 1a</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>BKMGNL0A</BANKID>
                      <ACCTID>NL54BKMG0378842587</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -533,7 +533,7 @@
                   <FITID>202309269384</FITID>
                   <NAME>Acchouder 13</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>DEUTNL0A</BANKID>
                      <ACCTID>NL82DEUT0319804615</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -546,7 +546,7 @@
                   <FITID>20230926476</FITID>
                   <NAME>Acchouder 13</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>DEUTNL0A</BANKID>
                      <ACCTID>NL82DEUT0319804615</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -559,7 +559,7 @@
                   <FITID>202309261050000</FITID>
                   <NAME>sprek 5</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K30A</BANKID>
                      <ACCTID>K33312345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -572,7 +572,7 @@
                   <FITID>20230925125</FITID>
                   <NAME>DPG MEDIA BV</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL82INGB0009033900</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -585,7 +585,7 @@
                   <FITID>20230925372</FITID>
                   <NAME>Infomedics b</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>ABNANL0A</BANKID>
                      <ACCTID>NL34ABNA0243240058</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -598,7 +598,7 @@
                   <FITID>202309246900</FITID>
                   <NAME>Rabo Betaalverzoek</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>RABONL0A</BANKID>
                      <ACCTID>NL13RABO0181015595</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -611,7 +611,7 @@
                   <FITID>20230924330</FITID>
                   <NAME>Acchouder 1a</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>LPLNNL0A</BANKID>
                      <ACCTID>NL20LPLN0892606304</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -624,8 +624,8 @@
                   <FITID>202309231195</FITID>
                   <NAME>Tekst2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 22/09/2023 10:17 Transaction: B40345 Term: FHD1FV Value date: 23/09/2023</MEMO>
@@ -637,8 +637,8 @@
                   <FITID>202309231415</FITID>
                   <NAME>Tekst16 NLD</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 22/09/2023 10:10 Transaction: B60343 Term: CT689163 Value date: 23/09/2023</MEMO>
@@ -650,8 +650,8 @@
                   <FITID>202309231285</FITID>
                   <NAME>Tekst18</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 22/09/2023 10:13 Transaction: B70344 Term: SGW9BK Value date: 23/09/2023</MEMO>
@@ -663,8 +663,8 @@
                   <FITID>202309234360</FITID>
                   <NAME>Tekst5</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 22/09/2023 10:26 Transaction: B20346 Term: 80006896 Value date: 23/09/2023</MEMO>
@@ -676,8 +676,8 @@
                   <FITID>202309223429</FITID>
                   <NAME>Amazing Oriental AMERSFOORT NLD</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 21/09/2023 14:11 Transaction: B50342 Term: FSL4GS Value date: 22/09/2023</MEMO>
@@ -689,8 +689,8 @@
                   <FITID>202309229048</FITID>
                   <NAME>Tekst14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 21/09/2023 11:51 Transaction: B10341 Term: 3TMW01 Value date: 22/09/2023</MEMO>
@@ -702,8 +702,8 @@
                   <FITID>202309223534</FITID>
                   <NAME>Tekst8</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 21/09/2023 11:23 Transaction: B10340 Term: ZF2711 Value date: 22/09/2023</MEMO>
@@ -715,7 +715,7 @@
                   <FITID>2023092215000</FITID>
                   <NAME>Acchouder 14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL55INGB0007024837</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -728,7 +728,7 @@
                   <FITID>202309223000</FITID>
                   <NAME>a Acchouder 16</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>DEUTNL0A</BANKID>
                      <ACCTID>NL93DEUT0265252393</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -741,7 +741,7 @@
                   <FITID>202309221750</FITID>
                   <NAME>Tekst20</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>DEUTNL0A</BANKID>
                      <ACCTID>NL96DEUT0265293952</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -754,7 +754,7 @@
                   <FITID>2023092125000</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K40A</BANKID>
                      <ACCTID>K44412345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -767,8 +767,8 @@
                   <FITID>202309201035</FITID>
                   <NAME>Tekst1</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 19/09/2023 13:16 Transaction: B40339 Term: CT676476 Value date: 20/09/2023</MEMO>
@@ -780,7 +780,7 @@
                   <FITID>202309209376</FITID>
                   <NAME>Acchouder 17 b</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL41INGB0000467598</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -793,7 +793,7 @@
                   <FITID>202309203334</FITID>
                   <NAME>Acchouder 17 - mel</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL83INGB0000325513</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -806,8 +806,8 @@
                   <FITID>20230919698</FITID>
                   <NAME>Tekst8</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 18/09/2023 14:05 Transaction: B20338 Term: ZF2709 Value date: 19/09/2023</MEMO>
@@ -819,8 +819,8 @@
                   <FITID>20230918150</FITID>
                   <NAME>Tekst13</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 17/09/2023 14:35 Transaction: B50337 Term: 12ZM02 Value date: 18/09/2023</MEMO>
@@ -832,7 +832,7 @@
                   <FITID>202309182100</FITID>
                   <NAME>Acchouder 23</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL94INGB0000869000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -845,7 +845,7 @@
                   <FITID>20230916299</FITID>
                   <NAME>Acchouder 19 b</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>ABNANL0A</BANKID>
                      <ACCTID>NL08ABNA0526650664</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -858,7 +858,7 @@
                   <FITID>202309162991</FITID>
                   <NAME>Acchouder 19 b</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>ABNANL0A</BANKID>
                      <ACCTID>NL08ABNA0526650664</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -871,8 +871,8 @@
                   <FITID>202309164095</FITID>
                   <NAME>Tekst13</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 15/09/2023 10:31 Transaction: B90334 Term: F1FNQ4 Value date: 16/09/2023</MEMO>
@@ -884,8 +884,8 @@
                   <FITID>202309166000</FITID>
                   <NAME>Tekst4 NLD</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 15/09/2023 10:09 Transaction: B30331 Term: 810183 Value date: 16/09/2023</MEMO>
@@ -897,8 +897,8 @@
                   <FITID>202309163679</FITID>
                   <NAME>Tekst18</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 15/09/2023 10:22 Transaction: B00333 Term: 62RN4H Value date: 16/09/2023</MEMO>
@@ -910,8 +910,8 @@
                   <FITID>202309161590</FITID>
                   <NAME>Tekst16 NLD</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 15/09/2023 10:13 Transaction: B00332 Term: CT689163 Value date: 16/09/2023</MEMO>
@@ -923,8 +923,8 @@
                   <FITID>202309164260</FITID>
                   <NAME>Tekst5</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 15/09/2023 10:44 Transaction: B20336 Term: 80006896 Value date: 16/09/2023</MEMO>
@@ -936,8 +936,8 @@
                   <FITID>202309161150</FITID>
                   <NAME>Tekst2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 15/09/2023 10:35 Transaction: B30335 Term: FHD1FV Value date: 16/09/2023</MEMO>
@@ -949,8 +949,8 @@
                   <FITID>202309152417</FITID>
                   <NAME>Tekst8</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 14/09/2023 11:14 Transaction: B50329 Term: ZF2710 Value date: 15/09/2023</MEMO>
@@ -962,8 +962,8 @@
                   <FITID>2023091510301</FITID>
                   <NAME>Tekst14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 14/09/2023 11:36 Transaction: B40330 Term: 3TMW02 Value date: 15/09/2023</MEMO>
@@ -975,7 +975,7 @@
                   <FITID>2023091525000</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K40A</BANKID>
                      <ACCTID>K44412345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -988,7 +988,7 @@
                   <FITID>2023091425000</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K40A</BANKID>
                      <ACCTID>K44412345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1001,7 +1001,7 @@
                   <FITID>20230914125</FITID>
                   <NAME>DPG MEDIA BV</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL82INGB0009033900</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1014,7 +1014,7 @@
                   <FITID>202309146097</FITID>
                   <NAME>Hipay</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>2022DE0A</BANKID>
                      <ACCTID>DE75202208000000019190</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1027,8 +1027,8 @@
                   <FITID>20230913891</FITID>
                   <NAME>Tekst8</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 12/09/2023 13:36 Transaction: B60327 Term: ZF2711 Value date: 13/09/2023</MEMO>
@@ -1040,8 +1040,8 @@
                   <FITID>20230913850</FITID>
                   <NAME>Tekst1</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 12/09/2023 13:41 Transaction: B00328 Term: CT676476 Value date: 13/09/2023</MEMO>
@@ -1053,8 +1053,8 @@
                   <FITID>20230913150</FITID>
                   <NAME>Tekst17</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 12/09/2023 09:54 Transaction: B40326 Term: CT695964 Value date: 13/09/2023</MEMO>
@@ -1066,8 +1066,8 @@
                   <FITID>20230913110</FITID>
                   <NAME>Tekst12</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>1 aug t/m 31 aug 2023 ING BANK N.V. Value date: 13/09/2023</MEMO>
@@ -1079,8 +1079,8 @@
                   <FITID>20230913315</FITID>
                   <NAME>Tekst11</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>1 aug t/m 31 aug 2023 ING BANK N.V. Value date: 13/09/2023</MEMO>
@@ -1092,8 +1092,8 @@
                   <FITID>202309116000</FITID>
                   <NAME>Aral Station 286284112 Issel DEU</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 09/09/2023 20:42 Transaction: B00324 Term: 71116357 Value date: 11/09/2023</MEMO>
@@ -1105,8 +1105,8 @@
                   <FITID>202309118634</FITID>
                   <NAME>Tekst14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 10/09/2023 15:03 Transaction: B70325 Term: 3TMW01 Value date: 11/09/2023</MEMO>
@@ -1118,8 +1118,8 @@
                   <FITID>202309108204</FITID>
                   <NAME>SHELL 0898 KAPPELGRAFEN DEU</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 09/09/2023 16:11 Transaction: B40323 Term: --- Value date: 10/09/2023</MEMO>
@@ -1131,7 +1131,7 @@
                   <FITID>2023091025000</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K40A</BANKID>
                      <ACCTID>K44412345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1144,8 +1144,8 @@
                   <FITID>2023090920059</FITID>
                   <NAME>REKA FERIENDORF BERGUENBRAVU CHE</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 08/09/2023 09:15 Transaction: B70322 Term: 79G09647 Currency: 189,00 CHF Rate: 1,061345 Mark-up: 2,37 EUR Value date: 09/09/2023</MEMO>
@@ -1157,8 +1157,8 @@
                   <FITID>202309098809</FITID>
                   <NAME>Cafe Preisig Konditorei CHE</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 08/09/2023 08:55 Transaction: B70321 Term: 31494309 Currency: 83,00 CHF Rate: 1,061345 Mark-up: 1,04 EUR Value date: 09/09/2023</MEMO>
@@ -1170,8 +1170,8 @@
                   <FITID>20230908954</FITID>
                   <NAME>SEITZ GASTRO AG LENZERHEIDE CHE</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 07/09/2023 15:14 Transaction: B90320 Term: 32205115 Currency: 9,00 CHF Rate: 1,060121 Mark-up: 0,11 EUR Value date: 08/09/2023</MEMO>
@@ -1183,8 +1183,8 @@
                   <FITID>202309081240</FITID>
                   <NAME>Volg Laden Berguen BERGUEN/B CHE</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 07/09/2023 08:49 Transaction: B90319 Term: 31494463 Currency: 11,70 CHF Rate: 1,060121 Mark-up: 0,14 EUR Value date: 08/09/2023</MEMO>
@@ -1196,7 +1196,7 @@
                   <FITID>2023090825000</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K40A</BANKID>
                      <ACCTID>K44412345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1209,7 +1209,7 @@
                   <FITID>20230907125</FITID>
                   <NAME>DPG MEDIA BV</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL82INGB0009033900</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1222,7 +1222,7 @@
                   <FITID>202309071251</FITID>
                   <NAME>DPG MEDIA BV</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL82INGB0009033900</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1235,8 +1235,8 @@
                   <FITID>202309074933</FITID>
                   <NAME>Coop1971 Davos Gr Davos Plat CHE</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 06/09/2023 14:52 Transaction: B20318 Term: 31413801 Currency: 46,40 CHF Rate: 1,063248 Mark-up: 0,58 EUR Value date: 07/09/2023</MEMO>
@@ -1248,8 +1248,8 @@
                   <FITID>2023090632235</FITID>
                   <NAME>GKB Bergun Bergun CHE</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 05/09/2023 13:48 Transaction: B20317 Term: 77400049 Currency: 300,00 CHF Rate: 1,062843 Mark-up: 3,78 EUR Fee: 3,50 EUR Value date: 06/09/2023</MEMO>
@@ -1261,8 +1261,8 @@
                   <FITID>202309062274</FITID>
                   <NAME>Volg Laden Berguen BERGUEN/B CHE</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 05/09/2023 09:11 Transaction: B90316 Term: 31494463 Currency: 21,40 CHF Rate: 1,062843 Mark-up: 0,26 EUR Value date: 06/09/2023</MEMO>
@@ -1274,8 +1274,8 @@
                   <FITID>202309052803</FITID>
                   <NAME>Signalbahn Kasse St. Moritz CHE</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 04/09/2023 12:25 Transaction: B90315 Term: 31514543 Currency: 26,40 CHF Rate: 1,061558 Mark-up: 0,34 EUR Value date: 05/09/2023</MEMO>
@@ -1287,7 +1287,7 @@
                   <FITID>202309051685</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K30A</BANKID>
                      <ACCTID>K33312345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1300,7 +1300,7 @@
                   <FITID>202309052500</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K20A</BANKID>
                      <ACCTID>K22212345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1313,7 +1313,7 @@
                   <FITID>2023090525134</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K40A</BANKID>
                      <ACCTID>K44412345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1326,7 +1326,7 @@
                   <FITID>2023090525057</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K20A</BANKID>
                      <ACCTID>K22212345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1339,7 +1339,7 @@
                   <FITID>202309052520</FITID>
                   <NAME>Acchouder 23</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL54INGB0005564520</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1352,8 +1352,8 @@
                   <FITID>202309033184</FITID>
                   <NAME>Volg Laden Berguen BERGUEN/B CHE</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 02/09/2023 14:40 Transaction: B40314 Term: 31494463 Currency: 30,00 CHF Rate: 1,061386 Mark-up: 0,38 EUR Value date: 03/09/2023</MEMO>
@@ -1365,8 +1365,8 @@
                   <FITID>202309021051</FITID>
                   <NAME>Volg Laden Berguen BERGUEN/B CHE</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 021 01/09/2023 16:52 Transaction: B70313 Term: 31494463 Currency: 9,90 CHF Rate: 1,061386 Mark-up: 0,13 EUR Value date: 02/09/2023</MEMO>
@@ -1378,8 +1378,8 @@
                   <FITID>202309015605</FITID>
                   <NAME>LAEDERACH CHOCOLAT. AG ST MO CHE</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
-                     <ACCTID></ACCTID>
+                     <BANKID>INGBNL0A</BANKID>
+                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
                   <MEMO>Card sequence no.: 020 30/08/2023 11:34 Transaction: B40312 Term: 79F99893 Currency: 53,00 CHF Rate: 1,05754 Mark-up: 0,66 EUR Value date: 01/09/2023</MEMO>
@@ -1391,7 +1391,7 @@
                   <FITID>2023090150000</FITID>
                   <NAME>sprek 2</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>1234K40A</BANKID>
                      <ACCTID>K44412345</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1404,7 +1404,7 @@
                   <FITID>202309014538</FITID>
                   <NAME>Acchouder 25</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>ABNANL0A</BANKID>
                      <ACCTID>NL89ABNA0450001067</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1417,7 +1417,7 @@
                   <FITID>202309017700</FITID>
                   <NAME>Acchouder 14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL85INGB0668339063</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1430,7 +1430,7 @@
                   <FITID>2023090143202</FITID>
                   <NAME>Acchouder 14</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL85INGB0668339063</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1443,7 +1443,7 @@
                   <FITID>2023090111704</FITID>
                   <NAME>Acchouder 23</NAME>
                   <BANKACCTTO>
-                     <BANKID></BANKID>
+                     <BANKID>INGBNL0A</BANKID>
                      <ACCTID>NL54INGB0005564520</ACCTID>
                      <ACCTTYPE>CHECKING</ACCTTYPE>
                   </BANKACCTTO>
@@ -1458,5 +1458,5 @@
    </STMTTRNRS>                        <!-- End of accounts -->
   </BANKMSGSRSV1>
 </OFX>
-<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_eng_ING/NL94COBA0678011583_Alle_rekeningen_eng.ofx -->
-<!--  Generated on 2023-10-09 11:03:58.334516900 -->
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_ING_eng/NL94COBA0678011583_Alle_rekeningen_eng.ofx -->
+<!--  Generated on 2023-10-30 12:08:35.440653200 -->
