@@ -136,4 +136,23 @@ public class OfxFunctions {
     return uniqueid;
   }
 
+  public static String getAccountTo(OfxTransaction a_transaction) {
+    String accountto = a_transaction.getAccountto();
+    if (accountto.isBlank()) {
+      accountto = "NL00" + a_transaction.getBankCode() + "000000000000000";
+    }
+    return accountto;
+  }
+
+  public static String getAccounttoBIC(OfxTransaction a_transaction) {
+    String accountto = getAccountTo(a_transaction);
+    String BIC = "";
+    if (accountto.length() >= 9) {
+      BIC = accountto.substring(4, 8) + accountto.substring(0, 2) + "0A";
+    } else {
+      BIC = a_transaction.getBankCode();
+    }
+    return BIC;
+  }
+
 }

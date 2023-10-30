@@ -94,9 +94,11 @@ public class OfxXmlTransactions {
     l_regels.add("                  <FITID>" + a_transaction.getFitid() + "</FITID>");
     l_regels.add("                  <NAME>" + a_transaction.getName() + "</NAME>");
     l_regels.add("                  <BANKACCTTO>");
-    l_regels.add("                     <BANKID>" + getAccounttoBIC(a_transaction) + "</BANKID>");
+    l_regels.add(
+        "                     <BANKID>" + kwee.ofxLibrary.OfxFunctions.getAccounttoBIC(a_transaction) + "</BANKID>");
 //    l_regels.add("                     <BANKID></BANKID>");
-    l_regels.add("                     <ACCTID>" + getAccountTo(a_transaction) + "</ACCTID>");
+    l_regels
+        .add("                     <ACCTID>" + kwee.ofxLibrary.OfxFunctions.getAccountTo(a_transaction) + "</ACCTID>");
     l_regels.add("                     <ACCTTYPE>CHECKING</ACCTTYPE>");
     l_regels.add("                  </BANKACCTTO>");
     l_regels.add("                  <MEMO>" + a_transaction.getMemo() + "</MEMO>");
@@ -145,26 +147,6 @@ public class OfxXmlTransactions {
     });
     LOGGER.log(Level.FINE, "");
     return l_Regels;
-  }
-
-  // Private functions
-  private String getAccountTo(OfxTransaction a_transaction) {
-    String accountto = a_transaction.getAccountto();
-    if (accountto.isBlank()) {
-      accountto = "NL00" + a_transaction.getBankCode() + "000000000000000";
-    }
-    return accountto;
-  }
-
-  private String getAccounttoBIC(OfxTransaction a_transaction) {
-    String accountto = getAccountTo(a_transaction);
-    String BIC = "";
-    if (accountto.length() >= 9) {
-      BIC = accountto.substring(4, 8) + accountto.substring(0, 2) + "0A";
-    } else {
-      BIC = a_transaction.getBankCode();
-    }
-    return BIC;
   }
 
 }
