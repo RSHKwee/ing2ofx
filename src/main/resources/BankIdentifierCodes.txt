@@ -1,0 +1,5 @@
+Rek;  BIC;      Naam
+ABNA; ABNANL2A; ABN AMRO Bank
+RABO; RABONL2U; Rabobank 
+SNSB; SNSBNL2A; SNS Bank
+TRIO; TRIONL2U; Triodos Bank
