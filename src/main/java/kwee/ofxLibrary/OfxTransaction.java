@@ -1,24 +1,26 @@
 package kwee.ofxLibrary;
 
+import java.util.Date;
+
 //import java.util.logging.Logger;
 
-import com.opencsv.bean.CsvToBean;
+//import com.opencsv.bean.CsvToBean;
 
-public class OfxTransaction extends CsvToBean<Object> {
+public class OfxTransaction {
 //  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 
   private String bankCode = "";
 
   private String account = "";
   private String trntype = "";
-  private String dtposted = "";
-  private String trnamt = "";
+  private Date dtposted = new Date();
+  private double trnamt = 0.0;
   private String fitid = "";
   private String name = "";
   private String accountto = "";
   private String memo = "";
   private int OfxTranPair = -1;
-  private String Saldo_na_mutatie = "";
+  private double Saldo_na_mutatie = 0;
 
   private String Source = "";
   private boolean saving = false;
@@ -50,11 +52,11 @@ public class OfxTransaction extends CsvToBean<Object> {
     return bankCode;
   }
 
-  public String getSaldo_na_mutatie() {
+  public double getSaldo_na_mutatie() {
     return Saldo_na_mutatie;
   }
 
-  public void setSaldo_na_mutatie(String saldo_na_mutatie) {
+  public void setSaldo_na_mutatie(double saldo_na_mutatie) {
     Saldo_na_mutatie = saldo_na_mutatie;
   }
 
@@ -66,11 +68,11 @@ public class OfxTransaction extends CsvToBean<Object> {
     return trntype;
   }
 
-  public String getDtposted() {
+  public Date getDtposted() {
     return dtposted;
   }
 
-  public String getTrnamt() {
+  public double getTrnamt() {
     return trnamt;
   }
 
@@ -106,11 +108,11 @@ public class OfxTransaction extends CsvToBean<Object> {
     this.trntype = trntype;
   }
 
-  public void setDtposted(String dtposted) {
+  public void setDtposted(Date dtposted) {
     this.dtposted = dtposted;
   }
 
-  public void setTrnamt(String trnamt) {
+  public void setTrnamt(double trnamt) {
     this.trnamt = trnamt;
   }
 
@@ -143,17 +145,22 @@ public class OfxTransaction extends CsvToBean<Object> {
     bstat = bstat && a_ofxtransaction.getName().equals(this.name);
     bstat = bstat && a_ofxtransaction.getAccountto().equals(this.accountto);
     bstat = bstat && a_ofxtransaction.getTrntype().equals(this.trntype);
-    bstat = bstat && a_ofxtransaction.getTrnamt().equals(this.trnamt);
     bstat = bstat && a_ofxtransaction.getMemo().equals(this.memo);
-    bstat = bstat && a_ofxtransaction.getSaldo_na_mutatie().equals(this.Saldo_na_mutatie);
+
+    int cdstat = Double.compare(this.trnamt, a_ofxtransaction.getTrnamt());
+    bstat = bstat && (cdstat == 0);
+
+    cdstat = Double.compare(this.Saldo_na_mutatie, a_ofxtransaction.getSaldo_na_mutatie());
+    bstat = bstat && (cdstat == 0);
     return bstat;
   }
 
   @Override
   public String toString() {
     String l_str = "";
-    l_str = String.join(";", this.bankCode, this.fitid, this.dtposted, this.account, this.name, this.accountto,
-        this.trntype, this.trnamt, this.memo, this.Saldo_na_mutatie);
+    l_str = String.join(";", this.bankCode, this.fitid, this.dtposted.toString(), this.account, this.name,
+        this.accountto, this.trntype, Double.toString(this.trnamt), this.memo, Double.toString(this.Saldo_na_mutatie));
+
     return l_str;
   }
 

@@ -46,12 +46,10 @@ public class OfxPairTransaction {
       if (l_bstat) {
         LOGGER.log(Level.FINEST, "Account.");
       }
-      l_bstat = l_bstat && (a_tran1.getDtposted().equalsIgnoreCase(a_tran2.getDtposted()));
+      l_bstat = l_bstat && (a_tran1.getDtposted().equals(a_tran2.getDtposted()));
       try {
-        BigDecimal bd1 = new BigDecimal(a_tran1.getTrnamt().replaceAll(",", "."));
-        BigDecimal bd2 = new BigDecimal(a_tran2.getTrnamt().replaceAll(",", "."));
-        BigDecimal bdDiff = bd1.add(bd2);
-        l_bstat = l_bstat && (bdDiff.compareTo(BigDecimal.ZERO) == 0);
+        int istat = Double.compare(a_tran1.getTrnamt(), a_tran2.getTrnamt());
+        l_bstat = l_bstat && (istat == 0);
       } catch (Exception e) {
         LOGGER.log(Level.WARNING, e.getMessage());
       }

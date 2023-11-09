@@ -1,5 +1,10 @@
 package kwee.convertor.ing.ingLibrary;
 
+import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Bean package for ING Saving transaction
  * 
@@ -9,6 +14,7 @@ package kwee.convertor.ing.ingLibrary;
 //import java.util.logging.Logger;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBean;
+import kwee.library.TimeConversion;
 
 public class IngSavingTransaction extends CsvToBean<Object> {
 //  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
@@ -25,6 +31,7 @@ public class IngSavingTransaction extends CsvToBean<Object> {
    */
   @CsvBindByName(column = "Datum")
   private String Datum = "";
+  private Date dDatum = new Date();
 
   @CsvBindByName(column = "Omschrijving")
   private String Omschrijving = "";
@@ -43,6 +50,7 @@ public class IngSavingTransaction extends CsvToBean<Object> {
 
   @CsvBindByName(column = "Bedrag")
   private String Bedrag = "";
+  private double dBedrag = 0;
 
   @CsvBindByName(column = "Valuta")
   private String Valuta = "";
@@ -55,13 +63,21 @@ public class IngSavingTransaction extends CsvToBean<Object> {
 
   @CsvBindByName(column = "Saldo na mutatie")
   private String Saldo_na_mutatie = "";
+  private double dSaldo_na_mutatie = 0;
 
   public String getCode() {
     return "xx";
   }
 
-  public String getDatum() {
-    return Datum;
+  public Date getDatum() {
+    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MMM-dd");
+    try {
+      dDatum = inputFormat.parse(Datum);
+    } catch (ParseException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    return dDatum;
   }
 
   public String getOmschrijving() {
@@ -84,8 +100,9 @@ public class IngSavingTransaction extends CsvToBean<Object> {
     return Af_Bij;
   }
 
-  public String getBedrag() {
-    return Bedrag;
+  public double getBedrag() {
+    dBedrag = Double.valueOf(Bedrag.replace(",", "."));
+    return dBedrag;
   }
 
   public String getMutatiesoort() {
@@ -96,8 +113,9 @@ public class IngSavingTransaction extends CsvToBean<Object> {
     return Mededelingen;
   }
 
-  public String getSaldo_na_mutatie() {
-    return Saldo_na_mutatie;
+  public double getSaldo_na_mutatie() {
+    dSaldo_na_mutatie = Double.valueOf(Saldo_na_mutatie.replace(",", "."));
+    return dSaldo_na_mutatie;
   }
 
   public String getRekeningNaam() {
@@ -114,6 +132,13 @@ public class IngSavingTransaction extends CsvToBean<Object> {
 
   public void setDatum(String datum) {
     Datum = datum;
+    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MMM-dd");
+    try {
+      dDatum = inputFormat.parse(Datum);
+    } catch (ParseException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
   }
 
   public void setOmschrijving(String omschrijving) {
@@ -138,6 +163,13 @@ public class IngSavingTransaction extends CsvToBean<Object> {
 
   public void setBedrag(String bedrag) {
     Bedrag = bedrag;
+    dBedrag = Double.valueOf(Bedrag.replace(",", "."));
+  }
+
+  public void setBedrag(double bedrag) {
+    dBedrag = bedrag;
+    DecimalFormat decimalFormat = new DecimalFormat("0.00");
+    Bedrag = decimalFormat.format(dBedrag).replace(".", ",");
   }
 
   public void setMutatiesoort(String mutatiesoort) {
@@ -150,21 +182,32 @@ public class IngSavingTransaction extends CsvToBean<Object> {
 
   public void setSaldo_na_mutatie(String saldo_na_mutatie) {
     Saldo_na_mutatie = saldo_na_mutatie;
+    dSaldo_na_mutatie = Double.valueOf(Saldo_na_mutatie.replace(",", "."));
+  }
+
+  public void setSaldo_na_mutatie(double saldo_na_mutatie) {
+    dSaldo_na_mutatie = saldo_na_mutatie;
+    DecimalFormat decimalFormat = new DecimalFormat("0.00");
+    Saldo_na_mutatie = decimalFormat.format(dSaldo_na_mutatie).replace(".", ",");
   }
 
   public boolean equals(IngSavingTransaction a_transaction) {
-    boolean bstat = false;
-    bstat = a_transaction.getDatum().equals(this.Datum);
-    bstat = a_transaction.getOmschrijving().equals(this.Omschrijving);
-    bstat = a_transaction.getRekening().equals(this.Rekening);
-    bstat = a_transaction.getRekeningNaam().equals(this.RekeningNaam);
-    bstat = a_transaction.getTegenrekening().equals(this.Tegenrekening);
-    bstat = a_transaction.getAf_Bij().equals(this.Af_Bij);
-    bstat = a_transaction.getBedrag().equals(this.Bedrag);
-    bstat = a_transaction.getValuta().equals(this.Valuta);
-    bstat = a_transaction.getMutatiesoort().equals(this.Mutatiesoort);
-    bstat = a_transaction.getMededelingen().equals(Mededelingen);
-    bstat = a_transaction.getSaldo_na_mutatie().equals(this.Saldo_na_mutatie);
+    boolean bstat = true;
+    bstat = bstat && a_transaction.getDatum().equals(this.getDatum());
+    bstat = bstat && a_transaction.getOmschrijving().equals(this.getOmschrijving());
+    bstat = bstat && a_transaction.getRekening().equals(this.getRekening());
+    bstat = bstat && a_transaction.getRekeningNaam().equals(this.getRekeningNaam());
+    bstat = bstat && a_transaction.getTegenrekening().equals(this.getTegenrekening());
+    bstat = bstat && a_transaction.getAf_Bij().equals(this.getAf_Bij());
+    bstat = bstat && a_transaction.getValuta().equals(this.getValuta());
+    bstat = bstat && a_transaction.getMutatiesoort().equals(this.Mutatiesoort);
+    bstat = bstat && a_transaction.getMededelingen().equals(this.getMededelingen());
+
+    int istat = Double.compare(a_transaction.getBedrag(), this.getBedrag());
+    bstat = bstat && (istat == 0);
+
+    istat = Double.compare(a_transaction.getSaldo_na_mutatie(), this.getSaldo_na_mutatie());
+    bstat = bstat && (istat == 0);
     return bstat;
   }
 }

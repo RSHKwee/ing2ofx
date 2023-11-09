@@ -22,6 +22,7 @@ import kwee.convertor.ing.ingLibrary.IngTransaction;
 import kwee.ofxLibrary.OfxMetaInfo;
 import kwee.ofxLibrary.OfxTransaction;
 import kwee.testlibrary.TestFunctions;
+import kwee.library.DateToNumeric;
 
 /**
  * @author René
@@ -249,26 +250,26 @@ public class IngTransactionsTest extends TestCase {
    * @formatter:on
   */
   private void loadOFXTransactionExp() {
-    m_OfxTransactions_exp.add(
-        addOfxTransaction("INGBNL2A", "20230523200000", "20230523", "NL90KNAB0445266309", "a Acchouder 7", "K55512345",
-            "PAYMENT", "-2000,00", "Naar Oranje spaarrekening K55512345 Valutadatum: 23-05-2023", "446,38"));
+    m_OfxTransactions_exp
+        .add(addOfxTransaction("INGBNL2A", "20230523200000", "20230523", "NL90KNAB0445266309", "a Acchouder 7",
+            "K55512345", "PAYMENT", "-2000,00", "Naar Oranje spaarrekening K55512345 Valutadatum: 23-05-2023", 446.38));
     m_OfxTransactions_exp.add(addOfxTransaction("INGBNL2A", "2023052382198", "20230523", "NL90KNAB0445266309",
         "Acchouder 8", "NL58INGB0702712760", "CREDIT", "821,98",
         "P0000200000000000231148665230523 PWJ 30-04-23/30-04-23 Acchouder 7 IBAN: NL58INGB0702712760 Kenmerk: DK13 110520EA-01120651634 Valutadatum: 23-05-2023",
-        "2446,38"));
+        2446.38));
     m_OfxTransactions_exp.add(addOfxTransaction("INGBNL2A", "20230526250000", "20230526", "K444-12345",
-        "Overboeking van betaalrekening NL94COBA0678011583", "NL94COBA0678011583", "CREDIT", "2500,00", "", "2750,00"));
+        "Overboeking van betaalrekening NL94COBA0678011583", "NL94COBA0678011583", "CREDIT", "2500,00", "", 2750.00));
     m_OfxTransactions_exp.add(addOfxTransaction("INGBNL2A", "2023052525000", "20230525", "K444-12345",
-        "Overboeking naar betaalrekening NL94COBA0678011583", "NL94COBA0678011583", "DEBIT", "-250,00", "", "250,00"));
+        "Overboeking naar betaalrekening NL94COBA0678011583", "NL94COBA0678011583", "DEBIT", "-250,00", "", 250.00));
     m_OfxTransactions_exp.add(addOfxTransaction("INGBNL2A", "20230501075", "20230501", "K444-12345", "Rente", "",
-        "CREDIT", "0,75", "", "1650,75"));
+        "CREDIT", "0,75", "", 1650.75));
   }
 
   private void loadOFXMetaInfoExp() {
     m_metainfo_exp.put("NL90KNAB0445266309",
-        addOfxMetaInfo("INGBNL2A", "NL90KNAB0445266309", "Bewindvoering", "", "20230523", "20230523", "446,38"));
+        addOfxMetaInfo("INGBNL2A", "NL90KNAB0445266309", "Bewindvoering", "", "20230523", "20230523", 446.38));
     m_metainfo_exp.put("K444-12345", addOfxMetaInfo("INGBNL2A", "K444-12345", "Huishouding_NL94COBA0678011583", "",
-        "20230501", "20230526", "2750,00"));
+        "20230501", "20230526", 2750.00));
   }
 
   // ING Transactions
@@ -316,16 +317,16 @@ public class IngTransactionsTest extends TestCase {
 
   // Load OfxTransaction
   private OfxTransaction addOfxTransaction(String a_bankcode, String a_fitid, String a_dtposted, String a_account,
-      String a_name, String a_accountto, String a_trntype, String a_trnamt, String a_memo, String a_Saldo_na_mutatie) {
+      String a_name, String a_accountto, String a_trntype, String a_trnamt, String a_memo, double a_Saldo_na_mutatie) {
     OfxTransaction l_trans = new OfxTransaction();
     l_trans.setBankCode(a_bankcode);
     l_trans.setFitid(a_fitid);
-    l_trans.setDtposted(a_dtposted);
+    l_trans.setDtposted(DateToNumeric.String_NumericToDate(a_dtposted));
     l_trans.setAccount(a_account);
     l_trans.setName(a_name);
     l_trans.setAccountto(a_accountto);
     l_trans.setTrntype(a_trntype);
-    l_trans.setTrnamt(a_trnamt);
+    l_trans.setTrnamt(Double.valueOf(a_trnamt));
     l_trans.setMemo(a_memo);
     l_trans.setSaldo_na_mutatie(a_Saldo_na_mutatie);
     return l_trans;
@@ -333,7 +334,7 @@ public class IngTransactionsTest extends TestCase {
 
   // Load OFX Meta info
   private OfxMetaInfo addOfxMetaInfo(String a_bankcode, String a_account, String a_prefix, String a_suffix,
-      String a_mindate, String a_maxdate, String a_balanceafter) {
+      String a_mindate, String a_maxdate, double a_balanceafter) {
     OfxMetaInfo l_metaInfo = new OfxMetaInfo(a_bankcode, m_SynonymFile);
 
     // getAccount(), getPrefix(), getSuffix(), getMinDate(), getMaxDate(),
