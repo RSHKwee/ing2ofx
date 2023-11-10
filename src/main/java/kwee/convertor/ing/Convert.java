@@ -27,19 +27,7 @@ public class Convert {
   public static IngSavingTransaction ConvSavingTran(IngSavingTransactionEng a_Tran) {
     IngSavingTransaction l_tran = new IngSavingTransaction();
 
-    String inputDate = a_Tran.getDatum();
-    String outputDate = "";
-    SimpleDateFormat inputDateFormat = new SimpleDateFormat("dd-MM-yyyy");
-    SimpleDateFormat outputDateFormat = new SimpleDateFormat("yyyyMMdd");
-
-    try {
-      Date date = inputDateFormat.parse(inputDate);
-      outputDate = outputDateFormat.format(date);
-    } catch (ParseException e) {
-      e.printStackTrace();
-    }
-
-    l_tran.setDatum(outputDate);
+    l_tran.setDatum(a_Tran.getDatum());
     l_tran.setOmschrijving(a_Tran.getOmschrijving());
     l_tran.setRekening(a_Tran.getRekening());
     l_tran.setRekeningNaam(a_Tran.getRekeningNaam());

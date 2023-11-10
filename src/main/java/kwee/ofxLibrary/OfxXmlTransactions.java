@@ -1,5 +1,7 @@
 package kwee.ofxLibrary;
 
+import java.text.DecimalFormat;
+
 /**
  * OFX Transactions handling.
  * 
@@ -16,6 +18,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import kwee.library.DateToNumeric;
 
 public class OfxXmlTransactions {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
@@ -73,11 +76,11 @@ public class OfxXmlTransactions {
    * @param maxdate     End date period
    * @return List of lines with the XML content for a footer
    */
-  private ArrayList<String> OfxXmlTransactionsFooter(String saldonatran, String maxdate) {
+  private ArrayList<String> OfxXmlTransactionsFooter(double saldonatran, String maxdate) {
     ArrayList<String> l_regels = new ArrayList<String>();
     l_regels.add("         </BANKTRANLIST>                   <!-- End list of statement trans. -->");
     l_regels.add("         <LEDGERBAL>                       <!-- Ledger balance aggregate -->");
-    l_regels.add("            <BALAMT>" + saldonatran + "</BALAMT>");
+    l_regels.add("            <BALAMT>" + printAmount(saldonatran) + "</BALAMT>");
     l_regels.add(
         "            <DTASOF>" + maxdate + "2359</DTASOF>  <!-- Bal date: Last date in transactions, 11:59 pm -->");
     l_regels.add("         </LEDGERBAL>                      <!-- End ledger balance -->");
@@ -85,12 +88,14 @@ public class OfxXmlTransactions {
     return l_regels;
   }
 
+//TODO
   private ArrayList<String> OfxXmlTransaction(OfxTransaction a_transaction) {
     ArrayList<String> l_regels = new ArrayList<String>();
     l_regels.add("               <STMTTRN>");
     l_regels.add("                  <TRNTYPE>" + a_transaction.getTrntype() + "</TRNTYPE>");
-    l_regels.add("                  <DTPOSTED>" + a_transaction.getDtposted() + "</DTPOSTED>");
-    l_regels.add("                  <TRNAMT>" + a_transaction.getTrnamt() + "</TRNAMT>");
+    l_regels
+        .add("                  <DTPOSTED>" + DateToNumeric.dateToNumeric(a_transaction.getDtposted()) + "</DTPOSTED>");
+    l_regels.add("                  <TRNAMT>" + printAmount(a_transaction.getTrnamt()) + "</TRNAMT>");
     l_regels.add("                  <FITID>" + a_transaction.getFitid() + "</FITID>");
     l_regels.add("                  <NAME>" + a_transaction.getName() + "</NAME>");
     l_regels.add("                  <BANKACCTTO>");
@@ -147,6 +152,12 @@ public class OfxXmlTransactions {
     });
     LOGGER.log(Level.FINE, "");
     return l_Regels;
+  }
+
+  private String printAmount(double a_Amnt) {
+    DecimalFormat decimalFormat = new DecimalFormat("0.00");
+    String formattedNumber = decimalFormat.format(a_Amnt).replace(".", ",");
+    return formattedNumber;
   }
 
 }

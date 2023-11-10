@@ -35,8 +35,8 @@
                <STMTTRN>
                   <TRNTYPE>DEBIT</TRNTYPE>
                   <DTPOSTED>20231002</DTPOSTED>
-                  <TRNAMT>-250</TRNAMT>
-                  <FITID>20231002250</FITID>
+                  <TRNAMT>-250,00</TRNAMT>
+                  <FITID>2023100225000</FITID>
                   <NAME>Overboeking naar betaalrekening NL90KNAB0445266309</NAME>
                   <BANKACCTTO>
                      <BANKID>KNABNL0A</BANKID>
@@ -74,8 +74,8 @@
                <STMTTRN>
                   <TRNTYPE>CREDIT</TRNTYPE>
                   <DTPOSTED>20230924</DTPOSTED>
-                  <TRNAMT>300</TRNAMT>
-                  <FITID>20230924300</FITID>
+                  <TRNAMT>300,00</TRNAMT>
+                  <FITID>2023092430000</FITID>
                   <NAME>Overboeking van betaalrekening NL90KNAB0445266309</NAME>
                   <BANKACCTTO>
                      <BANKID>KNABNL0A</BANKID>
@@ -87,8 +87,8 @@
                <STMTTRN>
                   <TRNTYPE>CREDIT</TRNTYPE>
                   <DTPOSTED>20230923</DTPOSTED>
-                  <TRNAMT>1200</TRNAMT>
-                  <FITID>202309231200</FITID>
+                  <TRNAMT>1200,00</TRNAMT>
+                  <FITID>20230923120000</FITID>
                   <NAME>Overboeking van betaalrekening NL90KNAB0445266309</NAME>
                   <BANKACCTTO>
                      <BANKID>KNABNL0A</BANKID>
@@ -100,8 +100,8 @@
                <STMTTRN>
                   <TRNTYPE>CREDIT</TRNTYPE>
                   <DTPOSTED>20230920</DTPOSTED>
-                  <TRNAMT>25</TRNAMT>
-                  <FITID>2023092025</FITID>
+                  <TRNAMT>25,00</TRNAMT>
+                  <FITID>202309202500</FITID>
                   <NAME>Overboeking van betaalrekening NL90KNAB0445266309</NAME>
                   <BANKACCTTO>
                      <BANKID>KNABNL0A</BANKID>
@@ -113,8 +113,8 @@
                <STMTTRN>
                   <TRNTYPE>DEBIT</TRNTYPE>
                   <DTPOSTED>20230915</DTPOSTED>
-                  <TRNAMT>-25</TRNAMT>
-                  <FITID>2023091525</FITID>
+                  <TRNAMT>-25,00</TRNAMT>
+                  <FITID>202309152500</FITID>
                   <NAME>Overboeking naar betaalrekening NL90KNAB0445266309</NAME>
                   <BANKACCTTO>
                      <BANKID>KNABNL0A</BANKID>
@@ -126,8 +126,8 @@
                <STMTTRN>
                   <TRNTYPE>DEBIT</TRNTYPE>
                   <DTPOSTED>20230906</DTPOSTED>
-                  <TRNAMT>-200</TRNAMT>
-                  <FITID>20230906200</FITID>
+                  <TRNAMT>-200,00</TRNAMT>
+                  <FITID>2023090620000</FITID>
                   <NAME>Overboeking naar betaalrekening NL90KNAB0445266309</NAME>
                   <BANKACCTTO>
                      <BANKID>KNABNL0A</BANKID>
@@ -139,8 +139,8 @@
                <STMTTRN>
                   <TRNTYPE>DEBIT</TRNTYPE>
                   <DTPOSTED>20230904</DTPOSTED>
-                  <TRNAMT>-50</TRNAMT>
-                  <FITID>2023090450</FITID>
+                  <TRNAMT>-50,00</TRNAMT>
+                  <FITID>202309045000</FITID>
                   <NAME>Overboeking naar betaalrekening NL90KNAB0445266309</NAME>
                   <BANKACCTTO>
                      <BANKID>KNABNL0A</BANKID>
@@ -177,7 +177,7 @@
                </STMTTRN>
          </BANKTRANLIST>                   <!-- End list of statement trans. -->
          <LEDGERBAL>                       <!-- Ledger balance aggregate -->
-            <BALAMT>51450</BALAMT>
+            <BALAMT>51450,00</BALAMT>
             <DTASOF>202310022359</DTASOF>  <!-- Bal date: Last date in transactions, 11:59 pm -->
          </LEDGERBAL>                      <!-- End ledger balance -->
       </STMTRS>
@@ -185,4 +185,4 @@
   </BANKMSGSRSV1>
 </OFX>
 <!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_INGSaving_eng/NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen_eng.ofx -->
-<!--  Generated on 2023-10-30 12:09:06.751731800 -->
+<!--  Generated on 2023-11-10 14:56:31.297075300 -->

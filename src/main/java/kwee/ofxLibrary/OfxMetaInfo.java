@@ -23,7 +23,8 @@ public class OfxMetaInfo {
   private String prefix = "";
   private int minDate = 999999999;
   private int maxDate = -1;
-  private String balanceAfterTransaction = "";
+  private double balanceAfterTransaction = 0;
+  private boolean balanceAfterTransactionFilled = false;
   private String suffix = "";
   private Synonyms m_Synonyms = new Synonyms();
 
@@ -107,19 +108,11 @@ public class OfxMetaInfo {
   }
 
   public String getBalanceDate() {
-    if (balanceAfterTransaction.isBlank()) {
-      return "190001010001"; // 1-1-1900 00:01
-    } else {
-      return Integer.toString(maxDate);
-    }
+    return Integer.toString(maxDate);
   }
 
-  public String getBalanceAfterTransaction() {
-    if (balanceAfterTransaction.isBlank()) {
-      return "0";
-    } else {
-      return balanceAfterTransaction;
-    }
+  public double getBalanceAfterTransaction() {
+    return balanceAfterTransaction;
   }
 
   public String getSuffix() {
@@ -167,8 +160,13 @@ public class OfxMetaInfo {
     return bstat;
   }
 
-  public void setBalanceAfterTransaction(String balanceAfterTransaction) {
+  public void setBalanceAfterTransaction(double balanceAfterTransaction) {
+    this.balanceAfterTransactionFilled = true;
     this.balanceAfterTransaction = balanceAfterTransaction;
+  }
+
+  public boolean getbalanceAfterTransactionFilled() {
+    return this.balanceAfterTransactionFilled;
   }
 
   public void printLog() {
@@ -185,18 +183,20 @@ public class OfxMetaInfo {
   public String toString() {
     String l_beanStr;
     l_beanStr = String.join(";", getAccount(), getPrefix(), getSuffix(), getMinDate(), getMaxDate(),
-        getBalanceAfterTransaction());
+        Double.toString(this.getBalanceAfterTransaction()));
     return l_beanStr;
   }
 
   public boolean equals(OfxMetaInfo a_metaInfo) {
     boolean bstat = false;
     bstat = a_metaInfo.getAccount().equals(this.account);
-    bstat = a_metaInfo.getPrefix().equals(this.prefix);
-    bstat = a_metaInfo.getSuffix().equals(this.suffix);
-    bstat = a_metaInfo.getMinDate().equals(this.getMinDate());
-    bstat = a_metaInfo.getMaxDate().equals(this.getMaxDate());
-    bstat = a_metaInfo.getBalanceAfterTransaction().equals(getBalanceAfterTransaction());
+    bstat = bstat && a_metaInfo.getPrefix().equals(this.getPrefix());
+    bstat = bstat && a_metaInfo.getSuffix().equals(this.getSuffix());
+    bstat = bstat && a_metaInfo.getMinDate().equals(this.getMinDate());
+    bstat = bstat && a_metaInfo.getMaxDate().equals(this.getMaxDate());
+
+    int cstat = Double.compare(a_metaInfo.getBalanceAfterTransaction(), this.getBalanceAfterTransaction());
+    bstat = bstat && (cstat == 0);
     return bstat;
   }
 

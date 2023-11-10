@@ -8,6 +8,7 @@ package kwee.convertor.sns.convertor;
  */
 import java.io.File;
 import java.io.FileInputStream;
+import java.math.BigDecimal;
 // import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
@@ -78,7 +79,8 @@ public class SnsTransactions {
         String l_IBANNr = accountStatement2.getAcct().getId().getIBAN();
         List<CashBalance3> l_balances = accountStatement2.getBal();
         l_balances.forEach(ll_balance -> {
-          String l_balValue = ll_balance.getAmt().getValue().toString();
+          BigDecimal l_balValue = ll_balance.getAmt().getValue();
+          double ld_balValue = l_balValue.doubleValue();
           Date l_balDate = ll_balance.getDt().getDt().toGregorianCalendar().getTime();
           String ls_balDate = DateToNumeric.dateToNumeric(l_balDate);
           String ls_baltype = ll_balance.getTp().getCdOrPrtry().getCd().toString();
@@ -93,9 +95,9 @@ public class SnsTransactions {
             l_meta.setMinDate(ls_balDate);
             if (l_meta.setMaxDate(ls_balDate)) {
               if (CreditDebitCode.DBIT == ll_balance.getCdtDbtInd()) {
-                l_meta.setBalanceAfterTransaction("-" + l_balValue);
+                l_meta.setBalanceAfterTransaction(-1.0 * ld_balValue);
               } else {
-                l_meta.setBalanceAfterTransaction(l_balValue);
+                l_meta.setBalanceAfterTransaction(ld_balValue);
               }
             }
             l_meta.setSuffix(m_FileName);
@@ -116,7 +118,7 @@ public class SnsTransactions {
           Date l_tranDate = reportEntry2.getBookgDt().getDt().toGregorianCalendar().getTime();
           String ls_tranDate = DateToNumeric.dateToNumeric(l_tranDate);
 
-          l_ofxtrans.setDtposted(ls_tranDate);
+          l_ofxtrans.setDtposted(l_tranDate);
 
           LOGGER.log(l_Level, "Credit or debit: " + reportEntry2.getCdtDbtInd());
           LOGGER.log(l_Level, "Booking date: " + reportEntry2.getBookgDt().getDt().toGregorianCalendar().getTime()
@@ -158,7 +160,7 @@ public class SnsTransactions {
 
                   LOGGER.log(l_Level,
                       "Report amount: -" + reportEntry2.getAmt().getValue() + " " + reportEntry2.getAmt().getCcy());
-                  l_ofxtrans.setTrnamt("-" + reportEntry2.getAmt().getValue().toString());
+                  l_ofxtrans.setTrnamt(Double.valueOf(("-" + reportEntry2.getAmt().getValue()).toString()));
                   l_ofxtrans.setTrntype("CREDIT");
 
                   LOGGER.log(l_Level, "Creditor remittance information (payment description): " + entryDetails1
@@ -198,7 +200,7 @@ public class SnsTransactions {
                         + entryDetails1.getTxDtls().get(0).getAmtDtls().getTxAmt().getAmt().getValue());
                   }
 
-                  l_ofxtrans.setTrnamt(reportEntry2.getAmt().getValue().toString());
+                  l_ofxtrans.setTrnamt(Double.valueOf(reportEntry2.getAmt().getValue().toString()));
                   l_ofxtrans.setTrntype("DEBIT");
 
                   String l_memo = entryDetails1.getTxDtls().get(0).getRmtInf().getUstrd().stream()

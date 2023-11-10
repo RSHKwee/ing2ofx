@@ -3,4 +3,4 @@ Prefix; Account; BalanceDate; Balance; BankCode; MaxDate; MinDate
 ;NL90KNAB0445266309; 23-05-2023; 446,38; INGBNL2A; 23-05-2023; 01-05-2023
 ;NL94COBA0678011583; 30-05-2023; 117,00; INGBNL2A; 30-05-2023; 01-05-2023
 ## F:\dev\Tools\ing2ofx\target\test-classes\OFX_ING/_Saldos_Alle_rekeningen.csv
-# Generated on 2023-10-30 12:08:40.379091
+# Generated on 2023-11-10 14:14:11.200982300

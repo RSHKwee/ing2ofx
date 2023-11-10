@@ -88,7 +88,7 @@
                   <TRNTYPE>PAYMENT</TRNTYPE>
                   <DTPOSTED>20230526</DTPOSTED>
                   <TRNAMT>-3000,00</TRNAMT>
-                  <FITID>20230526300000</FITID>
+                  <FITID>202305263000001</FITID>
                   <NAME>a Acchouder 1a, a Acchouder 2</NAME>
                   <BANKACCTTO>
                      <BANKID>COBANL0A</BANKID>
@@ -192,7 +192,7 @@
                   <TRNTYPE>PAYMENT</TRNTYPE>
                   <DTPOSTED>20230523</DTPOSTED>
                   <TRNAMT>40,00</TRNAMT>
-                  <FITID>202305234000</FITID>
+                  <FITID>2023052340001</FITID>
                   <NAME>a Acchouder 1a, a Acchouder 2</NAME>
                   <BANKACCTTO>
                      <BANKID>COBANL0A</BANKID>
@@ -328,4 +328,4 @@
   </BANKMSGSRSV1>
 </OFX>
 <!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_CombineDouble_Syn/NL54BKMG0378842587_Alle_rekeningen.ofx -->
-<!--  Generated on 2023-10-30 12:09:22.507358200 -->
+<!--  Generated on 2023-11-10 16:07:17.805160800 -->

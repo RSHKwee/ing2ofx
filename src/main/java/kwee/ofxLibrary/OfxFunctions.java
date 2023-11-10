@@ -1,5 +1,6 @@
 package kwee.ofxLibrary;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
@@ -14,6 +15,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import kwee.library.TxtBestand;
+import kwee.library.DateToNumeric;
 
 public class OfxFunctions {
 //  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
@@ -78,9 +80,10 @@ public class OfxFunctions {
 
     l_AccKeys.forEach(l_AccKey -> {
       OfxMetaInfo l_metainfo = a_metainfo.get(l_AccKey);
+      DecimalFormat decimalFormat = new DecimalFormat("0.00");
+      String formattedNumber = decimalFormat.format(l_metainfo.getBalanceAfterTransaction()).replaceAll("\\.", ",");
       String l_Regel = l_metainfo.getPrefix() + ";" + l_metainfo.getAccount() + "; "
-          + formatDate(l_metainfo.getBalanceDate()) + "; "
-          + l_metainfo.getBalanceAfterTransaction().replaceAll("\\.", ",") + "; " + l_metainfo.getBankcode() + "; "
+          + formatDate(l_metainfo.getBalanceDate()) + "; " + formattedNumber + "; " + l_metainfo.getBankcode() + "; "
           + formatDate(l_metainfo.getMaxDate()) + "; " + formatDate(l_metainfo.getMinDate());
       l_Regels.add(l_Regel);
     });
@@ -118,7 +121,7 @@ public class OfxFunctions {
     }
      * @formatter:on
     */
-    String fitid = a_ofxtrans.getDtposted() + a_ofxtrans.getTrnamt().replace(",", "").replace("-", "").replace(".", "");
+    String fitid = DateToNumeric.dateToNumeric(a_ofxtrans.getDtposted()) + printAmount(a_ofxtrans.getTrnamt());
     uniqueid = fitid;
     if (a_UniqueId.contains(fitid)) {
       // # Make unique by adding time and sequence nr.
@@ -129,9 +132,9 @@ public class OfxFunctions {
         // uniqueid = fitid + time + Integer.toString(idcount);
         uniqueid = fitid + Integer.toString(idcount);
       }
-      a_UniqueId.add(uniqueid);
+      // a_UniqueId.add(uniqueid);
     } else {
-      a_UniqueId.add(fitid);
+      // a_UniqueId.add(fitid);
     }
     return uniqueid;
   }
@@ -153,6 +156,12 @@ public class OfxFunctions {
       BIC = a_transaction.getBankCode();
     }
     return BIC;
+  }
+
+  static private String printAmount(double a_Amnt) {
+    DecimalFormat decimalFormat = new DecimalFormat("0.00");
+    String formattedNumber = decimalFormat.format(a_Amnt).replace(",", "").replace("-", "").replace(".", "");
+    return formattedNumber;
   }
 
 }

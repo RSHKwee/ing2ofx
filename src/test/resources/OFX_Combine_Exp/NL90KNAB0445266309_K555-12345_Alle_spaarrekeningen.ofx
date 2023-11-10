@@ -49,7 +49,7 @@
                   <TRNTYPE>DEBIT</TRNTYPE>
                   <DTPOSTED>20230505</DTPOSTED>
                   <TRNAMT>-250,00</TRNAMT>
-                  <FITID>2023050525000</FITID>
+                  <FITID>20230505250001</FITID>
                   <NAME>Overboeking naar betaalrekening NL90KNAB0445266309</NAME>
                   <BANKACCTTO>
                      <BANKID>KNABNL0A</BANKID>

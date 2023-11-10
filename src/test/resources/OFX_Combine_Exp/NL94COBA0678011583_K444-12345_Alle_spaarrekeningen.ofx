@@ -88,7 +88,7 @@
                   <TRNTYPE>DEBIT</TRNTYPE>
                   <DTPOSTED>20230505</DTPOSTED>
                   <TRNAMT>-250,00</TRNAMT>
-                  <FITID>20230505250001</FITID>
+                  <FITID>2023050525000</FITID>
                   <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
                   <BANKACCTTO>
                      <BANKID>COBANL0A</BANKID>

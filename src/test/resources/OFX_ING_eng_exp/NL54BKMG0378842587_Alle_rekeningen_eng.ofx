@@ -101,7 +101,7 @@
                   <TRNTYPE>PAYMENT</TRNTYPE>
                   <DTPOSTED>20230926</DTPOSTED>
                   <TRNAMT>-3000,00</TRNAMT>
-                  <FITID>20230926300000</FITID>
+                  <FITID>202309263000001</FITID>
                   <NAME>a Acchouder 1a, a Acchouder 2</NAME>
                   <BANKACCTTO>
                      <BANKID>COBANL0A</BANKID>
@@ -276,4 +276,4 @@
   </BANKMSGSRSV1>
 </OFX>
 <!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_ING_eng/NL54BKMG0378842587_Alle_rekeningen_eng.ofx -->
-<!--  Generated on 2023-10-30 12:08:35.446637200 -->
+<!--  Generated on 2023-11-10 14:14:06.156339500 -->

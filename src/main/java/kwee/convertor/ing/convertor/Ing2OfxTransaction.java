@@ -29,14 +29,9 @@ public class Ing2OfxTransaction {
     OfxTransaction l_ofxtrans = new OfxTransaction(m_bankcode);
     l_ofxtrans.setAccount(a_trans.getRekening().replaceAll(" ", ""));
     l_ofxtrans.setTrntype(transType("xx", a_trans.getAf_Bij()));
-    l_ofxtrans.setDtposted(a_trans.getDatum().replaceAll("-", ""));
+    l_ofxtrans.setDtposted(a_trans.getDatum());
 
-    if (a_trans.getAf_Bij().equalsIgnoreCase("Bij")) {
-      l_ofxtrans.setTrnamt(a_trans.getBedrag());
-    } else {
-      l_ofxtrans.setTrnamt("-" + a_trans.getBedrag());
-    }
-
+    l_ofxtrans.setTrnamt(AmttoDouble(a_trans.getAf_Bij(), a_trans.getBedrag()));
     l_ofxtrans.setName(xmlFriendlyName(a_trans.getOmschrijving()));
     l_ofxtrans.setAccountto(a_trans.getTegenrekening());
     l_ofxtrans.setMemo(xmlFriendlyName(a_trans.getMededelingen()));
@@ -48,14 +43,9 @@ public class Ing2OfxTransaction {
     OfxTransaction l_ofxtrans = new OfxTransaction(m_bankcode);
     l_ofxtrans.setAccount(a_trans.getRekening().replaceAll(" ", ""));
     l_ofxtrans.setTrntype(transType("xx", a_trans.getAf_Bij()));
-    l_ofxtrans.setDtposted(a_trans.getDatum().replaceAll("-", ""));
+    l_ofxtrans.setDtposted(a_trans.getDatum());
 
-    if (a_trans.getAf_Bij().equalsIgnoreCase("Bij")) {
-      l_ofxtrans.setTrnamt(a_trans.getBedrag());
-    } else {
-      l_ofxtrans.setTrnamt("-" + a_trans.getBedrag());
-    }
-
+    l_ofxtrans.setTrnamt(AmttoDouble(a_trans.getAf_Bij(), a_trans.getBedrag()));
     l_ofxtrans.setName(xmlFriendlyName(a_trans.getOmschrijving()));
     l_ofxtrans.setAccountto(a_trans.getTegenrekening());
     l_ofxtrans.setMemo(xmlFriendlyName(a_trans.getMededelingen()));
@@ -75,12 +65,7 @@ public class Ing2OfxTransaction {
     l_ofxtrans.setTrntype(transType(a_trans.getCode(), a_trans.getAf_Bij()));
     l_ofxtrans.setDtposted(a_trans.getDatum());
 
-    if (a_trans.getAf_Bij().equalsIgnoreCase("Bij") || a_trans.getAf_Bij().equalsIgnoreCase("Credit")) {
-      l_ofxtrans.setTrnamt(a_trans.getBedrag());
-    } else {
-      l_ofxtrans.setTrnamt("-" + a_trans.getBedrag());
-    }
-
+    l_ofxtrans.setTrnamt(AmttoDouble(a_trans.getAf_Bij(), a_trans.getBedrag()));
     l_ofxtrans.setName(xmlFriendlyName(a_trans.getOmschrijving()));
     l_ofxtrans.setAccountto(a_trans.getTegenrekening());
     l_ofxtrans.setMemo(xmlFriendlyName(a_trans.getMededelingen()));
@@ -108,12 +93,7 @@ public class Ing2OfxTransaction {
     l_ofxtrans.setTrntype(transType(a_trans.getCode(), a_trans.getAf_Bij()));
     l_ofxtrans.setDtposted(a_trans.getDatum());
 
-    if (a_trans.getAf_Bij().equalsIgnoreCase("Bij") || a_trans.getAf_Bij().equalsIgnoreCase("Credit")) {
-      l_ofxtrans.setTrnamt(a_trans.getBedrag());
-    } else {
-      l_ofxtrans.setTrnamt("-" + a_trans.getBedrag());
-    }
-
+    l_ofxtrans.setTrnamt(AmttoDouble(a_trans.getAf_Bij(), a_trans.getBedrag()));
     l_ofxtrans.setName(xmlFriendlyName(a_trans.getOmschrijving()));
     l_ofxtrans.setAccountto(a_trans.getTegenrekening());
     l_ofxtrans.setMemo(xmlFriendlyName(a_trans.getMededelingen()));
@@ -177,5 +157,15 @@ public class Ing2OfxTransaction {
     String l_name = a_name;
     l_name = l_name.strip().replaceAll("  ", " ").replace("&", "&amp");
     return l_name;
+  }
+
+  private static double AmttoDouble(String a_AfBij, double a_Amt) {
+    double amnt = 0;
+    if (a_AfBij.equalsIgnoreCase("Bij") || a_AfBij.equalsIgnoreCase("Credit")) {
+      amnt = a_Amt;
+    } else {
+      amnt = -1.0 * a_Amt;
+    }
+    return amnt;
   }
 }

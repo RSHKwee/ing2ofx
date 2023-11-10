@@ -17,8 +17,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-//import java.util.regex.Pattern;
-//import java.util.regex.Matcher;
 
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
@@ -34,6 +32,7 @@ import kwee.convertor.ing.ingLibrary.IngTransactionEng;
 import kwee.ofxLibrary.OfxTransaction;
 import kwee.ofxLibrary.OfxFunctions;
 import kwee.ofxLibrary.OfxMetaInfo;
+import kwee.library.DateToNumeric;
 
 import kwee.library.FileUtils;
 
@@ -277,13 +276,13 @@ public class IngTransactions {
    * @param a_OfxTransaction OFX Transaction
    * @param a_SaldoNaMutatie Balance after transaction
    */
-  private void updateOfxMetaInfo(OfxTransaction a_OfxTransaction, String a_SaldoNaMutatie) {
+  private void updateOfxMetaInfo(OfxTransaction a_OfxTransaction, double a_SaldoNaMutatie) {
     OfxMetaInfo l_meta = m_metainfo.get(a_OfxTransaction.getAccount());
     try {
-      String sDtPosted = a_OfxTransaction.getDtposted();
+      String sDtPosted = DateToNumeric.dateToNumeric(a_OfxTransaction.getDtposted());
       l_meta.setMaxDate(sDtPosted);
       if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted)) {
-        if (l_meta.getBalanceAfterTransaction().isBlank()) {
+        if (!l_meta.getbalanceAfterTransactionFilled()) {
           l_meta.setBalanceAfterTransaction(a_SaldoNaMutatie);
         }
       }
@@ -308,12 +307,12 @@ public class IngTransactions {
    * @param a_OfxTransaction OFX Transaction
    * @param a_SaldoNaMutatie Balance after transaction
    */
-  private void createOfxMetaInfo(OfxTransaction a_OfxTransaction, String a_SaldoNaMutatie) {
+  private void createOfxMetaInfo(OfxTransaction a_OfxTransaction, double a_SaldoNaMutatie) {
     String l_bankcode = a_OfxTransaction.getBankCode();
     OfxMetaInfo l_meta = new OfxMetaInfo(l_bankcode, m_Synonym_file);
     l_meta.setSuffix(a_OfxTransaction.getSource());
     l_meta.setAccount(a_OfxTransaction.getAccount());
-    String sDtPosted = a_OfxTransaction.getDtposted();
+    String sDtPosted = DateToNumeric.dateToNumeric(a_OfxTransaction.getDtposted());
     l_meta.setMaxDate(sDtPosted);
     l_meta.setBalanceAfterTransaction(a_SaldoNaMutatie);
 

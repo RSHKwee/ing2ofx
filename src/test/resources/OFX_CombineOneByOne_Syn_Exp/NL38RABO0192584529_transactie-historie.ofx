@@ -35,7 +35,7 @@
                <STMTTRN>
                   <TRNTYPE>CREDIT</TRNTYPE>
                   <DTPOSTED>20230509</DTPOSTED>
-                  <TRNAMT>-363.75</TRNAMT>
+                  <TRNAMT>-363,75</TRNAMT>
                   <FITID>2023050936375</FITID>
                   <NAME>Voor u gekocht via Euronext Fund Services: 6,3042 Participaties ASN Duurzaam Mixfonds Neutraal aEUR 57,70. Valutadatum: 11/05/2023. Positie ,na transactie: 434,2441 ASN Duurzaam Mixfonds Neutraal. (Trans.nr. 24712542)</NAME>
                   <BANKACCTTO>
@@ -48,7 +48,7 @@
                <STMTTRN>
                   <TRNTYPE>CREDIT</TRNTYPE>
                   <DTPOSTED>20230509</DTPOSTED>
-                  <TRNAMT>-75.44</TRNAMT>
+                  <TRNAMT>-75,44</TRNAMT>
                   <FITID>202305097544</FITID>
                   <NAME>Voor u gekocht via Euronext Fund Services: 1,4505 Participaties ASN Duurzaam Mixfonds Defensief a EUR 52,01. Valutadatum: 11/05/2023. Positi,e na transactie: 94,8511 ASN Duurzaam Mixfonds Defensief. (Trans.nr. 24647328)</NAME>
                   <BANKACCTTO>
@@ -61,7 +61,7 @@
                <STMTTRN>
                   <TRNTYPE>DEBIT</TRNTYPE>
                   <DTPOSTED>20230505</DTPOSTED>
-                  <TRNAMT>363.75</TRNAMT>
+                  <TRNAMT>363,75</TRNAMT>
                   <FITID>2023050536375</FITID>
                   <NAME>Tekst33 cash dividend ASN Duurzaam Mixfonds Neutraal van EUR 427,94. Dividendbelasting (15%): EUR 64,19. (Trans.nr. 24141669) Het bedrag E,UR 363,75 wordt de eerstvolgende handelsdag herbelegd.</NAME>
                   <BANKACCTTO>
@@ -74,7 +74,7 @@
                <STMTTRN>
                   <TRNTYPE>DEBIT</TRNTYPE>
                   <DTPOSTED>20230505</DTPOSTED>
-                  <TRNAMT>75.44</TRNAMT>
+                  <TRNAMT>75,44</TRNAMT>
                   <FITID>202305057544</FITID>
                   <NAME>Tekst33 cash dividend ASN Duurzaam Mixfonds Defensief van EUR 88,74. Dividendbelasting (15%): EUR 13,30. (Trans.nr. 24055379) Het bedrag E,UR 75,44 wordt de eerstvolgende handelsdag herbelegd.</NAME>
                   <BANKACCTTO>
@@ -86,7 +86,7 @@
                </STMTTRN>
          </BANKTRANLIST>                   <!-- End list of statement trans. -->
          <LEDGERBAL>                       <!-- Ledger balance aggregate -->
-            <BALAMT>0.00</BALAMT>
+            <BALAMT>0,00</BALAMT>
             <DTASOF>202305092359</DTASOF>  <!-- Bal date: Last date in transactions, 11:59 pm -->
          </LEDGERBAL>                      <!-- End ledger balance -->
       </STMTRS>
@@ -94,4 +94,4 @@
   </BANKMSGSRSV1>
 </OFX>
 <!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_CombineOneByOne_Syn/NL38RABO0192584529_transactie-historie.ofx -->
-<!--  Generated on 2023-10-30 12:09:14.833032700 -->
+<!--  Generated on 2023-11-10 16:07:09.227636900 -->

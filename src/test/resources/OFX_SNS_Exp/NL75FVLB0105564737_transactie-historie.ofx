@@ -35,7 +35,7 @@
                <STMTTRN>
                   <TRNTYPE>DEBIT</TRNTYPE>
                   <DTPOSTED>20230505</DTPOSTED>
-                  <TRNAMT>6.84</TRNAMT>
+                  <TRNAMT>6,84</TRNAMT>
                   <FITID>20230505684</FITID>
                   <NAME>Rente over positief saldo tot 01-05-23</NAME>
                   <BANKACCTTO>
@@ -47,7 +47,7 @@
                </STMTTRN>
          </BANKTRANLIST>                   <!-- End list of statement trans. -->
          <LEDGERBAL>                       <!-- Ledger balance aggregate -->
-            <BALAMT>16687.56</BALAMT>
+            <BALAMT>16687,56</BALAMT>
             <DTASOF>202305052359</DTASOF>  <!-- Bal date: Last date in transactions, 11:59 pm -->
          </LEDGERBAL>                      <!-- End ledger balance -->
       </STMTRS>
@@ -55,4 +55,4 @@
   </BANKMSGSRSV1>
 </OFX>
 <!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_SNS/NL75FVLB0105564737_transactie-historie.ofx -->
-<!--  Generated on 2023-10-30 12:08:45.111879200 -->
+<!--  Generated on 2023-11-09 17:15:50.515478800 -->
