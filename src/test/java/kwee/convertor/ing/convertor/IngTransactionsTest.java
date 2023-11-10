@@ -4,7 +4,7 @@
 package kwee.convertor.ing.convertor;
 
 import java.io.File;
-
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -232,12 +232,12 @@ public class IngTransactionsTest extends TestCase {
   private void loadINGSavingTransactionExp() {
     m_SavingTransactions_exp
         .add(addIngSavingTransaction("2023-05-26", "Overboeking van betaalrekening NL94COBA0678011583", "K 444-12345",
-            "sprek 1", "NL94COBA0678011583", "Bij", "2500,00", "EUR", "Inleg", "", "2750,00"));
+            "sprek 1", "NL94COBA0678011583", "Bij", 2500.00, "EUR", "Inleg", "", 2750.00));
     m_SavingTransactions_exp
         .add(addIngSavingTransaction("2023-05-25", "Overboeking naar betaalrekening NL94COBA0678011583", "K 444-12345",
-            "sprek 1", "NL94COBA0678011583", "Af", "250,00", "EUR", "Opname", "", "250,00"));
+            "sprek 1", "NL94COBA0678011583", "Af", 250.00, "EUR", "Opname", "", 250.00));
     m_SavingTransactions_exp.add(addIngSavingTransaction("2023-05-01", "Rente", "K 444-12345", "sprek 1", "", "Bij",
-        "0,75", "EUR", "Rente", "", "1650,75"));
+        0.75, "EUR", "Rente", "", 1650.75));
   }
 
   /*
@@ -252,26 +252,27 @@ public class IngTransactionsTest extends TestCase {
   private void loadOFXTransactionExp() {
     m_OfxTransactions_exp
         .add(addOfxTransaction("INGBNL2A", "20230523200000", "20230523", "NL90KNAB0445266309", "a Acchouder 7",
-            "K55512345", "PAYMENT", "-2000,00", "Naar Oranje spaarrekening K55512345 Valutadatum: 23-05-2023", 446.38));
+            "K55512345", "PAYMENT", -2000.00, "Naar Oranje spaarrekening K55512345 Valutadatum: 23-05-2023", 446.38));
     m_OfxTransactions_exp.add(addOfxTransaction("INGBNL2A", "2023052382198", "20230523", "NL90KNAB0445266309",
-        "Acchouder 8", "NL58INGB0702712760", "CREDIT", "821,98",
+        "Acchouder 8", "NL58INGB0702712760", "CREDIT", 821.98,
         "P0000200000000000231148665230523 PWJ 30-04-23/30-04-23 Acchouder 7 IBAN: NL58INGB0702712760 Kenmerk: DK13 110520EA-01120651634 Valutadatum: 23-05-2023",
         2446.38));
     m_OfxTransactions_exp.add(addOfxTransaction("INGBNL2A", "20230526250000", "20230526", "K444-12345",
-        "Overboeking van betaalrekening NL94COBA0678011583", "NL94COBA0678011583", "CREDIT", "2500,00", "", 2750.00));
+        "Overboeking van betaalrekening NL94COBA0678011583", "NL94COBA0678011583", "CREDIT", 2500.00, "", 2750.00));
     m_OfxTransactions_exp.add(addOfxTransaction("INGBNL2A", "2023052525000", "20230525", "K444-12345",
-        "Overboeking naar betaalrekening NL94COBA0678011583", "NL94COBA0678011583", "DEBIT", "-250,00", "", 250.00));
+        "Overboeking naar betaalrekening NL94COBA0678011583", "NL94COBA0678011583", "DEBIT", -250.00, "", 250.00));
     m_OfxTransactions_exp.add(addOfxTransaction("INGBNL2A", "20230501075", "20230501", "K444-12345", "Rente", "",
-        "CREDIT", "0,75", "", 1650.75));
+        "CREDIT", 0.75, "", 1650.75));
   }
 
   private void loadOFXMetaInfoExp() {
     m_metainfo_exp.put("NL90KNAB0445266309",
-        addOfxMetaInfo("INGBNL2A", "NL90KNAB0445266309", "Bewindvoering", "", "20230523", "20230523", 446.38));
-    m_metainfo_exp.put("K444-12345", addOfxMetaInfo("INGBNL2A", "K444-12345", "Huishouding_NL94COBA0678011583", "",
-        "20230501", "20230526", 2750.00));
+        addOfxMetaInfo("INGBNL2A", "NL90KNAB0445266309", "", "ING_Enkele", "20230523", "20230523", 446.38));
+    m_metainfo_exp.put("K444-12345", addOfxMetaInfo("INGBNL2A", "K444-12345", "Aap_NL94COBA0678011583",
+        "ING_Enkele_spaar", "20230501", "20230526", 2750.00));
   }
 
+//K444-12345;Aap_NL94COBA0678011583;ING_Enkele_spaar;20230501;20230526;2750.0
   // ING Transactions
   private IngTransaction addIngTransaction(String a_datum, String a_omschrijving, String a_rekening,
       String a_tegenrekening, String a_code, String a_af_bij, String a_bedrag, String a_mutatiesoort,
@@ -296,8 +297,8 @@ public class IngTransactionsTest extends TestCase {
 
   // ING Saving transactions
   private IngSavingTransaction addIngSavingTransaction(String a_datum, String a_omschrijving, String a_rekening,
-      String a_Rekeningnaam, String a_tegenrekening, String a_af_bij, String a_bedrag, String a_valuta,
-      String a_mutatiesoort, String a_mededelingen, String a_saldoNaMutatie) {
+      String a_Rekeningnaam, String a_tegenrekening, String a_af_bij, double a_bedrag, String a_valuta,
+      String a_mutatiesoort, String a_mededelingen, double a_saldoNaMutatie) {
     IngSavingTransaction l_trans = new IngSavingTransaction();
     // Datum Omschrijving Rekening Rekening naam Tegenrekening Af Bij Bedrag Valuta
     // Mutatiesoort Mededelingen Saldo na mutatie
@@ -317,16 +318,18 @@ public class IngTransactionsTest extends TestCase {
 
   // Load OfxTransaction
   private OfxTransaction addOfxTransaction(String a_bankcode, String a_fitid, String a_dtposted, String a_account,
-      String a_name, String a_accountto, String a_trntype, String a_trnamt, String a_memo, double a_Saldo_na_mutatie) {
+      String a_name, String a_accountto, String a_trntype, double a_trnamt, String a_memo, double a_Saldo_na_mutatie) {
     OfxTransaction l_trans = new OfxTransaction();
     l_trans.setBankCode(a_bankcode);
     l_trans.setFitid(a_fitid);
-    l_trans.setDtposted(DateToNumeric.String_NumericToDate(a_dtposted));
+
+    Date dtp = DateToNumeric.String_NumericToDate(a_dtposted);
+    l_trans.setDtposted(dtp);
     l_trans.setAccount(a_account);
     l_trans.setName(a_name);
     l_trans.setAccountto(a_accountto);
     l_trans.setTrntype(a_trntype);
-    l_trans.setTrnamt(Double.valueOf(a_trnamt));
+    l_trans.setTrnamt(a_trnamt);
     l_trans.setMemo(a_memo);
     l_trans.setSaldo_na_mutatie(a_Saldo_na_mutatie);
     return l_trans;
@@ -381,7 +384,4 @@ public class IngTransactionsTest extends TestCase {
     }
     return bstat;
   }
-
-  // Compare with expected, OFX MetaInfo
-
 }

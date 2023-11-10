@@ -1,5 +1,7 @@
 package kwee.ofxLibrary;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 //import java.util.logging.Logger;
@@ -138,20 +140,27 @@ public class OfxTransaction {
 
   public boolean equals(OfxTransaction a_ofxtransaction) {
     boolean bstat = false;
-    bstat = a_ofxtransaction.getBankCode().equals(this.bankCode);
-    bstat = bstat && a_ofxtransaction.getFitid().equals(this.fitid);
-    bstat = bstat && a_ofxtransaction.getDtposted().equals(this.dtposted);
-    bstat = bstat && a_ofxtransaction.getAccount().equals(this.account);
-    bstat = bstat && a_ofxtransaction.getName().equals(this.name);
-    bstat = bstat && a_ofxtransaction.getAccountto().equals(this.accountto);
-    bstat = bstat && a_ofxtransaction.getTrntype().equals(this.trntype);
-    bstat = bstat && a_ofxtransaction.getMemo().equals(this.memo);
+    bstat = a_ofxtransaction.getBankCode().equals(this.getBankCode());
+    bstat = bstat && a_ofxtransaction.getFitid().equals(this.getFitid());
+    bstat = bstat && a_ofxtransaction.getAccount().equals(this.getAccount());
+    bstat = bstat && a_ofxtransaction.getName().equals(this.getName());
+    bstat = bstat && a_ofxtransaction.getAccountto().equals(this.getAccountto());
+    bstat = bstat && a_ofxtransaction.getTrntype().equals(this.getTrntype());
+    bstat = bstat && a_ofxtransaction.getMemo().equals(this.getMemo());
 
     int cdstat = Double.compare(this.trnamt, a_ofxtransaction.getTrnamt());
     bstat = bstat && (cdstat == 0);
 
     cdstat = Double.compare(this.Saldo_na_mutatie, a_ofxtransaction.getSaldo_na_mutatie());
     bstat = bstat && (cdstat == 0);
+
+    Date ldate = this.getDtposted();
+    LocalDate date1 = ldate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    Date ldate2 = a_ofxtransaction.getDtposted();
+    LocalDate date2 = ldate2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    cdstat = date1.compareTo(date2);
+    bstat = bstat && (cdstat == 0);
+
     return bstat;
   }
 

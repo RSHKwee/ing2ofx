@@ -61,8 +61,8 @@
                <STMTTRN>
                   <TRNTYPE>DEBIT</TRNTYPE>
                   <DTPOSTED>20230920</DTPOSTED>
-                  <TRNAMT>-1000</TRNAMT>
-                  <FITID>202309201000</FITID>
+                  <TRNAMT>-1000,00</TRNAMT>
+                  <FITID>20230920100000</FITID>
                   <NAME>Overboeking naar betaalrekening NL54BKMG0378842587</NAME>
                   <BANKACCTTO>
                      <BANKID>BKMGNL0A</BANKID>
@@ -99,7 +99,7 @@
                </STMTTRN>
          </BANKTRANLIST>                   <!-- End list of statement trans. -->
          <LEDGERBAL>                       <!-- Ledger balance aggregate -->
-            <BALAMT>6500</BALAMT>
+            <BALAMT>6500,00</BALAMT>
             <DTASOF>202310022359</DTASOF>  <!-- Bal date: Last date in transactions, 11:59 pm -->
          </LEDGERBAL>                      <!-- End ledger balance -->
       </STMTRS>
@@ -107,4 +107,4 @@
   </BANKMSGSRSV1>
 </OFX>
 <!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_INGSaving_eng/NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen_eng.ofx -->
-<!--  Generated on 2023-10-30 12:09:06.755715500 -->
+<!--  Generated on 2023-11-10 14:56:31.301065200 -->

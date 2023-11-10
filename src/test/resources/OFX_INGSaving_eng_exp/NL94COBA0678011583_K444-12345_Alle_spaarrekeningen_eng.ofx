@@ -48,8 +48,8 @@
                <STMTTRN>
                   <TRNTYPE>DEBIT</TRNTYPE>
                   <DTPOSTED>20231002</DTPOSTED>
-                  <TRNAMT>-500</TRNAMT>
-                  <FITID>20231002500</FITID>
+                  <TRNAMT>-500,00</TRNAMT>
+                  <FITID>2023100250000</FITID>
                   <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
                   <BANKACCTTO>
                      <BANKID>COBANL0A</BANKID>
@@ -74,8 +74,8 @@
                <STMTTRN>
                   <TRNTYPE>DEBIT</TRNTYPE>
                   <DTPOSTED>20230929</DTPOSTED>
-                  <TRNAMT>-250</TRNAMT>
-                  <FITID>20230929250</FITID>
+                  <TRNAMT>-250,00</TRNAMT>
+                  <FITID>2023092925000</FITID>
                   <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
                   <BANKACCTTO>
                      <BANKID>COBANL0A</BANKID>
@@ -87,8 +87,8 @@
                <STMTTRN>
                   <TRNTYPE>CREDIT</TRNTYPE>
                   <DTPOSTED>20230928</DTPOSTED>
-                  <TRNAMT>2000</TRNAMT>
-                  <FITID>202309282000</FITID>
+                  <TRNAMT>2000,00</TRNAMT>
+                  <FITID>20230928200000</FITID>
                   <NAME>Overboeking van betaalrekening NL94COBA0678011583</NAME>
                   <BANKACCTTO>
                      <BANKID>COBANL0A</BANKID>
@@ -100,8 +100,8 @@
                <STMTTRN>
                   <TRNTYPE>DEBIT</TRNTYPE>
                   <DTPOSTED>20230921</DTPOSTED>
-                  <TRNAMT>-250</TRNAMT>
-                  <FITID>20230921250</FITID>
+                  <TRNAMT>-250,00</TRNAMT>
+                  <FITID>2023092125000</FITID>
                   <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
                   <BANKACCTTO>
                      <BANKID>COBANL0A</BANKID>
@@ -113,8 +113,8 @@
                <STMTTRN>
                   <TRNTYPE>DEBIT</TRNTYPE>
                   <DTPOSTED>20230915</DTPOSTED>
-                  <TRNAMT>-250</TRNAMT>
-                  <FITID>20230915250</FITID>
+                  <TRNAMT>-250,00</TRNAMT>
+                  <FITID>2023091525000</FITID>
                   <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
                   <BANKACCTTO>
                      <BANKID>COBANL0A</BANKID>
@@ -126,8 +126,8 @@
                <STMTTRN>
                   <TRNTYPE>DEBIT</TRNTYPE>
                   <DTPOSTED>20230914</DTPOSTED>
-                  <TRNAMT>-250</TRNAMT>
-                  <FITID>20230914250</FITID>
+                  <TRNAMT>-250,00</TRNAMT>
+                  <FITID>2023091425000</FITID>
                   <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
                   <BANKACCTTO>
                      <BANKID>COBANL0A</BANKID>
@@ -139,8 +139,8 @@
                <STMTTRN>
                   <TRNTYPE>DEBIT</TRNTYPE>
                   <DTPOSTED>20230910</DTPOSTED>
-                  <TRNAMT>-250</TRNAMT>
-                  <FITID>20230910250</FITID>
+                  <TRNAMT>-250,00</TRNAMT>
+                  <FITID>2023091025000</FITID>
                   <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
                   <BANKACCTTO>
                      <BANKID>COBANL0A</BANKID>
@@ -152,8 +152,8 @@
                <STMTTRN>
                   <TRNTYPE>DEBIT</TRNTYPE>
                   <DTPOSTED>20230908</DTPOSTED>
-                  <TRNAMT>-250</TRNAMT>
-                  <FITID>20230908250</FITID>
+                  <TRNAMT>-250,00</TRNAMT>
+                  <FITID>2023090825000</FITID>
                   <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
                   <BANKACCTTO>
                      <BANKID>COBANL0A</BANKID>
@@ -191,8 +191,8 @@
                <STMTTRN>
                   <TRNTYPE>DEBIT</TRNTYPE>
                   <DTPOSTED>20230901</DTPOSTED>
-                  <TRNAMT>-500</TRNAMT>
-                  <FITID>20230901500</FITID>
+                  <TRNAMT>-500,00</TRNAMT>
+                  <FITID>2023090150000</FITID>
                   <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
                   <BANKACCTTO>
                      <BANKID>COBANL0A</BANKID>
@@ -203,7 +203,7 @@
                </STMTTRN>
          </BANKTRANLIST>                   <!-- End list of statement trans. -->
          <LEDGERBAL>                       <!-- Ledger balance aggregate -->
-            <BALAMT>1750</BALAMT>
+            <BALAMT>1750,00</BALAMT>
             <DTASOF>202310022359</DTASOF>  <!-- Bal date: Last date in transactions, 11:59 pm -->
          </LEDGERBAL>                      <!-- End ledger balance -->
       </STMTRS>
@@ -211,4 +211,4 @@
   </BANKMSGSRSV1>
 </OFX>
 <!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_INGSaving_eng/NL94COBA0678011583_K444-12345_Alle_spaarrekeningen_eng.ofx -->
-<!--  Generated on 2023-10-30 12:09:06.748734500 -->
+<!--  Generated on 2023-11-10 14:56:31.292088200 -->

@@ -282,9 +282,9 @@ public class IngTransactions {
       String sDtPosted = DateToNumeric.dateToNumeric(a_OfxTransaction.getDtposted());
       l_meta.setMaxDate(sDtPosted);
       if (l_meta.getMaxDate().equalsIgnoreCase(sDtPosted)) {
-//        if (l_meta.getBalanceAfterTransaction().isBlank()) {
-        l_meta.setBalanceAfterTransaction(a_SaldoNaMutatie);
-        // TODO }
+        if (!l_meta.getbalanceAfterTransactionFilled()) {
+          l_meta.setBalanceAfterTransaction(a_SaldoNaMutatie);
+        }
       }
       l_meta.setMaxDate(sDtPosted);
       l_meta.setMinDate(sDtPosted);

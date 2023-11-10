@@ -132,9 +132,9 @@ public class OfxFunctions {
         // uniqueid = fitid + time + Integer.toString(idcount);
         uniqueid = fitid + Integer.toString(idcount);
       }
-      a_UniqueId.add(uniqueid);
+      // a_UniqueId.add(uniqueid);
     } else {
-      a_UniqueId.add(fitid);
+      // a_UniqueId.add(fitid);
     }
     return uniqueid;
   }

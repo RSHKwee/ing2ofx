@@ -35,7 +35,7 @@
                <STMTTRN>
                   <TRNTYPE>CREDIT</TRNTYPE>
                   <DTPOSTED>20230524</DTPOSTED>
-                  <TRNAMT>-0.75</TRNAMT>
+                  <TRNAMT>-0,75</TRNAMT>
                   <FITID>20230524075</FITID>
                   <NAME>Kosten extra betaalpas met nr. 005</NAME>
                   <BANKACCTTO>
@@ -48,7 +48,7 @@
                <STMTTRN>
                   <TRNTYPE>CREDIT</TRNTYPE>
                   <DTPOSTED>20230524</DTPOSTED>
-                  <TRNAMT>-2.55</TRNAMT>
+                  <TRNAMT>-2,55</TRNAMT>
                   <FITID>20230524255</FITID>
                   <NAME>Kosten gebruik betaalrekening inclusief 1 betaalpas</NAME>
                   <BANKACCTTO>
@@ -61,7 +61,7 @@
                <STMTTRN>
                   <TRNTYPE>DEBIT</TRNTYPE>
                   <DTPOSTED>20230524</DTPOSTED>
-                  <TRNAMT>3.3</TRNAMT>
+                  <TRNAMT>3,30</TRNAMT>
                   <FITID>20230524330</FITID>
                   <NAME>a Acchouder 1a, a Acchouder 2</NAME>
                   <BANKACCTTO>
@@ -73,7 +73,7 @@
                </STMTTRN>
          </BANKTRANLIST>                   <!-- End list of statement trans. -->
          <LEDGERBAL>                       <!-- Ledger balance aggregate -->
-            <BALAMT>250.00</BALAMT>
+            <BALAMT>250,00</BALAMT>
             <DTASOF>202305242359</DTASOF>  <!-- Bal date: Last date in transactions, 11:59 pm -->
          </LEDGERBAL>                      <!-- End ledger balance -->
       </STMTRS>
@@ -81,4 +81,4 @@
   </BANKMSGSRSV1>
 </OFX>
 <!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_Combine_Syn/Basis_NL20LPLN0892606304_transactie-historie.ofx -->
-<!--  Generated on 2023-10-30 12:08:56.684294400 -->
+<!--  Generated on 2023-11-10 14:45:52.755702200 -->

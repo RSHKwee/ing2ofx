@@ -61,8 +61,8 @@
                <STMTTRN>
                   <TRNTYPE>CREDIT</TRNTYPE>
                   <DTPOSTED>20230928</DTPOSTED>
-                  <TRNAMT>4225</TRNAMT>
-                  <FITID>202309284225</FITID>
+                  <TRNAMT>4225,00</TRNAMT>
+                  <FITID>20230928422500</FITID>
                   <NAME>Overboeking van betaalrekening NL94COBA0678011583</NAME>
                   <BANKACCTTO>
                      <BANKID>COBANL0A</BANKID>
@@ -74,8 +74,8 @@
                <STMTTRN>
                   <TRNTYPE>CREDIT</TRNTYPE>
                   <DTPOSTED>20230905</DTPOSTED>
-                  <TRNAMT>25</TRNAMT>
-                  <FITID>2023090525</FITID>
+                  <TRNAMT>25,00</TRNAMT>
+                  <FITID>202309052500</FITID>
                   <NAME>Overboeking van betaalrekening NL94COBA0678011583</NAME>
                   <BANKACCTTO>
                      <BANKID>COBANL0A</BANKID>
@@ -112,7 +112,7 @@
                </STMTTRN>
          </BANKTRANLIST>                   <!-- End list of statement trans. -->
          <LEDGERBAL>                       <!-- Ledger balance aggregate -->
-            <BALAMT>4250</BALAMT>
+            <BALAMT>4250,00</BALAMT>
             <DTASOF>202310022359</DTASOF>  <!-- Bal date: Last date in transactions, 11:59 pm -->
          </LEDGERBAL>                      <!-- End ledger balance -->
       </STMTRS>
@@ -120,4 +120,4 @@
   </BANKMSGSRSV1>
 </OFX>
 <!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_INGSaving_eng/NL94COBA0678011583_K222-12345_Alle_spaarrekeningen_eng.ofx -->
-<!--  Generated on 2023-10-30 12:09:06.758708 -->
+<!--  Generated on 2023-11-10 14:56:31.305054700 -->

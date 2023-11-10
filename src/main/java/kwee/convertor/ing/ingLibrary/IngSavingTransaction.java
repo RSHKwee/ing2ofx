@@ -1,9 +1,10 @@
 package kwee.convertor.ing.ingLibrary;
 
 import java.text.DecimalFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Bean package for ING Saving transaction
@@ -14,10 +15,11 @@ import java.util.Date;
 //import java.util.logging.Logger;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBean;
-import kwee.library.TimeConversion;
+
+import kwee.library.DateToNumeric;
 
 public class IngSavingTransaction extends CsvToBean<Object> {
-//  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   /*
    * @formatter:off
    * Spaarrekening 
@@ -70,13 +72,6 @@ public class IngSavingTransaction extends CsvToBean<Object> {
   }
 
   public Date getDatum() {
-    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MMM-dd");
-    try {
-      dDatum = inputFormat.parse(Datum);
-    } catch (ParseException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
     return dDatum;
   }
 
@@ -101,7 +96,6 @@ public class IngSavingTransaction extends CsvToBean<Object> {
   }
 
   public double getBedrag() {
-    dBedrag = Double.valueOf(Bedrag.replace(",", "."));
     return dBedrag;
   }
 
@@ -114,7 +108,6 @@ public class IngSavingTransaction extends CsvToBean<Object> {
   }
 
   public double getSaldo_na_mutatie() {
-    dSaldo_na_mutatie = Double.valueOf(Saldo_na_mutatie.replace(",", "."));
     return dSaldo_na_mutatie;
   }
 
@@ -122,6 +115,7 @@ public class IngSavingTransaction extends CsvToBean<Object> {
     return RekeningNaam;
   }
 
+  // Setters
   public void setRekeningNaam(String rekeningNaam) {
     RekeningNaam = rekeningNaam;
   }
@@ -130,15 +124,33 @@ public class IngSavingTransaction extends CsvToBean<Object> {
     Valuta = valuta;
   }
 
+  public void setDatum(Date a_Datum) {
+    dDatum = a_Datum;
+    Datum = DateToNumeric.dateToNumeric(a_Datum);
+  }
+
   public void setDatum(String datum) {
     Datum = datum;
-    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MMM-dd");
-    try {
-      dDatum = inputFormat.parse(Datum);
-    } catch (ParseException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+    SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
+    String[] st_elem = datum.split("-");
+    if (st_elem.length >= 3) {
+      int l_Year = Integer.valueOf(st_elem[0]);
+      if (l_Year > 31) {
+        try {
+          SimpleDateFormat inputFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+          dDatum = inputFormat1.parse(Datum);
+        } catch (Exception e1) {
+          LOGGER.log(Level.WARNING, "Error with " + datum + ": " + e1.getMessage());
+        }
+      } else {
+        try {
+          dDatum = inputFormat.parse(Datum);
+        } catch (Exception e) {
+          LOGGER.log(Level.WARNING, "Error with " + datum + ": " + e.getMessage());
+        }
+      }
     }
+    LOGGER.log(Level.INFO, datum + " -> " + dDatum);
   }
 
   public void setOmschrijving(String omschrijving) {
@@ -192,8 +204,8 @@ public class IngSavingTransaction extends CsvToBean<Object> {
   }
 
   public boolean equals(IngSavingTransaction a_transaction) {
-    boolean bstat = true;
-    bstat = bstat && a_transaction.getDatum().equals(this.getDatum());
+    boolean bstat = false;
+    bstat = a_transaction.getDatum().equals(this.getDatum());
     bstat = bstat && a_transaction.getOmschrijving().equals(this.getOmschrijving());
     bstat = bstat && a_transaction.getRekening().equals(this.getRekening());
     bstat = bstat && a_transaction.getRekeningNaam().equals(this.getRekeningNaam());

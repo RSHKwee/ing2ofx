@@ -24,6 +24,7 @@ public class OfxMetaInfo {
   private int minDate = 999999999;
   private int maxDate = -1;
   private double balanceAfterTransaction = 0;
+  private boolean balanceAfterTransactionFilled = false;
   private String suffix = "";
   private Synonyms m_Synonyms = new Synonyms();
 
@@ -160,7 +161,12 @@ public class OfxMetaInfo {
   }
 
   public void setBalanceAfterTransaction(double balanceAfterTransaction) {
+    this.balanceAfterTransactionFilled = true;
     this.balanceAfterTransaction = balanceAfterTransaction;
+  }
+
+  public boolean getbalanceAfterTransactionFilled() {
+    return this.balanceAfterTransactionFilled;
   }
 
   public void printLog() {
@@ -184,8 +190,8 @@ public class OfxMetaInfo {
   public boolean equals(OfxMetaInfo a_metaInfo) {
     boolean bstat = false;
     bstat = a_metaInfo.getAccount().equals(this.account);
-    bstat = bstat && a_metaInfo.getPrefix().equals(this.prefix);
-    bstat = bstat && a_metaInfo.getSuffix().equals(this.suffix);
+    bstat = bstat && a_metaInfo.getPrefix().equals(this.getPrefix());
+    bstat = bstat && a_metaInfo.getSuffix().equals(this.getSuffix());
     bstat = bstat && a_metaInfo.getMinDate().equals(this.getMinDate());
     bstat = bstat && a_metaInfo.getMaxDate().equals(this.getMaxDate());
 

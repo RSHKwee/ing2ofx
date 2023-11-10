@@ -1,6 +1,10 @@
 package kwee.convertor.ing.ingLibrary;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Bean package for ING Saving transaction English heading
@@ -11,10 +15,9 @@ import java.util.Date;
 //import java.util.logging.Logger;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBean;
-import kwee.library.TimeConversion;
 
 public class IngSavingTransactionEng extends CsvToBean<Object> {
-//  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   /*
    * @formatter:off
    * Spaarrekening 
@@ -64,7 +67,6 @@ public class IngSavingTransactionEng extends CsvToBean<Object> {
   }
 
   public Date getDatum() {
-    dDatum = TimeConversion.stringToDate(Datum);
     return dDatum;
   }
 
@@ -94,7 +96,6 @@ public class IngSavingTransactionEng extends CsvToBean<Object> {
   }
 
   public double getBedrag() {
-    dBedrag = Double.valueOf(Bedrag.replace(",", "."));
     return dBedrag;
   }
 
@@ -107,7 +108,6 @@ public class IngSavingTransactionEng extends CsvToBean<Object> {
   }
 
   public double getSaldo_na_mutatie() {
-    dSaldo_na_mutatie = Double.valueOf(Saldo_na_mutatie.replace(",", "."));
     return dSaldo_na_mutatie;
   }
 
@@ -115,6 +115,7 @@ public class IngSavingTransactionEng extends CsvToBean<Object> {
     return RekeningNaam;
   }
 
+  // Setters
   public void setRekeningNaam(String rekeningNaam) {
     RekeningNaam = rekeningNaam;
   }
@@ -125,7 +126,26 @@ public class IngSavingTransactionEng extends CsvToBean<Object> {
 
   public void setDatum(String datum) {
     Datum = datum;
-    dDatum = TimeConversion.stringToDate(datum);
+    SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
+    String[] st_elem = datum.split("-");
+    if (st_elem.length >= 3) {
+      int l_Year = Integer.valueOf(st_elem[0]);
+      if (l_Year > 31) {
+        try {
+          SimpleDateFormat inputFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+          dDatum = inputFormat1.parse(Datum);
+        } catch (Exception e1) {
+          LOGGER.log(Level.WARNING, "Error with " + datum + ": " + e1.getMessage());
+        }
+      } else {
+        try {
+          dDatum = inputFormat.parse(Datum);
+        } catch (Exception e) {
+          LOGGER.log(Level.WARNING, "Error with " + datum + ": " + e.getMessage());
+        }
+      }
+    }
+    LOGGER.log(Level.INFO, datum + " -> " + dDatum);
   }
 
   public void setOmschrijving(String omschrijving) {

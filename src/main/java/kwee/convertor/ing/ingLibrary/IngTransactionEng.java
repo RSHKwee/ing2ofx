@@ -58,7 +58,6 @@ public class IngTransactionEng extends CsvToBean<Object> {
   private String Tag = "";
 
   public Date getDatum() {
-    dDatum = DateToNumeric.String_NumericToDate(Datum);
     return dDatum;
   }
 
@@ -88,7 +87,6 @@ public class IngTransactionEng extends CsvToBean<Object> {
   }
 
   public double getBedrag() {
-    dBedrag = Double.valueOf(Bedrag.replace(",", "."));
     return dBedrag;
   }
 
@@ -101,7 +99,6 @@ public class IngTransactionEng extends CsvToBean<Object> {
   }
 
   public double getSaldo_na_mutatie() {
-    dSaldo_na_mutatie = Double.valueOf(Saldo_na_mutatie.replace(",", "."));
     return dSaldo_na_mutatie;
   }
 
@@ -109,6 +106,7 @@ public class IngTransactionEng extends CsvToBean<Object> {
     return Tag;
   }
 
+  // Setters
   public void setDatum(String datum) {
     Datum = datum;
     dDatum = DateToNumeric.String_NumericToDate(Datum);
@@ -162,15 +160,15 @@ public class IngTransactionEng extends CsvToBean<Object> {
 
   public boolean equals(IngTransactionEng a_transaction) {
     boolean bstat = false;
-    bstat = a_transaction.getDatum().equals(this.Datum);
-    bstat = bstat && a_transaction.getOmschrijving().equals(this.Omschrijving);
-    bstat = bstat && a_transaction.getRekening().equals(this.Rekening);
-    bstat = bstat && a_transaction.getTegenrekening().equals(this.Tegenrekening);
-    bstat = bstat && a_transaction.getCode().equals(this.Code);
-    bstat = bstat && a_transaction.getAf_Bij().equals(this.Af_Bij);
-    bstat = bstat && a_transaction.getMutatiesoort().equals(this.Mutatiesoort);
-    bstat = bstat && a_transaction.getMededelingen().equals(Mededelingen);
-    bstat = bstat && a_transaction.getTag().equals(this.Tag);
+    bstat = a_transaction.getDatum().equals(this.getDatum());
+    bstat = bstat && a_transaction.getOmschrijving().equals(this.getOmschrijving());
+    bstat = bstat && a_transaction.getRekening().equals(this.getRekening());
+    bstat = bstat && a_transaction.getTegenrekening().equals(this.getTegenrekening());
+    bstat = bstat && a_transaction.getCode().equals(this.getCode());
+    bstat = bstat && a_transaction.getAf_Bij().equals(this.getAf_Bij());
+    bstat = bstat && a_transaction.getMutatiesoort().equals(this.getMutatiesoort());
+    bstat = bstat && a_transaction.getMededelingen().equals(this.getMededelingen());
+    bstat = bstat && a_transaction.getTag().equals(this.getTag());
 
     int cstat = Double.compare(a_transaction.getSaldo_na_mutatie(), this.getSaldo_na_mutatie());
     bstat = bstat && (cstat == 0);

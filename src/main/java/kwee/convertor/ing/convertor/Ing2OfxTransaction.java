@@ -14,7 +14,6 @@ import kwee.convertor.ing.ingLibrary.IngSavingTransactionEng;
 import kwee.convertor.ing.ingLibrary.IngTransaction;
 import kwee.convertor.ing.ingLibrary.IngTransactionEng;
 import kwee.ofxLibrary.OfxTransaction;
-import kwee.library.DateToNumeric;
 
 public class Ing2OfxTransaction {
 //  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
