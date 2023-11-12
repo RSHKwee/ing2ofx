@@ -1,5 +1,6 @@
 package kwee.ofxLibrary;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -16,13 +17,13 @@ public class OfxTransaction {
   private String account = "";
   private String trntype = "";
   private Date dtposted = new Date();
-  private double trnamt = 0.0;
+  private BigDecimal trnamt = new BigDecimal(0.0);
   private String fitid = "";
   private String name = "";
   private String accountto = "";
   private String memo = "";
   private int OfxTranPair = -1;
-  private double Saldo_na_mutatie = 0;
+  private BigDecimal Saldo_na_mutatie = new BigDecimal(0.0);
 
   private String Source = "";
   private boolean saving = false;
@@ -54,11 +55,11 @@ public class OfxTransaction {
     return bankCode;
   }
 
-  public double getSaldo_na_mutatie() {
+  public BigDecimal getSaldo_na_mutatie() {
     return Saldo_na_mutatie;
   }
 
-  public void setSaldo_na_mutatie(double saldo_na_mutatie) {
+  public void setSaldo_na_mutatie(BigDecimal saldo_na_mutatie) {
     Saldo_na_mutatie = saldo_na_mutatie;
   }
 
@@ -74,7 +75,7 @@ public class OfxTransaction {
     return dtposted;
   }
 
-  public double getTrnamt() {
+  public BigDecimal getTrnamt() {
     return trnamt;
   }
 
@@ -114,7 +115,7 @@ public class OfxTransaction {
     this.dtposted = dtposted;
   }
 
-  public void setTrnamt(double trnamt) {
+  public void setTrnamt(BigDecimal trnamt) {
     this.trnamt = trnamt;
   }
 
@@ -148,10 +149,10 @@ public class OfxTransaction {
     bstat = bstat && a_ofxtransaction.getTrntype().equals(this.getTrntype());
     bstat = bstat && a_ofxtransaction.getMemo().equals(this.getMemo());
 
-    int cdstat = Double.compare(this.trnamt, a_ofxtransaction.getTrnamt());
+    int cdstat = this.trnamt.compareTo(a_ofxtransaction.getTrnamt());
     bstat = bstat && (cdstat == 0);
 
-    cdstat = Double.compare(this.Saldo_na_mutatie, a_ofxtransaction.getSaldo_na_mutatie());
+    cdstat = this.Saldo_na_mutatie.compareTo(a_ofxtransaction.getSaldo_na_mutatie());
     bstat = bstat && (cdstat == 0);
 
     Date ldate = this.getDtposted();
@@ -168,7 +169,7 @@ public class OfxTransaction {
   public String toString() {
     String l_str = "";
     l_str = String.join(";", this.bankCode, this.fitid, this.dtposted.toString(), this.account, this.name,
-        this.accountto, this.trntype, Double.toString(this.trnamt), this.memo, Double.toString(this.Saldo_na_mutatie));
+        this.accountto, this.trntype, this.trnamt.toString(), this.memo, this.Saldo_na_mutatie.toString());
 
     return l_str;
   }

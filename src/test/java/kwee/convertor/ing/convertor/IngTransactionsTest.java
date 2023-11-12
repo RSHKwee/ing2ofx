@@ -4,6 +4,7 @@
 package kwee.convertor.ing.convertor;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
@@ -329,9 +330,9 @@ public class IngTransactionsTest extends TestCase {
     l_trans.setName(a_name);
     l_trans.setAccountto(a_accountto);
     l_trans.setTrntype(a_trntype);
-    l_trans.setTrnamt(a_trnamt);
+    l_trans.setTrnamt(new BigDecimal(a_trnamt));
     l_trans.setMemo(a_memo);
-    l_trans.setSaldo_na_mutatie(a_Saldo_na_mutatie);
+    l_trans.setSaldo_na_mutatie(new BigDecimal(a_Saldo_na_mutatie));
     return l_trans;
   }
 

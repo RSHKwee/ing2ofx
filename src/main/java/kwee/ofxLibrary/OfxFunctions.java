@@ -1,5 +1,6 @@
 package kwee.ofxLibrary;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -158,7 +159,7 @@ public class OfxFunctions {
     return BIC;
   }
 
-  static private String printAmount(double a_Amnt) {
+  static private String printAmount(BigDecimal a_Amnt) {
     DecimalFormat decimalFormat = new DecimalFormat("0.00");
     String formattedNumber = decimalFormat.format(a_Amnt).replace(",", "").replace("-", "").replace(".", "");
     return formattedNumber;

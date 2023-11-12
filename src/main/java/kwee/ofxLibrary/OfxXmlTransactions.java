@@ -1,5 +1,6 @@
 package kwee.ofxLibrary;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 /**
@@ -155,6 +156,12 @@ public class OfxXmlTransactions {
   }
 
   private String printAmount(double a_Amnt) {
+    DecimalFormat decimalFormat = new DecimalFormat("0.00");
+    String formattedNumber = decimalFormat.format(a_Amnt).replace(".", ",");
+    return formattedNumber;
+  }
+
+  private String printAmount(BigDecimal a_Amnt) {
     DecimalFormat decimalFormat = new DecimalFormat("0.00");
     String formattedNumber = decimalFormat.format(a_Amnt).replace(".", ",");
     return formattedNumber;

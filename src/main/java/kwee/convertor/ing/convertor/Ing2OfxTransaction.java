@@ -1,5 +1,6 @@
 package kwee.convertor.ing.convertor;
 
+import java.math.BigDecimal;
 /**
  * Conversion methods for conversion ING- to OFX transaction.
  * 
@@ -31,11 +32,11 @@ public class Ing2OfxTransaction {
     l_ofxtrans.setTrntype(transType("xx", a_trans.getAf_Bij()));
     l_ofxtrans.setDtposted(a_trans.getDatum());
 
-    l_ofxtrans.setTrnamt(AmttoDouble(a_trans.getAf_Bij(), a_trans.getBedrag()));
+    l_ofxtrans.setTrnamt(AmttoBigDecimal(a_trans.getAf_Bij(), a_trans.getBedrag()));
     l_ofxtrans.setName(xmlFriendlyName(a_trans.getOmschrijving()));
     l_ofxtrans.setAccountto(a_trans.getTegenrekening());
     l_ofxtrans.setMemo(xmlFriendlyName(a_trans.getMededelingen()));
-    l_ofxtrans.setSaldo_na_mutatie(a_trans.getSaldo_na_mutatie());
+    l_ofxtrans.setSaldo_na_mutatie(new BigDecimal(a_trans.getSaldo_na_mutatie()));
     return l_ofxtrans;
   }
 
@@ -45,11 +46,11 @@ public class Ing2OfxTransaction {
     l_ofxtrans.setTrntype(transType("xx", a_trans.getAf_Bij()));
     l_ofxtrans.setDtposted(a_trans.getDatum());
 
-    l_ofxtrans.setTrnamt(AmttoDouble(a_trans.getAf_Bij(), a_trans.getBedrag()));
+    l_ofxtrans.setTrnamt(AmttoBigDecimal(a_trans.getAf_Bij(), a_trans.getBedrag()));
     l_ofxtrans.setName(xmlFriendlyName(a_trans.getOmschrijving()));
     l_ofxtrans.setAccountto(a_trans.getTegenrekening());
     l_ofxtrans.setMemo(xmlFriendlyName(a_trans.getMededelingen()));
-    l_ofxtrans.setSaldo_na_mutatie(a_trans.getSaldo_na_mutatie());
+    l_ofxtrans.setSaldo_na_mutatie(new BigDecimal(a_trans.getSaldo_na_mutatie()));
     return l_ofxtrans;
   }
 
@@ -65,11 +66,11 @@ public class Ing2OfxTransaction {
     l_ofxtrans.setTrntype(transType(a_trans.getCode(), a_trans.getAf_Bij()));
     l_ofxtrans.setDtposted(a_trans.getDatum());
 
-    l_ofxtrans.setTrnamt(AmttoDouble(a_trans.getAf_Bij(), a_trans.getBedrag()));
+    l_ofxtrans.setTrnamt(AmttoBigDecimal(a_trans.getAf_Bij(), a_trans.getBedrag()));
     l_ofxtrans.setName(xmlFriendlyName(a_trans.getOmschrijving()));
     l_ofxtrans.setAccountto(a_trans.getTegenrekening());
     l_ofxtrans.setMemo(xmlFriendlyName(a_trans.getMededelingen()));
-    l_ofxtrans.setSaldo_na_mutatie(a_trans.getSaldo_na_mutatie());
+    l_ofxtrans.setSaldo_na_mutatie(new BigDecimal(a_trans.getSaldo_na_mutatie()));
 
     if (a_trans.getTegenrekening().isBlank()) {
       String l_memo = a_trans.getMededelingen();
@@ -93,11 +94,11 @@ public class Ing2OfxTransaction {
     l_ofxtrans.setTrntype(transType(a_trans.getCode(), a_trans.getAf_Bij()));
     l_ofxtrans.setDtposted(a_trans.getDatum());
 
-    l_ofxtrans.setTrnamt(AmttoDouble(a_trans.getAf_Bij(), a_trans.getBedrag()));
+    l_ofxtrans.setTrnamt(AmttoBigDecimal(a_trans.getAf_Bij(), a_trans.getBedrag()));
     l_ofxtrans.setName(xmlFriendlyName(a_trans.getOmschrijving()));
     l_ofxtrans.setAccountto(a_trans.getTegenrekening());
     l_ofxtrans.setMemo(xmlFriendlyName(a_trans.getMededelingen()));
-    l_ofxtrans.setSaldo_na_mutatie(a_trans.getSaldo_na_mutatie());
+    l_ofxtrans.setSaldo_na_mutatie(new BigDecimal(a_trans.getSaldo_na_mutatie()));
 
     if (a_trans.getTegenrekening().isBlank()) {
       String l_memo = a_trans.getMededelingen();
@@ -159,12 +160,12 @@ public class Ing2OfxTransaction {
     return l_name;
   }
 
-  private static double AmttoDouble(String a_AfBij, double a_Amt) {
-    double amnt = 0;
+  private static BigDecimal AmttoBigDecimal(String a_AfBij, double a_Amt) {
+    BigDecimal amnt;
     if (a_AfBij.equalsIgnoreCase("Bij") || a_AfBij.equalsIgnoreCase("Credit")) {
-      amnt = a_Amt;
+      amnt = new BigDecimal(a_Amt);
     } else {
-      amnt = -1.0 * a_Amt;
+      amnt = new BigDecimal((-1.0 * a_Amt));
     }
     return amnt;
   }

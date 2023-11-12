@@ -152,9 +152,9 @@ public class OfxWriter {
     TransactionType trtype = TransactionType.valueOf(a_transaction.getTrntype());
     l_transaction.setTransactionType(trtype);
 
-    Date dtposted = kwee.library.DateToNumeric.String_NumericToDate(a_transaction.getDtposted());
+    Date dtposted = a_transaction.getDtposted();
     l_transaction.setDatePosted(dtposted);
-    l_transaction.setAmount(Double.valueOf(a_transaction.getTrnamt()));
+    l_transaction.setAmount(a_transaction.getTrnamt().doubleValue());
     l_transaction.setId(a_transaction.getFitid());
     return l_transaction;
   }

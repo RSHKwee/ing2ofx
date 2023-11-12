@@ -48,7 +48,7 @@ public class OfxPairTransaction {
       }
       l_bstat = l_bstat && (a_tran1.getDtposted().equals(a_tran2.getDtposted()));
       try {
-        int istat = Double.compare(a_tran1.getTrnamt(), a_tran2.getTrnamt());
+        int istat = a_tran1.getTrnamt().compareTo(a_tran2.getTrnamt());
         l_bstat = l_bstat && (istat == 0);
       } catch (Exception e) {
         LOGGER.log(Level.WARNING, e.getMessage());

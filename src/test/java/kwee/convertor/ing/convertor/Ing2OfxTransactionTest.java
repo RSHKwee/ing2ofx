@@ -1,5 +1,6 @@
 package kwee.convertor.ing.convertor;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Calendar;
@@ -64,11 +65,11 @@ public class Ing2OfxTransactionTest extends TestCase {
     assertTrue(l_ofxtrans.getAccount().equals("K444-12345"));
     assertTrue(l_ofxtrans.getAccountto().equals(l_trans.getTegenrekening()));
     assertTrue(l_ofxtrans.getTrntype().equals("CREDIT"));
-    int istat = Double.compare(l_ofxtrans.getTrnamt(), Double.valueOf(l_trans.getBedrag()));
+    int istat = l_ofxtrans.getTrnamt().compareTo(new BigDecimal(l_trans.getBedrag()));
     assertTrue(istat == 0);
 
 //    assertTrue(l_ofxtrans.getTrnamt().equals(l_trans.getBedrag()));
-    istat = Double.compare(l_ofxtrans.getSaldo_na_mutatie(), l_trans.getSaldo_na_mutatie());
+    istat = l_ofxtrans.getSaldo_na_mutatie().compareTo(new BigDecimal(l_trans.getSaldo_na_mutatie()));
     assertTrue(istat == 0);
 //    assertTrue(l_ofxtrans.getSaldo_na_mutatie().equals(l_trans.getSaldo_na_mutatie()));
   }
@@ -113,9 +114,9 @@ public class Ing2OfxTransactionTest extends TestCase {
     assertTrue(l_ofxtrans.getAccount().equals("NL90KNAB0445266309"));
     assertTrue(l_ofxtrans.getAccountto().equals("K55512345"));
     assertTrue(l_ofxtrans.getTrntype().equals("PAYMENT"));
-    int istat = Double.compare(l_ofxtrans.getTrnamt(), -2000.0);
+    int istat = l_ofxtrans.getTrnamt().compareTo(new BigDecimal(-2000.0));
     assertTrue(istat == 0);
-    istat = Double.compare(l_ofxtrans.getSaldo_na_mutatie(), l_trans.getSaldo_na_mutatie());
+    istat = l_ofxtrans.getSaldo_na_mutatie().compareTo(new BigDecimal(l_trans.getSaldo_na_mutatie()));
     assertTrue(istat == 0);
     // assertTrue(l_ofxtrans.getTrnamt().equals("-2000"));
     // assertTrue(l_ofxtrans.getSaldo_na_mutatie().equals(l_trans.getSaldo_na_mutatie()));

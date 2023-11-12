@@ -74,7 +74,7 @@ public class SnsTransactions {
       List<AccountStatement2> accountStatement2List = camt053Document.getBkToCstmrStmt().getStmt();
       for (AccountStatement2 accountStatement2 : accountStatement2List) {
         // String l_BankStatSeqNr = accountStatement2.getElctrncSeqNb().toString();
-        Level l_Level = Level.FINEST;
+        Level l_Level = Level.INFO;
 
         String l_IBANNr = accountStatement2.getAcct().getId().getIBAN();
         List<CashBalance3> l_balances = accountStatement2.getBal();
@@ -160,7 +160,9 @@ public class SnsTransactions {
 
                   LOGGER.log(l_Level,
                       "Report amount: -" + reportEntry2.getAmt().getValue() + " " + reportEntry2.getAmt().getCcy());
-                  l_ofxtrans.setTrnamt(Double.valueOf(("-" + reportEntry2.getAmt().getValue()).toString()));
+                  BigDecimal lamnt = new BigDecimal(-1.0);
+                  lamnt = lamnt.multiply(reportEntry2.getAmt().getValue());
+                  l_ofxtrans.setTrnamt(lamnt);
                   l_ofxtrans.setTrntype("CREDIT");
 
                   LOGGER.log(l_Level, "Creditor remittance information (payment description): " + entryDetails1
@@ -200,7 +202,7 @@ public class SnsTransactions {
                         + entryDetails1.getTxDtls().get(0).getAmtDtls().getTxAmt().getAmt().getValue());
                   }
 
-                  l_ofxtrans.setTrnamt(Double.valueOf(reportEntry2.getAmt().getValue().toString()));
+                  l_ofxtrans.setTrnamt(reportEntry2.getAmt().getValue());
                   l_ofxtrans.setTrntype("DEBIT");
 
                   String l_memo = entryDetails1.getTxDtls().get(0).getRmtInf().getUstrd().stream()
