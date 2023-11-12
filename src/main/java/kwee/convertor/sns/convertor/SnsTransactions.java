@@ -65,6 +65,7 @@ public class SnsTransactions {
    * Process the transactions and convert them to OFX transactions.
    */
   public void load() {
+    Level l_Level = Level.FINEST;
     try {
       m_reader = new Camt053Parser();
       FileInputStream fileInputStream = new FileInputStream(new File(m_File));
@@ -73,9 +74,6 @@ public class SnsTransactions {
       // Get all statements (usually one per bank statement)
       List<AccountStatement2> accountStatement2List = camt053Document.getBkToCstmrStmt().getStmt();
       for (AccountStatement2 accountStatement2 : accountStatement2List) {
-        // String l_BankStatSeqNr = accountStatement2.getElctrncSeqNb().toString();
-        Level l_Level = Level.INFO;
-
         String l_IBANNr = accountStatement2.getAcct().getId().getIBAN();
         List<CashBalance3> l_balances = accountStatement2.getBal();
         l_balances.forEach(ll_balance -> {
