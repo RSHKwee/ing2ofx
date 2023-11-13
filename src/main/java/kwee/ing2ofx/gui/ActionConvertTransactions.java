@@ -17,13 +17,13 @@ import javax.swing.JTextArea;
 import javax.swing.SwingWorker;
 
 import kwee.library.ApplicationMessages;
-import kwee.ofxLibrary.OfxDocument;
 import kwee.ofxLibrary.OfxFilter;
 import kwee.ofxLibrary.OfxFunctions;
 import kwee.ofxLibrary.OfxMetaAccounts;
 import kwee.ofxLibrary.OfxMetaInfo;
 import kwee.ofxLibrary.OfxPairTransaction;
 import kwee.ofxLibrary.OfxTransaction;
+import kwee.ofxLibrary.doc.OfxDocument;
 
 /**
  * 

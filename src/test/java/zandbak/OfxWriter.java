@@ -38,7 +38,7 @@ public class OfxWriter {
 
     // SignOn Message Response
     SignonResponseMessageSet signonMsgSet = new SignonResponseMessageSet();
-    signonMsgSet = setSigonMessage();
+    signonMsgSet = setSigonMessage("1001", "NCH");
 
     BankAccountDetails bankAccountDetails = new BankAccountDetails();
     AccountType acctype = AccountType.CHECKING;
@@ -109,7 +109,7 @@ public class OfxWriter {
     }
   }
 
-  static SignonResponseMessageSet setSigonMessage() {
+  static SignonResponseMessageSet setSigonMessage(String a_FinInsId, String a_FinInsOrg) {
     Date now = new java.util.Date();
 
     // SignOn Message Response
@@ -125,15 +125,15 @@ public class OfxWriter {
     signon.setTimestamp(now);
 
     FinancialInstitution finins = new FinancialInstitution();
-    finins.setOrganization("NCH");
-    finins.setId("1001");
+    finins.setOrganization(a_FinInsOrg);
+    finins.setId(a_FinInsId);
     signon.setFinancialInstitution(finins);
 
     signonMsgSet.setSignonResponse(signon);
     return signonMsgSet;
   }
 
-  static Transaction setXMLTransaction(OfxTransaction a_transaction) {
+  static Transaction setXMLTransaction(OfxTransaction a_transaction, String a_Currency) {
     Transaction l_transaction = new Transaction();
 
     BankAccountDetails accto = new BankAccountDetails();
@@ -145,8 +145,8 @@ public class OfxWriter {
     l_transaction.setBankAccountTo(accto);
 
     Currency currency = new Currency();
-    currency.setCode("EUR");
-    currency.setExchangeRate(0.0f);
+    currency.setCode(a_Currency); // "EUR"
+    currency.setExchangeRate(0.0f); // not used
     l_transaction.setCurrency(currency);
 
     TransactionType trtype = TransactionType.valueOf(a_transaction.getTrntype());
