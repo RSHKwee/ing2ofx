@@ -16,6 +16,7 @@
 
 package kwee.ofxLibrary.doc;
 
+import com.webcohesion.ofx4j.OFXSettings;
 import com.webcohesion.ofx4j.domain.data.common.Status;
 import com.webcohesion.ofx4j.domain.data.common.StatusCode;
 import com.webcohesion.ofx4j.domain.data.common.UnknownStatusCode;
@@ -24,6 +25,7 @@ import com.webcohesion.ofx4j.io.StringConversion;
 
 import java.sql.Time;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,6 +40,7 @@ import java.net.MalformedURLException;
  */
 public class Ing2OfxStringConversion implements StringConversion {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private OFXSettings m_ofxSettings;
 
   public final TimeZone gmtTimeZone;
   public static final int DATE_FORMAT_LENGTH = "yyyyMMddHHmmss.SSS".length();
@@ -64,8 +67,10 @@ public class Ing2OfxStringConversion implements StringConversion {
     } else if (Date.class.isInstance(value)) {
       return formatDate((Date) value);
     } else if (BigDecimal.class.isInstance(value)) {
-      DecimalFormat decimalFormat = new DecimalFormat("0.00");
-      String formattedNumber = decimalFormat.format(value).replace(".", ",");
+      m_ofxSettings = OFXSettings.getInstance();
+      Locale l_locale = m_ofxSettings.getLocale();
+      DecimalFormat decimalFormat = new DecimalFormat("0.00", new DecimalFormatSymbols(l_locale));
+      String formattedNumber = decimalFormat.format(value);
       return formattedNumber;
     } else {
       return String.valueOf(value);
@@ -170,9 +175,9 @@ public class Ing2OfxStringConversion implements StringConversion {
   protected String formatDate(Date date) {
     GregorianCalendar calendar = new GregorianCalendar(gmtTimeZone);
     calendar.setTime(date);
-    // return String.format("%1$tY%1$tm%1$td", calendar);
+    return String.format("%1$tY%1$tm%1$td", calendar) + "2355";
     // return String.format("%1$tY%1$tm%1$td%1$tH%1$tM%1$tS.%1$tL", calendar);
-    return String.format("%1$tY%1$tm%1$td%1$tH%1$tM", calendar);
+    // return String.format("%1$tY%1$tm%1$td%1$tH%1$tM", calendar);
   }
 
   /**

@@ -16,7 +16,6 @@
 
 package kwee.ofxLibrary.doc;
 
-import com.webcohesion.ofx4j.OFXSettings;
 import com.webcohesion.ofx4j.io.v2.OFXV2Writer;
 
 import java.io.*;
@@ -24,13 +23,11 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 /**
- * OFX writer to XML, suitable for OFX version 2.0.
+ * OFX writer to XML, suitable for OFX version 2.0, for ING2OFX
  *
- * @author Ryan Heaton
+ * @author RSH Kwee
  */
 public class Ing2OFXV2Writer extends OFXV2Writer {
-  String m_Filename = "";
-
   public Ing2OFXV2Writer(OutputStream out) {
     super(out);
   }
@@ -39,16 +36,17 @@ public class Ing2OFXV2Writer extends OFXV2Writer {
     super(writer);
   }
 
-  public void setOutputFilename(String a_OutputFilename) {
-    m_Filename = a_OutputFilename;
+  public Ing2OFXV2Writer(String a_OutputFilename) throws FileNotFoundException {
+    super(a_OutputFilename);
   }
 
   @Override
   public void close() throws IOException {
     LocalDate today = LocalDate.now();
     LocalTime time = LocalTime.now();
-    print("\r\n" + " <!-- " + m_Filename + " -->" + "\r\n");
-    print(" <!-- Generated on " + today.toString() + " " + time.toString() + " -->" + "\r\n");
+    println();
+    println("<!-- " + getFilename() + " -->");
+    println("<!-- Generated on " + today.toString() + " " + time.toString() + " -->");
     flush();
     this.writer.close();
   }

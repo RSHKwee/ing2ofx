@@ -24,7 +24,7 @@
     <dependency>
       <groupId>com.webcohesion.ofx4j</groupId>
       <artifactId>ofx4j</artifactId>
-      <version>1.36</version>
+      <version>1.37</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
     <dependency>
