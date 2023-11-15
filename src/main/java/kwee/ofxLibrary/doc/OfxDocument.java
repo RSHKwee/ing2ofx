@@ -84,7 +84,7 @@ public class OfxDocument {
       statRespons.setCurrencyCode("EUR");
       BalanceInfo ledgerbal = new BalanceInfo();
       ledgerbal.setAmount(l_metainf.getBalanceAfterTransaction());
-      ledgerbal.setAsOfDate(DateToNumeric.String_NumericToDate(l_metainf.getBalanceDate()));
+      ledgerbal.setAsOfDate(DateToNumeric.String_NumericToDate(l_metainf.getBalanceDate() + "2359"));
       statRespons.setLedgerBalance(ledgerbal);
 
       // Add transactions to the statement (e.g., deposits, withdrawals)
