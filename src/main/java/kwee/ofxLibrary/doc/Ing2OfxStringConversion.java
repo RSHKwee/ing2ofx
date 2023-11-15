@@ -177,8 +177,6 @@ public class Ing2OfxStringConversion implements StringConversion {
     calendar.setTime(date);
     String datstr = String.format("%1$tY%1$tm%1$td%1$tH%1$tM", calendar);
     datstr = datstr.replace("0000", "");
-    // return String.format("%1$tY%1$tm%1$td", calendar) + "2355";
-    // return String.format("%1$tY%1$tm%1$td%1$tH%1$tM%1$tS.%1$tL", calendar);
     return datstr;
   }
 
