@@ -1,162 +1,155 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?OFX OFXHEADER="200" VERSION="202" SECURITY="NONE" OLDFILEUID="NONE" NEWFILEUID="NONE"?>
 <OFX>
   <SIGNONMSGSRSV1>
-    <SONRS>                            <!-- Begin signon -->
-      <STATUS>                        <!-- Begin status aggregate -->
-         <CODE>0</CODE>               <!-- OK -->
-         <SEVERITY>INFO</SEVERITY>
+    <SONRS>
+      <STATUS>
+        <CODE>0</CODE>
+        <SEVERITY>INFO</SEVERITY>
       </STATUS>
-      <DTSERVER>20230526</DTSERVER>   <!-- Oct. 29, 1999, 10:10:03 am -->
-      <LANGUAGE>ENG</LANGUAGE>        <!-- Language used in response -->
-      <DTPROFUP>20230526</DTPROFUP>   <!-- Last update to profile-->
-      <DTACCTUP>20230526</DTACCTUP>   <!-- Last account update -->
-      <FI>                            <!-- ID of receiving institution -->
-         <ORG>NCH</ORG>               <!-- Name of ID owner -->
-         <FID>1001</FID>              <!-- Actual ID -->
+      <DTSERVER>202305241924</DTSERVER>
+      <LANGUAGE>ENG</LANGUAGE>
+      <DTPROFUP>202305241924</DTPROFUP>
+      <DTACCTUP>202305241924</DTACCTUP>
+      <FI>
+        <ORG>NCH</ORG>
+        <FID>1001</FID>
       </FI>
-    </SONRS>                           <!-- End of signon -->
+    </SONRS>
   </SIGNONMSGSRSV1>
   <BANKMSGSRSV1>
-   <STMTTRNRS>                        <!-- Begin response -->
-      <TRNUID>1001</TRNUID>           <!-- Client ID sent in request -->
-      <STATUS>                     <!-- Start status aggregate -->
-         <CODE>0</CODE>            <!-- OK -->
-         <SEVERITY>INFO</SEVERITY>
+    <STMTTRNRS>
+      <TRNUID>1001</TRNUID>
+      <STATUS>
+        <CODE>0</CODE>
+        <SEVERITY>INFO</SEVERITY>
       </STATUS>
-      <STMTRS>                            <!-- Begin statement response -->
-         <CURDEF>EUR</CURDEF>
-         <BANKACCTFROM>                   <!-- Identify the account -->
-            <BANKID>INGBNL2A</BANKID>     <!-- Routing transit or other FI ID -->
-            <ACCTID>K444-12345</ACCTID>  <!-- Account number -->
-            <ACCTTYPE>CHECKING</ACCTTYPE> <!-- Account type -->
-         </BANKACCTFROM>                  <!-- End of account ID -->
-         <BANKTRANLIST>                   <!-- Begin list of statement trans. -->
-            <DTSTART>20230501</DTSTART>
-            <DTEND>20230526</DTEND>
-               <STMTTRN>
-                  <TRNTYPE>CREDIT</TRNTYPE>
-                  <DTPOSTED>20230526</DTPOSTED>
-                  <TRNAMT>2500,00</TRNAMT>
-                  <FITID>20230526250000</FITID>
-                  <NAME>Overboeking van betaalrekening NL94COBA0678011583</NAME>
-                  <BANKACCTTO>
-                     <BANKID>COBANL0A</BANKID>
-                     <ACCTID>NL94COBA0678011583</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO></MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DEBIT</TRNTYPE>
-                  <DTPOSTED>20230525</DTPOSTED>
-                  <TRNAMT>-250,00</TRNAMT>
-                  <FITID>2023052525000</FITID>
-                  <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
-                  <BANKACCTTO>
-                     <BANKID>COBANL0A</BANKID>
-                     <ACCTID>NL94COBA0678011583</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO></MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DEBIT</TRNTYPE>
-                  <DTPOSTED>20230511</DTPOSTED>
-                  <TRNAMT>-250,00</TRNAMT>
-                  <FITID>2023051125000</FITID>
-                  <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
-                  <BANKACCTTO>
-                     <BANKID>COBANL0A</BANKID>
-                     <ACCTID>NL94COBA0678011583</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO></MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DEBIT</TRNTYPE>
-                  <DTPOSTED>20230507</DTPOSTED>
-                  <TRNAMT>-250,00</TRNAMT>
-                  <FITID>2023050725000</FITID>
-                  <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
-                  <BANKACCTTO>
-                     <BANKID>COBANL0A</BANKID>
-                     <ACCTID>NL94COBA0678011583</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO></MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DEBIT</TRNTYPE>
-                  <DTPOSTED>20230505</DTPOSTED>
-                  <TRNAMT>-250,00</TRNAMT>
-                  <FITID>2023050525000</FITID>
-                  <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
-                  <BANKACCTTO>
-                     <BANKID>COBANL0A</BANKID>
-                     <ACCTID>NL94COBA0678011583</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO></MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DEBIT</TRNTYPE>
-                  <DTPOSTED>20230504</DTPOSTED>
-                  <TRNAMT>-250,00</TRNAMT>
-                  <FITID>2023050425000</FITID>
-                  <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
-                  <BANKACCTTO>
-                     <BANKID>COBANL0A</BANKID>
-                     <ACCTID>NL94COBA0678011583</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO></MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DEBIT</TRNTYPE>
-                  <DTPOSTED>20230502</DTPOSTED>
-                  <TRNAMT>-150,75</TRNAMT>
-                  <FITID>2023050215075</FITID>
-                  <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
-                  <BANKACCTTO>
-                     <BANKID>COBANL0A</BANKID>
-                     <ACCTID>NL94COBA0678011583</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO></MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>CREDIT</TRNTYPE>
-                  <DTPOSTED>20230501</DTPOSTED>
-                  <TRNAMT>0,75</TRNAMT>
-                  <FITID>20230501075</FITID>
-                  <NAME>Rente</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO></MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DEBIT</TRNTYPE>
-                  <DTPOSTED>20230501</DTPOSTED>
-                  <TRNAMT>-1100,00</TRNAMT>
-                  <FITID>20230501110000</FITID>
-                  <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
-                  <BANKACCTTO>
-                     <BANKID>COBANL0A</BANKID>
-                     <ACCTID>NL94COBA0678011583</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO></MEMO>
-               </STMTTRN>
-         </BANKTRANLIST>                   <!-- End list of statement trans. -->
-         <LEDGERBAL>                       <!-- Ledger balance aggregate -->
-            <BALAMT>2750,00</BALAMT>
-            <DTASOF>202305262359</DTASOF>  <!-- Bal date: Last date in transactions, 11:59 pm -->
-         </LEDGERBAL>                      <!-- End ledger balance -->
+      <STMTRS>
+        <CURDEF>EUR</CURDEF>
+        <BANKACCTFROM>
+          <BANKID>INGBNL2A</BANKID>
+          <ACCTID>K444-12345</ACCTID>
+          <ACCTTYPE>CHECKING</ACCTTYPE>
+        </BANKACCTFROM>
+        <BANKTRANLIST>
+          <DTSTART>20230501</DTSTART>
+          <DTEND>20230526</DTEND>
+          <STMTTRN>
+            <TRNTYPE>CREDIT</TRNTYPE>
+            <DTPOSTED>20230526</DTPOSTED>
+            <TRNAMT>2500,00</TRNAMT>
+            <FITID>20230526250000</FITID>
+            <NAME>Overboeking van betaalrekening NL94COBA0678011583</NAME>
+            <BANKACCTTO>
+              <BANKID>COBANL0A</BANKID>
+              <ACCTID>NL94COBA0678011583</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20230525</DTPOSTED>
+            <TRNAMT>-250,00</TRNAMT>
+            <FITID>2023052525000</FITID>
+            <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
+            <BANKACCTTO>
+              <BANKID>COBANL0A</BANKID>
+              <ACCTID>NL94COBA0678011583</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20230511</DTPOSTED>
+            <TRNAMT>-250,00</TRNAMT>
+            <FITID>2023051125000</FITID>
+            <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
+            <BANKACCTTO>
+              <BANKID>COBANL0A</BANKID>
+              <ACCTID>NL94COBA0678011583</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20230507</DTPOSTED>
+            <TRNAMT>-250,00</TRNAMT>
+            <FITID>2023050725000</FITID>
+            <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
+            <BANKACCTTO>
+              <BANKID>COBANL0A</BANKID>
+              <ACCTID>NL94COBA0678011583</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20230505</DTPOSTED>
+            <TRNAMT>-250,00</TRNAMT>
+            <FITID>2023050525000</FITID>
+            <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
+            <BANKACCTTO>
+              <BANKID>COBANL0A</BANKID>
+              <ACCTID>NL94COBA0678011583</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20230504</DTPOSTED>
+            <TRNAMT>-250,00</TRNAMT>
+            <FITID>2023050425000</FITID>
+            <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
+            <BANKACCTTO>
+              <BANKID>COBANL0A</BANKID>
+              <ACCTID>NL94COBA0678011583</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20230502</DTPOSTED>
+            <TRNAMT>-150,75</TRNAMT>
+            <FITID>2023050215075</FITID>
+            <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
+            <BANKACCTTO>
+              <BANKID>COBANL0A</BANKID>
+              <ACCTID>NL94COBA0678011583</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>CREDIT</TRNTYPE>
+            <DTPOSTED>20230501</DTPOSTED>
+            <TRNAMT>0,75</TRNAMT>
+            <FITID>20230501075</FITID>
+            <NAME>Rente</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20230501</DTPOSTED>
+            <TRNAMT>-1100,00</TRNAMT>
+            <FITID>20230501110000</FITID>
+            <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
+            <BANKACCTTO>
+              <BANKID>COBANL0A</BANKID>
+              <ACCTID>NL94COBA0678011583</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+          </STMTTRN>
+        </BANKTRANLIST>
+        <LEDGERBAL>
+          <BALAMT>2750,00</BALAMT>
+          <DTASOF>202305262359</DTASOF>
+        </LEDGERBAL>
       </STMTRS>
-   </STMTTRNRS>                        <!-- End of accounts -->
+    </STMTTRNRS>
   </BANKMSGSRSV1>
 </OFX>
 <!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_CombineDouble_Syn/NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx -->
-<!--  Generated on 2023-11-10 16:07:17.809151 -->
+<!-- Generated on 2023-11-16 19:24:11.963814 -->

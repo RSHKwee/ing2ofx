@@ -28,7 +28,7 @@ public class Main {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   static public String m_creationtime;
   static String m_LookAndFeel = "Nimbus";
-  public static UserSetting m_param = new UserSetting();
+  private static UserSetting m_param = UserSetting.getInstance();
   static boolean m_ConfirmOnExit = false;
 
   /**
@@ -143,6 +143,7 @@ public class Main {
    * @formatter:on
    */
   public static void main(String[] argv) {
+    m_param = UserSetting.getInstance();
     // Get the jvm heap size.
     long heapSize = Runtime.getRuntime().totalMemory();
 

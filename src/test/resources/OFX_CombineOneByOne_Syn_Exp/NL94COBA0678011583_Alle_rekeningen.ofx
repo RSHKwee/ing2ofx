@@ -1,1189 +1,1191 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?OFX OFXHEADER="200" VERSION="202" SECURITY="NONE" OLDFILEUID="NONE" NEWFILEUID="NONE"?>
 <OFX>
   <SIGNONMSGSRSV1>
-    <SONRS>                            <!-- Begin signon -->
-      <STATUS>                        <!-- Begin status aggregate -->
-         <CODE>0</CODE>               <!-- OK -->
-         <SEVERITY>INFO</SEVERITY>
+    <SONRS>
+      <STATUS>
+        <CODE>0</CODE>
+        <SEVERITY>INFO</SEVERITY>
       </STATUS>
-      <DTSERVER>20230530</DTSERVER>   <!-- Oct. 29, 1999, 10:10:03 am -->
-      <LANGUAGE>ENG</LANGUAGE>        <!-- Language used in response -->
-      <DTPROFUP>20230530</DTPROFUP>   <!-- Last update to profile-->
-      <DTACCTUP>20230530</DTACCTUP>   <!-- Last account update -->
-      <FI>                            <!-- ID of receiving institution -->
-         <ORG>NCH</ORG>               <!-- Name of ID owner -->
-         <FID>1001</FID>              <!-- Actual ID -->
+      <DTSERVER>202305242000</DTSERVER>
+      <LANGUAGE>ENG</LANGUAGE>
+      <DTPROFUP>202305242000</DTPROFUP>
+      <DTACCTUP>202305242000</DTACCTUP>
+      <FI>
+        <ORG>NCH</ORG>
+        <FID>1001</FID>
       </FI>
-    </SONRS>                           <!-- End of signon -->
+    </SONRS>
   </SIGNONMSGSRSV1>
   <BANKMSGSRSV1>
-   <STMTTRNRS>                        <!-- Begin response -->
-      <TRNUID>1001</TRNUID>           <!-- Client ID sent in request -->
-      <STATUS>                     <!-- Start status aggregate -->
-         <CODE>0</CODE>            <!-- OK -->
-         <SEVERITY>INFO</SEVERITY>
+    <STMTTRNRS>
+      <TRNUID>1001</TRNUID>
+      <STATUS>
+        <CODE>0</CODE>
+        <SEVERITY>INFO</SEVERITY>
       </STATUS>
-      <STMTRS>                            <!-- Begin statement response -->
-         <CURDEF>EUR</CURDEF>
-         <BANKACCTFROM>                   <!-- Identify the account -->
-            <BANKID>INGBNL2A</BANKID>     <!-- Routing transit or other FI ID -->
-            <ACCTID>NL94COBA0678011583</ACCTID>  <!-- Account number -->
-            <ACCTTYPE>CHECKING</ACCTTYPE> <!-- Account type -->
-         </BANKACCTFROM>                  <!-- End of account ID -->
-         <BANKTRANLIST>                   <!-- Begin list of statement trans. -->
-            <DTSTART>20230501</DTSTART>
-            <DTEND>20230530</DTEND>
-               <STMTTRN>
-                  <TRNTYPE>OTHER</TRNTYPE>
-                  <DTPOSTED>20230530</DTPOSTED>
-                  <TRNAMT>-66,51</TRNAMT>
-                  <FITID>202305306651</FITID>
-                  <NAME>Acchouder 22</NAME>
-                  <BANKACCTTO>
-                     <BANKID>ADYBNL0A</BANKID>
-                     <ACCTID>NL04ADYB2017400157</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>VQJHBFQ4FBTP4932PIVQ 0180315042046194 H004695040/2459097 IBAN: NL04ADYB2017400157 Kenmerk: 30-05-2023 21:09 0180315042046194 Valutadatum: 30-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230530</DTPOSTED>
-                  <TRNAMT>-290,00</TRNAMT>
-                  <FITID>2023053029000</FITID>
-                  <NAME>Tekst30 b</NAME>
-                  <BANKACCTTO>
-                     <BANKID>RABONL0A</BANKID>
-                     <ACCTID>NL97RABO0140917969</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>2147698/23701061284 IBAN: NL97RABO0140917969 Kenmerk: 19011891417 Machtiging ID: 2147698002 Incassant ID: NL45ZZZ593942180000 Doorlopende incasso Overige partij: Acchouder 7, a (Tekst41) Valutadatum: 30-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230529</DTPOSTED>
-                  <TRNAMT>-18,65</TRNAMT>
-                  <FITID>202305291865</FITID>
-                  <NAME>Tekst24</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 021 28-05-2023 13:38 Tekst156: B20175 Term: 21825651 Valutadatum: 29-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230528</DTPOSTED>
-                  <TRNAMT>-15,90</TRNAMT>
-                  <FITID>202305281590</FITID>
-                  <NAME>Tekst16</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 26-05-2023 10:15 Tekst156: B20171 Term: CT801857 Valutadatum: 28-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230528</DTPOSTED>
-                  <TRNAMT>-14,75</TRNAMT>
-                  <FITID>202305281475</FITID>
-                  <NAME>Tekst18</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 26-05-2023 10:20 Tekst156: B20172 Term: 62RN4H Valutadatum: 28-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230528</DTPOSTED>
-                  <TRNAMT>-9,95</TRNAMT>
-                  <FITID>20230528995</FITID>
-                  <NAME>Tekst2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 26-05-2023 10:23 Tekst156: B60173 Term: FHD1FV Valutadatum: 28-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230528</DTPOSTED>
-                  <TRNAMT>-33,00</TRNAMT>
-                  <FITID>202305283300</FITID>
-                  <NAME>Tekst5</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 26-05-2023 10:33 Tekst156: B70174 Term: 80006896 Valutadatum: 28-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230527</DTPOSTED>
-                  <TRNAMT>-53,85</TRNAMT>
-                  <FITID>202305275385</FITID>
-                  <NAME>Tekst8</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 021 25-05-2023 10:41 Tekst156: B90168 Term: ZF2711 Valutadatum: 27-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230527</DTPOSTED>
-                  <TRNAMT>-13,38</TRNAMT>
-                  <FITID>202305271338</FITID>
-                  <NAME>Tekst13</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 25-05-2023 11:05 Tekst156: B40170 Term: 12ZM02 Valutadatum: 27-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230527</DTPOSTED>
-                  <TRNAMT>-52,23</TRNAMT>
-                  <FITID>202305275223</FITID>
-                  <NAME>Tekst14</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 25-05-2023 10:58 Tekst156: B40169 Term: 3TMW02 Valutadatum: 27-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230526</DTPOSTED>
-                  <TRNAMT>-2500,00</TRNAMT>
-                  <FITID>20230526250000</FITID>
-                  <NAME>a Acchouder 1a, a Acchouder 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K40A</BANKID>
-                     <ACCTID>K44412345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Naar Oranje spaarrekening K44412345 Valutadatum: 26-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230526</DTPOSTED>
-                  <TRNAMT>3000,00</TRNAMT>
-                  <FITID>20230526300000</FITID>
-                  <NAME>a Acchouder 1a</NAME>
-                  <BANKACCTTO>
-                     <BANKID>BKMGNL0A</BANKID>
-                     <ACCTID>NL54BKMG0378842587</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Huishoudgeld IBAN: NL54BKMG0378842587 Valutadatum: 26-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230526</DTPOSTED>
-                  <TRNAMT>-93,84</TRNAMT>
-                  <FITID>202305269384</FITID>
-                  <NAME>Acchouder 13</NAME>
-                  <BANKACCTTO>
-                     <BANKID>DEUTNL0A</BANKID>
-                     <ACCTID>NL82DEUT0319804615</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>incasso maandelijkse termijn Termijn 3 van 10 Vervaldatum 26 mei 2023 Betaalkenmerk 95809882 Heffingjaar 2023 IBAN: NL82DEUT0319804615 Kenmerk: K2BGBL000000100541356 Machtiging ID: 10817282 Incassant ID: NL07ZZZ082053570000 Doorlopende incasso</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230526</DTPOSTED>
-                  <TRNAMT>-4,76</TRNAMT>
-                  <FITID>20230526476</FITID>
-                  <NAME>Acchouder 13</NAME>
-                  <BANKACCTTO>
-                     <BANKID>DEUTNL0A</BANKID>
-                     <ACCTID>NL82DEUT0319804615</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>incasso maandelijkse termijn Termijn 3 van 10 Vervaldatum 26 mei 2023 Betaalkenmerk 95711394 Heffingjaar 2022 IBAN: NL82DEUT0319804615 Kenmerk: K2BGBL000000100541355 Machtiging ID: 10817282 Incassant ID: NL07ZZZ082053570000 Doorlopende incasso</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230526</DTPOSTED>
-                  <TRNAMT>-25,65</TRNAMT>
-                  <FITID>202305262565</FITID>
-                  <NAME>Acchouder 14</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL85INGB0668339063</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>kenmerk 5051405231161141 Rel.nr. Tekst3958 Kenmerk 5051405231161141 - - IBAN: NL85INGB0668339063 Kenmerk: SDD0238700902 Machtiging ID: Tekst3958001001001 Incassant ID: NL18ZZZ410952220000 Doorlopende incasso Valutadatum: 26-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230526</DTPOSTED>
-                  <TRNAMT>-34,25</TRNAMT>
-                  <FITID>202305263425</FITID>
-                  <NAME>Tekst25</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL83INGB0003155100</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst42 Acchouder 15 18060997 Tekst43. 8757836 IBAN: NL83INGB0003155100 Kenmerk: 5826058 Machtiging ID: M-00457426 Incassant ID: NL11ZZZ405060580000 Doorlopende incasso Valutadatum: 26-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230525</DTPOSTED>
-                  <TRNAMT>250,00</TRNAMT>
-                  <FITID>2023052525000</FITID>
-                  <NAME>a Acchouder 1a, a Acchouder 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K40A</BANKID>
-                     <ACCTID>K44412345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Van Oranje spaarrekening K44412345 Valutadatum: 25-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230524</DTPOSTED>
-                  <TRNAMT>-3,87</TRNAMT>
-                  <FITID>20230524387</FITID>
-                  <NAME>Tekst8</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 021 23-05-2023 10:08 Tekst156: B10167 Term: ZF2713 Valutadatum: 24-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230524</DTPOSTED>
-                  <TRNAMT>-3,30</TRNAMT>
-                  <FITID>20230524330</FITID>
-                  <NAME>Acchouder 1a</NAME>
-                  <BANKACCTTO>
-                     <BANKID>LPLNNL0A</BANKID>
-                     <ACCTID>NL20LPLN0892606304</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Bankkosten IBAN: NL20LPLN0892606304 Valutadatum: 24-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230523</DTPOSTED>
-                  <TRNAMT>-40,00</TRNAMT>
-                  <FITID>202305234000</FITID>
-                  <NAME>a Acchouder 1a</NAME>
-                  <BANKACCTTO>
-                     <BANKID>BKMGNL0A</BANKID>
-                     <ACCTID>NL54BKMG0378842587</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>IBAN: NL54BKMG0378842587 Datum/Tijd: 23-05-2023 16:37:05 Valutadatum: 23-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>CREDIT</TRNTYPE>
-                  <DTPOSTED>20230523</DTPOSTED>
-                  <TRNAMT>40,00</TRNAMT>
-                  <FITID>2023052340001</FITID>
-                  <NAME>Acchouder 14</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL55INGB0007024837</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Rel.nr. Tekst3958 Kenmerk - S3J62981 - IBAN: NL55INGB0007024837 Kenmerk: FLITS0006798561 Valutadatum: 23-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230523</DTPOSTED>
-                  <TRNAMT>3,01</TRNAMT>
-                  <FITID>20230523301</FITID>
-                  <NAME>a Acchouder 1a, a Acchouder 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K20A</BANKID>
-                     <ACCTID>K22212345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Van Oranje spaarrekening K22212345 Valutadatum: 23-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230523</DTPOSTED>
-                  <TRNAMT>-30,00</TRNAMT>
-                  <FITID>202305233000</FITID>
-                  <NAME>a Acchouder 16</NAME>
-                  <BANKACCTTO>
-                     <BANKID>DEUTNL0A</BANKID>
-                     <ACCTID>NL93DEUT0265252393</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Kenmerk LTT-27073428. Inleg Tekst44 voor periode 1-6-2023 tm 30-6-2023 IBAN: NL93DEUT0265252393 Kenmerk: SDDB1EDBAC389BA49DD8D688D5C488D6E68 Machtiging ID: 1H966A08681FD2A473E898D539023AC30C8 Incassant ID: NL39ZZZ302317620000 Doorlopende incasso Valutadatum: 23-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230523</DTPOSTED>
-                  <TRNAMT>-17,50</TRNAMT>
-                  <FITID>202305231750</FITID>
-                  <NAME>Tekst20</NAME>
-                  <BANKACCTTO>
-                     <BANKID>DEUTNL0A</BANKID>
-                     <ACCTID>NL96DEUT0265293952</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Kenmerk STL-11133903. Tekst46 10-6-2023. Tekst45... IBAN: NL96DEUT0265293952 Kenmerk: SDD1633A9BA0A394A12B572C814E7929527 Machtiging ID: 1HA39E3FC518F6D4776B18F0AD347D20AFB Incassant ID: NL39ZZZ302317620000 Doorlopende incasso Valutadatum: 23-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230522</DTPOSTED>
-                  <TRNAMT>-52,87</TRNAMT>
-                  <FITID>202305225287</FITID>
-                  <NAME>Tekst24</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 021 21-05-2023 11:48 Tekst156: B20166 Term: 21825651 Valutadatum: 22-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230520</DTPOSTED>
-                  <TRNAMT>-29,00</TRNAMT>
-                  <FITID>202305202900</FITID>
-                  <NAME>Tekst28</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 19-05-2023 11:21 Tekst156: B40164 Term: 88411801 Valutadatum: 20-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230520</DTPOSTED>
-                  <TRNAMT>-9,50</TRNAMT>
-                  <FITID>20230520950</FITID>
-                  <NAME>Tekst2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 19-05-2023 11:17 Tekst156: B30163 Term: FHD1FV Valutadatum: 20-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230520</DTPOSTED>
-                  <TRNAMT>-29,60</TRNAMT>
-                  <FITID>202305202960</FITID>
-                  <NAME>Tekst5</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 19-05-2023 11:32 Tekst156: B70165 Term: 80006896 Valutadatum: 20-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230520</DTPOSTED>
-                  <TRNAMT>-20,40</TRNAMT>
-                  <FITID>202305202040</FITID>
-                  <NAME>Tekst15</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 19-05-2023 11:07 Tekst156: B20161 Term: CT689163 Valutadatum: 20-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230520</DTPOSTED>
-                  <TRNAMT>-11,00</TRNAMT>
-                  <FITID>202305201100</FITID>
-                  <NAME>Tekst26</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 19-05-2023 11:09 Tekst156: B00162 Term: GNW63P Valutadatum: 20-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230519</DTPOSTED>
-                  <TRNAMT>-90,88</TRNAMT>
-                  <FITID>202305199088</FITID>
-                  <NAME>Acchouder 17 b</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL41INGB0000467598</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3948 16-05-2023 incl. 15,77 BTW, Tekst47 9010800182, kpn.com/thuisfactuur. IBAN: NL41INGB0000467598 Kenmerk: 000011263503524 Machtiging ID: M10001507394 Incassant ID: NL39Acchouder 17271247010001 Doorlopende incasso Valutadatum: 19-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230518</DTPOSTED>
-                  <TRNAMT>-55,96</TRNAMT>
-                  <FITID>202305185596</FITID>
-                  <NAME>Tekst8</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 021 17-05-2023 13:39 Tekst156: B70159 Term: ZF2708 Valutadatum: 18-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230518</DTPOSTED>
-                  <TRNAMT>-81,41</TRNAMT>
-                  <FITID>202305188141</FITID>
-                  <NAME>Tekst14</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 17-05-2023 14:05 Tekst156: B90160 Term: 0DX0B2 Valutadatum: 18-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230518</DTPOSTED>
-                  <TRNAMT>-25,35</TRNAMT>
-                  <FITID>202305182535</FITID>
-                  <NAME>Acchouder 17 - mel</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL83INGB0000325513</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3948 11-05-2023, Tekst47 20016854861, Tekst49. IBAN: NL83INGB0000325513 Kenmerk: 000001255674742 Machtiging ID: M10015692188 Incassant ID: NL39Acchouder 17271247010001 Doorlopende incasso Valutadatum: 18-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230517</DTPOSTED>
-                  <TRNAMT>-15,00</TRNAMT>
-                  <FITID>202305171500</FITID>
-                  <NAME>Tekst21</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 021 16-05-2023 19:23 Tekst156: B70158 Term: 3NPK73 Valutadatum: 17-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230517</DTPOSTED>
-                  <TRNAMT>-100,00</TRNAMT>
-                  <FITID>2023051710000</FITID>
-                  <NAME>Acchouder 6</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL38INGB0000281897</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Gift Robin IBAN: NL38INGB0000281897 Datum/Tijd: 17-05-2023 13:01:57 Valutadatum: 17-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>OTHER</TRNTYPE>
-                  <DTPOSTED>20230517</DTPOSTED>
-                  <TRNAMT>-9,33</TRNAMT>
-                  <FITID>20230517933</FITID>
-                  <NAME>Acchouder 19 b</NAME>
-                  <BANKACCTTO>
-                     <BANKID>ABNANL0A</BANKID>
-                     <ACCTID>NL08ABNA0526650664</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>202305171155570000000004273360026 0030013980390182 Betaling aan Tekst3950 4273360026 Tekst3950 IBAN: NL08ABNA0526650664 Kenmerk: 17-05-2023 11:56 0030013980390182 Valutadatum: 17-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>CREDIT</TRNTYPE>
-                  <DTPOSTED>20230516</DTPOSTED>
-                  <TRNAMT>282,70</TRNAMT>
-                  <FITID>2023051628270</FITID>
-                  <NAME>Acchouder 18</NAME>
-                  <BANKACCTTO>
-                     <BANKID>RABONL0A</BANKID>
-                     <ACCTID>NL81RABO0306874490</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>restitutie 14306651 IBAN: NL81RABO0306874490 Kenmerk: 41654777 Valutadatum: 16-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>CREDIT</TRNTYPE>
-                  <DTPOSTED>20230515</DTPOSTED>
-                  <TRNAMT>5,00</TRNAMT>
-                  <FITID>20230515500</FITID>
-                  <NAME>Acchouder 20 b</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL62INGB0663707048</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Gefeliciteerd, Gewonnen met Tekst44 XL, Trekking 13-05-2023, 182926753.11229 IBAN: NL62INGB0663707048 Kenmerk: 182926753.11229 Valutadatum: 15-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230513</DTPOSTED>
-                  <TRNAMT>-15,45</TRNAMT>
-                  <FITID>202305131545</FITID>
-                  <NAME>Tekst18</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 12-05-2023 09:31 Tekst156: B40155 Term: SGW9BK Valutadatum: 13-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230513</DTPOSTED>
-                  <TRNAMT>-9,90</TRNAMT>
-                  <FITID>20230513990</FITID>
-                  <NAME>Tekst15</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 12-05-2023 09:22 Tekst156: B20154 Term: CT801857 Valutadatum: 13-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230513</DTPOSTED>
-                  <TRNAMT>-13,00</TRNAMT>
-                  <FITID>202305131300</FITID>
-                  <NAME>Tekst2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 12-05-2023 09:34 Tekst156: B80156 Term: FHD1FV Valutadatum: 13-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230513</DTPOSTED>
-                  <TRNAMT>-47,80</TRNAMT>
-                  <FITID>202305134780</FITID>
-                  <NAME>Tekst5</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 12-05-2023 09:44 Tekst156: B30157 Term: 80006896 Valutadatum: 13-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DEBIT</TRNTYPE>
-                  <DTPOSTED>20230513</DTPOSTED>
-                  <TRNAMT>-3,15</TRNAMT>
-                  <FITID>20230513315</FITID>
-                  <NAME>Tekst11</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>1 apr t/m 30 apr 2023 ING BANK N.V. Valutadatum: 13-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DEBIT</TRNTYPE>
-                  <DTPOSTED>20230513</DTPOSTED>
-                  <TRNAMT>-1,10</TRNAMT>
-                  <FITID>20230513110</FITID>
-                  <NAME>Tekst12</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>1 apr t/m 30 apr 2023 ING BANK N.V. Valutadatum: 13-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230512</DTPOSTED>
-                  <TRNAMT>-54,98</TRNAMT>
-                  <FITID>202305125498</FITID>
-                  <NAME>Tekst8</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 021 11-05-2023 09:42 Tekst156: B40152 Term: ZF2708 Valutadatum: 12-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230512</DTPOSTED>
-                  <TRNAMT>-46,18</TRNAMT>
-                  <FITID>202305124618</FITID>
-                  <NAME>Tekst14</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 11-05-2023 10:09 Tekst156: B80153 Term: 3TMW02 Valutadatum: 12-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>CREDIT</TRNTYPE>
-                  <DTPOSTED>20230512</DTPOSTED>
-                  <TRNAMT>441,00</TRNAMT>
-                  <FITID>2023051244100</FITID>
-                  <NAME>Acchouder 1a en/of Acchouder 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>LPLNNL0A</BANKID>
-                     <ACCTID>NL72LPLN2800214643</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Overboeking LeasePlan Bank IBAN: NL72LPLN2800214643 Kenmerk: 1443700-2271607-20230512 Datum/Tijd: 12-05-2023 08:05:32 Valutadatum: 12-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230512</DTPOSTED>
-                  <TRNAMT>-67,63</TRNAMT>
-                  <FITID>202305126763</FITID>
-                  <NAME>Acchouder 23</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL94INGB0000869000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3948nr 071108167355 VNTekst3952 0000517458 BTW 5,58PC Tekst3951 13, MEI - JUL IBAN: NL94INGB0000869000 Kenmerk: 099404794543 Machtiging ID: 000000412391 Incassant ID: NL84ZZZ050695810000 Doorlopende incasso Valutadatum: 12-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230511</DTPOSTED>
-                  <TRNAMT>-11,00</TRNAMT>
-                  <FITID>202305111100</FITID>
-                  <NAME>Tekst6</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 021 10-05-2023 14:41 Tekst156: B80151 Term: 225V01 Valutadatum: 11-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230511</DTPOSTED>
-                  <TRNAMT>250,00</TRNAMT>
-                  <FITID>2023051125000</FITID>
-                  <NAME>a Acchouder 1a, a Acchouder 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K40A</BANKID>
-                     <ACCTID>K44412345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Van Oranje spaarrekening K44412345 Valutadatum: 11-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230511</DTPOSTED>
-                  <TRNAMT>-282,70</TRNAMT>
-                  <FITID>2023051128270</FITID>
-                  <NAME>Acchouder 18</NAME>
-                  <BANKACCTTO>
-                     <BANKID>RABONL0A</BANKID>
-                     <ACCTID>NL81RABO0306874490</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Verzamelfactuurnummer : 14306651 IBAN: NL81RABO0306874490 Valutadatum: 11-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230511</DTPOSTED>
-                  <TRNAMT>-4184,50</TRNAMT>
-                  <FITID>20230511418450</FITID>
-                  <NAME>Acchouder 22</NAME>
-                  <BANKACCTTO>
-                     <BANKID>RABONL0A</BANKID>
-                     <ACCTID>NL61RABO0366302094</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Debnr 35361185, Facnr 23500068 IBAN: NL61RABO0366302094 Valutadatum: 11-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230510</DTPOSTED>
-                  <TRNAMT>-6,13</TRNAMT>
-                  <FITID>20230510613</FITID>
-                  <NAME>Tekst8</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 021 09-05-2023 09:48 Tekst156: B30150 Term: ZF2708 Valutadatum: 10-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230510</DTPOSTED>
-                  <TRNAMT>4184,50</TRNAMT>
-                  <FITID>20230510418450</FITID>
-                  <NAME>a Acchouder 1a, a Acchouder 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K30A</BANKID>
-                     <ACCTID>K33312345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Van Oranje spaarrekening K33312345 Tekst3953 Valutadatum: 10-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230508</DTPOSTED>
-                  <TRNAMT>-195,00</TRNAMT>
-                  <FITID>2023050819500</FITID>
-                  <NAME>Tekst3</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 021 07-05-2023 20:02 Tekst156: B50149 Term: 80014797 Valutadatum: 08-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230508</DTPOSTED>
-                  <TRNAMT>-29,01</TRNAMT>
-                  <FITID>202305082901</FITID>
-                  <NAME>Tekst24</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 021 07-05-2023 16:13 Tekst156: B40148 Term: 21825651 Valutadatum: 08-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>CREDIT</TRNTYPE>
-                  <DTPOSTED>20230508</DTPOSTED>
-                  <TRNAMT>2,00</TRNAMT>
-                  <FITID>20230508200</FITID>
-                  <NAME>Acchouder 20 b</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL62INGB0663707048</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Gefeliciteerd, Gewonnen met Tekst44 XL, Trekking 06-05-2023, 181629628.13476 IBAN: NL62INGB0663707048 Kenmerk: 181629628.13476 Valutadatum: 08-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230507</DTPOSTED>
-                  <TRNAMT>49,00</TRNAMT>
-                  <FITID>202305074900</FITID>
-                  <NAME>a Acchouder 7</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL87INGB0004454537</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3954 IBAN: NL87INGB0004454537 Valutadatum: 07-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230507</DTPOSTED>
-                  <TRNAMT>250,00</TRNAMT>
-                  <FITID>2023050725000</FITID>
-                  <NAME>a Acchouder 1a, a Acchouder 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K40A</BANKID>
-                     <ACCTID>K44412345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Van Oranje spaarrekening K44412345 Valutadatum: 07-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230507</DTPOSTED>
-                  <TRNAMT>-20,15</TRNAMT>
-                  <FITID>202305072015</FITID>
-                  <NAME>Tekst15</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 05-05-2023 11:31 Tekst156: B60143 Term: CT801857 Valutadatum: 07-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230507</DTPOSTED>
-                  <TRNAMT>-39,35</TRNAMT>
-                  <FITID>202305073935</FITID>
-                  <NAME>Tekst5</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 05-05-2023 12:03 Tekst156: B10147 Term: 80006896 Valutadatum: 07-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230506</DTPOSTED>
-                  <TRNAMT>-19,00</TRNAMT>
-                  <FITID>202305061900</FITID>
-                  <NAME>Tekst26</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 05-05-2023 11:45 Tekst156: B90145 Term: GNW63P Valutadatum: 06-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230506</DTPOSTED>
-                  <TRNAMT>-12,00</TRNAMT>
-                  <FITID>202305061200</FITID>
-                  <NAME>Tekst2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 05-05-2023 11:48 Tekst156: B30146 Term: FHD1FV Valutadatum: 06-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230506</DTPOSTED>
-                  <TRNAMT>-29,56</TRNAMT>
-                  <FITID>202305062956</FITID>
-                  <NAME>Tekst18</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 05-05-2023 11:40 Tekst156: B40144 Term: SGW9BK Valutadatum: 06-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230505</DTPOSTED>
-                  <TRNAMT>-1,50</TRNAMT>
-                  <FITID>20230505150</FITID>
-                  <NAME>Tekst17</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 021 04-05-2023 14:11 Tekst156: B40141 Term: CT695965 Valutadatum: 05-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230505</DTPOSTED>
-                  <TRNAMT>-97,59</TRNAMT>
-                  <FITID>202305059759</FITID>
-                  <NAME>Tekst8</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 021 04-05-2023 10:41 Tekst156: B70138 Term: ZF2709 Valutadatum: 05-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230505</DTPOSTED>
-                  <TRNAMT>-7,20</TRNAMT>
-                  <FITID>20230505720</FITID>
-                  <NAME>Tekst7</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 021 04-05-2023 15:13 Tekst156: B90142 Term: T3PFG0 Valutadatum: 05-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>ATM</TRNTYPE>
-                  <DTPOSTED>20230505</DTPOSTED>
-                  <TRNAMT>-70,00</TRNAMT>
-                  <FITID>202305057000</FITID>
-                  <NAME>Tekst4</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 04-05-2023 10:46 Tekst156: B30139 Term: 810183 Valutadatum: 05-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230505</DTPOSTED>
-                  <TRNAMT>-42,16</TRNAMT>
-                  <FITID>202305054216</FITID>
-                  <NAME>Tekst14</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 04-05-2023 11:07 Tekst156: B10140 Term: 3TMW01 Valutadatum: 05-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230505</DTPOSTED>
-                  <TRNAMT>-6100,00</TRNAMT>
-                  <FITID>20230505610000</FITID>
-                  <NAME>Acchouder 21</NAME>
-                  <BANKACCTTO>
-                     <BANKID>ABNANL0A</BANKID>
-                     <ACCTID>NL21ABNA0887430872</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3948 50729, Order 30408 IBAN: NL21ABNA0887430872 Datum/Tijd: 05-05-2023 13:11:51 Valutadatum: 05-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230505</DTPOSTED>
-                  <TRNAMT>250,00</TRNAMT>
-                  <FITID>20230505250001</FITID>
-                  <NAME>a Acchouder 1a, a Acchouder 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K40A</BANKID>
-                     <ACCTID>K44412345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Van Oranje spaarrekening K44412345 Valutadatum: 05-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230505</DTPOSTED>
-                  <TRNAMT>-25,20</TRNAMT>
-                  <FITID>202305052520</FITID>
-                  <NAME>Acchouder 23</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL54INGB0005564520</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3957 303651666 Periode 05.05.2023 - 05.06.2023 IBAN: NL54INGB0005564520 Kenmerk: 056336493600 Machtiging ID: 000003145358 Incassant ID: NL51ZZZ080534100001 Doorlopende incasso Valutadatum: 05-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230504</DTPOSTED>
-                  <TRNAMT>-100,00</TRNAMT>
-                  <FITID>2023050410000</FITID>
-                  <NAME>Acchouder 21</NAME>
-                  <BANKACCTTO>
-                     <BANKID>ABNANL0A</BANKID>
-                     <ACCTID>NL21ABNA0887430872</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3948 50740 IBAN: NL21ABNA0887430872 Datum/Tijd: 04-05-2023 19:26:46 Valutadatum: 04-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230504</DTPOSTED>
-                  <TRNAMT>6100,00</TRNAMT>
-                  <FITID>20230504610000</FITID>
-                  <NAME>a Acchouder 1a, a Acchouder 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K30A</BANKID>
-                     <ACCTID>K33312345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Van Oranje spaarrekening K33312345 Valutadatum: 04-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230504</DTPOSTED>
-                  <TRNAMT>250,00</TRNAMT>
-                  <FITID>2023050425000</FITID>
-                  <NAME>a Acchouder 1a, a Acchouder 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K40A</BANKID>
-                     <ACCTID>K44412345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Van Oranje spaarrekening K44412345 Valutadatum: 04-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230503</DTPOSTED>
-                  <TRNAMT>-6,00</TRNAMT>
-                  <FITID>20230503600</FITID>
-                  <NAME>Tekst1</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 021 02-05-2023 13:16 Tekst156: B60137 Term: CT676476 Valutadatum: 03-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>OTHER</TRNTYPE>
-                  <DTPOSTED>20230503</DTPOSTED>
-                  <TRNAMT>-61,90</TRNAMT>
-                  <FITID>202305036190</FITID>
-                  <NAME>Acchouder 24a b Tekst29</NAME>
-                  <BANKACCTTO>
-                     <BANKID>DEUTNL0A</BANKID>
-                     <ACCTID>NL51DEUT0265262461</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>M05914434MGJBAFA 1150013858371502 7000000595 tromm.com IBAN: NL51DEUT0265262461 Kenmerk: 03-05-2023 15:58 1150013858371502 Valutadatum: 03-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230502</DTPOSTED>
-                  <TRNAMT>150,75</TRNAMT>
-                  <FITID>2023050215075</FITID>
-                  <NAME>a Acchouder 1a, a Acchouder 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K40A</BANKID>
-                     <ACCTID>K44412345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Van Oranje spaarrekening K44412345 Valutadatum: 02-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230502</DTPOSTED>
-                  <TRNAMT>-77,00</TRNAMT>
-                  <FITID>202305027700</FITID>
-                  <NAME>Acchouder 14</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL85INGB0668339063</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>kenmerk 6052104238967983 Rel.nr. Tekst3958 Periode 01-05-2023/31-05-2023 - - IBAN: NL85INGB0668339063 Kenmerk: SDD0236710187 Machtiging ID: Tekst3958001004002 Incassant ID: NL18ZZZ410952220000 Doorlopende incasso Valutadatum: 02-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230502</DTPOSTED>
-                  <TRNAMT>-432,02</TRNAMT>
-                  <FITID>2023050243202</FITID>
-                  <NAME>Acchouder 14</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL85INGB0668339063</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>kenmerk 1052104238967981 Rel.nr. Tekst3958 Periode 01-05-2023/31-05-2023 Tekst3959 - - IBAN: NL85INGB0668339063 Kenmerk: SDD0236710186 Machtiging ID: Tekst3958001001001 Incassant ID: NL18ZZZ410952220000 Doorlopende incasso Valutadatum: 02-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230502</DTPOSTED>
-                  <TRNAMT>-45,38</TRNAMT>
-                  <FITID>202305024538</FITID>
-                  <NAME>Acchouder 25</NAME>
-                  <BANKACCTTO>
-                     <BANKID>ABNANL0A</BANKID>
-                     <ACCTID>NL89ABNA0450001067</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>K60266531 INLEG PER 05-23 Acchouder 26 4196026653100000 IBAN: NL89ABNA0450001067 Kenmerk: E2E/DJ/K60266531 /24-04-2023/PROL / Machtiging ID: AEDJ20091101K60266531 Incassant ID: NL98ZZZ271112510000 Doorlopende incasso Valutadatum: 02-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230502</DTPOSTED>
-                  <TRNAMT>-117,04</TRNAMT>
-                  <FITID>2023050211704</FITID>
-                  <NAME>Acchouder 23</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL54INGB0005564520</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst31 303258420 Periode 01.05.2023 - 01.06.2023 IBAN: NL54INGB0005564520 Kenmerk: 052253039732 Machtiging ID: 000002999162 Incassant ID: NL51ZZZ080534100001 Doorlopende incasso Valutadatum: 02-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230502</DTPOSTED>
-                  <TRNAMT>-524,30</TRNAMT>
-                  <FITID>2023050252430</FITID>
-                  <NAME>Acchouder 23</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL54INGB0005564520</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst32 302273737 Periode 01.05.2023 - 01.05.2024 IBAN: NL54INGB0005564520 Kenmerk: 052253039731 Machtiging ID: 000002341061 Incassant ID: NL51ZZZ080534100001 Doorlopende incasso Valutadatum: 02-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230501</DTPOSTED>
-                  <TRNAMT>-30,36</TRNAMT>
-                  <FITID>202305013036</FITID>
-                  <NAME>Tekst24</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 021 30-04-2023 14:12 Tekst156: B10135 Term: 21825651 Valutadatum: 01-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230501</DTPOSTED>
-                  <TRNAMT>-32,32</TRNAMT>
-                  <FITID>202305013232</FITID>
-                  <NAME>Tekst14</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Tekst3955: 020 30-04-2023 16:08 Tekst156: B00136 Term: 3TMW03 Valutadatum: 01-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>CREDIT</TRNTYPE>
-                  <DTPOSTED>20230501</DTPOSTED>
-                  <TRNAMT>10,00</TRNAMT>
-                  <FITID>202305011000</FITID>
-                  <NAME>Acchouder 20 b</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL62INGB0663707048</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Gefeliciteerd, Gewonnen met Tekst44 XL, Trekking 29-04-2023, 180820854.9570 IBAN: NL62INGB0663707048 Kenmerk: 180820854.9570 Valutadatum: 01-05-2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230501</DTPOSTED>
-                  <TRNAMT>1100,00</TRNAMT>
-                  <FITID>20230501110000</FITID>
-                  <NAME>a Acchouder 1a, a Acchouder 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K40A</BANKID>
-                     <ACCTID>K44412345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Van Oranje spaarrekening K44412345 Valutadatum: 01-05-2023</MEMO>
-               </STMTTRN>
-         </BANKTRANLIST>                   <!-- End list of statement trans. -->
-         <LEDGERBAL>                       <!-- Ledger balance aggregate -->
-            <BALAMT>117,00</BALAMT>
-            <DTASOF>202305302359</DTASOF>  <!-- Bal date: Last date in transactions, 11:59 pm -->
-         </LEDGERBAL>                      <!-- End ledger balance -->
+      <STMTRS>
+        <CURDEF>EUR</CURDEF>
+        <BANKACCTFROM>
+          <BANKID>INGBNL2A</BANKID>
+          <ACCTID>NL94COBA0678011583</ACCTID>
+          <ACCTTYPE>CHECKING</ACCTTYPE>
+        </BANKACCTFROM>
+        <BANKTRANLIST>
+          <DTSTART>20230501</DTSTART>
+          <DTEND>20230530</DTEND>
+          <STMTTRN>
+            <TRNTYPE>OTHER</TRNTYPE>
+            <DTPOSTED>20230530</DTPOSTED>
+            <TRNAMT>-66,51</TRNAMT>
+            <FITID>202305306651</FITID>
+            <NAME>Acchouder 22</NAME>
+            <BANKACCTTO>
+              <BANKID>ADYBNL0A</BANKID>
+              <ACCTID>NL04ADYB2017400157</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>VQJHBFQ4FBTP4932PIVQ 0180315042046194 H004695040/2459097 IBAN: NL04ADYB2017400157 Kenmerk: 30-05-2023 21:09 0180315042046194 Valutadatum: 30-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230530</DTPOSTED>
+            <TRNAMT>-290,00</TRNAMT>
+            <FITID>2023053029000</FITID>
+            <NAME>Tekst30 b</NAME>
+            <BANKACCTTO>
+              <BANKID>RABONL0A</BANKID>
+              <ACCTID>NL97RABO0140917969</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>2147698/23701061284 IBAN: NL97RABO0140917969 Kenmerk: 19011891417 Machtiging ID: 2147698002 Incassant ID: NL45ZZZ593942180000 Doorlopende incasso Overige partij: Acchouder 7, a (Tekst41) Valutadatum: 30-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230529</DTPOSTED>
+            <TRNAMT>-18,65</TRNAMT>
+            <FITID>202305291865</FITID>
+            <NAME>Tekst24</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 021 28-05-2023 13:38 Tekst156: B20175 Term: 21825651 Valutadatum: 29-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230528</DTPOSTED>
+            <TRNAMT>-15,90</TRNAMT>
+            <FITID>202305281590</FITID>
+            <NAME>Tekst16</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 26-05-2023 10:15 Tekst156: B20171 Term: CT801857 Valutadatum: 28-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230528</DTPOSTED>
+            <TRNAMT>-14,75</TRNAMT>
+            <FITID>202305281475</FITID>
+            <NAME>Tekst18</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 26-05-2023 10:20 Tekst156: B20172 Term: 62RN4H Valutadatum: 28-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230528</DTPOSTED>
+            <TRNAMT>-9,95</TRNAMT>
+            <FITID>20230528995</FITID>
+            <NAME>Tekst2</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 26-05-2023 10:23 Tekst156: B60173 Term: FHD1FV Valutadatum: 28-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230528</DTPOSTED>
+            <TRNAMT>-33,00</TRNAMT>
+            <FITID>202305283300</FITID>
+            <NAME>Tekst5</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 26-05-2023 10:33 Tekst156: B70174 Term: 80006896 Valutadatum: 28-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230527</DTPOSTED>
+            <TRNAMT>-53,85</TRNAMT>
+            <FITID>202305275385</FITID>
+            <NAME>Tekst8</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 021 25-05-2023 10:41 Tekst156: B90168 Term: ZF2711 Valutadatum: 27-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230527</DTPOSTED>
+            <TRNAMT>-13,38</TRNAMT>
+            <FITID>202305271338</FITID>
+            <NAME>Tekst13</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 25-05-2023 11:05 Tekst156: B40170 Term: 12ZM02 Valutadatum: 27-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230527</DTPOSTED>
+            <TRNAMT>-52,23</TRNAMT>
+            <FITID>202305275223</FITID>
+            <NAME>Tekst14</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 25-05-2023 10:58 Tekst156: B40169 Term: 3TMW02 Valutadatum: 27-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230526</DTPOSTED>
+            <TRNAMT>-2500,00</TRNAMT>
+            <FITID>20230526250000</FITID>
+            <NAME>a Acchouder 1a, a Acchouder 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K40A</BANKID>
+              <ACCTID>K44412345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Naar Oranje spaarrekening K44412345 Valutadatum: 26-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230526</DTPOSTED>
+            <TRNAMT>3000,00</TRNAMT>
+            <FITID>20230526300000</FITID>
+            <NAME>a Acchouder 1a</NAME>
+            <BANKACCTTO>
+              <BANKID>BKMGNL0A</BANKID>
+              <ACCTID>NL54BKMG0378842587</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Huishoudgeld IBAN: NL54BKMG0378842587 Valutadatum: 26-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230526</DTPOSTED>
+            <TRNAMT>-93,84</TRNAMT>
+            <FITID>202305269384</FITID>
+            <NAME>Acchouder 13</NAME>
+            <BANKACCTTO>
+              <BANKID>DEUTNL0A</BANKID>
+              <ACCTID>NL82DEUT0319804615</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>incasso maandelijkse termijn Termijn 3 van 10 Vervaldatum 26 mei 2023 Betaalkenmerk 95809882 Heffingjaar 2023 IBAN: NL82DEUT0319804615 Kenmerk: K2BGBL000000100541356 Machtiging ID: 10817282 Incassant ID: NL07ZZZ082053570000 Doorlopende incasso</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230526</DTPOSTED>
+            <TRNAMT>-4,76</TRNAMT>
+            <FITID>20230526476</FITID>
+            <NAME>Acchouder 13</NAME>
+            <BANKACCTTO>
+              <BANKID>DEUTNL0A</BANKID>
+              <ACCTID>NL82DEUT0319804615</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>incasso maandelijkse termijn Termijn 3 van 10 Vervaldatum 26 mei 2023 Betaalkenmerk 95711394 Heffingjaar 2022 IBAN: NL82DEUT0319804615 Kenmerk: K2BGBL000000100541355 Machtiging ID: 10817282 Incassant ID: NL07ZZZ082053570000 Doorlopende incasso</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230526</DTPOSTED>
+            <TRNAMT>-25,65</TRNAMT>
+            <FITID>202305262565</FITID>
+            <NAME>Acchouder 14</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL85INGB0668339063</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>kenmerk 5051405231161141 Rel.nr. Tekst3958 Kenmerk 5051405231161141 - - IBAN: NL85INGB0668339063 Kenmerk: SDD0238700902 Machtiging ID: Tekst3958001001001 Incassant ID: NL18ZZZ410952220000 Doorlopende incasso Valutadatum: 26-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230526</DTPOSTED>
+            <TRNAMT>-34,25</TRNAMT>
+            <FITID>202305263425</FITID>
+            <NAME>Tekst25</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL83INGB0003155100</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst42 Acchouder 15 18060997 Tekst43. 8757836 IBAN: NL83INGB0003155100 Kenmerk: 5826058 Machtiging ID: M-00457426 Incassant ID: NL11ZZZ405060580000 Doorlopende incasso Valutadatum: 26-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230525</DTPOSTED>
+            <TRNAMT>250,00</TRNAMT>
+            <FITID>2023052525000</FITID>
+            <NAME>a Acchouder 1a, a Acchouder 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K40A</BANKID>
+              <ACCTID>K44412345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Van Oranje spaarrekening K44412345 Valutadatum: 25-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230524</DTPOSTED>
+            <TRNAMT>-3,87</TRNAMT>
+            <FITID>20230524387</FITID>
+            <NAME>Tekst8</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 021 23-05-2023 10:08 Tekst156: B10167 Term: ZF2713 Valutadatum: 24-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230524</DTPOSTED>
+            <TRNAMT>-3,30</TRNAMT>
+            <FITID>20230524330</FITID>
+            <NAME>Acchouder 1a</NAME>
+            <BANKACCTTO>
+              <BANKID>LPLNNL0A</BANKID>
+              <ACCTID>NL20LPLN0892606304</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Bankkosten IBAN: NL20LPLN0892606304 Valutadatum: 24-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230523</DTPOSTED>
+            <TRNAMT>-40,00</TRNAMT>
+            <FITID>202305234000</FITID>
+            <NAME>a Acchouder 1a</NAME>
+            <BANKACCTTO>
+              <BANKID>BKMGNL0A</BANKID>
+              <ACCTID>NL54BKMG0378842587</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>IBAN: NL54BKMG0378842587 Datum/Tijd: 23-05-2023 16:37:05 Valutadatum: 23-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>CREDIT</TRNTYPE>
+            <DTPOSTED>20230523</DTPOSTED>
+            <TRNAMT>40,00</TRNAMT>
+            <FITID>2023052340001</FITID>
+            <NAME>Acchouder 14</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL55INGB0007024837</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Rel.nr. Tekst3958 Kenmerk - S3J62981 - IBAN: NL55INGB0007024837 Kenmerk: FLITS0006798561 Valutadatum: 23-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230523</DTPOSTED>
+            <TRNAMT>3,01</TRNAMT>
+            <FITID>20230523301</FITID>
+            <NAME>a Acchouder 1a, a Acchouder 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K20A</BANKID>
+              <ACCTID>K22212345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Van Oranje spaarrekening K22212345 Valutadatum: 23-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230523</DTPOSTED>
+            <TRNAMT>-30,00</TRNAMT>
+            <FITID>202305233000</FITID>
+            <NAME>a Acchouder 16</NAME>
+            <BANKACCTTO>
+              <BANKID>DEUTNL0A</BANKID>
+              <ACCTID>NL93DEUT0265252393</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Kenmerk LTT-27073428. Inleg Tekst44 voor periode 1-6-2023 tm 30-6-2023 IBAN: NL93DEUT0265252393 Kenmerk: SDDB1EDBAC389BA49DD8D688D5C488D6E68 Machtiging ID: 1H966A08681FD2A473E898D539023AC30C8 Incassant ID: NL39ZZZ302317620000 Doorlopende incasso Valutadatum: 23-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230523</DTPOSTED>
+            <TRNAMT>-17,50</TRNAMT>
+            <FITID>202305231750</FITID>
+            <NAME>Tekst20</NAME>
+            <BANKACCTTO>
+              <BANKID>DEUTNL0A</BANKID>
+              <ACCTID>NL96DEUT0265293952</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Kenmerk STL-11133903. Tekst46 10-6-2023. Tekst45... IBAN: NL96DEUT0265293952 Kenmerk: SDD1633A9BA0A394A12B572C814E7929527 Machtiging ID: 1HA39E3FC518F6D4776B18F0AD347D20AFB Incassant ID: NL39ZZZ302317620000 Doorlopende incasso Valutadatum: 23-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230522</DTPOSTED>
+            <TRNAMT>-52,87</TRNAMT>
+            <FITID>202305225287</FITID>
+            <NAME>Tekst24</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 021 21-05-2023 11:48 Tekst156: B20166 Term: 21825651 Valutadatum: 22-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230520</DTPOSTED>
+            <TRNAMT>-29,00</TRNAMT>
+            <FITID>202305202900</FITID>
+            <NAME>Tekst28</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 19-05-2023 11:21 Tekst156: B40164 Term: 88411801 Valutadatum: 20-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230520</DTPOSTED>
+            <TRNAMT>-9,50</TRNAMT>
+            <FITID>20230520950</FITID>
+            <NAME>Tekst2</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 19-05-2023 11:17 Tekst156: B30163 Term: FHD1FV Valutadatum: 20-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230520</DTPOSTED>
+            <TRNAMT>-29,60</TRNAMT>
+            <FITID>202305202960</FITID>
+            <NAME>Tekst5</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 19-05-2023 11:32 Tekst156: B70165 Term: 80006896 Valutadatum: 20-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230520</DTPOSTED>
+            <TRNAMT>-20,40</TRNAMT>
+            <FITID>202305202040</FITID>
+            <NAME>Tekst15</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 19-05-2023 11:07 Tekst156: B20161 Term: CT689163 Valutadatum: 20-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230520</DTPOSTED>
+            <TRNAMT>-11,00</TRNAMT>
+            <FITID>202305201100</FITID>
+            <NAME>Tekst26</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 19-05-2023 11:09 Tekst156: B00162 Term: GNW63P Valutadatum: 20-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230519</DTPOSTED>
+            <TRNAMT>-90,88</TRNAMT>
+            <FITID>202305199088</FITID>
+            <NAME>Acchouder 17 b</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL41INGB0000467598</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3948 16-05-2023 incl. 15,77 BTW, Tekst47 9010800182, kpn.com/thuisfactuur. IBAN: NL41INGB0000467598 Kenmerk: 000011263503524 Machtiging ID: M10001507394 Incassant ID: NL39Acchouder 17271247010001 Doorlopende incasso Valutadatum: 19-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230518</DTPOSTED>
+            <TRNAMT>-55,96</TRNAMT>
+            <FITID>202305185596</FITID>
+            <NAME>Tekst8</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 021 17-05-2023 13:39 Tekst156: B70159 Term: ZF2708 Valutadatum: 18-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230518</DTPOSTED>
+            <TRNAMT>-81,41</TRNAMT>
+            <FITID>202305188141</FITID>
+            <NAME>Tekst14</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 17-05-2023 14:05 Tekst156: B90160 Term: 0DX0B2 Valutadatum: 18-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230518</DTPOSTED>
+            <TRNAMT>-25,35</TRNAMT>
+            <FITID>202305182535</FITID>
+            <NAME>Acchouder 17 - mel</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL83INGB0000325513</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3948 11-05-2023, Tekst47 20016854861, Tekst49. IBAN: NL83INGB0000325513 Kenmerk: 000001255674742 Machtiging ID: M10015692188 Incassant ID: NL39Acchouder 17271247010001 Doorlopende incasso Valutadatum: 18-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230517</DTPOSTED>
+            <TRNAMT>-15,00</TRNAMT>
+            <FITID>202305171500</FITID>
+            <NAME>Tekst21</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 021 16-05-2023 19:23 Tekst156: B70158 Term: 3NPK73 Valutadatum: 17-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230517</DTPOSTED>
+            <TRNAMT>-100,00</TRNAMT>
+            <FITID>2023051710000</FITID>
+            <NAME>Acchouder 6</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL38INGB0000281897</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Gift Robin IBAN: NL38INGB0000281897 Datum/Tijd: 17-05-2023 13:01:57 Valutadatum: 17-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>OTHER</TRNTYPE>
+            <DTPOSTED>20230517</DTPOSTED>
+            <TRNAMT>-9,33</TRNAMT>
+            <FITID>20230517933</FITID>
+            <NAME>Acchouder 19 b</NAME>
+            <BANKACCTTO>
+              <BANKID>ABNANL0A</BANKID>
+              <ACCTID>NL08ABNA0526650664</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>202305171155570000000004273360026 0030013980390182 Betaling aan Tekst3950 4273360026 Tekst3950 IBAN: NL08ABNA0526650664 Kenmerk: 17-05-2023 11:56 0030013980390182 Valutadatum: 17-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>CREDIT</TRNTYPE>
+            <DTPOSTED>20230516</DTPOSTED>
+            <TRNAMT>282,70</TRNAMT>
+            <FITID>2023051628270</FITID>
+            <NAME>Acchouder 18</NAME>
+            <BANKACCTTO>
+              <BANKID>RABONL0A</BANKID>
+              <ACCTID>NL81RABO0306874490</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>restitutie 14306651 IBAN: NL81RABO0306874490 Kenmerk: 41654777 Valutadatum: 16-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>CREDIT</TRNTYPE>
+            <DTPOSTED>20230515</DTPOSTED>
+            <TRNAMT>5,00</TRNAMT>
+            <FITID>20230515500</FITID>
+            <NAME>Acchouder 20 b</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL62INGB0663707048</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Gefeliciteerd, Gewonnen met Tekst44 XL, Trekking 13-05-2023, 182926753.11229 IBAN: NL62INGB0663707048 Kenmerk: 182926753.11229 Valutadatum: 15-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230513</DTPOSTED>
+            <TRNAMT>-15,45</TRNAMT>
+            <FITID>202305131545</FITID>
+            <NAME>Tekst18</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 12-05-2023 09:31 Tekst156: B40155 Term: SGW9BK Valutadatum: 13-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230513</DTPOSTED>
+            <TRNAMT>-9,90</TRNAMT>
+            <FITID>20230513990</FITID>
+            <NAME>Tekst15</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 12-05-2023 09:22 Tekst156: B20154 Term: CT801857 Valutadatum: 13-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230513</DTPOSTED>
+            <TRNAMT>-13,00</TRNAMT>
+            <FITID>202305131300</FITID>
+            <NAME>Tekst2</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 12-05-2023 09:34 Tekst156: B80156 Term: FHD1FV Valutadatum: 13-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230513</DTPOSTED>
+            <TRNAMT>-47,80</TRNAMT>
+            <FITID>202305134780</FITID>
+            <NAME>Tekst5</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 12-05-2023 09:44 Tekst156: B30157 Term: 80006896 Valutadatum: 13-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20230513</DTPOSTED>
+            <TRNAMT>-3,15</TRNAMT>
+            <FITID>20230513315</FITID>
+            <NAME>Tekst11</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>1 apr t/m 30 apr 2023 ING BANK N.V. Valutadatum: 13-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20230513</DTPOSTED>
+            <TRNAMT>-1,10</TRNAMT>
+            <FITID>20230513110</FITID>
+            <NAME>Tekst12</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>1 apr t/m 30 apr 2023 ING BANK N.V. Valutadatum: 13-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230512</DTPOSTED>
+            <TRNAMT>-54,98</TRNAMT>
+            <FITID>202305125498</FITID>
+            <NAME>Tekst8</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 021 11-05-2023 09:42 Tekst156: B40152 Term: ZF2708 Valutadatum: 12-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230512</DTPOSTED>
+            <TRNAMT>-46,18</TRNAMT>
+            <FITID>202305124618</FITID>
+            <NAME>Tekst14</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 11-05-2023 10:09 Tekst156: B80153 Term: 3TMW02 Valutadatum: 12-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>CREDIT</TRNTYPE>
+            <DTPOSTED>20230512</DTPOSTED>
+            <TRNAMT>441,00</TRNAMT>
+            <FITID>2023051244100</FITID>
+            <NAME>Acchouder 1a en/of Acchouder 2</NAME>
+            <BANKACCTTO>
+              <BANKID>LPLNNL0A</BANKID>
+              <ACCTID>NL72LPLN2800214643</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Overboeking LeasePlan Bank IBAN: NL72LPLN2800214643 Kenmerk: 1443700-2271607-20230512 Datum/Tijd: 12-05-2023 08:05:32 Valutadatum: 12-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230512</DTPOSTED>
+            <TRNAMT>-67,63</TRNAMT>
+            <FITID>202305126763</FITID>
+            <NAME>Acchouder 23</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL94INGB0000869000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3948nr 071108167355 VNTekst3952 0000517458 BTW 5,58PC Tekst3951 13, MEI - JUL IBAN: NL94INGB0000869000 Kenmerk: 099404794543 Machtiging ID: 000000412391 Incassant ID: NL84ZZZ050695810000 Doorlopende incasso Valutadatum: 12-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230511</DTPOSTED>
+            <TRNAMT>-11,00</TRNAMT>
+            <FITID>202305111100</FITID>
+            <NAME>Tekst6</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 021 10-05-2023 14:41 Tekst156: B80151 Term: 225V01 Valutadatum: 11-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230511</DTPOSTED>
+            <TRNAMT>250,00</TRNAMT>
+            <FITID>2023051125000</FITID>
+            <NAME>a Acchouder 1a, a Acchouder 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K40A</BANKID>
+              <ACCTID>K44412345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Van Oranje spaarrekening K44412345 Valutadatum: 11-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230511</DTPOSTED>
+            <TRNAMT>-282,70</TRNAMT>
+            <FITID>2023051128270</FITID>
+            <NAME>Acchouder 18</NAME>
+            <BANKACCTTO>
+              <BANKID>RABONL0A</BANKID>
+              <ACCTID>NL81RABO0306874490</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Verzamelfactuurnummer : 14306651 IBAN: NL81RABO0306874490 Valutadatum: 11-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230511</DTPOSTED>
+            <TRNAMT>-4184,50</TRNAMT>
+            <FITID>20230511418450</FITID>
+            <NAME>Acchouder 22</NAME>
+            <BANKACCTTO>
+              <BANKID>RABONL0A</BANKID>
+              <ACCTID>NL61RABO0366302094</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Debnr 35361185, Facnr 23500068 IBAN: NL61RABO0366302094 Valutadatum: 11-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230510</DTPOSTED>
+            <TRNAMT>-6,13</TRNAMT>
+            <FITID>20230510613</FITID>
+            <NAME>Tekst8</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 021 09-05-2023 09:48 Tekst156: B30150 Term: ZF2708 Valutadatum: 10-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230510</DTPOSTED>
+            <TRNAMT>4184,50</TRNAMT>
+            <FITID>20230510418450</FITID>
+            <NAME>a Acchouder 1a, a Acchouder 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K30A</BANKID>
+              <ACCTID>K33312345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Van Oranje spaarrekening K33312345 Tekst3953 Valutadatum: 10-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230508</DTPOSTED>
+            <TRNAMT>-195,00</TRNAMT>
+            <FITID>2023050819500</FITID>
+            <NAME>Tekst3</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 021 07-05-2023 20:02 Tekst156: B50149 Term: 80014797 Valutadatum: 08-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230508</DTPOSTED>
+            <TRNAMT>-29,01</TRNAMT>
+            <FITID>202305082901</FITID>
+            <NAME>Tekst24</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 021 07-05-2023 16:13 Tekst156: B40148 Term: 21825651 Valutadatum: 08-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>CREDIT</TRNTYPE>
+            <DTPOSTED>20230508</DTPOSTED>
+            <TRNAMT>2,00</TRNAMT>
+            <FITID>20230508200</FITID>
+            <NAME>Acchouder 20 b</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL62INGB0663707048</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Gefeliciteerd, Gewonnen met Tekst44 XL, Trekking 06-05-2023, 181629628.13476 IBAN: NL62INGB0663707048 Kenmerk: 181629628.13476 Valutadatum: 08-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230507</DTPOSTED>
+            <TRNAMT>49,00</TRNAMT>
+            <FITID>202305074900</FITID>
+            <NAME>a Acchouder 7</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL87INGB0004454537</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3954 IBAN: NL87INGB0004454537 Valutadatum: 07-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230507</DTPOSTED>
+            <TRNAMT>250,00</TRNAMT>
+            <FITID>2023050725000</FITID>
+            <NAME>a Acchouder 1a, a Acchouder 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K40A</BANKID>
+              <ACCTID>K44412345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Van Oranje spaarrekening K44412345 Valutadatum: 07-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230507</DTPOSTED>
+            <TRNAMT>-20,15</TRNAMT>
+            <FITID>202305072015</FITID>
+            <NAME>Tekst15</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 05-05-2023 11:31 Tekst156: B60143 Term: CT801857 Valutadatum: 07-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230507</DTPOSTED>
+            <TRNAMT>-39,35</TRNAMT>
+            <FITID>202305073935</FITID>
+            <NAME>Tekst5</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 05-05-2023 12:03 Tekst156: B10147 Term: 80006896 Valutadatum: 07-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230506</DTPOSTED>
+            <TRNAMT>-19,00</TRNAMT>
+            <FITID>202305061900</FITID>
+            <NAME>Tekst26</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 05-05-2023 11:45 Tekst156: B90145 Term: GNW63P Valutadatum: 06-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230506</DTPOSTED>
+            <TRNAMT>-12,00</TRNAMT>
+            <FITID>202305061200</FITID>
+            <NAME>Tekst2</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 05-05-2023 11:48 Tekst156: B30146 Term: FHD1FV Valutadatum: 06-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230506</DTPOSTED>
+            <TRNAMT>-29,56</TRNAMT>
+            <FITID>202305062956</FITID>
+            <NAME>Tekst18</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 05-05-2023 11:40 Tekst156: B40144 Term: SGW9BK Valutadatum: 06-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230505</DTPOSTED>
+            <TRNAMT>-1,50</TRNAMT>
+            <FITID>20230505150</FITID>
+            <NAME>Tekst17</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 021 04-05-2023 14:11 Tekst156: B40141 Term: CT695965 Valutadatum: 05-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230505</DTPOSTED>
+            <TRNAMT>-97,59</TRNAMT>
+            <FITID>202305059759</FITID>
+            <NAME>Tekst8</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 021 04-05-2023 10:41 Tekst156: B70138 Term: ZF2709 Valutadatum: 05-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230505</DTPOSTED>
+            <TRNAMT>-7,20</TRNAMT>
+            <FITID>20230505720</FITID>
+            <NAME>Tekst7</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 021 04-05-2023 15:13 Tekst156: B90142 Term: T3PFG0 Valutadatum: 05-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>ATM</TRNTYPE>
+            <DTPOSTED>20230505</DTPOSTED>
+            <TRNAMT>-70,00</TRNAMT>
+            <FITID>202305057000</FITID>
+            <NAME>Tekst4</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 04-05-2023 10:46 Tekst156: B30139 Term: 810183 Valutadatum: 05-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230505</DTPOSTED>
+            <TRNAMT>-42,16</TRNAMT>
+            <FITID>202305054216</FITID>
+            <NAME>Tekst14</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 04-05-2023 11:07 Tekst156: B10140 Term: 3TMW01 Valutadatum: 05-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230505</DTPOSTED>
+            <TRNAMT>-6100,00</TRNAMT>
+            <FITID>20230505610000</FITID>
+            <NAME>Acchouder 21</NAME>
+            <BANKACCTTO>
+              <BANKID>ABNANL0A</BANKID>
+              <ACCTID>NL21ABNA0887430872</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3948 50729, Order 30408 IBAN: NL21ABNA0887430872 Datum/Tijd: 05-05-2023 13:11:51 Valutadatum: 05-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230505</DTPOSTED>
+            <TRNAMT>250,00</TRNAMT>
+            <FITID>20230505250001</FITID>
+            <NAME>a Acchouder 1a, a Acchouder 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K40A</BANKID>
+              <ACCTID>K44412345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Van Oranje spaarrekening K44412345 Valutadatum: 05-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230505</DTPOSTED>
+            <TRNAMT>-25,20</TRNAMT>
+            <FITID>202305052520</FITID>
+            <NAME>Acchouder 23</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL54INGB0005564520</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3957 303651666 Periode 05.05.2023 - 05.06.2023 IBAN: NL54INGB0005564520 Kenmerk: 056336493600 Machtiging ID: 000003145358 Incassant ID: NL51ZZZ080534100001 Doorlopende incasso Valutadatum: 05-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230504</DTPOSTED>
+            <TRNAMT>-100,00</TRNAMT>
+            <FITID>2023050410000</FITID>
+            <NAME>Acchouder 21</NAME>
+            <BANKACCTTO>
+              <BANKID>ABNANL0A</BANKID>
+              <ACCTID>NL21ABNA0887430872</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3948 50740 IBAN: NL21ABNA0887430872 Datum/Tijd: 04-05-2023 19:26:46 Valutadatum: 04-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230504</DTPOSTED>
+            <TRNAMT>6100,00</TRNAMT>
+            <FITID>20230504610000</FITID>
+            <NAME>a Acchouder 1a, a Acchouder 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K30A</BANKID>
+              <ACCTID>K33312345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Van Oranje spaarrekening K33312345 Valutadatum: 04-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230504</DTPOSTED>
+            <TRNAMT>250,00</TRNAMT>
+            <FITID>2023050425000</FITID>
+            <NAME>a Acchouder 1a, a Acchouder 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K40A</BANKID>
+              <ACCTID>K44412345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Van Oranje spaarrekening K44412345 Valutadatum: 04-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230503</DTPOSTED>
+            <TRNAMT>-6,00</TRNAMT>
+            <FITID>20230503600</FITID>
+            <NAME>Tekst1</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 021 02-05-2023 13:16 Tekst156: B60137 Term: CT676476 Valutadatum: 03-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>OTHER</TRNTYPE>
+            <DTPOSTED>20230503</DTPOSTED>
+            <TRNAMT>-61,90</TRNAMT>
+            <FITID>202305036190</FITID>
+            <NAME>Acchouder 24a b Tekst29</NAME>
+            <BANKACCTTO>
+              <BANKID>DEUTNL0A</BANKID>
+              <ACCTID>NL51DEUT0265262461</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>M05914434MGJBAFA 1150013858371502 7000000595 tromm.com IBAN: NL51DEUT0265262461 Kenmerk: 03-05-2023 15:58 1150013858371502 Valutadatum: 03-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230502</DTPOSTED>
+            <TRNAMT>150,75</TRNAMT>
+            <FITID>2023050215075</FITID>
+            <NAME>a Acchouder 1a, a Acchouder 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K40A</BANKID>
+              <ACCTID>K44412345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Van Oranje spaarrekening K44412345 Valutadatum: 02-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230502</DTPOSTED>
+            <TRNAMT>-77,00</TRNAMT>
+            <FITID>202305027700</FITID>
+            <NAME>Acchouder 14</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL85INGB0668339063</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>kenmerk 6052104238967983 Rel.nr. Tekst3958 Periode 01-05-2023/31-05-2023 - - IBAN: NL85INGB0668339063 Kenmerk: SDD0236710187 Machtiging ID: Tekst3958001004002 Incassant ID: NL18ZZZ410952220000 Doorlopende incasso Valutadatum: 02-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230502</DTPOSTED>
+            <TRNAMT>-432,02</TRNAMT>
+            <FITID>2023050243202</FITID>
+            <NAME>Acchouder 14</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL85INGB0668339063</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>kenmerk 1052104238967981 Rel.nr. Tekst3958 Periode 01-05-2023/31-05-2023 Tekst3959 - - IBAN: NL85INGB0668339063 Kenmerk: SDD0236710186 Machtiging ID: Tekst3958001001001 Incassant ID: NL18ZZZ410952220000 Doorlopende incasso Valutadatum: 02-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230502</DTPOSTED>
+            <TRNAMT>-45,38</TRNAMT>
+            <FITID>202305024538</FITID>
+            <NAME>Acchouder 25</NAME>
+            <BANKACCTTO>
+              <BANKID>ABNANL0A</BANKID>
+              <ACCTID>NL89ABNA0450001067</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>K60266531 INLEG PER 05-23 Acchouder 26 4196026653100000 IBAN: NL89ABNA0450001067 Kenmerk: E2E/DJ/K60266531 /24-04-2023/PROL / Machtiging ID: AEDJ20091101K60266531 Incassant ID: NL98ZZZ271112510000 Doorlopende incasso Valutadatum: 02-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230502</DTPOSTED>
+            <TRNAMT>-117,04</TRNAMT>
+            <FITID>2023050211704</FITID>
+            <NAME>Acchouder 23</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL54INGB0005564520</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst31 303258420 Periode 01.05.2023 - 01.06.2023 IBAN: NL54INGB0005564520 Kenmerk: 052253039732 Machtiging ID: 000002999162 Incassant ID: NL51ZZZ080534100001 Doorlopende incasso Valutadatum: 02-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230502</DTPOSTED>
+            <TRNAMT>-524,30</TRNAMT>
+            <FITID>2023050252430</FITID>
+            <NAME>Acchouder 23</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL54INGB0005564520</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst32 302273737 Periode 01.05.2023 - 01.05.2024 IBAN: NL54INGB0005564520 Kenmerk: 052253039731 Machtiging ID: 000002341061 Incassant ID: NL51ZZZ080534100001 Doorlopende incasso Valutadatum: 02-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230501</DTPOSTED>
+            <TRNAMT>-30,36</TRNAMT>
+            <FITID>202305013036</FITID>
+            <NAME>Tekst24</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 021 30-04-2023 14:12 Tekst156: B10135 Term: 21825651 Valutadatum: 01-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230501</DTPOSTED>
+            <TRNAMT>-32,32</TRNAMT>
+            <FITID>202305013232</FITID>
+            <NAME>Tekst14</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3955: 020 30-04-2023 16:08 Tekst156: B00136 Term: 3TMW03 Valutadatum: 01-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>CREDIT</TRNTYPE>
+            <DTPOSTED>20230501</DTPOSTED>
+            <TRNAMT>10,00</TRNAMT>
+            <FITID>202305011000</FITID>
+            <NAME>Acchouder 20 b</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL62INGB0663707048</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Gefeliciteerd, Gewonnen met Tekst44 XL, Trekking 29-04-2023, 180820854.9570 IBAN: NL62INGB0663707048 Kenmerk: 180820854.9570 Valutadatum: 01-05-2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230501</DTPOSTED>
+            <TRNAMT>1100,00</TRNAMT>
+            <FITID>20230501110000</FITID>
+            <NAME>a Acchouder 1a, a Acchouder 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K40A</BANKID>
+              <ACCTID>K44412345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Van Oranje spaarrekening K44412345 Valutadatum: 01-05-2023</MEMO>
+          </STMTTRN>
+        </BANKTRANLIST>
+        <LEDGERBAL>
+          <BALAMT>117,00</BALAMT>
+          <DTASOF>202305302359</DTASOF>
+        </LEDGERBAL>
       </STMTRS>
-   </STMTTRNRS>                        <!-- End of accounts -->
+    </STMTTRNRS>
   </BANKMSGSRSV1>
 </OFX>
 <!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_CombineOneByOne_Syn/NL94COBA0678011583_Alle_rekeningen.ofx -->
-<!--  Generated on 2023-11-10 16:07:09.191761800 -->
+<!-- Generated on 2023-11-16 20:00:57.272819 -->

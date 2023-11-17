@@ -1,1462 +1,1464 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?OFX OFXHEADER="200" VERSION="202" SECURITY="NONE" OLDFILEUID="NONE" NEWFILEUID="NONE"?>
 <OFX>
   <SIGNONMSGSRSV1>
-    <SONRS>                            <!-- Begin signon -->
-      <STATUS>                        <!-- Begin status aggregate -->
-         <CODE>0</CODE>               <!-- OK -->
-         <SEVERITY>INFO</SEVERITY>
+    <SONRS>
+      <STATUS>
+        <CODE>0</CODE>
+        <SEVERITY>INFO</SEVERITY>
       </STATUS>
-      <DTSERVER>20231002</DTSERVER>   <!-- Oct. 29, 1999, 10:10:03 am -->
-      <LANGUAGE>ENG</LANGUAGE>        <!-- Language used in response -->
-      <DTPROFUP>20231002</DTPROFUP>   <!-- Last update to profile-->
-      <DTACCTUP>20231002</DTACCTUP>   <!-- Last account update -->
-      <FI>                            <!-- ID of receiving institution -->
-         <ORG>NCH</ORG>               <!-- Name of ID owner -->
-         <FID>1001</FID>              <!-- Actual ID -->
+      <DTSERVER>202305241923</DTSERVER>
+      <LANGUAGE>ENG</LANGUAGE>
+      <DTPROFUP>202305241923</DTPROFUP>
+      <DTACCTUP>202305241923</DTACCTUP>
+      <FI>
+        <ORG>NCH</ORG>
+        <FID>1001</FID>
       </FI>
-    </SONRS>                           <!-- End of signon -->
+    </SONRS>
   </SIGNONMSGSRSV1>
   <BANKMSGSRSV1>
-   <STMTTRNRS>                        <!-- Begin response -->
-      <TRNUID>1001</TRNUID>           <!-- Client ID sent in request -->
-      <STATUS>                     <!-- Start status aggregate -->
-         <CODE>0</CODE>            <!-- OK -->
-         <SEVERITY>INFO</SEVERITY>
+    <STMTTRNRS>
+      <TRNUID>1001</TRNUID>
+      <STATUS>
+        <CODE>0</CODE>
+        <SEVERITY>INFO</SEVERITY>
       </STATUS>
-      <STMTRS>                            <!-- Begin statement response -->
-         <CURDEF>EUR</CURDEF>
-         <BANKACCTFROM>                   <!-- Identify the account -->
-            <BANKID>INGBNL2A</BANKID>     <!-- Routing transit or other FI ID -->
-            <ACCTID>NL94COBA0678011583</ACCTID>  <!-- Account number -->
-            <ACCTTYPE>CHECKING</ACCTTYPE> <!-- Account type -->
-         </BANKACCTFROM>                  <!-- End of account ID -->
-         <BANKTRANLIST>                   <!-- Begin list of statement trans. -->
-            <DTSTART>20230901</DTSTART>
-            <DTEND>20231002</DTEND>
-               <STMTTRN>
-                  <TRNTYPE>CREDIT</TRNTYPE>
-                  <DTPOSTED>20231002</DTPOSTED>
-                  <TRNAMT>1,00</TRNAMT>
-                  <FITID>20231002100</FITID>
-                  <NAME>Acchouder 20 b</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL62INGB0663707048</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: Gefeliciteerd, Gewonnen met Tekst44 XL, Trekking 30-09-2023, 201167771.3843 IBAN: NL62INGB0663707048 Reference: 201167771.3843 Value date: 02/10/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20231002</DTPOSTED>
-                  <TRNAMT>-8,85</TRNAMT>
-                  <FITID>20231002885</FITID>
-                  <NAME>STICHTING KUMPULAN BRONBE ARNHEM</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 01/10/2023 12:34 Transaction: B40359 Term: CT168844 Value date: 02/10/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20231002</DTPOSTED>
-                  <TRNAMT>-7,75</TRNAMT>
-                  <FITID>20231002775</FITID>
-                  <NAME>STICHTING KUMPULAN BRONBE ARNHEM</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 01/10/2023 13:36 Transaction: B20360 Term: CT168844 Value date: 02/10/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20231002</DTPOSTED>
-                  <TRNAMT>-83,82</TRNAMT>
-                  <FITID>202310028382</FITID>
-                  <NAME>OK Amersfoort AMERSFOORT NLD</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 01/10/2023 17:20 Transaction: B00361 Term: DS8FD2 Value date: 02/10/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20231002</DTPOSTED>
-                  <TRNAMT>0,48</TRNAMT>
-                  <FITID>20231002048</FITID>
-                  <NAME>sprek 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K20A</BANKID>
-                     <ACCTID>K22212345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>From Oranje spaarrekening K22212345 Value date: 02/10/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20231002</DTPOSTED>
-                  <TRNAMT>1,23</TRNAMT>
-                  <FITID>20231002123</FITID>
-                  <NAME>sprek 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K40A</BANKID>
-                     <ACCTID>K44412345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>From Oranje spaarrekening K44412345 Value date: 02/10/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20231002</DTPOSTED>
-                  <TRNAMT>91,07</TRNAMT>
-                  <FITID>202310029107</FITID>
-                  <NAME>sprek 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K30A</BANKID>
-                     <ACCTID>K33312345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>From Oranje spaarrekening K33312345 Value date: 02/10/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20231002</DTPOSTED>
-                  <TRNAMT>500,00</TRNAMT>
-                  <FITID>2023100250000</FITID>
-                  <NAME>sprek 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K40A</BANKID>
-                     <ACCTID>K44412345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>From Oranje spaarrekening K44412345 Value date: 02/10/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20231002</DTPOSTED>
-                  <TRNAMT>-77,00</TRNAMT>
-                  <FITID>202310027700</FITID>
-                  <NAME>Acchouder 14</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL85INGB0668339063</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: kenmerk 2052209235335692 Rel.nr. Tekst3958 Periode 01-10-2023/31-10-2023 - - IBAN: NL85INGB0668339063 Reference: SDD0250899772 Mandate ID: Tekst3958001004002 Creditor ID: NL18ZZZ410952220000 Recurrent SEPA direct debit Value date: 02/10/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20231002</DTPOSTED>
-                  <TRNAMT>-432,02</TRNAMT>
-                  <FITID>2023100243202</FITID>
-                  <NAME>Acchouder 14</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL85INGB0668339063</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: kenmerk 3052209235335689 Rel.nr. Tekst3958 Periode 01-10-2023/31-10-2023 Tekst3959 - - IBAN: NL85INGB0668339063 Reference: SDD0250899771 Mandate ID: Tekst3958001001001 Creditor ID: NL18ZZZ410952220000 Recurrent SEPA direct debit Value date: 02/10/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20231002</DTPOSTED>
-                  <TRNAMT>-45,38</TRNAMT>
-                  <FITID>202310024538</FITID>
-                  <NAME>Acchouder 25</NAME>
-                  <BANKACCTTO>
-                     <BANKID>ABNANL0A</BANKID>
-                     <ACCTID>NL89ABNA0450001067</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: K60266531 INLEG PER 10-23 Acchouder 26 4196026653100000 IBAN: NL89ABNA0450001067 Reference: E2E/DJ/K60266531 /26-09-2023/PROL / Mandate ID: AEDJ20091101K60266531 Creditor ID: NL98ZZZ271112510000 Recurrent SEPA direct debit Value date: 02/10/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20231002</DTPOSTED>
-                  <TRNAMT>-117,04</TRNAMT>
-                  <FITID>2023100211704</FITID>
-                  <NAME>Acchouder 23</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL54INGB0005564520</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: Tekst31 303258420 Periode 01.10.2023 - 01.11.2023 IBAN: NL54INGB0005564520 Reference: 052753557328 Mandate ID: 000002999162 Creditor ID: NL51ZZZ080534100001 Recurrent SEPA direct debit Value date: 02/10/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230930</DTPOSTED>
-                  <TRNAMT>-19,15</TRNAMT>
-                  <FITID>202309301915</FITID>
-                  <NAME>Tekst18</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 29/09/2023 10:33 Transaction: B60357 Term: SGW9BK Value date: 30/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230930</DTPOSTED>
-                  <TRNAMT>-47,75</TRNAMT>
-                  <FITID>202309304775</FITID>
-                  <NAME>Tekst5</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 29/09/2023 10:43 Transaction: B80358 Term: 80006896 Value date: 30/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230930</DTPOSTED>
-                  <TRNAMT>-7,00</TRNAMT>
-                  <FITID>20230930700</FITID>
-                  <NAME>Bruna 0177 HOEVELAKEN NLD</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 29/09/2023 10:26 Transaction: B90356 Term: V6F4N1 Value date: 30/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>ATM</TRNTYPE>
-                  <DTPOSTED>20230929</DTPOSTED>
-                  <TRNAMT>-70,00</TRNAMT>
-                  <FITID>202309297000</FITID>
-                  <NAME>Tekst4 NLD</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 28/09/2023 11:00 Transaction: B40353 Term: 810182 Value date: 29/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230929</DTPOSTED>
-                  <TRNAMT>-8,94</TRNAMT>
-                  <FITID>20230929894</FITID>
-                  <NAME>ALBERT HEIJN 1839 HOEVELAKEN NLD</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 28/09/2023 11:04 Transaction: B80354 Term: 090JCJ Value date: 29/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230929</DTPOSTED>
-                  <TRNAMT>-52,81</TRNAMT>
-                  <FITID>202309295281</FITID>
-                  <NAME>Tekst14</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 28/09/2023 11:23 Transaction: B80355 Term: 3TMW01 Value date: 29/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230929</DTPOSTED>
-                  <TRNAMT>-56,34</TRNAMT>
-                  <FITID>202309295634</FITID>
-                  <NAME>Tekst8</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 28/09/2023 10:51 Transaction: B00352 Term: ZF2711 Value date: 29/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>OTHER</TRNTYPE>
-                  <DTPOSTED>20230929</DTPOSTED>
-                  <TRNAMT>-40,14</TRNAMT>
-                  <FITID>202309294014</FITID>
-                  <NAME>Tekst3961 b.v.</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL27INGB0000026500</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: 4011698108 0051100394565016 Tekst3961 ref 4011698108 Tekst3961 IBAN: NL27INGB0000026500 Reference: 29-09-2023 12:10 0051100394565016 Value date: 29/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230929</DTPOSTED>
-                  <TRNAMT>250,00</TRNAMT>
-                  <FITID>2023092925000</FITID>
-                  <NAME>sprek 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K40A</BANKID>
-                     <ACCTID>K44412345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>From Oranje spaarrekening K44412345 Value date: 29/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230928</DTPOSTED>
-                  <TRNAMT>-2,99</TRNAMT>
-                  <FITID>20230928299</FITID>
-                  <NAME>ALBERT HEIJN 1839 HOEVELAKEN NLD</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 27/09/2023 11:14 Transaction: B00350 Term: 090JCJ Value date: 28/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230928</DTPOSTED>
-                  <TRNAMT>-14,94</TRNAMT>
-                  <FITID>202309281494</FITID>
-                  <NAME>EKOPLAZA AMERSFOORT AMERSFOORT</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 27/09/2023 14:41 Transaction: B90351 Term: Q817Q0 Value date: 28/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230928</DTPOSTED>
-                  <TRNAMT>-2000,00</TRNAMT>
-                  <FITID>20230928200000</FITID>
-                  <NAME>sprek 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K40A</BANKID>
-                     <ACCTID>K44412345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>To Oranje spaarrekening K44412345 Value date: 28/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230928</DTPOSTED>
-                  <TRNAMT>-4225,00</TRNAMT>
-                  <FITID>20230928422500</FITID>
-                  <NAME>sprek 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K20A</BANKID>
-                     <ACCTID>K22212345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>To Oranje spaarrekening K22212345 Value date: 28/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230928</DTPOSTED>
-                  <TRNAMT>-1131,00</TRNAMT>
-                  <FITID>20230928113100</FITID>
-                  <NAME>Acchouder 9</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL86INGB0002445588</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: 3123738957020002 IBAN: NL86INGB0002445588 Value date: 28/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230928</DTPOSTED>
-                  <TRNAMT>-230,00</TRNAMT>
-                  <FITID>2023092823000</FITID>
-                  <NAME>Acchouder 9</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL86INGB0002445588</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: 5123738957520014 IBAN: NL86INGB0002445588 Value date: 28/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230928</DTPOSTED>
-                  <TRNAMT>-550,00</TRNAMT>
-                  <FITID>2023092855000</FITID>
-                  <NAME>Acchouder 9</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL86INGB0002445588</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: 1098485167520014 IBAN: NL86INGB0002445588 Value date: 28/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230928</DTPOSTED>
-                  <TRNAMT>-290,00</TRNAMT>
-                  <FITID>2023092829000</FITID>
-                  <NAME>Tekst30 b</NAME>
-                  <BANKACCTTO>
-                     <BANKID>RABONL0A</BANKID>
-                     <ACCTID>NL97RABO0140917969</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: 2147698/23701910939 IBAN: NL97RABO0140917969 Reference: 19012776922 Mandate ID: 2147698002 Creditor ID: NL45ZZZ593942180000 Recurrent SEPA direct debit Other party: Acchouder 7, a (Tekst41) Value date: 28/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>CREDIT</TRNTYPE>
-                  <DTPOSTED>20230928</DTPOSTED>
-                  <TRNAMT>4258,00</TRNAMT>
-                  <FITID>20230928425800</FITID>
-                  <NAME>Acchouder 9</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL86INGB0002445588</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: TERUGGAAF NR. 123738957H3002 IB/PVV 2023 (Tekst37-ZUIDERW) IBAN: NL86INGB0002445588 Reference: COAXX433852238202309251903302283430 Value date: 28/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230927</DTPOSTED>
-                  <TRNAMT>-6,99</TRNAMT>
-                  <FITID>20230927699</FITID>
-                  <NAME>Kruidvat 7925 AMERSFOORT NLD</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 26/09/2023 10:28 Transaction: B70348 Term: JN9P56 Value date: 27/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230927</DTPOSTED>
-                  <TRNAMT>-3,29</TRNAMT>
-                  <FITID>20230927329</FITID>
-                  <NAME>Amazing Oriental AMERSFOORT NLD</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 26/09/2023 10:21 Transaction: B10347 Term: FSL4GS Value date: 27/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230927</DTPOSTED>
-                  <TRNAMT>-134,00</TRNAMT>
-                  <FITID>2023092713400</FITID>
-                  <NAME>DE LINDE HAARDHOUT TIEL NLD</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 26/09/2023 16:48 Transaction: B00349 Term: CT308454 Value date: 27/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230927</DTPOSTED>
-                  <TRNAMT>-10447,00</TRNAMT>
-                  <FITID>202309271044700</FITID>
-                  <NAME>Acchouder 9</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL86INGB0002445588</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: 1098485167020001 IBAN: NL86INGB0002445588 Value date: 27/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230927</DTPOSTED>
-                  <TRNAMT>-124,95</TRNAMT>
-                  <FITID>2023092712495</FITID>
-                  <NAME>DPG MEDIA BV</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL82INGB0009033900</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: A1000337936 - AD Compleet - 26-09-2023 - 25-12-2023 IBAN: NL82INGB0009033900 Reference: CPAY-SUB-000000686-5708371687 Mandate ID: 40-000514295 Creditor ID: NL16ZZZ100177840000 Recurrent SEPA direct debit Value date: 27/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230927</DTPOSTED>
-                  <TRNAMT>1925,00</TRNAMT>
-                  <FITID>20230927192500</FITID>
-                  <NAME>sprek 5</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K30A</BANKID>
-                     <ACCTID>K33312345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>From Oranje spaarrekening K33312345 Value date: 27/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230926</DTPOSTED>
-                  <TRNAMT>-210,00</TRNAMT>
-                  <FITID>2023092621000</FITID>
-                  <NAME>Hr AP Twisk,Mw AMJ van der Put</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL89INGB0008461765</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: Etentje Rose Garden Barneveld IBAN: NL89INGB0008461765 Value date: 26/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230926</DTPOSTED>
-                  <TRNAMT>3000,00</TRNAMT>
-                  <FITID>20230926300000</FITID>
-                  <NAME>a Acchouder 1a</NAME>
-                  <BANKACCTTO>
-                     <BANKID>BKMGNL0A</BANKID>
-                     <ACCTID>NL54BKMG0378842587</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: Huishoudgeld IBAN: NL54BKMG0378842587 Value date: 26/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230926</DTPOSTED>
-                  <TRNAMT>-93,84</TRNAMT>
-                  <FITID>202309269384</FITID>
-                  <NAME>Acchouder 13</NAME>
-                  <BANKACCTTO>
-                     <BANKID>DEUTNL0A</BANKID>
-                     <ACCTID>NL82DEUT0319804615</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: incasso maandelijkse termijn Termijn 7 van 10 Vervaldatum 26 sep 2023 Kenmerk 95809882 Heffingjaar 2023 IBAN: NL82DEUT0319804615 Reference: K2BGBL000000104085302 Mandate ID: 10817282 Creditor ID: NL07ZZZ082053570000 Recurrent SEPA direct debit Value date: 26/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230926</DTPOSTED>
-                  <TRNAMT>-4,76</TRNAMT>
-                  <FITID>20230926476</FITID>
-                  <NAME>Acchouder 13</NAME>
-                  <BANKACCTTO>
-                     <BANKID>DEUTNL0A</BANKID>
-                     <ACCTID>NL82DEUT0319804615</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: incasso maandelijkse termijn Termijn 7 van 10 Vervaldatum 26 sep 2023 Kenmerk 95711394 Heffingjaar 2022 IBAN: NL82DEUT0319804615 Reference: K2BGBL000000104085301 Mandate ID: 10817282 Creditor ID: NL07ZZZ082053570000 Recurrent SEPA direct debit Value date: 26/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230926</DTPOSTED>
-                  <TRNAMT>10500,00</TRNAMT>
-                  <FITID>202309261050000</FITID>
-                  <NAME>sprek 5</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K30A</BANKID>
-                     <ACCTID>K33312345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>From Oranje spaarrekening K33312345 Value date: 26/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>CREDIT</TRNTYPE>
-                  <DTPOSTED>20230925</DTPOSTED>
-                  <TRNAMT>1,25</TRNAMT>
-                  <FITID>20230925125</FITID>
-                  <NAME>DPG MEDIA BV</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL82INGB0009033900</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: A1000337936 - AD Compleet - 26-06-2023 - 25-09-2023 IBAN: NL82INGB0009033900 Reference: CREF-SUB000000117-5706362690 Value date: 25/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>OTHER</TRNTYPE>
-                  <DTPOSTED>20230925</DTPOSTED>
-                  <TRNAMT>-3,72</TRNAMT>
-                  <FITID>20230925372</FITID>
-                  <NAME>Infomedics b</NAME>
-                  <BANKACCTTO>
-                     <BANKID>ABNANL0A</BANKID>
-                     <ACCTID>NL34ABNA0243240058</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: 403682585799 0030015170738696 Invoice 62213626191071 Infomedics IBAN: NL34ABNA0243240058 Reference: 25-09-2023 13:30 0030015170738696 Value date: 25/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>OTHER</TRNTYPE>
-                  <DTPOSTED>20230924</DTPOSTED>
-                  <TRNAMT>-69,00</TRNAMT>
-                  <FITID>202309246900</FITID>
-                  <NAME>Rabo Betaalverzoek</NAME>
-                  <BANKACCTTO>
-                     <BANKID>RABONL0A</BANKID>
-                     <ACCTID>NL13RABO0181015595</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: NL75RABO0141576316 0020008854723956 T.L. Tio:Tekst37 Reunie 1Okt2023 3 pp: IBAN: NL13RABO0181015595 Reference: 24-09-2023 10:59 0020008854723956 Value date: 24/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230924</DTPOSTED>
-                  <TRNAMT>-3,30</TRNAMT>
-                  <FITID>20230924330</FITID>
-                  <NAME>Acchouder 1a</NAME>
-                  <BANKACCTTO>
-                     <BANKID>LPLNNL0A</BANKID>
-                     <ACCTID>NL20LPLN0892606304</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: Bankkosten IBAN: NL20LPLN0892606304 Value date: 24/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230923</DTPOSTED>
-                  <TRNAMT>-11,95</TRNAMT>
-                  <FITID>202309231195</FITID>
-                  <NAME>Tekst2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 22/09/2023 10:17 Transaction: B40345 Term: FHD1FV Value date: 23/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230923</DTPOSTED>
-                  <TRNAMT>-14,15</TRNAMT>
-                  <FITID>202309231415</FITID>
-                  <NAME>Tekst16 NLD</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 22/09/2023 10:10 Transaction: B60343 Term: CT689163 Value date: 23/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230923</DTPOSTED>
-                  <TRNAMT>-12,85</TRNAMT>
-                  <FITID>202309231285</FITID>
-                  <NAME>Tekst18</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 22/09/2023 10:13 Transaction: B70344 Term: SGW9BK Value date: 23/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230923</DTPOSTED>
-                  <TRNAMT>-43,60</TRNAMT>
-                  <FITID>202309234360</FITID>
-                  <NAME>Tekst5</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 22/09/2023 10:26 Transaction: B20346 Term: 80006896 Value date: 23/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230922</DTPOSTED>
-                  <TRNAMT>-34,29</TRNAMT>
-                  <FITID>202309223429</FITID>
-                  <NAME>Amazing Oriental AMERSFOORT NLD</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 21/09/2023 14:11 Transaction: B50342 Term: FSL4GS Value date: 22/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230922</DTPOSTED>
-                  <TRNAMT>-90,48</TRNAMT>
-                  <FITID>202309229048</FITID>
-                  <NAME>Tekst14</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 21/09/2023 11:51 Transaction: B10341 Term: 3TMW01 Value date: 22/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230922</DTPOSTED>
-                  <TRNAMT>-35,34</TRNAMT>
-                  <FITID>202309223534</FITID>
-                  <NAME>Tekst8</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 21/09/2023 11:23 Transaction: B10340 Term: ZF2711 Value date: 22/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>CREDIT</TRNTYPE>
-                  <DTPOSTED>20230922</DTPOSTED>
-                  <TRNAMT>150,00</TRNAMT>
-                  <FITID>2023092215000</FITID>
-                  <NAME>Acchouder 14</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL55INGB0007024837</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: Rel.nr. Tekst3958 Kenmerk - S3Z80093 - IBAN: NL55INGB0007024837 Reference: FLITS0007584149 Value date: 22/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230922</DTPOSTED>
-                  <TRNAMT>-30,00</TRNAMT>
-                  <FITID>202309223000</FITID>
-                  <NAME>a Acchouder 16</NAME>
-                  <BANKACCTTO>
-                     <BANKID>DEUTNL0A</BANKID>
-                     <ACCTID>NL93DEUT0265252393</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: Kenmerk LTT-27073428. Inleg Tekst44 voor periode 1-10-2023 tm 31-10-2023 IBAN: NL93DEUT0265252393 Reference: SDD1C971C78E1FF4DBA8666BA27D3CABEA4 Mandate ID: 1H966A08681FD2A473E898D539023AC30C8 Creditor ID: NL39ZZZ302317620000 Recurrent SEPA direct debit Value date: 22/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230922</DTPOSTED>
-                  <TRNAMT>-17,50</TRNAMT>
-                  <FITID>202309221750</FITID>
-                  <NAME>Tekst20</NAME>
-                  <BANKACCTTO>
-                     <BANKID>DEUTNL0A</BANKID>
-                     <ACCTID>NL96DEUT0265293952</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: Kenmerk STL-11133903. Tekst46 10-10-2023. Tekst45... IBAN: NL96DEUT0265293952 Reference: SDD07572D1B3B7340B9967445991D443B3F Mandate ID: 1HA39E3FC518F6D4776B18F0AD347D20AFB Creditor ID: NL39ZZZ302317620000 Recurrent SEPA direct debit Value date: 22/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230921</DTPOSTED>
-                  <TRNAMT>250,00</TRNAMT>
-                  <FITID>2023092125000</FITID>
-                  <NAME>sprek 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K40A</BANKID>
-                     <ACCTID>K44412345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>From Oranje spaarrekening K44412345 Value date: 21/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230920</DTPOSTED>
-                  <TRNAMT>-10,35</TRNAMT>
-                  <FITID>202309201035</FITID>
-                  <NAME>Tekst1</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 19/09/2023 13:16 Transaction: B40339 Term: CT676476 Value date: 20/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230920</DTPOSTED>
-                  <TRNAMT>-93,76</TRNAMT>
-                  <FITID>202309209376</FITID>
-                  <NAME>Acchouder 17 b</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL41INGB0000467598</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: Tekst3948 16-09-2023 incl. 16,27 BTW, Tekst47 9010800182, kpn.com/thuisfactuur. IBAN: NL41INGB0000467598 Reference: 000011277419708 Mandate ID: M10001507394 Creditor ID: NL39Acchouder 17271247010001 Recurrent SEPA direct debit Value date: 20/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230920</DTPOSTED>
-                  <TRNAMT>-33,34</TRNAMT>
-                  <FITID>202309203334</FITID>
-                  <NAME>Acchouder 17 - mel</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL83INGB0000325513</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: Tekst3948 13-09-2023, Tekst47 20016854861, Tekst49. IBAN: NL83INGB0000325513 Reference: 000001268794270 Mandate ID: M10015692188 Creditor ID: NL39Acchouder 17271247010001 Recurrent SEPA direct debit Value date: 20/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230919</DTPOSTED>
-                  <TRNAMT>-6,98</TRNAMT>
-                  <FITID>20230919698</FITID>
-                  <NAME>Tekst8</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 18/09/2023 14:05 Transaction: B20338 Term: ZF2709 Value date: 19/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230918</DTPOSTED>
-                  <TRNAMT>-1,50</TRNAMT>
-                  <FITID>20230918150</FITID>
-                  <NAME>Tekst13</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 17/09/2023 14:35 Transaction: B50337 Term: 12ZM02 Value date: 18/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230918</DTPOSTED>
-                  <TRNAMT>-21,00</TRNAMT>
-                  <FITID>202309182100</FITID>
-                  <NAME>Acchouder 23</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL94INGB0000869000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: Tekst3948nr 136200104803, Tekst3952 1010213870 BTW 1,73, Tekst3951 13,, Termijnfactuur SEP IBAN: NL94INGB0000869000 Reference: 714500147245 Mandate ID: 000000412391 Creditor ID: NL84ZZZ050695810000 Recurrent SEPA direct debit Value date: 18/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>OTHER</TRNTYPE>
-                  <DTPOSTED>20230916</DTPOSTED>
-                  <TRNAMT>-2,99</TRNAMT>
-                  <FITID>20230916299</FITID>
-                  <NAME>Acchouder 19 b</NAME>
-                  <BANKACCTTO>
-                     <BANKID>ABNANL0A</BANKID>
-                     <ACCTID>NL08ABNA0526650664</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: 202309161739500000000004273360026 0030015092181688 Betaling aan Tekst3950 4273360026 Tekst3950 IBAN: NL08ABNA0526650664 Reference: 16-09-2023 17:40 0030015092181688 Value date: 16/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>OTHER</TRNTYPE>
-                  <DTPOSTED>20230916</DTPOSTED>
-                  <TRNAMT>-2,99</TRNAMT>
-                  <FITID>202309162991</FITID>
-                  <NAME>Acchouder 19 b</NAME>
-                  <BANKACCTTO>
-                     <BANKID>ABNANL0A</BANKID>
-                     <ACCTID>NL08ABNA0526650664</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: 202309161737360000000004273360026 0030015092156000 Betaling aan Tekst3950 4273360026 Tekst3950 IBAN: NL08ABNA0526650664 Reference: 16-09-2023 17:37 0030015092156000 Value date: 16/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230916</DTPOSTED>
-                  <TRNAMT>-40,95</TRNAMT>
-                  <FITID>202309164095</FITID>
-                  <NAME>Tekst13</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 15/09/2023 10:31 Transaction: B90334 Term: F1FNQ4 Value date: 16/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>ATM</TRNTYPE>
-                  <DTPOSTED>20230916</DTPOSTED>
-                  <TRNAMT>-60,00</TRNAMT>
-                  <FITID>202309166000</FITID>
-                  <NAME>Tekst4 NLD</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 15/09/2023 10:09 Transaction: B30331 Term: 810183 Value date: 16/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230916</DTPOSTED>
-                  <TRNAMT>-36,79</TRNAMT>
-                  <FITID>202309163679</FITID>
-                  <NAME>Tekst18</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 15/09/2023 10:22 Transaction: B00333 Term: 62RN4H Value date: 16/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230916</DTPOSTED>
-                  <TRNAMT>-15,90</TRNAMT>
-                  <FITID>202309161590</FITID>
-                  <NAME>Tekst16 NLD</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 15/09/2023 10:13 Transaction: B00332 Term: CT689163 Value date: 16/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230916</DTPOSTED>
-                  <TRNAMT>-42,60</TRNAMT>
-                  <FITID>202309164260</FITID>
-                  <NAME>Tekst5</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 15/09/2023 10:44 Transaction: B20336 Term: 80006896 Value date: 16/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230916</DTPOSTED>
-                  <TRNAMT>-11,50</TRNAMT>
-                  <FITID>202309161150</FITID>
-                  <NAME>Tekst2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 15/09/2023 10:35 Transaction: B30335 Term: FHD1FV Value date: 16/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230915</DTPOSTED>
-                  <TRNAMT>-24,17</TRNAMT>
-                  <FITID>202309152417</FITID>
-                  <NAME>Tekst8</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 14/09/2023 11:14 Transaction: B50329 Term: ZF2710 Value date: 15/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230915</DTPOSTED>
-                  <TRNAMT>-103,01</TRNAMT>
-                  <FITID>2023091510301</FITID>
-                  <NAME>Tekst14</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 14/09/2023 11:36 Transaction: B40330 Term: 3TMW02 Value date: 15/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230915</DTPOSTED>
-                  <TRNAMT>250,00</TRNAMT>
-                  <FITID>2023091525000</FITID>
-                  <NAME>sprek 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K40A</BANKID>
-                     <ACCTID>K44412345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>From Oranje spaarrekening K44412345 Value date: 15/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230914</DTPOSTED>
-                  <TRNAMT>250,00</TRNAMT>
-                  <FITID>2023091425000</FITID>
-                  <NAME>sprek 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K40A</BANKID>
-                     <ACCTID>K44412345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>From Oranje spaarrekening K44412345 Value date: 14/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>CREDIT</TRNTYPE>
-                  <DTPOSTED>20230914</DTPOSTED>
-                  <TRNAMT>1,25</TRNAMT>
-                  <FITID>20230914125</FITID>
-                  <NAME>DPG MEDIA BV</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL82INGB0009033900</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: A1000337936 - AD Compleet - 26-06-2023 - 25-09-2023 IBAN: NL82INGB0009033900 Reference: CREF-SUB000000128-5707239076 Value date: 14/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>OTHER</TRNTYPE>
-                  <DTPOSTED>20230914</DTPOSTED>
-                  <TRNAMT>-60,97</TRNAMT>
-                  <FITID>202309146097</FITID>
-                  <NAME>Hipay</NAME>
-                  <BANKACCTTO>
-                     <BANKID>2022DE0A</BANKID>
-                     <ACCTID>DE75202208000000019190</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: 6RCK5GU 0140000800664223 Purchase Veepee IBAN: DE75202208000000019190 Reference: 14-09-2023 08:59 0140000800664223 Value date: 14/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230913</DTPOSTED>
-                  <TRNAMT>-8,91</TRNAMT>
-                  <FITID>20230913891</FITID>
-                  <NAME>Tekst8</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 12/09/2023 13:36 Transaction: B60327 Term: ZF2711 Value date: 13/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230913</DTPOSTED>
-                  <TRNAMT>-8,50</TRNAMT>
-                  <FITID>20230913850</FITID>
-                  <NAME>Tekst1</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 12/09/2023 13:41 Transaction: B00328 Term: CT676476 Value date: 13/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230913</DTPOSTED>
-                  <TRNAMT>-1,50</TRNAMT>
-                  <FITID>20230913150</FITID>
-                  <NAME>Tekst17</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 12/09/2023 09:54 Transaction: B40326 Term: CT695964 Value date: 13/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DEBIT</TRNTYPE>
-                  <DTPOSTED>20230913</DTPOSTED>
-                  <TRNAMT>-1,10</TRNAMT>
-                  <FITID>20230913110</FITID>
-                  <NAME>Tekst12</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>1 aug t/m 31 aug 2023 ING BANK N.V. Value date: 13/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DEBIT</TRNTYPE>
-                  <DTPOSTED>20230913</DTPOSTED>
-                  <TRNAMT>-3,15</TRNAMT>
-                  <FITID>20230913315</FITID>
-                  <NAME>Tekst11</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>1 aug t/m 31 aug 2023 ING BANK N.V. Value date: 13/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230911</DTPOSTED>
-                  <TRNAMT>-60,00</TRNAMT>
-                  <FITID>202309116000</FITID>
-                  <NAME>Aral Station 286284112 Issel DEU</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 09/09/2023 20:42 Transaction: B00324 Term: 71116357 Value date: 11/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230911</DTPOSTED>
-                  <TRNAMT>-86,34</TRNAMT>
-                  <FITID>202309118634</FITID>
-                  <NAME>Tekst14</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 10/09/2023 15:03 Transaction: B70325 Term: 3TMW01 Value date: 11/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230910</DTPOSTED>
-                  <TRNAMT>-82,04</TRNAMT>
-                  <FITID>202309108204</FITID>
-                  <NAME>SHELL 0898 KAPPELGRAFEN DEU</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 09/09/2023 16:11 Transaction: B40323 Term: --- Value date: 10/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230910</DTPOSTED>
-                  <TRNAMT>250,00</TRNAMT>
-                  <FITID>2023091025000</FITID>
-                  <NAME>sprek 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K40A</BANKID>
-                     <ACCTID>K44412345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>From Oranje spaarrekening K44412345 Value date: 10/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230909</DTPOSTED>
-                  <TRNAMT>-200,59</TRNAMT>
-                  <FITID>2023090920059</FITID>
-                  <NAME>REKA FERIENDORF BERGUENBRAVU CHE</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 08/09/2023 09:15 Transaction: B70322 Term: 79G09647 Currency: 189,00 CHF Rate: 1,061345 Mark-up: 2,37 EUR Value date: 09/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230909</DTPOSTED>
-                  <TRNAMT>-88,09</TRNAMT>
-                  <FITID>202309098809</FITID>
-                  <NAME>Cafe Preisig Konditorei CHE</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 08/09/2023 08:55 Transaction: B70321 Term: 31494309 Currency: 83,00 CHF Rate: 1,061345 Mark-up: 1,04 EUR Value date: 09/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230908</DTPOSTED>
-                  <TRNAMT>-9,54</TRNAMT>
-                  <FITID>20230908954</FITID>
-                  <NAME>SEITZ GASTRO AG LENZERHEIDE CHE</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 07/09/2023 15:14 Transaction: B90320 Term: 32205115 Currency: 9,00 CHF Rate: 1,060121 Mark-up: 0,11 EUR Value date: 08/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230908</DTPOSTED>
-                  <TRNAMT>-12,40</TRNAMT>
-                  <FITID>202309081240</FITID>
-                  <NAME>Volg Laden Berguen BERGUEN/B CHE</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 07/09/2023 08:49 Transaction: B90319 Term: 31494463 Currency: 11,70 CHF Rate: 1,060121 Mark-up: 0,14 EUR Value date: 08/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230908</DTPOSTED>
-                  <TRNAMT>250,00</TRNAMT>
-                  <FITID>2023090825000</FITID>
-                  <NAME>sprek 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K40A</BANKID>
-                     <ACCTID>K44412345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>From Oranje spaarrekening K44412345 Value date: 08/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>CREDIT</TRNTYPE>
-                  <DTPOSTED>20230907</DTPOSTED>
-                  <TRNAMT>1,25</TRNAMT>
-                  <FITID>20230907125</FITID>
-                  <NAME>DPG MEDIA BV</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL82INGB0009033900</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: A1000337936 - AD Compleet - 26-06-2023 - 25-09-2023 IBAN: NL82INGB0009033900 Reference: CREF-SUB000000123-5706983490 Value date: 07/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>CREDIT</TRNTYPE>
-                  <DTPOSTED>20230907</DTPOSTED>
-                  <TRNAMT>1,25</TRNAMT>
-                  <FITID>202309071251</FITID>
-                  <NAME>DPG MEDIA BV</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL82INGB0009033900</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: A1000337936 - AD Compleet - 26-06-2023 - 25-09-2023 IBAN: NL82INGB0009033900 Reference: CREF-SUB000000111-5705647084 Value date: 07/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230907</DTPOSTED>
-                  <TRNAMT>-49,33</TRNAMT>
-                  <FITID>202309074933</FITID>
-                  <NAME>Coop1971 Davos Gr Davos Plat CHE</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 06/09/2023 14:52 Transaction: B20318 Term: 31413801 Currency: 46,40 CHF Rate: 1,063248 Mark-up: 0,58 EUR Value date: 07/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>ATM</TRNTYPE>
-                  <DTPOSTED>20230906</DTPOSTED>
-                  <TRNAMT>-322,35</TRNAMT>
-                  <FITID>2023090632235</FITID>
-                  <NAME>GKB Bergun Bergun CHE</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 05/09/2023 13:48 Transaction: B20317 Term: 77400049 Currency: 300,00 CHF Rate: 1,062843 Mark-up: 3,78 EUR Fee: 3,50 EUR Value date: 06/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230906</DTPOSTED>
-                  <TRNAMT>-22,74</TRNAMT>
-                  <FITID>202309062274</FITID>
-                  <NAME>Volg Laden Berguen BERGUEN/B CHE</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 05/09/2023 09:11 Transaction: B90316 Term: 31494463 Currency: 21,40 CHF Rate: 1,062843 Mark-up: 0,26 EUR Value date: 06/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230905</DTPOSTED>
-                  <TRNAMT>-28,03</TRNAMT>
-                  <FITID>202309052803</FITID>
-                  <NAME>Signalbahn Kasse St. Moritz CHE</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 04/09/2023 12:25 Transaction: B90315 Term: 31514543 Currency: 26,40 CHF Rate: 1,061558 Mark-up: 0,34 EUR Value date: 05/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230905</DTPOSTED>
-                  <TRNAMT>16,85</TRNAMT>
-                  <FITID>202309051685</FITID>
-                  <NAME>sprek 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K30A</BANKID>
-                     <ACCTID>K33312345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>From Oranje spaarrekening K33312345 Value date: 05/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230905</DTPOSTED>
-                  <TRNAMT>-25,00</TRNAMT>
-                  <FITID>202309052500</FITID>
-                  <NAME>sprek 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K20A</BANKID>
-                     <ACCTID>K22212345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>To Oranje spaarrekening K22212345 Value date: 05/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230905</DTPOSTED>
-                  <TRNAMT>251,34</TRNAMT>
-                  <FITID>2023090525134</FITID>
-                  <NAME>sprek 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K40A</BANKID>
-                     <ACCTID>K44412345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>From Oranje spaarrekening K44412345 Value date: 05/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230905</DTPOSTED>
-                  <TRNAMT>250,57</TRNAMT>
-                  <FITID>2023090525057</FITID>
-                  <NAME>sprek 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K20A</BANKID>
-                     <ACCTID>K22212345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>From Oranje spaarrekening K22212345 Value date: 05/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230905</DTPOSTED>
-                  <TRNAMT>-25,20</TRNAMT>
-                  <FITID>202309052520</FITID>
-                  <NAME>Acchouder 23</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL54INGB0005564520</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: Tekst3957 303651666 Periode 05.09.2023 - 05.10.2023 IBAN: NL54INGB0005564520 Reference: 052253415459 Mandate ID: 000003145358 Creditor ID: NL51ZZZ080534100001 Recurrent SEPA direct debit Value date: 05/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230903</DTPOSTED>
-                  <TRNAMT>-31,84</TRNAMT>
-                  <FITID>202309033184</FITID>
-                  <NAME>Volg Laden Berguen BERGUEN/B CHE</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 02/09/2023 14:40 Transaction: B40314 Term: 31494463 Currency: 30,00 CHF Rate: 1,061386 Mark-up: 0,38 EUR Value date: 03/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230902</DTPOSTED>
-                  <TRNAMT>-10,51</TRNAMT>
-                  <FITID>202309021051</FITID>
-                  <NAME>Volg Laden Berguen BERGUEN/B CHE</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 021 01/09/2023 16:52 Transaction: B70313 Term: 31494463 Currency: 9,90 CHF Rate: 1,061386 Mark-up: 0,13 EUR Value date: 02/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>POS</TRNTYPE>
-                  <DTPOSTED>20230901</DTPOSTED>
-                  <TRNAMT>-56,05</TRNAMT>
-                  <FITID>202309015605</FITID>
-                  <NAME>LAEDERACH CHOCOLAT. AG ST MO CHE</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Card sequence no.: 020 30/08/2023 11:34 Transaction: B40312 Term: 79F99893 Currency: 53,00 CHF Rate: 1,05754 Mark-up: 0,66 EUR Value date: 01/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>PAYMENT</TRNTYPE>
-                  <DTPOSTED>20230901</DTPOSTED>
-                  <TRNAMT>500,00</TRNAMT>
-                  <FITID>2023090150000</FITID>
-                  <NAME>sprek 2</NAME>
-                  <BANKACCTTO>
-                     <BANKID>1234K40A</BANKID>
-                     <ACCTID>K44412345</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>From Oranje spaarrekening K44412345 Value date: 01/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230901</DTPOSTED>
-                  <TRNAMT>-45,38</TRNAMT>
-                  <FITID>202309014538</FITID>
-                  <NAME>Acchouder 25</NAME>
-                  <BANKACCTTO>
-                     <BANKID>ABNANL0A</BANKID>
-                     <ACCTID>NL89ABNA0450001067</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: K60266531 INLEG PER 09-23 Acchouder 26 4196026653100000 IBAN: NL89ABNA0450001067 Reference: E2E/DJ/K60266531 /28-08-2023/PROL / Mandate ID: AEDJ20091101K60266531 Creditor ID: NL98ZZZ271112510000 Recurrent SEPA direct debit Value date: 01/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230901</DTPOSTED>
-                  <TRNAMT>-77,00</TRNAMT>
-                  <FITID>202309017700</FITID>
-                  <NAME>Acchouder 14</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL85INGB0668339063</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: kenmerk 1052508232218461 Rel.nr. Tekst3958 Periode 01-09-2023/30-09-2023 - - IBAN: NL85INGB0668339063 Reference: SDD0247572529 Mandate ID: Tekst3958001004002 Creditor ID: NL18ZZZ410952220000 Recurrent SEPA direct debit Value date: 01/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230901</DTPOSTED>
-                  <TRNAMT>-432,02</TRNAMT>
-                  <FITID>2023090143202</FITID>
-                  <NAME>Acchouder 14</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL85INGB0668339063</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: kenmerk 0052508232218459 Rel.nr. Tekst3958 Periode 01-09-2023/30-09-2023 Tekst3959 - - IBAN: NL85INGB0668339063 Reference: SDD0247572528 Mandate ID: Tekst3958001001001 Creditor ID: NL18ZZZ410952220000 Recurrent SEPA direct debit Value date: 01/09/2023</MEMO>
-               </STMTTRN>
-               <STMTTRN>
-                  <TRNTYPE>DIRECTDEBIT</TRNTYPE>
-                  <DTPOSTED>20230901</DTPOSTED>
-                  <TRNAMT>-117,04</TRNAMT>
-                  <FITID>2023090111704</FITID>
-                  <NAME>Acchouder 23</NAME>
-                  <BANKACCTTO>
-                     <BANKID>INGBNL0A</BANKID>
-                     <ACCTID>NL54INGB0005564520</ACCTID>
-                     <ACCTTYPE>CHECKING</ACCTTYPE>
-                  </BANKACCTTO>
-                  <MEMO>Name: Description: Tekst31 303258420 Periode 01.09.2023 - 01.10.2023 IBAN: NL54INGB0005564520 Reference: 054007606653 Mandate ID: 000002999162 Creditor ID: NL51ZZZ080534100001 Recurrent SEPA direct debit Value date: 01/09/2023</MEMO>
-               </STMTTRN>
-         </BANKTRANLIST>                   <!-- End list of statement trans. -->
-         <LEDGERBAL>                       <!-- Ledger balance aggregate -->
-            <BALAMT>123,54</BALAMT>
-            <DTASOF>202310022359</DTASOF>  <!-- Bal date: Last date in transactions, 11:59 pm -->
-         </LEDGERBAL>                      <!-- End ledger balance -->
+      <STMTRS>
+        <CURDEF>EUR</CURDEF>
+        <BANKACCTFROM>
+          <BANKID>INGBNL2A</BANKID>
+          <ACCTID>NL94COBA0678011583</ACCTID>
+          <ACCTTYPE>CHECKING</ACCTTYPE>
+        </BANKACCTFROM>
+        <BANKTRANLIST>
+          <DTSTART>20230901</DTSTART>
+          <DTEND>20231002</DTEND>
+          <STMTTRN>
+            <TRNTYPE>CREDIT</TRNTYPE>
+            <DTPOSTED>20231002</DTPOSTED>
+            <TRNAMT>1,00</TRNAMT>
+            <FITID>20231002100</FITID>
+            <NAME>Acchouder 20 b</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL62INGB0663707048</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: Gefeliciteerd, Gewonnen met Tekst44 XL, Trekking 30-09-2023, 201167771.3843 IBAN: NL62INGB0663707048 Reference: 201167771.3843 Value date: 02/10/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20231002</DTPOSTED>
+            <TRNAMT>-8,85</TRNAMT>
+            <FITID>20231002885</FITID>
+            <NAME>STICHTING KUMPULAN BRONBE ARNHEM</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 01/10/2023 12:34 Transaction: B40359 Term: CT168844 Value date: 02/10/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20231002</DTPOSTED>
+            <TRNAMT>-7,75</TRNAMT>
+            <FITID>20231002775</FITID>
+            <NAME>STICHTING KUMPULAN BRONBE ARNHEM</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 01/10/2023 13:36 Transaction: B20360 Term: CT168844 Value date: 02/10/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20231002</DTPOSTED>
+            <TRNAMT>-83,82</TRNAMT>
+            <FITID>202310028382</FITID>
+            <NAME>OK Amersfoort AMERSFOORT NLD</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 01/10/2023 17:20 Transaction: B00361 Term: DS8FD2 Value date: 02/10/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20231002</DTPOSTED>
+            <TRNAMT>0,48</TRNAMT>
+            <FITID>20231002048</FITID>
+            <NAME>sprek 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K20A</BANKID>
+              <ACCTID>K22212345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>From Oranje spaarrekening K22212345 Value date: 02/10/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20231002</DTPOSTED>
+            <TRNAMT>1,23</TRNAMT>
+            <FITID>20231002123</FITID>
+            <NAME>sprek 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K40A</BANKID>
+              <ACCTID>K44412345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>From Oranje spaarrekening K44412345 Value date: 02/10/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20231002</DTPOSTED>
+            <TRNAMT>91,07</TRNAMT>
+            <FITID>202310029107</FITID>
+            <NAME>sprek 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K30A</BANKID>
+              <ACCTID>K33312345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>From Oranje spaarrekening K33312345 Value date: 02/10/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20231002</DTPOSTED>
+            <TRNAMT>500,00</TRNAMT>
+            <FITID>2023100250000</FITID>
+            <NAME>sprek 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K40A</BANKID>
+              <ACCTID>K44412345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>From Oranje spaarrekening K44412345 Value date: 02/10/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20231002</DTPOSTED>
+            <TRNAMT>-77,00</TRNAMT>
+            <FITID>202310027700</FITID>
+            <NAME>Acchouder 14</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL85INGB0668339063</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: kenmerk 2052209235335692 Rel.nr. Tekst3958 Periode 01-10-2023/31-10-2023 - - IBAN: NL85INGB0668339063 Reference: SDD0250899772 Mandate ID: Tekst3958001004002 Creditor ID: NL18ZZZ410952220000 Recurrent SEPA direct debit Value date: 02/10/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20231002</DTPOSTED>
+            <TRNAMT>-432,02</TRNAMT>
+            <FITID>2023100243202</FITID>
+            <NAME>Acchouder 14</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL85INGB0668339063</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: kenmerk 3052209235335689 Rel.nr. Tekst3958 Periode 01-10-2023/31-10-2023 Tekst3959 - - IBAN: NL85INGB0668339063 Reference: SDD0250899771 Mandate ID: Tekst3958001001001 Creditor ID: NL18ZZZ410952220000 Recurrent SEPA direct debit Value date: 02/10/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20231002</DTPOSTED>
+            <TRNAMT>-45,38</TRNAMT>
+            <FITID>202310024538</FITID>
+            <NAME>Acchouder 25</NAME>
+            <BANKACCTTO>
+              <BANKID>ABNANL0A</BANKID>
+              <ACCTID>NL89ABNA0450001067</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: K60266531 INLEG PER 10-23 Acchouder 26 4196026653100000 IBAN: NL89ABNA0450001067 Reference: E2E/DJ/K60266531 /26-09-2023/PROL / Mandate ID: AEDJ20091101K60266531 Creditor ID: NL98ZZZ271112510000 Recurrent SEPA direct debit Value date: 02/10/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20231002</DTPOSTED>
+            <TRNAMT>-117,04</TRNAMT>
+            <FITID>2023100211704</FITID>
+            <NAME>Acchouder 23</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL54INGB0005564520</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: Tekst31 303258420 Periode 01.10.2023 - 01.11.2023 IBAN: NL54INGB0005564520 Reference: 052753557328 Mandate ID: 000002999162 Creditor ID: NL51ZZZ080534100001 Recurrent SEPA direct debit Value date: 02/10/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230930</DTPOSTED>
+            <TRNAMT>-19,15</TRNAMT>
+            <FITID>202309301915</FITID>
+            <NAME>Tekst18</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 29/09/2023 10:33 Transaction: B60357 Term: SGW9BK Value date: 30/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230930</DTPOSTED>
+            <TRNAMT>-47,75</TRNAMT>
+            <FITID>202309304775</FITID>
+            <NAME>Tekst5</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 29/09/2023 10:43 Transaction: B80358 Term: 80006896 Value date: 30/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230930</DTPOSTED>
+            <TRNAMT>-7,00</TRNAMT>
+            <FITID>20230930700</FITID>
+            <NAME>Bruna 0177 HOEVELAKEN NLD</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 29/09/2023 10:26 Transaction: B90356 Term: V6F4N1 Value date: 30/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>ATM</TRNTYPE>
+            <DTPOSTED>20230929</DTPOSTED>
+            <TRNAMT>-70,00</TRNAMT>
+            <FITID>202309297000</FITID>
+            <NAME>Tekst4 NLD</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 28/09/2023 11:00 Transaction: B40353 Term: 810182 Value date: 29/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230929</DTPOSTED>
+            <TRNAMT>-8,94</TRNAMT>
+            <FITID>20230929894</FITID>
+            <NAME>ALBERT HEIJN 1839 HOEVELAKEN NLD</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 28/09/2023 11:04 Transaction: B80354 Term: 090JCJ Value date: 29/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230929</DTPOSTED>
+            <TRNAMT>-52,81</TRNAMT>
+            <FITID>202309295281</FITID>
+            <NAME>Tekst14</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 28/09/2023 11:23 Transaction: B80355 Term: 3TMW01 Value date: 29/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230929</DTPOSTED>
+            <TRNAMT>-56,34</TRNAMT>
+            <FITID>202309295634</FITID>
+            <NAME>Tekst8</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 28/09/2023 10:51 Transaction: B00352 Term: ZF2711 Value date: 29/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>OTHER</TRNTYPE>
+            <DTPOSTED>20230929</DTPOSTED>
+            <TRNAMT>-40,14</TRNAMT>
+            <FITID>202309294014</FITID>
+            <NAME>Tekst3961 b.v.</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL27INGB0000026500</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: 4011698108 0051100394565016 Tekst3961 ref 4011698108 Tekst3961 IBAN: NL27INGB0000026500 Reference: 29-09-2023 12:10 0051100394565016 Value date: 29/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230929</DTPOSTED>
+            <TRNAMT>250,00</TRNAMT>
+            <FITID>2023092925000</FITID>
+            <NAME>sprek 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K40A</BANKID>
+              <ACCTID>K44412345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>From Oranje spaarrekening K44412345 Value date: 29/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230928</DTPOSTED>
+            <TRNAMT>-2,99</TRNAMT>
+            <FITID>20230928299</FITID>
+            <NAME>ALBERT HEIJN 1839 HOEVELAKEN NLD</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 27/09/2023 11:14 Transaction: B00350 Term: 090JCJ Value date: 28/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230928</DTPOSTED>
+            <TRNAMT>-14,94</TRNAMT>
+            <FITID>202309281494</FITID>
+            <NAME>EKOPLAZA AMERSFOORT AMERSFOORT</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 27/09/2023 14:41 Transaction: B90351 Term: Q817Q0 Value date: 28/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230928</DTPOSTED>
+            <TRNAMT>-2000,00</TRNAMT>
+            <FITID>20230928200000</FITID>
+            <NAME>sprek 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K40A</BANKID>
+              <ACCTID>K44412345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>To Oranje spaarrekening K44412345 Value date: 28/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230928</DTPOSTED>
+            <TRNAMT>-4225,00</TRNAMT>
+            <FITID>20230928422500</FITID>
+            <NAME>sprek 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K20A</BANKID>
+              <ACCTID>K22212345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>To Oranje spaarrekening K22212345 Value date: 28/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230928</DTPOSTED>
+            <TRNAMT>-1131,00</TRNAMT>
+            <FITID>20230928113100</FITID>
+            <NAME>Acchouder 9</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL86INGB0002445588</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: 3123738957020002 IBAN: NL86INGB0002445588 Value date: 28/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230928</DTPOSTED>
+            <TRNAMT>-230,00</TRNAMT>
+            <FITID>2023092823000</FITID>
+            <NAME>Acchouder 9</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL86INGB0002445588</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: 5123738957520014 IBAN: NL86INGB0002445588 Value date: 28/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230928</DTPOSTED>
+            <TRNAMT>-550,00</TRNAMT>
+            <FITID>2023092855000</FITID>
+            <NAME>Acchouder 9</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL86INGB0002445588</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: 1098485167520014 IBAN: NL86INGB0002445588 Value date: 28/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230928</DTPOSTED>
+            <TRNAMT>-290,00</TRNAMT>
+            <FITID>2023092829000</FITID>
+            <NAME>Tekst30 b</NAME>
+            <BANKACCTTO>
+              <BANKID>RABONL0A</BANKID>
+              <ACCTID>NL97RABO0140917969</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: 2147698/23701910939 IBAN: NL97RABO0140917969 Reference: 19012776922 Mandate ID: 2147698002 Creditor ID: NL45ZZZ593942180000 Recurrent SEPA direct debit Other party: Acchouder 7, a (Tekst41) Value date: 28/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>CREDIT</TRNTYPE>
+            <DTPOSTED>20230928</DTPOSTED>
+            <TRNAMT>4258,00</TRNAMT>
+            <FITID>20230928425800</FITID>
+            <NAME>Acchouder 9</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL86INGB0002445588</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: TERUGGAAF NR. 123738957H3002 IB/PVV 2023 (Tekst37-ZUIDERW) IBAN: NL86INGB0002445588 Reference: COAXX433852238202309251903302283430 Value date: 28/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230927</DTPOSTED>
+            <TRNAMT>-6,99</TRNAMT>
+            <FITID>20230927699</FITID>
+            <NAME>Kruidvat 7925 AMERSFOORT NLD</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 26/09/2023 10:28 Transaction: B70348 Term: JN9P56 Value date: 27/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230927</DTPOSTED>
+            <TRNAMT>-3,29</TRNAMT>
+            <FITID>20230927329</FITID>
+            <NAME>Amazing Oriental AMERSFOORT NLD</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 26/09/2023 10:21 Transaction: B10347 Term: FSL4GS Value date: 27/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230927</DTPOSTED>
+            <TRNAMT>-134,00</TRNAMT>
+            <FITID>2023092713400</FITID>
+            <NAME>DE LINDE HAARDHOUT TIEL NLD</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 26/09/2023 16:48 Transaction: B00349 Term: CT308454 Value date: 27/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230927</DTPOSTED>
+            <TRNAMT>-10447,00</TRNAMT>
+            <FITID>202309271044700</FITID>
+            <NAME>Acchouder 9</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL86INGB0002445588</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: 1098485167020001 IBAN: NL86INGB0002445588 Value date: 27/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230927</DTPOSTED>
+            <TRNAMT>-124,95</TRNAMT>
+            <FITID>2023092712495</FITID>
+            <NAME>DPG MEDIA BV</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL82INGB0009033900</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: A1000337936 - AD Compleet - 26-09-2023 - 25-12-2023 IBAN: NL82INGB0009033900 Reference: CPAY-SUB-000000686-5708371687 Mandate ID: 40-000514295 Creditor ID: NL16ZZZ100177840000 Recurrent SEPA direct debit Value date: 27/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230927</DTPOSTED>
+            <TRNAMT>1925,00</TRNAMT>
+            <FITID>20230927192500</FITID>
+            <NAME>sprek 5</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K30A</BANKID>
+              <ACCTID>K33312345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>From Oranje spaarrekening K33312345 Value date: 27/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230926</DTPOSTED>
+            <TRNAMT>-210,00</TRNAMT>
+            <FITID>2023092621000</FITID>
+            <NAME>Hr AP Twisk,Mw AMJ van der Put</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL89INGB0008461765</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: Etentje Rose Garden Barneveld IBAN: NL89INGB0008461765 Value date: 26/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230926</DTPOSTED>
+            <TRNAMT>3000,00</TRNAMT>
+            <FITID>20230926300000</FITID>
+            <NAME>a Acchouder 1a</NAME>
+            <BANKACCTTO>
+              <BANKID>BKMGNL0A</BANKID>
+              <ACCTID>NL54BKMG0378842587</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: Huishoudgeld IBAN: NL54BKMG0378842587 Value date: 26/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230926</DTPOSTED>
+            <TRNAMT>-93,84</TRNAMT>
+            <FITID>202309269384</FITID>
+            <NAME>Acchouder 13</NAME>
+            <BANKACCTTO>
+              <BANKID>DEUTNL0A</BANKID>
+              <ACCTID>NL82DEUT0319804615</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: incasso maandelijkse termijn Termijn 7 van 10 Vervaldatum 26 sep 2023 Kenmerk 95809882 Heffingjaar 2023 IBAN: NL82DEUT0319804615 Reference: K2BGBL000000104085302 Mandate ID: 10817282 Creditor ID: NL07ZZZ082053570000 Recurrent SEPA direct debit Value date: 26/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230926</DTPOSTED>
+            <TRNAMT>-4,76</TRNAMT>
+            <FITID>20230926476</FITID>
+            <NAME>Acchouder 13</NAME>
+            <BANKACCTTO>
+              <BANKID>DEUTNL0A</BANKID>
+              <ACCTID>NL82DEUT0319804615</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: incasso maandelijkse termijn Termijn 7 van 10 Vervaldatum 26 sep 2023 Kenmerk 95711394 Heffingjaar 2022 IBAN: NL82DEUT0319804615 Reference: K2BGBL000000104085301 Mandate ID: 10817282 Creditor ID: NL07ZZZ082053570000 Recurrent SEPA direct debit Value date: 26/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230926</DTPOSTED>
+            <TRNAMT>10500,00</TRNAMT>
+            <FITID>202309261050000</FITID>
+            <NAME>sprek 5</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K30A</BANKID>
+              <ACCTID>K33312345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>From Oranje spaarrekening K33312345 Value date: 26/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>CREDIT</TRNTYPE>
+            <DTPOSTED>20230925</DTPOSTED>
+            <TRNAMT>1,25</TRNAMT>
+            <FITID>20230925125</FITID>
+            <NAME>DPG MEDIA BV</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL82INGB0009033900</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: A1000337936 - AD Compleet - 26-06-2023 - 25-09-2023 IBAN: NL82INGB0009033900 Reference: CREF-SUB000000117-5706362690 Value date: 25/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>OTHER</TRNTYPE>
+            <DTPOSTED>20230925</DTPOSTED>
+            <TRNAMT>-3,72</TRNAMT>
+            <FITID>20230925372</FITID>
+            <NAME>Infomedics b</NAME>
+            <BANKACCTTO>
+              <BANKID>ABNANL0A</BANKID>
+              <ACCTID>NL34ABNA0243240058</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: 403682585799 0030015170738696 Invoice 62213626191071 Infomedics IBAN: NL34ABNA0243240058 Reference: 25-09-2023 13:30 0030015170738696 Value date: 25/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>OTHER</TRNTYPE>
+            <DTPOSTED>20230924</DTPOSTED>
+            <TRNAMT>-69,00</TRNAMT>
+            <FITID>202309246900</FITID>
+            <NAME>Rabo Betaalverzoek</NAME>
+            <BANKACCTTO>
+              <BANKID>RABONL0A</BANKID>
+              <ACCTID>NL13RABO0181015595</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: NL75RABO0141576316 0020008854723956 T.L. Tio:Tekst37 Reunie 1Okt2023 3 pp: IBAN: NL13RABO0181015595 Reference: 24-09-2023 10:59 0020008854723956 Value date: 24/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230924</DTPOSTED>
+            <TRNAMT>-3,30</TRNAMT>
+            <FITID>20230924330</FITID>
+            <NAME>Acchouder 1a</NAME>
+            <BANKACCTTO>
+              <BANKID>LPLNNL0A</BANKID>
+              <ACCTID>NL20LPLN0892606304</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: Bankkosten IBAN: NL20LPLN0892606304 Value date: 24/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230923</DTPOSTED>
+            <TRNAMT>-11,95</TRNAMT>
+            <FITID>202309231195</FITID>
+            <NAME>Tekst2</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 22/09/2023 10:17 Transaction: B40345 Term: FHD1FV Value date: 23/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230923</DTPOSTED>
+            <TRNAMT>-14,15</TRNAMT>
+            <FITID>202309231415</FITID>
+            <NAME>Tekst16 NLD</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 22/09/2023 10:10 Transaction: B60343 Term: CT689163 Value date: 23/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230923</DTPOSTED>
+            <TRNAMT>-12,85</TRNAMT>
+            <FITID>202309231285</FITID>
+            <NAME>Tekst18</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 22/09/2023 10:13 Transaction: B70344 Term: SGW9BK Value date: 23/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230923</DTPOSTED>
+            <TRNAMT>-43,60</TRNAMT>
+            <FITID>202309234360</FITID>
+            <NAME>Tekst5</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 22/09/2023 10:26 Transaction: B20346 Term: 80006896 Value date: 23/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230922</DTPOSTED>
+            <TRNAMT>-34,29</TRNAMT>
+            <FITID>202309223429</FITID>
+            <NAME>Amazing Oriental AMERSFOORT NLD</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 21/09/2023 14:11 Transaction: B50342 Term: FSL4GS Value date: 22/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230922</DTPOSTED>
+            <TRNAMT>-90,48</TRNAMT>
+            <FITID>202309229048</FITID>
+            <NAME>Tekst14</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 21/09/2023 11:51 Transaction: B10341 Term: 3TMW01 Value date: 22/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230922</DTPOSTED>
+            <TRNAMT>-35,34</TRNAMT>
+            <FITID>202309223534</FITID>
+            <NAME>Tekst8</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 21/09/2023 11:23 Transaction: B10340 Term: ZF2711 Value date: 22/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>CREDIT</TRNTYPE>
+            <DTPOSTED>20230922</DTPOSTED>
+            <TRNAMT>150,00</TRNAMT>
+            <FITID>2023092215000</FITID>
+            <NAME>Acchouder 14</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL55INGB0007024837</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: Rel.nr. Tekst3958 Kenmerk - S3Z80093 - IBAN: NL55INGB0007024837 Reference: FLITS0007584149 Value date: 22/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230922</DTPOSTED>
+            <TRNAMT>-30,00</TRNAMT>
+            <FITID>202309223000</FITID>
+            <NAME>a Acchouder 16</NAME>
+            <BANKACCTTO>
+              <BANKID>DEUTNL0A</BANKID>
+              <ACCTID>NL93DEUT0265252393</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: Kenmerk LTT-27073428. Inleg Tekst44 voor periode 1-10-2023 tm 31-10-2023 IBAN: NL93DEUT0265252393 Reference: SDD1C971C78E1FF4DBA8666BA27D3CABEA4 Mandate ID: 1H966A08681FD2A473E898D539023AC30C8 Creditor ID: NL39ZZZ302317620000 Recurrent SEPA direct debit Value date: 22/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230922</DTPOSTED>
+            <TRNAMT>-17,50</TRNAMT>
+            <FITID>202309221750</FITID>
+            <NAME>Tekst20</NAME>
+            <BANKACCTTO>
+              <BANKID>DEUTNL0A</BANKID>
+              <ACCTID>NL96DEUT0265293952</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: Kenmerk STL-11133903. Tekst46 10-10-2023. Tekst45... IBAN: NL96DEUT0265293952 Reference: SDD07572D1B3B7340B9967445991D443B3F Mandate ID: 1HA39E3FC518F6D4776B18F0AD347D20AFB Creditor ID: NL39ZZZ302317620000 Recurrent SEPA direct debit Value date: 22/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230921</DTPOSTED>
+            <TRNAMT>250,00</TRNAMT>
+            <FITID>2023092125000</FITID>
+            <NAME>sprek 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K40A</BANKID>
+              <ACCTID>K44412345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>From Oranje spaarrekening K44412345 Value date: 21/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230920</DTPOSTED>
+            <TRNAMT>-10,35</TRNAMT>
+            <FITID>202309201035</FITID>
+            <NAME>Tekst1</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 19/09/2023 13:16 Transaction: B40339 Term: CT676476 Value date: 20/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230920</DTPOSTED>
+            <TRNAMT>-93,76</TRNAMT>
+            <FITID>202309209376</FITID>
+            <NAME>Acchouder 17 b</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL41INGB0000467598</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: Tekst3948 16-09-2023 incl. 16,27 BTW, Tekst47 9010800182, kpn.com/thuisfactuur. IBAN: NL41INGB0000467598 Reference: 000011277419708 Mandate ID: M10001507394 Creditor ID: NL39Acchouder 17271247010001 Recurrent SEPA direct debit Value date: 20/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230920</DTPOSTED>
+            <TRNAMT>-33,34</TRNAMT>
+            <FITID>202309203334</FITID>
+            <NAME>Acchouder 17 - mel</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL83INGB0000325513</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: Tekst3948 13-09-2023, Tekst47 20016854861, Tekst49. IBAN: NL83INGB0000325513 Reference: 000001268794270 Mandate ID: M10015692188 Creditor ID: NL39Acchouder 17271247010001 Recurrent SEPA direct debit Value date: 20/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230919</DTPOSTED>
+            <TRNAMT>-6,98</TRNAMT>
+            <FITID>20230919698</FITID>
+            <NAME>Tekst8</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 18/09/2023 14:05 Transaction: B20338 Term: ZF2709 Value date: 19/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230918</DTPOSTED>
+            <TRNAMT>-1,50</TRNAMT>
+            <FITID>20230918150</FITID>
+            <NAME>Tekst13</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 17/09/2023 14:35 Transaction: B50337 Term: 12ZM02 Value date: 18/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230918</DTPOSTED>
+            <TRNAMT>-21,00</TRNAMT>
+            <FITID>202309182100</FITID>
+            <NAME>Acchouder 23</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL94INGB0000869000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: Tekst3948nr 136200104803, Tekst3952 1010213870 BTW 1,73, Tekst3951 13,, Termijnfactuur SEP IBAN: NL94INGB0000869000 Reference: 714500147245 Mandate ID: 000000412391 Creditor ID: NL84ZZZ050695810000 Recurrent SEPA direct debit Value date: 18/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>OTHER</TRNTYPE>
+            <DTPOSTED>20230916</DTPOSTED>
+            <TRNAMT>-2,99</TRNAMT>
+            <FITID>20230916299</FITID>
+            <NAME>Acchouder 19 b</NAME>
+            <BANKACCTTO>
+              <BANKID>ABNANL0A</BANKID>
+              <ACCTID>NL08ABNA0526650664</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: 202309161739500000000004273360026 0030015092181688 Betaling aan Tekst3950 4273360026 Tekst3950 IBAN: NL08ABNA0526650664 Reference: 16-09-2023 17:40 0030015092181688 Value date: 16/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>OTHER</TRNTYPE>
+            <DTPOSTED>20230916</DTPOSTED>
+            <TRNAMT>-2,99</TRNAMT>
+            <FITID>202309162991</FITID>
+            <NAME>Acchouder 19 b</NAME>
+            <BANKACCTTO>
+              <BANKID>ABNANL0A</BANKID>
+              <ACCTID>NL08ABNA0526650664</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: 202309161737360000000004273360026 0030015092156000 Betaling aan Tekst3950 4273360026 Tekst3950 IBAN: NL08ABNA0526650664 Reference: 16-09-2023 17:37 0030015092156000 Value date: 16/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230916</DTPOSTED>
+            <TRNAMT>-40,95</TRNAMT>
+            <FITID>202309164095</FITID>
+            <NAME>Tekst13</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 15/09/2023 10:31 Transaction: B90334 Term: F1FNQ4 Value date: 16/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>ATM</TRNTYPE>
+            <DTPOSTED>20230916</DTPOSTED>
+            <TRNAMT>-60,00</TRNAMT>
+            <FITID>202309166000</FITID>
+            <NAME>Tekst4 NLD</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 15/09/2023 10:09 Transaction: B30331 Term: 810183 Value date: 16/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230916</DTPOSTED>
+            <TRNAMT>-36,79</TRNAMT>
+            <FITID>202309163679</FITID>
+            <NAME>Tekst18</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 15/09/2023 10:22 Transaction: B00333 Term: 62RN4H Value date: 16/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230916</DTPOSTED>
+            <TRNAMT>-15,90</TRNAMT>
+            <FITID>202309161590</FITID>
+            <NAME>Tekst16 NLD</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 15/09/2023 10:13 Transaction: B00332 Term: CT689163 Value date: 16/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230916</DTPOSTED>
+            <TRNAMT>-42,60</TRNAMT>
+            <FITID>202309164260</FITID>
+            <NAME>Tekst5</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 15/09/2023 10:44 Transaction: B20336 Term: 80006896 Value date: 16/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230916</DTPOSTED>
+            <TRNAMT>-11,50</TRNAMT>
+            <FITID>202309161150</FITID>
+            <NAME>Tekst2</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 15/09/2023 10:35 Transaction: B30335 Term: FHD1FV Value date: 16/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230915</DTPOSTED>
+            <TRNAMT>-24,17</TRNAMT>
+            <FITID>202309152417</FITID>
+            <NAME>Tekst8</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 14/09/2023 11:14 Transaction: B50329 Term: ZF2710 Value date: 15/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230915</DTPOSTED>
+            <TRNAMT>-103,01</TRNAMT>
+            <FITID>2023091510301</FITID>
+            <NAME>Tekst14</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 14/09/2023 11:36 Transaction: B40330 Term: 3TMW02 Value date: 15/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230915</DTPOSTED>
+            <TRNAMT>250,00</TRNAMT>
+            <FITID>2023091525000</FITID>
+            <NAME>sprek 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K40A</BANKID>
+              <ACCTID>K44412345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>From Oranje spaarrekening K44412345 Value date: 15/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230914</DTPOSTED>
+            <TRNAMT>250,00</TRNAMT>
+            <FITID>2023091425000</FITID>
+            <NAME>sprek 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K40A</BANKID>
+              <ACCTID>K44412345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>From Oranje spaarrekening K44412345 Value date: 14/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>CREDIT</TRNTYPE>
+            <DTPOSTED>20230914</DTPOSTED>
+            <TRNAMT>1,25</TRNAMT>
+            <FITID>20230914125</FITID>
+            <NAME>DPG MEDIA BV</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL82INGB0009033900</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: A1000337936 - AD Compleet - 26-06-2023 - 25-09-2023 IBAN: NL82INGB0009033900 Reference: CREF-SUB000000128-5707239076 Value date: 14/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>OTHER</TRNTYPE>
+            <DTPOSTED>20230914</DTPOSTED>
+            <TRNAMT>-60,97</TRNAMT>
+            <FITID>202309146097</FITID>
+            <NAME>Hipay</NAME>
+            <BANKACCTTO>
+              <BANKID>2022DE0A</BANKID>
+              <ACCTID>DE75202208000000019190</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: 6RCK5GU 0140000800664223 Purchase Veepee IBAN: DE75202208000000019190 Reference: 14-09-2023 08:59 0140000800664223 Value date: 14/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230913</DTPOSTED>
+            <TRNAMT>-8,91</TRNAMT>
+            <FITID>20230913891</FITID>
+            <NAME>Tekst8</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 12/09/2023 13:36 Transaction: B60327 Term: ZF2711 Value date: 13/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230913</DTPOSTED>
+            <TRNAMT>-8,50</TRNAMT>
+            <FITID>20230913850</FITID>
+            <NAME>Tekst1</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 12/09/2023 13:41 Transaction: B00328 Term: CT676476 Value date: 13/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230913</DTPOSTED>
+            <TRNAMT>-1,50</TRNAMT>
+            <FITID>20230913150</FITID>
+            <NAME>Tekst17</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 12/09/2023 09:54 Transaction: B40326 Term: CT695964 Value date: 13/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20230913</DTPOSTED>
+            <TRNAMT>-1,10</TRNAMT>
+            <FITID>20230913110</FITID>
+            <NAME>Tekst12</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>1 aug t/m 31 aug 2023 ING BANK N.V. Value date: 13/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20230913</DTPOSTED>
+            <TRNAMT>-3,15</TRNAMT>
+            <FITID>20230913315</FITID>
+            <NAME>Tekst11</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>1 aug t/m 31 aug 2023 ING BANK N.V. Value date: 13/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230911</DTPOSTED>
+            <TRNAMT>-60,00</TRNAMT>
+            <FITID>202309116000</FITID>
+            <NAME>Aral Station 286284112 Issel DEU</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 09/09/2023 20:42 Transaction: B00324 Term: 71116357 Value date: 11/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230911</DTPOSTED>
+            <TRNAMT>-86,34</TRNAMT>
+            <FITID>202309118634</FITID>
+            <NAME>Tekst14</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 10/09/2023 15:03 Transaction: B70325 Term: 3TMW01 Value date: 11/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230910</DTPOSTED>
+            <TRNAMT>-82,04</TRNAMT>
+            <FITID>202309108204</FITID>
+            <NAME>SHELL 0898 KAPPELGRAFEN DEU</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 09/09/2023 16:11 Transaction: B40323 Term: --- Value date: 10/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230910</DTPOSTED>
+            <TRNAMT>250,00</TRNAMT>
+            <FITID>2023091025000</FITID>
+            <NAME>sprek 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K40A</BANKID>
+              <ACCTID>K44412345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>From Oranje spaarrekening K44412345 Value date: 10/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230909</DTPOSTED>
+            <TRNAMT>-200,59</TRNAMT>
+            <FITID>2023090920059</FITID>
+            <NAME>REKA FERIENDORF BERGUENBRAVU CHE</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 08/09/2023 09:15 Transaction: B70322 Term: 79G09647 Currency: 189,00 CHF Rate: 1,061345 Mark-up: 2,37 EUR Value date: 09/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230909</DTPOSTED>
+            <TRNAMT>-88,09</TRNAMT>
+            <FITID>202309098809</FITID>
+            <NAME>Cafe Preisig Konditorei CHE</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 08/09/2023 08:55 Transaction: B70321 Term: 31494309 Currency: 83,00 CHF Rate: 1,061345 Mark-up: 1,04 EUR Value date: 09/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230908</DTPOSTED>
+            <TRNAMT>-9,54</TRNAMT>
+            <FITID>20230908954</FITID>
+            <NAME>SEITZ GASTRO AG LENZERHEIDE CHE</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 07/09/2023 15:14 Transaction: B90320 Term: 32205115 Currency: 9,00 CHF Rate: 1,060121 Mark-up: 0,11 EUR Value date: 08/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230908</DTPOSTED>
+            <TRNAMT>-12,40</TRNAMT>
+            <FITID>202309081240</FITID>
+            <NAME>Volg Laden Berguen BERGUEN/B CHE</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 07/09/2023 08:49 Transaction: B90319 Term: 31494463 Currency: 11,70 CHF Rate: 1,060121 Mark-up: 0,14 EUR Value date: 08/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230908</DTPOSTED>
+            <TRNAMT>250,00</TRNAMT>
+            <FITID>2023090825000</FITID>
+            <NAME>sprek 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K40A</BANKID>
+              <ACCTID>K44412345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>From Oranje spaarrekening K44412345 Value date: 08/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>CREDIT</TRNTYPE>
+            <DTPOSTED>20230907</DTPOSTED>
+            <TRNAMT>1,25</TRNAMT>
+            <FITID>20230907125</FITID>
+            <NAME>DPG MEDIA BV</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL82INGB0009033900</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: A1000337936 - AD Compleet - 26-06-2023 - 25-09-2023 IBAN: NL82INGB0009033900 Reference: CREF-SUB000000123-5706983490 Value date: 07/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>CREDIT</TRNTYPE>
+            <DTPOSTED>20230907</DTPOSTED>
+            <TRNAMT>1,25</TRNAMT>
+            <FITID>202309071251</FITID>
+            <NAME>DPG MEDIA BV</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL82INGB0009033900</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: A1000337936 - AD Compleet - 26-06-2023 - 25-09-2023 IBAN: NL82INGB0009033900 Reference: CREF-SUB000000111-5705647084 Value date: 07/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230907</DTPOSTED>
+            <TRNAMT>-49,33</TRNAMT>
+            <FITID>202309074933</FITID>
+            <NAME>Coop1971 Davos Gr Davos Plat CHE</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 06/09/2023 14:52 Transaction: B20318 Term: 31413801 Currency: 46,40 CHF Rate: 1,063248 Mark-up: 0,58 EUR Value date: 07/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>ATM</TRNTYPE>
+            <DTPOSTED>20230906</DTPOSTED>
+            <TRNAMT>-322,35</TRNAMT>
+            <FITID>2023090632235</FITID>
+            <NAME>GKB Bergun Bergun CHE</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 05/09/2023 13:48 Transaction: B20317 Term: 77400049 Currency: 300,00 CHF Rate: 1,062843 Mark-up: 3,78 EUR Fee: 3,50 EUR Value date: 06/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230906</DTPOSTED>
+            <TRNAMT>-22,74</TRNAMT>
+            <FITID>202309062274</FITID>
+            <NAME>Volg Laden Berguen BERGUEN/B CHE</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 05/09/2023 09:11 Transaction: B90316 Term: 31494463 Currency: 21,40 CHF Rate: 1,062843 Mark-up: 0,26 EUR Value date: 06/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230905</DTPOSTED>
+            <TRNAMT>-28,03</TRNAMT>
+            <FITID>202309052803</FITID>
+            <NAME>Signalbahn Kasse St. Moritz CHE</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 04/09/2023 12:25 Transaction: B90315 Term: 31514543 Currency: 26,40 CHF Rate: 1,061558 Mark-up: 0,34 EUR Value date: 05/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230905</DTPOSTED>
+            <TRNAMT>16,85</TRNAMT>
+            <FITID>202309051685</FITID>
+            <NAME>sprek 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K30A</BANKID>
+              <ACCTID>K33312345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>From Oranje spaarrekening K33312345 Value date: 05/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230905</DTPOSTED>
+            <TRNAMT>-25,00</TRNAMT>
+            <FITID>202309052500</FITID>
+            <NAME>sprek 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K20A</BANKID>
+              <ACCTID>K22212345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>To Oranje spaarrekening K22212345 Value date: 05/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230905</DTPOSTED>
+            <TRNAMT>251,34</TRNAMT>
+            <FITID>2023090525134</FITID>
+            <NAME>sprek 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K40A</BANKID>
+              <ACCTID>K44412345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>From Oranje spaarrekening K44412345 Value date: 05/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230905</DTPOSTED>
+            <TRNAMT>250,57</TRNAMT>
+            <FITID>2023090525057</FITID>
+            <NAME>sprek 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K20A</BANKID>
+              <ACCTID>K22212345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>From Oranje spaarrekening K22212345 Value date: 05/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230905</DTPOSTED>
+            <TRNAMT>-25,20</TRNAMT>
+            <FITID>202309052520</FITID>
+            <NAME>Acchouder 23</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL54INGB0005564520</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: Tekst3957 303651666 Periode 05.09.2023 - 05.10.2023 IBAN: NL54INGB0005564520 Reference: 052253415459 Mandate ID: 000003145358 Creditor ID: NL51ZZZ080534100001 Recurrent SEPA direct debit Value date: 05/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230903</DTPOSTED>
+            <TRNAMT>-31,84</TRNAMT>
+            <FITID>202309033184</FITID>
+            <NAME>Volg Laden Berguen BERGUEN/B CHE</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 02/09/2023 14:40 Transaction: B40314 Term: 31494463 Currency: 30,00 CHF Rate: 1,061386 Mark-up: 0,38 EUR Value date: 03/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230902</DTPOSTED>
+            <TRNAMT>-10,51</TRNAMT>
+            <FITID>202309021051</FITID>
+            <NAME>Volg Laden Berguen BERGUEN/B CHE</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 021 01/09/2023 16:52 Transaction: B70313 Term: 31494463 Currency: 9,90 CHF Rate: 1,061386 Mark-up: 0,13 EUR Value date: 02/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>POS</TRNTYPE>
+            <DTPOSTED>20230901</DTPOSTED>
+            <TRNAMT>-56,05</TRNAMT>
+            <FITID>202309015605</FITID>
+            <NAME>LAEDERACH CHOCOLAT. AG ST MO CHE</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL00INGBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Card sequence no.: 020 30/08/2023 11:34 Transaction: B40312 Term: 79F99893 Currency: 53,00 CHF Rate: 1,05754 Mark-up: 0,66 EUR Value date: 01/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>PAYMENT</TRNTYPE>
+            <DTPOSTED>20230901</DTPOSTED>
+            <TRNAMT>500,00</TRNAMT>
+            <FITID>2023090150000</FITID>
+            <NAME>sprek 2</NAME>
+            <BANKACCTTO>
+              <BANKID>1234K40A</BANKID>
+              <ACCTID>K44412345</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>From Oranje spaarrekening K44412345 Value date: 01/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230901</DTPOSTED>
+            <TRNAMT>-45,38</TRNAMT>
+            <FITID>202309014538</FITID>
+            <NAME>Acchouder 25</NAME>
+            <BANKACCTTO>
+              <BANKID>ABNANL0A</BANKID>
+              <ACCTID>NL89ABNA0450001067</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: K60266531 INLEG PER 09-23 Acchouder 26 4196026653100000 IBAN: NL89ABNA0450001067 Reference: E2E/DJ/K60266531 /28-08-2023/PROL / Mandate ID: AEDJ20091101K60266531 Creditor ID: NL98ZZZ271112510000 Recurrent SEPA direct debit Value date: 01/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230901</DTPOSTED>
+            <TRNAMT>-77,00</TRNAMT>
+            <FITID>202309017700</FITID>
+            <NAME>Acchouder 14</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL85INGB0668339063</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: kenmerk 1052508232218461 Rel.nr. Tekst3958 Periode 01-09-2023/30-09-2023 - - IBAN: NL85INGB0668339063 Reference: SDD0247572529 Mandate ID: Tekst3958001004002 Creditor ID: NL18ZZZ410952220000 Recurrent SEPA direct debit Value date: 01/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230901</DTPOSTED>
+            <TRNAMT>-432,02</TRNAMT>
+            <FITID>2023090143202</FITID>
+            <NAME>Acchouder 14</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL85INGB0668339063</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: kenmerk 0052508232218459 Rel.nr. Tekst3958 Periode 01-09-2023/30-09-2023 Tekst3959 - - IBAN: NL85INGB0668339063 Reference: SDD0247572528 Mandate ID: Tekst3958001001001 Creditor ID: NL18ZZZ410952220000 Recurrent SEPA direct debit Value date: 01/09/2023</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DIRECTDEBIT</TRNTYPE>
+            <DTPOSTED>20230901</DTPOSTED>
+            <TRNAMT>-117,04</TRNAMT>
+            <FITID>2023090111704</FITID>
+            <NAME>Acchouder 23</NAME>
+            <BANKACCTTO>
+              <BANKID>INGBNL0A</BANKID>
+              <ACCTID>NL54INGB0005564520</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Name: Description: Tekst31 303258420 Periode 01.09.2023 - 01.10.2023 IBAN: NL54INGB0005564520 Reference: 054007606653 Mandate ID: 000002999162 Creditor ID: NL51ZZZ080534100001 Recurrent SEPA direct debit Value date: 01/09/2023</MEMO>
+          </STMTTRN>
+        </BANKTRANLIST>
+        <LEDGERBAL>
+          <BALAMT>123,54</BALAMT>
+          <DTASOF>202310022359</DTASOF>
+        </LEDGERBAL>
       </STMTRS>
-   </STMTTRNRS>                        <!-- End of accounts -->
+    </STMTTRNRS>
   </BANKMSGSRSV1>
 </OFX>
 <!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_ING_eng/NL94COBA0678011583_Alle_rekeningen_eng.ofx -->
-<!--  Generated on 2023-11-10 14:14:06.150355400 -->
+<!-- Generated on 2023-11-16 19:23:03.987095300 -->

@@ -1,12 +1,18 @@
 package kwee.ofxLibrary.doc;
 
-import java.nio.charset.Charset;
+/**
+ * OfxDocument: Generate OFX Document.
+ * 
+ * 
+ * @author RSH Kwee
+ *
+ */
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
@@ -30,9 +36,7 @@ import com.webcohesion.ofx4j.domain.data.common.Status.Severity;
 import com.webcohesion.ofx4j.domain.data.signon.FinancialInstitution;
 import com.webcohesion.ofx4j.domain.data.signon.SignonResponse;
 import com.webcohesion.ofx4j.domain.data.signon.SignonResponseMessageSet;
-import com.webcohesion.ofx4j.generated.CurrencyEnum;
 import com.webcohesion.ofx4j.io.AggregateMarshaller;
-import com.webcohesion.ofx4j.OFXSettings;
 
 import kwee.ofxLibrary.OfxMetaInfo;
 import kwee.ofxLibrary.OfxTransaction;
@@ -43,15 +47,9 @@ public class OfxDocument {
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
   private int m_maxdateint = 0;
-  private OFXSettings m_ofxSettings;
   private String m_Filename = "temp.ofx";
 
-  OfxDocument() {
-    initOFXSettings();
-  }
-
   public OfxDocument(List<OfxTransaction> a_OfxTransactions, Map<String, OfxMetaInfo> a_metainfo) {
-    initOFXSettings();
     m_OfxTransactions = new LinkedList<OfxTransaction>(a_OfxTransactions);
     m_metainfo = new HashMap<String, OfxMetaInfo>(a_metainfo);
     maxMetaDate();
@@ -84,7 +82,7 @@ public class OfxDocument {
       statRespons.setCurrencyCode("EUR");
       BalanceInfo ledgerbal = new BalanceInfo();
       ledgerbal.setAmount(l_metainf.getBalanceAfterTransaction());
-      ledgerbal.setAsOfDate(DateToNumeric.String_NumericToDate(l_metainf.getBalanceDate() + "2359"));
+      ledgerbal.setAsOfDate(DateToNumeric.String_NumericToDate(l_metainf.getMaxDate() + "2359"));
       statRespons.setLedgerBalance(ledgerbal);
 
       // Add transactions to the statement (e.g., deposits, withdrawals)
@@ -133,19 +131,6 @@ public class OfxDocument {
     }
   }
 
-  // Local functions
-  private void initOFXSettings() {
-    CurrencyEnum l_currency = CurrencyEnum.EUR;
-    Charset l_encoding = Charset.forName("ISO-8859-1");
-    Locale l_locale = new Locale("nl", "NL");
-
-    m_ofxSettings = OFXSettings.getInstance();
-    m_ofxSettings.setCurrency(l_currency);
-    m_ofxSettings.setEncoding(l_encoding);
-    m_ofxSettings.setLocale(l_locale);
-    m_ofxSettings.setWriteAttributesOnNewLine(true);
-  }
-
   private void maxMetaDate() {
     Set<String> l_keys = m_metainfo.keySet();
     l_keys.forEach(l_key -> {
@@ -158,7 +143,15 @@ public class OfxDocument {
   }
 
   private SignonResponseMessageSet setSigonMessage(String a_FinInsId, String a_FinInsOrg) {
-    Date now = new Date(123, 4, 24);
+    Calendar calendar = Calendar.getInstance();
+    calendar.set(Calendar.YEAR, 2023);
+    calendar.set(Calendar.MONTH, 4);
+    calendar.set(Calendar.DATE, 24);
+    calendar.set(Calendar.HOUR, 20);
+    calendar.set(Calendar.MINUTE, 0);
+    calendar.set(Calendar.SECOND, 0);
+    Date date = calendar.getTime();
+    // Date date = new Date(123, 4, 24);
 
     // SignOn Message Response
     SignonResponse signon = new SignonResponse();
@@ -170,9 +163,9 @@ public class OfxDocument {
 
     signon.setStatus(stat);
     signon.setLanguage("ENG");
-    signon.setTimestamp(now);
-    signon.setProfileLastUpdated(now);
-    signon.setAccountLastUpdated(now);
+    signon.setTimestamp(date);
+    signon.setProfileLastUpdated(date);
+    signon.setAccountLastUpdated(date);
 
     FinancialInstitution finins = new FinancialInstitution();
     finins.setOrganization(a_FinInsOrg);

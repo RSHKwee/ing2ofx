@@ -13,6 +13,8 @@ import java.util.prefs.Preferences;
  *
  */
 public class UserSetting {
+  private static UserSetting uniqueInstance;
+
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   public static String NodePrefName = "kwee.ing2ofx";
 
@@ -67,7 +69,22 @@ public class UserSetting {
    * Constructor Initialize settings
    */
 
-  public UserSetting() {
+  /**
+   * Get "access" to Singleton.
+   * 
+   * @return Instance
+   */
+  public static UserSetting getInstance() {
+    if (uniqueInstance == null) {
+      uniqueInstance = new UserSetting();
+    }
+    return uniqueInstance;
+  }
+
+  /**
+   * Private constructor and initialization.
+   */
+  private UserSetting() {
     // Navigate to the preference node that stores the user setting
     pref = userPrefs.node(NodePrefName);
 
@@ -96,10 +113,7 @@ public class UserSetting {
     m_LogDir = pref.get(c_LogDir, "");
   }
 
-  /**
-   * 
-   * @return
-   */
+  // Getters for all parameters
   public String get_GnuCashExecutable() {
     return m_GnuCashExecutable;
   }
@@ -172,6 +186,7 @@ public class UserSetting {
     return m_ClearTransactions;
   }
 
+  // Setters for all parameters.
   public void set_GnuCashExecutable(File a_GnuCashExecutable) {
     pref.put(c_GnuCashExe, a_GnuCashExecutable.getAbsolutePath());
     this.m_GnuCashExecutable = a_GnuCashExecutable.getAbsolutePath();
@@ -328,6 +343,11 @@ public class UserSetting {
     return l_UserSetting;
   }
 
+  /**
+   * Print settings, convert to a String
+   * 
+   * @return String with Setting info
+   */
   public String print() {
     String l_line = "User setting \n";
     l_line = l_line + "Name: " + pref.name() + "\n";
@@ -358,6 +378,12 @@ public class UserSetting {
   // Local functions to convert File to String and vice versa
   private String c_StringDelim = ";";
 
+  /**
+   * Convert list of Files to String for storage.
+   * 
+   * @param a_Files List of Files
+   * @return String
+   */
   private String FilesToString(File[] a_Files) {
     String l_files = "";
     for (int i = 0; i < a_Files.length; i++) {
@@ -366,6 +392,12 @@ public class UserSetting {
     return l_files;
   }
 
+  /**
+   * Convert String to Files.
+   * 
+   * @param a_Files String with list of Files.
+   * @return List of Files
+   */
   private File[] StringToFiles(String a_Files) {
     String[] ls_files = a_Files.split(c_StringDelim);
     File[] l_files = new File[ls_files.length];
@@ -376,5 +408,4 @@ public class UserSetting {
     }
     return l_files;
   }
-
 }

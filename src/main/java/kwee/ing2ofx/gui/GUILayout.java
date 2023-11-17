@@ -21,9 +21,11 @@ import java.awt.event.ItemListener;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
@@ -53,6 +55,10 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import com.webcohesion.ofx4j.OFXSettings;
+import com.webcohesion.ofx4j.generated.CurrencyEnum;
+
 import javax.swing.JCheckBoxMenuItem;
 
 import kwee.ing2ofx.main.Main;
@@ -92,7 +98,7 @@ public class GUILayout extends JPanel implements ItemListener {
   private JLabel lblProgressLabel = new JLabel(" ");;
 
   // Preferences
-  private UserSetting m_param = Main.m_param;
+  private UserSetting m_param;
   private boolean m_4Help = false;
 
   private File m_GnuCashExecutable = new File("C:/Program Files (x86)/gnucash/bin/gnucash.exe");
@@ -105,9 +111,10 @@ public class GUILayout extends JPanel implements ItemListener {
   private boolean m_AcountSeparateOFX = true;
   private boolean m_Interest = false;
   private boolean m_ClearTransactions = true;
-  private String m_Language = "nl";
+  private String m_Language = "en";
   private int i = 0;
   private JFrame m_Frame;
+  private OFXSettings m_ofxSettings;
 
   /**
    * Define GUI layout
@@ -125,6 +132,7 @@ public class GUILayout extends JPanel implements ItemListener {
   }
 
   public void do_GUILayout() {
+    m_param = UserSetting.getInstance();
     bundle.changeLanguage(m_param.get_Language());
 
     JLabel lblCSVFile = new JLabel(bundle.getMessage("SelectInpFile"));
@@ -132,15 +140,15 @@ public class GUILayout extends JPanel implements ItemListener {
     JButton btnReadTransactions = new JButton(bundle.getMessage("ReadTransactions"));
     JButton btnConvert = new JButton(bundle.getMessage("ConvertToOFX"));
 
-    btnOutputFolder.setName(bundle.getMessage("OutputFolder"));
-    btnReadTransactions.setName(bundle.getMessage("ReadTransactions"));
-    btnConvert.setName(bundle.getMessage("ConvertToOFX"));
+    btnOutputFolder.setName("OutputFolder");
+    btnReadTransactions.setName("ReadTransactions");
+    btnConvert.setName("ConvertToOFX");
 
     // GUI items menubar
     JMenuBar menuBar = new JMenuBar();
 
     JCheckBoxMenuItem chckbxAcountSeparateOFX = new JCheckBoxMenuItem(bundle.getMessage("AccountsInSeparateOFXFiles"));
-    chckbxAcountSeparateOFX.setName(bundle.getMessage("AccountsInSeparateOFXFiles"));
+    chckbxAcountSeparateOFX.setName("AccountsInSeparateOFXFiles");
 
     JMenu mnGnuCashExe = new JMenu(bundle.getMessage("GnuCashExecutable"));
     JMenu mnSynonym = new JMenu(bundle.getMessage("SynonymFile"));
@@ -148,7 +156,7 @@ public class GUILayout extends JPanel implements ItemListener {
     JMenuItem mntmLanguages = new JMenuItem(bundle.getMessage("Languages"));
 
     JCheckBox chckbxInterest = new JCheckBox(bundle.getMessage("OnlyInterestTransaction"));
-    chckbxInterest.setName(bundle.getMessage("OnlyInterestTransaction"));
+    chckbxInterest.setName("OnlyInterestTransaction");
 
     JTextField txtOutputFilename = new JTextField();
     JLabel lblOutputFolder = new JLabel("");
@@ -185,6 +193,7 @@ public class GUILayout extends JPanel implements ItemListener {
     m_LogDir = m_param.get_LogDir();
     m_ClearTransactions = m_param.is_ClearTransactions();
 
+    initOFXSettings();
     LOGGER.log(Level.CONFIG, m_param.print());
 
     // Define Layout
@@ -212,7 +221,7 @@ public class GUILayout extends JPanel implements ItemListener {
 
     // Savings transactions
     JCheckBoxMenuItem chcmnkbxInterest = new JCheckBoxMenuItem(bundle.getMessage("OnlyInterestTransaction"));
-    chcmnkbxInterest.setName(bundle.getMessage("OnlyInterestTransaction"));
+    chcmnkbxInterest.setName("OnlyInterestTransaction");
     chcmnkbxInterest.setHorizontalAlignment(SwingConstants.LEFT);
     chcmnkbxInterest.setSelected(m_Interest);
     chcmnkbxInterest.addActionListener(new ActionListener() {
@@ -263,11 +272,12 @@ public class GUILayout extends JPanel implements ItemListener {
       l_Synonyme = m_Synonym_file.getAbsolutePath();
     }
     JMenuItem mntmSynonym = new JMenuItem(l_Synonyme);
-    mntmSynonym.setName(bundle.getMessage("SynonymFile"));
+    mntmSynonym.setName("SynonymFile");
     mntmSynonym.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         JFileChooser fileChooser = new JFileChooser(m_Synonym_file);
+        fileChooser.setName("SynonymFile");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fileChooser.setSelectedFile(m_Synonym_file);
         FileFilter filter = new FileNameExtensionFilter("TXT File", "txt");
@@ -305,8 +315,10 @@ public class GUILayout extends JPanel implements ItemListener {
           m_Language = language;
           m_param.set_Language(m_Language);
           m_param.save();
+
           bundle.changeLanguage(language);
           restartGUI();
+          setLocale(m_Language);
         }
       }
     });
@@ -414,7 +426,7 @@ public class GUILayout extends JPanel implements ItemListener {
 
     // Option Preferences
     JMenuItem mntmPreferences = new JMenuItem(bundle.getMessage("Preferences"));
-    mntmPreferences.setName(bundle.getMessage("Preferences"));
+    mntmPreferences.setName("Preferences");
     mntmPreferences.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -513,19 +525,19 @@ public class GUILayout extends JPanel implements ItemListener {
     panel.add(lblCSVFile, "cell 1 0");
 
     JCheckBox chckbxClearTransactons = new JCheckBox(bundle.getMessage("ClearTransactions"));
-    chckbxClearTransactons.setName(bundle.getMessage("ClearTransactions"));
+    chckbxClearTransactons.setName("ClearTransactions");
 
     JButton btnCSVFile = new JButton(bundle.getMessage("CSVXMLFile"));
 
-    chckbxClearTransactons.setName(bundle.getMessage("ClearTransactions"));
-    btnCSVFile.setName("CSV/XML File");
+    chckbxClearTransactons.setName("ClearTransactions");
+    btnCSVFile.setName("CSVXMLFile");
     btnCSVFile.setHorizontalAlignment(SwingConstants.RIGHT);
     btnCSVFile.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        FileFilter filter = new FileNameExtensionFilter(bundle.getMessage("CSVXMLFile"), "csv", "xml");
+        FileFilter filter = new FileNameExtensionFilter("CSVXMLFile", "csv", "xml");
         fileChooser.setFileFilter(filter);
 
         File[] l_files = null;
@@ -702,16 +714,42 @@ public class GUILayout extends JPanel implements ItemListener {
     splitPane.add(bottomHalf);
   }
 
-  private void restartGUI() {
-    // Dispose of the current GUI window or frame
-    m_Frame.dispose();
-
-    // Recreate the main GUI window or frame
-    m_Frame = Main.createAndShowGUI();
-  }
-
   @Override
   public void itemStateChanged(ItemEvent e) {
     LOGGER.log(Level.INFO, "itemStateChanged");
   }
+
+  // private functions
+  private void restartGUI() {
+    m_Frame.dispose(); // Dispose of the current GUI window or frame
+    m_Frame = Main.createAndShowGUI(); // Recreate the main GUI window or frame
+  }
+
+  private void initOFXSettings() {
+    CurrencyEnum l_currency = CurrencyEnum.EUR;
+    Charset l_encoding = Charset.forName("ISO-8859-1");
+    Locale l_locale = new Locale("nl", "NL"); // Decimal comma
+    if (m_Language.equalsIgnoreCase("nl")) {
+      l_locale = new Locale("nl", "NL"); // Decimal comma
+    } else if (m_Language.equalsIgnoreCase("en")) {
+      l_locale = new Locale("en", "US"); // Decimal point
+    }
+
+    m_ofxSettings = OFXSettings.getInstance();
+    m_ofxSettings.setCurrency(l_currency);
+    m_ofxSettings.setEncoding(l_encoding);
+    m_ofxSettings.setLocale(l_locale);
+    m_ofxSettings.setWriteAttributesOnNewLine(true);
+  }
+
+  private void setLocale(String a_lang) {
+    Locale l_locale = new Locale("nl", "NL"); // Decimal comma
+    if (a_lang.equalsIgnoreCase("nl")) {
+      l_locale = new Locale("nl", "NL"); // Decimal comma
+    } else if (m_Language.equalsIgnoreCase("en")) {
+      l_locale = new Locale("en", "US"); // Decimal point
+    }
+    m_ofxSettings.setLocale(l_locale);
+  }
+
 }

@@ -18,8 +18,8 @@ import javax.swing.JFrame;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import junit.framework.TestCase;
+
 import kwee.ing2ofx.main.Main;
 import kwee.ing2ofx.main.UserSetting;
 import kwee.library.FileUtils;
@@ -38,7 +38,8 @@ public class GUILayoutTest extends TestCase {
   private String c_IngTransEngFile = "Alle_rekeningen_eng.csv";
   private String c_IngSavingEngTransFile = "Alle_spaarrekeningen_eng.csv";
 
-  private UserSetting m_OrgParam = new UserSetting();
+  private UserSetting m_OrgParam;
+  private UserSetting m_param = UserSetting.getInstance();
   private TestFunctions m_Functions = new TestFunctions();
   private String m_OutputDir;
 
@@ -64,23 +65,24 @@ public class GUILayoutTest extends TestCase {
   @Before
   public void setUp() throws Exception {
     super.setUp();
+    m_param = UserSetting.getInstance();
 
     // Parameters
-    m_OrgParam = Main.m_param.copy();
-    Main.m_param.set_ClearTransactions(true);
+    m_OrgParam = m_param.copy();
+    m_param.set_ClearTransactions(true);
 
-    Main.m_param.set_AcountSeparateOFX(true);
-    Main.m_param.set_ConvertDecimalSeparator(false);
-    Main.m_param.set_ConvertDateFormat(false);
-    Main.m_param.set_SeparatorComma(false);
-    Main.m_param.set_Java(true);
-    Main.m_param.set_Level(Level.INFO);
-    Main.m_param.set_Language("en");
+    m_param.set_AcountSeparateOFX(true);
+    m_param.set_ConvertDecimalSeparator(false);
+    m_param.set_ConvertDateFormat(false);
+    m_param.set_SeparatorComma(false);
+    m_param.set_Java(true);
+    m_param.set_Level(Level.INFO);
+    m_param.set_Language("nl");
 
     File ll_file = m_Functions.GetResourceFile(c_SynonymFile);
     m_OutputDir = ll_file.getParent();
-    Main.m_param.set_Synonym_file(new File(c_SynonymFile));
-    Main.m_param.save();
+    m_param.set_Synonym_file(new File(c_SynonymFile));
+    m_param.save();
 
     // Launch your application or obtain a reference to an existing Swing frame
     ApplicationLauncher.application(kwee.ing2ofx.main.Main.class).start();
@@ -109,8 +111,8 @@ public class GUILayoutTest extends TestCase {
   public void tearDown() throws Exception {
     super.tearDown();
 
-    Main.m_param = m_OrgParam.copy();
-    Main.m_param.save();
+    m_param = m_OrgParam.copy();
+    m_param.save();
     this.frame.cleanUp();
     TestLogger.close();
   }
@@ -123,26 +125,26 @@ public class GUILayoutTest extends TestCase {
     LOGGER.log(Level.INFO, "testGUILayoutING");
     FileUtils.checkCreateDirectory(m_OutputDir + "/" + m_OfxEnkelING);
 
-    frame.button("CSV/XML File").click();
+    frame.button("CSVXMLFile").click();
     JFileChooserFixture fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
     fileChooser.fileNameTextBox().setText(c_IngTransFile); // Set the desired file name
     fileChooser.approve();
-    frame.button("Read transactions").click();
+    frame.button("ReadTransactions").click();
 
-    frame.button("Output folder").click();
+    frame.button("OutputFolder").click();
     fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir + "/" + m_OfxEnkelING + "/"));
     fileChooser.approve();
 
-    frame.button("Convert to OFX").click();
+    frame.button("ConvertToOFX").click();
 
     // Evaluate results:
     synchronized (lock) {
       String logOutput = TestLogger.getOutput();
 
-      assertTrue(logOutput.contains("Transactions read: 124, after doubles removed: 124"));
-      assertTrue(logOutput.contains("Grand total of transactions read: 124"));
+      assertTrue(logOutput.contains("Gelezen transacties: 124, na verwijdering doublures: 124"));
+      assertTrue(logOutput.contains("Eindtotaal van gelezen transacties: 124"));
 
       AssertXmlFile(m_OfxEnkelING, "NL54BKMG0378842587_Alle_rekeningen.ofx");
       AssertXmlFile(m_OfxEnkelING, "NL90KNAB0445266309_Alle_rekeningen.ofx");
@@ -161,26 +163,26 @@ public class GUILayoutTest extends TestCase {
     LOGGER.log(Level.INFO, "testGUILayoutINGSaving");
     FileUtils.checkCreateDirectory(m_OutputDir + "/" + m_OfxEnkelINGSaving);
 
-    frame.button("Output folder").click();
+    frame.button("OutputFolder").click();
     JFileChooserFixture fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir + "/" + m_OfxEnkelINGSaving));
     fileChooser.approve();
 
-    frame.button("CSV/XML File").click();
+    frame.button("CSVXMLFile").click();
     fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
     fileChooser.fileNameTextBox().setText(c_IngSavingTransFile); // Set the desired file name
     fileChooser.approve();
-    frame.button("Read transactions").click();
+    frame.button("ReadTransactions").click();
 
-    frame.button("Convert to OFX").click();
+    frame.button("ConvertToOFX").click();
 
     // Evaluate results
     synchronized (lock) {
       String logOutput = TestLogger.getOutput();
 
-      assertTrue(logOutput.contains("Transactions read: 24, after doubles removed: 24"));
-      assertTrue(logOutput.contains("Grand total of transactions read: 24"));
+      assertTrue(logOutput.contains("Gelezen transacties: 24, na verwijdering doublures: 24"));
+      assertTrue(logOutput.contains("Eindtotaal van gelezen transacties: 24"));
 
       AssertXmlFile(m_OfxEnkelINGSaving, "NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx");
       AssertXmlFile(m_OfxEnkelINGSaving, "NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx");
@@ -201,26 +203,26 @@ public class GUILayoutTest extends TestCase {
     LOGGER.log(Level.INFO, "testGUILayoutINGEng");
     FileUtils.checkCreateDirectory(m_OutputDir + "/" + m_OfxEnkelEngING);
 
-    frame.button("CSV/XML File").click();
+    frame.button("CSVXMLFile").click();
     JFileChooserFixture fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
     fileChooser.fileNameTextBox().setText(c_IngTransEngFile); // Set the desired file name
     fileChooser.approve();
-    frame.button("Read transactions").click();
+    frame.button("ReadTransactions").click();
 
-    frame.button("Output folder").click();
+    frame.button("OutputFolder").click();
     fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir + "/" + m_OfxEnkelEngING + "/"));
     fileChooser.approve();
 
-    frame.button("Convert to OFX").click();
+    frame.button("ConvertToOFX").click();
 
     // Evaluate results:
     synchronized (lock) {
       String logOutput = TestLogger.getOutput();
 
-      assertTrue(logOutput.contains("Transactions read: 151, after doubles removed: 151"));
-      assertTrue(logOutput.contains("Grand total of transactions read: 151"));
+      assertTrue(logOutput.contains("Gelezen transacties: 151, na verwijdering doublures: 151"));
+      assertTrue(logOutput.contains("Eindtotaal van gelezen transacties: 151"));
 
       AssertXmlFile(m_OfxEnkelEngING, "NL54BKMG0378842587_Alle_rekeningen_eng.ofx");
       AssertXmlFile(m_OfxEnkelEngING, "NL90KNAB0445266309_Alle_rekeningen_eng.ofx");
@@ -239,26 +241,26 @@ public class GUILayoutTest extends TestCase {
     LOGGER.log(Level.INFO, "testGUILayoutINGSavingEng");
     FileUtils.checkCreateDirectory(m_OutputDir + "/" + m_OfxEnkelEngINGSaving);
 
-    frame.button("Output folder").click();
+    frame.button("OutputFolder").click();
     JFileChooserFixture fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir + "/" + m_OfxEnkelEngINGSaving));
     fileChooser.approve();
 
-    frame.button("CSV/XML File").click();
+    frame.button("CSVXMLFile").click();
     fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
     fileChooser.fileNameTextBox().setText(c_IngSavingEngTransFile); // Set the desired file name
     fileChooser.approve();
-    frame.button("Read transactions").click();
+    frame.button("ReadTransactions").click();
 
-    frame.button("Convert to OFX").click();
+    frame.button("ConvertToOFX").click();
 
     // Evaluate results
     synchronized (lock) {
       String logOutput = TestLogger.getOutput();
 
-      assertTrue(logOutput.contains("Transactions read: 41, after doubles removed: 41"));
-      assertTrue(logOutput.contains("Grand total of transactions read: 41"));
+      assertTrue(logOutput.contains("Gelezen transacties: 41, na verwijdering doublures: 41"));
+      assertTrue(logOutput.contains("Eindtotaal van gelezen transacties: 41"));
 
       AssertXmlFile(m_OfxEnkelEngINGSaving, "NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen_eng.ofx");
       AssertXmlFile(m_OfxEnkelEngINGSaving, "NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen_eng.ofx");
@@ -279,26 +281,26 @@ public class GUILayoutTest extends TestCase {
     LOGGER.log(Level.INFO, "testGUILayoutSNS");
     FileUtils.checkCreateDirectory(m_OutputDir + "/" + m_OfxEnkelSNS);
 
-    frame.button("Output folder").click();
+    frame.button("OutputFolder").click();
     JFileChooserFixture fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir + "/" + m_OfxEnkelSNS));
     fileChooser.approve();
 
-    frame.button("CSV/XML File").click();
+    frame.button("CSVXMLFile").click();
     fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
     fileChooser.fileNameTextBox().setText(c_SNSTransFile); // Set the desired file name
     fileChooser.approve();
-    frame.button("Read transactions").click();
+    frame.button("ReadTransactions").click();
 
-    frame.button("Convert to OFX").click();
+    frame.button("ConvertToOFX").click();
 
     // Evaluate results:
     synchronized (lock) {
       String logOutput = TestLogger.getOutput();
 
-      assertTrue(logOutput.contains("Transactions read: 9, after doubles removed: 9"));
-      assertTrue(logOutput.contains("Grand total of transactions read: 9"));
+      assertTrue(logOutput.contains("Gelezen transacties: 9, na verwijdering doublures: 9"));
+      assertTrue(logOutput.contains("Eindtotaal van gelezen transacties: 9"));
 
       AssertXmlFile(m_OfxEnkelSNS, "NL20LPLN0892606304_transactie-historie.ofx");
       AssertXmlFile(m_OfxEnkelSNS, "NL38RABO0192584529_transactie-historie.ofx");
@@ -317,12 +319,12 @@ public class GUILayoutTest extends TestCase {
     LOGGER.log(Level.INFO, "testGUILayoutCombine");
     FileUtils.checkCreateDirectory(m_OutputDir + "/" + m_OfxCombine);
 
-    frame.button("Output folder").click();
+    frame.button("OutputFolder").click();
     JFileChooserFixture fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir + "/" + m_OfxCombine));
     fileChooser.approve();
 
-    frame.button("CSV/XML File").click();
+    frame.button("CSVXMLFile").click();
     fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
 
@@ -332,16 +334,16 @@ public class GUILayoutTest extends TestCase {
     File file3 = new File(m_OutputDir + "/" + c_SNSTransFile);
     fileChooser.selectFiles(file1, file2, file3);
     fileChooser.approve();
-    frame.button("Read transactions").click();
+    frame.button("ReadTransactions").click();
 
-    frame.button("Convert to OFX").click();
+    frame.button("ConvertToOFX").click();
 
     // Evaluate results:
     synchronized (lock) {
       String logOutput = TestLogger.getOutput();
 
-      assertTrue(logOutput.contains("Transactions read: 157, after doubles removed: 157"));
-      assertTrue(logOutput.contains("Grand total of transactions read: 157"));
+      assertTrue(logOutput.contains("Gelezen transacties: 157, na verwijdering doublures: 157"));
+      assertTrue(logOutput.contains("Eindtotaal van gelezen transacties: 157"));
 
       AssertXmlFile(m_OfxCombine, "NL20LPLN0892606304_transactie-historie.ofx");
       AssertXmlFile(m_OfxCombine, "NL38RABO0192584529_transactie-historie.ofx");
@@ -370,18 +372,18 @@ public class GUILayoutTest extends TestCase {
     FileUtils.checkCreateDirectory(m_OutputDir + "/" + m_OfxCombineSyn);
 
     // Define Synonym file
-    frame.menuItem("Synonym file").click();
+    frame.menuItem("SynonymFile").click();
     JFileChooserFixture fileChoosersyn = frame.fileChooser();
     fileChoosersyn.setCurrentDirectory(new File(m_OutputDir));
     fileChoosersyn.fileNameTextBox().setText(c_SynonymFile);
     fileChoosersyn.approve();
 
-    frame.button("Output folder").click();
+    frame.button("OutputFolder").click();
     JFileChooserFixture fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir + "/" + m_OfxCombineSyn));
     fileChooser.approve();
 
-    frame.button("CSV/XML File").click();
+    frame.button("CSVXMLFile").click();
     fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
 
@@ -391,16 +393,16 @@ public class GUILayoutTest extends TestCase {
     File file3 = new File(m_OutputDir + "/" + c_SNSTransFile);
     fileChooser.selectFiles(file1, file2, file3);
     fileChooser.approve();
-    frame.button("Read transactions").click();
+    frame.button("ReadTransactions").click();
 
-    frame.button("Convert to OFX").click();
+    frame.button("ConvertToOFX").click();
 
     // Evaluate results
     synchronized (lock) {
       String logOutput = TestLogger.getOutput();
 
-      assertTrue(logOutput.contains("Transactions read: 157, after doubles removed: 157"));
-      assertTrue(logOutput.contains("Grand total of transactions read: 157"));
+      assertTrue(logOutput.contains("Gelezen transacties: 157, na verwijdering doublures: 157"));
+      assertTrue(logOutput.contains("Eindtotaal van gelezen transacties: 157"));
 
       AssertXmlFile(m_OfxCombineSyn, "Aap_K222-12345_Alle_spaarrekeningen.ofx");
       AssertXmlFile(m_OfxCombineSyn, "Aap_NL45TRIO0953178943_transactie-historie.ofx");
@@ -427,15 +429,15 @@ public class GUILayoutTest extends TestCase {
     LOGGER.log(Level.INFO, "testGUILayoutDouble");
     FileUtils.checkCreateDirectory(m_OutputDir + "/" + m_OfxCombineDouble);
 
-    JCheckBoxFixture checkBox = frame.checkBox("Clear transactions");
+    JCheckBoxFixture checkBox = frame.checkBox("ClearTransactions");
     checkBox.uncheck();
 
-    frame.button("Output folder").click();
+    frame.button("OutputFolder").click();
     JFileChooserFixture fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir + "/" + m_OfxCombineDouble));
     fileChooser.approve();
 
-    frame.button("CSV/XML File").click();
+    frame.button("CSVXMLFile").click();
     fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
     // Select multiple files
@@ -444,10 +446,10 @@ public class GUILayoutTest extends TestCase {
     File file3 = new File(m_OutputDir + "/" + c_SNSTransFile);
     fileChooser.selectFiles(file1, file2, file3);
     fileChooser.approve();
-    frame.button("Read transactions").click();
+    frame.button("ReadTransactions").click();
 
     LOGGER.log(Level.INFO, "Read again (double).....");
-    frame.button("CSV/XML File").click();
+    frame.button("CSVXMLFile").click();
     fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
 
@@ -456,17 +458,17 @@ public class GUILayoutTest extends TestCase {
     file3 = new File(m_OutputDir + "/" + c_SNSTransFile);
     fileChooser.selectFiles(file1, file2, file3);
     fileChooser.approve();
-    frame.button("Read transactions").click();
+    frame.button("ReadTransactions").click();
 
-    frame.button("Convert to OFX").click();
+    frame.button("ConvertToOFX").click();
 
     // Evaluate results:
     synchronized (lock) {
       // Logmessages
       String logOutput = TestLogger.getOutput();
-      assertTrue(logOutput.contains("Transactions read: 157, after doubles removed: 157"));
-      assertTrue(logOutput.contains("Transactions read: 157, after doubles removed: 0"));
-      assertTrue(logOutput.contains("Grand total of transactions read: 157"));
+      assertTrue(logOutput.contains("Gelezen transacties: 157, na verwijdering doublures: 157"));
+      assertTrue(logOutput.contains("Gelezen transacties: 157, na verwijdering doublures: 0"));
+      assertTrue(logOutput.contains("Eindtotaal van gelezen transacties: 157"));
 
       // Generated files
       AssertXmlFile(m_OfxCombineDouble, "NL20LPLN0892606304_transactie-historie.ofx");
@@ -497,45 +499,45 @@ public class GUILayoutTest extends TestCase {
     // Combine multiple input files
     FileUtils.checkCreateDirectory(m_OutputDir + "/" + m_OfxCombineOneByOne);
 
-    JCheckBoxFixture checkBox = frame.checkBox("Clear transactions");
+    JCheckBoxFixture checkBox = frame.checkBox("ClearTransactions");
     checkBox.uncheck();
 
-    frame.button("Output folder").click();
+    frame.button("OutputFolder").click();
     JFileChooserFixture fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir + "/" + m_OfxCombineOneByOne));
     fileChooser.approve();
 
-    frame.button("CSV/XML File").click();
+    frame.button("CSVXMLFile").click();
     fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
     fileChooser.fileNameTextBox().setText(c_IngTransFile);
     fileChooser.approve();
-    frame.button("Read transactions").click();
+    frame.button("ReadTransactions").click();
 
-    frame.button("CSV/XML File").click();
+    frame.button("CSVXMLFile").click();
     fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
     fileChooser.fileNameTextBox().setText(c_IngSavingTransFile);
     fileChooser.approve();
-    frame.button("Read transactions").click();
+    frame.button("ReadTransactions").click();
 
-    frame.button("CSV/XML File").click();
+    frame.button("CSVXMLFile").click();
     fileChooser = frame.fileChooser();
     fileChooser.setCurrentDirectory(new File(m_OutputDir));
     fileChooser.fileNameTextBox().setText(c_SNSTransFile);
     fileChooser.approve();
-    frame.button("Read transactions").click();
+    frame.button("ReadTransactions").click();
 
-    frame.button("Convert to OFX").click();
+    frame.button("ConvertToOFX").click();
 
     // Evaluate results:
     synchronized (lock) {
       String logOutput = TestLogger.getOutput();
 
-      assertTrue(logOutput.contains("Transactions read: 124, after doubles removed: 124"));
-      assertTrue(logOutput.contains("Transactions read: 24, after doubles removed: 24"));
-      assertTrue(logOutput.contains("Transactions read: 9, after doubles removed: 9"));
-      assertTrue(logOutput.contains("Grand total of transactions read: 157"));
+      assertTrue(logOutput.contains("Gelezen transacties: 124, na verwijdering doublures: 124"));
+      assertTrue(logOutput.contains("Gelezen transacties: 24, na verwijdering doublures: 24"));
+      assertTrue(logOutput.contains("Gelezen transacties: 9, na verwijdering doublures: 9"));
+      assertTrue(logOutput.contains("Eindtotaal van gelezen transacties: 157"));
 
       AssertXmlFile(m_OfxCombineOneByOne, "NL20LPLN0892606304_transactie-historie.ofx");
       AssertXmlFile(m_OfxCombineOneByOne, "NL38RABO0192584529_transactie-historie.ofx");
