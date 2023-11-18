@@ -150,7 +150,7 @@ public class IngSavingTransaction extends CsvToBean<Object> {
         }
       }
     }
-    LOGGER.log(Level.INFO, datum + " -> " + dDatum);
+    LOGGER.log(Level.FINE, datum + " -> " + dDatum);
   }
 
   public void setOmschrijving(String omschrijving) {

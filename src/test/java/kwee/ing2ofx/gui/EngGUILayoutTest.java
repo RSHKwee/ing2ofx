@@ -26,7 +26,7 @@ import kwee.library.FileUtils;
 import kwee.logger.TestLogger;
 import kwee.testlibrary.TestFunctions;
 
-public class GUILayoutTestEng extends TestCase {
+public class EngGUILayoutTest extends TestCase {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private FrameFixture frame;
   Object lock = GUILayout.lock;
