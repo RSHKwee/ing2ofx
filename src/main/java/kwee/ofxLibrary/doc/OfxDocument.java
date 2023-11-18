@@ -125,7 +125,7 @@ public class OfxDocument {
       marshaller.setConversion(new Ing2OfxStringConversion("CET"));
       marshaller.marshal(ofx, writer);
       writer.close();
-      LOGGER.log(Level.INFO, "Document created.");
+      LOGGER.log(Level.INFO, "Document created: " + m_Filename);
     } catch (Exception e) {
       e.printStackTrace();
     }
