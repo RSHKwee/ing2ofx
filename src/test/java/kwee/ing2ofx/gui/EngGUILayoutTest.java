@@ -38,7 +38,6 @@ public class EngGUILayoutTest extends TestCase {
   private String c_IngTransEngFile = "Alle_rekeningen_eng.csv";
   private String c_IngSavingEngTransFile = "Alle_spaarrekeningen_eng.csv";
 
-  private UserSetting m_OrgParam;
   private UserSetting m_param = UserSetting.getInstance();
   private TestFunctions m_Functions = new TestFunctions();
   private String m_OutputDir;
@@ -68,7 +67,7 @@ public class EngGUILayoutTest extends TestCase {
     m_param = UserSetting.getInstance();
 
     // Parameters
-    m_OrgParam = m_param.copy();
+    m_param.freeze();
     m_param.set_ClearTransactions(true);
 
     m_param.set_AcountSeparateOFX(true);
@@ -111,7 +110,8 @@ public class EngGUILayoutTest extends TestCase {
   public void tearDown() throws Exception {
     super.tearDown();
 
-    m_param = m_OrgParam.copy();
+    m_param.unfreeze();
+    ;
     m_param.save();
     this.frame.cleanUp();
     TestLogger.close();

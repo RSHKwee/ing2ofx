@@ -14,6 +14,7 @@ import java.util.prefs.Preferences;
  */
 public class UserSetting {
   private static UserSetting uniqueInstance;
+  private static UserSetting freezeInstance = null;
 
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   public static String NodePrefName = "kwee.ing2ofx";
@@ -317,30 +318,63 @@ public class UserSetting {
    * 
    * @return Copy of UserSetings
    */
-  public UserSetting copy() {
-    UserSetting l_UserSetting = new UserSetting();
-    l_UserSetting.set_toDisk(m_toDisk);
+  public void freeze() {
+    if (freezeInstance == null) {
+      freezeInstance = new UserSetting();
+      freezeInstance.set_toDisk(m_toDisk);
 
-    l_UserSetting.set_AcountSeparateOFX(m_AcountSeparateOFX);
-    l_UserSetting.set_ConvertDecimalSeparator(m_ConvertDecimalSeparator);
-    l_UserSetting.set_ConvertDateFormat(m_ConvertDateFormat);
-    l_UserSetting.set_SeparatorComma(m_SeparatorComma);
-    l_UserSetting.set_Interest(m_Interest);
-    l_UserSetting.set_Savings(m_Savings);
-    l_UserSetting.set_ConfirmOnExit(m_ConfirmOnExit);
-    l_UserSetting.set_Java(m_Java);
-    l_UserSetting.set_ClearTransactions(m_ClearTransactions);
-    l_UserSetting.set_Language(m_Language);
+      freezeInstance.set_AcountSeparateOFX(m_AcountSeparateOFX);
+      freezeInstance.set_ConvertDecimalSeparator(m_ConvertDecimalSeparator);
+      freezeInstance.set_ConvertDateFormat(m_ConvertDateFormat);
+      freezeInstance.set_SeparatorComma(m_SeparatorComma);
+      freezeInstance.set_Interest(m_Interest);
+      freezeInstance.set_Savings(m_Savings);
+      freezeInstance.set_ConfirmOnExit(m_ConfirmOnExit);
+      freezeInstance.set_Java(m_Java);
+      freezeInstance.set_ClearTransactions(m_ClearTransactions);
+      freezeInstance.set_Language(m_Language);
 
-    l_UserSetting.set_LookAndFeel(m_LookAndFeel);
-    l_UserSetting.set_GnuCashExecutable(new File(m_GnuCashExecutable));
-    l_UserSetting.set_Synonym_file(new File(m_Synonym_file));
-    l_UserSetting.set_OutputFolder(m_OutputFolder);
+      freezeInstance.set_LookAndFeel(m_LookAndFeel);
+      freezeInstance.set_GnuCashExecutable(new File(m_GnuCashExecutable));
+      freezeInstance.set_Synonym_file(new File(m_Synonym_file));
+      freezeInstance.set_OutputFolder(m_OutputFolder);
 
-    l_UserSetting.set_CsvFiles(m_CsvFiles);
-    l_UserSetting.set_Level(Level.parse(m_Level));
-    l_UserSetting.set_LogDir(m_LogDir);
-    return l_UserSetting;
+      freezeInstance.set_CsvFiles(m_CsvFiles);
+      freezeInstance.set_Level(Level.parse(m_Level));
+      freezeInstance.set_LogDir(m_LogDir);
+    } else {
+
+    }
+  }
+
+  public void unfreeze() {
+    if (freezeInstance != null) {
+      uniqueInstance.set_toDisk(m_toDisk);
+
+      uniqueInstance.set_AcountSeparateOFX(freezeInstance.is_AcountSeparateOFX());
+      uniqueInstance.set_ConvertDecimalSeparator(freezeInstance.is_ConvertDecimalSeparator());
+      uniqueInstance.set_ConvertDateFormat(freezeInstance.is_ConvertDateFormat());
+      uniqueInstance.set_SeparatorComma(freezeInstance.is_SeparatorComma());
+      uniqueInstance.set_Interest(freezeInstance.is_Interest());
+      uniqueInstance.set_Savings(freezeInstance.is_Savings());
+      uniqueInstance.set_ConfirmOnExit(freezeInstance.is_ConfirmOnExit());
+      uniqueInstance.set_Java(freezeInstance.is_Java());
+      uniqueInstance.set_ClearTransactions(freezeInstance.is_ClearTransactions());
+      uniqueInstance.set_Language(freezeInstance.get_Language());
+
+      uniqueInstance.set_LookAndFeel(freezeInstance.get_LookAndFeel());
+      uniqueInstance.set_GnuCashExecutable(new File(freezeInstance.get_GnuCashExecutable()));
+      uniqueInstance.set_Synonym_file(new File(freezeInstance.get_Synonym_file()));
+      uniqueInstance.set_OutputFolder(freezeInstance.get_OutputFolder());
+
+      uniqueInstance.set_CsvFiles(freezeInstance.get_CsvFiles());
+      uniqueInstance.set_Level(freezeInstance.get_Level());
+      uniqueInstance.set_LogDir(freezeInstance.get_LogDir());
+
+      freezeInstance = null;
+    } else {
+
+    }
   }
 
   /**
