@@ -343,7 +343,7 @@ public class UserSetting {
       freezeInstance.set_Level(Level.parse(m_Level));
       freezeInstance.set_LogDir(m_LogDir);
     } else {
-
+      LOGGER.log(Level.INFO, "Nothing to freeze....");
     }
   }
 
@@ -373,7 +373,7 @@ public class UserSetting {
 
       freezeInstance = null;
     } else {
-
+      LOGGER.log(Level.INFO, "Nothing to unfreeze....");
     }
   }
 

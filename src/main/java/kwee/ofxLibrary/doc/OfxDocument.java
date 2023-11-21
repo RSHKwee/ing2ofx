@@ -10,11 +10,8 @@ package kwee.ofxLibrary.doc;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.logging.Level;
@@ -44,104 +41,95 @@ import kwee.library.DateToNumeric;
 
 public class OfxDocument {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
-  private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
-  private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
-  private int m_maxdateint = 0;
-  private String m_Filename = "temp.ofx";
 
-  public OfxDocument(List<OfxTransaction> a_OfxTransactions, Map<String, OfxMetaInfo> a_metainfo) {
-    m_OfxTransactions = new LinkedList<OfxTransaction>(a_OfxTransactions);
-    m_metainfo = new HashMap<String, OfxMetaInfo>(a_metainfo);
-    maxMetaDate();
+  static String C_FIDCode = "1001";
+  static String C_FIDId = "NCH";
+
+  static String C_UID = "1001";
+  static String C_CurrencyCode = "EUR";
+
+  private SortedSet<ResponseMessageSet> m_msgset = new TreeSet<ResponseMessageSet>();
+
+  public OfxDocument() {
+    StartOfxDocument();
   }
 
-  public void CreateOfxDocument(String a_FileName) {
-    if (!a_FileName.isBlank()) {
-      m_Filename = a_FileName;
-    }
-    ResponseEnvelope ofx = new ResponseEnvelope();
-    SortedSet<ResponseMessageSet> msgset = new TreeSet<ResponseMessageSet>();
+  public void StartOfxDocument() {
+    m_msgset.clear();
 
     // SignOn Message Response
     SignonResponseMessageSet signonMsgSet = new SignonResponseMessageSet();
-    signonMsgSet = setSigonMessage("1001", "NCH");
-    msgset.add(signonMsgSet);
+    signonMsgSet = setSigonMessage(C_FIDCode, C_FIDId);
+    m_msgset.add(signonMsgSet);
+  }
 
-    Set<String> l_keys = m_metainfo.keySet();
-    l_keys.forEach(l_key -> {
-      OfxMetaInfo l_metainf = m_metainfo.get(l_key);
+  public void populateAccountResponseMessage(OfxMetaInfo a_metainfo, List<OfxTransaction> a_OfxTransactions) {
+    OfxMetaInfo l_metainfo = new OfxMetaInfo(a_metainfo);
+    List<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>(a_OfxTransactions);
 
-      BankAccountDetails bankAccountDetails = new BankAccountDetails();
-      AccountType acctype = AccountType.CHECKING;
-      bankAccountDetails.setAccountType(acctype); // Set the appropriate account type
-      bankAccountDetails.setAccountNumber(l_metainf.getAccount()); // Set the account number
-      bankAccountDetails.setBankId(l_metainf.getBankcode());
+    BankAccountDetails bankAccountDetails = new BankAccountDetails();
+    AccountType acctype = AccountType.CHECKING;
+    bankAccountDetails.setAccountType(acctype); // Set the appropriate account type
+    bankAccountDetails.setAccountNumber(l_metainfo.getAccount()); // Set the account number
+    bankAccountDetails.setBankId(l_metainfo.getBankcode());
 
-      BankStatementResponse statRespons = new BankStatementResponse();
-      statRespons.setAccount(bankAccountDetails);
-      statRespons.setCurrencyCode("EUR");
-      BalanceInfo ledgerbal = new BalanceInfo();
-      ledgerbal.setAmount(l_metainf.getBalanceAfterTransaction());
-      ledgerbal.setAsOfDate(DateToNumeric.String_NumericToDate(l_metainf.getMaxDate() + "2359"));
-      statRespons.setLedgerBalance(ledgerbal);
+    BankStatementResponse statRespons = new BankStatementResponse();
+    statRespons.setAccount(bankAccountDetails);
+    statRespons.setCurrencyCode(C_CurrencyCode);
+    BalanceInfo ledgerbal = new BalanceInfo();
+    ledgerbal.setAmount(l_metainfo.getBalanceAfterTransaction());
+    ledgerbal.setAsOfDate(DateToNumeric.String_NumericToDate(l_metainfo.getMaxDate() + "2359"));
+    statRespons.setLedgerBalance(ledgerbal);
 
-      // Add transactions to the statement (e.g., deposits, withdrawals)
-      TransactionList transactionList = new TransactionList();
-      transactionList.setStart(DateToNumeric.String_NumericToDate(l_metainf.getMinDate()));
-      transactionList.setEnd(DateToNumeric.String_NumericToDate(l_metainf.getMaxDate()));
+    // Add transactions to the statement (e.g., deposits, withdrawals)
+    TransactionList transactionList = new TransactionList();
+    transactionList.setStart(DateToNumeric.String_NumericToDate(l_metainfo.getMinDate()));
+    transactionList.setEnd(DateToNumeric.String_NumericToDate(l_metainfo.getMaxDate()));
 
-      List<Transaction> tranlist = transactionList.getTransactions();
-      if (tranlist == null) {
-        tranlist = new ArrayList<Transaction>();
-      }
-      for (int i = 0; i < m_OfxTransactions.size(); i++) {
-        OfxTransaction ofxtran = m_OfxTransactions.get(i);
-        Transaction tran = setXMLTransaction(ofxtran, "EUR");
-        tranlist.add(tran);
-      }
-      transactionList.setTransactions(tranlist);
-      statRespons.setTransactionList(transactionList);
+    List<Transaction> tranlist = transactionList.getTransactions();
+    if (tranlist == null) {
+      tranlist = new ArrayList<Transaction>();
+    }
+    for (int i = 0; i < l_OfxTransactions.size(); i++) {
+      OfxTransaction ofxtran = l_OfxTransactions.get(i);
+      Transaction tran = setXMLTransaction(ofxtran);
+      tranlist.add(tran);
+    }
+    transactionList.setTransactions(tranlist);
+    statRespons.setTransactionList(transactionList);
 
-      Status stat = new Status();
-      Severity sev = Severity.INFO;
-      stat.setSeverity(sev);
+    Status stat = new Status();
+    Severity sev = Severity.INFO;
+    stat.setSeverity(sev);
 
-      BankStatementResponseTransaction statementTransactionResponse = new BankStatementResponseTransaction();
-      statementTransactionResponse.setUID("1001");
-      statementTransactionResponse.setStatus(stat);
-      statementTransactionResponse.setMessage(statRespons);
+    BankStatementResponseTransaction statementTransactionResponse = new BankStatementResponseTransaction();
+    statementTransactionResponse.setUID(C_UID);
+    statementTransactionResponse.setStatus(stat);
+    statementTransactionResponse.setMessage(statRespons);
 
-      BankingResponseMessageSet bankresponse = new BankingResponseMessageSet();
-      bankresponse.setStatementResponse(statementTransactionResponse);
+    BankingResponseMessageSet bankresponse = new BankingResponseMessageSet();
+    bankresponse.setStatementResponse(statementTransactionResponse);
 
-      msgset.add(bankresponse);
-    });
+    m_msgset.add(bankresponse);
+  }
 
-    ofx.setMessageSets(msgset);
+  public void createDocument(String a_Filename) {
+    ResponseEnvelope ofx = new ResponseEnvelope();
+    ofx.setMessageSets(m_msgset);
 
     try {
-      Ing2OFXV2Writer writer = new Ing2OFXV2Writer(m_Filename);
+      Ing2OFXV2Writer writer = new Ing2OFXV2Writer(a_Filename);
       AggregateMarshaller marshaller = new AggregateMarshaller();
       marshaller.setConversion(new Ing2OfxStringConversion("CET"));
       marshaller.marshal(ofx, writer);
       writer.close();
-      LOGGER.log(Level.INFO, "Document created: " + m_Filename);
+      LOGGER.log(Level.INFO, "Document created: " + a_Filename);
     } catch (Exception e) {
       e.printStackTrace();
     }
   }
 
-  private void maxMetaDate() {
-    Set<String> l_keys = m_metainfo.keySet();
-    l_keys.forEach(l_key -> {
-      OfxMetaInfo l_metainf = m_metainfo.get(l_key);
-      if ((l_metainf.getIntMaxDate() > m_maxdateint)) {
-        m_maxdateint = l_metainf.getIntMaxDate();
-        // m_maxdate = l_metainf.getMaxDate();
-      }
-    });
-  }
-
+  // Private functions
   private SignonResponseMessageSet setSigonMessage(String a_FinInsId, String a_FinInsOrg) {
     Calendar calendar = Calendar.getInstance();
     calendar.set(Calendar.YEAR, 2023);
@@ -176,7 +164,7 @@ public class OfxDocument {
     return signonMsgSet;
   }
 
-  private Transaction setXMLTransaction(OfxTransaction a_transaction, String a_Currency) {
+  private Transaction setXMLTransaction(OfxTransaction a_transaction) {
     Transaction l_transaction = new Transaction();
 
     BankAccountDetails accto = new BankAccountDetails();

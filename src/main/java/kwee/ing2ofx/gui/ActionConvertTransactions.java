@@ -152,15 +152,16 @@ public class ActionConvertTransactions extends SwingWorker<Void, String> impleme
             LOGGER.log(Level.INFO, bundle.getMessage("OFXFilename", l_filename));
           }
 
-          OfxDocument l_document = new OfxDocument(l_OfxTransactions, l_metainfo);
-          l_document.CreateOfxDocument(l_filename);
+          OfxDocument l_document = new OfxDocument();
+          l_document.populateAccountResponseMessage(l_OfxMetaInfo, l_OfxTransactions);
+          l_document.createDocument(l_filename);
 
           verwerkProgress();
         });
       } else {
-        OfxDocument l_document = new OfxDocument(m_OfxTransactions, m_metainfo);
-        String l_outputfilename = m_OutputDir + "/AllTransactions.ofx";
-        l_document.CreateOfxDocument(l_outputfilename);
+        // OfxDocument l_document = new OfxDocument(m_OfxTransactions, m_metainfo);
+        // String l_outputfilename = m_OutputDir + "/AllTransactions.ofx";
+        // l_document.CreateOfxDocument(l_outputfilename);
       }
 
       String l_outputfilename = m_OutputDir + "/_Saldos_" + m_Suffix + ".csv";
