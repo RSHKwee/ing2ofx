@@ -223,7 +223,9 @@ public class IngTransactionsTest extends TestCase {
     Assert.assertTrue(l_UniqueIds.isEmpty());
   }
 
-  // Expected results, definition.
+  /**
+   * Define Expected results for ING transactions.
+   */
   private void loadINGTransactionExp() {
     m_Transactions_exp.add(addIngTransaction("20230523", "a Acchouder 7", "NL90KNAB0445266309", "", "GT", "Af",
         "2000,00", "Online bankieren", "Naar Oranje spaarrekening K55512345 Valutadatum: 23-05-2023", "446,38", ""));
@@ -233,6 +235,9 @@ public class IngTransactionsTest extends TestCase {
         "2446,38", ""));
   }
 
+  /**
+   * Define Expected results for ING saving transactions.
+   */
   private void loadINGSavingTransactionExp() {
     m_SavingTransactions_exp
         .add(addIngSavingTransaction("2023-05-26", "Overboeking van betaalrekening NL94COBA0678011583", "K 444-12345",
@@ -253,6 +258,9 @@ public class IngTransactionsTest extends TestCase {
    * INGBNL2A;20230501075;20230501;K444-12345;Rente;;CREDIT;0,75;;1650,75;
    * @formatter:on
   */
+  /**
+   * Define Expected results for OFX transactions.
+   */
   private void loadOFXTransactionExp() {
     m_OfxTransactions_exp
         .add(addOfxTransaction("INGBNL2A", "20230523200000", "20230523", "NL90KNAB0445266309", "a Acchouder 7",
@@ -269,6 +277,9 @@ public class IngTransactionsTest extends TestCase {
         "CREDIT", 0.75, "", 1650.75));
   }
 
+  /**
+   * Define Expected results for Meta information.
+   */
   private void loadOFXMetaInfoExp() {
     m_metainfo_exp.put("NL90KNAB0445266309",
         addOfxMetaInfo("INGBNL2A", "NL90KNAB0445266309", "", "ING_Enkele", "20230523", "20230523", 446.38));
@@ -356,7 +367,13 @@ public class IngTransactionsTest extends TestCase {
     return l_metaInfo;
   }
 
-  // Compare with expected, ING Transactions
+  /**
+   * Compare list of ING Transactions with expected.
+   * 
+   * @param a_trans1 List of ING transactions.
+   * @param a_trans2 List of expected ING transactions.
+   * @return
+   */
   private boolean compareINGTrans(List<IngTransaction> a_trans1, List<IngTransaction> a_trans2) {
     boolean bstat = false;
     if (a_trans1.size() == a_trans2.size()) {
@@ -367,7 +384,13 @@ public class IngTransactionsTest extends TestCase {
     return bstat;
   }
 
-  // Compare with expected, ING Saving Transactions
+  /**
+   * Compare list of ING Saving Transactions with expected.
+   * 
+   * @param a_trans1 List of ING Saving transactions.
+   * @param a_trans2 List of expected ING Saving transactions.
+   * @return
+   */
   private boolean compareINGSavingTrans(List<IngSavingTransaction> a_trans1, List<IngSavingTransaction> a_trans2) {
     boolean bstat = false;
     if (a_trans1.size() == a_trans2.size()) {
@@ -378,7 +401,14 @@ public class IngTransactionsTest extends TestCase {
     return bstat;
   }
 
-  // Compare with expected, OFX Transactions
+  /**
+   * Compare with expected, OFX Transactions
+   * 
+   * @param a_trans1 OFX Transaction 1
+   * @param a_trans2 OFX Transaction 2
+   * @return Result, OFX transactions are equal (true) or if not equal then result
+   *         is False.
+   */
   private boolean compareOFXTrans(List<OfxTransaction> a_trans1, List<OfxTransaction> a_trans2) {
     boolean bstat = false;
     if (a_trans1.size() == a_trans2.size()) {
