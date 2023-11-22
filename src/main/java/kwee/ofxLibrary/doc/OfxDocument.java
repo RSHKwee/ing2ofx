@@ -50,10 +50,17 @@ public class OfxDocument {
 
   private SortedSet<ResponseMessageSet> m_msgset = new TreeSet<ResponseMessageSet>();
 
+  /**
+   * Constructor, OFX Header is created.
+   */
   public OfxDocument() {
     StartOfxDocument();
   }
 
+  /**
+   * When object exists, call to this method resets OFX Document creation. It
+   * creates the OFX Header.
+   */
   public void StartOfxDocument() {
     m_msgset.clear();
 
@@ -63,6 +70,12 @@ public class OfxDocument {
     m_msgset.add(signonMsgSet);
   }
 
+  /**
+   * It fills the message
+   * 
+   * @param a_metainfo
+   * @param a_OfxTransactions
+   */
   public void populateAccountResponseMessage(OfxMetaInfo a_metainfo, List<OfxTransaction> a_OfxTransactions) {
     OfxMetaInfo l_metainfo = new OfxMetaInfo(a_metainfo);
     List<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>(a_OfxTransactions);

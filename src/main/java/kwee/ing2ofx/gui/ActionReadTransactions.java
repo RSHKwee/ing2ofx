@@ -38,7 +38,7 @@ public class ActionReadTransactions extends SwingWorker<List<OfxTransaction>, St
 
   private File[] m_CSVFiles = null;
   private boolean m_TransactionProcessed = false;
-  private File m_Synonym_file;
+//  private File m_Synonym_file;
 
   private JProgressBar m_ProgressBar;
   private JLabel m_Progresslabel;
@@ -53,12 +53,11 @@ public class ActionReadTransactions extends SwingWorker<List<OfxTransaction>, St
    * @param a_ProgressBar
    * @param a_Progresslabel
    */
-  public ActionReadTransactions(File a_Synonym_file, File[] a_CSVFiles, JProgressBar a_ProgressBar,
-      JLabel a_Progresslabel) {
+  public ActionReadTransactions(File[] a_CSVFiles, JProgressBar a_ProgressBar, JLabel a_Progresslabel) {
     m_CSVFiles = a_CSVFiles;
     m_OfxTransactions.clear();
     m_TransactionProcessed = false;
-    m_Synonym_file = a_Synonym_file;
+//    m_Synonym_file = a_Synonym_file;
 
     m_ProgressBar = a_ProgressBar;
     m_Progresslabel = a_Progresslabel;
@@ -86,7 +85,7 @@ public class ActionReadTransactions extends SwingWorker<List<OfxTransaction>, St
         // Read ING Transactions
         if (l_ext.toUpperCase().contains("CSV")) {
           LOGGER.log(Level.INFO, bundle.getMessage("ProcessFile", "ING", l_File));
-          IngTransactions l_ingtrans = new IngTransactions(m_CSVFiles[i], m_Synonym_file);
+          IngTransactions l_ingtrans = new IngTransactions(m_CSVFiles[i]);
           l_ingtrans.load();
           m_OfxTransactions.addAll(l_ingtrans.getOfxTransactions());
           LOGGER.log(Level.INFO, bundle.getMessage("ProcessFile", "ING", m_OfxTransactions.size()));
@@ -100,7 +99,7 @@ public class ActionReadTransactions extends SwingWorker<List<OfxTransaction>, St
         // Read SNS Transactions
         if (l_ext.toUpperCase().contains("XML")) {
           LOGGER.log(Level.INFO, bundle.getMessage("ProcessFile", "SNS", l_File));
-          SnsTransactions l_snstrans = new SnsTransactions(m_CSVFiles[i], m_Synonym_file);
+          SnsTransactions l_snstrans = new SnsTransactions(m_CSVFiles[i]);
           l_snstrans.load();
           m_OfxTransactions.addAll(l_snstrans.getOfxTransactions());
           LOGGER.log(Level.INFO, bundle.getMessage("ProcessFile", "SNS", m_OfxTransactions.size()));

@@ -29,11 +29,11 @@ import kwee.convertor.ing.ingLibrary.IngSavingTransaction;
 import kwee.convertor.ing.ingLibrary.IngSavingTransactionEng;
 import kwee.convertor.ing.ingLibrary.IngTransaction;
 import kwee.convertor.ing.ingLibrary.IngTransactionEng;
+
 import kwee.ofxLibrary.OfxTransaction;
 import kwee.ofxLibrary.OfxFunctions;
 import kwee.ofxLibrary.OfxMetaInfo;
 import kwee.library.DateToNumeric;
-
 import kwee.library.FileUtils;
 
 public class IngTransactions {
@@ -53,17 +53,15 @@ public class IngTransactions {
   private List<IngSavingTransactionEng> m_SavingTransactionsEng = new LinkedList<IngSavingTransactionEng>();
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
-  private File m_Synonym_file;
 
   /**
    * Constructor.
    * 
    * @param a_file CSV File with ING transactions
    */
-  public IngTransactions(File a_file, File a_Synonym_file) {
+  public IngTransactions(File a_file) {
     m_File = a_file;
     m_FileName = FileUtils.getFileNameWithoutExtension(a_file);
-    m_Synonym_file = a_Synonym_file;
   }
 
   /**
@@ -309,7 +307,7 @@ public class IngTransactions {
    */
   private void createOfxMetaInfo(OfxTransaction a_OfxTransaction, double a_SaldoNaMutatie) {
     String l_bankcode = a_OfxTransaction.getBankCode();
-    OfxMetaInfo l_meta = new OfxMetaInfo(l_bankcode, m_Synonym_file);
+    OfxMetaInfo l_meta = new OfxMetaInfo(l_bankcode);
     l_meta.setSuffix(a_OfxTransaction.getSource());
     l_meta.setAccount(a_OfxTransaction.getAccount());
     String sDtPosted = DateToNumeric.dateToNumeric(a_OfxTransaction.getDtposted());
@@ -327,7 +325,4 @@ public class IngTransactions {
     }
     m_metainfo.put(a_OfxTransaction.getAccount(), l_meta);
   }
-
-//  private ENG to NL
-
 }

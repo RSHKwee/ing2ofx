@@ -1,7 +1,7 @@
 package kwee.ing2ofx.gui;
 
 import java.io.File;
-
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -141,14 +141,14 @@ public class ActionConvertTransactions extends SwingWorker<Void, String> impleme
           }
           String l_filename = "";
           if (!l_prefix.isBlank()) {
-            l_filename = m_OutputDir + "/" + String.join("_", l_prefix, l_account, l_suffix);
+            l_filename = m_OutputDir + "\\" + String.join("_", l_prefix, l_account, l_suffix);
             if (!m_FilterName.isBlank()) {
               l_filename = String.join("_", l_filename, m_FilterName);
             }
             l_filename = l_filename + ".ofx";
             LOGGER.log(Level.INFO, bundle.getMessage("OFXFilename", l_filename));
           } else {
-            l_filename = m_OutputDir + "/" + String.join("_", l_account, l_suffix) + ".ofx";
+            l_filename = m_OutputDir + "\\" + String.join("_", l_account, l_suffix) + ".ofx";
             LOGGER.log(Level.INFO, bundle.getMessage("OFXFilename", l_filename));
           }
 
@@ -158,10 +158,34 @@ public class ActionConvertTransactions extends SwingWorker<Void, String> impleme
 
           verwerkProgress();
         });
-      } else {
-        // OfxDocument l_document = new OfxDocument(m_OfxTransactions, m_metainfo);
-        // String l_outputfilename = m_OutputDir + "/AllTransactions.ofx";
-        // l_document.CreateOfxDocument(l_outputfilename);
+      } else { // Summarize per prefix
+        Set<String> Keys = l_OfxMetaAccounts.getPrefixs();
+        m_Processed = -1;
+        m_Number = Keys.size();
+        m_ProgressBar.setMaximum(m_Number);
+        verwerkProgress();
+
+        Keys.forEach(key -> {
+          OfxDocument l_document = new OfxDocument();
+          ArrayList<String> l_PrefAccounts = l_OfxMetaAccounts.getAccountPerPrefix(key);
+          l_PrefAccounts.forEach(prefAccount -> {
+            OfxMetaInfo l_OfxMetaInfo = l_OfxMetaAccounts.getOfxMetaInfo(prefAccount);
+            List<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>(
+                l_OfxMetaAccounts.getTransactions(prefAccount));
+            l_document.populateAccountResponseMessage(l_OfxMetaInfo, l_OfxTransactions);
+          });
+
+          String l_filename = "";
+          l_filename = m_OutputDir + "\\" + String.join("_", key);
+          if (!m_FilterName.isBlank()) {
+            l_filename = String.join("_", l_filename, m_FilterName);
+          }
+          l_filename = l_filename + ".ofx";
+          LOGGER.log(Level.INFO, bundle.getMessage("OFXFilename", l_filename));
+
+          l_document.createDocument(l_filename);
+          verwerkProgress();
+        });
       }
 
       String l_outputfilename = m_OutputDir + "/_Saldos_" + m_Suffix + ".csv";

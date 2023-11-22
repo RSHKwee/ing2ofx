@@ -1,6 +1,9 @@
 package kwee.ofxLibrary;
 
+import java.util.ArrayList;
 /**
+ * Create a map of OFX-Transactions per account and Account Metainfo per account.
+ * 
  * 
  * 
  * @author René
@@ -19,43 +22,85 @@ public class OfxMetaAccounts {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
+  private Map<String, LinkedList<OfxTransaction>> m_OfxAcountsTransactions = new LinkedHashMap<String, LinkedList<OfxTransaction>>();
+  private Map<String, OfxMetaInfo> m_metaAccountsInfo = new HashMap<String, OfxMetaInfo>();
+  private Map<String, ArrayList<String>> m_PrefixAccounts = new LinkedHashMap<String, ArrayList<String>>();
 
-  private Map<String, LinkedList<OfxTransaction>> m_OfxAcounts = new LinkedHashMap<String, LinkedList<OfxTransaction>>();
-  private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
-
-  public OfxMetaAccounts(List<OfxTransaction> a_OfxTransactions, Map<String, OfxMetaInfo> a_metainfo) {
+  public OfxMetaAccounts(List<OfxTransaction> a_OfxTransactions, Map<String, OfxMetaInfo> a_metaAccountsInfo) {
     m_OfxTransactions = a_OfxTransactions;
-    m_metainfo = a_metainfo;
+    m_metaAccountsInfo = a_metaAccountsInfo;
     updateOfxMetaInfoMap();
+    updatePrefixAccounts();
   }
 
   /**
+   * Get all transactions.
+   */
+  public List<OfxTransaction> getTransactions() {
+    return m_OfxTransactions;
+  }
+
+  /**
+   * Get list of transactions for given Account.
    * 
-   * @param a_OfxTransactions
-   * @return
+   * @param a_Account Given account.
+   * @return List of transactions.
+   */
+  public List<OfxTransaction> getTransactions(String a_Account) {
+    return m_OfxAcountsTransactions.get(a_Account);
+  }
+
+  /**
+   * Get Accounts
+   * 
+   * @return List of Accounts
+   */
+  public Set<String> getAccounts() {
+    return m_OfxAcountsTransactions.keySet();
+  }
+
+  public OfxMetaInfo getOfxMetaInfo(String a_Account) {
+    return m_metaAccountsInfo.get(a_Account);
+  }
+
+  public Map<String, OfxMetaInfo> getAccountsOfxMetaInfo() {
+    return m_metaAccountsInfo;
+  }
+
+  public ArrayList<String> getAccountPerPrefix(String a_Prefix) {
+    return m_PrefixAccounts.get(a_Prefix);
+  }
+
+  public Set<String> getPrefixs() {
+    return m_PrefixAccounts.keySet();
+  }
+
+  // Private functions
+  /**
+   * Create / Update Transactions per account. Fill data structure
+   * m_OfxAcountsTransactions. Key is Account, value is list of Transactions.
    */
   private void updateOfxMetaInfoMap() {
     try {
       m_OfxTransactions.forEach(l_ofxtrans -> {
-
         try {
-          // Fill OfxAccounts
+          // Fill OfxAccountsTransactions
           if (l_ofxtrans.getAccount() == null) {
             LOGGER.log(Level.INFO, "Acount is null");
           } else {
             LOGGER.log(Level.FINE, "Get transactions for Account : " + l_ofxtrans.getAccount());
           }
-          if (m_OfxAcounts != null) {
-            if (!m_OfxAcounts.isEmpty()) {
+          if (m_OfxAcountsTransactions != null) {
+            if (!m_OfxAcountsTransactions.isEmpty()) {
               try {
-                if (m_OfxAcounts.get(l_ofxtrans.getAccount()) != null) {
+                if (m_OfxAcountsTransactions.get(l_ofxtrans.getAccount()) != null) {
 
-                  if (!m_OfxAcounts.get(l_ofxtrans.getAccount()).isEmpty()) {
+                  if (!m_OfxAcountsTransactions.get(l_ofxtrans.getAccount()).isEmpty()) {
                     try {
                       LinkedList<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>(
-                          m_OfxAcounts.get(l_ofxtrans.getAccount()));
+                          m_OfxAcountsTransactions.get(l_ofxtrans.getAccount()));
                       l_OfxTransactions.add(l_ofxtrans);
-                      m_OfxAcounts.put(l_ofxtrans.getAccount(), l_OfxTransactions);
+                      m_OfxAcountsTransactions.put(l_ofxtrans.getAccount(), l_OfxTransactions);
                     } catch (Exception e) {
                       LOGGER.log(Level.INFO, e.getMessage());
                     }
@@ -63,7 +108,7 @@ public class OfxMetaAccounts {
                     try {
                       LinkedList<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>();
                       l_OfxTransactions.add(l_ofxtrans);
-                      m_OfxAcounts.put(l_ofxtrans.getAccount(), l_OfxTransactions);
+                      m_OfxAcountsTransactions.put(l_ofxtrans.getAccount(), l_OfxTransactions);
                     } catch (Exception e) {
                       LOGGER.log(Level.INFO, e.getMessage());
                     }
@@ -72,7 +117,7 @@ public class OfxMetaAccounts {
                   try {
                     LinkedList<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>();
                     l_OfxTransactions.add(l_ofxtrans);
-                    m_OfxAcounts.put(l_ofxtrans.getAccount(), l_OfxTransactions);
+                    m_OfxAcountsTransactions.put(l_ofxtrans.getAccount(), l_OfxTransactions);
                   } catch (Exception e) {
                     LOGGER.log(Level.INFO, e.getMessage());
                   }
@@ -84,17 +129,17 @@ public class OfxMetaAccounts {
               try {
                 LinkedList<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>();
                 l_OfxTransactions.add(l_ofxtrans);
-                m_OfxAcounts.put(l_ofxtrans.getAccount(), l_OfxTransactions);
+                m_OfxAcountsTransactions.put(l_ofxtrans.getAccount(), l_OfxTransactions);
               } catch (Exception e) {
                 LOGGER.log(Level.INFO, e.getMessage());
               }
             }
           } else {
             try {
-              m_OfxAcounts = new LinkedHashMap<String, LinkedList<OfxTransaction>>();
+              m_OfxAcountsTransactions = new LinkedHashMap<String, LinkedList<OfxTransaction>>();
               LinkedList<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>();
               l_OfxTransactions.add(l_ofxtrans);
-              m_OfxAcounts.put(l_ofxtrans.getAccount(), l_OfxTransactions);
+              m_OfxAcountsTransactions.put(l_ofxtrans.getAccount(), l_OfxTransactions);
             } catch (Exception e) {
               LOGGER.log(Level.INFO, e.getMessage());
             }
@@ -110,23 +155,28 @@ public class OfxMetaAccounts {
     }
   }
 
-  public List<OfxTransaction> getTransactions() {
-    return m_OfxTransactions;
-  }
-
-  public List<OfxTransaction> getTransactions(String a_Account) {
-    return m_OfxAcounts.get(a_Account);
-  }
-
-  public Set<String> getAccounts() {
-    return m_OfxAcounts.keySet();
-  }
-
-  public OfxMetaInfo getOfxMetaInfo(String a_Account) {
-    return m_metainfo.get(a_Account);
-  }
-
-  public Map<String, OfxMetaInfo> getAccountsOfxMetaInfo() {
-    return m_metainfo;
+  /**
+   * Create / Update Prefix Accounts structure.
+   */
+  private void updatePrefixAccounts() {
+    Set<String> keys = m_metaAccountsInfo.keySet();
+    keys.forEach(key -> {
+      OfxMetaInfo l_metainf = m_metaAccountsInfo.get(key);
+      String l_account = l_metainf.getAccount();
+      String l_prefix = l_metainf.getPrefix();
+      if (l_prefix.isBlank()) {
+        l_prefix = l_account;
+      }
+      // ArrayList<String> aap = m_PrefixAccounts.get(l_prefix);
+      if (m_PrefixAccounts.get(l_prefix) == null) {
+        ArrayList<String> l_prefixAccounts = new ArrayList<String>();
+        l_prefixAccounts.add(l_account);
+        m_PrefixAccounts.put(l_prefix, l_prefixAccounts);
+      } else {
+        ArrayList<String> l_prefixAccounts = new ArrayList<String>(m_PrefixAccounts.get(l_prefix));
+        l_prefixAccounts.add(l_account);
+        m_PrefixAccounts.put(l_prefix, l_prefixAccounts);
+      }
+    });
   }
 }

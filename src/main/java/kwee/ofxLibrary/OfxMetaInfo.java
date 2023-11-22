@@ -12,9 +12,11 @@ package kwee.ofxLibrary;
  * 
  * @author rshkw
  */
-import java.io.File;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import kwee.ing2ofx.main.UserSetting;
 
 public class OfxMetaInfo {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
@@ -26,15 +28,15 @@ public class OfxMetaInfo {
   private double balanceAfterTransaction = 0;
   private boolean balanceAfterTransactionFilled = false;
   private String suffix = "";
-  private Synonyms m_Synonyms = new Synonyms();
+  private Synonyms m_Synonyms;
+  private UserSetting m_UserSetting = UserSetting.getInstance();
 
   /**
    * Default constructor
    */
-  public OfxMetaInfo(String a_bankcode, File a_SynonymsFile) {
+  public OfxMetaInfo(String a_bankcode) {
     bankcode = a_bankcode;
-    m_Synonyms = new Synonyms(a_SynonymsFile);
-    LOGGER.log(Level.FINE, "Read Synonyms File" + a_SynonymsFile);
+    m_Synonyms = m_UserSetting.getSynonyms();
   }
 
   /**
@@ -49,16 +51,16 @@ public class OfxMetaInfo {
     minDate = a_MetaInfo.getIntMinDate();
     maxDate = a_MetaInfo.getIntMaxDate();
     balanceAfterTransaction = a_MetaInfo.getBalanceAfterTransaction();
-    m_Synonyms = a_MetaInfo.getSynonyms();
+    // m_Synonyms = a_MetaInfo.getSynonyms();
   }
 
-  public Synonyms getSynonyms() {
-    return m_Synonyms;
-  }
+//  public Synonyms getSynonyms() {
+//    return m_Synonyms;
+//  }
 
-  public void setSynonymes(Synonyms a_Synonyms) {
-    this.m_Synonyms = a_Synonyms;
-  }
+//  public void setSynonymes(Synonyms a_Synonyms) {
+//    this.m_Synonyms = a_Synonyms;
+//  }
 
   public String getBankcode() {
     return bankcode;

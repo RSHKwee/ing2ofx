@@ -6,6 +6,8 @@ import java.util.logging.Logger;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
+import kwee.ofxLibrary.Synonyms;
+
 /**
  * User setting persistence.
  * 
@@ -66,6 +68,8 @@ public class UserSetting {
   private Preferences pref;
   private Preferences userPrefs = Preferences.userRoot();
 
+  private Synonyms m_Synonyms;
+
   /**
    * Constructor Initialize settings
    */
@@ -105,6 +109,9 @@ public class UserSetting {
     m_GnuCashExecutable = pref.get(c_GnuCashExe, c_GnuCashExeValue);
     m_OutputFolder = pref.get(c_OutputFolder, "");
     m_Synonym_file = pref.get(c_Synonym_file, "");
+    if (!m_Synonym_file.isBlank()) {
+      m_Synonyms = new Synonyms(new File(m_Synonym_file));
+    }
     m_Language = pref.get(c_Language, "nl");
 
     String l_CsvFiles = pref.get(c_CsvFiles, "");
@@ -145,6 +152,10 @@ public class UserSetting {
 
   public String get_Synonym_file() {
     return m_Synonym_file;
+  }
+
+  public Synonyms getSynonyms() {
+    return m_Synonyms;
   }
 
   public boolean is_toDisk() {
@@ -200,6 +211,9 @@ public class UserSetting {
   public void set_Synonym_file(File a_Synonym_file) {
     pref.put(c_Synonym_file, a_Synonym_file.getAbsolutePath());
     this.m_Synonym_file = a_Synonym_file.getAbsolutePath();
+    if (!m_Synonym_file.isBlank()) {
+      m_Synonyms = new Synonyms(new File(m_Synonym_file));
+    }
   }
 
   public void set_OutputFolder(File a_OutputFolder) {

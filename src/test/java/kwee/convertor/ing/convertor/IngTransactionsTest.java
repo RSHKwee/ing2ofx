@@ -20,6 +20,7 @@ import junit.framework.TestCase;
 
 import kwee.convertor.ing.ingLibrary.IngSavingTransaction;
 import kwee.convertor.ing.ingLibrary.IngTransaction;
+import kwee.ing2ofx.main.UserSetting;
 import kwee.ofxLibrary.OfxMetaInfo;
 import kwee.ofxLibrary.OfxTransaction;
 import kwee.testlibrary.TestFunctions;
@@ -38,14 +39,13 @@ public class IngTransactionsTest extends TestCase {
 
   private File m_IngFile;
   private File m_IngSavingFile;
-  private File m_SynonymFile;
 
   private List<IngTransaction> m_Transactions_exp = new LinkedList<IngTransaction>();
   private List<IngSavingTransaction> m_SavingTransactions_exp = new LinkedList<IngSavingTransaction>();
   private List<OfxTransaction> m_OfxTransactions_exp = new LinkedList<OfxTransaction>();
 
   private Map<String, OfxMetaInfo> m_metainfo_exp = new HashMap<String, OfxMetaInfo>();
-
+  private UserSetting m_usersetting = UserSetting.getInstance();
   private TestFunctions m_Functions = new TestFunctions();
 
   /**
@@ -53,9 +53,11 @@ public class IngTransactionsTest extends TestCase {
    */
   @Override
   public void setUp() throws Exception {
-    m_SynonymFile = m_Functions.GetResourceFile(c_SynonymFile);
     m_IngSavingFile = m_Functions.GetResourceFile(c_IngSavingTransFile);
     m_IngFile = m_Functions.GetResourceFile(c_IngTransFile);
+
+    m_usersetting.freeze();
+    m_usersetting.set_Synonym_file(m_Functions.GetResourceFile(c_SynonymFile));
   }
 
   /**
@@ -63,6 +65,7 @@ public class IngTransactionsTest extends TestCase {
    */
   @Override
   public void tearDown() throws Exception {
+    m_usersetting.unfreeze();
   }
 
   /**
@@ -70,10 +73,10 @@ public class IngTransactionsTest extends TestCase {
    * {@link kwee.convertor.ing.convertor.IngTransactions#IngTransactions(java.io.File, java.io.File)}.
    */
   public void testIngTransactions() {
-    IngTransactions l_ingSavingtrans = new IngTransactions(m_IngSavingFile, m_SynonymFile);
+    IngTransactions l_ingSavingtrans = new IngTransactions(m_IngSavingFile);
     assertNotNull(l_ingSavingtrans);
 
-    IngTransactions l_ingtrans = new IngTransactions(m_IngFile, m_SynonymFile);
+    IngTransactions l_ingtrans = new IngTransactions(m_IngFile);
     assertNotNull(l_ingtrans);
   }
 
@@ -81,13 +84,13 @@ public class IngTransactionsTest extends TestCase {
    * Test method for {@link kwee.convertor.ing.convertor.IngTransactions#load()}.
    */
   public void testLoad() {
-    IngTransactions l_transSaving = new IngTransactions(m_IngSavingFile, m_SynonymFile);
+    IngTransactions l_transSaving = new IngTransactions(m_IngSavingFile);
     l_transSaving.load();
     List<IngSavingTransaction> l_SavingTransactions = l_transSaving.getIngSavingTransactions();
     int l_nrSavingTrans = l_SavingTransactions.size();
     assertEquals(l_nrSavingTrans, 3);
 
-    IngTransactions l_trans = new IngTransactions(m_IngFile, m_SynonymFile);
+    IngTransactions l_trans = new IngTransactions(m_IngFile);
     l_trans.load();
     List<IngTransaction> l_Transactions = l_trans.getIngTransactions();
     int l_nrTrans = l_Transactions.size();
@@ -99,11 +102,11 @@ public class IngTransactionsTest extends TestCase {
    * {@link kwee.convertor.ing.convertor.IngTransactions#isSavingCsvFile()}.
    */
   public void testIsSavingCsvFile() {
-    IngTransactions l_transSaving = new IngTransactions(m_IngSavingFile, m_SynonymFile);
+    IngTransactions l_transSaving = new IngTransactions(m_IngSavingFile);
     l_transSaving.load();
     assertEquals(l_transSaving.isSavingCsvFile(), true);
 
-    IngTransactions l_trans = new IngTransactions(m_IngFile, m_SynonymFile);
+    IngTransactions l_trans = new IngTransactions(m_IngFile);
     l_trans.load();
     assertEquals(l_trans.isSavingCsvFile(), false);
   }
@@ -113,7 +116,7 @@ public class IngTransactionsTest extends TestCase {
    * {@link kwee.convertor.ing.convertor.IngTransactions#getIngTransactions()}.
    */
   public void testGetIngTransactions() {
-    IngTransactions l_trans = new IngTransactions(m_IngFile, m_SynonymFile);
+    IngTransactions l_trans = new IngTransactions(m_IngFile);
     l_trans.load();
     List<IngSavingTransaction> l_SavingTransactions = l_trans.getIngSavingTransactions();
     assertTrue(l_SavingTransactions.isEmpty());
@@ -130,7 +133,7 @@ public class IngTransactionsTest extends TestCase {
    * {@link kwee.convertor.ing.convertor.IngTransactions#getIngSavingTransactions()}.
    */
   public void testGetIngSavingTransactions() {
-    IngTransactions l_transSaving = new IngTransactions(m_IngSavingFile, m_SynonymFile);
+    IngTransactions l_transSaving = new IngTransactions(m_IngSavingFile);
     l_transSaving.load();
     List<IngTransaction> l_Transactions = l_transSaving.getIngTransactions();
     assertTrue(l_Transactions.isEmpty());
@@ -146,10 +149,10 @@ public class IngTransactionsTest extends TestCase {
    * {@link kwee.convertor.ing.convertor.IngTransactions#getOfxTransactions()}.
    */
   public void testGetOfxTransactions() {
-    IngTransactions l_transSaving = new IngTransactions(m_IngSavingFile, m_SynonymFile);
+    IngTransactions l_transSaving = new IngTransactions(m_IngSavingFile);
     l_transSaving.load();
 
-    IngTransactions l_trans = new IngTransactions(m_IngFile, m_SynonymFile);
+    IngTransactions l_trans = new IngTransactions(m_IngFile);
     l_trans.load();
 
     // Build OFX transactions list
@@ -168,10 +171,10 @@ public class IngTransactionsTest extends TestCase {
    * {@link kwee.convertor.ing.convertor.IngTransactions#getOfxMetaInfo()}.
    */
   public void testGetOfxMetaInfo() {
-    IngTransactions l_transSaving = new IngTransactions(m_IngSavingFile, m_SynonymFile);
+    IngTransactions l_transSaving = new IngTransactions(m_IngSavingFile);
     l_transSaving.load();
 
-    IngTransactions l_trans = new IngTransactions(m_IngFile, m_SynonymFile);
+    IngTransactions l_trans = new IngTransactions(m_IngFile);
     l_trans.load();
 
     Map<String, OfxMetaInfo> l_metasaving = new HashMap<String, OfxMetaInfo>();
@@ -197,7 +200,7 @@ public class IngTransactionsTest extends TestCase {
     Set<String> l_UniqueIds_exp = new LinkedHashSet<>();
     Set<String> l_UniqueIds = new LinkedHashSet<>();
 
-    IngTransactions l_transSaving = new IngTransactions(m_IngSavingFile, m_SynonymFile);
+    IngTransactions l_transSaving = new IngTransactions(m_IngSavingFile);
     l_transSaving.load();
     l_UniqueIds = l_transSaving.getUniqueIds();
 
@@ -209,7 +212,7 @@ public class IngTransactionsTest extends TestCase {
     // boolean bstat = l_UniqueIds.isEmpty();
     Assert.assertTrue(l_UniqueIds.isEmpty());
 
-    IngTransactions l_trans = new IngTransactions(m_IngFile, m_SynonymFile);
+    IngTransactions l_trans = new IngTransactions(m_IngFile);
     l_trans.load();
     l_UniqueIds = l_trans.getUniqueIds();
     l_UniqueIds_exp.clear();
@@ -339,7 +342,7 @@ public class IngTransactionsTest extends TestCase {
   // Load OFX Meta info
   private OfxMetaInfo addOfxMetaInfo(String a_bankcode, String a_account, String a_prefix, String a_suffix,
       String a_mindate, String a_maxdate, double a_balanceafter) {
-    OfxMetaInfo l_metaInfo = new OfxMetaInfo(a_bankcode, m_SynonymFile);
+    OfxMetaInfo l_metaInfo = new OfxMetaInfo(a_bankcode);
 
     // getAccount(), getPrefix(), getSuffix(), getMinDate(), getMaxDate(),
     // getBalanceAfterTransaction());
