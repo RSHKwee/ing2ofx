@@ -1,4 +1,4 @@
-package kwee.testlibrary;
+package kwee.ing2ofx.gui;
 
 import java.io.BufferedReader;
 import java.io.File;

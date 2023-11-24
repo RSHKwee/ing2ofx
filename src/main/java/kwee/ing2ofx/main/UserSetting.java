@@ -30,7 +30,7 @@ public class UserSetting {
 
   private String c_ConfirmOnExit = "ConfirmOnExit";
   private String c_toDisk = "ToDisk";
-  private String c_AccountSepOfx = "AccountSepOfx";
+  // private String c_AccountSepOfx = "AccountSepOfx";
   private String c_ConvertDecimalSeparator = "ConvertDecimalSeperator";
   private String c_ConvertDateFormat = "ConvertDateFormat";
   private String c_SeparatorComma = "SeparatorComma";
@@ -56,7 +56,7 @@ public class UserSetting {
 
   private boolean m_ConfirmOnExit = false;
   private boolean m_toDisk = false;
-  private boolean m_AcountSeparateOFX = true;
+//  private boolean m_AcountSeparateOFX = true;
   private boolean m_ConvertDecimalSeparator = false;
   private boolean m_ConvertDateFormat = false;
   private boolean m_SeparatorComma = false;
@@ -96,7 +96,7 @@ public class UserSetting {
     m_toDisk = pref.getBoolean(c_toDisk, false);
 
     m_ConfirmOnExit = pref.getBoolean(c_ConfirmOnExit, false);
-    m_AcountSeparateOFX = pref.getBoolean(c_AccountSepOfx, true);
+//    m_AcountSeparateOFX = pref.getBoolean(c_AccountSepOfx, true);
     m_ConvertDecimalSeparator = pref.getBoolean(c_ConvertDecimalSeparator, false);
     m_ConvertDateFormat = pref.getBoolean(c_ConvertDateFormat, false);
     m_SeparatorComma = pref.getBoolean(c_SeparatorComma, false);
@@ -162,9 +162,9 @@ public class UserSetting {
     return m_toDisk;
   }
 
-  public boolean is_AcountSeparateOFX() {
-    return m_AcountSeparateOFX;
-  }
+//  public boolean is_AcountSeparateOFX() {
+//    return m_AcountSeparateOFX;
+//  }
 
   public boolean is_ConfirmOnExit() {
     return m_ConfirmOnExit;
@@ -245,10 +245,10 @@ public class UserSetting {
     this.m_Level = a_Level.toString();
   }
 
-  public void set_AcountSeparateOFX(boolean a_AcountSeparateOFX) {
-    pref.putBoolean(c_AccountSepOfx, a_AcountSeparateOFX);
-    this.m_AcountSeparateOFX = a_AcountSeparateOFX;
-  }
+  // public void set_AcountSeparateOFX(boolean a_AcountSeparateOFX) {
+  // pref.putBoolean(c_AccountSepOfx, a_AcountSeparateOFX);
+//    this.m_AcountSeparateOFX = a_AcountSeparateOFX;
+  // }
 
   public void set_ConvertDecimalSeparator(boolean a_ConvertDecimalSeparator) {
     pref.putBoolean(c_ConvertDecimalSeparator, a_ConvertDecimalSeparator);
@@ -302,7 +302,7 @@ public class UserSetting {
     try {
       pref.putBoolean(c_toDisk, m_toDisk);
 
-      pref.putBoolean(c_AccountSepOfx, m_AcountSeparateOFX);
+//      pref.putBoolean(c_AccountSepOfx, m_AcountSeparateOFX);
       pref.putBoolean(c_ConvertDecimalSeparator, m_ConvertDecimalSeparator);
       pref.putBoolean(c_ConvertDateFormat, m_ConvertDateFormat);
       pref.putBoolean(c_SeparatorComma, m_SeparatorComma);
@@ -337,7 +337,7 @@ public class UserSetting {
       freezeInstance = new UserSetting();
       freezeInstance.set_toDisk(m_toDisk);
 
-      freezeInstance.set_AcountSeparateOFX(m_AcountSeparateOFX);
+//      freezeInstance.set_AcountSeparateOFX(m_AcountSeparateOFX);
       freezeInstance.set_ConvertDecimalSeparator(m_ConvertDecimalSeparator);
       freezeInstance.set_ConvertDateFormat(m_ConvertDateFormat);
       freezeInstance.set_SeparatorComma(m_SeparatorComma);
@@ -365,7 +365,7 @@ public class UserSetting {
     if (freezeInstance != null) {
       uniqueInstance.set_toDisk(m_toDisk);
 
-      uniqueInstance.set_AcountSeparateOFX(freezeInstance.is_AcountSeparateOFX());
+//      uniqueInstance.set_AcountSeparateOFX(freezeInstance.is_AcountSeparateOFX());
       uniqueInstance.set_ConvertDecimalSeparator(freezeInstance.is_ConvertDecimalSeparator());
       uniqueInstance.set_ConvertDateFormat(freezeInstance.is_ConvertDateFormat());
       uniqueInstance.set_SeparatorComma(freezeInstance.is_SeparatorComma());
@@ -400,7 +400,7 @@ public class UserSetting {
     String l_line = "User setting \n";
     l_line = l_line + "Name: " + pref.name() + "\n";
     l_line = l_line + c_toDisk + ": " + m_toDisk + "\n";
-    l_line = l_line + c_AccountSepOfx + ": " + m_AcountSeparateOFX + "\n";
+//    l_line = l_line + c_AccountSepOfx + ": " + m_AcountSeparateOFX + "\n";
     l_line = l_line + c_ConvertDecimalSeparator + ": " + m_ConvertDecimalSeparator + "\n";
     l_line = l_line + c_Language + ": " + m_Language + "\n";
 

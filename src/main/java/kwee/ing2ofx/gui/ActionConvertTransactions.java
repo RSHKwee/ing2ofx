@@ -1,7 +1,6 @@
 package kwee.ing2ofx.gui;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,7 +12,6 @@ import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextArea;
-//import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 
 import kwee.library.ApplicationMessages;
@@ -39,7 +37,6 @@ public class ActionConvertTransactions extends SwingWorker<Void, String> impleme
   private ApplicationMessages bundle = ApplicationMessages.getInstance();
 
   private String m_OutputDir = "";
-  private boolean m_SeparateOFX = true;
   private boolean m_Interrest = true;
   private String m_FilterName = "";
   private String m_Suffix = "";
@@ -72,7 +69,6 @@ public class ActionConvertTransactions extends SwingWorker<Void, String> impleme
     m_metainfo = a_metainfo;
 
     m_OutputDir = a_OutputFolder;
-    m_SeparateOFX = a_SeparateOFX;
     m_Interrest = a_Interrest;
     m_Suffix = "";
 
@@ -115,78 +111,48 @@ public class ActionConvertTransactions extends SwingWorker<Void, String> impleme
       OfxMetaAccounts l_OfxMetaAccounts = new OfxMetaAccounts(m_OfxTransactions, m_metainfo);
       Set<String> l_accounts = l_OfxMetaAccounts.getAccounts();
 
-      if (m_SeparateOFX) {
-        m_Processed = -1;
-        m_Number = l_accounts.size();
-        m_ProgressBar.setMaximum(m_Number);
-        verwerkProgress();
+      m_Processed = -1;
+      m_Number = l_accounts.size();
+      m_ProgressBar.setMaximum(m_Number);
+      verwerkProgress();
 
-        m_Suffix = "";
-        l_accounts.forEach(l_account -> {
-          LOGGER.log(Level.INFO, bundle.getMessage("ConvertFor", l_account));
+      m_Suffix = "";
+      l_accounts.forEach(l_account -> {
+        LOGGER.log(Level.INFO, bundle.getMessage("ConvertFor", l_account));
 
-          OfxMetaInfo l_OfxMetaInfo = l_OfxMetaAccounts.getOfxMetaInfo(l_account);
-          Map<String, OfxMetaInfo> l_metainfo = new HashMap<String, OfxMetaInfo>();
-          l_metainfo.put(l_account, l_OfxMetaInfo);
+        OfxMetaInfo l_OfxMetaInfo = l_OfxMetaAccounts.getOfxMetaInfo(l_account);
+        Map<String, OfxMetaInfo> l_metainfo = new HashMap<String, OfxMetaInfo>();
+        l_metainfo.put(l_account, l_OfxMetaInfo);
 
-          List<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>(
-              l_OfxMetaAccounts.getTransactions(l_account));
-          String l_Size = Integer.toString(l_OfxTransactions.size());
-          LOGGER.log(Level.INFO, bundle.getMessage("ConvertAccount", l_account, l_Size));
-          OfxMetaInfo l_info = l_OfxMetaAccounts.getOfxMetaInfo(l_account);
-          String l_prefix = l_info.getPrefix();
-          String l_suffix = l_info.getSuffix();
-          if (!l_suffix.isBlank()) {
-            m_Suffix = l_suffix;
-          }
-          String l_filename = "";
-          if (!l_prefix.isBlank()) {
-            l_filename = m_OutputDir + "\\" + String.join("_", l_prefix, l_account, l_suffix);
-            if (!m_FilterName.isBlank()) {
-              l_filename = String.join("_", l_filename, m_FilterName);
-            }
-            l_filename = l_filename + ".ofx";
-            LOGGER.log(Level.INFO, bundle.getMessage("OFXFilename", l_filename));
-          } else {
-            l_filename = m_OutputDir + "\\" + String.join("_", l_account, l_suffix) + ".ofx";
-            LOGGER.log(Level.INFO, bundle.getMessage("OFXFilename", l_filename));
-          }
-
-          OfxDocument l_document = new OfxDocument();
-          l_document.populateAccountResponseMessage(l_OfxMetaInfo, l_OfxTransactions);
-          l_document.createDocument(l_filename);
-
-          verwerkProgress();
-        });
-      } else { // Summarize per prefix
-        Set<String> Keys = l_OfxMetaAccounts.getPrefixs();
-        m_Processed = -1;
-        m_Number = Keys.size();
-        m_ProgressBar.setMaximum(m_Number);
-        verwerkProgress();
-
-        Keys.forEach(key -> {
-          OfxDocument l_document = new OfxDocument();
-          ArrayList<String> l_PrefAccounts = l_OfxMetaAccounts.getAccountPerPrefix(key);
-          l_PrefAccounts.forEach(prefAccount -> {
-            OfxMetaInfo l_OfxMetaInfo = l_OfxMetaAccounts.getOfxMetaInfo(prefAccount);
-            List<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>(
-                l_OfxMetaAccounts.getTransactions(prefAccount));
-            l_document.populateAccountResponseMessage(l_OfxMetaInfo, l_OfxTransactions);
-          });
-
-          String l_filename = "";
-          l_filename = m_OutputDir + "\\" + String.join("_", key);
+        List<OfxTransaction> l_OfxTransactions = new LinkedList<OfxTransaction>(
+            l_OfxMetaAccounts.getTransactions(l_account));
+        String l_Size = Integer.toString(l_OfxTransactions.size());
+        LOGGER.log(Level.INFO, bundle.getMessage("ConvertAccount", l_account, l_Size));
+        OfxMetaInfo l_info = l_OfxMetaAccounts.getOfxMetaInfo(l_account);
+        String l_prefix = l_info.getPrefix();
+        String l_suffix = l_info.getSuffix();
+        if (!l_suffix.isBlank()) {
+          m_Suffix = l_suffix;
+        }
+        String l_filename = "";
+        if (!l_prefix.isBlank()) {
+          l_filename = m_OutputDir + "\\" + String.join("_", l_prefix, l_account, l_suffix);
           if (!m_FilterName.isBlank()) {
             l_filename = String.join("_", l_filename, m_FilterName);
           }
           l_filename = l_filename + ".ofx";
           LOGGER.log(Level.INFO, bundle.getMessage("OFXFilename", l_filename));
+        } else {
+          l_filename = m_OutputDir + "\\" + String.join("_", l_account, l_suffix) + ".ofx";
+          LOGGER.log(Level.INFO, bundle.getMessage("OFXFilename", l_filename));
+        }
 
-          l_document.createDocument(l_filename);
-          verwerkProgress();
-        });
-      }
+        OfxDocument l_document = new OfxDocument();
+        l_document.populateAccountResponseMessage(l_OfxMetaInfo, l_OfxTransactions);
+        l_document.createDocument(l_filename);
+
+        verwerkProgress();
+      });
 
       String l_outputfilename = m_OutputDir + "/_Saldos_" + m_Suffix + ".csv";
       LOGGER.log(Level.INFO, bundle.getMessage("SaldosFilename", l_outputfilename));

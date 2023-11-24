@@ -1,9 +1,5 @@
 package kwee.convertor.ing;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import kwee.convertor.ing.ingLibrary.IngSavingTransaction;
 import kwee.convertor.ing.ingLibrary.IngSavingTransactionEng;
 import kwee.convertor.ing.ingLibrary.IngTransaction;

@@ -20,10 +20,10 @@ import junit.framework.TestCase;
 
 import kwee.convertor.ing.ingLibrary.IngSavingTransaction;
 import kwee.convertor.ing.ingLibrary.IngTransaction;
+import kwee.ing2ofx.gui.TestFunctions;
 import kwee.ing2ofx.main.UserSetting;
 import kwee.ofxLibrary.OfxMetaInfo;
 import kwee.ofxLibrary.OfxTransaction;
-import kwee.testlibrary.TestFunctions;
 import kwee.library.DateToNumeric;
 
 /**

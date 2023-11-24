@@ -108,7 +108,7 @@ public class GUILayout extends JPanel implements ItemListener {
 
   private boolean m_toDisk = false;
   private Level m_Level = Level.INFO;
-  private boolean m_AcountSeparateOFX = true;
+//  private boolean m_AcountSeparateOFX = true;
   private boolean m_Interest = false;
   private boolean m_ClearTransactions = true;
   private String m_Language = "en";
@@ -186,7 +186,7 @@ public class GUILayout extends JPanel implements ItemListener {
     m_Language = m_param.get_Language();
     m_Level = m_param.get_Level();
     m_toDisk = m_param.is_toDisk();
-    m_AcountSeparateOFX = m_param.is_AcountSeparateOFX();
+//    m_AcountSeparateOFX = m_param.is_AcountSeparateOFX();
     m_Interest = m_param.is_Interest();
     m_LogDir = m_param.get_LogDir();
     m_ClearTransactions = m_param.is_ClearTransactions();
@@ -204,6 +204,8 @@ public class GUILayout extends JPanel implements ItemListener {
     menuBar.add(mnSettings);
 
     // Checkbox Separate OFX files
+    /*
+     * @formatter:off
     chckbxAcountSeparateOFX.setHorizontalAlignment(SwingConstants.LEFT);
     chckbxAcountSeparateOFX.setSelected(m_AcountSeparateOFX);
     chckbxAcountSeparateOFX.addActionListener(new ActionListener() {
@@ -216,6 +218,8 @@ public class GUILayout extends JPanel implements ItemListener {
       }
     });
     mnSettings.add(chckbxAcountSeparateOFX);
+ *    @formatter:on
+ */
 
     // Savings transactions
     JCheckBoxMenuItem chcmnkbxInterest = new JCheckBoxMenuItem(bundle.getMessage("OnlyInterestTransaction"));

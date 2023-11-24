@@ -24,9 +24,6 @@ public class Camt053Parser {
 
     Marshaller marshaller = jc.createMarshaller();
     marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-    // marshaller.setProperty(Marshaller.JAXB_NO_NAMESPACE_SCHEMA_LOCATION,
-    // "camt053.xml");
-    // marshaller.marshal(camt053Document, System.out);
 
     return camt053Document;
   }

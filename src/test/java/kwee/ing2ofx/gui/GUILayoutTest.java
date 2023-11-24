@@ -24,7 +24,6 @@ import kwee.ing2ofx.main.Main;
 import kwee.ing2ofx.main.UserSetting;
 import kwee.library.FileUtils;
 import kwee.logger.TestLogger;
-import kwee.testlibrary.TestFunctions;
 
 public class GUILayoutTest extends TestCase {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
@@ -70,7 +69,7 @@ public class GUILayoutTest extends TestCase {
     m_param.freeze();
     m_param.set_ClearTransactions(true);
 
-    m_param.set_AcountSeparateOFX(true);
+//    m_param.set_AcountSeparateOFX(true);
     m_param.set_ConvertDecimalSeparator(false);
     m_param.set_ConvertDateFormat(false);
     m_param.set_SeparatorComma(false);

@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
@@ -19,6 +21,7 @@ import java.util.stream.Stream;
 public class Synonyms {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private Map<String, Synonym> m_Synonyms = new HashMap<String, Synonym>();
+  private Map<String, ArrayList<String>> m_Prefixs = new HashMap<String, ArrayList<String>>();
 
   /**
    * 
@@ -28,7 +31,8 @@ public class Synonyms {
 
   /**
    * 
-   * @param a_SynonymsFile
+   * 
+   * @param a_SynonymsFile Path to Synonym file
    */
   public Synonyms(File a_SynonymsFile) {
     String l_SynonymsFile = a_SynonymsFile.getPath();
@@ -46,15 +50,33 @@ public class Synonyms {
             // ex.printStackTrace();
           }
 
-          String l_key = l_elems[1].strip();
-          String l_syn = l_elems[2].strip();
+          String l_key = l_elems[1].strip(); // Account
+          String l_syn = l_elems[2].strip(); // Prefix
           Synonym l_synonym = new Synonym(lseq, l_key, l_syn);
           m_Synonyms.put(l_key, l_synonym);
+
+          ArrayList<String> l_accs = m_Prefixs.get(l_syn);
+          if (l_accs != null) {
+            l_accs.add(l_key);
+            m_Prefixs.put(l_syn, l_accs);
+          } else {
+            l_accs = new ArrayList<String>();
+            l_accs.add(l_key);
+            m_Prefixs.put(l_syn, l_accs);
+          }
         }
       });
     } catch (IOException e) {
-      // LOGGER.log(Level.SEVERE, Class.class.getName() + ": " + e.getMessage());
+      LOGGER.log(Level.SEVERE, Class.class.getName() + ": " + e.getMessage());
     }
+  }
+
+  public ArrayList<String> getAccountsByPrefix(String a_Prefix) {
+    return m_Prefixs.get(a_Prefix);
+  }
+
+  public Set<String> getPrefixes() {
+    return m_Prefixs.keySet();
   }
 
   /**
