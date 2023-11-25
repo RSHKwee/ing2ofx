@@ -6,3 +6,5 @@ What is new
 
 - ING has changed CSV input format (on ~2 mar 2023), which is now supported.
 - Tests are added.
+- OFX4J Library is used for OFX-file creation.
+- Some refactors are done.
