@@ -4,8 +4,6 @@ package kwee.ing2ofx.gui;
  * ing2ofx GUI
  */
 import kwee.logger.MyLogger;
-import kwee.logger.TextAreaHandler;
-
 import net.miginfocom.swing.MigLayout;
 import kwee.ofxLibrary.OfxFunctions;
 import kwee.ofxLibrary.OfxMetaInfo;
@@ -64,10 +62,11 @@ import javax.swing.JCheckBoxMenuItem;
 import kwee.ing2ofx.main.Main;
 
 import kwee.ing2ofx.main.UserSetting;
-import kwee.library.AboutWindow;
 import kwee.library.ApplicationMessages;
 import kwee.library.OutputToLoggerReader;
-import kwee.library.ShowPreferences;
+import kwee.library.swing.AboutWindow;
+import kwee.library.swing.ShowPreferences;
+import kwee.library.swing.TextAreaHandler;
 
 public class GUILayout extends JPanel implements ItemListener {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
