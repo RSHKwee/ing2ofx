@@ -76,17 +76,34 @@ public class OfxFunctions {
   static public void dumpMetaInfo(String a_OutputFile, Map<String, OfxMetaInfo> a_metainfo) {
     ArrayList<String> l_Regels = new ArrayList<String>();
     Set<String> l_AccUnsortedKeys = a_metainfo.keySet();
-    SortedSet<String> l_AccKeys = new TreeSet<>(l_AccUnsortedKeys);
-    l_Regels.add("Prefix; Account; BalanceDate; Balance; BankCode; MaxDate; MinDate");
+    Map<String, List<String>> l_prefkeys = new HashMap<String, List<String>>();
+    l_AccUnsortedKeys.forEach(key -> {
+      OfxMetaInfo l_metainfo = a_metainfo.get(key);
+      if (l_prefkeys.get(l_metainfo.getPrefix()) == null) {
+        List<String> l_acc = new LinkedList<String>();
+        l_acc.add(key);
+        l_prefkeys.put(l_metainfo.getPrefix(), l_acc);
+      } else {
+        List<String> l_acc = new LinkedList<String>(l_prefkeys.get(l_metainfo.getPrefix()));
+        l_acc.add(key);
+        l_prefkeys.put(l_metainfo.getPrefix(), l_acc);
+      }
+    });
+    Set<String> l_PrefKeys = l_prefkeys.keySet();
+    SortedSet<String> l_AccKeys = new TreeSet<>(l_PrefKeys);
 
+    l_Regels.add("Prefix; Account; BalanceDate; Balance; BankCode; MaxDate; MinDate");
     l_AccKeys.forEach(l_AccKey -> {
-      OfxMetaInfo l_metainfo = a_metainfo.get(l_AccKey);
-      DecimalFormat decimalFormat = new DecimalFormat("0.00");
-      String formattedNumber = decimalFormat.format(l_metainfo.getBalanceAfterTransaction()).replaceAll("\\.", ",");
-      String l_Regel = l_metainfo.getPrefix() + ";" + l_metainfo.getAccount() + "; "
-          + formatDate(l_metainfo.getBalanceDate()) + "; " + formattedNumber + "; " + l_metainfo.getBankcode() + "; "
-          + formatDate(l_metainfo.getMaxDate()) + "; " + formatDate(l_metainfo.getMinDate());
-      l_Regels.add(l_Regel);
+      List<String> ll_acckeys = l_prefkeys.get(l_AccKey);
+      ll_acckeys.forEach(ll_acckey -> {
+        OfxMetaInfo l_metainfo = a_metainfo.get(ll_acckey);
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        String formattedNumber = decimalFormat.format(l_metainfo.getBalanceAfterTransaction()).replaceAll("\\.", ",");
+        String l_Regel = l_metainfo.getPrefix() + ";" + l_metainfo.getAccount() + "; "
+            + formatDate(l_metainfo.getBalanceDate()) + "; " + formattedNumber + "; " + l_metainfo.getBankcode() + "; "
+            + formatDate(l_metainfo.getMaxDate()) + "; " + formatDate(l_metainfo.getMinDate());
+        l_Regels.add(l_Regel);
+      });
     });
 
     TxtBestand.DumpBestand(a_OutputFile, l_Regels);
@@ -108,20 +125,6 @@ public class OfxFunctions {
    */
   static public String createUniqueId(OfxTransaction a_ofxtrans, Set<String> a_UniqueId) {
     String uniqueid = "";
-    /*
-     * @formatter:off
-    String memo = l_ofxtrans.getMemo();
-    String time = "";
-     * time = "" matches = re.search("\s([0-9]{2}:[0-9]{2})\s", memo) if matches:
-     * time = matches.group(1).replace(":", "")
-
-    Pattern patt = Pattern.compile("([0-9]{2}:[0-9]{2})");
-    Matcher matcher = patt.matcher(memo);
-    if (matcher.find()) {
-      time = matcher.group(1).replace(":", ""); // you can get it from desired index as well
-    }
-     * @formatter:on
-    */
     String fitid = DateToNumeric.dateToNumeric(a_ofxtrans.getDtposted()) + printAmount(a_ofxtrans.getTrnamt());
     uniqueid = fitid;
     if (a_UniqueId.contains(fitid)) {

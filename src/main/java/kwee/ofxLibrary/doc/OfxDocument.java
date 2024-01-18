@@ -12,11 +12,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.SortedSet;
+import java.util.TimeZone;
 import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.webcohesion.ofx4j.OFXSettings;
 import com.webcohesion.ofx4j.domain.data.ResponseEnvelope;
 import com.webcohesion.ofx4j.domain.data.ResponseMessageSet;
 import com.webcohesion.ofx4j.domain.data.banking.AccountType;
@@ -37,7 +40,9 @@ import com.webcohesion.ofx4j.io.AggregateMarshaller;
 
 import kwee.ofxLibrary.OfxMetaInfo;
 import kwee.ofxLibrary.OfxTransaction;
+
 import kwee.library.DateToNumeric;
+import kwee.library.TimeConversion;
 
 public class OfxDocument {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
@@ -151,17 +156,21 @@ public class OfxDocument {
     calendar.set(Calendar.HOUR, 20);
     calendar.set(Calendar.MINUTE, 0);
     calendar.set(Calendar.SECOND, 0);
-    Date date = calendar.getTime();
-    // Date date = new Date(123, 4, 24);
 
-    // SignOn Message Response
-    SignonResponse signon = new SignonResponse();
-    SignonResponseMessageSet signonMsgSet = new SignonResponseMessageSet();
+    OFXSettings ofxsettings = OFXSettings.getInstance();
+    Locale loc = ofxsettings.getLocale();
+    String country = loc.getCountry();
+    TimeZone timezone = TimeConversion.getTimeZone(country);
+    calendar.setTimeZone(timezone);
+    Date date = calendar.getTime();
+    LOGGER.log(Level.INFO, "OFX Doc TimeZone: " + timezone + " Date:" + date.toString());
 
     Status stat = new Status();
     Severity sev = Severity.INFO;
     stat.setSeverity(sev);
 
+    // SignOn Message Response
+    SignonResponse signon = new SignonResponse();
     signon.setStatus(stat);
     signon.setLanguage("ENG");
     signon.setTimestamp(date);
@@ -173,6 +182,7 @@ public class OfxDocument {
     finins.setId(a_FinInsId);
     signon.setFinancialInstitution(finins);
 
+    SignonResponseMessageSet signonMsgSet = new SignonResponseMessageSet();
     signonMsgSet.setSignonResponse(signon);
     return signonMsgSet;
   }
