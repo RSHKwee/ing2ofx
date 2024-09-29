@@ -147,31 +147,40 @@ public class SnsTransactions {
                     l_ofxtrans.setAccountto("");
                   }
 
-                  LOGGER.log(l_Level, "Creditor remittance information (payment description): " + entryDetails1
-                      .getTxDtls().get(0).getRmtInf().getUstrd().stream().collect(Collectors.joining(",")));
                   if (entryDetails1.getTxDtls().get(0).getAmtDtls() != null) {
                     LOGGER.log(l_Level, "Creditor amount: "
                         + entryDetails1.getTxDtls().get(0).getAmtDtls().getTxAmt().getAmt().getValue());
                   }
 
-                  LOGGER.log(l_Level,
-                      "Report amount: -" + reportEntry2.getAmt().getValue() + " " + reportEntry2.getAmt().getCcy());
                   BigDecimal lamnt = new BigDecimal(-1.0);
-                  lamnt = lamnt.multiply(reportEntry2.getAmt().getValue());
+                  try {
+                    lamnt = lamnt.multiply(reportEntry2.getAmt().getValue());
+                    LOGGER.log(l_Level,
+                        "Report amount: -" + reportEntry2.getAmt().getValue() + " " + reportEntry2.getAmt().getCcy());
+                  } catch (Exception e) {
+                    // TODO
+                    LOGGER.log(Level.INFO, "Ammount error 1");
+                  }
                   l_ofxtrans.setTrnamt(lamnt);
                   l_ofxtrans.setTrntype("CREDIT");
 
-                  LOGGER.log(l_Level, "Creditor remittance information (payment description): " + entryDetails1
-                      .getTxDtls().get(0).getRmtInf().getUstrd().stream().collect(Collectors.joining(",")));
+                  String l_memo = "";
+                  try {
+                    l_memo = entryDetails1.getTxDtls().get(0).getRmtInf().getUstrd().stream()
+                        .collect(Collectors.joining(","));
+                    LOGGER.log(l_Level, "Creditor remittance information (payment description): " + l_memo);
+                  } catch (Exception e) {
+                    l_memo = reportEntry2.getAddtlNtryInf();
+                  }
 
-                  String l_memo = entryDetails1.getTxDtls().get(0).getRmtInf().getUstrd().stream()
-                      .collect(Collectors.joining(","));
                   l_memo = l_memo.replaceAll("( )+", " ");
+                  l_memo = l_memo.replaceAll("  ", " ");
                   l_ofxtrans.setMemo(l_memo);
-
+                  LOGGER.log(l_Level, "Memo: " + l_memo);
                   if (l_ofxtrans.getName().isBlank()) {
                     l_ofxtrans.setName(l_memo);
                   }
+
                 }
                 if (CreditDebitCode.CRDT == reportEntry2.getCdtDbtInd()) {
                   // Incoming (credit) payments, show origin (debtor) information, money was
@@ -189,22 +198,38 @@ public class SnsTransactions {
                     l_ofxtrans.setName("");
                     l_ofxtrans.setAccountto("");
                   }
-                  LOGGER.log(l_Level, "Debtor remittance information (payment description): " + entryDetails1
-                      .getTxDtls().get(0).getRmtInf().getUstrd().stream().collect(Collectors.joining(",")));
-                  LOGGER.log(l_Level,
-                      "Report amount: " + reportEntry2.getAmt().getValue() + " " + reportEntry2.getAmt().getCcy());
-                  if (entryDetails1.getTxDtls().get(0).getAmtDtls() != null) {
-                    LOGGER.log(l_Level, "Debtor amount: "
-                        + entryDetails1.getTxDtls().get(0).getAmtDtls().getTxAmt().getAmt().getValue());
+                  /*
+                   * LOGGER.log(l_Level, "Debtor remittance information (payment description): " +
+                   * entryDetails1
+                   * .getTxDtls().get(0).getRmtInf().getUstrd().stream().collect(Collectors.
+                   * joining(","))); LOGGER.log(l_Level, "Report amount: " +
+                   * reportEntry2.getAmt().getValue() + " " + reportEntry2.getAmt().getCcy()); if
+                   * (entryDetails1.getTxDtls().get(0).getAmtDtls() != null) { LOGGER.log(l_Level,
+                   * "Debtor amount: " +
+                   * entryDetails1.getTxDtls().get(0).getAmtDtls().getTxAmt().getAmt().getValue())
+                   * ; }
+                   */
+                  BigDecimal lamnt = new BigDecimal(-1.0);
+                  try {
+                    lamnt = lamnt.multiply(reportEntry2.getAmt().getValue());
+                  } catch (Exception e) {
+                    // TODO
+                    LOGGER.log(Level.INFO, "Amount error 2");
                   }
-
-                  l_ofxtrans.setTrnamt(reportEntry2.getAmt().getValue());
+                  l_ofxtrans.setTrnamt(lamnt);
                   l_ofxtrans.setTrntype("DEBIT");
 
-                  String l_memo = entryDetails1.getTxDtls().get(0).getRmtInf().getUstrd().stream()
-                      .collect(Collectors.joining(","));
+                  String l_memo = "";
+                  try {
+                    l_memo = entryDetails1.getTxDtls().get(0).getRmtInf().getUstrd().stream()
+                        .collect(Collectors.joining(","));
+                  } catch (Exception e) {
+                    l_memo = reportEntry2.getAddtlNtryInf();
+                  }
                   l_memo = l_memo.replaceAll("( )+", " ");
+                  l_memo = l_memo.replaceAll("  ", " ");
                   l_ofxtrans.setMemo(l_memo);
+                  LOGGER.log(l_Level, "Memo: " + l_memo);
 
                   if (l_ofxtrans.getName().isBlank()) {
                     l_ofxtrans.setName(l_memo);
