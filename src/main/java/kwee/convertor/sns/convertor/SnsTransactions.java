@@ -152,7 +152,7 @@ public class SnsTransactions {
                         + entryDetails1.getTxDtls().get(0).getAmtDtls().getTxAmt().getAmt().getValue());
                   }
 
-                  BigDecimal lamnt = new BigDecimal(-1.0);
+                  BigDecimal lamnt = new BigDecimal(1.0);
                   try {
                     lamnt = lamnt.multiply(reportEntry2.getAmt().getValue());
                     LOGGER.log(l_Level,
@@ -209,7 +209,7 @@ public class SnsTransactions {
                    * entryDetails1.getTxDtls().get(0).getAmtDtls().getTxAmt().getAmt().getValue())
                    * ; }
                    */
-                  BigDecimal lamnt = new BigDecimal(-1.0);
+                  BigDecimal lamnt = new BigDecimal(1.0);
                   try {
                     lamnt = lamnt.multiply(reportEntry2.getAmt().getValue());
                   } catch (Exception e) {
