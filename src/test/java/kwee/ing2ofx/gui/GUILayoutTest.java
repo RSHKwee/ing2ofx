@@ -33,7 +33,10 @@ public class GUILayoutTest extends TestCase {
   private String c_SynonymFile = "Synoniem.txt";
   private String c_IngTransFile = "Alle_rekeningen.csv";
   private String c_IngSavingTransFile = "Alle_spaarrekeningen.csv";
+
   private String c_SNSTransFile = "transactie-historie.xml";
+  private String c_SNSTransMemoFile = "transactie-historie_memoChange.xml";
+
   private String c_IngTransEngFile = "Alle_rekeningen_eng.csv";
   private String c_IngSavingEngTransFile = "Alle_spaarrekeningen_eng.csv";
 
@@ -48,6 +51,8 @@ public class GUILayoutTest extends TestCase {
   private String m_OfxEnkelING = "OFX_ING";
   private String m_OfxEnkelINGSaving = "OFX_INGSaving";
   private String m_OfxEnkelSNS = "OFX_SNS";
+  private String m_OfxEnkelMemoSNS = "OFX_SNSMemo";
+
   private String m_OfxCombine = "OFX_Combine";
   private String m_OfxCombineSyn = "OFX_Combine_Syn";
   private String m_OfxCombineDouble = "OFX_CombineDouble_Syn";
@@ -306,6 +311,44 @@ public class GUILayoutTest extends TestCase {
       AssertFile(m_OfxEnkelSNS, "_Saldos_transactie-historie.csv");
 
       LOGGER.log(Level.INFO, "Ready testGUILayoutSNS");
+    }
+  }
+
+  /**
+   * Test handling of SNS Transactions, CAMT0.53 to OFX.
+   */
+  @Test
+  public void testGUILayoutSNSMemo() {
+    LOGGER.log(Level.INFO, "testGUILayoutSNSMemo");
+    FileUtils.checkCreateDirectory(m_OutputDir + "/" + m_OfxEnkelMemoSNS);
+
+    frame.button("OutputFolder").click();
+    JFileChooserFixture fileChooser = frame.fileChooser();
+    fileChooser.setCurrentDirectory(new File(m_OutputDir + "/" + m_OfxEnkelMemoSNS));
+    fileChooser.approve();
+
+    frame.button("CSVXMLFile").click();
+    fileChooser = frame.fileChooser();
+    fileChooser.setCurrentDirectory(new File(m_OutputDir));
+    fileChooser.fileNameTextBox().setText(c_SNSTransMemoFile); // Set the desired file name
+    fileChooser.approve();
+    frame.button("ReadTransactions").click();
+
+    frame.button("ConvertToOFX").click();
+
+    // Evaluate results:
+    synchronized (lock) {
+      String logOutput = TestLogger.getOutput();
+
+      assertTrue(logOutput.contains("Gelezen transacties: 9, na verwijdering doublures: 9"));
+      assertTrue(logOutput.contains("Eindtotaal van gelezen transacties: 9"));
+
+      AssertXmlFile(m_OfxEnkelSNS, "NL20LPLN0892606304_transactie-historie.ofx");
+      AssertXmlFile(m_OfxEnkelSNS, "NL38RABO0192584529_transactie-historie.ofx");
+      AssertXmlFile(m_OfxEnkelSNS, "NL45TRIO0953178943_transactie-historie.ofx");
+      AssertFile(m_OfxEnkelSNS, "_Saldos_transactie-historie.csv");
+
+      LOGGER.log(Level.INFO, "Ready testGUILayoutSNSMemo");
     }
   }
 
