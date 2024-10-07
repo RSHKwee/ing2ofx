@@ -79,7 +79,7 @@ public class EngGUILayoutTest extends TestCase {
 
     File ll_file = m_Functions.GetResourceFile(c_SynonymFile);
     m_OutputDir = ll_file.getParent();
-    m_param.set_Synonym_file(new File(c_SynonymFile));
+    m_param.set_Synonym_file(new File(m_OutputDir + "/" + c_SynonymFile));
     m_param.save();
 
     // Launch your application or obtain a reference to an existing Swing frame

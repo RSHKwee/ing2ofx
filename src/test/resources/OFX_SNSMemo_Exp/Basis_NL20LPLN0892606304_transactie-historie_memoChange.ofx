@@ -32,26 +32,39 @@
           <ACCTTYPE>CHECKING</ACCTTYPE>
         </BANKACCTFROM>
         <BANKTRANLIST>
-          <DTSTART>20230524</DTSTART>
-          <DTEND>20230524</DTEND>
+          <DTSTART>20240916</DTSTART>
+          <DTEND>20240916</DTEND>
           <STMTTRN>
             <TRNTYPE>CREDIT</TRNTYPE>
-            <DTPOSTED>20230524</DTPOSTED>
-            <TRNAMT>0,75</TRNAMT>
-            <FITID>20230524075</FITID>
-            <NAME>Kosten extra betaalpas met nr. 005</NAME>
+            <DTPOSTED>20240806</DTPOSTED>
+            <TRNAMT>1,00</TRNAMT>
+            <FITID>20240806100</FITID>
+            <NAME>Jumbo &gt;HOEVELAKE 6.08.2024 15U33 KV005 ZF2708 MCC:5411 Contactloze betaling NLNEDERLAND</NAME>
             <BANKACCTTO>
               <BANKID>SNSBNL0A</BANKID>
               <ACCTID>NL00SNSBNL2A000000000000000</ACCTID>
               <ACCTTYPE>CHECKING</ACCTTYPE>
             </BANKACCTTO>
-            <MEMO>Kosten extra betaalpas met nr. 005</MEMO>
+            <MEMO>Jumbo &gt;HOEVELAKE 6.08.2024 15U33 KV005 ZF2708 MCC:5411 Contactloze betaling NLNEDERLAND</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20240806</DTPOSTED>
+            <TRNAMT>1,00</TRNAMT>
+            <FITID>202408061001</FITID>
+            <NAME>a Acchouder 1a, a Acchouder 2</NAME>
+            <BANKACCTTO>
+              <BANKID>COBANL0A</BANKID>
+              <ACCTID>NL94COBA0678011583</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Stokbrood Jumbo</MEMO>
           </STMTTRN>
           <STMTTRN>
             <TRNTYPE>CREDIT</TRNTYPE>
-            <DTPOSTED>20230524</DTPOSTED>
-            <TRNAMT>2,55</TRNAMT>
-            <FITID>20230524255</FITID>
+            <DTPOSTED>20240825</DTPOSTED>
+            <TRNAMT>3,45</TRNAMT>
+            <FITID>20240825345</FITID>
             <NAME>Kosten gebruik betaalrekening inclusief 1 betaalpas</NAME>
             <BANKACCTTO>
               <BANKID>SNSBNL0A</BANKID>
@@ -61,26 +74,39 @@
             <MEMO>Kosten gebruik betaalrekening inclusief 1 betaalpas</MEMO>
           </STMTTRN>
           <STMTTRN>
+            <TRNTYPE>CREDIT</TRNTYPE>
+            <DTPOSTED>20240825</DTPOSTED>
+            <TRNAMT>0,75</TRNAMT>
+            <FITID>20240825075</FITID>
+            <NAME>Kosten extra betaalpas met nr. 005</NAME>
+            <BANKACCTTO>
+              <BANKID>SNSBNL0A</BANKID>
+              <ACCTID>NL00SNSBNL2A000000000000000</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Kosten extra betaalpas met nr. 005</MEMO>
+          </STMTTRN>
+          <STMTTRN>
             <TRNTYPE>DEBIT</TRNTYPE>
-            <DTPOSTED>20230524</DTPOSTED>
-            <TRNAMT>3,30</TRNAMT>
-            <FITID>20230524330</FITID>
+            <DTPOSTED>20240826</DTPOSTED>
+            <TRNAMT>4,20</TRNAMT>
+            <FITID>20240826420</FITID>
             <NAME>a Acchouder 1a, a Acchouder 2</NAME>
             <BANKACCTTO>
               <BANKID>COBANL0A</BANKID>
               <ACCTID>NL94COBA0678011583</ACCTID>
               <ACCTTYPE>CHECKING</ACCTTYPE>
             </BANKACCTTO>
-            <MEMO>Bankkosten</MEMO>
+            <MEMO>NL94COBA0678011583-a Acchouder 1a, a Acchouder 2</MEMO>
           </STMTTRN>
         </BANKTRANLIST>
         <LEDGERBAL>
           <BALAMT>250,00</BALAMT>
-          <DTASOF>202305242359</DTASOF>
+          <DTASOF>202409162359</DTASOF>
         </LEDGERBAL>
       </STMTRS>
     </STMTTRNRS>
   </BANKMSGSRSV1>
 </OFX>
-<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_Combine_Syn\Basis_NL20LPLN0892606304_transactie-historie.ofx -->
-<!-- Generated on 2024-10-07 10:23:32.645211200 -->
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_SNSMemo\Basis_NL20LPLN0892606304_transactie-historie_memoChange.ofx -->
+<!-- Generated on 2024-10-07 10:23:43.293398400 -->

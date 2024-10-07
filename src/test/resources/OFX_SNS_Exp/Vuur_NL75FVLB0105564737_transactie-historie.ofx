@@ -28,7 +28,7 @@
         <CURDEF>EUR</CURDEF>
         <BANKACCTFROM>
           <BANKID>SNSBNL2A</BANKID>
-          <ACCTID>NL45TRIO0953178943</ACCTID>
+          <ACCTID>NL75FVLB0105564737</ACCTID>
           <ACCTTYPE>CHECKING</ACCTTYPE>
         </BANKACCTFROM>
         <BANKTRANLIST>
@@ -37,8 +37,8 @@
           <STMTTRN>
             <TRNTYPE>DEBIT</TRNTYPE>
             <DTPOSTED>20230505</DTPOSTED>
-            <TRNAMT>4,10</TRNAMT>
-            <FITID>20230505410</FITID>
+            <TRNAMT>6,84</TRNAMT>
+            <FITID>20230505684</FITID>
             <NAME>Rente over positief saldo tot 01-05-23</NAME>
             <BANKACCTTO>
               <BANKID>SNSBNL0A</BANKID>
@@ -49,12 +49,12 @@
           </STMTTRN>
         </BANKTRANLIST>
         <LEDGERBAL>
-          <BALAMT>10014,83</BALAMT>
+          <BALAMT>16687,56</BALAMT>
           <DTASOF>202305052359</DTASOF>
         </LEDGERBAL>
       </STMTRS>
     </STMTTRNRS>
   </BANKMSGSRSV1>
 </OFX>
-<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_Combine_Syn\Aap_NL45TRIO0953178943_transactie-historie.ofx -->
-<!-- Generated on 2024-10-07 10:23:32.638230500 -->
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_SNS\Vuur_NL75FVLB0105564737_transactie-historie.ofx -->
+<!-- Generated on 2024-10-07 10:23:10.763728800 -->

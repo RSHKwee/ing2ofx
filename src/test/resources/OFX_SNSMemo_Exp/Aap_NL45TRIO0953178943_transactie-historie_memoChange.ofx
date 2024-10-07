@@ -28,59 +28,46 @@
         <CURDEF>EUR</CURDEF>
         <BANKACCTFROM>
           <BANKID>SNSBNL2A</BANKID>
-          <ACCTID>NL20LPLN0892606304</ACCTID>
+          <ACCTID>NL45TRIO0953178943</ACCTID>
           <ACCTTYPE>CHECKING</ACCTTYPE>
         </BANKACCTFROM>
         <BANKTRANLIST>
-          <DTSTART>20230524</DTSTART>
-          <DTEND>20230524</DTEND>
+          <DTSTART>20240916</DTSTART>
+          <DTEND>20240916</DTEND>
           <STMTTRN>
-            <TRNTYPE>CREDIT</TRNTYPE>
-            <DTPOSTED>20230524</DTPOSTED>
-            <TRNAMT>0,75</TRNAMT>
-            <FITID>20230524075</FITID>
-            <NAME>Kosten extra betaalpas met nr. 005</NAME>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20240805</DTPOSTED>
+            <TRNAMT>15,40</TRNAMT>
+            <FITID>202408051540</FITID>
+            <NAME>Rente over positief saldo tot 01-08-24</NAME>
             <BANKACCTTO>
               <BANKID>SNSBNL0A</BANKID>
               <ACCTID>NL00SNSBNL2A000000000000000</ACCTID>
               <ACCTTYPE>CHECKING</ACCTTYPE>
             </BANKACCTTO>
-            <MEMO>Kosten extra betaalpas met nr. 005</MEMO>
-          </STMTTRN>
-          <STMTTRN>
-            <TRNTYPE>CREDIT</TRNTYPE>
-            <DTPOSTED>20230524</DTPOSTED>
-            <TRNAMT>2,55</TRNAMT>
-            <FITID>20230524255</FITID>
-            <NAME>Kosten gebruik betaalrekening inclusief 1 betaalpas</NAME>
-            <BANKACCTTO>
-              <BANKID>SNSBNL0A</BANKID>
-              <ACCTID>NL00SNSBNL2A000000000000000</ACCTID>
-              <ACCTTYPE>CHECKING</ACCTTYPE>
-            </BANKACCTTO>
-            <MEMO>Kosten gebruik betaalrekening inclusief 1 betaalpas</MEMO>
+            <MEMO>Rente over positief saldo tot 01-08-24</MEMO>
           </STMTTRN>
           <STMTTRN>
             <TRNTYPE>DEBIT</TRNTYPE>
-            <DTPOSTED>20230524</DTPOSTED>
-            <TRNAMT>3,30</TRNAMT>
-            <FITID>20230524330</FITID>
-            <NAME>a Acchouder 1a, a Acchouder 2</NAME>
+            <DTPOSTED>20240905</DTPOSTED>
+            <TRNAMT>15,42</TRNAMT>
+            <FITID>202409051542</FITID>
+            <NAME>Rente over positief saldo tot 01-09-24</NAME>
             <BANKACCTTO>
-              <BANKID>COBANL0A</BANKID>
-              <ACCTID>NL94COBA0678011583</ACCTID>
+              <BANKID>SNSBNL0A</BANKID>
+              <ACCTID>NL00SNSBNL2A000000000000000</ACCTID>
               <ACCTTYPE>CHECKING</ACCTTYPE>
             </BANKACCTTO>
-            <MEMO>Bankkosten</MEMO>
+            <MEMO>Rente over positief saldo tot 01-09-24</MEMO>
           </STMTTRN>
         </BANKTRANLIST>
         <LEDGERBAL>
-          <BALAMT>250,00</BALAMT>
-          <DTASOF>202305242359</DTASOF>
+          <BALAMT>10215,33</BALAMT>
+          <DTASOF>202409162359</DTASOF>
         </LEDGERBAL>
       </STMTRS>
     </STMTTRNRS>
   </BANKMSGSRSV1>
 </OFX>
-<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_Combine_Syn\Basis_NL20LPLN0892606304_transactie-historie.ofx -->
-<!-- Generated on 2024-10-07 10:23:32.645211200 -->
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_SNSMemo\Aap_NL45TRIO0953178943_transactie-historie_memoChange.ofx -->
+<!-- Generated on 2024-10-07 10:23:43.282427900 -->

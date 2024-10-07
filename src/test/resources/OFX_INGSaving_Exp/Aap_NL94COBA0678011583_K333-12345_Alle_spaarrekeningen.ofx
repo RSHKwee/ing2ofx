@@ -28,17 +28,30 @@
         <CURDEF>EUR</CURDEF>
         <BANKACCTFROM>
           <BANKID>INGBNL2A</BANKID>
-          <ACCTID>K222-12345</ACCTID>
+          <ACCTID>K333-12345</ACCTID>
           <ACCTTYPE>CHECKING</ACCTTYPE>
         </BANKACCTFROM>
         <BANKTRANLIST>
           <DTSTART>20230501</DTSTART>
-          <DTEND>20230523</DTEND>
+          <DTEND>20230510</DTEND>
           <STMTTRN>
             <TRNTYPE>DEBIT</TRNTYPE>
-            <DTPOSTED>20230523</DTPOSTED>
-            <TRNAMT>-3,01</TRNAMT>
-            <FITID>20230523301</FITID>
+            <DTPOSTED>20230510</DTPOSTED>
+            <TRNAMT>-4184,50</TRNAMT>
+            <FITID>20230510418450</FITID>
+            <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
+            <BANKACCTTO>
+              <BANKID>COBANL0A</BANKID>
+              <ACCTID>NL94COBA0678011583</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+            <MEMO>Tekst3953</MEMO>
+          </STMTTRN>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20230504</DTPOSTED>
+            <TRNAMT>-6100,00</TRNAMT>
+            <FITID>20230504610000</FITID>
             <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
             <BANKACCTTO>
               <BANKID>COBANL0A</BANKID>
@@ -49,8 +62,8 @@
           <STMTTRN>
             <TRNTYPE>CREDIT</TRNTYPE>
             <DTPOSTED>20230501</DTPOSTED>
-            <TRNAMT>1,06</TRNAMT>
-            <FITID>20230501106</FITID>
+            <TRNAMT>10,14</TRNAMT>
+            <FITID>202305011014</FITID>
             <NAME>Rente</NAME>
             <BANKACCTTO>
               <BANKID>INGBNL0A</BANKID>
@@ -60,12 +73,12 @@
           </STMTTRN>
         </BANKTRANLIST>
         <LEDGERBAL>
-          <BALAMT>3000,00</BALAMT>
-          <DTASOF>202305232359</DTASOF>
+          <BALAMT>18451,15</BALAMT>
+          <DTASOF>202305102359</DTASOF>
         </LEDGERBAL>
       </STMTRS>
     </STMTTRNRS>
   </BANKMSGSRSV1>
 </OFX>
-<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_Combine_Syn\Aap_K222-12345_Alle_spaarrekeningen.ofx -->
-<!-- Generated on 2024-10-07 10:23:32.618283900 -->
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_INGSaving\Aap_NL94COBA0678011583_K333-12345_Alle_spaarrekeningen.ofx -->
+<!-- Generated on 2024-10-07 10:23:24.998557400 -->

@@ -28,53 +28,65 @@
         <CURDEF>EUR</CURDEF>
         <BANKACCTFROM>
           <BANKID>INGBNL2A</BANKID>
-          <ACCTID>K555-12345</ACCTID>
+          <ACCTID>K111-12345</ACCTID>
           <ACCTTYPE>CHECKING</ACCTTYPE>
         </BANKACCTFROM>
         <BANKTRANLIST>
           <DTSTART>20230501</DTSTART>
-          <DTEND>20230523</DTEND>
+          <DTEND>20230531</DTEND>
+          <STMTTRN>
+            <TRNTYPE>DEBIT</TRNTYPE>
+            <DTPOSTED>20230531</DTPOSTED>
+            <TRNAMT>-250,00</TRNAMT>
+            <FITID>2023053125000</FITID>
+            <NAME>Overboeking naar betaalrekening NL54BKMG0378842587</NAME>
+            <BANKACCTTO>
+              <BANKID>BKMGNL0A</BANKID>
+              <ACCTID>NL54BKMG0378842587</ACCTID>
+              <ACCTTYPE>CHECKING</ACCTTYPE>
+            </BANKACCTTO>
+          </STMTTRN>
           <STMTTRN>
             <TRNTYPE>CREDIT</TRNTYPE>
-            <DTPOSTED>20230523</DTPOSTED>
-            <TRNAMT>2000,00</TRNAMT>
-            <FITID>20230523200000</FITID>
-            <NAME>Overboeking van betaalrekening NL90KNAB0445266309</NAME>
+            <DTPOSTED>20230526</DTPOSTED>
+            <TRNAMT>750,00</TRNAMT>
+            <FITID>2023052675000</FITID>
+            <NAME>Overboeking van betaalrekening NL54BKMG0378842587</NAME>
             <BANKACCTTO>
-              <BANKID>KNABNL0A</BANKID>
-              <ACCTID>NL90KNAB0445266309</ACCTID>
+              <BANKID>BKMGNL0A</BANKID>
+              <ACCTID>NL54BKMG0378842587</ACCTID>
               <ACCTTYPE>CHECKING</ACCTTYPE>
             </BANKACCTTO>
           </STMTTRN>
           <STMTTRN>
             <TRNTYPE>DEBIT</TRNTYPE>
-            <DTPOSTED>20230505</DTPOSTED>
+            <DTPOSTED>20230511</DTPOSTED>
             <TRNAMT>-250,00</TRNAMT>
-            <FITID>20230505250001</FITID>
-            <NAME>Overboeking naar betaalrekening NL90KNAB0445266309</NAME>
+            <FITID>20230511250001</FITID>
+            <NAME>Overboeking naar betaalrekening NL54BKMG0378842587</NAME>
             <BANKACCTTO>
-              <BANKID>KNABNL0A</BANKID>
-              <ACCTID>NL90KNAB0445266309</ACCTID>
+              <BANKID>BKMGNL0A</BANKID>
+              <ACCTID>NL54BKMG0378842587</ACCTID>
               <ACCTTYPE>CHECKING</ACCTTYPE>
             </BANKACCTTO>
           </STMTTRN>
           <STMTTRN>
             <TRNTYPE>CREDIT</TRNTYPE>
-            <DTPOSTED>20230503</DTPOSTED>
-            <TRNAMT>134,01</TRNAMT>
-            <FITID>2023050313401</FITID>
-            <NAME>Overboeking van betaalrekening NL90KNAB0445266309</NAME>
+            <DTPOSTED>20230502</DTPOSTED>
+            <TRNAMT>246,37</TRNAMT>
+            <FITID>2023050224637</FITID>
+            <NAME>Overboeking van betaalrekening NL54BKMG0378842587</NAME>
             <BANKACCTTO>
-              <BANKID>KNABNL0A</BANKID>
-              <ACCTID>NL90KNAB0445266309</ACCTID>
+              <BANKID>BKMGNL0A</BANKID>
+              <ACCTID>NL54BKMG0378842587</ACCTID>
               <ACCTTYPE>CHECKING</ACCTTYPE>
             </BANKACCTTO>
           </STMTTRN>
           <STMTTRN>
             <TRNTYPE>CREDIT</TRNTYPE>
             <DTPOSTED>20230501</DTPOSTED>
-            <TRNAMT>15,99</TRNAMT>
-            <FITID>202305011599</FITID>
+            <TRNAMT>3,63</TRNAMT>
+            <FITID>20230501363</FITID>
             <NAME>Rente</NAME>
             <BANKACCTTO>
               <BANKID>INGBNL0A</BANKID>
@@ -82,26 +94,14 @@
               <ACCTTYPE>CHECKING</ACCTTYPE>
             </BANKACCTTO>
           </STMTTRN>
-          <STMTTRN>
-            <TRNTYPE>CREDIT</TRNTYPE>
-            <DTPOSTED>20230501</DTPOSTED>
-            <TRNAMT>1000,00</TRNAMT>
-            <FITID>20230501100000</FITID>
-            <NAME>Overboeking van betaalrekening NL90KNAB0445266309</NAME>
-            <BANKACCTTO>
-              <BANKID>KNABNL0A</BANKID>
-              <ACCTID>NL90KNAB0445266309</ACCTID>
-              <ACCTTYPE>CHECKING</ACCTTYPE>
-            </BANKACCTTO>
-          </STMTTRN>
         </BANKTRANLIST>
         <LEDGERBAL>
-          <BALAMT>49000,00</BALAMT>
-          <DTASOF>202305232359</DTASOF>
+          <BALAMT>9500,00</BALAMT>
+          <DTASOF>202305312359</DTASOF>
         </LEDGERBAL>
       </STMTRS>
     </STMTTRNRS>
   </BANKMSGSRSV1>
 </OFX>
-<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_Combine_Syn\Noot_NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx -->
-<!-- Generated on 2024-10-07 10:23:32.604321600 -->
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_CombineOneByOne_Syn\Mies_NL54BKMG0378842587_K111-12345_Alle_spaarrekeningen.ofx -->
+<!-- Generated on 2024-10-07 11:22:10.061822400 -->

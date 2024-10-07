@@ -7,10 +7,10 @@
         <CODE>0</CODE>
         <SEVERITY>INFO</SEVERITY>
       </STATUS>
-      <DTSERVER>202305241923</DTSERVER>
+      <DTSERVER>202305242000</DTSERVER>
       <LANGUAGE>ENG</LANGUAGE>
-      <DTPROFUP>202305241923</DTPROFUP>
-      <DTACCTUP>202305241923</DTACCTUP>
+      <DTPROFUP>202305242000</DTPROFUP>
+      <DTACCTUP>202305242000</DTACCTUP>
       <FI>
         <ORG>NCH</ORG>
         <FID>1001</FID>
@@ -56,5 +56,5 @@
     </STMTTRNRS>
   </BANKMSGSRSV1>
 </OFX>
-<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_Combine_Syn/Vuur_NL75FVLB0105564737_transactie-historie.ofx -->
-<!-- Generated on 2023-11-16 19:23:27.154710 -->
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_Combine_Syn\Vuur_NL75FVLB0105564737_transactie-historie.ofx -->
+<!-- Generated on 2024-10-07 10:23:32.631247800 -->
