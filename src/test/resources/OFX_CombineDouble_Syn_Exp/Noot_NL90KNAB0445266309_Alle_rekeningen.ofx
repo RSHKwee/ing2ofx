@@ -7,10 +7,10 @@
         <CODE>0</CODE>
         <SEVERITY>INFO</SEVERITY>
       </STATUS>
-      <DTSERVER>202305241924</DTSERVER>
+      <DTSERVER>202305250800</DTSERVER>
       <LANGUAGE>ENG</LANGUAGE>
-      <DTPROFUP>202305241924</DTPROFUP>
-      <DTACCTUP>202305241924</DTACCTUP>
+      <DTPROFUP>202305250800</DTPROFUP>
+      <DTACCTUP>202305250800</DTACCTUP>
       <FI>
         <ORG>NCH</ORG>
         <FID>1001</FID>
@@ -225,5 +225,5 @@
     </STMTTRNRS>
   </BANKMSGSRSV1>
 </OFX>
-<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_CombineDouble_Syn/NL90KNAB0445266309_Alle_rekeningen.ofx -->
-<!-- Generated on 2023-11-16 19:24:11.871062400 -->
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_CombineDouble_Syn\Noot_NL90KNAB0445266309_Alle_rekeningen.ofx -->
+<!-- Generated on 2024-10-07 16:20:13.616075400 -->

@@ -7,10 +7,10 @@
         <CODE>0</CODE>
         <SEVERITY>INFO</SEVERITY>
       </STATUS>
-      <DTSERVER>202305241924</DTSERVER>
+      <DTSERVER>202305250800</DTSERVER>
       <LANGUAGE>ENG</LANGUAGE>
-      <DTPROFUP>202305241924</DTPROFUP>
-      <DTACCTUP>202305241924</DTACCTUP>
+      <DTPROFUP>202305250800</DTPROFUP>
+      <DTACCTUP>202305250800</DTACCTUP>
       <FI>
         <ORG>NCH</ORG>
         <FID>1001</FID>
@@ -37,7 +37,7 @@
           <STMTTRN>
             <TRNTYPE>CREDIT</TRNTYPE>
             <DTPOSTED>20230524</DTPOSTED>
-            <TRNAMT>-0,75</TRNAMT>
+            <TRNAMT>0,75</TRNAMT>
             <FITID>20230524075</FITID>
             <NAME>Kosten extra betaalpas met nr. 005</NAME>
             <BANKACCTTO>
@@ -50,7 +50,7 @@
           <STMTTRN>
             <TRNTYPE>CREDIT</TRNTYPE>
             <DTPOSTED>20230524</DTPOSTED>
-            <TRNAMT>-2,55</TRNAMT>
+            <TRNAMT>2,55</TRNAMT>
             <FITID>20230524255</FITID>
             <NAME>Kosten gebruik betaalrekening inclusief 1 betaalpas</NAME>
             <BANKACCTTO>
@@ -82,5 +82,5 @@
     </STMTTRNRS>
   </BANKMSGSRSV1>
 </OFX>
-<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_CombineDouble_Syn/NL20LPLN0892606304_transactie-historie.ofx -->
-<!-- Generated on 2023-11-16 19:24:12.009690500 -->
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_CombineDouble_Syn\Basis_NL20LPLN0892606304_transactie-historie.ofx -->
+<!-- Generated on 2024-10-07 16:20:13.795595500 -->
