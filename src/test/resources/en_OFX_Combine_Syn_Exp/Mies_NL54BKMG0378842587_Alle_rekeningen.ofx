@@ -7,10 +7,10 @@
         <CODE>0</CODE>
         <SEVERITY>INFO</SEVERITY>
       </STATUS>
-      <DTSERVER>202305242000</DTSERVER>
+      <DTSERVER>202305251800</DTSERVER>
       <LANGUAGE>ENG</LANGUAGE>
-      <DTPROFUP>202305242000</DTPROFUP>
-      <DTACCTUP>202305242000</DTACCTUP>
+      <DTPROFUP>202305251800</DTPROFUP>
+      <DTACCTUP>202305251800</DTACCTUP>
       <FI>
         <ORG>NCH</ORG>
         <FID>1001</FID>
@@ -329,5 +329,5 @@
     </STMTTRNRS>
   </BANKMSGSRSV1>
 </OFX>
-<!-- F:\dev\Tools\ing2ofx\target\test-classes\en_OFX_Combine_Syn/Mies_NL54BKMG0378842587_Alle_rekeningen.ofx -->
-<!-- Generated on 2023-11-17 09:32:42.714462500 -->
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\en_OFX_Combine_Syn\Mies_NL54BKMG0378842587_Alle_rekeningen.ofx -->
+<!-- Generated on 2024-10-08 15:09:35.747088700 -->

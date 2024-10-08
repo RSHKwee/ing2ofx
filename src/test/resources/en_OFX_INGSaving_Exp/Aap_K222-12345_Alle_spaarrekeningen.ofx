@@ -7,10 +7,10 @@
         <CODE>0</CODE>
         <SEVERITY>INFO</SEVERITY>
       </STATUS>
-      <DTSERVER>202305242000</DTSERVER>
+      <DTSERVER>202305251800</DTSERVER>
       <LANGUAGE>ENG</LANGUAGE>
-      <DTPROFUP>202305242000</DTPROFUP>
-      <DTACCTUP>202305242000</DTACCTUP>
+      <DTPROFUP>202305251800</DTPROFUP>
+      <DTACCTUP>202305251800</DTACCTUP>
       <FI>
         <ORG>NCH</ORG>
         <FID>1001</FID>
@@ -37,7 +37,7 @@
           <STMTTRN>
             <TRNTYPE>DEBIT</TRNTYPE>
             <DTPOSTED>20230523</DTPOSTED>
-            <TRNAMT>-3,01</TRNAMT>
+            <TRNAMT>-3.01</TRNAMT>
             <FITID>20230523301</FITID>
             <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
             <BANKACCTTO>
@@ -49,7 +49,7 @@
           <STMTTRN>
             <TRNTYPE>CREDIT</TRNTYPE>
             <DTPOSTED>20230501</DTPOSTED>
-            <TRNAMT>1,06</TRNAMT>
+            <TRNAMT>1.06</TRNAMT>
             <FITID>20230501106</FITID>
             <NAME>Rente</NAME>
             <BANKACCTTO>
@@ -60,12 +60,12 @@
           </STMTTRN>
         </BANKTRANLIST>
         <LEDGERBAL>
-          <BALAMT>3000,00</BALAMT>
+          <BALAMT>3000.00</BALAMT>
           <DTASOF>202305232359</DTASOF>
         </LEDGERBAL>
       </STMTRS>
     </STMTTRNRS>
   </BANKMSGSRSV1>
 </OFX>
-<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_INGSaving\Aap_K222-12345_Alle_spaarrekeningen.ofx -->
-<!-- Generated on 2024-10-07 11:21:33.785033700 -->
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\en_OFX_INGSaving\Aap_K222-12345_Alle_spaarrekeningen.ofx -->
+<!-- Generated on 2024-10-08 16:39:49.430902200 -->

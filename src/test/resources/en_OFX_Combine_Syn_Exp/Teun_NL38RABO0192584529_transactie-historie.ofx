@@ -7,10 +7,10 @@
         <CODE>0</CODE>
         <SEVERITY>INFO</SEVERITY>
       </STATUS>
-      <DTSERVER>202305242000</DTSERVER>
+      <DTSERVER>202305251800</DTSERVER>
       <LANGUAGE>ENG</LANGUAGE>
-      <DTPROFUP>202305242000</DTPROFUP>
-      <DTACCTUP>202305242000</DTACCTUP>
+      <DTPROFUP>202305251800</DTPROFUP>
+      <DTACCTUP>202305251800</DTACCTUP>
       <FI>
         <ORG>NCH</ORG>
         <FID>1001</FID>
@@ -37,7 +37,7 @@
           <STMTTRN>
             <TRNTYPE>CREDIT</TRNTYPE>
             <DTPOSTED>20230509</DTPOSTED>
-            <TRNAMT>-363.75</TRNAMT>
+            <TRNAMT>363.75</TRNAMT>
             <FITID>2023050936375</FITID>
             <NAME>Voor u gekocht via Euronext Fund Services: 6,3042 Participaties ASN Duurzaam Mixfonds Neutraal aEUR 57,70. Valutadatum: 11/05/2023. Positie ,na transactie: 434,2441 ASN Duurzaam Mixfonds Neutraal. (Trans.nr. 24712542)</NAME>
             <BANKACCTTO>
@@ -50,7 +50,7 @@
           <STMTTRN>
             <TRNTYPE>CREDIT</TRNTYPE>
             <DTPOSTED>20230509</DTPOSTED>
-            <TRNAMT>-75.44</TRNAMT>
+            <TRNAMT>75.44</TRNAMT>
             <FITID>202305097544</FITID>
             <NAME>Voor u gekocht via Euronext Fund Services: 1,4505 Participaties ASN Duurzaam Mixfonds Defensief a EUR 52,01. Valutadatum: 11/05/2023. Positi,e na transactie: 94,8511 ASN Duurzaam Mixfonds Defensief. (Trans.nr. 24647328)</NAME>
             <BANKACCTTO>
@@ -95,5 +95,5 @@
     </STMTTRNRS>
   </BANKMSGSRSV1>
 </OFX>
-<!-- F:\dev\Tools\ing2ofx\target\test-classes\en_OFX_Combine_Syn/Teun_NL38RABO0192584529_transactie-historie.ofx -->
-<!-- Generated on 2023-11-17 09:32:42.758343900 -->
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\en_OFX_Combine_Syn\Teun_NL38RABO0192584529_transactie-historie.ofx -->
+<!-- Generated on 2024-10-08 15:09:35.795957600 -->

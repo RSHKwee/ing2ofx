@@ -7,10 +7,10 @@
         <CODE>0</CODE>
         <SEVERITY>INFO</SEVERITY>
       </STATUS>
-      <DTSERVER>202305242000</DTSERVER>
+      <DTSERVER>202305251800</DTSERVER>
       <LANGUAGE>ENG</LANGUAGE>
-      <DTPROFUP>202305242000</DTPROFUP>
-      <DTACCTUP>202305242000</DTACCTUP>
+      <DTPROFUP>202305251800</DTPROFUP>
+      <DTACCTUP>202305251800</DTACCTUP>
       <FI>
         <ORG>NCH</ORG>
         <FID>1001</FID>
@@ -37,7 +37,7 @@
           <STMTTRN>
             <TRNTYPE>CREDIT</TRNTYPE>
             <DTPOSTED>20230526</DTPOSTED>
-            <TRNAMT>2500,00</TRNAMT>
+            <TRNAMT>2500.00</TRNAMT>
             <FITID>20230526250000</FITID>
             <NAME>Overboeking van betaalrekening NL94COBA0678011583</NAME>
             <BANKACCTTO>
@@ -49,7 +49,7 @@
           <STMTTRN>
             <TRNTYPE>DEBIT</TRNTYPE>
             <DTPOSTED>20230525</DTPOSTED>
-            <TRNAMT>-250,00</TRNAMT>
+            <TRNAMT>-250.00</TRNAMT>
             <FITID>2023052525000</FITID>
             <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
             <BANKACCTTO>
@@ -61,7 +61,7 @@
           <STMTTRN>
             <TRNTYPE>DEBIT</TRNTYPE>
             <DTPOSTED>20230511</DTPOSTED>
-            <TRNAMT>-250,00</TRNAMT>
+            <TRNAMT>-250.00</TRNAMT>
             <FITID>2023051125000</FITID>
             <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
             <BANKACCTTO>
@@ -73,7 +73,7 @@
           <STMTTRN>
             <TRNTYPE>DEBIT</TRNTYPE>
             <DTPOSTED>20230507</DTPOSTED>
-            <TRNAMT>-250,00</TRNAMT>
+            <TRNAMT>-250.00</TRNAMT>
             <FITID>2023050725000</FITID>
             <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
             <BANKACCTTO>
@@ -85,7 +85,7 @@
           <STMTTRN>
             <TRNTYPE>DEBIT</TRNTYPE>
             <DTPOSTED>20230505</DTPOSTED>
-            <TRNAMT>-250,00</TRNAMT>
+            <TRNAMT>-250.00</TRNAMT>
             <FITID>2023050525000</FITID>
             <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
             <BANKACCTTO>
@@ -97,7 +97,7 @@
           <STMTTRN>
             <TRNTYPE>DEBIT</TRNTYPE>
             <DTPOSTED>20230504</DTPOSTED>
-            <TRNAMT>-250,00</TRNAMT>
+            <TRNAMT>-250.00</TRNAMT>
             <FITID>2023050425000</FITID>
             <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
             <BANKACCTTO>
@@ -109,7 +109,7 @@
           <STMTTRN>
             <TRNTYPE>DEBIT</TRNTYPE>
             <DTPOSTED>20230502</DTPOSTED>
-            <TRNAMT>-150,75</TRNAMT>
+            <TRNAMT>-150.75</TRNAMT>
             <FITID>2023050215075</FITID>
             <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
             <BANKACCTTO>
@@ -121,7 +121,7 @@
           <STMTTRN>
             <TRNTYPE>CREDIT</TRNTYPE>
             <DTPOSTED>20230501</DTPOSTED>
-            <TRNAMT>0,75</TRNAMT>
+            <TRNAMT>0.75</TRNAMT>
             <FITID>20230501075</FITID>
             <NAME>Rente</NAME>
             <BANKACCTTO>
@@ -133,7 +133,7 @@
           <STMTTRN>
             <TRNTYPE>DEBIT</TRNTYPE>
             <DTPOSTED>20230501</DTPOSTED>
-            <TRNAMT>-1100,00</TRNAMT>
+            <TRNAMT>-1100.00</TRNAMT>
             <FITID>20230501110000</FITID>
             <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
             <BANKACCTTO>
@@ -144,12 +144,12 @@
           </STMTTRN>
         </BANKTRANLIST>
         <LEDGERBAL>
-          <BALAMT>2750,00</BALAMT>
+          <BALAMT>2750.00</BALAMT>
           <DTASOF>202305262359</DTASOF>
         </LEDGERBAL>
       </STMTRS>
     </STMTTRNRS>
   </BANKMSGSRSV1>
 </OFX>
-<!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_INGSaving\Aap_NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx -->
-<!-- Generated on 2024-10-07 11:21:33.759103300 -->
+<!-- F:\dev\Tools\ing2ofx\target\test-classes\en_OFX_INGSaving\Aap_NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx -->
+<!-- Generated on 2024-10-08 16:39:49.398986400 -->
