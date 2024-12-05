@@ -2,6 +2,8 @@ package kwee.convertor.ing.ingLibrary;
 
 import java.text.DecimalFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 //import java.util.logging.Logger;
 import com.opencsv.bean.CsvBindByName;
@@ -9,7 +11,7 @@ import com.opencsv.bean.CsvToBean;
 import kwee.library.DateToNumeric;
 
 public class IngTransaction extends CsvToBean<Object> {
-//  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   /*
  * @formatter:off
  * 
@@ -221,14 +223,18 @@ public class IngTransaction extends CsvToBean<Object> {
    */
   private String filterMededelingen(String a_Mededeling) {
     String l_Mededeling = a_Mededeling;
-    if (l_Mededeling.contains(Omschrijving)) {
-      l_Mededeling = l_Mededeling.replaceAll(Omschrijving + " ", "");
-    }
-    if (l_Mededeling.contains("Omschrijving: ")) {
-      l_Mededeling = l_Mededeling.replaceAll("Omschrijving: ", "");
-    }
-    if (l_Mededeling.contains("Naam: ")) {
-      l_Mededeling = l_Mededeling.replaceAll("Naam: ", "");
+    try {
+      if (l_Mededeling.contains("Omschrijving: ")) {
+        l_Mededeling = l_Mededeling.replaceAll("Omschrijving: ", "");
+      }
+      if (l_Mededeling.contains(Omschrijving)) {
+        l_Mededeling = l_Mededeling.replaceAll(Omschrijving + " ", "");
+      }
+      if (l_Mededeling.contains("Naam: ")) {
+        l_Mededeling = l_Mededeling.replaceAll("Naam: ", "");
+      }
+    } catch (Exception e) {
+      LOGGER.log(Level.INFO, l_Mededeling);
     }
     return l_Mededeling;
   }
