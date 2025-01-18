@@ -4,8 +4,11 @@
 
   <groupId>kwee.ing2ofx</groupId>
   <artifactId>ing2ofx</artifactId>
-  <version>1.1.0.0</version>
   <packaging>jar</packaging>
+  
+  <prerequisites>
+    <maven>3.6.3</maven>
+  </prerequisites>
  
   <name>ing2ofx</name>
   <parent>
@@ -24,33 +27,33 @@
     <dependency>
       <groupId>com.webcohesion.ofx4j</groupId>
       <artifactId>ofx4j</artifactId>
-      <version>1.37</version>
+      <version>1.38</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
     <dependency>
       <groupId>com.opencsv</groupId>
       <artifactId>opencsv</artifactId>
-      <version>4.0</version>
+      <version>5.10</version>
     </dependency>
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
-      <version>2.14.0</version>
+      <version>2.18.0</version>
     </dependency>
     <dependency>
       <groupId>org.javassist</groupId>
       <artifactId>javassist</artifactId>
-      <version>3.29.2-GA</version>
+      <version>3.30.2-GA</version>
     </dependency>
     <dependency>
       <groupId>com.sun.xml.bind</groupId>
       <artifactId>jaxb-impl</artifactId>
-      <version>4.0.1</version>
+      <version>4.0.5</version>
     </dependency>
     <dependency>
 	  <groupId>jakarta.xml.bind</groupId>
 	  <artifactId>jakarta.xml.bind-api</artifactId>
-	  <version>4.0.0</version>
+	  <version>4.0.2</version>
 	</dependency>
   </dependencies>
   
@@ -63,10 +66,31 @@
     </resources>   
     <!--  <pluginManagement> -->
 	<plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>3.5.0</version> <!-- Gebruik een geschikte versie van de plugin -->
+        <executions>
+          <execution>
+            <id>enforce-maven-version</id>
+            <goals>
+             <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+               <requireMavenVersion>
+                 <version>[3.6.3,)</version> <!-- Minimale Maven-versie vereist -->
+                </requireMavenVersion>
+              </rules>
+              <fail>true</fail> <!-- Stop de build bij niet-naleving -->
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>     
 	  <plugin>
 	    <groupId>org.codehaus.mojo</groupId>
 		<artifactId>jaxb2-maven-plugin</artifactId>
-		<version>3.1.0</version>
+		<version>3.2.0</version>
 		<executions>
 		  <execution>
 			<id>xjc</id>
@@ -86,6 +110,7 @@
 		
       <plugin>
 		<artifactId>maven-assembly-plugin</artifactId>
+  		<version>3.7.1</version>      
 		<executions>
           <execution>
 			<phase>package</phase>
@@ -278,7 +303,7 @@
               <goal>exec</goal>
             </goals>          
             <configuration>
-              <executable>C:\Program Files (x86)\Inno Setup 6\ISCC.exe</executable>
+              <executable>innosetup.cmd</executable>
               <workingDirectory>...</workingDirectory>
               <arguments>
                 <argument>ing2ofx.iss</argument>
@@ -292,7 +317,7 @@
               <goal>exec</goal>
             </goals>          
             <configuration>
-              <executable>C:\Program Files (x86)\Inno Setup 6\ISCC.exe</executable>
+              <executable>innosetup.cmd</executable>
               <workingDirectory>...</workingDirectory>
               <arguments>
                 <argument>ing2ofxnojre.iss</argument>
@@ -306,7 +331,7 @@
               <goal>exec</goal>
             </goals>          
             <configuration>
-              <executable>C:\Program Files (x86)\Inno Setup 6\ISCC.exe</executable>
+              <executable>innosetup.cmd</executable>
               <workingDirectory>...</workingDirectory>
               <arguments>
                 <argument>ing2ofx_jreDownload.iss</argument>

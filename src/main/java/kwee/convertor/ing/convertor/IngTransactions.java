@@ -23,6 +23,7 @@ import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
+import com.opencsv.exceptions.CsvValidationException;
 
 import kwee.convertor.ing.Convert;
 import kwee.convertor.ing.ingLibrary.IngSavingTransaction;
@@ -67,36 +68,44 @@ public class IngTransactions {
   /**
    * Determine type of ING transactions (saving or normal). <br>
    * Process the transactions and convert them to OFX transactions.
+   * 
+   * @throws
    */
   public void load() {
     try {
       m_reader = new CSVReaderBuilder(new FileReader(m_File))
           .withCSVParser(new CSVParserBuilder().withSeparator(m_separator).build()).build();
       String[] nextLine;
-      nextLine = m_reader.readNext();
-      if (nextLine.length <= 1) {
-        m_separator = ',';
-        m_reader = new CSVReaderBuilder(new FileReader(m_File))
-            .withCSVParser(new CSVParserBuilder().withSeparator(m_separator).build()).build();
+      try {
         nextLine = m_reader.readNext();
-        if (nextLine.length <= 1) {
-          LOGGER.log(Level.INFO, "Unknown separator in file " + m_File.getAbsolutePath());
-        }
-      }
-      if (nextLine[1].equalsIgnoreCase("Naam / Omschrijving")) {
-        m_saving = false;
-        m_eng = false;
-      } else if (nextLine[1].equalsIgnoreCase("Name / Description")) {
-        m_saving = false;
-        m_eng = true;
-      } else if (nextLine[1].equalsIgnoreCase("Omschrijving")) {
-        m_saving = true;
-        m_eng = false;
-      } else if (nextLine[1].equalsIgnoreCase("Description")) {
-        m_saving = true;
-        m_eng = true;
-      }
 
+        if (nextLine.length <= 1) {
+          m_separator = ',';
+          m_reader = new CSVReaderBuilder(new FileReader(m_File))
+              .withCSVParser(new CSVParserBuilder().withSeparator(m_separator).build()).build();
+          nextLine = m_reader.readNext();
+          if (nextLine.length <= 1) {
+            LOGGER.log(Level.INFO, "Unknown separator in file " + m_File.getAbsolutePath());
+          }
+        }
+
+        if (nextLine[1].equalsIgnoreCase("Naam / Omschrijving")) {
+          m_saving = false;
+          m_eng = false;
+        } else if (nextLine[1].equalsIgnoreCase("Name / Description")) {
+          m_saving = false;
+          m_eng = true;
+        } else if (nextLine[1].equalsIgnoreCase("Omschrijving")) {
+          m_saving = true;
+          m_eng = false;
+        } else if (nextLine[1].equalsIgnoreCase("Description")) {
+          m_saving = true;
+          m_eng = true;
+        }
+      } catch (CsvValidationException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
       if (m_saving) {
         if (m_eng) {
           HeaderColumnNameMappingStrategy<IngSavingTransactionEng> beanStrategy = new HeaderColumnNameMappingStrategy<IngSavingTransactionEng>();
@@ -227,8 +236,7 @@ public class IngTransactions {
   }
 
   /**
-   * Return a list of normal transactions or null when savings transactions are
-   * processed.
+   * Return a list of normal transactions or null when savings transactions are processed.
    * 
    * @return List of normal transactions
    */
@@ -237,8 +245,7 @@ public class IngTransactions {
   }
 
   /**
-   * Return a list of saving transactions or null when normal transactions are
-   * processed.
+   * Return a list of saving transactions or null when normal transactions are processed.
    * 
    * @return List of saving transactions
    */
