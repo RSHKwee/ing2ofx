@@ -6,6 +6,7 @@
   <artifactId>ing2ofx</artifactId>
   <packaging>jar</packaging>
   <name>ing2ofx</name>
+  <version>1.1.0.1</version>
  
   <prerequisites>
     <maven>${maven.min.version}</maven>
@@ -14,7 +15,7 @@
   <parent>
 	<groupId>kwee</groupId>
 	<artifactId>aggregator</artifactId>
-	<version>1.1.0.0</version>
+	<version>1.1.0.1</version>
 	<relativePath>../pom.xml</relativePath>
   </parent>
   
@@ -177,7 +178,7 @@
                   <filtering>true</filtering>
                 </resource>
               </resources>
-              <encoding>UTF-8</encoding>
+              <encoding>${project.build.sourceEncoding}</encoding>
             </configuration>
           </execution>
           <execution>
