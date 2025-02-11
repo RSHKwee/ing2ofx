@@ -14,7 +14,7 @@ http://www.chmistry.nl/financien/beginnen-met-boekhouden-in-gnucash/
 
 # Installation
 The following Windows installation kit is available:
-- ing2ofx_v0.x.y.z_jre_setup.exe
+- ing2ofx_vw.x.y.z_jre_setup.exe
 
 The kit has a JRE onboard.
 
