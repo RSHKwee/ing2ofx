@@ -320,7 +320,7 @@
           </execution>	  
           <execution>
             <id>innoSetup</id>
-            <phase>package</phase>
+            <phase>install</phase>
            <goals>
               <goal>exec</goal>
             </goals>          
@@ -332,9 +332,10 @@
               </arguments>
             </configuration>
           </execution>
+          <!--
           <execution>
             <id>innoSetupNoJre</id>
-            <phase>package</phase>
+            <phase>install</phase>
            <goals>
               <goal>exec</goal>
             </goals>          
@@ -348,7 +349,7 @@
           </execution>
           <execution>
             <id>innoSetupJreDown</id>
-            <phase>package</phase>
+            <phase>install</phase>
            <goals>
               <goal>exec</goal>
             </goals>          
@@ -359,7 +360,8 @@
                 <argument>ing2ofx_jreDownload.iss</argument>
               </arguments>
             </configuration>
-          </execution>         
+          </execution>
+          -->          
         </executions>
       </plugin>
     </plugins>

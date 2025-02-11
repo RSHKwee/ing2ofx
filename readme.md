@@ -1,5 +1,5 @@
 # Introduction
-The intent of this (java) application  is to convert ING (www.ing.nl) csv- or SNS (www.snsbank.nl) xml-files to ofx files that can be read by a program like GnuCash (www.gucash.org).
+The intent of this (java) application  is to convert ING (www.ing.nl) csv- or SNS (www.snsbank.nl) xml-files to ofx files that can be read by a program like GnuCash (http://www.gnucash.org).
 
 The origin is a Python script which can be found on Github:  https://github.com/chmistry/ing2ofx/releases.
 The original script needed some modifications due to a new Python version and some changes in the ING CSV format.
@@ -13,12 +13,10 @@ A tutorial on how to keep your bank records in GnuCash can be read on:
 http://www.chmistry.nl/financien/beginnen-met-boekhouden-in-gnucash/
 
 # Installation
-The following Windows installation kits are available:
+The following Windows installation kit is available:
 - ing2ofx_v0.x.y.z_jre_setup.exe
-- ing2ofx_v0.x.y.z_jreDownload_setup.exe
 
-The first kit has a JRE onboard.
-The second kit downloads a JRE, if needed.
+The kit has a JRE onboard.
 
 # Opening menu
 When running the application (Windows excutable or Java jar-file) the following menu is shown:
@@ -60,5 +58,18 @@ For the transaction fitting the following rules are used:
 - Sum of amounts is zero.
 
 # Synonym
-The generated files are getting a prefix accordenly the synonym.
-.....
+An administration may have multiple bank accounts, and an input file may contain transactions for multiple accounts or administrations.
+To determine for which account an OFX file is meant, a mechanism is available that is configured with a CSV file in the following format:
+
+      Seq; AccountNr        ; Prefix
+       1 ; NLIyyINGBxxxxxxx ; Home
+       2 ; NLzzSNSBnnnnnnn  ; Business
+       ......
+
+This results in the following filenames:
+
+   Home_NLIyyINGBxxxxxxx_&lt;InputFilename&gt;.ofx
+   Business_NLzzSNSBnnnnnnn_&lt;InputFilename&gt;.ofx
+
+The prefix may indicate the administration where the account is accounted for.
+

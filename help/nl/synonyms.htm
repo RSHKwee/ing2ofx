@@ -12,24 +12,25 @@
   <body>
     <h1 class="topicheading">Synonyms</h1>
     <div class="topicbody"> 
-      <p>An administration may have multiple bank accounts, and an input file may contain transactions for multiple accounts or administrations.</p>
-      <p>To determine for which account an OFX file is meant, a mechanism is available that is configured with a CSV file in the following format:</p>
+      <p>Een transactiebestand kan transacties van meerdere bankrekeningen bevatten die wordden verwerkt in verschillende administraties.</p>
+      <p>Om een onderscheid te maken welke rekening in welke administratie wordt verwerkt, is een mechanisme beschikbaar die wordt geconfigureerd door middel van een csv bestand.</p>
+      <p>Het bestand heeft het volgende formaat:</p>
 <pre>
 <code>
-      Seq; AccountNr        ; Prefix
-       1 ; NLIyyINGBxxxxxxx ; Monkey
-       2 ; NLzzSNSBnnnnnnn  ; Nuts
+      Seq; RekeningNr       ; Prefix
+       1 ; NLIyyINGBxxxxxxx ; Aap
+       2 ; NLzzSNSBnnnnnnn  ; Noot
        ......
 </code>
 </pre>
-      <p>This results in the following filenames (see <a href="Filenames.htm">Filename convention</a>):</p>
+      <p>Dit resulteert in de volgende bestandsnamen(zie ook <a href="Filenames.htm">Bestandsnaam conventie</a>):</p>
  <pre>
 <code>  
-   Monkey_NLIyyINGBxxxxxxx_&lt;InputFilename&gt;.ofx
-   Nuts_NLzzSNSBnnnnnnn_&lt;InputFilename&gt;.ofx
+   Aap_NLIyyINGBxxxxxxx_&lt;InputFilename&gt;.ofx
+   Noot_NLzzSNSBnnnnnnn_&lt;InputFilename&gt;.ofx
 </code>
 </pre> 
-      The prefix may indicate the administration where the account is accounted for.
+      Het voorvoegsel is een indicatie die verwijst naar de administratie waar de rekening transacties worden verwerkt.
     </div>
   </body>
 </html>

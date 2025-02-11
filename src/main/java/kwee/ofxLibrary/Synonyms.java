@@ -67,7 +67,8 @@ public class Synonyms {
         }
       });
     } catch (IOException e) {
-      LOGGER.log(Level.SEVERE, Class.class.getName() + ": " + e.getMessage());
+      LOGGER.log(Level.INFO, "No synonym file");
+      // LOGGER.log(Level.SEVERE, Class.class.getName() + ": " + e.getMessage());
     }
   }
 

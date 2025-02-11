@@ -71,7 +71,7 @@ import kwee.library.swing.TextAreaHandler;
 public class GUILayout extends JPanel implements ItemListener {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
   private static final long serialVersionUID = 1L;
-  static final String c_CopyrightYear = "2023";
+  static final String c_CopyrightYear = "2025";
   static final String c_repoName = "Ing2Ofx";
   public static final Object lock = new Object();
 
@@ -269,7 +269,12 @@ public class GUILayout extends JPanel implements ItemListener {
     mnSettings.add(mnSynonym);
 
     String l_Synonyme = bundle.getMessage("SynonymFileQuestion");
-    File l_Synonym_file = new File(m_param.get_Synonym_file());
+    String l_SynFileName = "";
+    if (m_param.get_Synonym_file() != null) {
+      l_SynFileName = m_param.get_Synonym_file();
+    }
+
+    File l_Synonym_file = new File(l_SynFileName);
     if (l_Synonym_file.exists()) {
       l_Synonyme = l_Synonym_file.getAbsolutePath();
     }
@@ -284,13 +289,28 @@ public class GUILayout extends JPanel implements ItemListener {
         fileChooser.setSelectedFile(l_Synonym_file);
         FileFilter filter = new FileNameExtensionFilter("TXT File", "txt");
         fileChooser.setFileFilter(filter);
+
+        // Extra knop toevoegen voor "Geen bestand"
+        fileChooser.setAccessory(new JButton("Geen bestand"));
+        JButton btnNoFile = new JButton("Geen bestand");
+        btnNoFile.addActionListener(ev -> {
+          fileChooser.setSelectedFile(null);
+          fileChooser.approveSelection();
+        });
+        fileChooser.setAccessory(btnNoFile);
+
         int option = fileChooser.showOpenDialog(GUILayout.this);
         if (option == JFileChooser.APPROVE_OPTION) {
           File file = fileChooser.getSelectedFile();
-          LOGGER.log(Level.INFO, bundle.getMessage("SynonymFileSelected", file.getAbsolutePath()));
-          File l_Synonym_file = file;
-          m_param.set_Synonym_file(l_Synonym_file);
-          mntmSynonym.setText(l_Synonym_file.getAbsolutePath());
+          if (file == null) {
+            LOGGER.log(Level.INFO, bundle.getMessage("NoSynonymFileSelected"));
+            m_param.set_Synonym_file(new File(""));
+            mntmSynonym.setText("Geen bestand gekozen");
+          } else {
+            LOGGER.log(Level.INFO, bundle.getMessage("SynonymFileSelected", file.getAbsolutePath()));
+            m_param.set_Synonym_file(file);
+            mntmSynonym.setText(file.getAbsolutePath());
+          }
         }
       }
     });

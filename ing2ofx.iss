@@ -4,6 +4,7 @@
 #define MyAppVersion GetVersionNumbersString('target\ing2ofx.exe')
 #define MyAppExeName "ing2ofx.exe"
 #define MyIconFile "src\main\resources\ingSNSLogo.ico"
+#define MyJavaMinVersion = "22"
 
 [Setup]
 AppName={#MyAppName}
@@ -11,6 +12,7 @@ AppVersion={#MyAppVersion}
 AppPublisher=RSH Kwee
 AppPublisherURL=https://github.com/RSHKwee/ing2ofx/releases
 AppContact=rsh.kwee@gmail.com
+
 WizardStyle=modern
 DisableWelcomePage=no
 DefaultDirName={code:MyConst}\{#MyAppName}
@@ -36,6 +38,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; \
 
 [Files]
 Source: ".\target\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: ".\target\{#MyAppName}-{#MyAppVersion}.jar"; DestDir: "{app}"; Flags: ignoreversion
 Source: "readme.md"; DestDir: "{app}"; Flags: ignoreversion
 Source: "readme.txt"; DestDir: "{app}"; Flags: isreadme
 Source: ".\help\en\ing2ofx.chm"; DestDir: "{app}\help\en"; Flags: ignoreversion
@@ -111,7 +114,7 @@ function JreNotPresent: Boolean;
 begin
   if jreNotChecked then
   begin
-    if (GetJavaMajorVersion() > 16) then
+    if (GetJavaMajorVersion() >= {#MyJavaMinVersion}) then
     begin
       L_jreNotPresent := false;
       Log('Java jre is present.');
