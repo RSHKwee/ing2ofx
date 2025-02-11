@@ -4,7 +4,7 @@
 #define MyAppVersion GetVersionNumbersString('target\ing2ofx.exe')
 #define MyAppExeName "ing2ofx.exe"
 #define MyIconFile "src\main\resources\ingSNSLogo.ico"
-#define MyJavaMinVersion = "22"
+#define MyJavaMinVersion = 22
 
 [Setup]
 AppName={#MyAppName}
@@ -104,7 +104,11 @@ begin
     Delete(S, 1, 2)
   end;
   P := Pos('.', S);
-  SetLength(S, P - 1);
+  Log(Format('Position: %d ', [P]));
+  if P > 0 then
+  begin
+    SetLength(S, P - 1);
+  end;
   Log(Format('Major version: %s', [S]));
 
   Result := StrToIntDef(S, 0);
