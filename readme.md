@@ -73,3 +73,4 @@ This results in the following filenames:
 
 The prefix may indicate the administration where the account is accounted for.
 
+In case of trouble: there is a (empty) file Synoniem.txt available.

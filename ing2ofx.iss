@@ -20,7 +20,7 @@ DefaultGroupName={#MyAppName}
 UninstallDisplayIcon={app}\{#MyAppExeName}
 InfoBeforeFile=readme.md
 OutputDir=target
-OutputBaseFilename={#MyAppName}_v{#MyAppVersion}_jre_setup
+OutputBaseFilename={#MyAppName}_v{#MyAppVersion}_setup
 UninstallFilesDir={app}\uninst
 ; Tell Windows Explorer to reload the environment
 ChangesEnvironment=yes
@@ -40,6 +40,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; \
 Source: ".\target\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: ".\target\{#MyAppName}-{#MyAppVersion}.jar"; DestDir: "{app}"; Flags: ignoreversion
 Source: "readme.md"; DestDir: "{app}"; Flags: ignoreversion
+Source: "Synoniem.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "readme.txt"; DestDir: "{app}"; Flags: isreadme
 Source: ".\help\en\ing2ofx.chm"; DestDir: "{app}\help\en"; Flags: ignoreversion
 Source: ".\help\nl\ing2ofx.chm"; DestDir: "{app}\help\nl"; Flags: ignoreversion
