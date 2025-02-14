@@ -68,6 +68,8 @@ public class GUILayoutInitieelTest extends TestCase {
 
     File ll_file = m_Functions.GetResourceFile(c_SynonymFile);
     m_OutputDir = ll_file.getParent();
+    m_param.remove_Synonym_file();
+
     m_param.save();
 
     // Launch your application or obtain a reference to an existing Swing frame

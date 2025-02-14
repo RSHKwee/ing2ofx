@@ -428,6 +428,14 @@ public class UserSetting {
     return l_line;
   }
 
+  /**
+   * Only for test purpose
+   */
+  public void remove_Synonym_file() {
+    pref.remove(c_Synonym_file);
+    m_Synonyms = new Synonyms();
+  }
+
   // Local functions to convert File to String and vice versa
   private String c_StringDelim = ";";
 
