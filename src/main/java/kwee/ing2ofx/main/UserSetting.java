@@ -209,9 +209,15 @@ public class UserSetting {
 
   public void set_Synonym_file(File a_Synonym_file) {
     pref.put(c_Synonym_file, a_Synonym_file.getAbsolutePath());
-    this.m_Synonym_file = a_Synonym_file.getAbsolutePath();
-    if (!m_Synonym_file.isBlank()) {
-      m_Synonyms = new Synonyms(new File(m_Synonym_file));
+    if (a_Synonym_file.isFile()) {
+      this.m_Synonym_file = a_Synonym_file.getAbsolutePath();
+      if (!m_Synonym_file.isBlank()) {
+        m_Synonyms = new Synonyms(new File(m_Synonym_file));
+      } else {
+        m_Synonyms = new Synonyms();
+      }
+    } else {
+      m_Synonyms = new Synonyms();
     }
   }
 

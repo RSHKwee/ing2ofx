@@ -27,6 +27,8 @@ public class Synonyms {
    * 
    */
   public Synonyms() {
+    m_Synonyms.clear();
+    m_Prefixs.clear();
   }
 
   /**
@@ -68,12 +70,17 @@ public class Synonyms {
       });
     } catch (IOException e) {
       LOGGER.log(Level.INFO, "No synonym file");
-      // LOGGER.log(Level.SEVERE, Class.class.getName() + ": " + e.getMessage());
+      m_Synonyms.clear();
+      m_Prefixs.clear();
     }
   }
 
   public ArrayList<String> getAccountsByPrefix(String a_Prefix) {
-    return m_Prefixs.get(a_Prefix);
+    if (m_Prefixs.get(a_Prefix).size() > 0) {
+      return new ArrayList<String>(m_Prefixs.get(a_Prefix));
+    } else {
+      return new ArrayList<String>();
+    }
   }
 
   public Set<String> getPrefixes() {
