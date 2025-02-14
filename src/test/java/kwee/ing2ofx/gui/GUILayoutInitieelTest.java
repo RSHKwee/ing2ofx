@@ -66,6 +66,8 @@ public class GUILayoutInitieelTest extends TestCase {
     m_param.set_Level(Level.INFO);
     m_param.set_Language("nl");
 
+    // Used for determination Output directory
+    // And afterwards clean Synonyms
     File ll_file = m_Functions.GetResourceFile(c_SynonymFile);
     m_OutputDir = ll_file.getParent();
     m_param.remove_Synonym_file();
@@ -106,11 +108,11 @@ public class GUILayoutInitieelTest extends TestCase {
   }
 
   /**
-   * Test handling of ING Transactions, csv to OFX.
+   * Test handling of ING Transactions, csv to OFX. Test intial installation on clean system.
    */
   @Test
-  public void testGUILayoutING() {
-    LOGGER.log(Level.INFO, "testGUILayoutING");
+  public void testGUIInitieelLayoutING() {
+    LOGGER.log(Level.INFO, "testGUIInitieelLayoutING");
     FileUtils.checkCreateDirectory(m_OutputDir + "/" + m_OfxEnkelING);
 
     frame.button("CSVXMLFile").click();

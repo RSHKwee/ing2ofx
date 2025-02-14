@@ -24,7 +24,7 @@ public class Synonyms {
   private Map<String, ArrayList<String>> m_Prefixs = new HashMap<String, ArrayList<String>>();
 
   /**
-   * 
+   * Default Constructor
    */
   public Synonyms() {
     m_Synonyms.clear();
@@ -32,7 +32,7 @@ public class Synonyms {
   }
 
   /**
-   * 
+   * Constructor with a Synonyms file.
    * 
    * @param a_SynonymsFile Path to Synonym file
    */
@@ -75,6 +75,12 @@ public class Synonyms {
     }
   }
 
+  /**
+   * Get all accounts with given prefix.
+   * 
+   * @param a_Prefix Prefix
+   * @return List of accounts with given prefix
+   */
   public ArrayList<String> getAccountsByPrefix(String a_Prefix) {
     if (m_Prefixs.get(a_Prefix).size() > 0) {
       return new ArrayList<String>(m_Prefixs.get(a_Prefix));
@@ -83,14 +89,20 @@ public class Synonyms {
     }
   }
 
+  /**
+   * Get all prefixes
+   * 
+   * @return List of prefixes
+   */
   public Set<String> getPrefixes() {
     return m_Prefixs.keySet();
   }
 
   /**
+   * Get synonym for given key.
    * 
-   * @param a_key
-   * @return Synonym
+   * @param a_key Key
+   * @return Synonym Synonym
    */
   public String getSynonym(String a_key) {
     String l_Syn = "";
