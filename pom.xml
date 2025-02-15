@@ -2,11 +2,11 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>kwee.ing2ofx</groupId>
+  <groupId>kwee</groupId>
   <artifactId>ing2ofx</artifactId>
   <packaging>jar</packaging>
   <name>ing2ofx</name>
-  <version>1.1.0.1</version>
+  <version>1.1.0.2</version>
  
   <prerequisites>
     <maven>${maven.min.version}</maven>
@@ -15,7 +15,7 @@
   <parent>
 	<groupId>kwee</groupId>
 	<artifactId>aggregator</artifactId>
-	<version>1.1.0.1</version>
+	<version>1.1.0.2-SNAPSHOT</version>
 	<relativePath>../pom.xml</relativePath>
   </parent>
   
@@ -32,7 +32,7 @@
  
   <dependencies>
     <dependency>
-	  <groupId>kwee.library</groupId>
+	  <groupId>kwee</groupId>
 	  <artifactId>library</artifactId>
 	  <version>${kweeLibrary.version}</version>
 	</dependency>
