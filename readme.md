@@ -1,5 +1,5 @@
 # Introduction
-The intent of this (java) application  is to convert ING (www.ing.nl) csv- or SNS (www.snsbank.nl) xml-files to ofx files that can be read by a program like GnuCash (http://www.gnucash.org).
+The intent of this (java) application  is to convert ING (www.ing.nl) csv- or SNS (www.snsbank.nl) xml-files (CAMT 053 format) to ofx files that can be read by a program like GnuCash (http://www.gnucash.org).
 
 The origin is a Python script which can be found on Github:  https://github.com/chmistry/ing2ofx/releases.
 The original script needed some modifications due to a new Python version and some changes in the ING CSV format.
@@ -14,7 +14,7 @@ http://www.chmistry.nl/financien/beginnen-met-boekhouden-in-gnucash/
 
 # Installation
 The following Windows installation kit is available:
-- ing2ofx_vw.x.y.z_jre_setup.exe
+- ing2ofx_vw.x.y.z_setup.exe
 
 The kit has a JRE onboard.
 
@@ -23,10 +23,10 @@ When running the application (Windows excutable or Java jar-file) the following 
 
 ![Main screen ing2ofx](./ing2ofxMain.PNG)
 
-Button _CSV File(s)_: one or more ING CSV file or SNS XML can be choosen.
+Button _CSV File(s)_: one or more ING CSV file(s) or (SNS) XML- (CAMT 053 format) file(s) can be choosen.
 - The application recognizes:
   - a comma or semicolon separated ING input file.
-  - a SNS XML input file.
+  - a XML (CAMT 053 format) input file (Tested with SNS XML).
 - The content "normal" or saving transactions.
 
 Button _Output folder_: Point to the directory where the generated OFX-file(s) are stored. 

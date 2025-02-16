@@ -123,9 +123,9 @@
 		</executions>
 	    <configuration>
 		  <!-- The package of your generated sources -->
-		  <packageName>kwee.ing2ofx.generated</packageName>
+		  <packageName>kwee.ing2ofx.generated.camt053</packageName>
 		  <sources>
-			<source>src/main/resources/xsd</source>
+			<source>src/main/resources/xsd/camt053</source>
 		  </sources>
 	    </configuration>
 	  </plugin>

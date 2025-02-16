@@ -1,8 +1,8 @@
 package kwee.camt053parser;
 
 import jakarta.xml.bind.*;
-import kwee.ing2ofx.generated.Document;
-import kwee.ing2ofx.generated.ObjectFactory;
+import kwee.ing2ofx.generated.camt053.Document;
+import kwee.ing2ofx.generated.camt053.ObjectFactory;
 
 import java.io.InputStream;
 
@@ -10,8 +10,7 @@ public class Camt053Parser {
   /**
    * Parse a CAMT.053 formatted bank statement from the given input stream.
    *
-   * @param inputStream input stream containing the CAMT.053 formatted bank
-   *                    statement
+   * @param inputStream input stream containing the CAMT.053 formatted bank statement
    * @return document holding CAMT.053 parsed bank statement
    * @throws JAXBException
    */

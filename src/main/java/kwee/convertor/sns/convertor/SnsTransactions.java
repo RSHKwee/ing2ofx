@@ -22,12 +22,12 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import kwee.camt053parser.Camt053Parser;
-import kwee.ing2ofx.generated.AccountStatement2;
-import kwee.ing2ofx.generated.CashBalance3;
-import kwee.ing2ofx.generated.CreditDebitCode;
-import kwee.ing2ofx.generated.Document;
-import kwee.ing2ofx.generated.EntryDetails1;
-import kwee.ing2ofx.generated.ReportEntry2;
+import kwee.ing2ofx.generated.camt053.AccountStatement2;
+import kwee.ing2ofx.generated.camt053.CashBalance3;
+import kwee.ing2ofx.generated.camt053.CreditDebitCode;
+import kwee.ing2ofx.generated.camt053.Document;
+import kwee.ing2ofx.generated.camt053.EntryDetails1;
+import kwee.ing2ofx.generated.camt053.ReportEntry2;
 
 import kwee.library.DateToNumeric;
 import kwee.convertor.sns.snsLibrary.SnsTransaction;
@@ -199,15 +199,12 @@ public class SnsTransactions {
                     l_ofxtrans.setAccountto("");
                   }
                   /*
-                   * LOGGER.log(l_Level, "Debtor remittance information (payment description): " +
-                   * entryDetails1
-                   * .getTxDtls().get(0).getRmtInf().getUstrd().stream().collect(Collectors.
-                   * joining(","))); LOGGER.log(l_Level, "Report amount: " +
-                   * reportEntry2.getAmt().getValue() + " " + reportEntry2.getAmt().getCcy()); if
-                   * (entryDetails1.getTxDtls().get(0).getAmtDtls() != null) { LOGGER.log(l_Level,
-                   * "Debtor amount: " +
-                   * entryDetails1.getTxDtls().get(0).getAmtDtls().getTxAmt().getAmt().getValue())
-                   * ; }
+                   * LOGGER.log(l_Level, "Debtor remittance information (payment description): " + entryDetails1
+                   * .getTxDtls().get(0).getRmtInf().getUstrd().stream().collect(Collectors. joining(",")));
+                   * LOGGER.log(l_Level, "Report amount: " + reportEntry2.getAmt().getValue() + " " +
+                   * reportEntry2.getAmt().getCcy()); if (entryDetails1.getTxDtls().get(0).getAmtDtls() != null) {
+                   * LOGGER.log(l_Level, "Debtor amount: " +
+                   * entryDetails1.getTxDtls().get(0).getAmtDtls().getTxAmt().getAmt().getValue()) ; }
                    */
                   BigDecimal lamnt = new BigDecimal(1.0);
                   try {
@@ -266,8 +263,7 @@ public class SnsTransactions {
   }
 
   /**
-   * Return a list of normal transactions or null when savings transactions are
-   * processed.
+   * Return a list of normal transactions or null when savings transactions are processed.
    * 
    * @return List of normal transactions
    */
