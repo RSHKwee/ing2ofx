@@ -46,6 +46,9 @@ Name: "{commonstartup}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{userdesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Code]  
+const
+  WM_SETTINGCHANGE = $1A; // Windows constante voor het vernieuwen van omgevingsvariabelen
+
 var
   jreNotChecked : Boolean;
   FinishedInstall: Boolean;
@@ -75,6 +78,7 @@ end;
 procedure SetUserEnvironmentVariable(VarName, VarValue: string);
 begin
   RegWriteStringValue(HKCU, 'Environment', VarName, VarValue);
+  SendMessage(HWND_BROADCAST, WM_SETTINGCHANGE, 0, 0);
 end;
 
 function GetJavaMajorVersion(): integer;
@@ -124,12 +128,15 @@ begin
 end;
 
 function JreNotPresent: Boolean;
+var
+  InstallPath: string;
 begin
   if jreNotChecked then
   begin
+    InstallPath := ExpandConstant('{app}') + '\jre';
     if (not IsSystemEnvVarSet('JAVA_HOME')) then
     begin
-      SetUserEnvironmentVariable('JAVA_HOME', '{app}\jre');
+      SetUserEnvironmentVariable('JAVA_HOME', InstallPath);
       Log('JAVA_HOME created.');
     end else begin
        Log('JAVA_HOME present.');   
