@@ -7,10 +7,10 @@
         <CODE>0</CODE>
         <SEVERITY>INFO</SEVERITY>
       </STATUS>
-      <DTSERVER>202305242000</DTSERVER>
+      <DTSERVER>202305250800</DTSERVER>
       <LANGUAGE>ENG</LANGUAGE>
-      <DTPROFUP>202305242000</DTPROFUP>
-      <DTACCTUP>202305242000</DTACCTUP>
+      <DTPROFUP>202305250800</DTPROFUP>
+      <DTACCTUP>202305250800</DTACCTUP>
       <FI>
         <ORG>NCH</ORG>
         <FID>1001</FID>
@@ -86,7 +86,7 @@
             <TRNTYPE>DEBIT</TRNTYPE>
             <DTPOSTED>20230505</DTPOSTED>
             <TRNAMT>-250,00</TRNAMT>
-            <FITID>2023050525000</FITID>
+            <FITID>20230505250001</FITID>
             <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
             <BANKACCTTO>
               <BANKID>COBANL0A</BANKID>
@@ -152,4 +152,4 @@
   </BANKMSGSRSV1>
 </OFX>
 <!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_Combine_Syn\Aap_NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx -->
-<!-- Generated on 2024-10-07 10:23:32.598336800 -->
+<!-- Generated on 2025-02-17 13:06:19.903259200 -->

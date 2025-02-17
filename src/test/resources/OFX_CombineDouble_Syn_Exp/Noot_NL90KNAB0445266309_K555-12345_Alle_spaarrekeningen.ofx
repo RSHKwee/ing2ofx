@@ -50,7 +50,7 @@
             <TRNTYPE>DEBIT</TRNTYPE>
             <DTPOSTED>20230505</DTPOSTED>
             <TRNAMT>-250,00</TRNAMT>
-            <FITID>20230505250001</FITID>
+            <FITID>2023050525000</FITID>
             <NAME>Overboeking naar betaalrekening NL90KNAB0445266309</NAME>
             <BANKACCTTO>
               <BANKID>KNABNL0A</BANKID>
@@ -104,4 +104,4 @@
   </BANKMSGSRSV1>
 </OFX>
 <!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_CombineDouble_Syn\Noot_NL90KNAB0445266309_K555-12345_Alle_spaarrekeningen.ofx -->
-<!-- Generated on 2024-10-07 16:20:13.648975 -->
+<!-- Generated on 2025-02-17 13:07:03.910847700 -->

@@ -86,7 +86,7 @@
             <TRNTYPE>DEBIT</TRNTYPE>
             <DTPOSTED>20230505</DTPOSTED>
             <TRNAMT>-250.00</TRNAMT>
-            <FITID>2023050525000</FITID>
+            <FITID>20230505250001</FITID>
             <NAME>Overboeking naar betaalrekening NL94COBA0678011583</NAME>
             <BANKACCTTO>
               <BANKID>COBANL0A</BANKID>
@@ -152,4 +152,4 @@
   </BANKMSGSRSV1>
 </OFX>
 <!-- F:\dev\Tools\ing2ofx\target\test-classes\en_OFX_CombineOneByOne_Syn\Aap_NL94COBA0678011583_K444-12345_Alle_spaarrekeningen.ofx -->
-<!-- Generated on 2024-10-08 15:10:07.245143100 -->
+<!-- Generated on 2025-02-17 13:04:30.685562800 -->

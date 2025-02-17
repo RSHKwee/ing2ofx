@@ -37,7 +37,7 @@
           <STMTTRN>
             <TRNTYPE>CREDIT</TRNTYPE>
             <DTPOSTED>20230524</DTPOSTED>
-            <TRNAMT>0.75</TRNAMT>
+            <TRNAMT>-0.75</TRNAMT>
             <FITID>20230524075</FITID>
             <NAME>Kosten extra betaalpas met nr. 005</NAME>
             <BANKACCTTO>
@@ -50,7 +50,7 @@
           <STMTTRN>
             <TRNTYPE>CREDIT</TRNTYPE>
             <DTPOSTED>20230524</DTPOSTED>
-            <TRNAMT>2.55</TRNAMT>
+            <TRNAMT>-2.55</TRNAMT>
             <FITID>20230524255</FITID>
             <NAME>Kosten gebruik betaalrekening inclusief 1 betaalpas</NAME>
             <BANKACCTTO>
@@ -83,4 +83,4 @@
   </BANKMSGSRSV1>
 </OFX>
 <!-- F:\dev\Tools\ing2ofx\target\test-classes\en_OFX_CombineOneByOne_Syn\Basis_NL20LPLN0892606304_transactie-historie.ofx -->
-<!-- Generated on 2024-10-08 15:10:07.291019900 -->
+<!-- Generated on 2025-02-17 13:04:30.725451200 -->

@@ -37,7 +37,7 @@
           <STMTTRN>
             <TRNTYPE>CREDIT</TRNTYPE>
             <DTPOSTED>20240806</DTPOSTED>
-            <TRNAMT>1,00</TRNAMT>
+            <TRNAMT>-1,00</TRNAMT>
             <FITID>20240806100</FITID>
             <NAME>Jumbo &gt;HOEVELAKE 6.08.2024 15U33 KV005 ZF2708 MCC:5411 Contactloze betaling NLNEDERLAND</NAME>
             <BANKACCTTO>
@@ -63,7 +63,7 @@
           <STMTTRN>
             <TRNTYPE>CREDIT</TRNTYPE>
             <DTPOSTED>20240825</DTPOSTED>
-            <TRNAMT>3,45</TRNAMT>
+            <TRNAMT>-3,45</TRNAMT>
             <FITID>20240825345</FITID>
             <NAME>Kosten gebruik betaalrekening inclusief 1 betaalpas</NAME>
             <BANKACCTTO>
@@ -76,7 +76,7 @@
           <STMTTRN>
             <TRNTYPE>CREDIT</TRNTYPE>
             <DTPOSTED>20240825</DTPOSTED>
-            <TRNAMT>0,75</TRNAMT>
+            <TRNAMT>-0,75</TRNAMT>
             <FITID>20240825075</FITID>
             <NAME>Kosten extra betaalpas met nr. 005</NAME>
             <BANKACCTTO>
@@ -109,4 +109,4 @@
   </BANKMSGSRSV1>
 </OFX>
 <!-- F:\dev\Tools\ing2ofx\target\test-classes\OFX_SNSMemo\Basis_NL20LPLN0892606304_transactie-historie_memoChange.ofx -->
-<!-- Generated on 2024-10-07 16:19:46.160169700 -->
+<!-- Generated on 2025-02-17 13:05:21.114533200 -->

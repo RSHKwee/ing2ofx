@@ -67,7 +67,9 @@ public class SnsTransactions {
     try {
       m_reader = new Camt053Parser();
       FileInputStream fileInputStream = new FileInputStream(new File(m_File));
+
       Document camt053Document = m_reader.parse(fileInputStream);
+      m_bankcode = camt053Document.getBkToCstmrStmt().getStmt().getFirst().getAcct().getSvcr().getFinInstnId().getBIC();
 
       // Get all statements (usually one per bank statement)
       List<AccountStatement2> accountStatement2List = camt053Document.getBkToCstmrStmt().getStmt();
@@ -152,7 +154,7 @@ public class SnsTransactions {
                         + entryDetails1.getTxDtls().get(0).getAmtDtls().getTxAmt().getAmt().getValue());
                   }
 
-                  BigDecimal lamnt = new BigDecimal(1.0);
+                  BigDecimal lamnt = new BigDecimal(-1.0);
                   try {
                     lamnt = lamnt.multiply(reportEntry2.getAmt().getValue());
                     LOGGER.log(l_Level,

@@ -1,0 +1,5 @@
+Prefix; Account; BalanceDate; Balance; BankCode; MaxDate; MinDate
+Aap;NL94COBA0678011583; 24-01-2025; 129,61; INGBNL2A; 24-01-2025; 24-01-2025
+Basis;NL20LPLN0892606304; 03-02-2025; 250,00; SNSBNL2A; 03-02-2025; 03-02-2025
+## F:\dev\Tools\ing2ofx\target\test-classes\OFX_CombineSimple/_Saldos_SNS_ING_transactie-historie.csv
+# Generated on 2025-02-17 13:06:11.207387
