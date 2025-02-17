@@ -63,8 +63,7 @@ public class OfxDocument {
   }
 
   /**
-   * When object exists, call to this method resets OFX Document creation. It
-   * creates the OFX Header.
+   * When object exists, call to this method resets OFX Document creation. It creates the OFX Header.
    */
   public void StartOfxDocument() {
     m_msgset.clear();
@@ -163,7 +162,7 @@ public class OfxDocument {
     TimeZone timezone = TimeConversion.getTimeZone(country);
     calendar.setTimeZone(timezone);
     Date date = calendar.getTime();
-    LOGGER.log(Level.INFO, "OFX Doc TimeZone: " + timezone + " Date:" + date.toString());
+    LOGGER.log(Level.FINE, "OFX Doc TimeZone: " + timezone + " Date:" + date.toString());
 
     Status stat = new Status();
     Severity sev = Severity.INFO;
