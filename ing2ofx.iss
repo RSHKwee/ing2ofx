@@ -22,15 +22,10 @@ InfoBeforeFile=readme.md
 OutputDir=target
 OutputBaseFilename={#MyAppName}_v{#MyAppVersion}_setup
 UninstallFilesDir={app}\uninst
+
 ; Tell Windows Explorer to reload the environment
 ChangesEnvironment=yes
 SetupIconFile={#MyIconFile}
-; SetupLogging=yes
-; PrivilegesRequired=poweruser
-
-[Registry]
-Root: HKCU; Subkey: "Environment"; ValueType:string; ValueName: "JAVA_HOME"; \
-    ValueData: "{app}\jre"; Flags: preservestringtype; Check: JreNotPresent
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; \
@@ -50,7 +45,7 @@ DestDir: {app}\jre; Source: ..\jre\*;   Flags: recursesubdirs ; Check: JreNotPre
 Name: "{commonstartup}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{userdesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
-[Code]
+[Code]  
 var
   jreNotChecked : Boolean;
   FinishedInstall: Boolean;
@@ -67,6 +62,19 @@ end;
 procedure InitializeWizard;
 begin
   Log('InitializeWizard called');
+end;
+
+function IsSystemEnvVarSet(VarName: string): Boolean;
+var
+  Value: string;
+begin
+  Value := ExpandConstant('{%' + VarName + '}');
+  Result := Value <> '';
+end;
+
+procedure SetUserEnvironmentVariable(VarName, VarValue: string);
+begin
+  RegWriteStringValue(HKCU, 'Environment', VarName, VarValue);
 end;
 
 function GetJavaMajorVersion(): integer;
@@ -119,6 +127,14 @@ function JreNotPresent: Boolean;
 begin
   if jreNotChecked then
   begin
+    if (not IsSystemEnvVarSet('JAVA_HOME')) then
+    begin
+      SetUserEnvironmentVariable('JAVA_HOME', '{app}\jre');
+      Log('JAVA_HOME created.');
+    end else begin
+       Log('JAVA_HOME present.');   
+    end;
+  
     if (GetJavaMajorVersion() >= {#MyJavaMinVersion}) then
     begin
       L_jreNotPresent := false;
