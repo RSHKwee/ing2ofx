@@ -6,6 +6,7 @@ What is new
 
 - Java upgrade to version 22.
 - ING has changed CSV input format (on ~2 mar 2023), which is now supported.
+- SNS has changed the content of the XML file, which is now supported.
 - Tests are added.
 - OFX4J Library is used for OFX-file creation.
 - Some refactors are done.

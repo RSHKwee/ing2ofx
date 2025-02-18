@@ -1,5 +1,7 @@
 ; -- ing2ofx.iss --
-;
+
+#include "Library.iss"
+
 #define MyAppName "ing2ofx"
 #define MyAppVersion GetVersionNumbersString('target\ing2ofx.exe')
 #define MyAppExeName "ing2ofx.exe"
@@ -7,6 +9,8 @@
 #define MyJavaMinVersion = 22
 
 [Setup]
+SetupLogging=yes
+
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 AppPublisher=RSH Kwee
@@ -36,6 +40,8 @@ Source: ".\target\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: ".\target\{#MyAppName}-{#MyAppVersion}.jar"; DestDir: "{app}"; Flags: ignoreversion
 Source: "readme.md"; DestDir: "{app}"; Flags: ignoreversion
 Source: "Synoniem.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "ing2ofxSettings.PNG"; DestDir: "{app}"; Flags: ignoreversion
+Source: "ing2ofxMain.PNG"; DestDir: "{app}"; Flags: ignoreversion
 Source: "readme.txt"; DestDir: "{app}"; Flags: isreadme
 Source: ".\help\en\ing2ofx.chm"; DestDir: "{app}\help\en"; Flags: ignoreversion
 Source: ".\help\nl\ing2ofx.chm"; DestDir: "{app}\help\nl"; Flags: ignoreversion
@@ -48,7 +54,8 @@ Name: "{userdesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 [Code]  
 const
   WM_SETTINGCHANGE = $1A; // Windows constante voor het vernieuwen van omgevingsvariabelen
-
+  MyJavaMinVersion = {#MyJavaMinVersion};
+  
 var
   jreNotChecked : Boolean;
   FinishedInstall: Boolean;
@@ -65,94 +72,6 @@ end;
 procedure InitializeWizard;
 begin
   Log('InitializeWizard called');
-end;
-
-function IsSystemEnvVarSet(VarName: string): Boolean;
-var
-  Value: string;
-begin
-  Value := ExpandConstant('{%' + VarName + '}');
-  Result := Value <> '';
-end;
-
-procedure SetUserEnvironmentVariable(VarName, VarValue: string);
-begin
-  RegWriteStringValue(HKCU, 'Environment', VarName, VarValue);
-  SendMessage(HWND_BROADCAST, WM_SETTINGCHANGE, 0, 0);
-end;
-
-function GetJavaMajorVersion(): integer;
-var
-  TempFile: string;
-  ResultCode: Integer;
-  S: AnsiString;
-  P: Integer;
-begin
-  Result := 0;
-
-  { execute java -version and redirect output to a temp file }
-  TempFile := ExpandConstant('{tmp}\javaversion.txt');
-  if (not ExecAsOriginalUser(ExpandConstant('{cmd}'), '/c java -version 2> "' + TempFile + '"', '',SW_HIDE, ewWaitUntilTerminated, ResultCode)) 
-    or (ResultCode <> 0) then
-  begin
-    Log('Failed to execute java -version');
-    exit;
-  end;
-
-  { read file into variable S }
-  LoadStringFromFile(TempFile, S)
-  DeleteFile(TempFile);
-  Log(Format('java -version output: ' + #13#10 + '%s', [S]));
-
-  { extract version (between quotes) }
-  P := Pos('"', S);
-  Delete(S, 1, P);
-  P := Pos('"', S);
-  SetLength(S, P - 1);
-  Log(Format('Extracted version: %s', [S]));
-
-  { extract major }
-  if Copy(S, 1, 2) = '1.' then
-  begin
-    Delete(S, 1, 2)
-  end;
-  P := Pos('.', S);
-  Log(Format('Position: %d ', [P]));
-  if P > 0 then
-  begin
-    SetLength(S, P - 1);
-  end;
-  Log(Format('Major version: %s', [S]));
-
-  Result := StrToIntDef(S, 0);
-end;
-
-function JreNotPresent: Boolean;
-var
-  InstallPath: string;
-begin
-  if jreNotChecked then
-  begin
-    InstallPath := ExpandConstant('{app}') + '\jre';
-    if (not IsSystemEnvVarSet('JAVA_HOME')) then
-    begin
-      SetUserEnvironmentVariable('JAVA_HOME', InstallPath);
-      Log('JAVA_HOME created.');
-    end else begin
-       Log('JAVA_HOME present.');   
-    end;
-  
-    if (GetJavaMajorVersion() >= {#MyJavaMinVersion}) then
-    begin
-      L_jreNotPresent := false;
-      Log('Java jre is present.');
-    end else begin
-      L_jreNotPresent := true;
-      Log('Java jre is not present, define JAVA_HOME.');
-    end;
-    jreNotChecked := false;
-  end;
-  Result := L_jreNotPresent;
 end;
 
 <event('InitializeWizard')>
@@ -219,3 +138,30 @@ begin
   Result := ExpandConstant('{autopf}');
 end;
 
+function JreNotPresent: Boolean;
+var
+  InstallPath: string;
+begin
+  if jreNotChecked then
+  begin
+    InstallPath := ExpandConstant('{app}') + '\jre';
+    if (not IsSystemEnvVarSet('JAVA_HOME')) then
+    begin
+      SetUserEnvironmentVariable('JAVA_HOME', InstallPath);
+      Log('JAVA_HOME created.');
+    end else begin
+       Log('JAVA_HOME present.');   
+    end;
+  
+    if CheckJavaVersion (MyJavaMinVersion) then
+    begin
+      L_jreNotPresent := false;
+      Log('Java jre is present.');
+    end else begin
+      L_jreNotPresent := true;
+      Log('Java jre is not present, define JAVA_HOME.');
+    end;
+    jreNotChecked := false;
+  end;
+  Result := L_jreNotPresent;
+end;
