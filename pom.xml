@@ -182,16 +182,8 @@
               </resources>
               <encoding>${project.build.sourceEncoding}</encoding>
             </configuration>
-          </execution>
-         </executions>
-      </plugin>	
-      
-	  <!-- Distribute readme.md v -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>${maven-resources-plugin.version}</version>
-        <executions>
+          </execution>     
+	      <!-- Distribute readme.md v -->
           <execution>
             <id>readme-md</id>
             <phase>process-resources</phase>
@@ -324,7 +316,7 @@
         <executions>
 		  <execution>
             <id>ING2OFXHelpEn</id>
-            <phase>process-resources</phase>
+            <phase>generate-resources</phase>
            <goals>
               <goal>exec</goal>
             </goals>          
@@ -338,7 +330,7 @@
           </execution>
 		  <execution>
             <id>ING2OFXHelpNl</id>
-            <phase>process-resources</phase>
+            <phase>generate-resources</phase>
            <goals>
               <goal>exec</goal>
             </goals>          
