@@ -749,11 +749,11 @@ public class GUILayout extends JPanel implements ItemListener {
   private void initOFXSettings() {
     CurrencyEnum l_currency = CurrencyEnum.EUR;
     Charset l_encoding = Charset.forName("ISO-8859-1");
-    Locale l_locale = new Locale("nl", "NL"); // Decimal comma
+    Locale l_locale = new Locale.Builder().setLanguage("nl").setRegion("NL").build(); // Default: Decimal comma
     if (m_Language.equalsIgnoreCase("nl")) {
-      l_locale = new Locale("nl", "NL"); // Decimal comma
+      l_locale = new Locale.Builder().setLanguage("nl").setRegion("NL").build(); // Decimal comma
     } else if (m_Language.equalsIgnoreCase("en")) {
-      l_locale = new Locale("en", "US"); // Decimal point
+      l_locale = new Locale.Builder().setLanguage("en").setRegion("US").build(); // Decimal point
     }
 
     m_ofxSettings = OFXSettings.getInstance();
@@ -764,11 +764,11 @@ public class GUILayout extends JPanel implements ItemListener {
   }
 
   private void setLocale(String a_lang) {
-    Locale l_locale = new Locale("nl", "NL"); // Decimal comma
+    Locale l_locale = new Locale.Builder().setLanguage("nl").setRegion("NL").build(); // Default: Decimal comma
     if (a_lang.equalsIgnoreCase("nl")) {
-      l_locale = new Locale("nl", "NL"); // Decimal comma
+      l_locale = new Locale.Builder().setLanguage("nl").setRegion("NL").build(); // Decimal comma
     } else if (m_Language.equalsIgnoreCase("en")) {
-      l_locale = new Locale("en", "US"); // Decimal point
+      l_locale = new Locale.Builder().setLanguage("en").setRegion("US").build(); // Decimal point
     }
     m_ofxSettings.setLocale(l_locale);
   }

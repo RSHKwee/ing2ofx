@@ -10,6 +10,7 @@
 
 [Setup]
 SetupLogging=yes
+PrivilegesRequired=poweruser
 
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
@@ -53,14 +54,10 @@ Name: "{userdesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 
 [Code]  
 const
-  WM_SETTINGCHANGE = $1A; // Windows constante voor het vernieuwen van omgevingsvariabelen
   MyJavaMinVersion = {#MyJavaMinVersion};
   
 var
- { G_JavaMinVersion : integer; }
- { jreNotChecked : Boolean; }
   FinishedInstall: Boolean;
- { L_jreNotPresent: boolean; }
 
 function InitializeSetup(): Boolean;
 begin
