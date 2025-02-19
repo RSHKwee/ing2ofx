@@ -1,5 +1,9 @@
 // Library.iss
 [Code]
+var
+  G_JavaMinVersion : integer;
+  L_jreNotPresent: boolean;
+  jreNotChecked : Boolean;
 
 function IsSystemEnvVarSet(VarName: string): Boolean;
 var
@@ -7,6 +11,12 @@ var
 begin
   Value := ExpandConstant('{%' + VarName + '}');
   Result := Value <> '';
+end;
+
+procedure UpdateStatusMessage(msg: String);
+begin
+  WizardForm.StatusLabel.Caption := msg;
+  WizardForm.StatusLabel.Update; // Forceert de update van de GUI
 end;
 
 function GetJavaHome: string;
@@ -24,7 +34,7 @@ end;
 function ExtractMajorVersion(const VersionString: string): Integer;
 var
   StartPos, EndPos: Integer;
-  MajorVersionStr: string;
+  MajorVersionStr : string;
 begin
   Result := 0; // Standaard als parsing mislukt
   StartPos := Pos('"', VersionString); // Zoek eerste dubbele quote
@@ -50,20 +60,19 @@ end;
 
 function GetJavaVersion: Integer;
 var
-  JavaPath, Command: string;
-  OutputFile, MajorVersion: string;
-  VersionString : AnsiString;
-  
-  ResultCode: Integer;
-  VersionPos, DotPos: Integer;
-  P: Integer;
+  JavaPath      : string;
+  Command       : string;
+  OutputFile    : string;
+  VersionString : AnsiString;  
+  ResultCode    : Integer;
+
 begin
   Result := 0;  // Standaardwaarde als er geen versie wordt gevonden
   
   JavaPath := GetJavaHome;
   if JavaPath = '' then
   begin
-   Log('JAVA_HOME not present.');
+    Log('JAVA_HOME not present.');
     exit;
   end;
   
@@ -100,18 +109,52 @@ begin
   
   if InstalledVersion = 0 then
   begin
-    MsgBox('Java not found. Install Java.', mbError, MB_OK);
-    Abort;
+    {MsgBox('Java not found. Install Java.', mbError, MB_OK);}
+    exit;
   end;
 
   if InstalledVersion < RequiredVersion then
   begin
-    MsgBox('Java ' + IntToStr(RequiredVersion) + ' or higher is required. Installed version: ' + IntToStr(InstalledVersion), mbError, MB_OK);
-    Abort;
+   { MsgBox('Java ' + IntToStr(RequiredVersion) + ' or higher is required. Installed version: ' + IntToStr(InstalledVersion), mbError, MB_OK);}
+    exit;
   end
   else
   begin
     {MsgBox('Java versie is correct: ' + IntToStr(InstalledVersion), mbInformation, MB_OK); }
     Result := true;
   end;
+end;
+
+function JreNotPresent: Boolean;
+var
+  InstallPath: string;
+begin
+  if jreNotChecked then
+  begin
+    InstallPath := ExpandConstant('{app}') + '\jre';
+    if (not IsSystemEnvVarSet('JAVA_HOME')) then
+    begin
+      SetUserEnvironmentVariable('JAVA_HOME', InstallPath);
+      Log('JAVA_HOME created.');
+    end else begin
+       Log('JAVA_HOME present.');   
+    end;
+  
+    if CheckJavaVersion (G_JavaMinVersion) then
+    begin
+      L_jreNotPresent := false;
+      UpdateStatusMessage('Java jre is present.');
+    end else begin
+      L_jreNotPresent := true;
+      UpdateStatusMessage('Java jre is not present, install JRE and define JAVA_HOME.');
+    end;
+    jreNotChecked := false;
+  end;
+  Result := L_jreNotPresent;
+end;
+
+function MyConst(Param: String): String;
+begin
+  Log('MyConst(''' + Param + ''') called');
+  Result := ExpandConstant('{autopf}');
 end;

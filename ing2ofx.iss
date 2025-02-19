@@ -57,13 +57,15 @@ const
   MyJavaMinVersion = {#MyJavaMinVersion};
   
 var
-  jreNotChecked : Boolean;
+ { G_JavaMinVersion : integer; }
+ { jreNotChecked : Boolean; }
   FinishedInstall: Boolean;
-  L_jreNotPresent: boolean;
+ { L_jreNotPresent: boolean; }
 
 function InitializeSetup(): Boolean;
 begin
   Log('InitializeSetup called');
+  G_JavaMinVersion := MyJavaMinVersion;
   Result := true;
   jreNotChecked := true;
   L_jreNotPresent := true;
@@ -88,6 +90,7 @@ end;
 procedure CurStepChanged(CurStep: TSetupStep);
 begin
   Log('CurStepChanged(' + IntToStr(Ord(CurStep)) + ') called');
+    
   if CurStep = ssPostInstall then
     FinishedInstall := True;
 end;
@@ -130,38 +133,4 @@ function PrepareToInstall(var NeedsRestart: Boolean): String;
 begin
   Log('PrepareToInstall() called');
   Result := '';
-end;
-
-function MyConst(Param: String): String;
-begin
-  Log('MyConst(''' + Param + ''') called');
-  Result := ExpandConstant('{autopf}');
-end;
-
-function JreNotPresent: Boolean;
-var
-  InstallPath: string;
-begin
-  if jreNotChecked then
-  begin
-    InstallPath := ExpandConstant('{app}') + '\jre';
-    if (not IsSystemEnvVarSet('JAVA_HOME')) then
-    begin
-      SetUserEnvironmentVariable('JAVA_HOME', InstallPath);
-      Log('JAVA_HOME created.');
-    end else begin
-       Log('JAVA_HOME present.');   
-    end;
-  
-    if CheckJavaVersion (MyJavaMinVersion) then
-    begin
-      L_jreNotPresent := false;
-      Log('Java jre is present.');
-    end else begin
-      L_jreNotPresent := true;
-      Log('Java jre is not present, define JAVA_HOME.');
-    end;
-    jreNotChecked := false;
-  end;
-  Result := L_jreNotPresent;
 end;
