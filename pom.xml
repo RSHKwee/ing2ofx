@@ -163,7 +163,7 @@
         <executions>
           <execution>
             <id>CopyToolsIng</id>
-            <phase>process-resources</phase>
+            <phase>initialize</phase>
             <goals>
               <goal>copy-resources</goal>
             </goals>
@@ -316,7 +316,7 @@
         <executions>
 		  <execution>
             <id>ING2OFXHelpEn</id>
-            <phase>generate-resources</phase>
+            <phase>compile</phase>
            <goals>
               <goal>exec</goal>
             </goals>          
@@ -330,7 +330,7 @@
           </execution>
 		  <execution>
             <id>ING2OFXHelpNl</id>
-            <phase>generate-resources</phase>
+            <phase>compile</phase>
            <goals>
               <goal>exec</goal>
             </goals>          
