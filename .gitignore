@@ -19,3 +19,9 @@ MANIFEST.MF
 jre/
 *.chm
 jre/
+GarminSummary/HelpChm.cmd
+GarminSummary/innosetup.cmd
+GarminSummary/Library.iss
+ing2ofx/HelpChm.cmd
+ing2ofx/innosetup.cmd
+ing2ofx/Library.iss
