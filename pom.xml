@@ -412,19 +412,19 @@
         <version>${maven-antrun-pluginversion}</version>
         <executions>
           <execution>
-            <phase>package</phase>
+            <phase>install</phase>
             <goals>
               <goal>run</goal>
             </goals>
               <configuration>
                 <target>
                   <delete dir="${project.basedir}\BuildTools"/>
-                  <delete file="${project.basedir}\Library.iss"/>
+                  <delete file="${project.basedir}\Library.iss"/>   
                 </target>
               </configuration>
            </execution>
         </executions>
-      </plugin>     
+      </plugin>
     </plugins>
 <!--    </pluginManagement> -->
   </build>
