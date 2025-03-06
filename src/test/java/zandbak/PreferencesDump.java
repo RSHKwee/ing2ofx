@@ -5,8 +5,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.prefs.*;
 
+import kwee.logger.MyLogger;
+
 public class PreferencesDump {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = MyLogger.getLogger();
 
   public static void main(String[] args) throws BackingStoreException {
     Preferences prefs = Preferences.userRoot(); // or Preferences.systemRoot() for system preferences

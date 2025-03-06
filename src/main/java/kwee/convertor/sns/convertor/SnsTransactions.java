@@ -30,13 +30,14 @@ import kwee.ing2ofx.generated.camt053.EntryDetails1;
 import kwee.ing2ofx.generated.camt053.ReportEntry2;
 
 import kwee.library.DateToNumeric;
+import kwee.logger.MyLogger;
 import kwee.convertor.sns.snsLibrary.SnsTransaction;
 import kwee.ofxLibrary.OfxFunctions;
 import kwee.ofxLibrary.OfxMetaInfo;
 import kwee.ofxLibrary.OfxTransaction;
 
 public class SnsTransactions {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = MyLogger.getLogger();
 
   private String m_bankcode = "SNSBNL2A";
   private Camt053Parser m_reader;

@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
+import kwee.logger.MyLogger;
 import kwee.ofxLibrary.Synonyms;
 
 /**
@@ -18,7 +19,7 @@ public class UserSetting {
   private static UserSetting uniqueInstance;
   private static UserSetting freezeInstance = null;
 
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = MyLogger.getLogger();
   public static String NodePrefName = "kwee.ing2ofx";
 
   private String c_Level = "Level";

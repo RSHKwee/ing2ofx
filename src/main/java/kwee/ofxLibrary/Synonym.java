@@ -1,7 +1,9 @@
 package kwee.ofxLibrary;
 
+// import kwee.logger.MyLogger;
+
 public class Synonym {
-  // private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  // private static final Logger LOGGER = MyLogger.getLogger();
 
   private int m_Sequence = -1;
   private String m_Key = "";

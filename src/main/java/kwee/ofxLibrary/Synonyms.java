@@ -12,6 +12,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
 
+import kwee.logger.MyLogger;
+
 /**
  * Synonyms
  * 
@@ -19,7 +21,7 @@ import java.util.stream.Stream;
  *
  */
 public class Synonyms {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = MyLogger.getLogger();
   private Map<String, Synonym> m_Synonyms = new HashMap<String, Synonym>();
   private Map<String, ArrayList<String>> m_Prefixs = new HashMap<String, ArrayList<String>>();
 

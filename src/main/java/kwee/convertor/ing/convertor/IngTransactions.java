@@ -36,9 +36,10 @@ import kwee.ofxLibrary.OfxFunctions;
 import kwee.ofxLibrary.OfxMetaInfo;
 import kwee.library.DateToNumeric;
 import kwee.library.FileUtils;
+import kwee.logger.MyLogger;
 
 public class IngTransactions {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = MyLogger.getLogger();
 
   private CSVReader m_reader;
   private File m_File;

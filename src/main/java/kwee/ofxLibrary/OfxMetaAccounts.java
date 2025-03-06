@@ -16,10 +16,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import kwee.logger.MyLogger;
+
 import java.util.Set;
 
 public class OfxMetaAccounts {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = MyLogger.getLogger();
 
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
   private Map<String, LinkedList<OfxTransaction>> m_OfxAcountsTransactions = new LinkedHashMap<String, LinkedList<OfxTransaction>>();
@@ -77,8 +80,8 @@ public class OfxMetaAccounts {
 
   // Private functions
   /**
-   * Create / Update Transactions per account. Fill data structure
-   * m_OfxAcountsTransactions. Key is Account, value is list of Transactions.
+   * Create / Update Transactions per account. Fill data structure m_OfxAcountsTransactions. Key is Account, value is
+   * list of Transactions.
    */
   private void updateOfxMetaInfoMap() {
     try {

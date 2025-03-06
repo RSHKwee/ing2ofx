@@ -2,7 +2,7 @@ package kwee.ing2ofx.main;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import java.awt.Font;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
@@ -16,6 +16,7 @@ import java.net.URL;
 
 import kwee.library.ApplicationMessages;
 import kwee.library.JarInfo;
+import kwee.logger.MyLogger;
 import kwee.ing2ofx.gui.GUILayout;
 
 /**
@@ -25,15 +26,15 @@ import kwee.ing2ofx.gui.GUILayout;
  */
 
 public class Main {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = MyLogger.getLogger();
   static public String m_creationtime;
+  static public String c_CopyrightYear;
   static String m_LookAndFeel = "Nimbus";
   private static UserSetting m_param = UserSetting.getInstance();
   static boolean m_ConfirmOnExit = false;
 
   /**
-   * Create the GUI and show it. For thread safety, this method should be invoked
-   * from the event-dispatching thread.
+   * Create the GUI and show it. For thread safety, this method should be invoked from the event-dispatching thread.
    */
   public static JFrame createAndShowGUI() {
     ApplicationMessages bundle = ApplicationMessages.getInstance();
@@ -43,7 +44,9 @@ public class Main {
     initLookAndFeel();
 
     // Create and set up the window.
-    JFrame frame = new JFrame(bundle.getMessage("AppTitel", m_creationtime));
+    JFrame frame = new JFrame(bundle.getMessage("AppTitel", m_creationtime, c_CopyrightYear));
+    frame.setFont(new Font("Arial", Font.PLAIN, 20));
+    frame.setTitle(bundle.getMessage("AppTitel", m_creationtime, c_CopyrightYear));
     frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
     frame.addWindowListener(new WindowListener() {
@@ -114,7 +117,7 @@ public class Main {
     frame.setLocation(50, 50);
     frame.setVisible(true);
 
-    LOGGER.log(Level.INFO, bundle.getMessage("AppTitel", m_creationtime));
+    LOGGER.log(Level.INFO, bundle.getMessage("AppTitel", m_creationtime, c_CopyrightYear));
     return frame;
   }
 
@@ -131,6 +134,7 @@ public class Main {
         }
       }
     } catch (Exception e) {
+      // LOGGER.log(Level.INFO, "");
       // If Nimbus is not available, you can set the GUI to another look and feel.
     }
   }
@@ -146,9 +150,11 @@ public class Main {
     m_param = UserSetting.getInstance();
     // Get the jvm heap size.
     long heapSize = Runtime.getRuntime().totalMemory();
+    System.setProperty("file.encoding", "UTF-8");
 
     m_LookAndFeel = m_param.get_LookAndFeel();
     m_creationtime = JarInfo.getProjectVersion(GUILayout.class);
+    c_CopyrightYear = JarInfo.getYear(GUILayout.class);
     m_ConfirmOnExit = m_param.is_ConfirmOnExit();
 
     switch (argv.length) {

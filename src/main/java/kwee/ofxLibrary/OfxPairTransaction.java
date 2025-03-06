@@ -11,8 +11,10 @@ import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 
+import kwee.logger.MyLogger;
+
 public class OfxPairTransaction {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = MyLogger.getLogger();
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
 
   private JProgressBar m_ProgressBar;

@@ -16,10 +16,11 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import kwee.library.TxtBestand;
+// import kwee.logger.MyLogger;
 import kwee.library.DateToNumeric;
 
 public class OfxFunctions {
-//  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+//  private static final Logger LOGGER = MyLogger.getLogger();
 
   /**
    * Check if OfxTransaction already is NOT present in list of OfxTransactions.

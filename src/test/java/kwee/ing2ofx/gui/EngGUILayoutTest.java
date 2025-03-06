@@ -23,10 +23,11 @@ import junit.framework.TestCase;
 import kwee.ing2ofx.main.Main;
 import kwee.ing2ofx.main.UserSetting;
 import kwee.library.FileUtils;
+import kwee.logger.MyLogger;
 import kwee.logger.TestLogger;
 
 public class EngGUILayoutTest extends TestCase {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = MyLogger.getLogger();
   private FrameFixture frame;
   Object lock = GUILayout.lock;
 
@@ -52,8 +53,7 @@ public class EngGUILayoutTest extends TestCase {
   private String m_OfxCombineOneByOne = "en_OFX_CombineOneByOne_Syn";
 
   /**
-   * setUp, store original User parameters and reset parameters for Test purpose.
-   * Start GUI
+   * setUp, store original User parameters and reset parameters for Test purpose. Start GUI
    */
   @Override
   @Before
@@ -283,8 +283,7 @@ public class EngGUILayoutTest extends TestCase {
   }
 
   /**
-   * Test handling of Combined ING-, ING Saving- and SNS Transactions and make use
-   * of a Synonym file.
+   * Test handling of Combined ING-, ING Saving- and SNS Transactions and make use of a Synonym file.
    */
   @Test
   public void testGUILayoutCombineSyn() {
@@ -410,8 +409,7 @@ public class EngGUILayoutTest extends TestCase {
   }
 
   /**
-   * Test handling of Combined ING-, ING Saving- and SNS Transactions, are entered
-   * one by one.
+   * Test handling of Combined ING-, ING Saving- and SNS Transactions, are entered one by one.
    */
   @Test
   public void testGUILayoutOneByOne() {

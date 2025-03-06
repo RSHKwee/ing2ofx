@@ -17,9 +17,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import kwee.ing2ofx.main.UserSetting;
+import kwee.logger.MyLogger;
 
 public class OfxMetaInfo {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = MyLogger.getLogger();
   private String bankcode = "";
   private String account = "";
   private String prefix = "";

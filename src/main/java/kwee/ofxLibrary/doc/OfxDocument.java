@@ -43,9 +43,10 @@ import kwee.ofxLibrary.OfxTransaction;
 
 import kwee.library.DateToNumeric;
 import kwee.library.TimeConversion;
+import kwee.logger.MyLogger;
 
 public class OfxDocument {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = MyLogger.getLogger();
 
   static String C_FIDCode = "1001";
   static String C_FIDId = "NCH";

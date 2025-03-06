@@ -1,13 +1,11 @@
 package zandbak;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import kwee.logger.MyLogger;
 
 public class MyClass {
-    private static final Logger logger = LoggerFactory.getLogger(MyClass.class);
+  private static final java.util.logging.Logger logger = MyLogger.getLogger();
 
-    public static void main(String[] args) {
-        logger.info("Hello, SLF4J!");
-    }
+  public static void main(String[] args) {
+    logger.info("Hello, SLF4J!");
+  }
 }
-

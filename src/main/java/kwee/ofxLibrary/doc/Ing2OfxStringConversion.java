@@ -23,6 +23,8 @@ import com.webcohesion.ofx4j.domain.data.common.UnknownStatusCode;
 import com.webcohesion.ofx4j.io.OFXSyntaxException;
 import com.webcohesion.ofx4j.io.StringConversion;
 
+import kwee.logger.MyLogger;
+
 import java.sql.Time;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -39,7 +41,7 @@ import java.net.MalformedURLException;
  * @author Ryan Heaton
  */
 public class Ing2OfxStringConversion implements StringConversion {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = MyLogger.getLogger();
   private OFXSettings m_ofxSettings;
 
   public final TimeZone gmtTimeZone;

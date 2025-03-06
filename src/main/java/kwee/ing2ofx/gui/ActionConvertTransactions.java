@@ -15,6 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.SwingWorker;
 
 import kwee.library.ApplicationMessages;
+import kwee.logger.MyLogger;
 import kwee.ofxLibrary.OfxFilter;
 import kwee.ofxLibrary.OfxFunctions;
 import kwee.ofxLibrary.OfxMetaAccounts;
@@ -30,7 +31,7 @@ import kwee.ofxLibrary.doc.OfxDocument;
  *
  */
 public class ActionConvertTransactions extends SwingWorker<Void, String> implements MyAppendable {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = MyLogger.getLogger();
   private Object lock = GUILayout.lock;
   private JTextArea area = new JTextArea(30, 50);
 
@@ -50,8 +51,7 @@ public class ActionConvertTransactions extends SwingWorker<Void, String> impleme
   private Map<String, OfxMetaInfo> m_metainfo = new HashMap<String, OfxMetaInfo>();
 
   /**
-   * Constructor for Java. For conversion transactions to OFX and write to
-   * file(s).
+   * Constructor for Java. For conversion transactions to OFX and write to file(s).
    * 
    * @param a_OfxTransactions List of OFX Transactions.
    * @param a_metainfo

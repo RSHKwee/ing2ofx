@@ -23,10 +23,11 @@ import junit.framework.TestCase;
 import kwee.ing2ofx.main.Main;
 import kwee.ing2ofx.main.UserSetting;
 import kwee.library.FileUtils;
+import kwee.logger.MyLogger;
 import kwee.logger.TestLogger;
 
 public class GUILayoutCombineTest extends TestCase {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = MyLogger.getLogger();
   private FrameFixture frame;
   Object lock = GUILayout.lock;
 

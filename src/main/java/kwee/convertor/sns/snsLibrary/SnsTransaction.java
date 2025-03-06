@@ -5,8 +5,10 @@ package kwee.convertor.sns.snsLibrary;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBean;
 
+// import kwee.logger.MyLogger;
+
 public class SnsTransaction extends CsvToBean<Object> {
-//  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+//  private static final Logger LOGGER = MyLogger.getLogger();
   /*
  * @formatter:off
  * 
@@ -160,8 +162,7 @@ public class SnsTransaction extends CsvToBean<Object> {
   // "xxxxxx IBAN: xxxxxx"
   //
   /**
-   * In mededeling kan de naam van rekeninghouder zijn opgenomen, dit is dubbele
-   * informatie en wordt verwijderd. <br>
+   * In mededeling kan de naam van rekeninghouder zijn opgenomen, dit is dubbele informatie en wordt verwijderd. <br>
    * Geldt ook voor naamgeving veld "Opmerking:", wordt ook verwijderd.
    * <p>
    * "Naam: yyyyyy Omschrijving: xxxxxx IBAN: xxxxxx"

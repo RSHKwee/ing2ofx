@@ -1,9 +1,11 @@
 package kwee.ofxLibrary;
 
+// import kwee.logger.MyLogger;
+
 // import java.util.logging.Logger;
 
 public class OfxFilter {
-  // private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  // private static final Logger LOGGER = MyLogger.getLogger();
   private String m_FilterAccounts;
   private String m_FilterMemo = "";
 

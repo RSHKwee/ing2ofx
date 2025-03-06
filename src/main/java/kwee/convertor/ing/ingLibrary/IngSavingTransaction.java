@@ -17,9 +17,10 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBean;
 
 import kwee.library.DateToNumeric;
+import kwee.logger.MyLogger;
 
 public class IngSavingTransaction extends CsvToBean<Object> {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = MyLogger.getLogger();
   /*
    * @formatter:off
    * Spaarrekening 

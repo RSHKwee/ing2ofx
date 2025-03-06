@@ -12,6 +12,7 @@ import kwee.ofxLibrary.OfxTransaction;
 import java.awt.BorderLayout;
 import java.awt.Desktop;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -69,9 +70,9 @@ import kwee.library.swing.ShowPreferences;
 import kwee.library.swing.TextAreaHandler;
 
 public class GUILayout extends JPanel implements ItemListener {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = MyLogger.getLogger();
   private static final long serialVersionUID = 1L;
-  static final String c_CopyrightYear = "2025";
+  static final String c_CopyrightYear = Main.c_CopyrightYear;
   static final String c_repoName = "Ing2Ofx";
   public static final Object lock = new Object();
 
@@ -383,6 +384,14 @@ public class GUILayout extends JPanel implements ItemListener {
           UIManager.setLookAndFeel(lookAndFeelInfo.getClassName());
           SwingUtilities.updateComponentTreeUI(this);
           m_param.set_LookAndFeel(lookAndFeelInfo.getClassName());
+
+          // Pas het standaard lettertype aan voor ALLE UI-elementen
+          Font customFont = new Font("Arial", Font.PLAIN, 16);
+          for (Object key : UIManager.getDefaults().keySet()) {
+            if (key instanceof String && ((String) key).endsWith(".font")) {
+              UIManager.put(key, customFont);
+            }
+          }
         } catch (Exception e) {
           LOGGER.log(Level.WARNING, e.getMessage());
         }

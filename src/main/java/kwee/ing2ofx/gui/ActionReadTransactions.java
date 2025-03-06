@@ -20,6 +20,7 @@ import kwee.ofxLibrary.OfxMetaInfo;
 import kwee.ofxLibrary.OfxTransaction;
 import kwee.convertor.sns.convertor.*;
 import kwee.library.ApplicationMessages;
+import kwee.logger.MyLogger;
 
 /**
  * Read transactions from file(s).
@@ -28,7 +29,7 @@ import kwee.library.ApplicationMessages;
  *
  */
 public class ActionReadTransactions extends SwingWorker<List<OfxTransaction>, String> {
-  private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+  private static final Logger LOGGER = MyLogger.getLogger();
   private Object lock = GUILayout.lock;
 
   private ApplicationMessages bundle = ApplicationMessages.getInstance();
