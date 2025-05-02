@@ -4,10 +4,24 @@ package kwee.ing2ofx.gui;
  * ing2ofx GUI
  */
 import kwee.logger.MyLogger;
-import net.miginfocom.swing.MigLayout;
+
+import kwee.ing2ofx.main.Main;
+import kwee.ing2ofx.main.UserSetting;
+
+import kwee.library.ApplicationMessages;
+import kwee.library.OutputToLoggerReader;
+import kwee.library.swing.AboutWindow;
+import kwee.library.swing.ShowPreferences;
+import kwee.library.swing.TextAreaHandler;
+
 import kwee.ofxLibrary.OfxFunctions;
 import kwee.ofxLibrary.OfxMetaInfo;
 import kwee.ofxLibrary.OfxTransaction;
+
+import com.webcohesion.ofx4j.OFXSettings;
+import com.webcohesion.ofx4j.generated.CurrencyEnum;
+
+import net.miginfocom.swing.MigLayout;
 
 import java.awt.BorderLayout;
 import java.awt.Desktop;
@@ -33,8 +47,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.BoxLayout;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -52,22 +69,6 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
-import com.webcohesion.ofx4j.OFXSettings;
-import com.webcohesion.ofx4j.generated.CurrencyEnum;
-
-import javax.swing.JCheckBoxMenuItem;
-
-import kwee.ing2ofx.main.Main;
-
-import kwee.ing2ofx.main.UserSetting;
-import kwee.library.ApplicationMessages;
-import kwee.library.OutputToLoggerReader;
-import kwee.library.swing.AboutWindow;
-import kwee.library.swing.ShowPreferences;
-import kwee.library.swing.TextAreaHandler;
 
 public class GUILayout extends JPanel implements ItemListener {
   private static final Logger LOGGER = MyLogger.getLogger();

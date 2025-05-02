@@ -14,7 +14,6 @@ import kwee.convertor.ing.ingLibrary.IngSavingTransaction;
 import kwee.convertor.ing.ingLibrary.IngSavingTransactionEng;
 import kwee.convertor.ing.ingLibrary.IngTransaction;
 import kwee.convertor.ing.ingLibrary.IngTransactionEng;
-import kwee.logger.MyLogger;
 import kwee.ofxLibrary.OfxTransaction;
 
 public class Ing2OfxTransaction {
