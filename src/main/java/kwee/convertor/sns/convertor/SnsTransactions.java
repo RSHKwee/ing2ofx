@@ -150,10 +150,10 @@ public class SnsTransactions {
                     l_ofxtrans.setAccountto("");
                   }
 
-                  if (entryDetails1.getTxDtls().get(0).getAmtDtls() != null) {
-                    LOGGER.log(l_Level, "Creditor amount: "
-                        + entryDetails1.getTxDtls().get(0).getAmtDtls().getTxAmt().getAmt().getValue());
-                  }
+                  // if (entryDetails1.getTxDtls().get(0).getAmtDtls() != null) {
+                  // LOGGER.log(l_Level, "Creditor amount: "
+                  // + entryDetails1.getTxDtls().get(0).getAmtDtls().getTxAmt().getAmt().getValue());
+                  // }
 
                   BigDecimal lamnt = new BigDecimal(-1.0);
                   try {
@@ -174,6 +174,9 @@ public class SnsTransactions {
                     LOGGER.log(l_Level, "Creditor remittance information (payment description): " + l_memo);
                   } catch (Exception e) {
                     l_memo = reportEntry2.getAddtlNtryInf();
+                    if (l_memo == null) {
+                      l_memo = "";
+                    }
                   }
 
                   l_memo = l_memo.replaceAll("( )+", " ");
@@ -225,6 +228,9 @@ public class SnsTransactions {
                         .collect(Collectors.joining(","));
                   } catch (Exception e) {
                     l_memo = reportEntry2.getAddtlNtryInf();
+                    if (l_memo == null) {
+                      l_memo = "";
+                    }
                   }
                   l_memo = l_memo.replaceAll("( )+", " ");
                   l_memo = l_memo.replaceAll("  ", " ");
