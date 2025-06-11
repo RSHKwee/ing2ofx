@@ -12,6 +12,15 @@
 SetupLogging=yes
 PrivilegesRequired=poweruser
 
+AllowNoIcons=yes
+AllowRootDirectory=yes
+AllowUNCPath=no
+CreateAppDir=yes
+DisableStartupPrompt=yes
+
+Compression=lzma2/ultra64
+SolidCompression=yes
+
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 AppPublisher=RSH Kwee

@@ -150,11 +150,6 @@ public class SnsTransactions {
                     l_ofxtrans.setAccountto("");
                   }
 
-                  // if (entryDetails1.getTxDtls().get(0).getAmtDtls() != null) {
-                  // LOGGER.log(l_Level, "Creditor amount: "
-                  // + entryDetails1.getTxDtls().get(0).getAmtDtls().getTxAmt().getAmt().getValue());
-                  // }
-
                   BigDecimal lamnt = new BigDecimal(-1.0);
                   try {
                     lamnt = lamnt.multiply(reportEntry2.getAmt().getValue());
@@ -174,9 +169,10 @@ public class SnsTransactions {
                     LOGGER.log(l_Level, "Creditor remittance information (payment description): " + l_memo);
                   } catch (Exception e) {
                     l_memo = reportEntry2.getAddtlNtryInf();
-                    if (l_memo == null) {
-                      l_memo = "";
-                    }
+                  }
+
+                  if (l_memo == null) {
+                    l_memo = "";
                   }
 
                   l_memo = l_memo.replaceAll("( )+", " ");
@@ -204,14 +200,7 @@ public class SnsTransactions {
                     l_ofxtrans.setName("");
                     l_ofxtrans.setAccountto("");
                   }
-                  /*
-                   * LOGGER.log(l_Level, "Debtor remittance information (payment description): " + entryDetails1
-                   * .getTxDtls().get(0).getRmtInf().getUstrd().stream().collect(Collectors. joining(",")));
-                   * LOGGER.log(l_Level, "Report amount: " + reportEntry2.getAmt().getValue() + " " +
-                   * reportEntry2.getAmt().getCcy()); if (entryDetails1.getTxDtls().get(0).getAmtDtls() != null) {
-                   * LOGGER.log(l_Level, "Debtor amount: " +
-                   * entryDetails1.getTxDtls().get(0).getAmtDtls().getTxAmt().getAmt().getValue()) ; }
-                   */
+
                   BigDecimal lamnt = new BigDecimal(1.0);
                   try {
                     lamnt = lamnt.multiply(reportEntry2.getAmt().getValue());
@@ -228,10 +217,12 @@ public class SnsTransactions {
                         .collect(Collectors.joining(","));
                   } catch (Exception e) {
                     l_memo = reportEntry2.getAddtlNtryInf();
-                    if (l_memo == null) {
-                      l_memo = "";
-                    }
                   }
+
+                  if (l_memo == null) {
+                    l_memo = "";
+                  }
+
                   l_memo = l_memo.replaceAll("( )+", " ");
                   l_memo = l_memo.replaceAll("  ", " ");
                   l_ofxtrans.setMemo(l_memo);

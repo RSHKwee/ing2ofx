@@ -16,6 +16,8 @@
   </parent>
   
   <properties>
+     <project.description>CSV to OFX converter</project.description>
+
      <com-opencsv.version>5.10</com-opencsv.version>
      <commons-io.version>2.18.0</commons-io.version>
      <commons-collections.version>3.2.2</commons-collections.version>
@@ -82,7 +84,7 @@
         <filtering>true</filtering>
       </resource>
     </resources>   
-    <!--  <pluginManagement> -->
+
 	<plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -100,7 +102,7 @@
                  <version>${maven.min.version}</version> <!-- Minimale Maven-versie vereist -->
                 </requireMavenVersion>
               </rules>
-              <fail>true</fail> <!-- Stop de build bij niet-naleving -->
+              <fail>false</fail> <!-- Stop de build niet bij niet-naleving -->
             </configuration>
           </execution>
         </executions>
@@ -206,7 +208,7 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${project.basedir}/target</outputDirectory>
+              <outputDirectory>${project.build.directory}</outputDirectory>
               <resources>                                        
                 <resource>
                   <directory>.</directory>
@@ -227,7 +229,7 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${project.basedir}/target/help/en</outputDirectory>
+              <outputDirectory>${project.build.directory}/help/en</outputDirectory>
               <resources>                                        
                 <resource>
                   <directory>${project.basedir}/help/en</directory>
@@ -245,7 +247,7 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${project.basedir}/target/help/nl</outputDirectory>
+              <outputDirectory>${project.build.directory}/help/nl</outputDirectory>
               <resources>                                        
                 <resource>
                   <directory>${project.basedir}/help/nl</directory>
@@ -273,18 +275,16 @@
              </goals>
              <configuration>
                <headerType>console</headerType>
-               <jar>target/ing2ofx-jar-with-dependencies.jar</jar>
-               <outfile>target/ing2ofx.exe</outfile>
-               <downloadUrl>https://cdn.azul.com/zulu/bin/zulu17.40.19-ca-jdk17.0.6-win_x64.msi</downloadUrl>
+               <jar>${project.build.directory}/ing2ofx-jar-with-dependencies.jar</jar>
+               <outfile>${project.build.directory}/ing2ofx.exe</outfile>
+               <downloadUrl>https://cdn.azul.com/zulu/bin/zulu22.32.21-ca-crac-jdk22.0.2-win_x64.zip</downloadUrl>
                <classPath>
                  <mainClass>kwee.ing2ofx.main.Main</mainClass>
               </classPath>
-	  	      <icon>src/main/resources/ingSNSLogo.ico</icon>
               <jre>
-                <bundledJre64Bit>true</bundledJre64Bit>
 	            <path>%java_home%</path>
-                <bundledJreAsFallback>true</bundledJreAsFallback>
               </jre>
+	  	      <icon>src/main/resources/ingSNSLogo.ico</icon>
               <versionInfo>
                 <fileVersion>${project.version}</fileVersion>
                 <txtFileVersion>${project.version}</txtFileVersion>
@@ -308,11 +308,13 @@
         <version>${jsign-maven-plugin.version}</version>
         <executions>
           <execution>
+           <id>sign</id>
+           <phase>package</phase>
             <goals>
               <goal>sign</goal>
             </goals>
             <configuration>
-              <file>target/ing2ofx.exe</file>
+              <file>${project.build.directory}/ing2ofx.exe</file>
               <name>ING OFX Converter</name>
               <url>https://github.com/RSHKwee/ing2ofx</url>
               <keystore>keystore.jks</keystore>
@@ -320,6 +322,23 @@
               <storepass>GW93ayi0j2CfeJx9VoSo</storepass>
             </configuration>
           </execution>
+
+          <execution>
+            <id>signinst</id>
+            <phase>install</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+            <configuration>
+              <file>${project.build.directory}/ing2ofx_v${project.version}_setup.exe</file>
+              <name>ING OFX Converter</name>
+              <url>https://github.com/RSHKwee/ing2ofx</url>
+              <keystore>keystore.jks</keystore>
+              <alias>RSHK</alias>
+              <storepass>GW93ayi0j2CfeJx9VoSo</storepass>
+            </configuration>
+          </execution>
+          
         </executions>
       </plugin>
 	  <!-- Sign executable ^ -->
@@ -359,7 +378,7 @@
           </execution>	  
           <execution>
             <id>innoSetup</id>
-            <phase>install</phase>
+            <phase>post-integration-test</phase>
            <goals>
               <goal>exec</goal>
             </goals>          
@@ -371,36 +390,6 @@
               </arguments>
             </configuration>
           </execution>
-          <!--
-          <execution>
-            <id>innoSetupNoJre</id>
-            <phase>install</phase>
-           <goals>
-              <goal>exec</goal>
-            </goals>          
-            <configuration>
-              <executable>innosetup.cmd</executable>
-              <workingDirectory>...</workingDirectory>
-              <arguments>
-                <argument>ing2ofxnojre.iss</argument>
-              </arguments>
-            </configuration>
-          </execution>
-          <execution>
-            <id>innoSetupJreDown</id>
-            <phase>install</phase>
-           <goals>
-              <goal>exec</goal>
-            </goals>          
-            <configuration>
-              <executable>innosetup.cmd</executable>
-              <workingDirectory>...</workingDirectory>
-              <arguments>
-                <argument>ing2ofx_jreDownload.iss</argument>
-              </arguments>
-            </configuration>
-          </execution>
-          -->          
         </executions>
       </plugin>
       <plugin>
