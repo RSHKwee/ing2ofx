@@ -37,6 +37,7 @@ public class Main {
    * Create the GUI and show it. For thread safety, this method should be invoked from the event-dispatching thread.
    */
   public static JFrame createAndShowGUI() {
+    UserSetting l_param = m_param;
     ApplicationMessages bundle = ApplicationMessages.getInstance();
     bundle.changeLanguage(m_param.get_Language());
 
