@@ -406,7 +406,7 @@
           </execution>
         </executions>
         <configuration>
-          <name>ING2OFX</name>
+          <name>ing2ofx</name>
           <type>APP_IMAGE</type>
           <icon>src/main/resources/ingSNSLogo.ico</icon>
           <input>${project.build.directory}</input>
@@ -414,10 +414,6 @@
           <runtimeImage>${java.home}</runtimeImage>
           <destination>${project.build.directory}/USB/Programs</destination>
          
-          <!-- BELANGRIJK: Verwijzen naar je custom runtime -->
-          <!--       <runtimeImage>${project.basedir}/../jre</runtimeImage> -->
-          
-          <!-- Optionele metadata -->
           <appVersion>${project.version}</appVersion>
           <vendor>RSH Kwee</vendor>
           <copyright>Copyright © 2026 RSH Kwee. Alle rechten voorbehouden.</copyright>
@@ -449,8 +445,9 @@
         </executions>
       </plugin>
     </plugins>
-<!--    </pluginManagement> -->
+    <!--    </pluginManagement> -->
   </build>
+  
   <distributionManagement>
     <!-- Upload to Github v-->
     <repository>

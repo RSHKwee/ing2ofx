@@ -28,3 +28,5 @@ ing2ofx/Library.iss
 HelpChm.cmd
 innosetup.cmd
 Library.iss
+log.txt
+output.ofx
