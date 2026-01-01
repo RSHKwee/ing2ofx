@@ -406,7 +406,7 @@
           </execution>
         </executions>
         <configuration>
-          <name>ing2ofx</name>
+          <name>ING2OFX</name>
           <type>APP_IMAGE</type>
           <icon>src/main/resources/ingSNSLogo.ico</icon>
           <input>${project.build.directory}</input>
@@ -445,7 +445,7 @@
         </executions>
       </plugin>
     </plugins>
-    <!--    </pluginManagement> -->
+<!--    </pluginManagement> -->
   </build>
   
   <distributionManagement>
