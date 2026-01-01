@@ -7,7 +7,7 @@ import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
 import kwee.logger.MyLogger;
-import kwee.ofxLibrary.Synonyms;
+import kwee.ing2ofx.ofxLibrary.Synonyms;
 
 /**
  * User setting persistence.

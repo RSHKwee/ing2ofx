@@ -14,9 +14,9 @@ import kwee.library.swing.AboutWindow;
 import kwee.library.swing.ShowPreferences;
 import kwee.library.swing.TextAreaHandler;
 
-import kwee.ofxLibrary.OfxFunctions;
-import kwee.ofxLibrary.OfxMetaInfo;
-import kwee.ofxLibrary.OfxTransaction;
+import kwee.ing2ofx.ofxLibrary.OfxFunctions;
+import kwee.ing2ofx.ofxLibrary.OfxMetaInfo;
+import kwee.ing2ofx.ofxLibrary.OfxTransaction;
 
 import com.webcohesion.ofx4j.OFXSettings;
 import com.webcohesion.ofx4j.generated.CurrencyEnum;

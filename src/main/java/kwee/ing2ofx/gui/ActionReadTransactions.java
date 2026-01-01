@@ -15,10 +15,10 @@ import javax.swing.SwingWorker;
 
 import org.apache.commons.io.FilenameUtils;
 
-import kwee.convertor.ing.convertor.IngTransactions;
-import kwee.ofxLibrary.OfxMetaInfo;
-import kwee.ofxLibrary.OfxTransaction;
-import kwee.convertor.sns.convertor.*;
+import kwee.ing2ofx.ofxLibrary.OfxMetaInfo;
+import kwee.ing2ofx.ofxLibrary.OfxTransaction;
+import kwee.ing2ofx.convertor.ing.convertor.IngTransactions;
+import kwee.ing2ofx.convertor.sns.convertor.*;
 import kwee.library.ApplicationMessages;
 import kwee.logger.MyLogger;
 

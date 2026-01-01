@@ -7,9 +7,10 @@ import java.util.Calendar;
 import java.util.Date;
 
 import junit.framework.TestCase;
-import kwee.convertor.ing.ingLibrary.IngSavingTransaction;
-import kwee.convertor.ing.ingLibrary.IngTransaction;
-import kwee.ofxLibrary.OfxTransaction;
+import kwee.ing2ofx.convertor.ing.convertor.Ing2OfxTransaction;
+import kwee.ing2ofx.convertor.ing.ingLibrary.IngSavingTransaction;
+import kwee.ing2ofx.convertor.ing.ingLibrary.IngTransaction;
+import kwee.ing2ofx.ofxLibrary.OfxTransaction;
 
 public class Ing2OfxTransactionTest extends TestCase {
   static String m_bankcode = "INGBNL2A";

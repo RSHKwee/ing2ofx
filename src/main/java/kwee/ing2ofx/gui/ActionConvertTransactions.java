@@ -14,15 +14,15 @@ import javax.swing.JProgressBar;
 import javax.swing.JTextArea;
 import javax.swing.SwingWorker;
 
+import kwee.ing2ofx.ofxLibrary.doc.OfxDocument;
 import kwee.library.ApplicationMessages;
 import kwee.logger.MyLogger;
-import kwee.ofxLibrary.OfxFilter;
-import kwee.ofxLibrary.OfxFunctions;
-import kwee.ofxLibrary.OfxMetaAccounts;
-import kwee.ofxLibrary.OfxMetaInfo;
-import kwee.ofxLibrary.OfxPairTransaction;
-import kwee.ofxLibrary.OfxTransaction;
-import kwee.ofxLibrary.doc.OfxDocument;
+import kwee.ing2ofx.ofxLibrary.OfxFilter;
+import kwee.ing2ofx.ofxLibrary.OfxFunctions;
+import kwee.ing2ofx.ofxLibrary.OfxMetaAccounts;
+import kwee.ing2ofx.ofxLibrary.OfxMetaInfo;
+import kwee.ing2ofx.ofxLibrary.OfxPairTransaction;
+import kwee.ing2ofx.ofxLibrary.OfxTransaction;
 
 /**
  * 
