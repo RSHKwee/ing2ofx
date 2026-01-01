@@ -51,14 +51,14 @@
       <version>${commons-io.version}</version>
     </dependency>
     <dependency>
-        <groupId>commons-collections</groupId>
-        <artifactId>commons-collections</artifactId>
-        <version>${commons-collections.version}</version>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+      <version>${commons-collections.version}</version>
     </dependency>
     <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-collections4</artifactId>
-        <version>${commons-collections4.version}</version>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-collections4</artifactId>
+      <version>${commons-collections4.version}</version>
     </dependency>
     <dependency>
       <groupId>org.javassist</groupId>
@@ -322,7 +322,6 @@
               <storepass>GW93ayi0j2CfeJx9VoSo</storepass>
             </configuration>
           </execution>
-
           <execution>
             <id>signinst</id>
             <phase>install</phase>
@@ -392,6 +391,40 @@
           </execution>
         </executions>
       </plugin>
+      <!-- 2. JPackage Plugin voor zelfstandige app op USB -->
+      <plugin>
+        <groupId>org.panteleyev</groupId>
+        <artifactId>jpackage-maven-plugin</artifactId>
+        <version>${jpackage-maven-plugin.version}</version>
+        <executions>
+          <execution>
+            <!-- Voer uit na de "package" fase -->
+            <phase>verify</phase>
+            <goals>
+                <goal>jpackage</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <name>ING2OFX</name>
+          <type>APP_IMAGE</type>
+          <icon>src/main/resources/ingSNSLogo.ico</icon>
+          <input>${project.build.directory}</input>
+          <mainJar>${project.artifactId}-jar-with-dependencies.jar</mainJar>
+          <runtimeImage>${java.home}</runtimeImage>
+          <destination>${project.build.directory}/USB/Programs</destination>
+         
+          <!-- BELANGRIJK: Verwijzen naar je custom runtime -->
+          <!--       <runtimeImage>${project.basedir}/../jre</runtimeImage> -->
+          
+          <!-- Optionele metadata -->
+          <appVersion>${project.version}</appVersion>
+          <vendor>RSH Kwee</vendor>
+          <copyright>Copyright © 2026 RSH Kwee. Alle rechten voorbehouden.</copyright>
+          <description>ING csv to OFX convertor</description>                          
+        </configuration>
+      </plugin>   
+           
       <plugin>
         <artifactId>maven-antrun-plugin</artifactId>
         <version>${maven-antrun-pluginversion}</version>
@@ -405,6 +438,11 @@
                 <target>
                   <delete dir="${project.basedir}\BuildTools"/>
                   <delete file="${project.basedir}\Library.iss"/>   
+                  <delete file="${project.build.directory}\ing2ofx-${project.version}.jar"/>
+                  <delete file="${project.build.directory}\USB\Programs\ing2ofx\app\ing2ofx.exe"/>
+                  <delete file="${project.build.directory}\USB\Programs\ing2ofx\app\ing2ofx_v${project.version}_setup.exe"/>
+                  <delete file="${project.build.directory}\USB\Programs\ing2ofx\app\ing2ofx-${project.version}.jar"/>
+                  <delete dir="${project.build.directory}\USB\Programs\ing2ofx\app\USB"/>
                 </target>
               </configuration>
            </execution>
