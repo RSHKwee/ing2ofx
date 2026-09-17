@@ -21,6 +21,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
+
 import kwee.ing2ofx.camt053parser.Camt053Parser;
 import kwee.ing2ofx.convertor.sns.snsLibrary.SnsTransaction;
 import kwee.ing2ofx.generated.camt053.AccountStatement2;
@@ -44,6 +50,7 @@ public class SnsTransactions {
   private String m_File;
   private Set<String> m_UniqueIds = new LinkedHashSet<>();
   private String m_FileName = "";
+  private ZipFile m_zipFile; // nodig om open te houden tijdens het parsen
 
   private List<SnsTransaction> m_Transactions;
   private List<OfxTransaction> m_OfxTransactions = new LinkedList<OfxTransaction>();
@@ -65,11 +72,17 @@ public class SnsTransactions {
    */
   public void load() {
     Level l_Level = Level.FINEST;
-    try {
+    try (InputStream inputStream = openStream()) {
+      m_reader = new Camt053Parser();
+      Document camt053Document = m_reader.parse(inputStream);
+
+      /* @formatter:off
       m_reader = new Camt053Parser();
       FileInputStream fileInputStream = new FileInputStream(new File(m_File));
 
       Document camt053Document = m_reader.parse(fileInputStream);
+      @formatter:on 
+      */
       m_bankcode = camt053Document.getBkToCstmrStmt().getStmt().getFirst().getAcct().getSvcr().getFinInstnId().getBIC();
 
       // Get all statements (usually one per bank statement)
@@ -250,6 +263,15 @@ public class SnsTransactions {
       LOGGER.log(Level.INFO, "Transactions read: " + Integer.toString(m_OfxTransactions.size()));
     } catch (Exception e) {
       LOGGER.log(Level.INFO, e.getMessage());
+    } finally {
+      // ZipFile netjes sluiten
+      if (m_zipFile != null) {
+        try {
+          m_zipFile.close();
+        } catch (Exception ignored) {
+        }
+        m_zipFile = null;
+      }
     }
   }
 
@@ -263,7 +285,8 @@ public class SnsTransactions {
   }
 
   /**
-   * Return a list of normal transactions or null when savings transactions are processed.
+   * Return a list of normal transactions or null when savings transactions are
+   * processed.
    * 
    * @return List of normal transactions
    */
@@ -292,4 +315,31 @@ public class SnsTransactions {
   public Map<String, OfxMetaInfo> getOfxMetaInfo() {
     return m_metainfo;
   }
+
+  private InputStream openStream() throws Exception {
+    File file = new File(m_File);
+
+    if (isZip(file)) {
+      m_zipFile = new ZipFile(file);
+
+      // Pak de eerste entry die geen map is
+      ZipEntry entry = m_zipFile.stream().filter(e -> !e.isDirectory()).findFirst()
+          .orElseThrow(() -> new IllegalArgumentException("Geen bestand gevonden in zip " + m_File));
+
+      return m_zipFile.getInputStream(entry);
+
+    } else {
+      return new FileInputStream(file);
+    }
+  }
+
+  private boolean isZip(File file) throws Exception {
+    try (InputStream is = new FileInputStream(file)) {
+      byte[] header = new byte[4];
+      if (is.read(header) < 4)
+        return false;
+      return header[0] == 'P' && header[1] == 'K' && header[2] == 3 && header[3] == 4;
+    }
+  }
+
 }

@@ -98,7 +98,7 @@ public class ActionReadTransactions extends SwingWorker<List<OfxTransaction>, St
         }
 
         // Read SNS Transactions
-        if (l_ext.toUpperCase().contains("XML")) {
+        if (l_ext.toUpperCase().contains("XML") || l_ext.toUpperCase().contains("ZIP")) {
           LOGGER.log(Level.INFO, bundle.getMessage("ProcessFile", "SNS", l_File));
           SnsTransactions l_snstrans = new SnsTransactions(m_CSVFiles[i]);
           l_snstrans.load();

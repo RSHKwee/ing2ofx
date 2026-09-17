@@ -574,7 +574,7 @@ public class GUILayout extends JPanel implements ItemListener {
       public void actionPerformed(ActionEvent e) {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        FileFilter filter = new FileNameExtensionFilter("CSVXMLFile", "csv", "xml");
+        FileFilter filter = new FileNameExtensionFilter("CSVXMLFile", "csv", "xml", "zip");
         fileChooser.setFileFilter(filter);
 
         File[] l_files = null;
