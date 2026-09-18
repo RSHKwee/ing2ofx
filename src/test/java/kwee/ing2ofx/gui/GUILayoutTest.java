@@ -37,6 +37,7 @@ public class GUILayoutTest extends TestCase {
 
   private String c_SNSTransFile = "transactie-historie.xml";
   private String c_SNSTransMemoFile = "transactie-historie_memoChange.xml";
+  private String c_SNSTransFileZip = "transactie-historieZip.zip";
 
   // private String c_IngTransEngFile = "Alle_rekeningen_eng.csv";
   // private String c_IngSavingEngTransFile = "Alle_spaarrekeningen_eng.csv";
@@ -55,8 +56,11 @@ public class GUILayoutTest extends TestCase {
   private String m_OfxEnkelMemoSNS = "OFX_SNSMemo";
   private String m_OfxCombineOneByOne = "OFX_CombineOneByOne_Syn";
 
+  private String m_OfxEnkelSNSZip = "OFX_SNSZip";
+
   /**
-   * setUp, store original User parameters and reset parameters for Test purpose. Start GUI
+   * setUp, store original User parameters and reset parameters for Test purpose.
+   * Start GUI
    */
   @Override
   @Before
@@ -235,6 +239,45 @@ public class GUILayoutTest extends TestCase {
    * Test handling of SNS Transactions, CAMT0.53 to OFX.
    */
   @Test
+  public void testGUILayoutSNSZip() {
+    LOGGER.log(Level.INFO, "testGUILayoutSNSZip");
+    FileUtils.checkCreateDirectory(m_OutputDir + "/" + m_OfxEnkelSNSZip);
+
+    frame.button("OutputFolder").click();
+    JFileChooserFixture fileChooser = frame.fileChooser();
+    fileChooser.setCurrentDirectory(new File(m_OutputDir + "/" + m_OfxEnkelSNSZip));
+    fileChooser.approve();
+
+    frame.button("CSVXMLFile").click();
+    fileChooser = frame.fileChooser();
+    fileChooser.setCurrentDirectory(new File(m_OutputDir));
+    fileChooser.fileNameTextBox().setText(c_SNSTransFileZip); // Set the desired file name
+    fileChooser.approve();
+    frame.button("ReadTransactions").click();
+
+    frame.button("ConvertToOFX").click();
+
+    // Evaluate results:
+    synchronized (lock) {
+      String logOutput = TestLogger.getOutput();
+
+      assertTrue(logOutput.contains("Gelezen transacties: 9, na verwijdering doublures: 9"));
+      assertTrue(logOutput.contains("Eindtotaal van gelezen transacties: 9"));
+
+      AssertXmlFile(m_OfxEnkelSNS, "Basis_NL20LPLN0892606304_transactie-historie.ofx");
+      AssertXmlFile(m_OfxEnkelSNS, "Teun_NL38RABO0192584529_transactie-historie.ofx");
+      AssertXmlFile(m_OfxEnkelSNS, "Aap_NL45TRIO0953178943_transactie-historie.ofx");
+      AssertXmlFile(m_OfxEnkelSNS, "Vuur_NL75FVLB0105564737_transactie-historie.ofx");
+      AssertFile(m_OfxEnkelSNS, "_Saldos_transactie-historie.csv");
+
+      LOGGER.log(Level.INFO, "Ready testGUILayoutSNS");
+    }
+  }
+
+  /**
+   * Test handling of SNS Transactions, CAMT0.53 to OFX.
+   */
+  @Test
   public void testGUILayoutSNSMemo() {
     LOGGER.log(Level.INFO, "testGUILayoutSNSMemo");
     FileUtils.checkCreateDirectory(m_OutputDir + "/" + m_OfxEnkelMemoSNS);
@@ -270,7 +313,8 @@ public class GUILayoutTest extends TestCase {
   }
 
   /**
-   * Test handling of Combined ING-, ING Saving- and SNS Transactions, are entered one by one.
+   * Test handling of Combined ING-, ING Saving- and SNS Transactions, are entered
+   * one by one.
    */
   @Test
   public void testGUILayoutOneByOne() {
