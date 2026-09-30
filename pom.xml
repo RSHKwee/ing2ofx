@@ -5,32 +5,24 @@
   <artifactId>ing2ofx</artifactId>
   <packaging>jar</packaging>
   <name>ing2ofx</name>
+  <version>${revision}</version>
 
   <parent>
 	<groupId>kwee</groupId>
 	<artifactId>aggregator</artifactId>
-	<version>1.1.0.3</version>
+	<version>${revision}</version>
 	<relativePath>../pom.xml</relativePath>
   </parent>
   
   <properties>
-     <project.description>CSV to OFX converter</project.description>
-
-     <com-opencsv.version>5.10</com-opencsv.version>
-     <commons-io.version>2.18.0</commons-io.version>
-     <commons-collections.version>3.2.2</commons-collections.version>
-     <commons-collections4.version>4.4</commons-collections4.version>
-     <org-javassist.version>3.30.2-GA</org-javassist.version>
-     <com-sun-xml-bind.version>4.0.5</com-sun-xml-bind.version>
-     <jakarta-xml-bind.version>4.0.2</jakarta-xml-bind.version>
-     <jaxb2-maven-plugin.version>3.2.0</jaxb2-maven-plugin.version>
-   </properties>
+    <project.description>CSV to OFX converter</project.description>
+  </properties>
  
   <dependencies>
     <dependency>
 	  <groupId>kwee</groupId>
 	  <artifactId>library</artifactId>
-	  <version>${kweeLibrary.version}</version>
+	  <version>${revision}</version>
 	</dependency>
     <dependency>
       <groupId>com.webcohesion.ofx4j</groupId>
@@ -78,12 +70,12 @@
     <dependency>
       <groupId>org.eclipse.platform</groupId>
       <artifactId>org.eclipse.core.resources</artifactId>
-      <version>3.16.0</version>
+      <version>${org-eclipse-core-resources.version}</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.platform</groupId>
       <artifactId>org.eclipse.core.runtime</artifactId>
-      <version>3.23.0</version>
+      <version>${org-eclipse-core-runtime.version}</version>
     </dependency>
   </dependencies>
   
@@ -422,7 +414,7 @@
           <input>${project.build.directory}</input>
           <mainJar>${project.artifactId}-jar-with-dependencies.jar</mainJar>
           <runtimeImage>${java.home}</runtimeImage>
-          <destination>${project.build.directory}/USB/Programs</destination>
+          <destination>${project.build.directory}/Programs</destination>
          
           <appVersion>${project.version}</appVersion>
           <vendor>RSH Kwee</vendor>
@@ -445,10 +437,10 @@
                   <delete dir="${project.basedir}\BuildTools"/>
                   <delete file="${project.basedir}\Library.iss"/>   
                   <delete file="${project.build.directory}\ing2ofx-${project.version}.jar"/>
-                  <delete file="${project.build.directory}\USB\Programs\ing2ofx\app\ing2ofx.exe"/>
-                  <delete file="${project.build.directory}\USB\Programs\ing2ofx\app\ing2ofx_v${project.version}_setup.exe"/>
-                  <delete file="${project.build.directory}\USB\Programs\ing2ofx\app\ing2ofx-${project.version}.jar"/>
-                  <delete dir="${project.build.directory}\USB\Programs\ing2ofx\app\USB"/>
+                  <delete file="${project.build.directory}\Programs\ing2ofx\app\ing2ofx.exe"/>
+                  <delete file="${project.build.directory}\Programs\ing2ofx\app\ing2ofx_v${project.version}_setup.exe"/>
+                  <delete file="${project.build.directory}\Programs\ing2ofx\app\ing2ofx-${project.version}.jar"/>
+                  <delete dir="${project.build.directory}\Programs\ing2ofx\app\USB"/>
                 </target>
               </configuration>
            </execution>

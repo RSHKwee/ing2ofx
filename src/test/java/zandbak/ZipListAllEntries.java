@@ -3,11 +3,7 @@ package zandbak;
 import java.io.InputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
-
-import java.io.InputStream;
 import java.util.Enumeration;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 
 public class ZipListAllEntries {
   public static void main(String[] args) {
