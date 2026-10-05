@@ -310,7 +310,7 @@
         <version>${jsign-maven-plugin.version}</version>
         <executions>
           <execution>
-           <id>sign</id>
+           <id>sign_exe</id>
            <phase>package</phase>
             <goals>
               <goal>sign</goal>
@@ -325,7 +325,7 @@
             </configuration>
           </execution>
           <execution>
-            <id>signinst</id>
+            <id>sign_inst</id>
             <phase>install</phase>
             <goals>
               <goal>sign</goal>
@@ -339,7 +339,21 @@
               <storepass>GW93ayi0j2CfeJx9VoSo</storepass>
             </configuration>
           </execution>
-          
+          <execution>
+            <id>sign_jar</id>
+            <phase>install</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+            <configuration>
+              <file>${project.build.directory}/ing2ofx-jar-with-dependencies.jar</file>
+              <name>ING OFX Converter</name>
+              <url>https://github.com/RSHKwee/ing2ofx</url>
+              <keystore>keystore.jks</keystore>
+              <alias>RSHK</alias>
+              <storepass>GW93ayi0j2CfeJx9VoSo</storepass>
+            </configuration>
+          </execution>          
         </executions>
       </plugin>
 	  <!-- Sign executable ^ -->
