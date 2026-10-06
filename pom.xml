@@ -195,8 +195,9 @@
                   <directory>..\BuildTools</directory>
                   <includes>
                     <include>Library.iss</include>
+                    <include>keystore.jks</include>
                   </includes>
-                  <filtering>true</filtering>
+                  <filtering>false</filtering>
                 </resource>
               </resources>
               <encoding>${project.build.sourceEncoding}</encoding>
@@ -279,7 +280,7 @@
                <headerType>console</headerType>
                <jar>${project.build.directory}/ing2ofx-jar-with-dependencies.jar</jar>
                <outfile>${project.build.directory}/ing2ofx.exe</outfile>
-               <downloadUrl>https://cdn.azul.com/zulu/bin/zulu22.32.21-ca-crac-jdk22.0.2-win_x64.zip</downloadUrl>
+               <downloadUrl>${downloadUrl.jre}</downloadUrl>
                <classPath>
                  <mainClass>kwee.ing2ofx.main.Main</mainClass>
               </classPath>
@@ -297,6 +298,7 @@
                 <productName>${project.name}</productName>
                 <internalName>ing2ofx</internalName>
                 <originalFilename>ing2ofx.exe</originalFilename>
+                <companyName>${companyName}</companyName>
               </versionInfo>
             </configuration>
           </execution>
@@ -321,7 +323,7 @@
               <url>https://github.com/RSHKwee/ing2ofx</url>
               <keystore>keystore.jks</keystore>
               <alias>RSHK</alias>
-              <storepass>GW93ayi0j2CfeJx9VoSo</storepass>
+              <storepass>${keystore.password}</storepass>
             </configuration>
           </execution>
           <execution>
@@ -336,26 +338,32 @@
               <url>https://github.com/RSHKwee/ing2ofx</url>
               <keystore>keystore.jks</keystore>
               <alias>RSHK</alias>
-              <storepass>GW93ayi0j2CfeJx9VoSo</storepass>
+              <storepass>${keystore.password}</storepass>
             </configuration>
-          </execution>
+          </execution>          
+        </executions>
+      </plugin>
+	  <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jarsigner-plugin</artifactId>
+        <version>${maven-jarsigner-plugin.version}</version>
+        <executions>
           <execution>
-            <id>sign_jar</id>
-            <phase>install</phase>
+            <id>sign</id>
+            <phase>package</phase>
             <goals>
               <goal>sign</goal>
             </goals>
             <configuration>
               <file>${project.build.directory}/ing2ofx-jar-with-dependencies.jar</file>
-              <name>ING OFX Converter</name>
-              <url>https://github.com/RSHKwee/ing2ofx</url>
-              <keystore>keystore.jks</keystore>
+			  <keystore>keystore.jks</keystore>
               <alias>RSHK</alias>
-              <storepass>GW93ayi0j2CfeJx9VoSo</storepass>
+              <storepass>${keystore.password}</storepass>
             </configuration>
-          </execution>          
+          </execution>
         </executions>
       </plugin>
+	  
 	  <!-- Sign executable ^ -->
       <!-- Windows installers v -->
       <plugin>
@@ -432,7 +440,7 @@
          
           <appVersion>${project.version}</appVersion>
           <vendor>RSH Kwee</vendor>
-          <copyright>Copyright © 2026 RSH Kwee. Alle rechten voorbehouden.</copyright>
+          <copyright>${project.copyright.text}</copyright>
           <description>ING csv to OFX convertor</description>                          
         </configuration>
       </plugin>   
@@ -450,6 +458,7 @@
                 <target>
                   <delete dir="${project.basedir}\BuildTools"/>
                   <delete file="${project.basedir}\Library.iss"/>   
+                  <delete file="${project.basedir}\keystore.jks"/>   
                   <delete file="${project.build.directory}\Programs\ing2ofx\app\ing2ofx.exe"/>
                   <delete file="${project.build.directory}\Programs\ing2ofx\app\ing2ofx_v${project.version}_setup.exe"/>
                   <delete file="${project.build.directory}\Programs\ing2ofx\app\ing2ofx-${project.version}.jar"/>
@@ -460,7 +469,7 @@
         </executions>
       </plugin>
     </plugins>
-<!--    </pluginManagement> -->
+    <!--    </pluginManagement> -->
   </build>
   
   <distributionManagement>
