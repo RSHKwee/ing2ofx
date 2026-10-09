@@ -26,7 +26,7 @@ When running the application (Windows excutable or Java jar-file) the following 
 Button _CSV File(s)_: one or more ING CSV file(s) or (SNS) XML- (CAMT 053 format) file(s) can be choosen.
 - The application recognizes:
   - a comma or semicolon separated ING input file.
-  - a XML (CAMT 053 format) input file (Tested with SNS XML).
+  - a XML (CAMT 053 format) input file (Tested with SNS XML and SNS XML in ZIP).
 - The content "normal" or saving transactions.
 
 Button _Output folder_: Point to the directory where the generated OFX-file(s) are stored. 

@@ -131,28 +131,46 @@
 	  </plugin>
 		
       <plugin>
-		<artifactId>maven-assembly-plugin</artifactId>
-  		<version>${maven-assembly-plugin.version}</version>      
-		<executions>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>${maven-assembly-plugin.version}</version>
+        <executions>
+          <!-- Execution 1: de bestaande jar-with-dependencies -->
           <execution>
-			<phase>package</phase>
-			<goals>
-			  <goal>single</goal>
-			</goals>
+            <id>jar-with-deps</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <archive>
+                <manifest>
+                  <addClasspath>true</addClasspath>
+                  <mainClass>kwee.ing2ofx.main.Main</mainClass>
+                </manifest>
+              </archive>
+              <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+              </descriptorRefs>
+              <finalName>ing2ofx</finalName>
+            </configuration>
+          </execution>
+      
+          <!-- Execution 2: de nieuwe ZIP van target/Programs -->
+          <execution>
+            <id>zip-programs</id>
+            <phase>install</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <descriptors>
+                <descriptor>src/main/assembly/zip.xml</descriptor>
+              </descriptors>
+              <finalName>Programs-archive</finalName>
+              <appendAssemblyId>false</appendAssemblyId>
+            </configuration>
           </execution>
         </executions>
-		<configuration>
-          <archive>
-            <manifest>
-		      <addClasspath>true</addClasspath>
-		      <mainClass>kwee.ing2ofx.main.Main</mainClass>
-		    </manifest>
-          </archive>
-          <descriptorRefs>
-            <descriptorRef>jar-with-dependencies</descriptorRef>
-          </descriptorRefs>
-          <finalName>ing2ofx</finalName>
-        </configuration>
       </plugin>
       
       <!-- Distribute tools v -->
