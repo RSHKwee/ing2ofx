@@ -484,6 +484,34 @@
                 </target>
               </configuration>
            </execution>
+           <execution>
+             <id>clean-zip</id>
+             <phase>install</phase>
+             <goals>
+               <goal>run</goal>
+             </goals>
+             <configuration>
+               <target>
+                 <!-- 1. Zip uitpakken naar tijdelijke map -->
+                 <unzip src="${project.build.directory}/Programs-archive.zip"
+                        dest="${project.build.directory}/zip-temp/usb"/>
+                 
+                 <!-- 2. Verwijder de bestanden die er niet in horen -->
+                 <delete file="${project.build.directory}/zip-temp/usb/ing2ofx/app/ing2ofx.exe"/>
+                 <delete file="${project.build.directory}/zip-temp/usb/ing2ofx/app/ing2ofx_v${project.version}_setup.exe"/>
+                 <delete file="${project.build.directory}/zip-temp/usb/ing2ofx/app/ing2ofx-${project.version}.jar"/>
+                 <delete dir="${project.build.directory}/zip-temp/usb/ing2ofx/app/USB"/>
+                 
+                 <!-- 3. Zip opnieuw maken (oude zip wordt overschreven) -->
+                 <zip destfile="${project.build.directory}/Programs.zip"
+                      basedir="${project.build.directory}/zip-temp"/>
+                 
+                 <!-- 4. Tijdelijke map opruimen -->
+                 <delete dir="${project.build.directory}/zip-temp"/>
+                 <delete file="${project.build.directory}/Programs-archive.zip"/>				 
+               </target>
+             </configuration>
+           </execution>		   
         </executions>
       </plugin>
     </plugins>
