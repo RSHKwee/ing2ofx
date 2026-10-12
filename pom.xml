@@ -3,9 +3,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>ing2ofx</artifactId>
-  <packaging>jar</packaging>
   <name>ing2ofx</name>
   <version>${revision}</version>
+  <description>CSV to OFX converter</description>
+  <packaging>jar</packaging>
 
   <parent>
 	<groupId>kwee</groupId>
@@ -14,10 +15,6 @@
 	<relativePath>../pom.xml</relativePath>
   </parent>
   
-  <properties>
-    <project.description>CSV to OFX converter</project.description>
-  </properties>
- 
   <dependencies>
     <dependency>
 	  <groupId>kwee</groupId>
@@ -29,6 +26,7 @@
       <artifactId>ofx4j</artifactId>
       <version>${com-webcohesion-ofx4j.version}</version>
     </dependency>
+	
     <!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
     <dependency>
       <groupId>com.opencsv</groupId>
@@ -79,6 +77,7 @@
     </dependency>
   </dependencies>
   
+  <!-- Bouw instructies -->
   <build>
     <resources>
       <resource>
@@ -91,7 +90,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
-        <version>${maven-enforcer-plugin.version}</version> <!-- Gebruik een geschikte versie van de plugin -->
+        <version>${maven-enforcer-plugin.version}</version>
         <executions>
           <execution>
             <id>enforce-maven-version</id>
@@ -213,11 +212,17 @@
                   <directory>..\BuildTools</directory>
                   <includes>
                     <include>Library.iss</include>
+                  </includes>
+                  <filtering>true</filtering>
+                </resource>
+                <resource>
+                  <directory>..\BuildTools</directory>
+                  <includes>
                     <include>keystore.jks</include>
                   </includes>
                   <filtering>false</filtering>
                 </resource>
-              </resources>
+			  </resources>
               <encoding>${project.build.sourceEncoding}</encoding>
             </configuration>
           </execution>     
@@ -238,6 +243,13 @@
                     <include>*.PNG</include>
                   </includes>
                   <filtering>true</filtering>
+                </resource>
+                <resource>
+                  <directory>.</directory>
+                  <includes>
+					<include>Bewindvoering_Template.gnucash</include>
+                  </includes>
+                  <filtering>false</filtering>
                 </resource>
               </resources>
               <encoding>${project.build.sourceEncoding}</encoding>
@@ -282,6 +294,7 @@
         </executions>
       </plugin>		
 	  <!-- readme.md ^ -->
+	  
 	  <!-- LAUNCH4J create executable v -->      
       <plugin>
          <groupId>com.akathist.maven.plugins.launch4j</groupId>
@@ -381,8 +394,8 @@
           </execution>
         </executions>
       </plugin>
-	  
 	  <!-- Sign executable ^ -->
+	  
       <!-- Windows installers v -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -433,6 +446,7 @@
           </execution>
         </executions>
       </plugin>
+	  
       <!-- 2. JPackage Plugin voor zelfstandige app op USB -->
       <plugin>
         <groupId>org.panteleyev</groupId>
@@ -463,6 +477,7 @@
         </configuration>
       </plugin>   
            
+      <!-- Opruimen -->
       <plugin>
         <artifactId>maven-antrun-plugin</artifactId>
         <version>${maven-antrun-pluginversion}</version>
@@ -500,10 +515,10 @@
                  <delete file="${project.build.directory}/zip-temp/usb/ing2ofx/app/ing2ofx.exe"/>
                  <delete file="${project.build.directory}/zip-temp/usb/ing2ofx/app/ing2ofx_v${project.version}_setup.exe"/>
                  <delete file="${project.build.directory}/zip-temp/usb/ing2ofx/app/ing2ofx-${project.version}.jar"/>
-                 <delete dir="${project.build.directory}/zip-temp/usb/ing2ofx/app/USB"/>
+                 <delete dir="${project.build.directory}/zip-temp/usb/ing2ofx/app/Programs"/>
                  
                  <!-- 3. Zip opnieuw maken (oude zip wordt overschreven) -->
-                 <zip destfile="${project.build.directory}/Programs.zip"
+                 <zip destfile="${project.build.directory}/ING2OFXStandalone-${project.version}.zip"
                       basedir="${project.build.directory}/zip-temp"/>
                  
                  <!-- 4. Tijdelijke map opruimen -->
@@ -514,8 +529,79 @@
            </execution>		   
         </executions>
       </plugin>
+	  
+	  <!-- Deploy -->
+	  <!--
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>${org.codehaus.mojo.build-helper-maven-plugin.version}</version>
+        <executions>
+          <execution>
+            <id>attach-artifacts</id>
+            <phase>deploy</phase>
+            <goals>
+              <goal>attach-artifact</goal>
+            </goals>
+            <configuration>
+              <artifacts>
+                <artifact>
+                  <file>${project.build.directory}/ing2ofx.exe</file>
+                  <type>exe</type>
+                  <classifier>Ing2ofx_executable</classifier>
+                </artifact>
+                <artifact>
+                  <file>${project.build.directory}/ing2ofx_v${project.version}_setup.exe</file>
+                  <type>exe</type>
+                  <classifier>Ing2ofx_setup</classifier>
+                </artifact>
+                <artifact>
+                  <file>${project.build.directory}/ing2ofxMain.PNG</file>
+                  <type>png</type>
+                  <classifier>IconImage</classifier>
+                </artifact>
+                <artifact>
+                  <file>${project.build.directory}/ing2ofxSettings.PNG</file>
+                  <type>png</type>
+                  <classifier>SettingsImage</classifier>
+                </artifact>
+                <artifact>
+                  <file>${project.build.directory}/readme.md</file>
+                  <type>md</type>
+                  <classifier>Readme_md</classifier>
+                </artifact>
+		        <artifact>
+                  <file>${project.build.directory}/ing2ofx_${project.version}.jar</file>
+                  <type>jar</type>
+                  <classifier>Ing2ofx_Jar</classifier>
+                </artifact>
+		        <artifact>
+                  <file>${project.build.directory}/ing2ofx-jar-with-dependencies.jar</file>
+                  <type>jar</type>
+                  <classifier>Ing2ofx_depJar</classifier>
+                </artifact>
+		        <artifact>
+                  <file>${project.build.directory}/help/nl/ing2ofx.chm</file>
+                  <type>chm</type>
+                  <classifier>Ing2ofx_nlhelp</classifier>
+                </artifact>
+		        <artifact>
+                  <file>${project.build.directory}/Bewindvoering_Template.gnucash</file>
+                  <type>gnucash</type>
+                  <classifier>BewindGnuCash</classifier>
+                </artifact>
+                <artifact>
+                  <file>${project.build.directory}/ING2OFXStandalone-${project.version}.zip</file>
+                  <type>zip</type>
+                  <classifier>ProgramsZip</classifier>
+                </artifact>
+              </artifacts>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+	  -->
     </plugins>
-    <!--    </pluginManagement> -->
   </build>
   
   <distributionManagement>
