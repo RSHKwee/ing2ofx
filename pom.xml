@@ -1,5 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+		 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>ing2ofx</artifactId>
@@ -95,7 +98,7 @@
           <execution>
             <id>enforce-maven-version</id>
             <goals>
-             <goal>enforce</goal>
+              <goal>enforce</goal>
             </goals>
             <configuration>
               <rules>
@@ -163,7 +166,7 @@
             </goals>
             <configuration>
               <descriptors>
-                <descriptor>src/main/assembly/zip.xml</descriptor>
+                <descriptor>src/assembly/distribution.xml</descriptor>
               </descriptors>
               <finalName>Programs-archive</finalName>
               <appendAssemblyId>false</appendAssemblyId>
@@ -177,6 +180,13 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
         <version>${maven-resources-plugin.version}</version>
+		<configuration>
+           <!-- Deze configuratie zorgt ervoor dat @...@ placeholders werken -->
+           <delimiters>
+             <delimiter>@</delimiter>
+          </delimiters>
+          <useDefaultDelimiters>false</useDefaultDelimiters>
+        </configuration>
         <executions>
           <execution>
             <id>CopyToolsIng</id>
@@ -241,6 +251,7 @@
                   <includes>
                     <include>readme.md</include>
                     <include>*.PNG</include>
+                    <include>*.jpg</include>
                   </includes>
                   <filtering>true</filtering>
                 </resource>
@@ -250,6 +261,28 @@
 					<include>Bewindvoering_Template.gnucash</include>
                   </includes>
                   <filtering>false</filtering>
+                </resource>
+              </resources>
+              <encoding>${project.build.sourceEncoding}</encoding>
+            </configuration>
+          </execution>
+          <execution>
+            <id>readme-md-usb</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}\Programs</outputDirectory>
+              <resources>                                        
+                <resource>
+                  <directory>.</directory>
+                  <includes>
+                    <include>readme.md</include>
+                    <include>*.PNG</include>
+                    <include>*.jpg</include>
+                  </includes>
+                  <filtering>true</filtering>
                 </resource>
               </resources>
               <encoding>${project.build.sourceEncoding}</encoding>
@@ -457,7 +490,7 @@
             <!-- Voer uit na de "package" fase -->
             <phase>verify</phase>
             <goals>
-                <goal>jpackage</goal>
+              <goal>jpackage</goal>
             </goals>
           </execution>
         </executions>
