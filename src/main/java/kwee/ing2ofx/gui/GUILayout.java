@@ -1,37 +1,12 @@
 package kwee.ing2ofx.gui;
 
-/**
- * ing2ofx GUI
- */
-import kwee.logger.MyLogger;
-
-import kwee.ing2ofx.main.Main;
-import kwee.ing2ofx.main.UserSetting;
-
-import kwee.library.ApplicationMessages;
-import kwee.library.OutputToLoggerReader;
-import kwee.library.swing.AboutWindow;
-import kwee.library.swing.ShowPreferences;
-import kwee.library.swing.TextAreaHandler;
-
-import kwee.ing2ofx.ofxLibrary.OfxFunctions;
-import kwee.ing2ofx.ofxLibrary.OfxMetaInfo;
-import kwee.ing2ofx.ofxLibrary.OfxTransaction;
-
-import com.webcohesion.ofx4j.OFXSettings;
-import com.webcohesion.ofx4j.generated.CurrencyEnum;
-
-import net.miginfocom.swing.MigLayout;
-
 import java.awt.BorderLayout;
-import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -47,12 +22,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.BoxLayout;
-import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -60,7 +34,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
-import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
@@ -69,6 +42,28 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import com.webcohesion.ofx4j.OFXSettings;
+import com.webcohesion.ofx4j.generated.CurrencyEnum;
+
+import kwee.ing2ofx.main.Main;
+import kwee.ing2ofx.main.UserSetting;
+import kwee.ing2ofx.ofxLibrary.OfxFunctions;
+import kwee.ing2ofx.ofxLibrary.OfxMetaInfo;
+import kwee.ing2ofx.ofxLibrary.OfxTransaction;
+import kwee.library.ApplicationMessages;
+import kwee.library.ChmOpener;
+import kwee.library.OutputToLoggerReader;
+import kwee.library.swing.AboutWindow;
+import kwee.library.swing.ShowPreferences;
+import kwee.library.swing.TextAreaHandler;
+/**
+ * ing2ofx GUI
+ */
+import kwee.logger.MyLogger;
+import net.miginfocom.swing.MigLayout;
 
 public class GUILayout extends JPanel implements ItemListener {
   private static final Logger LOGGER = MyLogger.getLogger();
@@ -487,10 +482,9 @@ public class GUILayout extends JPanel implements ItemListener {
 
         if (helpFile.exists()) {
           try {
-            // Open the help file with the default viewer
-            Desktop.getDesktop().open(helpFile);
-          } catch (IOException e1) {
-            e1.printStackTrace();
+            ChmOpener.openChm(helpFile);
+          } catch (Exception e1) {
+            LOGGER.log(Level.INFO, bundle.getMessage("HelpFileNotFound", helpFile.getAbsolutePath()));
           }
         } else {
           LOGGER.log(Level.INFO, bundle.getMessage("HelpFileNotFound", helpFile.getAbsolutePath()));

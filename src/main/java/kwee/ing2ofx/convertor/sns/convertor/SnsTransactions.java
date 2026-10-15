@@ -8,6 +8,7 @@ package kwee.ing2ofx.convertor.sns.convertor;
  */
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.math.BigDecimal;
 // import java.math.BigDecimal;
 import java.util.Date;
@@ -20,10 +21,6 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
@@ -35,12 +32,11 @@ import kwee.ing2ofx.generated.camt053.CreditDebitCode;
 import kwee.ing2ofx.generated.camt053.Document;
 import kwee.ing2ofx.generated.camt053.EntryDetails1;
 import kwee.ing2ofx.generated.camt053.ReportEntry2;
-
-import kwee.library.DateToNumeric;
-import kwee.logger.MyLogger;
 import kwee.ing2ofx.ofxLibrary.OfxFunctions;
 import kwee.ing2ofx.ofxLibrary.OfxMetaInfo;
 import kwee.ing2ofx.ofxLibrary.OfxTransaction;
+import kwee.library.DateToNumeric;
+import kwee.logger.MyLogger;
 
 public class SnsTransactions {
   private static final Logger LOGGER = MyLogger.getLogger();
@@ -336,8 +332,9 @@ public class SnsTransactions {
   private boolean isZip(File file) throws Exception {
     try (InputStream is = new FileInputStream(file)) {
       byte[] header = new byte[4];
-      if (is.read(header) < 4)
+      if (is.read(header) < 4) {
         return false;
+      }
       return header[0] == 'P' && header[1] == 'K' && header[2] == 3 && header[3] == 4;
     }
   }
