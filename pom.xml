@@ -493,7 +493,6 @@
           <icon>src/main/resources/ingSNSLogo.ico</icon>
           <input>${project.build.directory}</input>
           <mainJar>${project.artifactId}-jar-with-dependencies.jar</mainJar>
-          <runtimeImage>${java.home}</runtimeImage>
           <destination>${project.build.directory}/Programs</destination>
          
           <appVersion>${project.version}</appVersion>
@@ -501,8 +500,8 @@
           <copyright>${project.copyright.text}</copyright>
           <description>ING csv to OFX convertor</description>                          
         </configuration>
-      </plugin>   
-           
+      </plugin>
+	  
       <!-- Opruimen -->
       <plugin>
         <artifactId>maven-antrun-plugin</artifactId>

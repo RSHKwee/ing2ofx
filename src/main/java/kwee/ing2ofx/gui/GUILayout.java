@@ -484,7 +484,7 @@ public class GUILayout extends JPanel implements ItemListener {
           try {
             ChmOpener.openChm(helpFile);
           } catch (Exception e1) {
-            LOGGER.log(Level.INFO, bundle.getMessage("HelpFileNotFound", helpFile.getAbsolutePath()));
+            LOGGER.log(Level.INFO, e1.getMessage());
           }
         } else {
           LOGGER.log(Level.INFO, bundle.getMessage("HelpFileNotFound", helpFile.getAbsolutePath()));
