@@ -3,6 +3,10 @@
  */
 package kwee.convertor.ing.convertor;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import java.io.File;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -16,7 +20,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.junit.Assert;
-import junit.framework.TestCase;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import kwee.ing2ofx.convertor.ing.convertor.IngTransactions;
 import kwee.ing2ofx.convertor.ing.ingLibrary.IngSavingTransaction;
 import kwee.ing2ofx.convertor.ing.ingLibrary.IngTransaction;
@@ -30,7 +37,7 @@ import kwee.library.DateToNumeric;
  * @author René
  *
  */
-public class IngTransactionsTest extends TestCase {
+public class IngTransactionsTest {
   private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
 
   private String c_IngTransFile = "ING_Enkele.csv";
@@ -51,7 +58,7 @@ public class IngTransactionsTest extends TestCase {
   /**
    * @throws java.lang.Exception
    */
-  @Override
+  @BeforeEach
   public void setUp() throws Exception {
     m_IngSavingFile = m_Functions.GetResourceFile(c_IngSavingTransFile);
     m_IngFile = m_Functions.GetResourceFile(c_IngTransFile);
@@ -63,7 +70,7 @@ public class IngTransactionsTest extends TestCase {
   /**
    * @throws java.lang.Exception
    */
-  @Override
+  @AfterEach
   public void tearDown() throws Exception {
     m_usersetting.unfreeze();
   }
@@ -72,6 +79,7 @@ public class IngTransactionsTest extends TestCase {
    * Test method for
    * {@link kwee.ing2ofx.convertor.ing.convertor.IngTransactions#IngTransactions(java.io.File, java.io.File)}.
    */
+  @Test
   public void testIngTransactions() {
     IngTransactions l_ingSavingtrans = new IngTransactions(m_IngSavingFile);
     assertNotNull(l_ingSavingtrans);
@@ -81,8 +89,10 @@ public class IngTransactionsTest extends TestCase {
   }
 
   /**
-   * Test method for {@link kwee.ing2ofx.convertor.ing.convertor.IngTransactions#load()}.
+   * Test method for
+   * {@link kwee.ing2ofx.convertor.ing.convertor.IngTransactions#load()}.
    */
+  @Test
   public void testLoad() {
     IngTransactions l_transSaving = new IngTransactions(m_IngSavingFile);
     l_transSaving.load();
@@ -98,8 +108,10 @@ public class IngTransactionsTest extends TestCase {
   }
 
   /**
-   * Test method for {@link kwee.ing2ofx.convertor.ing.convertor.IngTransactions#isSavingCsvFile()}.
+   * Test method for
+   * {@link kwee.ing2ofx.convertor.ing.convertor.IngTransactions#isSavingCsvFile()}.
    */
+  @Test
   public void testIsSavingCsvFile() {
     IngTransactions l_transSaving = new IngTransactions(m_IngSavingFile);
     l_transSaving.load();
@@ -111,8 +123,10 @@ public class IngTransactionsTest extends TestCase {
   }
 
   /**
-   * Test method for {@link kwee.ing2ofx.convertor.ing.convertor.IngTransactions#getIngTransactions()}.
+   * Test method for
+   * {@link kwee.ing2ofx.convertor.ing.convertor.IngTransactions#getIngTransactions()}.
    */
+  @Test
   public void testGetIngTransactions() {
     IngTransactions l_trans = new IngTransactions(m_IngFile);
     l_trans.load();
@@ -127,8 +141,10 @@ public class IngTransactionsTest extends TestCase {
   }
 
   /**
-   * Test method for {@link kwee.ing2ofx.convertor.ing.convertor.IngTransactions#getIngSavingTransactions()}.
+   * Test method for
+   * {@link kwee.ing2ofx.convertor.ing.convertor.IngTransactions#getIngSavingTransactions()}.
    */
+  @Test
   public void testGetIngSavingTransactions() {
     IngTransactions l_transSaving = new IngTransactions(m_IngSavingFile);
     l_transSaving.load();
@@ -142,8 +158,10 @@ public class IngTransactionsTest extends TestCase {
   }
 
   /**
-   * Test method for {@link kwee.ing2ofx.convertor.ing.convertor.IngTransactions#getOfxTransactions()}.
+   * Test method for
+   * {@link kwee.ing2ofx.convertor.ing.convertor.IngTransactions#getOfxTransactions()}.
    */
+  @Test
   public void testGetOfxTransactions() {
     IngTransactions l_transSaving = new IngTransactions(m_IngSavingFile);
     l_transSaving.load();
@@ -163,8 +181,10 @@ public class IngTransactionsTest extends TestCase {
   }
 
   /**
-   * Test method for {@link kwee.ing2ofx.convertor.ing.convertor.IngTransactions#getOfxMetaInfo()}.
+   * Test method for
+   * {@link kwee.ing2ofx.convertor.ing.convertor.IngTransactions#getOfxMetaInfo()}.
    */
+  @Test
   public void testGetOfxMetaInfo() {
     IngTransactions l_transSaving = new IngTransactions(m_IngSavingFile);
     l_transSaving.load();
@@ -188,8 +208,10 @@ public class IngTransactionsTest extends TestCase {
   }
 
   /**
-   * Test method for {@link kwee.ing2ofx.convertor.ing.convertor.IngTransactions#getUniqueIds()}.
+   * Test method for
+   * {@link kwee.ing2ofx.convertor.ing.convertor.IngTransactions#getUniqueIds()}.
    */
+  @Test
   public void testGetUniqueIds() {
     Set<String> l_UniqueIds_exp = new LinkedHashSet<>();
     Set<String> l_UniqueIds = new LinkedHashSet<>();
@@ -400,7 +422,8 @@ public class IngTransactionsTest extends TestCase {
    * 
    * @param a_trans1 OFX Transaction 1
    * @param a_trans2 OFX Transaction 2
-   * @return Result, OFX transactions are equal (true) or if not equal then result is False.
+   * @return Result, OFX transactions are equal (true) or if not equal then result
+   *         is False.
    */
   private boolean compareOFXTrans(List<OfxTransaction> a_trans1, List<OfxTransaction> a_trans2) {
     boolean bstat = false;

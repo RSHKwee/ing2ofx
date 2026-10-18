@@ -1,24 +1,24 @@
 package kwee.ing2ofx.gui;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JFrame;
+
 import org.assertj.swing.core.BasicRobot;
 import org.assertj.swing.core.Robot;
 import org.assertj.swing.fixture.FrameFixture;
+import org.assertj.swing.fixture.JCheckBoxFixture;
 import org.assertj.swing.fixture.JFileChooserFixture;
 import org.assertj.swing.launcher.ApplicationLauncher;
-import org.assertj.swing.fixture.JCheckBoxFixture;
-
-import javax.swing.JFrame;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import junit.framework.TestCase;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import kwee.ing2ofx.main.Main;
 import kwee.ing2ofx.main.UserSetting;
@@ -26,7 +26,7 @@ import kwee.library.FileUtils;
 import kwee.logger.MyLogger;
 import kwee.logger.TestLogger;
 
-public class EngGUILayoutTest extends TestCase {
+public class EngGUILayoutTest {
   private static final Logger LOGGER = MyLogger.getLogger();
   private FrameFixture frame;
   Object lock = GUILayout.lock;
@@ -53,12 +53,11 @@ public class EngGUILayoutTest extends TestCase {
   private String m_OfxCombineOneByOne = "en_OFX_CombineOneByOne_Syn";
 
   /**
-   * setUp, store original User parameters and reset parameters for Test purpose. Start GUI
+   * setUp, store original User parameters and reset parameters for Test purpose.
+   * Start GUI
    */
-  @Override
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
-    super.setUp();
     m_param = UserSetting.getInstance();
 
     // Parameters
@@ -100,11 +99,8 @@ public class EngGUILayoutTest extends TestCase {
   /**
    * Reset User parameters to original settings. Close GUI.
    */
-  @Override
-  @After
+  @AfterEach
   public void tearDown() throws Exception {
-    super.tearDown();
-
     m_param.unfreeze();
     ;
     m_param.save();
@@ -283,7 +279,8 @@ public class EngGUILayoutTest extends TestCase {
   }
 
   /**
-   * Test handling of Combined ING-, ING Saving- and SNS Transactions and make use of a Synonym file.
+   * Test handling of Combined ING-, ING Saving- and SNS Transactions and make use
+   * of a Synonym file.
    */
   @Test
   public void testGUILayoutCombineSyn() {
@@ -409,7 +406,8 @@ public class EngGUILayoutTest extends TestCase {
   }
 
   /**
-   * Test handling of Combined ING-, ING Saving- and SNS Transactions, are entered one by one.
+   * Test handling of Combined ING-, ING Saving- and SNS Transactions, are entered
+   * one by one.
    */
   @Test
   public void testGUILayoutOneByOne() {

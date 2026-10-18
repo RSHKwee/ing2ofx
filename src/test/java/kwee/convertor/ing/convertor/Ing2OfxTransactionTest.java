@@ -1,28 +1,24 @@
 package kwee.convertor.ing.convertor;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Test;
+
 import kwee.ing2ofx.convertor.ing.convertor.Ing2OfxTransaction;
 import kwee.ing2ofx.convertor.ing.ingLibrary.IngSavingTransaction;
 import kwee.ing2ofx.convertor.ing.ingLibrary.IngTransaction;
 import kwee.ing2ofx.ofxLibrary.OfxTransaction;
 
-public class Ing2OfxTransactionTest extends TestCase {
+public class Ing2OfxTransactionTest {
   static String m_bankcode = "INGBNL2A";
 
-  @Override
-  public void setUp() {
-  }
-
-  @Override
-  public void tearDown() {
-  }
-
+  @Test
   public void testConvertSavingToOfx() {
     IngSavingTransaction l_trans = new IngSavingTransaction();
     /*
@@ -69,12 +65,11 @@ public class Ing2OfxTransactionTest extends TestCase {
     int istat = l_ofxtrans.getTrnamt().compareTo(new BigDecimal(l_trans.getBedrag()));
     assertTrue(istat == 0);
 
-//    assertTrue(l_ofxtrans.getTrnamt().equals(l_trans.getBedrag()));
     istat = l_ofxtrans.getSaldo_na_mutatie().compareTo(new BigDecimal(l_trans.getSaldo_na_mutatie()));
     assertTrue(istat == 0);
-//    assertTrue(l_ofxtrans.getSaldo_na_mutatie().equals(l_trans.getSaldo_na_mutatie()));
   }
 
+  @Test
   public void testConvertToOfx() {
     IngTransaction l_trans = new IngTransaction();
     /*
@@ -119,8 +114,6 @@ public class Ing2OfxTransactionTest extends TestCase {
     assertTrue(istat == 0);
     istat = l_ofxtrans.getSaldo_na_mutatie().compareTo(new BigDecimal(l_trans.getSaldo_na_mutatie()));
     assertTrue(istat == 0);
-    // assertTrue(l_ofxtrans.getTrnamt().equals("-2000"));
-    // assertTrue(l_ofxtrans.getSaldo_na_mutatie().equals(l_trans.getSaldo_na_mutatie()));
   }
 
 }
